@@ -1,5 +1,5 @@
 /* components/patterns/card-grid.css
-   Pattern: the card grid. A fluid track of event cards, one column to four.
+   Pattern: the card grid. A fluid track of event cards, one column to four. Classes: .grid.
 
    Assembled from: card. One brick, many of it, which is still a composition:
      what the pattern decides is the track, and the card decides nothing about

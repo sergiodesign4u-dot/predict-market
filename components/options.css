@@ -1,5 +1,5 @@
 /* components/options.css
-   Component: options. Classes: .opt-list, .opt-name, .opt-prob, .opt-row, .opt-sel-tag, .options.
+   Component: options. Classes: .opt-list, .opt-more, .opt-name, .opt-prob, .opt-row, .opt-sel-tag, .options, .sel.
 
    Reads: --bevel-notice, --bg-chip, --bg-control, --border-hairline, --text-brass, --text-primary, --tint-brass-09, --tint-brass-16, --tint-brass-60
    Stand:  ui-kit/options.html, and ui-kit/molecules.html#options for the level and its reason
@@ -18,6 +18,29 @@
 .card .opt-row .opt-name{flex:1;font-weight:var(--weight-semibold);color:var(--text-primary);font-size:var(--text-13);line-height:var(--leading-flat)}
 .card .opt-row .opt-prob{font-family:var(--font-display);background:transparent;border:0;color:var(--text-primary);font-size:var(--text-14);line-height:var(--leading-flat);letter-spacing:var(--track-head)}
 .card .options{margin-top:auto}
+/* THE CARD IS A SHORTLIST AND UNTIL 2026-08-10 IT NEVER SAID SO (docs/backlog.md 81).
+   Every multi-outcome card in this product shows exactly two rows, 21 of 21 in both
+   trees, and the two do not add up to the market: Sweden and Italy leave 39 per cent
+   unaccounted, Labour and the Conservatives 23. So a person on the feed could not tell
+   a two-outcome market from the top two of five, and one card in the set IS complete -
+   Republicans 52 and Democrats 48 make 100 - which is exactly the pair that had to be
+   distinguishable and was not.
+   WHAT IT SAYS AND WHERE THE NUMBER COMES FROM. The word is `outcome`, because that is
+   the product's own: `.ed-cat` prints "5 outcomes" and the detail section is headed
+   Outcomes. The count is the SMALLEST number of further outcomes the arithmetic forces,
+   which is the only number the data supports: the remainder divided by the smallest
+   percentage already shown, rounded up. Eurovision leaves 39 against Italy's 27, so two;
+   the stablecoin market leaves 8, so one. ONE MARKET OVERRIDES THE ARITHMETIC AND IT IS
+   THE RULE THAT MATTERS: the UK election is named in the Related list as "4 outcomes",
+   so its card says two more, where the formula alone would have said one. A count the
+   product states beats a count the product implies. A card whose rows sum to 100 gets no
+   row at all, because there is nothing hidden and a label saying so would be noise:
+   Republicans 52 and Democrats 48 are the whole market, on 3 cards in each tree.
+   IT IS A LINK, not a label, and it goes where the card goes. A person told that three
+   outcomes are missing needs the place they are, and that place is the event. */
+.card .opt-more{display:block;padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-medium);color:var(--text-muted);text-decoration:none;transition:color var(--dur-quick) ease}
+.card .opt-more:hover{color:var(--text-primary)}
+.card .opt-more:active{color:var(--text-brass)}
 .card .opt-row,.card .opt-row:first-child{border-radius:var(--radius-10);background:var(--bg-chip);border:var(--hairline) solid var(--bevel-notice);/* symmetric inset - equal gap on both sides, no dead space to the right of NO */
   padding:var(--space-4) var(--space-12)}
 .opt-list{padding:var(--space-2) 0}

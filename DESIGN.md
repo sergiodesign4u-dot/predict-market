@@ -220,7 +220,7 @@ The product is dark; its theme is a light one, and it exists as a proof of the s
 `components/tokens.css` is the whole system and it has exactly two levels.
 
 - **Primitive** (section 1): raw values with no opinion about purpose. The graphite ramp, bone, brass, the outcome greens and reds, the series, the alphas, the grain, and daylight's own primitives (chalk, ink, dark brass, the darker outcomes). A primitive is never read by a component.
-- **Semantic** (section 2): 133 roles, colour only, `--focus-ring` among them (same value as `--text-brass` today and split from it on purpose, so a states pass can re-tone focus without moving every link). Each one points at a primitive through `var()` and carries the usage it was read from. A component may read a colour ONLY through a role; gate 13 fails the build otherwise.
+- **Semantic** (section 2): 133 roles, colour only, `--focus-ring` among them (same value as `--text-brass` today and split from it on purpose, so a states pass can re-tone focus without moving every link). Each one points at a primitive through `var()` and carries the usage it was read from. A component may read a colour ONLY through a role, and that is now kept by being read rather than by a gate.
 - **Geometry has three scales, not one.** `--space-*` is the distance between things, `--size-*` the side of a thing, `--control-*` and `--icon-*` the box and the mark of an interactive element. They carry the same numbers and answer to different questions, which is why they carry different names.
 - **Geometry, type and motion get no second level.** A radius or a gap has nothing for a theme to override, so components read those primitives directly. That is a decision, not an omission.
 - **Section 3 is the theme**, not a third level: the same roles again with the values daylight needs.
@@ -261,7 +261,7 @@ The last two are graphics, not words: the bar is 3:1. Everything else clears 4.5
 **Character:** A three-family pairing on a clear contrast axis, never two lookalike sans. Space Grotesk gives the headings and card questions a confident, slightly mechanical cut; DM Sans keeps the UI plain and legible; IBM Plex Mono makes every number read as a measured figure, not decoration. Numbers are always mono, which is the spectator's honesty cue.
 
 
-**Where the families come from.** Space Grotesk, DM Sans and IBM Plex Mono are **served from this repo**: 18 woff2 files (latin and latin-ext, `font-display:swap`) in `assets/fonts/`, declared once in `components/fonts.css`, which `components/index.css` imports first. `components/tokens.css` names what has to arrive (`--font-display`, `--font-body`, `--font-mono`). Until step 8 every head carried a `<link>` to `fonts.googleapis.com` and `base.css` `@import`ed the same URL as well: one dependency declared twice, a render-blocking third-party request three hops down a CSS chain, and a call that sends a visitor's IP to a third party BEFORE the cookie banner this product ships has asked them anything. A consent banner over a page that has already made the call is not a consent banner. Gate 20 checks three ways it could come back: a page re-adding the tag, a generator re-adding it to every page it writes, and an `@font-face` naming a file nobody committed. 373 KB committed, 0 external requests measured.
+**Where the families come from.** Space Grotesk, DM Sans and IBM Plex Mono are **served from this repo**: 18 woff2 files (latin and latin-ext, `font-display:swap`) in `assets/fonts/`, declared once in `components/fonts.css`, which `components/index.css` imports first. `components/tokens.css` names what has to arrive (`--font-display`, `--font-body`, `--font-mono`). Until step 8 every head carried a `<link>` to `fonts.googleapis.com` and `base.css` `@import`ed the same URL as well: one dependency declared twice, a render-blocking third-party request three hops down a CSS chain, and a call that sends a visitor's IP to a third party BEFORE the cookie banner this product ships has asked them anything. A consent banner over a page that has already made the call is not a consent banner. Until 2026-08-07 gate 20 checked three ways it could come back, and they are still the three ways: a page re-adding the tag, a generator re-adding it to every page it writes, and an `@font-face` naming a file nobody committed. 373 KB committed, 0 external requests measured.
 
 ### Hierarchy
 - **Display** (Space Grotesk 700, `clamp(28px, 4vw, 38px)`, line-height 1.05, ls -0.03em): the feed H1 / page heading. `text-wrap: balance`.
@@ -287,7 +287,8 @@ toward the heavier neighbour, and a number stopped being a step above 64px.
 reason, so a different name: a gap is a rhythm and can be retuned as one; the side of an avatar, an
 icon plate, a legend swatch or a track moves when the thing moves. That scale shipped with two steps
 (56 and 72) and fifty-seven declarations therefore borrowed a `--space-*` step for their own width
-and height. Gate 12 fails the build on that now.
+and height. That was corrected, and until 2026-08-07 gate 12 failed the build on it; the
+gate is gone and the rule is read.
 
 **A control and a mark have their own names.** `--control-28 / 32 / 36 / 44 / 48 / 56` is the height
 of the box a finger or a pointer lands on; `--icon-12 / 16 / 18 / 22` is the drawn mark inside it.
@@ -314,9 +315,21 @@ the chips and a bare `<summary>` do not yet, which is 1,738 of 5,004 controls an
   900px got the mouse target. **Raises, not sets**: the floor is `max(--control-44, --control-h)`
   since 2026-08-09, because written as a plain assignment it out-specified a control that had
   declared 48 and stood it at 47 under a finger and 48 under a mouse.
-- **Enforcement.** The system is `components/` and nothing else. Gate 12 fails on a raw scale value in
-  a component, on a `--space-*` step used as a measurement, and on a raw `z-index`; gate 9 fails on a
-  `<style>` block or a `style=` attribute on a screen; gate 13 fails on a colour read past its role.
+- **Enforcement, and there is none, which is the point.** The system is `components/` and nothing
+  else. Until 2026-08-07 three gates failed the build on the three rules below, and **all 41 gates
+  were deleted with the vitrine that fed them**, because the measurement had become a machine that
+  was re-paid on every edit. So each rule is kept by being READ, and each one carries the reason it
+  exists, which is what a gate never told anybody:
+  - **A raw scale value in a component, a `--space-*` step used as a measurement, or a raw
+    `z-index`.** A raw number is a decision nobody can find again; a spacing step used as a width
+    says a gap and the side of a thing are the same kind of number, and they are not, which is why
+    `--size-*` exists; a raw `z-index` is a claim about every other layer in the product made by
+    somebody who could only see one.
+  - **A `<style>` block or a `style=` attribute on a screen.** A rule on a screen is a rule in the
+    one place the system cannot see. Three things are not styling and may stay: a datum, the event
+    photograph, and a value a page script writes at run time.
+  - **A colour read past its role.** A primitive named directly is a colour that cannot turn with
+    the theme, and the theme is the thing this whole file is for.
 
 ## 5. Elevation
 
@@ -469,9 +482,12 @@ Full entry, and every other third-party asset, in [`NOTICE.md`](./NOTICE.md).
 - **Do** put the thing into the system before it appears on a screen: a value becomes a token, a component becomes a file and a page, an arrangement that has stood on three screens becomes a pattern. That order is the whole of it, and it only ever runs one way.
 - **Do** give a state a token of its own and a value in both themes. A hover that exists on graphite and not on chalk is not a hover, it is a hover on one theme, and nothing in the file says so.
 - **Don't** style a screen. A screen carrying its own rule is the one thing this spec cannot see, and it is invisible on the day it is written, not on the day it breaks.
-- **Don't** append an `@import` at the end of `components/index.css` to make something work. The end is where an organism belongs; the position is computed by `python3 ui-kit/_levels.py --order`.
+- **Don't** append an `@import` at the end of `components/index.css` to make something work. The end is where an organism belongs; the position is the level group `ui-kit/docs/inventory.md` declares, and `components/index.css`
+  says so at the top in full. The script that used to compute it went with the other 62 on 2026-08-07.
 
-The addresses in full, and the gates that hold each one: `ui-kit/docs/architecture.md`, "Contributing to the system".
+The addresses in full: `docs/kit-archive/docs/architecture.md`, "Contributing to the system", which is where
+the Stage-09 record went on 2026-08-07. **It describes 41 gates that no longer exist**, and it is
+kept as a record of what was measured rather than as instructions.
 
 ### The state tokens, and what each one was solved against
 

@@ -167,6 +167,50 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
   with the `.prob-line` left in place and hidden exactly as the script leaves it, and 48 meta values
   split into a label and a figure. **Faking two of three is how a specimen ends up 66 elements short
   and looking right.**
+- **An id in a selector is a promise that the component stands once in a document, and no component
+  in a design system may make that promise.** `tabs.css` selected both of its radio families by
+  document-unique id, `#edtab-comments:checked ~ .ed-panel-comments`. The kit suffixed the light
+  cell's ids to keep the document valid, and the cost was total and invisible: **no rule matched the
+  suffixed ids, so the light cell of every tab specimen drew its bar and none of its panels**, on two
+  pages, unnoticed, because a cell with a tab bar in it does not look empty. Keyed to
+  `:nth-of-type` since 2026-08-10, ids kept in the markup for `<label for>`. **And the same defect
+  has a second door**: a radio group is keyed by `name`, so two cells sharing `name="edtab"` are one
+  group and the light cell's checked radio unchecks the dark cell's. Five pages had it. **Suffix the
+  id AND the name, and check that each cell has exactly one checked radio.**
+- **What the kit is FOR is measured against the product, class by class.** 400 declared classes, 106
+  painted screens and 54 kit pages, all read from the live DOM: **30 classes stood in the product and
+  on no page here**, including two of the three tab families, the chart's whole frame, and the
+  paragraph that says how a market resolves. 0 now. A page can be at parity with its component's
+  richest instance and still be missing a face the product ships somewhere else, which is why the
+  question is asked of the CLASS and not of the page.
+- **A specimen is measured by PAINT, never by element count.** `dialog.html` and `betpanel.html`
+  both opened with a section titled "whole" that **drew an empty band at 390 and at 1280 in both
+  themes**, because the sheet was sliced out of the product whole and in the product a sheet is SHUT:
+  a `<dialog>` with no `open` attribute is `display:none`. Each page therefore held **39 correct
+  elements inside a box the browser never painted**, and the gap sweep that declared 0 of 38 counted
+  them and passed. The sweep now walks every `.tk-theme-fig` on all 54 pages at both widths and flags
+  any cell whose children all measure zero: **0 of 54**. A count cannot tell an open dialog from a
+  shut one, which is the SVG with no `fill` and the link with no colour a third time.
+- **A width-only face needs the bargain, not an argument for leaving it out.** `.bet-panel` is
+  `display:none` below 760 and `.bet-dock` above it, and the page reasoned from that to "the dock
+  cannot be shown here". It can: `.tk-show-nav` had already pinned the bottom bar visible on the page
+  where the bar is not the subject, and `.tk-show-panel` / `.tk-show-dock` are the same move for the
+  page where all three faces ARE the subject. **The test is whether the cell states what it changed**,
+  not whether it changed nothing.
+- **A flex basis is a width in a row and a HEIGHT in a column**, so a specimen that sizes itself with
+  `flex` must stand in the direction its component is drawn for. `.bet-panel` declares
+  `flex:0 0 322px` and drew **353 x 322 with `overflow:clip` cutting the rest off** in the stand's
+  column cell, against 322 x 559 in the product. It stands in `.ed-layout` now, held in the row
+  direction, which is the same answer `.bp-dir` got when the pair measured 4px short in `.tk-pair`.
+- **A specimen is copied from a SCREEN, never written from a stylesheet**, and the page that had one
+  already is where that gets forgotten. `card.html` was not in the 22, because it already carried a
+  card; the part it was missing was written from `card.css` and `options.css` instead, and a
+  stylesheet says a row exists without saying **how many stand in a card**. So the page drew three
+  outcomes where the product ships two, 21 of 21 in both trees, plus a question on no screen and a
+  meta row written whole and therefore drawing in **one colour instead of the muted label and the
+  primary figure the split gives**. Nothing failed; it just looked right. The stylesheet is the thing
+  being demonstrated, so using it as the source of the demonstration proves only that the file agrees
+  with itself.
 - **A specimen drawn twice brings its ids twice.** Nine declarations in this system are keyed to a
   document-unique id, and every cell here is drawn once per theme, so the product's own markup
   arriving on 22 pages produced **16 duplicate ids over 8 pages**: on `event-detail` and `tabs` that

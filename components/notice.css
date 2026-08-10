@@ -1,5 +1,5 @@
 /* components/notice.css
-   Component: notice. Classes: .inline-error, .protect, .push-actions, .push-banner, .push-msg, .rec-lost, .rec-won, .reconcile-box, .spinner-box, .widget-box.
+   Component: notice. Classes: .inline-error, .protect, .protect-page, .push-actions, .push-banner, .push-msg, .rec-lost, .rec-won, .reconcile-box, .spinner-box, .widget-box.
 
    Reads: --bg-control, --bg-surface, --border-hairline, --color-trust, --outcome-no-text, --outcome-yes-text, --result-won, --text-brass, --text-muted, --text-primary, --tint-brass-06, --tint-brass-09, --tint-brass-30, --tint-brass-45
    Stand:  ui-kit/notice.html, and ui-kit/molecules.html#notice for the level and its reason

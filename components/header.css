@@ -1,5 +1,5 @@
 /* components/header.css
-   Component: header. Classes: .app-header, .auth-btns, .avatar-menu, .badge-dot, .bal-amt, .bal-figure, .bal-label, .bal-toggle, .bell-wrap, .cat-condensed, .dropdown, .hiw-btn, .left, .logo-btn, .notif-all, .notif-empty, .notif-menu, .row, .utility.
+   Component: header. Classes: .app-header, .auth-btns, .avatar-menu, .badge-dot, .bal-amt, .bal-figure, .bal-label, .bal-toggle, .bell-wrap, .cat-condensed, .dropdown, .hiw-btn, .left, .logo-btn, .notif-all, .notif-drop, .notif-empty, .notif-menu, .row, .scrolled, .utility.
 
    Reads: --bg-control, --bg-control-hover, --bg-pressed, --bg-slab-from, --bg-surface, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --shadow-ink, --shadow-ink-72, --text-brass, --text-icon-strong, --text-muted, --text-on-brass, --text-primary, --tint-brass-16
    Stand:  ui-kit/header.html, and ui-kit/organisms.html#header for the level and its reason

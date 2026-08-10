@@ -206,6 +206,25 @@
    `.tk-dlg` makes for a dialog and `.filter-panel` for an open menu, and the
    same one thing differs: the position. */
 .tk-theme-fig .bet-dock{position:static;bottom:auto}
+/* AND THE FOURTH BARGAIN, 2026-08-09, AND THIS ONE IS ABOUT WIDTH RATHER THAN
+   POSITION. `.bet-panel` is `display:none` below 760 and `.bet-dock` is
+   `display:none` above it: ONE control at two widths, and neither ever sees the
+   other. So a page read at BOTH widths draws one of them as an empty cell
+   whichever width you are at, and on this page all three faces are the subject.
+   `.tk-show-nav` above already made exactly this bargain for the bottom bar, so
+   these are modifiers for the same reason: the page where an absence IS the fact
+   being taught must keep the absence. The panel keeps `flex:0 0 322px`, the
+   product's own width, so what stands here is the width it ships at. */
+.tk-theme-fig.tk-show-panel .bet-panel{display:block;position:static;top:auto}
+.tk-theme-fig.tk-show-dock .bet-dock{display:flex}
+/* AND THE PANEL BRINGS ITS CONTAINER WITH IT, which is not a detail. `.bet-panel`
+   sizes itself with `flex:0 0 322px`, and a flex BASIS is a width in a row and a
+   HEIGHT in a column. `.ed-layout` is a column below 760 and a row above it, so a
+   specimen sitting in the stand's own column cell read the 322 as a height: the
+   panel drew 353 x 322 with `overflow:clip` cutting it, against 322 x 558 in the
+   product. The container is `.ed-layout` here for the same reason the pair is
+   `.bp-dir`, and the modifier holds it in the direction the panel is drawn for. */
+.tk-theme-fig.tk-show-panel .ed-layout{flex-direction:row;align-items:flex-start}
 /* AND THE SAME BARGAIN FOR THE BOTTOM BAR, ON THE ONE PAGE WHERE THE BAR IS NOT
    THE SUBJECT. `.nav-slot` has 420 placements and every one of them is in
    `.bottom-nav`, which is `display:none` from 640px up and `position:sticky`. On

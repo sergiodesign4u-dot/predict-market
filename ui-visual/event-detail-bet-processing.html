@@ -348,7 +348,7 @@ document.addEventListener('click', function (e) {
       <div class="ed-layout">
         <div class="ed-main">
           <article class="card">
-            <div class="ed-head"><div class="ed-actions"><button type="button" class="icon-btn icon-btn-tile ed-act" data-comments aria-label="Jump to comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat-b"/></svg></button><button type="button" class="icon-btn icon-btn-tile ed-act" aria-label="Share this event"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-share-b"/></svg></button><button type="button" class="icon-btn icon-btn-tile ed-act" data-fav aria-pressed="false" aria-label="Save into Favorites"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></button></div>
+            <div class="ed-head"><div class="ed-actions"><button type="button" class="icon-btn icon-btn-tile" data-comments aria-label="Jump to comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat-b"/></svg></button><button type="button" class="icon-btn icon-btn-tile" aria-label="Share this event"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-share-b"/></svg></button><button type="button" class="icon-btn icon-btn-tile" data-fav aria-pressed="false" aria-label="Save into Favorites"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></button></div>
               <span class="ed-thumb">thumbnail placeholder</span>
               <div>
                 <span class="ed-cat">Politics &middot; One-time event</span>
@@ -373,7 +373,7 @@ document.addEventListener('click', function (e) {
             <span>Closes<b>Mar 1, 2027</b></span>
             <span>Frequency<b>One-time</b></span>
           </div>
-          <section class="ed-section ed-market">
+          <section class="ed-section">
             <details class="market-box" open>
               <summary class="market-head"><span class="market-title">How the odds are set <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-info-circle-b"/></svg></span><svg class="market-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
               <div class="market-body">
@@ -424,7 +424,7 @@ document.addEventListener('click', function (e) {
               <div class="cmt-compose">
                 <span class="cmt-av">you</span>
                 <span class="cmt-input">Add a comment...</span>
-                <button type="button" class="btn btn-primary btn-sm cmt-post">Post</button>
+                <button type="button" class="btn btn-primary btn-sm">Post</button>
               </div>
               <div class="cmt-list">
                 <div class="cmt">
@@ -527,7 +527,7 @@ document.addEventListener('click', function (e) {
         <ul class="related-list">
           <li><a href="event-detail.html"><span class="rel-thumb" style="background-image:url(../assets/event-crypto.jpg)"></span><span class="rel-q">Will Bitcoin close above $150,000 before October 1, 2026?</span><span class="rel-odds">YES 61%</span></a></li>
           <li><a href="event-detail.html"><span class="rel-thumb" style="background-image:url(../assets/event-crypto.jpg)"></span><span class="rel-q">Will Ethereum complete its next major network upgrade before November 1, 2026?</span><span class="rel-odds">YES 72%</span></a></li>
-          <li><a href="event-detail-multi.html"><span class="rel-thumb" style="background-image:url(../assets/event-politics.jpg)"></span><span class="rel-q">Which party will win the most seats in the next UK general election?</span><span class="rel-odds">4 options</span></a></li>
+          <li><a href="event-detail-multi.html"><span class="rel-thumb" style="background-image:url(../assets/event-politics.jpg)"></span><span class="rel-q">Which party will win the most seats in the next UK general election?</span><span class="rel-odds">4 outcomes</span></a></li>
         </ul>
         <a href="event-feed.html" class="related-more">Browse more events</a>
       </section>
@@ -537,7 +537,7 @@ document.addEventListener('click', function (e) {
         <button type="button" class="yesno-pick yesno-pick-bar bp-side sel">YES <span class="bp-pct">38%</span></button>
         <button type="button" class="yesno-pick yesno-pick-bar bp-side">NO <span class="bp-pct">62%</span></button>
         <span class="dock-meta">$5 to win<b>$13.20</b></span>
-        <button type="button" class="btn btn-primary btn-md" data-open="signin">Confirm bet</button>
+        <a href="event-detail-bet-processing.html"><button type="button" class="btn btn-primary btn-md">Confirm bet</button></a>
       </div>
     </div><!-- /app-case -->
 

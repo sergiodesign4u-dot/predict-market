@@ -32,23 +32,58 @@
 
   <section class="tk-sec" id="whole">
     <h2 data-n="1">The chart, with its head and its axes</h2>
-    <p class="tk-note">The plot, the axes and the legend. <b>6 elements against 17</b>, and the polyline is written by a page script, so the stand carries the product's own markup and the script's output is described rather than faked.</p>
+    <p class="tk-why"><b>This section named a head, axes and a legend and showed none of the three.</b>
+    Until 2026-08-10 the specimen was <code>.ed-chart-area</code> alone, so
+    <code>.ed-chart-head</code>, <code>.ed-chart-now</code> and <code>.ed-chart-foot</code>, on
+    <b>9 screens each</b>, and <code>.ed-legend</code> on 2, had never been drawn anywhere in the
+    kit. <b>What was standing was the plot without its frame</b>, which is the part of this component
+    a reader can least infer from a stylesheet.</p>
+    <p class="tk-note">The whole block now, from <code>event-detail-multi.html</code>: the head with
+    its live figure, the y-axis, the plot, the x-axis, the legend and the foot with its range rail.
+    <b>Three things in it are written at run time and are written by hand here</b>: the polylines'
+    <code>points</code>, the x-axis ticks and the legend's items. The empty
+    <code>points=""</code> and the empty <code>.ed-xaxis</code> are left exactly as the screen ships
+    them, because that is what the browser has before the script runs.</p>
     <div class="tk-pairv">
       <div class="tk-th">Vault, dark</div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
-        <div class="ed-chart-area">
-                      <div class="ed-yaxis"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div>
-                      <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><line class="grid-l" x1="0" y1="25" x2="300" y2="25"/><line class="grid-l" x1="0" y1="50" x2="300" y2="50"/><line class="grid-l" x1="0" y1="75" x2="300" y2="75"/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><line class="nowline" x1="300" y1="0" x2="300" y2="100"/></svg></div>
-                    </div>
+        <section class="ed-section ed-chart ed-chart-multi">
+          <div class="ed-chart-head"><h2>Price chart</h2><span class="ed-chart-now">JD Vance 41% now</span></div>
+          <div class="ed-chart-area">
+            <div class="ed-yaxis"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div>
+            <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><line class="grid-l" x1="0" y1="25" x2="300" y2="25"/><line class="grid-l" x1="0" y1="50" x2="300" y2="50"/><line class="grid-l" x1="0" y1="75" x2="300" y2="75"/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><line class="nowline" x1="300" y1="0" x2="300" y2="100"/></svg></div>
+          </div>
+          <div class="ed-xaxis" aria-hidden="true"></div>
+          <div class="ed-legend" aria-hidden="true"><span class="lg-item sel"><i style="background:var(--series-1)"></i>JD Vance</span><span class="lg-item"><i style="background:var(--series-2)"></i>Donald Trump</span><span class="lg-item"><i style="background:var(--series-3)"></i>Ron DeSantis</span><span class="lg-item"><i style="background:var(--series-4)"></i>Nikki Haley</span><span class="lg-item"><i style="background:var(--series-5)"></i>Other</span></div>
+          <div class="ed-chart-foot"><div class="ed-range" role="group" aria-label="Time range"><button class="chip chip-rail" type="button">1d</button><button class="chip chip-rail" type="button">1w</button><button class="chip chip-rail" type="button">1m</button><button type="button" class="chip chip-rail sel">all</button></div></div>
+        </section>
       </div>
       <div class="tk-th">Daylight, light</div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
-        <div class="ed-chart-area">
-                      <div class="ed-yaxis"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div>
-                      <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><line class="grid-l" x1="0" y1="25" x2="300" y2="25"/><line class="grid-l" x1="0" y1="50" x2="300" y2="50"/><line class="grid-l" x1="0" y1="75" x2="300" y2="75"/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><line class="nowline" x1="300" y1="0" x2="300" y2="100"/></svg></div>
-                    </div>
+        <section class="ed-section ed-chart ed-chart-multi">
+          <div class="ed-chart-head"><h2>Price chart</h2><span class="ed-chart-now">JD Vance 41% now</span></div>
+          <div class="ed-chart-area">
+            <div class="ed-yaxis"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div>
+            <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><line class="grid-l" x1="0" y1="25" x2="300" y2="25"/><line class="grid-l" x1="0" y1="50" x2="300" y2="50"/><line class="grid-l" x1="0" y1="75" x2="300" y2="75"/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><line class="nowline" x1="300" y1="0" x2="300" y2="100"/></svg></div>
+          </div>
+          <div class="ed-xaxis" aria-hidden="true"></div>
+          <div class="ed-legend" aria-hidden="true"><span class="lg-item sel"><i style="background:var(--series-1)"></i>JD Vance</span><span class="lg-item"><i style="background:var(--series-2)"></i>Donald Trump</span><span class="lg-item"><i style="background:var(--series-3)"></i>Ron DeSantis</span><span class="lg-item"><i style="background:var(--series-4)"></i>Nikki Haley</span><span class="lg-item"><i style="background:var(--series-5)"></i>Other</span></div>
+          <div class="ed-chart-foot"><div class="ed-range" role="group" aria-label="Time range"><button class="chip chip-rail" type="button">1d</button><button class="chip chip-rail" type="button">1w</button><button class="chip chip-rail" type="button">1m</button><button type="button" class="chip chip-rail sel">all</button></div></div>
+        </section>
       </div>
     </div>
+    <p class="tk-why"><b>The legend's item spent two weeks in the biggest-bets list's stylesheet.</b>
+    <code>.ed-legend</code> was declared and drawn in <code>chart.css</code> and
+    <code>.lg-item</code> inside it in <code>bets-table.css</code>, which draws a table of holders
+    and has nothing to do with a chart. <b>The flat kit settled the question</b>: before the split of
+    2026-07-26 the three rules sat directly under <code>.ed-legend</code>, beneath a comment reading
+    <i>multi-outcome chart: one line per outcome + legend</i>. It was a mechanical misfile at the
+    split, not a home the rule had earned, and it came back on 2026-08-10 with <b>0 differences over
+    15,802 element readings on 17 documents</b>.</p>
+    <p class="tk-note"><b>The swatch takes its colour from the element and this file gives it only
+    its box</b>, because the script that draws the polyline in a series colour writes the same colour
+    onto the <code>&lt;i&gt;</code> beside the name. A run-time value is one of the three things the
+    rules allow on the element.</p>
   </section>
 
   <section class="tk-sec" id="why">

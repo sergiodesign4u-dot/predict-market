@@ -36,7 +36,24 @@
    slack and the dismiss does not, which is a fact about a two-item flex row and
    not about what an icon button looks like. That is the whole line the atom
    migration is drawn on, and it is why `.toast-close` is still a name a
-   stylesheet reads. */
+   stylesheet reads.
+   THE `x` WAS TRIED AND PUT BACK ON 2026-08-10, and both halves of that are the
+   record. `docs/backlog.md` 75 said this control "holds 0 <svg> and its content
+   is the text character `x` with nothing on ::before or ::after". The first half
+   is true and the second is not: `iconbtn.css` draws the cross with two rotated
+   bars on ::before and ::after, --size-8 in a 24 box on purpose, in
+   `currentColor` so the mark moves with the ink, and the button carries
+   `font-size:0`. So in the PAINTED tree the letter draws nothing and has since
+   the face was written. It was removed on that reading, and the measurement said
+   no: **in the GREY tree the letter is the whole drawing.** `wireframes/` styles
+   `.toast-close` as a bordered box at font-size 11 and has no pseudo-element
+   cross, so an empty button measured 16 x 8 with nothing in it. The same markup
+   is inert in one tree and load-bearing in the other, which is the one thing a
+   single-tree reading can never see. It stays.
+   WHAT SURVIVES OF THE ROW is smaller and real: this product draws a close cross
+   TWO ways, a stroked path at 32 and 24 and two CSS bars at 24, and this file
+   argues its geometry rather than being unaware of the other. A decision to
+   confirm, not a defect to fix. */
 .toast-close{flex:0 0 auto}
 .toast.toast-error{border-color:var(--border-notice);background:var(--bg-control);box-shadow:0 22px 46px -22px var(--shadow-ink),inset 0 1px 0 var(--bevel-notice)}
 .toast.toast-error .ic-sm{width:var(--icon-22);height:var(--icon-22);flex:0 0 var(--icon-22);stroke:var(--text-primary);color:var(--text-primary);stroke-width:2.4}

@@ -1,5 +1,5 @@
 /* components/chip.css
-   Component: chip. Classes: .chip, .chip-amount, .chip-cnt, .chip-ic, .chip-lane, .chip-nav, .chip-quiet, .chip-rail.
+   Component: chip. Classes: .chip, .chip-amount, .chip-cnt, .chip-ic, .chip-lane, .chip-nav, .chip-quiet, .chip-rail, .sel.
 
    Reads: --bevel-notice, --bg-chip, --bg-control, --bg-control-hover, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --glow-brass, --text-brass, --text-brass-chip, --text-chip-hover, --text-muted, --text-primary, --text-strong, --tint-brass-09, --tint-brass-16, --tint-brass-45, --tint-hover
    Stand:  ui-kit/chip.html, and ui-kit/vitrine.html#chip for the level and its reason
@@ -58,7 +58,7 @@
    What the wrapper WAS for is measured in docs/decisions.md: across 106 painted
    screens it changed the outcome for 13 of 375 selector tails, and it matched
    ZERO elements of the course chrome it was put there to protect. */
-.chip-rail{border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12);cursor:pointer;transition:background var(--dur-quick) ease,color var(--dur-quick) ease}
+.chip-rail{--control-h:var(--control-28);min-height:var(--control-h);display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12);cursor:pointer;transition:background var(--dur-quick) ease,color var(--dur-quick) ease}
 .chip-rail:hover{color:var(--text-primary)}
 .chip-rail:active{background:var(--bg-pressed)}
 /* A SELECTED CHIP IS A TINT, NOT A FILL, which is the rule DESIGN.md states
@@ -206,7 +206,7 @@
    than a matter of taste: nothing anywhere changes it when its slot is hovered
    or current. It is a figure the region puts inside a control. These two are
    not. */
-.chip-nav{display:inline-flex;align-items:center;gap:var(--space-12);min-height:0;background:var(--bg-chip);border:var(--hairline) solid var(--bevel-notice);border-radius:var(--radius-10);color:var(--text-chip-hover);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:var(--space-12) var(--space-20);box-shadow:none;white-space:nowrap}
+.chip-nav{--control-h:var(--control-48);display:inline-flex;align-items:center;gap:var(--space-12);min-height:var(--control-h);background:var(--bg-chip);border:var(--hairline) solid var(--bevel-notice);border-radius:var(--radius-10);color:var(--text-chip-hover);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:var(--space-12) var(--space-20);box-shadow:none;white-space:nowrap}
 .chip-nav:hover{border-color:var(--border-brass-hover);color:var(--text-strong);background:var(--bg-control-hover)}
 /* THE ONE RING IN THIS FILE, and it is a measured defect rather than a taste.
    The strip scrolls sideways, so its <ul> is a scroll container and clips at its
@@ -226,7 +226,15 @@
 @media(max-width:640px){
   .chip-nav{position:relative}
 }
-.chip-lane{display:inline-flex;align-items:center;gap:var(--space-8);white-space:nowrap;background:transparent;border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill);color:var(--text-primary);font-size:var(--text-13);font-weight:var(--weight-medium);padding:var(--space-8) var(--space-12);min-height:var(--control-36)}
+/* THREE CHIPS DECLARE A RUNG, 2026-08-10 (docs/backlog.md 40). All three stood at a height
+   nothing had chosen: `.chip-lane` 40.5, `.chip-nav` 47 and `.chip-rail` 26, each of them
+   padding plus border plus whatever DM Sans returned for `line-height:normal` at that size.
+   The touch floor already raised them to 44 under a finger, so every one of the three was
+   TWO different controls depending on the pointer, and the ladder said nothing about any of
+   them. 44 for the lane because it is a filter a thumb hits; 48 for the nav chip, which was
+   one pixel off its own rung for the same reason `.btn-md` was 47; 28 for the rail, the
+   ladder's smallest, because it is a dense secondary control and 26 is not a step. */
+.chip-lane{--control-h:var(--control-44);display:inline-flex;align-items:center;gap:var(--space-8);white-space:nowrap;background:transparent;border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill);color:var(--text-primary);font-size:var(--text-13);font-weight:var(--weight-medium);padding:var(--space-8) var(--space-12);min-height:var(--control-h)}
 /* The hover ground was 10 per cent longhand until S50, 2026-08-07, and it is the
    ladder's nearest rung now: one hundredth apart on graphite, and on chalk it
    steps up instead of staying flat. IT IS ALSO THE CHOSEN CHIP'S GROUND, which is

@@ -1,7 +1,10 @@
 /* components/tabs.css
-   Component: tabs. Classes: .ed-panel-activity, .ed-panel-comments, .ed-panel-holders, .ed-panel-positions, .ed-range, .ed-tab-count, .ed-tabbar, .ed-tablabel, .ed-tabpanel, .ed-tabradio, .ed-tabs, .ed-tabwrap, .ptab-bar, .ptab-in, .ptab-lbl, .ptab-panel, .ptabs, .rules-tab, .rules-tabs, .tabs.
+   Component: tabs. Classes: .ed-panel-activity, .ed-panel-comments, .ed-panel-holders, .ed-panel-positions, .ed-range, .ed-rules, .ed-tab-count, .ed-tabbar, .ed-tablabel, .ed-tabpanel, .ed-tabradio, .ed-tabs, .ed-tabwrap, .ptab-bar, .ptab-in, .ptab-lbl, .ptab-panel, .ptabs, .rules-tab, .rules-tabs, .sel, .tabs.
 
    Reads: --bg-chip, --bg-pressed, --bg-well, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --focus-ring, --text-brass, --text-muted, --text-primary, --tint-brass-16
+   Script hooks: .rules-panel. It carries no rule and is not meant to: the rules-tab script collects
+     the panels and toggles `hidden` on them. Declared here for the same reason the chart
+     declares its own, so that a class with no rule can be told from dead markup.
    Stand:  ui-kit/tabs.html, and ui-kit/organisms.html#tabs for the level and its reason
    Stands on: 20 ui-visual screens (active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, active-bets-history-empty.html, active-bets-history-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -14,7 +17,20 @@
 .ed-tablabel{flex:0 0 auto;padding:var(--space-8) var(--space-12);cursor:pointer;white-space:nowrap}
 .ed-tab-count{font-size:var(--text-10)}
 .ed-tabpanel{display:none;padding:var(--space-8)}
-#edtab-comments:checked ~ .ed-panel-comments,#edtab-holders:checked ~ .ed-panel-holders,#edtab-positions:checked ~ .ed-panel-positions,#edtab-activity:checked ~ .ed-panel-activity{display:block}
+/* THESE FOUR SWITCHES ARE KEYED TO POSITION, NOT TO AN ID, SINCE 2026-08-10. Every
+   selector below used to name a document-unique id: `#edtab-comments:checked ~
+   .ed-panel-comments`, and the label rules matched `label[for="edtab-comments"]`.
+   That works on a screen, which holds one tab set, and it makes the component
+   IMPOSSIBLE TO STAND TWICE IN ONE DOCUMENT, which is exactly what a stand has to
+   do: one cell per theme. The kit had already suffixed the light cell's ids to keep
+   the document valid, and the cost of that was invisible and total - no rule matched
+   the suffixed ids, so the LIGHT cell of every tab specimen drew its bar and none of
+   its panels. The profile family could not be drawn at all.
+   `:nth-of-type` on the inputs says the same thing without the id: the first radio
+   drives the first label and the first panel. The ids stay in the markup, because a
+   `<label for>` needs one and a screen reader follows it. Verified on the 9 screens
+   that carry the event set and the 2 that carry the profile set: identical. */
+.ed-tabwrap > .ed-tabradio:nth-of-type(1):checked ~ .ed-panel-comments,.ed-tabwrap > .ed-tabradio:nth-of-type(2):checked ~ .ed-panel-holders,.ed-tabwrap > .ed-tabradio:nth-of-type(3):checked ~ .ed-panel-positions,.ed-tabwrap > .ed-tabradio:nth-of-type(4):checked ~ .ed-panel-activity{display:block}
 .ptab-in{position:absolute;width:var(--hairline);height:var(--hairline);opacity:0;pointer-events:none}
 .ptab-bar{border-bottom:var(--hairline) solid var(--border-hairline);margin-bottom:var(--space-12)}
 .ptab-lbl{border-bottom:none}
@@ -38,7 +54,7 @@
 .ed-tablabel:hover{color:var(--text-primary)}
 .ed-tablabel:active{background:var(--bg-pressed)}
 .ed-tab-count{color:var(--text-muted)}
-#edtab-comments:checked ~ .ed-tabbar label[for="edtab-comments"],#edtab-holders:checked ~ .ed-tabbar label[for="edtab-holders"],#edtab-positions:checked ~ .ed-tabbar label[for="edtab-positions"],#edtab-activity:checked ~ .ed-tabbar label[for="edtab-activity"]{background:transparent;color:var(--text-brass);font-weight:var(--weight-bold);box-shadow:inset 0 -2px 0 var(--color-action)}
+.ed-tabwrap > .ed-tabradio:nth-of-type(1):checked ~ .ed-tabbar > .ed-tablabel:nth-of-type(1),.ed-tabwrap > .ed-tabradio:nth-of-type(2):checked ~ .ed-tabbar > .ed-tablabel:nth-of-type(2),.ed-tabwrap > .ed-tabradio:nth-of-type(3):checked ~ .ed-tabbar > .ed-tablabel:nth-of-type(3),.ed-tabwrap > .ed-tabradio:nth-of-type(4):checked ~ .ed-tabbar > .ed-tablabel:nth-of-type(4){background:transparent;color:var(--text-brass);font-weight:var(--weight-bold);box-shadow:inset 0 -2px 0 var(--color-action)}
 /* FOCUS, AND THE ONE PLACE THE SYSTEM'S SINGLE RING CANNOT LAND. base.css draws the ring once, on
    the element that has focus, and the element that has focus here is the RADIO, which line 12 of
    this file parks at left:-9999px. So the indicator was painted off the left edge of the document
@@ -55,10 +71,10 @@
    the plate. Same width and same role as base.css, one sign flipped, so the ring stays one
    decision. Read off the painted page at 1280 and again at 380, in both themes: the ring lands on
    the label at 8.71:1 on graphite and 7.14:1 on chalk, and its whole box sits inside the bar. */
-#edtab-comments:focus-visible ~ .ed-tabbar label[for="edtab-comments"],
-#edtab-holders:focus-visible ~ .ed-tabbar label[for="edtab-holders"],
-#edtab-positions:focus-visible ~ .ed-tabbar label[for="edtab-positions"],
-#edtab-activity:focus-visible ~ .ed-tabbar label[for="edtab-activity"]{outline:var(--ring) solid var(--focus-ring);outline-offset:calc(var(--ring) * -1)}
+.ed-tabwrap > .ed-tabradio:nth-of-type(1):focus-visible ~ .ed-tabbar > .ed-tablabel:nth-of-type(1),
+.ed-tabwrap > .ed-tabradio:nth-of-type(2):focus-visible ~ .ed-tabbar > .ed-tablabel:nth-of-type(2),
+.ed-tabwrap > .ed-tabradio:nth-of-type(3):focus-visible ~ .ed-tabbar > .ed-tablabel:nth-of-type(3),
+.ed-tabwrap > .ed-tabradio:nth-of-type(4):focus-visible ~ .ed-tabbar > .ed-tablabel:nth-of-type(4){outline:var(--ring) solid var(--focus-ring);outline-offset:calc(var(--ring) * -1)}
 /* The comment sort switcher. Its markup stands in comments and its styling has always stood here,
    so the press stands here too, next to the hover it answers rather than in the other file. */
 .tabs{gap:var(--space-8);margin:0 0 var(--space-16)}
@@ -77,7 +93,7 @@
 .ptab-lbl{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);display:inline-flex;align-items:center;cursor:pointer;white-space:nowrap;transition:color var(--dur-base) ease,border-color var(--dur-base) ease,background var(--dur-base) ease}
 .ptab-lbl:hover{color:var(--text-primary)}
 .ptab-lbl:active{background:var(--bg-pressed)}
-#ptab-record:checked ~ .ptab-bar label[for="ptab-record"],#ptab-wins:checked ~ .ptab-bar label[for="ptab-wins"],#ptab-resolved:checked ~ .ptab-bar label[for="ptab-resolved"]{background:var(--tint-brass-16);border-color:var(--color-action);color:var(--text-brass);font-weight:var(--weight-bold)}
+.ptabs > .ptab-in:nth-of-type(1):checked ~ .ptab-bar > .ptab-lbl:nth-of-type(1),.ptabs > .ptab-in:nth-of-type(2):checked ~ .ptab-bar > .ptab-lbl:nth-of-type(2),.ptabs > .ptab-in:nth-of-type(3):checked ~ .ptab-bar > .ptab-lbl:nth-of-type(3){background:var(--tint-brass-16);border-color:var(--color-action);color:var(--text-brass);font-weight:var(--weight-bold)}
 /* The profile strip is the same radio-and-label shape as the event tabs and needs the same answer,
    with the input hidden a different way: .ptab-in is a 1px box at opacity 0, so the ring is drawn
    at the right place and then painted at zero alpha, which is the same nothing. It is focusable
@@ -85,9 +101,9 @@
    its content box, so the offset turns inward here for the same reason. The ground the ring stands
    on is --bg-chip at rest and the 16 per cent brass wash when the tab is current, and --focus-ring
    reads on both: 7.89:1 and 8.94:1 on graphite, 6.96:1 and 4.94:1 on chalk, measured on the page. */
-#ptab-record:focus-visible ~ .ptab-bar label[for="ptab-record"],
-#ptab-wins:focus-visible ~ .ptab-bar label[for="ptab-wins"],
-#ptab-resolved:focus-visible ~ .ptab-bar label[for="ptab-resolved"]{outline:var(--ring) solid var(--focus-ring);outline-offset:calc(var(--ring) * -1)}
+.ptabs > .ptab-in:nth-of-type(1):focus-visible ~ .ptab-bar > .ptab-lbl:nth-of-type(1),
+.ptabs > .ptab-in:nth-of-type(2):focus-visible ~ .ptab-bar > .ptab-lbl:nth-of-type(2),
+.ptabs > .ptab-in:nth-of-type(3):focus-visible ~ .ptab-bar > .ptab-lbl:nth-of-type(3){outline:var(--ring) solid var(--focus-ring);outline-offset:calc(var(--ring) * -1)}
 .ed-range{display:inline-flex;gap:var(--space-4);padding:var(--space-4);background:var(--bg-well);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10)}
 /* THE RANGE RAIL AND THE COMMENT SORTER ARE ONE CHIP, and until now they were one
    chip written twice with two different answers. Measured 2026-08-04: `.ed-range` and
@@ -119,4 +135,4 @@
    on 18 placements. */
 
 /* The profile tab switch, moved out of base.css. A CSS-only tab is a tab wherever it lives. */
-#ptab-record:checked ~ #p-record,#ptab-wins:checked ~ #p-wins,#ptab-resolved:checked ~ #p-resolved{display:block}
+.ptabs > .ptab-in:nth-of-type(1):checked ~ .ptab-panel:nth-of-type(1),.ptabs > .ptab-in:nth-of-type(2):checked ~ .ptab-panel:nth-of-type(2),.ptabs > .ptab-in:nth-of-type(3):checked ~ .ptab-panel:nth-of-type(3){display:block}

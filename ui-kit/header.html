@@ -539,8 +539,200 @@
     file, which had been read many times.</i></p>
   </section>
 
+  <section class="tk-sec" id="notifempty">
+    <h2 data-n="8">The notification panel with nothing in it</h2>
+    <p class="tk-why"><b>The panel above is the panel with rows in it, and the product ships a
+    second face.</b> <code>.notif-empty</code> stands on 3 screens: one paragraph where the rows
+    would be, and the See all link stays. It had never been drawn in the kit, so the panel a new
+    account actually opens on its first day was the one face nobody could look at.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack tk-open-menu" data-theme="dark">
+        <details class="notif-menu" open>
+          <summary aria-label="Notifications">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"></use></svg>
+          </summary>
+          <div class="dropdown notif-drop" role="menu"><p class="notif-empty">No notifications yet. We will let you know when an event you follow moves or resolves.</p><a class="notif-all" href="#">See all notifications</a></div>
+        </details>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack tk-open-menu" data-theme="light">
+        <details class="notif-menu" open>
+          <summary aria-label="Notifications">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"></use></svg>
+          </summary>
+          <div class="dropdown notif-drop" role="menu"><p class="notif-empty">No notifications yet. We will let you know when an event you follow moves or resolves.</p><a class="notif-all" href="#">See all notifications</a></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="tk-sec" id="scrolled">
+    <h2 data-n="9">The scrolled face, which opens the condensed strip</h2>
+    <p class="tk-why"><b>The header has a second face and the kit had never drawn it.</b>
+    <code>.scrolled</code> is added by a page script the moment the full category bar leaves the
+    viewport, and it is on the live header of <b>57 screens</b>. What it does is open
+    <code>.cat-condensed</code>, the small icon-less strip that keeps the categories reachable once
+    the big one has gone: <code>max-height</code> 0 to 54 and opacity 0 to 1, with a groove above
+    it. The strip is in the markup of every specimen on this page and every one of them was drawn
+    shut, so the class was measurable, correct and invisible.</p>
+    <p class="tk-note"><b>Written by hand here because a script writes it in the product</b>, the
+    same bargain the odds bar and the meta row take on <a href="card.html">card</a>. Nothing else in
+    the cell differs: it is the specimen above with one class added.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <header class="app-header scrolled">
+        <div class="row">
+        <div class="left">
+        <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+        <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
+        <button type="button" class="btn btn-ghost btn-xs hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
+        </div>
+        <div class="utility">
+        <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
+        <div class="bal-toggle desk-only">
+        <span class="bal-figure"><span class="bal-label" id="balLabel-sc-da">Portfolio</span> <span class="bal-amt" id="balAmt-sc-da">$142.00</span></span>
+        <button type="button" class="icon-btn bal-swap" id="balSwap-sc-da" aria-label="Swap balance (showing Portfolio)">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-transfer-horizontal-b"/></svg>
+        </button>
+        <button type="button" class="icon-btn bal-add" data-open="deposit" aria-label="Add funds">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        </div>
+        <!-- Favorites: desktop header only (on mobile it is the bottom-bar slot). -->
+        <a class="icon-btn desk-only" href="favorites.html" aria-label="Favorites, see saved events">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+        </a>
+        <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
+        <details class="notif-menu">
+        <summary aria-label="Notifications, 3 unread">
+        <span class="bell-wrap">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
+        <span class="badge-dot">3</span>
+        </span>
+        </summary>
+        <div class="dropdown notif-drop" role="menu">
+        <ul>
+        <li><a class="nav-item nav-row nav-row-stack" href="win.html"><strong>Bet resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
+        <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
+        <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
+        </ul>
+        <a class="notif-all" href="notifications.html">See all notifications</a>
+        </div>
+        </details>
+        <details class="avatar-menu">
+        <summary aria-label="Account menu">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-user-b"/></svg>
+        <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="dropdown" role="menu">
+        <ul>
+        <li><a class="nav-item nav-row" href="my-profile.html" role="menuitem">My Profile</a></li>
+        <li><a class="nav-item nav-row" href="active-bets.html" role="menuitem">My Bets</a></li>
+        <li><a class="nav-item nav-row" href="wallet.html" role="menuitem">Wallet</a></li>
+        <li><a class="nav-item nav-row" href="how-it-works.html" role="menuitem">How It Works</a></li>
+        <li><a class="nav-item nav-row" href="event-feed-logged-out.html" role="menuitem">Logout</a></li>
+        </ul>
+        </div>
+        </details>
+        </div>
+        </div>
+        <!-- Condensed category strip: hidden until you scroll past the full category
+        bar, then it slides into the sticky header so the tabs stay reachable.
+        Small, icon-less chips (the full bar below keeps its icons). -->
+        <div class="cat-condensed" aria-hidden="true">
+        <ul>
+        <li aria-current="page"><a class="chip chip-quiet" href="event-feed.html">Trending</a></li>
+        <li><a class="chip chip-quiet" href="event-feed-politics.html">Politics</a></li>
+        <li><a class="chip chip-quiet" href="event-feed-crypto.html">Crypto</a></li>
+        <li><a class="chip chip-quiet" href="event-feed-culture.html">Culture</a></li>
+        <li><a class="chip chip-quiet" href="event-feed-general.html">General</a></li>
+        </ul>
+        </div>
+        </header>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <header class="app-header scrolled">
+        <div class="row">
+        <div class="left">
+        <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+        <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
+        <button type="button" class="btn btn-ghost btn-xs hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
+        </div>
+        <div class="utility">
+        <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
+        <div class="bal-toggle desk-only">
+        <span class="bal-figure"><span class="bal-label" id="balLabel-sc-li">Portfolio</span> <span class="bal-amt" id="balAmt-sc-li">$142.00</span></span>
+        <button type="button" class="icon-btn bal-swap" id="balSwap-sc-li" aria-label="Swap balance (showing Portfolio)">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-transfer-horizontal-b"/></svg>
+        </button>
+        <button type="button" class="icon-btn bal-add" data-open="deposit" aria-label="Add funds">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        </div>
+        <!-- Favorites: desktop header only (on mobile it is the bottom-bar slot). -->
+        <a class="icon-btn desk-only" href="favorites.html" aria-label="Favorites, see saved events">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+        </a>
+        <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
+        <details class="notif-menu">
+        <summary aria-label="Notifications, 3 unread">
+        <span class="bell-wrap">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
+        <span class="badge-dot">3</span>
+        </span>
+        </summary>
+        <div class="dropdown notif-drop" role="menu">
+        <ul>
+        <li><a class="nav-item nav-row nav-row-stack" href="win.html"><strong>Bet resolved</strong><span>US government shutdown before Mar 1 - YES won</span></a></li>
+        <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
+        <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
+        </ul>
+        <a class="notif-all" href="notifications.html">See all notifications</a>
+        </div>
+        </details>
+        <details class="avatar-menu">
+        <summary aria-label="Account menu">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-user-b"/></svg>
+        <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="dropdown" role="menu">
+        <ul>
+        <li><a class="nav-item nav-row" href="my-profile.html" role="menuitem">My Profile</a></li>
+        <li><a class="nav-item nav-row" href="active-bets.html" role="menuitem">My Bets</a></li>
+        <li><a class="nav-item nav-row" href="wallet.html" role="menuitem">Wallet</a></li>
+        <li><a class="nav-item nav-row" href="how-it-works.html" role="menuitem">How It Works</a></li>
+        <li><a class="nav-item nav-row" href="event-feed-logged-out.html" role="menuitem">Logout</a></li>
+        </ul>
+        </div>
+        </details>
+        </div>
+        </div>
+        <!-- Condensed category strip: hidden until you scroll past the full category
+        bar, then it slides into the sticky header so the tabs stay reachable.
+        Small, icon-less chips (the full bar below keeps its icons). -->
+        <div class="cat-condensed" aria-hidden="true">
+        <ul>
+        <li aria-current="page"><a class="chip chip-quiet" href="event-feed.html">Trending</a></li>
+        <li><a class="chip chip-quiet" href="event-feed-politics.html">Politics</a></li>
+        <li><a class="chip chip-quiet" href="event-feed-crypto.html">Crypto</a></li>
+        <li><a class="chip chip-quiet" href="event-feed-culture.html">Culture</a></li>
+        <li><a class="chip chip-quiet" href="event-feed-general.html">General</a></li>
+        </ul>
+        </div>
+        </header>
+      </div>
+    </div>
+  </section>
+
   <section class="tk-sec" id="rule">
-    <h2 data-n="8">The rule</h2>
+    <h2 data-n="10">The rule</h2>
     <p class="tk-note"><b>A shell owns the band, the row and the panel. It owns no control.</b> The
     wordmark, the circles, the menu rows and the labelled press are four other files.</p>
     <p class="tk-note"><b>The same face in two auth states is one rule, not two.</b> The element may
@@ -550,7 +742,7 @@
   </section>
 
   <section class="tk-sec" id="antirule">
-    <h2 data-n="9">The anti-rule</h2>
+    <h2 data-n="11">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never write the same circle twice because the tag changed.</b> <i>The
     measurement said 36px, a hairline, transparent and a pill in both states, and the two copies had
     already begun to drift.</i></p>
@@ -562,7 +754,7 @@
   </section>
 
   <section class="tk-sec" id="closing">
-    <h2 data-n="10">Where the rest of it is</h2>
+    <h2 data-n="12">Where the rest of it is</h2>
     <p class="tk-note">The level and its reason: <a href="organisms.html#header">the organisms
     page</a>. The stylesheet: <code>components/header.css</code>. The circles:
     <a href="iconbtn.html">icon button</a>. The menu rows: <a href="navitem.html">nav item</a>. The

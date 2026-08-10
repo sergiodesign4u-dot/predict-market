@@ -1,5 +1,5 @@
 /* components/patterns/list-head.css
-   Pattern: the list head. A title on one side, the controls that act on the list
+   Pattern: the list head. A title on one side, the controls that act on the list Classes: .feed-controls, .feed-head.
    on the other, wrapping to two rows when there is no room for one.
 
    Assembled from: a heading and filters. The heading's TYPE is not here: a

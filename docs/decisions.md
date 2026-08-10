@@ -44,6 +44,441 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-10 - 1,133 controls stopped taking their height from the font, and one of the seven was already right
+
+Six families stood at heights nobody had chosen: padding plus border plus whatever DM Sans returns
+for `line-height:normal` at that size. **Every one of them now declares a rung**, and the numbers are
+the whole argument:
+
+| family | was | is | placements |
+|---|---|---|---|
+| `.nav-row`, the account panel's rows | **32.5** | **44** | 365 |
+| `.chip-lane`, the sub-category filter | 40.5 | 44 | 339 |
+| `.chip-nav`, the category chip | 47 | 48 | 294 |
+| `.btn-bare`, the comment action | 24.5 | 28 | 72 |
+| `.chip-rail`, the range rail | 26 | 28 | 63 |
+
+**`.nav-row` was the one that mattered and it was two holes with one cause.** It stood 32.5 with a
+mouse AND 32.5 with a finger, because `.nav-item` was not one of the fourteen families in the touch
+floor and nothing had declared a height, so there was nothing for the floor to raise. It fails WCAG
+2.5.5 at 32.5. It is 44 now, the family is the floor's fifteenth, and **the cost was measured before
+it was taken**: the account panel goes 169 to 226 and stands clear of a 900 viewport at both widths.
+
+**The three chips were each TWO controls depending on the pointer.** The floor already took them to
+44 under a finger, so `.chip-lane` was 40.5 with a mouse and 44 with a thumb, `.chip-nav` 47 and 44,
+`.chip-rail` 26 and 44. A control that changes height with the input device is not a control the
+ladder describes.
+
+**And the seventh was already right, which is why it was tried and put back.** `.nav-slot` stands 55
+inside a bottom bar that stands 56, and that reads as one more unchosen number. It is not: the bar
+carries a top border, so **the bar IS the slot plus one, and 56 is the rung on the box that touches
+the edge of the screen**. Declaring 56 on the slot moved the bar to 57 and took the ladder value off
+the thing that had it. Reverted, with the reason kept in the file. **The interior of a floored box is
+not a control height.**
+
+`.nav-row-stack` is left at 49: two lines of content, already above the floor, and its box comes from
+what is in it.
+
+Verified over 20 screens at 390 and 1280: **one height per family, every one on the ladder, 0 pages
+with horizontal scroll.** Two elements overflow a hidden axis on every page at both widths and are
+unrelated to any of this, a name in the profile hero and one unclassed div; they predate the change
+and are not part of it.
+
+---
+
+## 2026-08-10 - The card says how much of the market it is not showing, and the number is the smallest the arithmetic allows
+
+Every multi-outcome card in this product shows exactly two rows, 21 of 21 in both trees, and the two
+do not add up to the market. **One card in the set does**: Republicans 52 and Democrats 48 make 100,
+and that is precisely the pair a person had to be able to tell apart from a truncated one and could
+not. A shortlist and a complete market looked identical.
+
+**The word is the product's own.** `.ed-cat` prints "5 outcomes" and the detail section is headed
+Outcomes, against `4 options` in the Related list, 24 placements of one string. One word for one
+thing: the Related list says **4 outcomes** now.
+
+**The number is the smallest the arithmetic forces**, the remainder over the smallest percentage
+already shown, rounded up, because that is the only count the data supports. Eurovision leaves 39
+against Italy's 27, so two. The stablecoin market leaves 8, so one. **And one market overrides the
+formula, which is the rule worth keeping**: the UK election is named in the Related list as four
+outcomes, so its card says two more where the arithmetic alone would have said one. **A count the
+product states beats a count the product implies.**
+
+`.opt-more` is a link and not a label, and it goes where the card goes: a person told that two
+outcomes are missing needs the place they are. **18 cards in each tree carry it, 3 do not**, and the
+3 are the complete market.
+
+Grey first, and the grey tree needed its own rule for it, because `wireframes/` has no
+`components/index.css` and a bare `<a>` there would have drawn in the browser's blue. That is the
+992-links trap, and it is now the reason 12 grey stylesheets carry one line each.
+
+Verified over 24 feed screens in both trees, with a checker that recomputes the count from the
+percentages rather than reading the string: **21 option lists per tree, 18 with the row, 3 without,
+0 with the wrong number and 0 with the wrong plural.**
+
+---
+
+## 2026-08-10 - A wire soldered to the wrong pin, a document describing gates that were deleted, and a defect that turned out to be the grey tree's only drawing
+
+Three rows in one pass, and the third one failed and is the most useful of them.
+
+**83, and it was a wire and not a design.** Every `Confirm bet` in the desktop panel and the phone
+dock carried `data-open="signin"`. On the two logged-out detail screens that is right. On the other
+six it was not: `event-detail.html`, `event-detail-multi.html` and the four bet-state screens all
+show a balance plate reading $142.00 and `$42.00 cash` inside the panel, **and pressing the one
+button the whole screen is built around asked the person to sign in.** The right destination already
+existed and was already linked from the same block: the bet-error panel's own `Try again` goes to
+`event-detail-bet-processing.html`. **14 controls rewired across both trees**, the boxes unchanged,
+288x48 in the panel and 108x48 in the dock at both widths.
+
+**73, and the fix was not a deletion.** `DESIGN.md` told its reader that the build fails on gates 12,
+9, 13 and 20, and all 41 gates were deleted on 2026-08-07. Each of those sentences names a real
+invariant, so **each one now carries the reason it exists**, which is the thing a gate never told
+anybody: a raw number is a decision nobody can find again; a spacing step used as a width says a gap
+and the side of a thing are the same kind of number; a raw `z-index` is a claim about every layer
+made by somebody who could see one; a rule on a screen is a rule the system cannot see; a primitive
+named directly is a colour that cannot turn with the theme. Two stale pointers went with them, a
+script deleted with the other 62 and an architecture document that moved to the archive.
+
+**75 failed, and here is what it taught.** The row said the toast dismiss "holds 0 `<svg>` and its
+content is the text character `x` with nothing on `::before` or `::after`". The first half is true.
+The second is not: `iconbtn.css` draws that cross with **two rotated bars on `::before` and
+`::after`**, `--size-8` in a 24 box, with a comment arguing the geometry, and the button carries
+`font-size:0`. So the letter draws nothing in the painted tree and always did.
+
+It was removed on that reading, and **the measurement said no. In the GREY tree the letter is the
+whole drawing**: `wireframes/` styles `.toast-close` as a bordered box at font-size 11 with no
+pseudo-element cross, so an empty button measured **16 x 8 with nothing in it**. Put back, all 22
+elements, byte-identical to where they started.
+
+**The same markup was inert in one tree and load-bearing in the other**, and no reading of one tree
+could have found that. It is the strongest argument the two-tree discipline has produced yet, and it
+arrived from an attempted deletion rather than from a sweep.
+
+What survives of the row is smaller and real: **this product draws a close cross two ways**, a
+stroked path at 32 and 24 and two CSS bars at 24, and the file argues its geometry rather than being
+unaware of the other. That is a decision to confirm, not a defect to fix, and the row says so now.
+
+**Two of my own rows have now been wrong in two days**, 85's `prov-google` and this one, and both
+were answered in a file comment before the sweep ran. The lesson is not to sweep less. It is that
+**a finding against a file that argues its own case is a finding against the argument, and the
+argument has to be read before the row is written.**
+
+---
+
+## 2026-08-10 - The chart's legend item came home, and the flat kit is what settled that it had one
+
+`.ed-legend` was declared and drawn in `chart.css` and `.lg-item` inside it in `bets-table.css`,
+which draws a table of holders. One part, two owners, and the part is written at run time, so no
+reading of the markup finds it.
+
+**The row asked for the reason before the move, and the reason was findable.** `git log -S` puts
+`.lg-item` into `bets-table.css` on 2026-07-26, the day the flat kit was split into 38 component
+files. Reading the flat kit at the commit before that split: the three rules sit **directly under
+`.ed-legend`, beneath a comment reading "multi-outcome chart: one line per outcome (stroke/width/opacity
+set by JS) + legend"**. So it was a mechanical misfile at the split and not a home the rule had ever
+earned. That is the difference between moving a rule and guessing.
+
+Moved back, with the comment on both sides saying what happened. `bets-table.css` is four classes
+lighter in its own declaration, `chart.css` one heavier.
+
+**And the instrument needed one more repair before the proof was worth taking.** With animation
+frozen the control still gave 165 differing rows of 15,802 on the first pair of passes, and 0 on
+every pair after. **The first pass through a fresh page is a cold pass**: fonts, stylesheet and
+layout are being resolved for the first time, and it reads differently from every pass that follows.
+So the protocol now has a warm-up pass that is taken and thrown away. Control after the warm-up:
+**0 of 15,802.** The real comparison, over 17 documents that carry the legend or the table:
+**0 rows differing.**
+
+Two repairs in two days, and they are the same shape: **the instrument has to be proved on a
+question whose answer you already know before it is asked one whose answer you do not.**
+
+---
+
+## 2026-08-10 - Every word in the kit is now a word the product says, and the first count of it was wrong because it read the file instead of the page
+
+The row said 18 invented strings on 9 pages. Read from the rendered DOM instead of the source it was
+**78 on 22 pages**, and the difference is the same lesson this repository keeps buying: a screen
+ships `Volume: $84,200` as one string and a script splits it into `.m-label` and `.m-val`, so a
+source-reading sweep calls every split half an invention. The first list also missed everything the
+kit had put on a page the row had not thought to check.
+
+**174 strings replaced across 23 pages. 0 of 1,102 kit content strings are invented now**, measured
+against 402 distinct product strings from all 106 painted screens.
+
+They were four kinds of wrong, and only the first is what the row was about:
+
+- **Copy the product never wrote.** "Will the state board certify the count before March 1", "Will
+  the festival announce its headliner before June?", "Eurovision 2027 final decided by jury vote",
+  "Gavin Newsom", the comment users `m_kovac` and `rina_s`. Every one replaced with the question,
+  the outcome or the user the screens ship.
+- **Copy trimmed to fit.** `"Funding talks have stalled twice this quarter."` against the product's
+  `"Funding talks have stalled twice this quarter, but past deadlines settled late."` on five pages.
+  **The clause that was cut is the one that makes the block wrap to two lines**, so the specimen was
+  the wrong height wherever it stood.
+- **Invented LABELS, which is worse than invented values.** `position.html` printed
+  `Now worth` and `Paid out` in the figure grid. The product says `Current value` and `Payout`.
+  A number that is wrong is a datum; **a label that is wrong is the component teaching the wrong
+  vocabulary**, and this one was on the page whose whole subject is that grid.
+- **Structure dressed as content.** `molecules.html` gave the market-depth head row the same
+  `.md-amt` / `.md-price` / `.md-get` classes as its data rows, so the words "Bet", "Price" and "You
+  get" were being measured as figures. The product's head row is three plain spans reading
+  "Bet", "Avg YES price", "You receive if YES".
+
+**The measurement itself had to be taken from the page, not the source**, and doing it that way also
+removed 30 false positives the first list had, every one of them a value a script writes at run
+time. **The rule stands where it always did: reading the source is not reading the page, and it is
+as true of words as it is of colours.**
+
+Proof after: **884 specimen cells, 0 empty, 0 duplicate ids, 0 horizontal scroll, 0 radio groups
+with other than one checked, 308 glyphs all resolved, 0 sections left unclosed.**
+
+---
+
+## 2026-08-10 - Five class names left the markup of both trees, three stayed and were declared as script hooks, and the instrument had to be repaired before either could be proved
+
+Eight classes stood in the product markup and no rule reached them. They split three ways once each
+was read rather than counted:
+
+- **Five were inert.** `ed-act` (27 placements on 9 screens), `load-more` (9), `ed-market` (9),
+  `cmt-post` (7), `toast-wrap` (1). Every one of them sits beside classes that already draw the
+  element: `.ed-act` is a third name on a button that is already `.icon-btn.icon-btn-tile`, and
+  `.icon-btn.icon-btn-tile` is what carries the 10px corner, the ground and the 18px mark.
+  `.ed-actions` beside it positions the container and does nothing to the buttons. **Deleted from all
+  three trees: 129 class tokens across 46 files**, painted, grey and kit together.
+- **Three were script hooks and are now declared as such.** `.ed-chart` and `.ed-chart-multi` in
+  `chart.css`, `.rules-panel` in `tabs.css`, under a new `Script hooks:` line that says what reads
+  them and why they carry no rule. `.ed-chart-multi` is the class that decides five polylines
+  instead of one, and the kit's chart specimen wears it now, because the specimen it draws IS the
+  multi chart.
+- **One was a false finding and the file had already answered it.** `prov-google`, 107 placements on
+  105 screens, is documented in `button.css`: a logotype in four colours cannot take
+  `fill:currentColor` the way the Apple and X marks do, so it correctly has no rule. Corrected in the
+  backlog rather than dropped.
+
+**The proof needed the instrument repaired first, and that is the part worth keeping.** The
+before-and-after snapshot reported 31 files with a difference. Every sampled difference was an
+opacity mid-animation and a document height one pixel apart. **So the same tree was measured twice
+with no edit at all: 3,587 of 18,390 rows differed.** The instrument, not the change. The pages carry
+entrance animations and a 110ms settle catches them mid-flight.
+
+Repaired by injecting `animation:none;transition:none` into each frame before reading and giving the
+layout 450ms. The control then ran clean: **same tree twice, 0 of 18,409 rows differing.** Only then
+was the real comparison worth anything, and it was taken by stashing the change and re-reading HEAD
+through the same instrument: **18,409 element readings over 19 screens, 0 rows differing.**
+
+**A number that moves when nothing moved is not a measurement, it is a reading of the instrument.**
+This repository has now paid for that lesson twice: once when `getBBox` was compared against CSS
+pixels, and once here.
+
+Proof after: **439 declarations, 0 holes, 0 invented, 442 specimen cells with 0 empty, 0 duplicate
+ids, 0 scroll, 0 radio groups with other than one checked, 308 kit glyphs and 1,930 product glyphs
+all resolved, and 0 of the five removed names left anywhere.**
+
+---
+
+## 2026-08-10 - Every file now declares what it owns, and the declaration immediately found four more faces the kit was missing
+
+The header line of a component file, `Classes: .btn, .btn-bare, ...`, is the only machine-readable
+statement of what that file owns. **Six of the seven patterns had no such line at all**, and about
+nineteen classes were styled inside a component and claimed by no header anywhere. So the
+whole-system sweep the day before was reading an incomplete map, and **under-reporting by exactly
+that much**.
+
+Closed. 45 files carry a class list, **436 declarations, 0 unclaimed**. The patterns got theirs from
+what they actually style, and the loose classes went to the file that draws them: the shared `sel`
+state to each of the five files that style it compound (`.chip.sel`, `.opt-row.sel`), the width
+utilities to the three that use them, `.win-dialog` and `.loss-dialog` to dialog, `.notif-drop` and
+`.scrolled` to header, `.ed-rules` to tabs.
+
+**And the point of doing it was proved within the minute.** Re-running the same sweep against the
+corrected map opened **four new holes that had been invisible because nobody had declared the
+classes**:
+
+- **`.scrolled`, on the live header of 57 screens.** A page script adds it when the full category
+  bar leaves the viewport, and what it does is open `.cat-condensed`, the small icon-less strip that
+  keeps the categories reachable. **That strip was in the markup of every header specimen on the
+  page and every one of them drew it shut**, so the class was correct, measurable and invisible.
+- **`.win-dialog`, on 4 screens.** The kit had the loss face and not the win face of the one dialog
+  that opens itself, and green and red are the whole point of that pair.
+- **`.ed-rules`** on 9 screens, the section the rules strip stands in.
+- **`.read-col`** on 1 screen, a column this kit already measured in a table and had never drawn.
+
+**One row was wrong and the file it accused had already answered it.** Backlog 85 named
+`prov-google` as the worst of the unreached classes, 107 placements on 105 screens. `button.css`
+says, in writing, above the rule: *"`.prov-google` carries its own brand colours in the markup and
+correctly has no rule."* A logotype that is red, yellow, green and blue cannot take
+`fill:currentColor` the way the Apple and X marks do. **It is not a defect, it is a decision, and it
+was in the file the whole time.** The row is corrected rather than quietly dropped, because a sweep
+that flags a documented decision is a sweep whose next finding is trusted less.
+
+Proof over 160 documents at both widths: **884 specimen cells, 0 empty, 0 duplicate ids, 0
+horizontal scroll, 0 radio groups with other than one checked, 308 kit glyphs and 1,930 product
+glyphs all resolved, 436 declared classes, 0 holes, 0 invented.**
+
+---
+
+## 2026-08-10 - 30 classes stood in the product and on no page of the kit, and closing the last of them found the reason the kit could never have shown two of them
+
+**The measurement first.** 160 documents rendered in a browser, 106 painted screens and 54 kit
+pages, and every class taken from the live DOM rather than from the file. Against the 400 classes
+the component files declare:
+
+- **0 classes the kit shows that the product does not ship.** Nothing invented.
+- **0 classes declared and used nowhere.** Nothing dead.
+- **30 classes on 13 components stood in the product and on no page of the kit.** That is the hole,
+  and it is closed: **0 of 30 now.**
+
+They were not decoration. The whole `.ptab*` family and the plain `.tabs` strip, so **two of this
+product's three tab families had never been drawn in the kit**. `.resolution`, `.args` and
+`.arg-col`, so the paragraph that says what makes a market pay out had no picture anywhere.
+`.ed-chart-head`, `.ed-chart-now`, `.ed-chart-foot` and `.ed-legend`, so **the chart stood without
+its frame**. `.outcome-dialog` on 6 screens, the only dialog in the product that opens by itself.
+`.cc-page`, on a page whose whole argument is "these two things are drawn alike and mean different
+things" - **an argument that cannot be made without both drawings**.
+
+**And the last two of the thirty could not be drawn at all, which is what this pass was really
+for.** Both tab families were selected by document-unique id: `#edtab-comments:checked ~
+.ed-panel-comments`, and the labels by `label[for="edtab-comments"]`. That works on a screen, which
+holds one tab set. **It makes the component impossible to stand twice in one document**, which is
+exactly what a stand must do, one cell per theme. The kit had already suffixed the light cell's ids
+to keep the document valid, and **the cost of that was total and invisible: no rule matched the
+suffixed ids, so the light cell of every tab specimen had been drawing its bar and none of its
+panels.** Nobody had looked, because a cell with a tab bar in it is not an empty cell.
+
+`components/tabs.css` now keys all four switches to POSITION: `.ed-tabwrap > .ed-tabradio:nth-of-type(1):checked ~ .ed-panel-comments`.
+The ids stay in the markup, because a `<label for>` needs one and a screen reader follows it. Six
+rule groups, 0 id-keyed selectors left in the file. Verified on the 9 screens that carry the event
+set and the 2 that carry the profile set: exactly one panel visible, exactly one label lit, before
+and after.
+
+**Then the same defect arrived through its other door.** A radio group is keyed by `name`, and two
+theme cells sharing `name="edtab"` are ONE group across both: the light cell's checked radio
+unchecks the dark cell's. Five kit pages had it, `tabs`, `event-detail`, `feed`, `filters` and
+`footer`, and it had been hidden behind the id bug on two of them. Every light cell suffixes its
+`name` now. Checked over all 54 pages: **every named group has exactly one checked radio per cell,
+and every tab family shows exactly one panel per cell.**
+
+**The rule this pays for: an id in a selector is a promise that the component stands once in a
+document, and no component in a design system may make that promise.** It is item 45's argument
+arriving from the far side: the kit does not suffix ids to be tidy, it suffixes them because a
+specimen is a second copy, and a stylesheet that cannot survive a second copy is a stylesheet that
+cannot be shown.
+
+Proof, both widths and both trees: **0 holes, 0 empty specimens, 0 duplicate ids, 0 horizontal
+scroll, 300 kit glyphs and 1,930 product glyphs all resolved, 0 unresolved.**
+
+Three rows opened rather than swept: **84**, the chart legend's item is declared and drawn in
+`bets-table.css`; **85**, nine classes in the product markup that no rule anywhere reaches, one of
+them 107 times; **86**, six of seven patterns declare no classes at all and about nineteen classes
+are styled and claimed by no component.
+
+---
+
+## 2026-08-09 - Four specimens counted 39 elements each and painted none of them, because a shut dialog measures the same as an open one
+
+`ui-kit/dialog.html` and `ui-kit/betpanel.html` both opened with a section titled "whole" and both
+drew **an empty band at 390 and at 1280**, in both themes, since 2026-08-08.
+
+**The cause is one attribute and the instrument is the reason it survived.** The rebuild sliced the
+sheet out of the product whole, and in the product a sheet is SHUT until a script opens it: a
+`<dialog>` with no `open` attribute is `display:none`. So each page held 39 correct elements inside
+a box the browser never painted, **and the gap sweep that declared 0 of 38 pages poorer than the
+product counted those 39 and passed**. An element count cannot tell an open dialog from a shut one.
+It is the same trap as the SVG with no `fill` and the 992 links in the browser's blue: a missing
+value is a value, and the only instrument that sees it is paint.
+
+**So the sweep was rewritten to measure paint, and re-run over the whole kit**: every
+`.tk-theme-fig` on all 54 pages, at 1280 and at 390, flagging any cell whose children all measure
+zero. Four cells on two pages were empty. **It is 0 of 54 at both widths now.**
+
+Three more things were wrong on `betpanel.html`, and none of them was visible as a gap:
+
+- **The section titled "The panel, whole" was a sheet.** `.bet-panel` itself was on no page in the
+  kit. It stands there now, sliced from `event-detail-multi.html`, the richest of the eleven at 38
+  elements, and it measures **322 x 559 against the product's 322 x 559**.
+- **The dock was argued away.** The page said a dock cannot stand where the page is also read at
+  1280, because it is `display:none` above 760. That is equally true of the panel in the opposite
+  direction, and the kit had already answered it once: `.tk-show-nav` pins the bottom bar visible on
+  the page where the bar is not the subject. Both faces take that bargain now and both say what it
+  costs.
+- **And "the richest instance" was the wrong question for the dock**, which the first pass got wrong
+  and the second corrected. Counted across the eight: **four docks CHOOSE and four CONFIRM**, and
+  they are not a long form and a short form of one thing. The chooser is two sides carrying
+  `data-open-sheet`, and pressing one of them is **the only way a phone reaches the bet panel at
+  all**; the confirmer stands on the four bet-state screens where the amount is already set and
+  carries the stake, the payout and its own Confirm. Picking the fuller one on element count alone
+  would have shown the dock **without the thing the dock is for**. Both stand now, chooser first,
+  4 elements and 7, both **68 tall, the product's**. **A count ranks two shapes of one component; it
+  cannot tell you they do different jobs.**
+- **The sheet splits the same way the card does.** 39 elements on the two multi screens and **34 on
+  the two binary ones**, the difference being the "Your outcome" row and its Change link, which is
+  the same five elements the panel adds for the same reason: with one question there is nothing to
+  choose between and nothing to go back to.
+- **The sheet specimen was composed rather than copied.** "Your stake" against the product's
+  "Amount", one line called "If YES" against three, three quick chips against four, and a sentence
+  about fees that is on no screen. Six differences, every one of them plausible, which is the whole
+  argument for copying.
+
+**And the panel brought a lesson about its container.** `.bet-panel` sizes itself with
+`flex:0 0 322px`, and **a flex basis is a width in a row and a height in a column**. Dropped into
+the stand's own column cell it drew **353 x 322 with `overflow:clip` cutting the rest off**. The
+container is `.ed-layout` here, the product's, held in the row direction by the modifier: the same
+answer `.bp-dir` got when the pair was measured 4px short in `.tk-pair`.
+
+**One product defect was found and filed rather than fixed**, because it is a flow decision:
+**"Confirm bet" opens the SIGN-IN sheet on six screens where the person is already signed in** and
+the header is showing their balance. Row 83.
+
+---
+
+## 2026-08-09 - The card page invented a third outcome, and a specimen written from the component is not the component
+
+`ui-kit/card.html` drew a multi-outcome card with three rows, Sweden, Italy and Ukraine. **The
+product has never shipped three.** Counted by parsing every screen in both trees: **21
+multi-outcome cards, 21 of 21 carrying exactly two rows**, painted and grey, on 12 screens each.
+
+**The rebuild of the day before is what let it through**, and the reason is worth keeping. The
+method that fixed 22 pages was "render all 106 screens, find the richest instance, slice it out".
+For `card` that method never ran: the page already HAD a specimen, so it was judged on whether it
+showed the component's parts rather than on whether it was a card the product draws, and the missing
+part it was given, the action row, was written **from `card.css` and `options.css`** instead. A
+stylesheet says a row exists. It does not say how many stand in a card, so the number came from
+whoever was typing.
+
+Three things were wrong once the feed's own first cards were put in beside it, and only the first
+was visible:
+
+- **The third row.** Two rows is what every multi card ships.
+- **The question and its reason.** "Will the state board certify the count before March 1?" is on
+  no screen in either tree. The feed's binary card 1 asks about a government shutdown.
+- **The meta row was drawing in one colour.** The screens ship `Volume: $84,200` as a single string
+  and a page script splits it into `.m-label` and `.m-val`; `card.css` colours the label muted and
+  the value primary. A specimen that writes the string whole gets **neither rule**, and nothing
+  fails: it just draws flat and looks fine. `.prob-line` and the odds bar are the same shape of
+  fact, and the page now says so in place of implying the bar is markup.
+
+Proof, both themes and both widths: `.opt-row` **54**, the compact button **44**, `.oddsbar`
+**30**, the pair button **44**, `.meta` **25** at 1280 and **37** at 390 - **every height identical
+to the feed's**, the widths differing only by the cell. 0 horizontal scroll, 0 clipped cells, 0
+duplicate ids, 0 console messages, 4 of 4 glyphs resolved.
+
+**Two rows were opened rather than swept.** The card is a **shortlist and never says so** (81):
+Sweden and Italy leave 39 per cent unaccounted, the detail page lists five outcomes, and the Related
+list one block away already prints `4 options` for exactly this case. And the invention is a class,
+not a case (82): comparing every `.q`, `.ed-q`, `.pos-q`, `.rel-q`, `.opt-name` and `.why` string in
+`ui-kit/` against both trees found **18 strings on 9 pages that no screen ships**, four of them the
+quieter kind - `"Funding talks have stalled twice this quarter."` against the product's
+`"Funding talks have stalled twice this quarter, but past deadlines settled late."` **A specimen
+trimmed to fit a cell has stopped being the specimen**, because the clause that was cut is the one
+that makes the block wrap.
+
+**The rule this pays for: a specimen is copied from a screen, never written from a stylesheet.** The
+stylesheet is the thing being demonstrated, so using it as the source of the demonstration proves
+only that the file agrees with itself.
+
+---
+
 ## 2026-08-09 - All 38 component pages now show what the product ships, and putting a component in twice needed the id rule the kit already knew
 
 The gap measured earlier the same day was **22 of 38 pages poorer than the product**. It is **0 of

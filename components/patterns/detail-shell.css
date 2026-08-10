@@ -1,5 +1,5 @@
 /* components/patterns/detail-shell.css
-   Pattern: the detail shell. A content column beside a sticky side panel.
+   Pattern: the detail shell. A content column beside a sticky side panel. Classes: .ed-layout, .ed-main.
 
    Assembled from: card, chart, market, tabs, betpanel. It owns none of them.
    Stand:  ui-kit/detail-shell.html, and ui-kit/patterns.html#detail-shell for the shelf and the threshold

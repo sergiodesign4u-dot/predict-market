@@ -241,8 +241,34 @@
   </section>
 
   <!-- ================================================================== rule -->
+  <section class="tk-sec" id="addr">
+    <h2 data-n="10">The address field, which is not a field</h2>
+    <p class="tk-why"><b>One placement, on the wallet withdrawal sheet, and it wears
+    <code>.amount-input</code> without being an input at all.</b> It is a
+    <code>&lt;span&gt;</code>: a destination address is pasted by the wallet, not typed, so the
+    product gives it the field's face and none of the field's behaviour. That is a real decision and
+    the page had never shown it, so the file read as if it drew four kinds when it draws three plus
+    a lookalike.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div>
+          <span class="field-label">Destination USDC address</span>
+          <div class="amount-row"><span class="amount-input addr">0x1A2b...9F3c</span></div>
+        </div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div>
+          <span class="field-label">Destination USDC address</span>
+          <div class="amount-row"><span class="amount-input addr">0x1A2b...9F3c</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="tk-sec" id="rule">
-    <h2 data-n="10">The rule</h2>
+    <h2 data-n="11">The rule</h2>
     <p class="tk-note"><b>A currency mark is not part of the value.</b> The value is a number, the
     mark is a sibling, and the moment they are one string the element can no longer be the right
     element.</p>
@@ -257,7 +283,7 @@
 
   <!-- ============================================================= anti-rule -->
   <section class="tk-sec" id="antirule">
-    <h2 data-n="11">The anti-rule</h2>
+    <h2 data-n="12">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never write a guard that cannot fire.</b> <i>A pattern with no form
     validates nothing, on 113 fields, and reads as a constraint to everyone who opens the
     markup.</i></p>
@@ -274,7 +300,7 @@
 
   <!-- ============================================================== closing -->
   <section class="tk-sec" id="closing">
-    <h2 data-n="12">Where the rest of it is</h2>
+    <h2 data-n="13">Where the rest of it is</h2>
     <p class="tk-note">The level and its reason: <a href="vitrine.html#input">the atoms page</a>.
     The stylesheet: <code>components/input.css</code>. The chips that left in 2026-08-05:
     <a href="quick.html">quick amounts</a>. The sheet and the panel that hold the second kind:

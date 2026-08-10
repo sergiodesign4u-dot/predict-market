@@ -56,7 +56,7 @@
                       <div class="cmt-compose">
                         <span class="cmt-av">you</span>
                         <span class="cmt-input">Add a comment...</span>
-                        <button type="button" class="btn btn-primary btn-sm cmt-post">Post</button>
+                        <button type="button" class="btn btn-primary btn-sm">Post</button>
                       </div>
                       <div class="cmt-list">
                         <div class="cmt">
@@ -113,7 +113,7 @@
                     </div>
                     <div class="ed-tabpanel ed-panel-positions" role="tabpanel" aria-label="Bets">
                       <table class="ptable">
-                        <thead><tr><th>Bettor</th><th>Side</th><th>Amount</th></tr></thead>
+                        <thead><tr><th>Holds 320 YES</th><th>Side</th><th>Amount</th></tr></thead>
                         <tbody>
                         <tr class="you"><td>You</td><td><span class="pos-side">YES</span></td><td>$4.94</td></tr>
                         <tr><td>whale_07</td><td><span class="pos-side">YES</span></td><td>$471</td></tr>
@@ -141,10 +141,10 @@
       <div class="tk-theme-fig tk-stack" data-theme="light">
         <section class="ed-section ed-tabs">
                     <div class="ed-tabwrap">
-                      <input type="radio" name="edtab" id="edtab-comments-lt" class="ed-tabradio" checked>
-                      <input type="radio" name="edtab" id="edtab-holders-lt" class="ed-tabradio">
-                      <input type="radio" name="edtab" id="edtab-positions-lt" class="ed-tabradio">
-                      <input type="radio" name="edtab" id="edtab-activity-lt" class="ed-tabradio">
+                      <input type="radio" name="edtab-lt" id="edtab-comments-lt" class="ed-tabradio" checked>
+                      <input type="radio" name="edtab-lt" id="edtab-holders-lt" class="ed-tabradio">
+                      <input type="radio" name="edtab-lt" id="edtab-positions-lt" class="ed-tabradio">
+                      <input type="radio" name="edtab-lt" id="edtab-activity-lt" class="ed-tabradio">
                       <div class="ed-tabbar" role="tablist">
                         <label class="ed-tablabel" for="edtab-comments-lt">Comments <span class="ed-tab-count">128</span></label>
                         <label class="ed-tablabel" for="edtab-holders-lt">Biggest bets</label>
@@ -159,7 +159,7 @@
                       <div class="cmt-compose">
                         <span class="cmt-av">you</span>
                         <span class="cmt-input">Add a comment...</span>
-                        <button type="button" class="btn btn-primary btn-sm cmt-post">Post</button>
+                        <button type="button" class="btn btn-primary btn-sm">Post</button>
                       </div>
                       <div class="cmt-list">
                         <div class="cmt">
@@ -216,7 +216,7 @@
                     </div>
                     <div class="ed-tabpanel ed-panel-positions" role="tabpanel" aria-label="Bets">
                       <table class="ptable">
-                        <thead><tr><th>Bettor</th><th>Side</th><th>Amount</th></tr></thead>
+                        <thead><tr><th>Holds 320 YES</th><th>Side</th><th>Amount</th></tr></thead>
                         <tbody>
                         <tr class="you"><td>You</td><td><span class="pos-side">YES</span></td><td>$4.94</td></tr>
                         <tr><td>whale_07</td><td><span class="pos-side">YES</span></td><td>$471</td></tr>
@@ -243,8 +243,147 @@
     </div>
   </section>
 
+  <section class="tk-sec" id="families">
+    <h2 data-n="2">Three tab families, and this page showed one of them</h2>
+    <p class="tk-why"><b>The strip above is not the strip.</b> This file draws <b>three separate tab
+    families</b> and until 2026-08-10 the page stood only the richest: <code>.tabs</code> stands on
+    <b>9 screens</b> and <code>.ptabs</code> on 2, and neither had ever been drawn in the kit. A
+    reader comparing a tab against a tab was comparing one of three against nothing.</p>
+    <p class="tk-note"><b>The plain strip</b>, <code>.tabs</code>, from
+    <code>active-bets.html</code>: two links wearing <code>role="tab"</code>, and the state is
+    <code>aria-selected</code> rather than a class. It is the whole of the My Bets switch, Active
+    against History, and it navigates: each tab is a different URL, so nothing is hidden and shown,
+    the page changes.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="tabs" role="tablist" aria-label="My Bets">
+          <a href="#"><button type="button" role="tab" aria-selected="true">Active</button></a>
+          <a href="#"><button type="button" role="tab" aria-selected="false">History</button></a>
+        </div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="tabs" role="tablist" aria-label="My Bets">
+          <a href="#"><button type="button" role="tab" aria-selected="true">Active</button></a>
+          <a href="#"><button type="button" role="tab" aria-selected="false">History</button></a>
+        </div>
+      </div>
+    </div>
+    <p class="tk-note"><b>The profile strip</b>, <code>.ptabs</code>, from
+    <code>my-profile.html</code>: three radios, three labels and three panels, CSS only, exactly the
+    mechanism the event strip uses and at a different size. Its panels hold different components
+    again, which is why it is here whole rather than as a bare bar: a record card, a gallery and a
+    list of resolved positions.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="ptabs">
+          <input type="radio" name="ptab-dk" id="ptab-record-dk" class="ptab-in" checked>
+          <input type="radio" name="ptab-dk" id="ptab-wins-dk" class="ptab-in">
+          <input type="radio" name="ptab-dk" id="ptab-resolved-dk" class="ptab-in">
+          <div class="ptab-bar" role="tablist">
+            <label for="ptab-record-dk" class="ptab-lbl">Track record</label>
+            <label for="ptab-wins-dk" class="ptab-lbl">Past wins</label>
+            <label for="ptab-resolved-dk" class="ptab-lbl">Resolved</label>
+          </div>
+          <section class="ptab-panel" aria-label="Track record">
+            <article class="pos pos-record" aria-label="Track record">
+              <div class="pos-figures">
+                <span class="pos-fig">Total bets<b>23</b></span>
+                <span class="pos-fig">Win rate<b>61%</b></span>
+                <span class="pos-fig">Resolved<b>18</b></span>
+                <span class="pos-fig">Member since<b>2026</b></span>
+              </div>
+              <span class="pos-status">Win rate is % correct on resolved bets (public). Reputation = the track record, not the balance.</span>
+            </article>
+          </section>
+          <section class="ptab-panel" aria-label="Past wins">
+            <div class="gallery">
+              <div class="card">Win card: US shutdown YES +$13.20</div>
+              <div class="card">Win card: BTC &gt; $150k YES +$6.80</div>
+              <div class="card">Win card: ETF approval NO +$9.40</div>
+            </div>
+          </section>
+          <section class="ptab-panel" aria-label="Resolved predictions (public)">
+            <div class="pos-list">
+              <article class="pos">
+                <div class="pos-top">
+                  <span class="pos-q">US government shutdown before Mar 1, 2027</span>
+                  <span class="pos-side pos-won">WON</span>
+                </div>
+                <span class="pos-status">YES &middot; resolved Jun 27 &middot; +$13.20</span>
+              </article>
+              <article class="pos">
+                <div class="pos-top">
+                  <span class="pos-q">Spot ETH ETF approved in H1 2027</span>
+                  <span class="pos-side pos-lost">LOST</span>
+                </div>
+                <span class="pos-status">NO &middot; resolved Jun 12 &middot; -$5.00</span>
+              </article>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="ptabs">
+          <input type="radio" name="ptab-lt" id="ptab-record-lt" class="ptab-in" checked>
+          <input type="radio" name="ptab-lt" id="ptab-wins-lt" class="ptab-in">
+          <input type="radio" name="ptab-lt" id="ptab-resolved-lt" class="ptab-in">
+          <div class="ptab-bar" role="tablist">
+            <label for="ptab-record-lt" class="ptab-lbl">Track record</label>
+            <label for="ptab-wins-lt" class="ptab-lbl">Past wins</label>
+            <label for="ptab-resolved-lt" class="ptab-lbl">Resolved</label>
+          </div>
+          <section class="ptab-panel" aria-label="Track record">
+            <article class="pos pos-record" aria-label="Track record">
+              <div class="pos-figures">
+                <span class="pos-fig">Total bets<b>23</b></span>
+                <span class="pos-fig">Win rate<b>61%</b></span>
+                <span class="pos-fig">Resolved<b>18</b></span>
+                <span class="pos-fig">Member since<b>2026</b></span>
+              </div>
+              <span class="pos-status">Win rate is % correct on resolved bets (public). Reputation = the track record, not the balance.</span>
+            </article>
+          </section>
+          <section class="ptab-panel" aria-label="Past wins">
+            <div class="gallery">
+              <div class="card">Win card: US shutdown YES +$13.20</div>
+              <div class="card">Win card: BTC &gt; $150k YES +$6.80</div>
+              <div class="card">Win card: ETF approval NO +$9.40</div>
+            </div>
+          </section>
+          <section class="ptab-panel" aria-label="Resolved predictions (public)">
+            <div class="pos-list">
+              <article class="pos">
+                <div class="pos-top">
+                  <span class="pos-q">US government shutdown before Mar 1, 2027</span>
+                  <span class="pos-side pos-won">WON</span>
+                </div>
+                <span class="pos-status">YES &middot; resolved Jun 27 &middot; +$13.20</span>
+              </article>
+              <article class="pos">
+                <div class="pos-top">
+                  <span class="pos-q">Spot ETH ETF approved in H1 2027</span>
+                  <span class="pos-side pos-lost">LOST</span>
+                </div>
+                <span class="pos-status">NO &middot; resolved Jun 12 &middot; -$5.00</span>
+              </article>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <p class="tk-note"><b>The radio names and ids are suffixed per cell.</b> A radio group is keyed
+    by <code>name</code> and a label reaches its input by <code>id</code>, so two theme cells sharing
+    either would be one group across both: pressing a label in daylight would move the dark cell.
+    That is the kit's id rule arriving through a second door, and it is the reason this specimen is
+    not a copy of the screen's attribute values.</p>
+  </section>
+
   <section class="tk-sec" id="why">
-    <h2 data-n="2">What this page is for</h2>
+    <h2 data-n="3">What this page is for</h2>
     <p class="tk-note">The level and its reason stay on
     <a href="organisms.html#tabs">the organisms page</a>. This page holds the thing a shelf can never
     show about this component: <b>what is behind each tab</b>, which needed the radios cycled one at
@@ -253,7 +392,7 @@
   </section>
 
   <section class="tk-sec" id="behind">
-    <h2 data-n="3">One panel at a time, and each holds a different component</h2>
+    <h2 data-n="4">One panel at a time, and each holds a different component</h2>
     <div class="tk-tblwrap">
       <table class="tk-tbl">
         <thead><tr><th>tab</th><th>what is behind it</th><th>panel at 390</th><th>at 1280</th></tr></thead>
@@ -276,7 +415,7 @@
   </section>
 
   <section class="tk-sec" id="ring">
-    <h2 data-n="4">The one place the system's single ring could not land</h2>
+    <h2 data-n="5">The one place the system's single ring could not land</h2>
     <p class="tk-why"><code>base.css</code> draws the ring once, <b>on the element that HAS focus</b>,
     and the element that has focus here is the RADIO, which this file parks at
     <code>left:-9999px</code>. <b>So the indicator was painted off the left edge of the document</b>,
@@ -292,15 +431,19 @@
   </section>
 
   <section class="tk-sec" id="spec">
-    <h2 data-n="5">The strips</h2>
+    <h2 data-n="6">The strips</h2>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
-        <div class="rules-tabs"><button type="button" class="rules-tab">Rules</button><button type="button" class="rules-tab">Background</button></div>
+        <section class="ed-section ed-rules">
+          <div class="rules-tabs"><button type="button" class="rules-tab">Rules</button><button type="button" class="rules-tab">Background</button></div>
+        </section>
         <div class="ed-range"><button type="button" class="chip chip-rail">1d</button><button type="button" class="chip chip-rail">1w</button><button type="button" class="chip chip-rail">1m</button><button type="button" class="chip chip-rail sel">all</button></div>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
-        <div class="rules-tabs"><button type="button" class="rules-tab">Rules</button><button type="button" class="rules-tab">Background</button></div>
+        <section class="ed-section ed-rules">
+          <div class="rules-tabs"><button type="button" class="rules-tab">Rules</button><button type="button" class="rules-tab">Background</button></div>
+        </section>
         <div class="ed-range"><button type="button" class="chip chip-rail">1d</button><button type="button" class="chip chip-rail">1w</button><button type="button" class="chip chip-rail">1m</button><button type="button" class="chip chip-rail sel">all</button></div>
       </div>
     </div>
@@ -324,7 +467,7 @@
   </section>
 
   <section class="tk-sec" id="merge">
-    <h2 data-n="6">The range rail and the comment sorter are one chip</h2>
+    <h2 data-n="7">The range rail and the comment sorter are one chip</h2>
     <p class="tk-note">Measured 2026-08-04: the two <b>agree on padding, radius, size, height, ground
     and selected ground down to the pixel</b>, and disagreed on the two things left, the face and the
     weight. One rail was mono at 400 rising to 600 when chosen; the sorter was the body face. <b>Two
@@ -340,7 +483,7 @@
   </section>
 
   <section class="tk-sec" id="press">
-    <h2 data-n="7">The press, and it is worth most where there is no hover</h2>
+    <h2 data-n="8">The press, and it is worth most where there is no hover</h2>
     <p class="tk-note">Every tab in this file was missing it. A tab is a quiet control, so it settles
     onto the one held-down role in the system, and each press mirrors the hover it answers so the two
     sit at equal specificity and source order hands the pointer to the press.</p>
@@ -349,7 +492,7 @@
   </section>
 
   <section class="tk-sec" id="rule">
-    <h2 data-n="8">The rule</h2>
+    <h2 data-n="9">The rule</h2>
     <p class="tk-note"><b>A switcher needs no script.</b> A radio, a label and a sibling selector,
     and the state lives in the document rather than in a variable.</p>
     <p class="tk-note"><b>Hide the input where the ring can still be drawn.</b> Offscreen is
@@ -359,7 +502,7 @@
   </section>
 
   <section class="tk-sec" id="antirule">
-    <h2 data-n="9">The anti-rule</h2>
+    <h2 data-n="10">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never park a focusable element offscreen and leave the ring on
     it.</b> <i>The indicator was painted at -9999px, which is a keyboard user seeing nothing.</i></p>
     <p class="tk-lab tk-bad"><b>Never measure a tabbed screen without cycling the tabs.</b> <i>Three
@@ -369,7 +512,7 @@
   </section>
 
   <section class="tk-sec" id="closing">
-    <h2 data-n="10">Where the rest of it is</h2>
+    <h2 data-n="11">Where the rest of it is</h2>
     <p class="tk-note">The level and its reason: <a href="organisms.html#tabs">the organisms page</a>.
     The stylesheet: <code>components/tabs.css</code>. The chip both rails wear:
     <a href="chip.html">chip</a>. What is behind the four panels:

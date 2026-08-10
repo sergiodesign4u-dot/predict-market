@@ -55,7 +55,7 @@
                       <div class="cmt-compose">
                         <span class="cmt-av">you</span>
                         <span class="cmt-input">Add a comment...</span>
-                        <button type="button" class="btn btn-primary btn-sm cmt-post">Post</button>
+                        <button type="button" class="btn btn-primary btn-sm">Post</button>
                       </div>
                       <div class="cmt-list">
                         <div class="cmt">
@@ -112,7 +112,7 @@
                     </div>
                     <div class="ed-tabpanel ed-panel-positions" role="tabpanel" aria-label="Bets">
                       <table class="ptable">
-                        <thead><tr><th>Bettor</th><th>Side</th><th>Amount</th></tr></thead>
+                        <thead><tr><th>Holds 320 YES</th><th>Side</th><th>Amount</th></tr></thead>
                         <tbody>
                         <tr class="you"><td>You</td><td><span class="pos-side">YES</span></td><td>$4.94</td></tr>
                         <tr><td>whale_07</td><td><span class="pos-side">YES</span></td><td>$471</td></tr>
@@ -140,10 +140,10 @@
       <div class="tk-theme-fig tk-stack" data-theme="light">
         <section class="ed-section ed-tabs">
                     <div class="ed-tabwrap">
-                      <input type="radio" name="edtab" id="edtab-comments-lt" class="ed-tabradio" checked>
-                      <input type="radio" name="edtab" id="edtab-holders-lt" class="ed-tabradio">
-                      <input type="radio" name="edtab" id="edtab-positions-lt" class="ed-tabradio">
-                      <input type="radio" name="edtab" id="edtab-activity-lt" class="ed-tabradio">
+                      <input type="radio" name="edtab-lt" id="edtab-comments-lt" class="ed-tabradio" checked>
+                      <input type="radio" name="edtab-lt" id="edtab-holders-lt" class="ed-tabradio">
+                      <input type="radio" name="edtab-lt" id="edtab-positions-lt" class="ed-tabradio">
+                      <input type="radio" name="edtab-lt" id="edtab-activity-lt" class="ed-tabradio">
                       <div class="ed-tabbar" role="tablist">
                         <label class="ed-tablabel" for="edtab-comments-lt">Comments <span class="ed-tab-count">128</span></label>
                         <label class="ed-tablabel" for="edtab-holders-lt">Biggest bets</label>
@@ -158,7 +158,7 @@
                       <div class="cmt-compose">
                         <span class="cmt-av">you</span>
                         <span class="cmt-input">Add a comment...</span>
-                        <button type="button" class="btn btn-primary btn-sm cmt-post">Post</button>
+                        <button type="button" class="btn btn-primary btn-sm">Post</button>
                       </div>
                       <div class="cmt-list">
                         <div class="cmt">
@@ -215,7 +215,7 @@
                     </div>
                     <div class="ed-tabpanel ed-panel-positions" role="tabpanel" aria-label="Bets">
                       <table class="ptable">
-                        <thead><tr><th>Bettor</th><th>Side</th><th>Amount</th></tr></thead>
+                        <thead><tr><th>Holds 320 YES</th><th>Side</th><th>Amount</th></tr></thead>
                         <tbody>
                         <tr class="you"><td>You</td><td><span class="pos-side">YES</span></td><td>$4.94</td></tr>
                         <tr><td>whale_07</td><td><span class="pos-side">YES</span></td><td>$471</td></tr>
@@ -257,18 +257,18 @@
       <div class="tk-theme-fig tk-stack" data-theme="dark">
         <div class="ed-head">
           <span class="ed-thumb" style="background-image:url(../assets/event-politics.jpg)"></span>
-          <div><p class="ed-cat">Politics</p><h1 class="ed-q">Will the state board certify the count before March 1</h1>
+          <div><p class="ed-cat">Politics &middot; One-time event</p><h1 class="ed-q">Will the US government shut down before March 1, 2027?</h1>
             <p class="ed-prob-big">38%</p></div>
         </div>
-        <p class="rules-note">Resolves against the state board's published certification, and nothing else.</p>
+        <p class="rules-note">Background from the Predict Market team to explain the odds. It plays no role in how this market resolves.</p>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
         <div class="ed-head">
           <span class="ed-thumb" style="background-image:url(../assets/event-politics.jpg)"></span>
-          <div><p class="ed-cat">Politics</p><h1 class="ed-q">Will the state board certify the count before March 1</h1>
+          <div><p class="ed-cat">Politics &middot; One-time event</p><h1 class="ed-q">Will the US government shut down before March 1, 2027?</h1>
             <p class="ed-prob-big">38%</p></div>
         </div>
-        <p class="rules-note">Resolves against the state board's published certification, and nothing else.</p>
+        <p class="rules-note">Background from the Predict Market team to explain the odds. It plays no role in how this market resolves.</p>
       </div>
     </div>
     <div class="tk-tblwrap">
@@ -325,10 +325,128 @@
     takes its third skin: no ground, no edge, and the actions become a full-width column, <b>because
     that panel is the width of a sidebar and two buttons side by side in 280px are two buttons nobody
     can read</b>.</p>
+    <p class="tk-why"><b>That paragraph was the whole of it until 2026-08-10.</b> One placement is
+    the easiest thing in the product to describe and the hardest to picture, and this page described
+    it. It stands here now, from <code>event-detail-resolved.html</code>, and it closes two
+    components at once: <code>.resolved-panel</code> is this file's and
+    <code>.rp-inner</code> inside it is <a href="betpanel.html">bet panel</a>'s, which is what a
+    panel that REPLACES another panel looks like in two stylesheets.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack tk-show-panel" data-theme="dark">
+        <div class="ed-layout">
+        <aside class="bet-panel resolved-panel"><div class="rp-inner"><div class="state-block">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check-circle-b"></use></svg>
+          <h2 class="state-title">This event just resolved</h2>
+          <p class="state-msg">The event closed while you were reading. Betting is no longer available. You hold a bet, so you can open your result.</p>
+          <div class="state-actions">
+            <a href="#"><button type="button" class="btn btn-primary btn-sm btn-block">See your bet</button></a>
+            <a href="#"><button type="button" class="btn btn-secondary btn-sm btn-block">Browse events</button></a>
+          </div>
+        </div></div></aside>
+        </div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack tk-show-panel" data-theme="light">
+        <div class="ed-layout">
+        <aside class="bet-panel resolved-panel"><div class="rp-inner"><div class="state-block">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check-circle-b"></use></svg>
+          <h2 class="state-title">This event just resolved</h2>
+          <p class="state-msg">The event closed while you were reading. Betting is no longer available. You hold a bet, so you can open your result.</p>
+          <div class="state-actions">
+            <a href="#"><button type="button" class="btn btn-primary btn-sm btn-block">See your bet</button></a>
+            <a href="#"><button type="button" class="btn btn-secondary btn-sm btn-block">Browse events</button></a>
+          </div>
+        </div></div></aside>
+        </div>
+      </div>
+    </div>
+    <p class="tk-note">The cell declares the panel visible and holds it in a row, the bargain
+    <a href="betpanel.html">bet panel</a> states in full: a panel that is
+    <code>display:none</code> below 760 cannot otherwise be a specimen on a page read at both
+    widths.</p>
+  </section>
+
+  <section class="tk-sec" id="facts">
+    <h2 data-n="7">The facts row and the two rules panels, which were on no page at all</h2>
+    <p class="tk-why"><b>Five classes this file declares stood on 9 screens each and nowhere in the
+    kit</b> until 2026-08-10: <code>.ed-facts</code>, <code>.resolution</code>,
+    <code>.args</code> and <code>.arg-col</code>, plus the resolved panel above. They are not
+    decoration. <b>The resolution paragraph is the sentence the whole product is built to be trusted
+    for</b>, the one that says what makes this market pay out, and the design system had no picture
+    of it.</p>
+    <p class="tk-note">Both panels, from <code>event-detail.html</code>, and the second is the one
+    the Background tab shows. The strip above them is
+    <a href="tabs.html">tabs</a>' third family; what is shown here is what the strip switches.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="ed-facts">
+          <span>Volume<b>$84,200</b></span>
+          <span>Open to bet<b>$31,500</b></span>
+          <span>Closes<b>Mar 1, 2027</b></span>
+          <span>Frequency<b>One-time</b></span>
+        </div>
+        <div class="rules-panel"><p class="resolution"><strong>Resolves YES</strong> if a federal funding gap causes a shutdown beginning before 00:00 ET on March 1, 2027. <strong>Resolves NO</strong> if funding is in place through that date.<br>
+        <strong>Source:</strong> official US Office of Management and Budget notices. Resolved by the Predict Market team.</p></div>
+        <div class="rules-panel"><p class="resolution">YES is priced at 38%. Funding talks have stalled twice this quarter, but the last three deadlines were settled at the last minute. What is moving the number:</p>
+        <div class="args">
+          <div class="arg-col">
+            <h3>For YES</h3>
+            <ul>
+              <li>Budget talks stalled in committee, no scheduled vote.</li>
+              <li>A bloc has committed to opposing the stopgap bill.</li>
+            </ul>
+          </div>
+          <div class="arg-col">
+            <h3>For NO</h3>
+            <ul>
+              <li>Last three deadlines met with short-term funding.</li>
+              <li>Both parties signalled willingness to extend.</li>
+            </ul>
+          </div>
+        </div><p class="rules-note">Background from the Predict Market team to explain the odds. It plays no role in how this market resolves.</p></div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="ed-facts">
+          <span>Volume<b>$84,200</b></span>
+          <span>Open to bet<b>$31,500</b></span>
+          <span>Closes<b>Mar 1, 2027</b></span>
+          <span>Frequency<b>One-time</b></span>
+        </div>
+        <div class="rules-panel"><p class="resolution"><strong>Resolves YES</strong> if a federal funding gap causes a shutdown beginning before 00:00 ET on March 1, 2027. <strong>Resolves NO</strong> if funding is in place through that date.<br>
+        <strong>Source:</strong> official US Office of Management and Budget notices. Resolved by the Predict Market team.</p></div>
+        <div class="rules-panel"><p class="resolution">YES is priced at 38%. Funding talks have stalled twice this quarter, but the last three deadlines were settled at the last minute. What is moving the number:</p>
+        <div class="args">
+          <div class="arg-col">
+            <h3>For YES</h3>
+            <ul>
+              <li>Budget talks stalled in committee, no scheduled vote.</li>
+              <li>A bloc has committed to opposing the stopgap bill.</li>
+            </ul>
+          </div>
+          <div class="arg-col">
+            <h3>For NO</h3>
+            <ul>
+              <li>Last three deadlines met with short-term funding.</li>
+              <li>Both parties signalled willingness to extend.</li>
+            </ul>
+          </div>
+        </div><p class="rules-note">Background from the Predict Market team to explain the odds. It plays no role in how this market resolves.</p></div>
+      </div>
+    </div>
+    <p class="tk-note"><b>The second panel ships with <code>hidden</code> on it</b> and it is
+    unhidden here, which is the same difference the shut dialog taught: a specimen inside a hidden
+    box is 39 correct elements the browser never paints. Both panels stand open together so the two
+    can be compared, and on the screen only one is ever shown.</p>
+    <p class="tk-lab tk-bad"><b><code>.rules-panel</code> reaches no rule at all.</b> <i>18
+    placements on 9 screens, and no selector in <code>components/</code> matches it. What draws is
+    the paragraph inside it. Filed as backlog 85, with the other eight of its kind.</i></p>
   </section>
 
   <section class="tk-sec" id="rule">
-    <h2 data-n="7">The rule</h2>
+    <h2 data-n="8">The rule</h2>
     <p class="tk-note"><b>A screen file owns its own parts and nothing else.</b> The shell is a
     pattern, the plate is the page, the controls are atoms, and what is left is a head, a facts row
     and a resolution block.</p>
@@ -337,7 +455,7 @@
   </section>
 
   <section class="tk-sec" id="antirule">
-    <h2 data-n="8">The anti-rule</h2>
+    <h2 data-n="9">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never out-specify a rule for one property and assume the rest are
     handled.</b> <i>Uppercase, tracking and brass all went on applying to a heading that had been
     promoted out of their reach on the property that mattered.</i></p>
@@ -349,7 +467,7 @@
   </section>
 
   <section class="tk-sec" id="closing">
-    <h2 data-n="9">Where the rest of it is</h2>
+    <h2 data-n="10">Where the rest of it is</h2>
     <p class="tk-note">The level and its reason:
     <a href="organisms.html#event-detail">the organisms page</a>. The stylesheet:
     <code>components/event-detail.css</code>. The shell:

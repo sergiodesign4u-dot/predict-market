@@ -1,5 +1,5 @@
 /* components/patterns/browse-shell.css
-   Pattern: the browse shell. A sub-category rail beside a content column.
+   Pattern: the browse shell. A sub-category rail beside a content column. Classes: .cat-layout, .cat-main, .feed-seo, .read-col, .subcat, .toc.
 
    Assembled from: catnav (the .subcat rail), state-block, loadmore, tabs.
    It owns none of them and paints none of them; it says where they stand.

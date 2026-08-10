@@ -1,5 +1,5 @@
 /* components/bets-table.css
-   Component: bets-table. Classes: .act-list, .act-row, .act-time, .act-txt, .hold-amt, .hold-col, .hold-cols, .hold-name, .hold-out, .hold-rank, .hold-row, .lg-item, .ptable.
+   Component: bets-table. Classes: .act-list, .act-row, .act-time, .act-txt, .hold-amt, .hold-col, .hold-cols, .hold-name, .hold-out, .hold-rank, .hold-row, .ptable, .sel, .you.
 
    Reads: --border-hairline, --edge-groove-dark, --outcome-no-figure, --outcome-yes-text, --text-brass, --text-muted, --text-primary, --tint-brass-09
    Stand:  ui-kit/bets-table.html, and ui-kit/organisms.html#bets-table for the level and its reason
@@ -50,6 +50,11 @@
 .act-row{border-top:var(--hairline) solid var(--edge-groove-dark);color:var(--text-primary);font-size:var(--text-13)}
 .act-txt b{color:var(--text-primary)}
 .act-time{font-family:var(--font-mono);color:var(--text-muted)}
-.lg-item{display:inline-flex;align-items:center;gap:var(--space-8);font-family:var(--font-mono);font-size:var(--text-11);color:var(--text-muted)}
-.lg-item.sel{color:var(--text-primary);font-weight:var(--weight-semibold)}
-.lg-item i{width:var(--size-8);height:var(--size-4);border-radius:var(--radius-2);flex:0 0 auto}
+/* `.lg-item` LEFT THIS FILE ON 2026-08-10, and it was never this file's. It is the
+   price chart's legend item, the swatch and the outcome name a page script writes into
+   `.ed-legend`, and `chart.css` owns and draws that. It arrived here on 2026-07-26 when
+   the flat kit was split into 38 files, and the flat kit is the proof: the three rules
+   sat directly under `.ed-legend`, beneath the comment "multi-outcome chart: one line
+   per outcome + legend". So this was a mechanical misfile at the split and not a home
+   the rule had ever earned, which is what the row asked to be established before moving
+   anything. It is 3 rules and one word in each of two headers. */

@@ -33,6 +33,7 @@
       <span class="tk-badge">84 questions</span>
       <span class="tk-badge">84 save buttons</span>
       <span class="tk-badge">76 reasons</span>
+      <span class="tk-badge">21 multi cards, 2 rows each</span>
       <span class="tk-badge">0 photographs in CSS</span>
     </div>
   </div>
@@ -47,33 +48,42 @@
 
   <section class="tk-sec" id="spec">
     <h2 data-n="2">The two cards, and the difference is the action row</h2>
-    <p class="tk-note"><b>The product has two kinds of card and this page showed neither of them
-    whole until 2026-08-09</b>: the specimen had no action row at all, so the one control a person
-    actually presses on the feed was missing from the page about the card. Counted on
-    <code>event-feed.html</code>: <b>9 binary cards carrying <code>.yesno</code> and 3 multi-outcome
-    cards carrying <code>.options</code></b>.</p>
+    <p class="tk-note"><b>The product has two kinds of card and this page has shown neither of them
+    truthfully.</b> Until 2026-08-09 the specimen had no action row at all, so the one control a
+    person actually presses on the feed was missing from the page about the card. What replaced it
+    was written from the component rather than from a screen, and it invented a third outcome row:
+    <b>every multi-outcome card in the product carries exactly two, 21 of 21 painted and 21 of 21
+    grey</b>. Both specimens below are now the feed's own first cards of each kind, copied whole.
+    Counted on <code>event-feed.html</code>: <b>9 binary cards carrying <code>.yesno</code> and 3
+    multi-outcome cards carrying <code>.options</code></b>.</p>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
           <article class="card" data-cat="politics"><div class="card-body">
-            <div class="top"><span class="thumb" style="background-image:url(../assets/event-politics.jpg)">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will the state board certify the count before March 1?</a><p class="why">Both parties have asked the courts to intervene, and the deadline has never slipped before.</p></div></div>
-            <div class="oddsbar"><div class="track"><span class="fill" style="width:38%"></span></div><div class="lbls"><span class="l-yes">YES 38%</span><span class="l-no">NO 62%</span></div></div>
+            <div class="top"><span class="thumb" style="background-image:url(../assets/event-politics.jpg)">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will the US government shut down before March 1, 2027?</a><p class="why">Funding talks have stalled twice this quarter, but past deadlines settled late.</p></div></div>
+            <p class="prob-line" hidden>YES <span class="prob">38%</span></p><div class="oddsbar"><div class="track"><span class="fill" style="width:38%"></span></div><div class="lbls"><span class="l-yes">YES 38%</span><span class="l-no">NO 62%</span></div></div>
             <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
-            <p class="meta"><span class="meta-txt"><span>Volume: $84,200</span><span>Closes: Mar 1, 2027</span></span><button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></p>
+            <p class="meta"><span class="meta-txt"><span><span class="m-label">Volume: </span><span class="m-val">$84,200</span></span><span><span class="m-label">Closes: </span><span class="m-val">Mar 1, 2027</span></span></span><button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></p>
           </div></article>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
           <article class="card" data-cat="politics"><div class="card-body">
-            <div class="top"><span class="thumb" style="background-image:url(../assets/event-politics.jpg)">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will the state board certify the count before March 1?</a><p class="why">Both parties have asked the courts to intervene, and the deadline has never slipped before.</p></div></div>
-            <div class="oddsbar"><div class="track"><span class="fill" style="width:38%"></span></div><div class="lbls"><span class="l-yes">YES 38%</span><span class="l-no">NO 62%</span></div></div>
+            <div class="top"><span class="thumb" style="background-image:url(../assets/event-politics.jpg)">thumbnail placeholder</span><div class="top-txt"><a class="q" href="#">Will the US government shut down before March 1, 2027?</a><p class="why">Funding talks have stalled twice this quarter, but past deadlines settled late.</p></div></div>
+            <p class="prob-line" hidden>YES <span class="prob">38%</span></p><div class="oddsbar"><div class="track"><span class="fill" style="width:38%"></span></div><div class="lbls"><span class="l-yes">YES 38%</span><span class="l-no">NO 62%</span></div></div>
             <div class="yesno"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></div>
-            <p class="meta"><span class="meta-txt"><span>Volume: $84,200</span><span>Closes: Mar 1, 2027</span></span><button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></p>
+            <p class="meta"><span class="meta-txt"><span><span class="m-label">Volume: </span><span class="m-val">$84,200</span></span><span><span class="m-label">Closes: </span><span class="m-val">Mar 1, 2027</span></span></span><button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></p>
           </div></article>
       </div>
     </div>
-    <p class="tk-note"><b>Binary.</b> One question, one bar, one pair of buttons. The bar is written
-    by hand here because a page script writes it in the product, and the photograph is the inline
-    datum the rules allow.</p>
+    <p class="tk-note"><b>Binary.</b> One question, one bar, one pair of buttons. <b>The bar is in no
+    screen's markup</b>: a page script reads the <code>.prob-line</code> the screen ships, writes the
+    bar in front of the buttons and hides the line it read. So the bar is written by hand here and
+    the line is left standing and hidden, exactly as the script leaves it, because a specimen that
+    drops what the script consumed is not the card the browser draws. <b>The meta row is the second
+    thing a script writes</b>, and it is written out here too: a screen ships
+    <code>Volume: $84,200</code> as one string and the script splits it into
+    <code>.m-label</code> and <code>.m-val</code>, which is the only reason the label is muted and
+    the figure is not. The photograph is the inline datum the rules allow.</p>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
@@ -82,9 +92,9 @@
             <div class="options">
               <div class="opt-row"><span class="opt-name">Sweden</span><span class="opt-prob">34%</span><span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span></div>
               <div class="opt-row"><span class="opt-name">Italy</span><span class="opt-prob">27%</span><span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span></div>
-              <div class="opt-row"><span class="opt-name">Ukraine</span><span class="opt-prob">21%</span><span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span></div>
+              <a class="opt-more" href="#">+2 more outcomes</a>
             </div>
-            <p class="meta"><span class="meta-txt"><span>Volume: $41,900</span><span>Closes: May 16, 2027</span></span><button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></p>
+            <p class="meta"><span class="meta-txt"><span><span class="m-label">Volume: </span><span class="m-val">$61,500</span></span><span><span class="m-label">Closes: </span><span class="m-val">May 15, 2027</span></span></span><button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></p>
           </div></article>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
@@ -93,16 +103,31 @@
             <div class="options">
               <div class="opt-row"><span class="opt-name">Sweden</span><span class="opt-prob">34%</span><span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span></div>
               <div class="opt-row"><span class="opt-name">Italy</span><span class="opt-prob">27%</span><span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span></div>
-              <div class="opt-row"><span class="opt-name">Ukraine</span><span class="opt-prob">21%</span><span class="yesno compact"><a href="#"><button type="button">YES</button></a><a href="#"><button type="button">NO</button></a></span></div>
+              <a class="opt-more" href="#">+2 more outcomes</a>
             </div>
-            <p class="meta"><span class="meta-txt"><span>Volume: $41,900</span><span>Closes: May 16, 2027</span></span><button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></p>
+            <p class="meta"><span class="meta-txt"><span><span class="m-label">Volume: </span><span class="m-val">$61,500</span></span><span><span class="m-label">Closes: </span><span class="m-val">May 15, 2027</span></span></span><button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></p>
           </div></article>
       </div>
     </div>
-    <p class="tk-note"><b>Multi-outcome.</b> A row per candidate with its own compact pair, and
-    <b>no odds bar</b>: the script skips any card holding <code>.options</code>, because one bar
-    cannot say three probabilities. That is the whole structural difference between the two, and it
-    is why the card is one component and not two.</p>
+    <p class="tk-note"><b>Multi-outcome.</b> A row per outcome with its own compact pair, and <b>no
+    odds bar</b>: the script skips any card holding <code>.options</code>, because a bar answers one
+    question and this card asks one per row. That is the whole structural difference between the
+    two, and it is why the card is one component and not two.</p>
+    <p class="tk-why"><b>Two rows is a shortlist, not the field, and until 2026-08-10 the card never
+    said so.</b> Sweden and Italy sum to 61%, Labour and the Conservatives to 77%, and the detail
+    page for the same market stands the same component as
+    <a href="options.html"><code>.opt-list</code></a> with five rows and a selected state. <b>One
+    card in the set is COMPLETE</b>, Republicans 52 and Democrats 48 making 100, and that is exactly
+    the pair a person had to be able to tell apart and could not.</p>
+    <p class="tk-note"><b>The last row names the remainder and links to the event.</b> The word is
+    <code>outcome</code> because that is the product's own: the detail head prints <i>5 outcomes</i>
+    and the section is headed Outcomes. <b>The number is the smallest the arithmetic forces</b>, the
+    remainder over the smallest percentage already shown, rounded up: Eurovision leaves 39 against
+    Italy's 27, so two; the stablecoin market leaves 8, so one. <b>A card whose rows sum to 100 gets
+    no row at all</b>, because nothing is hidden and a label saying so would be noise. 18 cards in
+    each tree carry it and 3 do not.</p>
+    <p class="tk-note">The Related list said <i>4 options</i> in 24 places for the same idea. <b>One
+    word for one thing</b>: it says <i>4 outcomes</i> now.</p>
   </section>
 
   <section class="tk-sec" id="content">

@@ -253,6 +253,8 @@ _9 state page(s): event-feed-empty.html, event-feed-error.html, event-feed-loadi
 | Main | Text | Something went wrong reaching the network. Check your connection and try again. | **AI-cliche tone** |
 | Main | Button | Try again |  |
 | Main | Label | thumbnail placeholder | **placeholder** |
+| Main | Link | +1 more outcome | *added 2026-08-10, backlog 81* |
+| Main | Link | +2 more outcomes | *added 2026-08-10, backlog 81. The multi-outcome card shows two rows of a longer field and said nothing about the rest. The count is the smallest the arithmetic forces: the remainder over the smallest percentage shown, rounded up. A card whose rows sum to 100 carries no such row.* |
 | Main | Label | Volume: $84,200 |  |
 | Main | Label | Closes: Mar 1, 2027 |  |
 | Main | Icon button | Bookmark | **same-thing / Bookmark vs save vs Favorites** |

@@ -1,7 +1,12 @@
 /* components/chart.css
-   Component: chart. Classes: .chart-svg, .ed-chart-area, .ed-chart-foot, .ed-chart-head, .ed-chart-now, .ed-legend, .ed-plot, .ed-xaxis, .ed-yaxis, .grid-l, .ml-line, .nowline.
+   Component: chart. Classes: .chart-svg, .ed-chart-area, .ed-chart-foot, .ed-chart-head, .ed-chart-now, .ed-legend, .ed-plot, .ed-xaxis, .ed-yaxis, .grid-l, .lg-item, .ml-line, .nowline.
 
    Reads: --bg-chart-well, --border-brass-hover, --border-hairline, --chart-line, --chart-line-glow, --line-grid, --outcome-yes-text, --text-muted
+   Script hooks: .ed-chart, .ed-chart-multi. These carry NO rule and are not meant to: a page script reads them
+     to decide what to draw. They are declared here because a class nothing styles and
+     nothing declares is indistinguishable from dead markup, and this repository has now
+     deleted five of those in one pass. `.ed-chart-multi` is the one that decides five
+     polylines instead of one; `.rules-panel` is the set the rules tabs toggle `hidden`.
    Stand:  ui-kit/chart.html, and ui-kit/organisms.html#chart for the level and its reason
    Stands on: 11 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -35,6 +40,16 @@ div.chart-svg{display:flex;align-items:center;justify-content:center;color:var(-
 }
 .chart-svg .ml-line{filter:none;fill:none;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;transition:opacity var(--dur-base) ease,stroke-width var(--dur-base) ease}
 .ed-legend{display:flex;flex-wrap:wrap;gap:var(--space-8) var(--space-16);margin-top:var(--space-12);padding-left:var(--space-2)}
+/* THE LEGEND'S ITEM, back from bets-table.css on 2026-08-10 (docs/backlog.md 84). The
+   split of 2026-07-26 filed it with the biggest-bets list; the flat kit it was split
+   from had it here, under the legend, and nothing about it was ever a table. The item
+   is written at RUN TIME: the chart script fills `.ed-legend` with one span per
+   outcome, `sel` on the one being traced, and an `<i>` whose background is the series
+   colour it just drew the polyline in. That is why the swatch takes its colour from
+   the element and this file gives it only its box. */
+.lg-item{display:inline-flex;align-items:center;gap:var(--space-8);font-family:var(--font-mono);font-size:var(--text-11);color:var(--text-muted)}
+.lg-item.sel{color:var(--text-primary);font-weight:var(--weight-semibold)}
+.lg-item i{width:var(--size-8);height:var(--size-4);border-radius:var(--radius-2);flex:0 0 auto}
 /* THE CHART'S OWN GRID LINE, moved here from feed.css on 2026-08-03 (docs/backlog.md 17).
    The class map hands a class to the file that writes it with the fewest ancestors, and
    `.grid-l` was written in feed.css, which made the arithmetic read `chart` as containing

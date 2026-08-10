@@ -222,6 +222,7 @@
     .opt-row { display: flex; align-items: center; gap: 6px; border-top: 1px solid #ccc; padding: 6px 0; font-size: 12px; }
     .opt-row:first-child { border-top: none; }
     .opt-row .opt-name { flex: 1; }
+    .opt-more { display: block; padding: 6px 0 2px; font-size: 11px; color: #555; text-decoration: none; }
     .opt-row .opt-prob { border: 1px solid #999; background: #dcdcdc; padding: 1px 5px; font-size: 11px; font-weight: bold; }
 
     .card .meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 10px; border-top: 1px solid #ccc; padding-top: 6px; margin-top: 4px; }
@@ -1105,7 +1106,8 @@
               <div class="options">
                 <div class="opt-row"><span class="opt-name">Sweden</span><span class="opt-prob">34%</span><span class="yesno compact"><a href="event-detail-multi.html"><button type="button">YES</button></a><a href="event-detail-multi.html"><button type="button">NO</button></a></span></div>
                 <div class="opt-row"><span class="opt-name">Italy</span><span class="opt-prob">27%</span><span class="yesno compact"><a href="event-detail-multi.html"><button type="button">YES</button></a><a href="event-detail-multi.html"><button type="button">NO</button></a></span></div>
-              </div>
+                              <a class="opt-more" href="event-detail-multi.html">+2 more outcomes</a>
+</div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $61,500</span><span>Closes: May 15, 2027</span></span>
                 <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
@@ -1161,7 +1163,8 @@
               <div class="options">
                 <div class="opt-row"><span class="opt-name">Labour</span><span class="opt-prob">44%</span><span class="yesno compact"><a href="event-detail-multi.html"><button type="button">YES</button></a><a href="event-detail-multi.html"><button type="button">NO</button></a></span></div>
                 <div class="opt-row"><span class="opt-name">Conservatives</span><span class="opt-prob">33%</span><span class="yesno compact"><a href="event-detail-multi.html"><button type="button">YES</button></a><a href="event-detail-multi.html"><button type="button">NO</button></a></span></div>
-              </div>
+                              <a class="opt-more" href="event-detail-multi.html">+2 more outcomes</a>
+</div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $58,700</span><span>Closes: Jul 1, 2027</span></span>
                 <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
@@ -1285,7 +1288,7 @@
 
         <!-- Load more (concept stand: shows the feed keeps paging) -->
         <div class="load-more-wrap">
-          <button type="button" class="chip chip-nav load-more" id="loadMore">Load more events</button>
+          <button type="button" class="chip chip-nav" id="loadMore">Load more events</button>
         </div>
         <!-- /cat-main -->
         <!-- /cat-layout -->

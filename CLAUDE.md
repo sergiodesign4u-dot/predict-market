@@ -99,4 +99,12 @@ because it is a stance rather than a principle, and it is written once, here.
   while 992 links rendered in the browser's blue, and "the chart is ported" was true while it drew as
   a black rectangle, because an SVG with no `fill` is black. **A missing value is a value.** Measure
   the computed result, in a browser, at both widths and in both themes.
+- **Read the instrument before you read the finding: measure the same thing twice, unchanged, and
+  the difference has to be zero.** A before-and-after over 19 screens reported 31 files changed by an
+  edit that could not change anything; re-reading the unchanged tree gave **3,587 differing rows of
+  18,390**, every one an entrance animation caught mid-flight. Freeze animation and transition, let
+  the layout settle, **and throw the first pass away**: a cold pass, resolving fonts and stylesheet
+  for the first time, differs from every pass after it and cost another 165 rows of noise. Prove the
+  control is 0 before believing the comparison. **A number that moves when nothing moved is a
+  reading of the instrument, not of the page.**
 - **No em dash**, anywhere.

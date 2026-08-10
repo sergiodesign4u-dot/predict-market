@@ -33,11 +33,22 @@
 
   <section class="tk-sec" id="whole">
     <h2 data-n="1">The dialog, whole</h2>
-    <p class="tk-note">The sheet the product opens, with its head, its close and its body. <b>9 elements against 39</b>. One thing differs from the product and this page already said so: it is <code>open</code> rather than <code>showModal()</code>, so there is no top layer and no backdrop.</p>
+    <p class="tk-why"><b>This section drew nothing at all, at either width, from 2026-08-08 until
+    2026-08-09.</b> The rebuild that took it from 9 elements to 39 sliced the sheet out of the
+    product whole, and in the product a sheet is SHUT until a script opens it: <b>a
+    <code>&lt;dialog&gt;</code> with no <code>open</code> attribute is
+    <code>display:none</code></b>. So the page carried 39 correct elements inside a box the browser
+    never painted, and the sweep that declared parity counted them and passed, <b>because an element
+    count reads a shut dialog exactly as it reads an open one</b>. It is the same trap as the SVG
+    with no <code>fill</code> and the link with no colour: a missing value is a value.</p>
+    <p class="tk-note">The sheet the product opens, with its head, its close and its body, <b>39
+    elements</b>. Two things differ from the product and this page already said both: it is
+    <code>open</code> rather than <code>showModal()</code>, so there is no top layer and no
+    backdrop, and <code>.tk-dlg</code> pins it into the flow.</p>
     <div class="tk-pairv">
       <div class="tk-th">Vault, dark</div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
-        <dialog class="app-dialog bet-sheet" id="betSheet" aria-label="Place your bet">
+        <div class="tk-dlg"><dialog class="app-dialog bet-sheet" id="betSheet" open aria-label="Place your bet">
                 <button type="button" class="sheet-grab" data-close-sheet aria-label="Close"></button>
                 <div class="bp-inner">
                   <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES selected</span></div>
@@ -56,11 +67,11 @@
                   <button type="button" class="btn btn-primary btn-lg btn-block" data-sheet-confirm>Confirm bet</button>
                   <p class="fine">No minimum or maximum. Payout depends on when you bet.</p>
                 </div>
-              </dialog>
+              </dialog></div>
       </div>
       <div class="tk-th">Daylight, light</div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
-        <dialog class="app-dialog bet-sheet" id="betSheet-lt" aria-label="Place your bet">
+        <div class="tk-dlg"><dialog class="app-dialog bet-sheet" id="betSheet-lt" open aria-label="Place your bet">
                 <button type="button" class="sheet-grab" data-close-sheet aria-label="Close"></button>
                 <div class="bp-inner">
                   <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES selected</span></div>
@@ -79,7 +90,7 @@
                   <button type="button" class="btn btn-primary btn-lg btn-block" data-sheet-confirm>Confirm bet</button>
                   <p class="fine">No minimum or maximum. Payout depends on when you bet.</p>
                 </div>
-              </dialog>
+              </dialog></div>
       </div>
     </div>
   </section>
@@ -117,21 +128,21 @@
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-dlg">
         <dialog class="app-dialog" open aria-label="Add funds">
-          <div class="sheet-head"><h2>Add funds</h2><p class="sheet-sub">USDC on Base. Arrives in about a minute.</p></div>
+          <div class="sheet-head"><h2>Add funds</h2><p class="sheet-sub">Card or crypto. Your USDC is held 1:1.</p></div>
           <div class="sheet-body">
             <span class="field-label">Amount</span>
             <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="50.00" aria-label="Amount"></div>
-            <p class="fine">Network fees are paid by us for the first deposit.</p>
+            <p class="fine">Minimum $10. Card payments are converted to USDC via Transak. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
           </div>
         </dialog>
       </div></div>
       <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-dlg">
         <dialog class="app-dialog" open aria-label="Add funds">
-          <div class="sheet-head"><h2>Add funds</h2><p class="sheet-sub">USDC on Base. Arrives in about a minute.</p></div>
+          <div class="sheet-head"><h2>Add funds</h2><p class="sheet-sub">Card or crypto. Your USDC is held 1:1.</p></div>
           <div class="sheet-body">
             <span class="field-label">Amount</span>
             <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="50.00" aria-label="Amount"></div>
-            <p class="fine">Network fees are paid by us for the first deposit.</p>
+            <p class="fine">Minimum $10. Card payments are converted to USDC via Transak. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
           </div>
         </dialog>
       </div></div>
@@ -193,8 +204,58 @@
     their own inline grey-box CSS and link nothing from <code>components/</code>.</p>
   </section>
 
+  <section class="tk-sec" id="outcome">
+    <h2 data-n="7">The fifth kind, which opens itself</h2>
+    <p class="tk-why"><b>The page says four kinds and the product ships five.</b>
+    <code>.outcome-dialog</code> stands on <b>6 screens</b>, the win and loss cluster, and it had
+    never been drawn in the kit. It is the only dialog in the product that opens BY ITSELF: a script
+    at the foot of those screens calls <code>showModal()</code> on load, because the person did not
+    ask to see it, the market resolved and the product is telling them.</p>
+    <p class="tk-note">It also carries a second class, <code>.loss-dialog</code> or
+    <code>.win-dialog</code>, which is where the outcome colour comes from. Shown loading, from
+    <code>loss-loading.html</code>, because that is the state a person actually meets first.</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-dlg">
+        <dialog class="app-dialog outcome-dialog loss-dialog" open aria-label="Here's what happened"><div class="sheet-head"><h1>Here's what happened</h1><a href="#"><button type="button" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></a></div><div class="sheet-body">
+          <p class="fine">Will the US government shut down before March 1, 2027?</p>
+          <div class="spinner-box">Loading the resolution...<br><span class="fine">Fetching what resolved and why.</span></div>
+        </div></dialog>
+      </div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-dlg">
+        <dialog class="app-dialog outcome-dialog loss-dialog" open aria-label="Here's what happened"><div class="sheet-head"><h1>Here's what happened</h1><a href="#"><button type="button" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></a></div><div class="sheet-body">
+          <p class="fine">Will the US government shut down before March 1, 2027?</p>
+          <div class="spinner-box">Loading the resolution...<br><span class="fine">Fetching what resolved and why.</span></div>
+        </div></dialog>
+      </div></div>
+    </div>
+    <p class="tk-note"><b>Its second class is where the outcome goes</b>, and both faces stand here
+    because the pair is the point: the same sheet, the same head, the same close, and one value
+    apart. Green and red are outcome semantics in this system and nothing else, so this is the one
+    dialog in the product allowed to carry either.</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Won, dark</span><span>Won, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-dlg">
+        <dialog class="app-dialog outcome-dialog win-dialog" open aria-label="You were right"><div class="sheet-head"><h1>You were right</h1><a href="#"><button type="button" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></a></div><div class="sheet-body">
+          <p class="fine">Will the US government shut down before March 1, 2027?</p>
+          <div class="spinner-box">Loading the resolution...<br><span class="fine">Fetching what resolved and why.</span></div>
+        </div></dialog>
+      </div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-dlg">
+        <dialog class="app-dialog outcome-dialog win-dialog" open aria-label="You were right"><div class="sheet-head"><h1>You were right</h1><a href="#"><button type="button" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></a></div><div class="sheet-body">
+          <p class="fine">Will the US government shut down before March 1, 2027?</p>
+          <div class="spinner-box">Loading the resolution...<br><span class="fine">Fetching what resolved and why.</span></div>
+        </div></dialog>
+      </div></div>
+    </div>
+    <p class="tk-lab tk-bad"><b>Neither <code>.win-dialog</code> nor <code>.loss-dialog</code> was
+    named in this file's own class list until 2026-08-10.</b> <i>Both were styled here and claimed by
+    no component header anywhere, which is why no sweep could ask whether the kit showed them. Both
+    are declared now, and the second was found by the declaration.</i></p>
+  </section>
+
   <section class="tk-sec" id="rule">
-    <h2 data-n="7">The rule</h2>
+    <h2 data-n="8">The rule</h2>
     <p class="tk-note"><b>A dialog is outside the app wrapper, so every scope has to name it.</b>
     That is not a preference, it is where the browser puts the element.</p>
     <p class="tk-note"><b>The frame clips and the body scrolls.</b> One box cannot do both.</p>
@@ -203,7 +264,7 @@
   </section>
 
   <section class="tk-sec" id="antirule">
-    <h2 data-n="8">The anti-rule</h2>
+    <h2 data-n="9">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never scope a rule to a wrapper the product's own regions stand
     outside of.</b> <i>526 of 559 dialog buttons were not covered, and neither was the footer or the
     bottom nav. The wrapper is gone from 415 selectors and the one file that kept it means the PAGE
@@ -215,7 +276,7 @@
   </section>
 
   <section class="tk-sec" id="closing">
-    <h2 data-n="9">Where the rest of it is</h2>
+    <h2 data-n="10">Where the rest of it is</h2>
     <p class="tk-note">The level and its reason: <a href="organisms.html#dialog">the organisms
     page</a>. The stylesheet: <code>components/dialog.css</code>. The close disc:
     <a href="iconbtn.html">icon button</a>. The field inside it: <a href="input.html">input</a>. The

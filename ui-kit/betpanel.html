@@ -23,7 +23,7 @@
     docks and 4 sheets on 11 painted screens.</b> Measured 2026-08-08 in a browser, at 390 and
     1280.</p>
     <div class="tk-badges">
-      <span class="tk-badge">3 faces</span>
+      <span class="tk-badge">3 faces, all 3 shown</span>
       <span class="tk-badge">0x0 at the other width</span>
       <span class="tk-badge">capped to the window</span>
       <span class="tk-badge">3 press mechanisms</span>
@@ -32,59 +32,156 @@
 
   <section class="tk-sec" id="whole">
     <h2 data-n="1">The panel, whole</h2>
-    <p class="tk-note">The head, the hint, the pair, the amount row, the change line and the confirm. <b>18 elements against 39</b> until 2026-08-09.</p>
+    <p class="tk-why"><b>This section was a sheet wearing the panel's title, and it drew nothing at
+    all.</b> A <code>&lt;dialog&gt;</code> with no <code>open</code> attribute is
+    <code>display:none</code>, so
+    both cells here were empty boxes at 390 and at 1280 from 2026-08-08 until 2026-08-09, while the
+    gap sweep that put this page at parity counted their 39 children and passed. <b>An element count
+    reads a shut dialog exactly as it reads an open one.</b></p>
+    <p class="tk-note">What stands here now is <code>.bet-panel</code> itself, sliced whole out of
+    <code>event-detail-multi.html</code>, the richest of the eleven at <b>38 elements</b>: the head
+    and its hint, the chosen outcome with its Change link, the pair, the amount row with the wallet
+    figure beside it, the four quick chips, the three lines and the confirm.</p>
     <div class="tk-pairv">
       <div class="tk-th">Vault, dark</div>
-      <div class="tk-theme-fig tk-stack" data-theme="dark">
-        <dialog class="app-dialog bet-sheet" id="betSheet" aria-label="Place your bet">
-                <button type="button" class="sheet-grab" data-close-sheet aria-label="Close"></button>
-                <div class="bp-inner">
-                  <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES selected</span></div>
-                  <span class="field-label">Your outcome</span>
-                  <div class="bp-selected"><span class="bp-sel-name">JD Vance <span class="opt-prob">41%</span></span><a href="#edOutcomes" class="bp-change" data-close-sheet>Change</a></div>
-                  <div class="bp-dir"><button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">41%</span></button><button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">59%</span></button></div>
-                  <div>
-                    <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="0" value="5.00" aria-label="Bet amount"></div>
-                    <div class="quick"><button type="button" class="chip chip-amount sel">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button><button class="chip chip-amount" type="button">$50</button></div>
-                  </div>
-                  <div>
-                    <div class="line"><span>Price now</span><span>41%</span></div>
-                    <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
-                    <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
-                  </div>
-                  <button type="button" class="btn btn-primary btn-lg btn-block" data-sheet-confirm>Confirm bet</button>
-                  <p class="fine">No minimum or maximum. Payout depends on when you bet.</p>
-                </div>
-              </dialog>
+      <div class="tk-theme-fig tk-stack tk-show-panel" data-theme="dark">
+        <div class="ed-layout">
+        <aside class="bet-panel">
+          <div class="bp-inner">
+            <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
+            <span class="field-label">Your outcome</span>
+            <div class="bp-selected">
+              <span class="bp-sel-name">JD Vance <span class="opt-prob">41%</span></span>
+              <a href="#edOutcomes" class="bp-change">Change</a>
+            </div>
+            <div class="bp-dir">
+              <button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">41%</span></button>
+              <button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">59%</span></button>
+            </div>
+            <div>
+              <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="0" value="5.00" aria-label="Bet amount"></div>
+              <div class="quick"><button type="button" class="chip chip-amount sel">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button><button class="chip chip-amount" type="button">$50</button></div>
+            </div>
+            <div>
+              <div class="line"><span>Price now</span><span>41%</span></div>
+              <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
+              <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
+            </div>
+            <button type="button" class="btn btn-primary btn-md btn-block">Confirm bet</button>
+            <p class="fine">No minimum or maximum. Payout depends on when you bet.</p>
+          </div>
+        </aside>
+        </div>
       </div>
       <div class="tk-th">Daylight, light</div>
-      <div class="tk-theme-fig tk-stack" data-theme="light">
-        <dialog class="app-dialog bet-sheet" id="betSheet-lt" aria-label="Place your bet">
-                <button type="button" class="sheet-grab" data-close-sheet aria-label="Close"></button>
-                <div class="bp-inner">
-                  <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES selected</span></div>
-                  <span class="field-label">Your outcome</span>
-                  <div class="bp-selected"><span class="bp-sel-name">JD Vance <span class="opt-prob">41%</span></span><a href="#edOutcomes" class="bp-change" data-close-sheet>Change</a></div>
-                  <div class="bp-dir"><button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">41%</span></button><button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">59%</span></button></div>
-                  <div>
-                    <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="0" value="5.00" aria-label="Bet amount"></div>
-                    <div class="quick"><button type="button" class="chip chip-amount sel">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button><button class="chip chip-amount" type="button">$50</button></div>
-                  </div>
-                  <div>
-                    <div class="line"><span>Price now</span><span>41%</span></div>
-                    <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
-                    <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
-                  </div>
-                  <button type="button" class="btn btn-primary btn-lg btn-block" data-sheet-confirm>Confirm bet</button>
-                  <p class="fine">No minimum or maximum. Payout depends on when you bet.</p>
-                </div>
-              </dialog>
+      <div class="tk-theme-fig tk-stack tk-show-panel" data-theme="light">
+        <div class="ed-layout">
+        <aside class="bet-panel">
+          <div class="bp-inner">
+            <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
+            <span class="field-label">Your outcome</span>
+            <div class="bp-selected">
+              <span class="bp-sel-name">JD Vance <span class="opt-prob">41%</span></span>
+              <a href="#edOutcomes" class="bp-change">Change</a>
+            </div>
+            <div class="bp-dir">
+              <button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">41%</span></button>
+              <button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">59%</span></button>
+            </div>
+            <div>
+              <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="0" value="5.00" aria-label="Bet amount"></div>
+              <div class="quick"><button type="button" class="chip chip-amount sel">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button><button class="chip chip-amount" type="button">$50</button></div>
+            </div>
+            <div>
+              <div class="line"><span>Price now</span><span>41%</span></div>
+              <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
+              <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
+            </div>
+            <button type="button" class="btn btn-primary btn-md btn-block">Confirm bet</button>
+            <p class="fine">No minimum or maximum. Payout depends on when you bet.</p>
+          </div>
+        </aside>
+        </div>
       </div>
     </div>
+    <p class="tk-note"><b>Two things differ from the product, and the second one was a defect before
+    it was a difference.</b> The panel is <code>display:none</code> below 760, so the cell declares
+    it visible in order to be a specimen at both widths, the same bargain the stand made for the
+    bottom bar. And <b>the panel stands in <code>.ed-layout</code>, its own container, held in the
+    row direction</b>: <code>.bet-panel</code> sizes itself with <code>flex:0 0 322px</code>, and a
+    flex basis is a width in a row and <b>a height in a column</b>. Dropped into the stand's column
+    cell it drew <b>353 x 322 with <code>overflow:clip</code> cutting the rest off</b>, against 322 x
+    558 in the product. Its width here is the product's, untouched.</p>
+  </section>
+
+  <section class="tk-sec" id="dock">
+    <h2 data-n="2">The dock is two docks, and the one that matters is the pair that opens the sheet</h2>
+    <p class="tk-why"><b>The argument was that a dock cannot stand on a page also read at 1280,
+    because it is <code>display:none</code> above 760.</b> That is true of the panel above it in
+    exactly the same way and in the opposite direction, and the kit had already answered it once:
+    <code>.tk-show-nav</code> pins the bottom bar visible on the one page where the bar is not the
+    subject. <b>Here all three faces ARE the subject</b>, so both take the bargain and both say what
+    it costs.</p>
+    <p class="tk-why"><b>And "the richest instance" is the wrong question for this one.</b> Counted
+    across the eight: <b>four docks CHOOSE and four CONFIRM</b>, and the two are not a long form and
+    a short form of one thing. The chooser is two sides carrying
+    <code>data-open-sheet</code>, and pressing either one is <b>the only way a phone reaches the bet
+    panel at all</b>. The confirmer has no such attribute: it stands on the four bet-state screens
+    where the amount is already set, and it carries the stake, the payout and its own Confirm. A page
+    that showed the fuller one alone would have shown the dock without the thing the dock is
+    <i>for</i>.</p>
+    <p class="tk-note"><b>The chooser</b>, from <code>event-detail.html</code>: 4 elements, on the
+    four plain detail screens. The multi-outcome pair names the outcome in the button, <i>JD Vance
+    YES</i>, because on that screen YES alone would not say which of five.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack tk-show-dock" data-theme="dark">
+        <div class="bet-dock" aria-label="Place your bet">
+          <button type="button" class="yesno-pick yesno-pick-bar bp-side sel" data-open-sheet="yes">YES <span class="bp-pct">38%</span></button>
+          <button type="button" class="yesno-pick yesno-pick-bar bp-side" data-open-sheet="no">NO <span class="bp-pct">62%</span></button>
+        </div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack tk-show-dock" data-theme="light">
+        <div class="bet-dock" aria-label="Place your bet">
+          <button type="button" class="yesno-pick yesno-pick-bar bp-side sel" data-open-sheet="yes">YES <span class="bp-pct">38%</span></button>
+          <button type="button" class="yesno-pick yesno-pick-bar bp-side" data-open-sheet="no">NO <span class="bp-pct">62%</span></button>
+        </div>
+      </div>
+    </div>
+    <p class="tk-note"><b>The confirmer</b>, from <code>event-detail-bet-error.html</code>: 7
+    elements, on the four bet-state screens. Same bar, same two sides, plus the stake and its payout
+    and a Confirm of its own.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack tk-show-dock" data-theme="dark">
+        <div class="bet-dock" aria-label="Place your bet">
+          <button type="button" class="yesno-pick yesno-pick-bar bp-side sel">YES <span class="bp-pct">38%</span></button>
+          <button type="button" class="yesno-pick yesno-pick-bar bp-side">NO <span class="bp-pct">62%</span></button>
+          <span class="dock-meta">$5 to win<b>$13.20</b></span>
+          <button type="button" class="btn btn-primary btn-md">Confirm bet</button>
+        </div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack tk-show-dock" data-theme="light">
+        <div class="bet-dock" aria-label="Place your bet">
+          <button type="button" class="yesno-pick yesno-pick-bar bp-side sel">YES <span class="bp-pct">38%</span></button>
+          <button type="button" class="yesno-pick yesno-pick-bar bp-side">NO <span class="bp-pct">62%</span></button>
+          <span class="dock-meta">$5 to win<b>$13.20</b></span>
+          <button type="button" class="btn btn-primary btn-md">Confirm bet</button>
+        </div>
+      </div>
+    </div>
+    <p class="tk-note"><b>Two things differ here, not one</b>: the dock is declared visible, as the
+    panel is, and it is pinned static, because <code>position:sticky;bottom:52px</code> is a claim
+    about a scrolling screen and not about a cell. <b>Label muted, figure bright</b> in the
+    <code>.dock-meta</code>, which is the same ranking the card's meta row uses, and the reason it is
+    stated in <code>betpanel.css</code> at all is that without it both halves inherit body text and
+    the two read as one sentence.</p>
   </section>
 
   <section class="tk-sec" id="why">
-    <h2 data-n="2">What this page is for</h2>
+    <h2 data-n="3">What this page is for</h2>
     <p class="tk-note">The level and its reason stay on
     <a href="organisms.html#betpanel">the organisms page</a>. What needs the room here is the worst
     of the three pinned-rail defects in this product, and a hover that was alive in one theme
@@ -92,7 +189,7 @@
   </section>
 
   <section class="tk-sec" id="faces">
-    <h2 data-n="3">Three faces, each absent where the others stand</h2>
+    <h2 data-n="4">Three faces, each absent where the others stand</h2>
     <div class="tk-tblwrap">
       <table class="tk-tbl">
         <thead><tr><th>face</th><th>worn</th><th>at 390</th><th>at 1280</th></tr></thead>
@@ -110,10 +207,14 @@
     <p class="tk-note">The sheet is a <a href="dialog.html">dialog</a>, so it renders at both widths,
     and it is the phone's answer to the panel: the dock is a summary of the bet and a button, and
     tapping it opens the whole control.</p>
+    <p class="tk-note"><b>The numbers in this table are the product's and the two specimens above
+    are not measured by it</b>, because both of them are declared visible by the stand in order to
+    stand at all. What the table says is what the SCREENS do, which is the fact worth keeping: a
+    person on a phone never sees the panel and a person at a desk never sees the dock.</p>
   </section>
 
   <section class="tk-sec" id="capped">
-    <h2 data-n="4">Capped to the window, and this is the worst of the three</h2>
+    <h2 data-n="5">Capped to the window, and this is the worst of the three</h2>
     <p class="tk-why">Pinned at 120px and 555px tall on a multi-outcome event, this panel needs
     <b>676px of window</b>. Below that, <b>the Confirm button at the foot of it is off the bottom of
     the screen with nothing able to bring it back</b>, because the page scrolls and a pinned box does
@@ -129,48 +230,83 @@
   </section>
 
   <section class="tk-sec" id="spec">
-    <h2 data-n="5">The sheet, and why the dock is not the specimen</h2>
-    <p class="tk-why"><b>The dock cannot be shown on a page that is also read at 1280</b>, because it
-    is <code>display:none</code> above 760 and a specimen of it would be an empty box on half the
-    readings of this page. That is not a limitation of the stand, it is the component: the dock
-    exists on a phone and nowhere else. Its measurements are in the table above, and what it holds is
-    a summary of the bet and one button.</p>
-    <p class="tk-note">The sheet renders at both widths, because it is a
-    <a href="dialog.html">dialog</a>, and it is what the dock opens.</p>
+    <h2 data-n="6">The sheet, which is the panel again with a handle on it</h2>
+    <p class="tk-why"><b>The specimen that stood here was not the product's sheet.</b> It asked for
+    "Your stake" against the product's "Amount", it printed one line called "If YES" against the
+    product's three, it had three quick chips against four, and it carried a sentence about fees
+    that appears on no screen. Six differences, and every one of them read as a plausible bet sheet,
+    <b>which is exactly why a specimen is copied and not composed</b>.</p>
+    <p class="tk-note">What stands here now is the sheet from <code>event-detail-multi.html</code>,
+    <b>39 elements</b>, the richest of the four. Beside the panel above it the point is visible in
+    one look: <b>the same control, plus a grab handle, minus nothing</b>. The head, the outcome, the
+    pair, the amount, the chips, the three lines and the confirm are the same blocks in the same
+    order, which is why one file draws both.</p>
+    <p class="tk-note"><b>The sheet has the same two shapes the card has, and for the same reason.</b>
+    On the two binary screens it is <b>34 elements</b>: no "Your outcome" label, no
+    <code>.bp-selected</code> row and no Change link, because with one question there is nothing to
+    choose between and nothing to go back to. Head, pair, amount, lines, confirm. The five elements
+    the multi sheet adds are that row, which is the same five the panel adds, which is the whole
+    difference between the two.</p>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-dlg">
         <dialog class="app-dialog bet-sheet" open aria-label="Place your bet">
+          <button type="button" class="sheet-grab" aria-label="Close"></button>
           <div class="bp-inner">
-            <div class="bp-dir"><button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">64%</span></button><button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">36%</span></button></div>
-            <span class="field-label">Your stake</span>
-            <div class="bp-amount-row"><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="0" value="120.00" aria-label="Stake"></div>
-            <div class="quick"><button type="button" class="chip chip-amount">$10</button><button type="button" class="chip chip-amount sel">$20</button><button type="button" class="chip chip-amount">$50</button></div>
-            <div class="line"><span class="bp-amount-lbl">If YES</span><span class="total">$187.50</span></div>
-            <p class="fine">Fees are taken from the payout, never from your stake.</p>
+            <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES selected</span></div>
+            <span class="field-label">Your outcome</span>
+            <div class="bp-selected"><span class="bp-sel-name">JD Vance <span class="opt-prob">41%</span></span><a href="#edOutcomes" class="bp-change">Change</a></div>
+            <div class="bp-dir"><button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">41%</span></button><button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">59%</span></button></div>
+            <div>
+              <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="0" value="5.00" aria-label="Bet amount"></div>
+              <div class="quick"><button type="button" class="chip chip-amount sel">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button><button class="chip chip-amount" type="button">$50</button></div>
+            </div>
+            <div>
+              <div class="line"><span>Price now</span><span>41%</span></div>
+              <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
+              <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
+            </div>
+            <button type="button" class="btn btn-primary btn-lg btn-block">Confirm bet</button>
+            <p class="fine">No minimum or maximum. Payout depends on when you bet.</p>
           </div>
         </dialog>
       </div></div>
       <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-dlg">
         <dialog class="app-dialog bet-sheet" open aria-label="Place your bet">
+          <button type="button" class="sheet-grab" aria-label="Close"></button>
           <div class="bp-inner">
-            <div class="bp-dir"><button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">64%</span></button><button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">36%</span></button></div>
-            <span class="field-label">Your stake</span>
-            <div class="bp-amount-row"><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="0" value="120.00" aria-label="Stake"></div>
-            <div class="quick"><button type="button" class="chip chip-amount">$10</button><button type="button" class="chip chip-amount sel">$20</button><button type="button" class="chip chip-amount">$50</button></div>
-            <div class="line"><span class="bp-amount-lbl">If YES</span><span class="total">$187.50</span></div>
-            <p class="fine">Fees are taken from the payout, never from your stake.</p>
+            <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES selected</span></div>
+            <span class="field-label">Your outcome</span>
+            <div class="bp-selected"><span class="bp-sel-name">JD Vance <span class="opt-prob">41%</span></span><a href="#edOutcomes" class="bp-change">Change</a></div>
+            <div class="bp-dir"><button type="button" class="yesno-pick bp-side sel">YES <span class="bp-pct">41%</span></button><button type="button" class="yesno-pick bp-side">NO <span class="bp-pct">59%</span></button></div>
+            <div>
+              <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="0" value="5.00" aria-label="Bet amount"></div>
+              <div class="quick"><button type="button" class="chip chip-amount sel">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button><button class="chip chip-amount" type="button">$50</button></div>
+            </div>
+            <div>
+              <div class="line"><span>Price now</span><span>41%</span></div>
+              <div class="line"><span>Fee (only if you win)</span><span>$0.40</span></div>
+              <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
+            </div>
+            <button type="button" class="btn btn-primary btn-lg btn-block">Confirm bet</button>
+            <p class="fine">No minimum or maximum. Payout depends on when you bet.</p>
           </div>
         </dialog>
       </div></div>
     </div>
-    <p class="tk-note"><b>Label muted, figure bright</b>, which is the same ranking the card's meta
-    row uses. The colours are stated in this file because nothing else states them, and without them
-    the total inherited body text for both halves and the two read as one sentence.</p>
+    <p class="tk-note"><b>Two things differ from the product and this page has always said so</b>: it
+    is <code>open</code> rather than <code>showModal()</code>, so there is no top layer and no
+    backdrop, and it is pinned into the flow. Everything inside is
+    <code>components/betpanel.css</code> untouched.</p>
+    <p class="tk-note"><b>One difference here is the product's and not the stand's.</b> The sheet
+    confirms with <code>.btn-lg</code> at 56 and the panel confirms with <code>.btn-md</code> at 48,
+    the same action twice at two sizes. On a phone that is defensible, since the sheet IS the phone's
+    face. It is written down rather than fixed because the two are never on screen together and
+    nothing in the system says which one a primary action should be.</p>
   </section>
 
   <section class="tk-sec" id="theme">
-    <h2 data-n="6">A hover alive in one theme only, and it was the second of two</h2>
+    <h2 data-n="7">A hover alive in one theme only, and it was the second of two</h2>
     <p class="tk-why">The hover border read a role that is <b>the LIT LIP of an emboss</b>, which the
     light theme takes to a 70 per cent white so a lip has enough light on pale stone. As a hover
     BORDER on a chalk control that is <b>a 70 per cent white line on a near-white ground: 1.02:1</b>,
@@ -182,7 +318,7 @@
   </section>
 
   <section class="tk-sec" id="press">
-    <h2 data-n="7">The sides left, and the argument travelled with them</h2>
+    <h2 data-n="8">The sides left, and the argument travelled with them</h2>
     <p class="tk-note">The two sides are <a href="yesno.html#trader">yes / no</a>'s now, as the
     trader's face of the outcome atom, <b>neutral at rest because a chooser states the CHOICE and not
     the market</b>. That argument was written in this file and it moved with the rules <b>rather than
@@ -197,7 +333,7 @@
   </section>
 
   <section class="tk-sec" id="rule">
-    <h2 data-n="8">The rule</h2>
+    <h2 data-n="9">The rule</h2>
     <p class="tk-note"><b>A pinned box is capped to the window.</b> Especially this one, where what
     falls off the bottom is the action.</p>
     <p class="tk-note"><b>A role means what its name says.</b> A lip is not an edge, and the two are
@@ -207,7 +343,7 @@
   </section>
 
   <section class="tk-sec" id="antirule">
-    <h2 data-n="9">The anti-rule</h2>
+    <h2 data-n="10">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never pin the control that places the bet without capping it.</b>
     <i>676px of window, and below that Confirm is unreachable.</i></p>
     <p class="tk-lab tk-bad"><b>Never take a hover colour from a role built for depth.</b> <i>1.02:1
@@ -217,7 +353,7 @@
   </section>
 
   <section class="tk-sec" id="closing">
-    <h2 data-n="10">Where the rest of it is</h2>
+    <h2 data-n="11">Where the rest of it is</h2>
     <p class="tk-note">The level and its reason: <a href="organisms.html#betpanel">the organisms
     page</a>. The stylesheet: <code>components/betpanel.css</code>. The two sides:
     <a href="yesno.html">yes / no</a>. The field: <a href="input.html">input</a>. The chips beside

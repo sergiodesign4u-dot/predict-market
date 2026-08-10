@@ -1,5 +1,5 @@
 /* components/button.css
-   Component: button. Classes: .btn, .btn-bare, .btn-block, .btn-ghost, .btn-lg, .btn-md, .btn-primary, .btn-prompt, .btn-provider, .btn-secondary, .btn-sm, .btn-xs, .prov-apple, .prov-x.
+   Component: button. Classes: .btn, .btn-bare, .btn-block, .btn-ghost, .btn-lg, .btn-md, .btn-primary, .btn-prompt, .btn-provider, .btn-secondary, .btn-sm, .btn-xs, .prov-apple, .prov-google, .prov-x.
 
    Reads: --bg-brand-mark, --bg-control, --bg-control-hover, --bg-pressed, --bg-prompt-hover, --bg-well, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --opacity-disabled, --text-brass, --text-muted, --text-on-brass, --text-primary, --text-strong, --tint-brass-16
    Stand:  ui-kit/button.html, and ui-kit/vitrine.html#button for the level and its reason
@@ -130,7 +130,13 @@
    1 exists for. A comment's Reply does a thing; it does not go anywhere. */
 .btn.btn-ghost{background:transparent;border-color:var(--border-hairline);border-radius:var(--radius-pill);
   color:var(--text-muted);white-space:nowrap}
-.btn.btn-bare{background:transparent;border-width:0;border-radius:0;color:var(--text-muted);
+/* THE BARE FACE DECLARES ITS RUNG, 2026-08-10 (docs/backlog.md 40). It stood 24.5, which
+   is 4+4 of padding plus whatever DM Sans returned at 11px, and no rung is 24.5. 28 is the
+   ladder's smallest and the size this face is for: a comment action beside a count, dense
+   on purpose. The touch floor already took it to 44 under a finger through `.btn`, so the
+   only thing this changes is the mouse branch, where the ladder now decides instead of the
+   font. */
+.btn.btn-bare{--control-h:var(--control-28);background:transparent;border-width:0;border-radius:0;color:var(--text-muted);
   padding:var(--space-4);font-size:var(--text-11);gap:var(--space-4)}
 /* THE FIFTH EMPHASIS, 2026-08-07, AND IT IS THE LAST FILE-SLOT ON THE ATOM MAP.
    `.cmt-signin` is a full-width invitation on `--bg-well`: "Sign in to join the

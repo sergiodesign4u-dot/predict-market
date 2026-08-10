@@ -145,7 +145,7 @@
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
         <section class="cc-banner"><div class="cc-inner">
-          <p class="cc-text">We use cookies to keep you signed in and to see which markets people open. You choose the rest.</p>
+          <p class="cc-text">We use cookies to run the site and, only if you allow it, to measure and improve it.</p>
           <p class="cc-policy"><a href="#">Cookie policy</a><a href="#">Privacy</a></p>
           <div class="cc-actions"><button type="button" class="btn btn-secondary btn-md cc-btn">Accept all</button><button type="button" class="btn btn-secondary btn-md cc-btn">Reject all</button><button type="button" class="btn btn-secondary btn-md cc-btn">Manage</button></div>
           <div class="cc-manage">
@@ -159,7 +159,7 @@
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
         <section class="cc-banner"><div class="cc-inner">
-          <p class="cc-text">We use cookies to keep you signed in and to see which markets people open. You choose the rest.</p>
+          <p class="cc-text">We use cookies to run the site and, only if you allow it, to measure and improve it.</p>
           <p class="cc-policy"><a href="#">Cookie policy</a><a href="#">Privacy</a></p>
           <div class="cc-actions"><button type="button" class="btn btn-secondary btn-md cc-btn">Accept all</button><button type="button" class="btn btn-secondary btn-md cc-btn">Reject all</button><button type="button" class="btn btn-secondary btn-md cc-btn">Manage</button></div>
           <div class="cc-manage">
@@ -249,6 +249,39 @@
     <p class="tk-note"><b>Two components with the same drawing and different meanings is exactly the
     case this kit exists to make legible</b>, and the test is what happens next: a skeleton is
     replaced by content, and this is never replaced by anything.</p>
+    <p class="tk-why"><b>And until 2026-08-10 this section made that argument with nothing to look
+    at.</b> The case is "these two things are drawn alike and mean different things", which is the
+    one claim in the kit that cannot be made in prose: it needs both drawings, side by side. Four
+    classes stood on the screen and on no page here, <code>.cc-page</code>, <code>.cc-ph</code>,
+    <code>.cc-ph-line</code> and the <code>.w90</code> width beside its three siblings.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <section class="cc-page" aria-hidden="true">
+          <div class="cc-ph">
+            <div class="cc-ph-line w90"></div>
+            <div class="cc-ph-line w80"></div>
+            <div class="cc-ph-line w60"></div>
+            <div class="cc-ph-line w40"></div>
+          </div>
+        </section>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <section class="cc-page" aria-hidden="true">
+          <div class="cc-ph">
+            <div class="cc-ph-line w90"></div>
+            <div class="cc-ph-line w80"></div>
+            <div class="cc-ph-line w60"></div>
+            <div class="cc-ph-line w40"></div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <p class="tk-note"><b>The four widths are the same four the skeleton uses</b>, and that is the
+    strongest evidence for the row above rather than against it: two components reaching for one set
+    of width utilities is the system working. What separates them is the meaning, and
+    <code>aria-hidden</code> on the whole block is where this one states it.</p>
   </section>
 
   <section class="tk-sec" id="rule">
