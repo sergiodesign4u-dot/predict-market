@@ -14,7 +14,22 @@
 
    Prefix: .tk-* (tokens stand). No em dash. */
 
-:root{--measure:74ch}
+/* THE STAND'S FOUR CUSTOM PROPERTIES ALL CARRY --tk-, SINCE 2026-08-11, AND ONE
+   OF THEM HAD TO BE RENAMED TO GET THERE. `--measure` was declared here as a
+   bare name in the SYSTEM's namespace, and on 2026-08-11 the system claimed the
+   same name for the line measure. `_page.css` loads after `components/index.css`
+   on every kit page, so the stand won silently on all 57 of them: the system said
+   66ch, this file said 74ch, and the page whose whole subject is that token was
+   drawing 810px where 66ch is 722px and calling it capped. Nothing broke and
+   nothing looked wrong, which is why it needed a control to find.
+   THE RULE THIS FOLDER ALREADY STATED COVERS IT AND WAS WRITTEN FOR CLASSES:
+   a stand page may never style a product class, and `_page.css` is `.tk-*` only.
+   A custom property is a name in the same shared namespace as a class, and the
+   stand is a guest in it. `--cell`, `--sw` and `--u` were equally exposed and are
+   renamed with it, so the collision is impossible rather than fixed once.
+   The one exception is deliberate and is two hundred lines down: `.tk-measured`
+   reads the SYSTEM's `--measure`, because that specimen IS the system token. */
+:root{--tk-measure:74ch}
 
 /* ---- page frame ---- */
 .tk-wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
@@ -69,9 +84,9 @@
 /* ONE MEASURE, DECLARED ONCE. Measured on 2026-08-05 with the real `ch` unit: a bare
    <p> inside a section ran at 99 characters per line while the footnote beside it was
    held to 76. The block a reader came for was the one with no max-width at all. */
-.tk-sec>p{max-width:var(--measure)}
+.tk-sec>p{max-width:var(--tk-measure)}
 .tk-note{color:var(--text-muted);font-family:var(--font-body);font-size:13px;
-  margin:0 0 18px;max-width:var(--measure);line-height:1.55}
+  margin:0 0 18px;max-width:var(--tk-measure);line-height:1.55}
 .tk-subh{color:var(--text-muted);font-family:var(--font-body);font-size:11px;
   font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin:26px 0 10px}
 
@@ -298,14 +313,14 @@
    half its width outside its geometry, so a safe field read off getBBox alone is
    short by stroke/2 on every side and the whole audit reads a module too kind. */
 
-.tk-cell{--cell:96px;--u:calc(var(--cell)/24);
-  position:relative;width:var(--cell);height:var(--cell);flex:0 0 auto;
+.tk-cell{--tk-cell:96px;--tk-u:calc(var(--tk-cell)/24);
+  position:relative;width:var(--tk-cell);height:var(--tk-cell);flex:0 0 auto;
   border:1px solid var(--border-hairline);border-radius:10px;background:var(--bg-well);
   background-image:
-    repeating-linear-gradient(to right,var(--line-grid) 0 1px,transparent 1px var(--u)),
-    repeating-linear-gradient(to bottom,var(--line-grid) 0 1px,transparent 1px var(--u))}
+    repeating-linear-gradient(to right,var(--line-grid) 0 1px,transparent 1px var(--tk-u)),
+    repeating-linear-gradient(to bottom,var(--line-grid) 0 1px,transparent 1px var(--tk-u))}
 /* the safe field, 2 modules in from every edge */
-.tk-cell::before{content:'';position:absolute;inset:calc(var(--u)*2);
+.tk-cell::before{content:'';position:absolute;inset:calc(var(--tk-u)*2);
   border:1px dashed var(--color-action);opacity:.6;pointer-events:none}
 /* the geometric centre, so an optical shift can be seen rather than argued about */
 .tk-cell::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:.5;
@@ -314,8 +329,8 @@
     linear-gradient(to bottom,transparent calc(50% - .5px),var(--color-action) calc(50% - .5px) calc(50% + .5px),transparent calc(50% + .5px))}
 .tk-cell.tk-plain{background-image:none}
 .tk-cell.tk-plain::before,.tk-cell.tk-plain::after{content:none}
-.tk-cell-lg{--cell:264px}
-.tk-cell-sm{--cell:72px}
+.tk-cell-lg{--tk-cell:264px}
+.tk-cell-sm{--tk-cell:72px}
 
 .tk-glyph{position:absolute;inset:0;width:100%;height:100%;overflow:visible;
   fill:none;stroke:var(--text-primary);stroke-width:1.6;
@@ -346,11 +361,11 @@
    the band. The cap is a measure rather than a pixel, and it belongs on the caption
    rather than on the column, because what has no natural width here is the prose. */
 .tk-anat .tk-gl figcaption{max-width:34ch}
-@media(max-width:759.98px){.tk-anat{grid-template-columns:1fr}.tk-cell-lg{--cell:min(264px,72vw)}}
+@media(max-width:759.98px){.tk-anat{grid-template-columns:1fr}.tk-cell-lg{--tk-cell:min(264px,72vw)}}
 .tk-steps{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px}
 .tk-steps li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:12px;
   color:var(--text-muted);font-family:var(--font-body);font-size:13px;line-height:1.55;
-  max-width:var(--measure)}
+  max-width:var(--tk-measure)}
 .tk-steps li>b:first-child{grid-row:span 2;width:22px;height:22px;border-radius:100px;
   background:var(--color-action);color:var(--text-on-brass);font-family:var(--font-mono);
   font-size:11px;display:flex;align-items:center;justify-content:center}
@@ -380,7 +395,7 @@
 /* ==========================================================================
    FOUNDATIONS: COLOUR. Added 2026-08-07 for colour.html.
 
-   ONE CLASS PER ROLE, AND IT CARRIES NO VALUE. `.c-bg-plate{--sw:var(--bg-plate)}`
+   ONE CLASS PER ROLE, AND IT CARRIES NO VALUE. `.c-bg-plate{--tk-sw:var(--bg-plate)}`
    names the role and hands the resolving to tokens.css, so a swatch on this page
    can never disagree with the system: if the role changes, the swatch changes.
 
@@ -388,75 +403,75 @@
    arguably a datum, which the rules allow on the element, but a datum written as
    an inline style is also a value this stylesheet cannot see, and a colour page
    whose colours are invisible to the system is the exact thing being audited. */
-.tk-sw{background:var(--sw)}
-.tk-ink{color:var(--sw)}
+.tk-sw{background:var(--tk-sw)}
+.tk-ink{color:var(--tk-sw)}
 
-.c-bg-page{--sw:var(--bg-page)}
-.c-bg-canvas{--sw:var(--bg-canvas)}
-.c-bg-slab{--sw:var(--bg-slab)}
-.c-bg-plate{--sw:var(--bg-plate)}
-.c-bg-card{--sw:var(--bg-card)}
-.c-bg-card-quiet{--sw:var(--bg-card-quiet)}
-.c-bg-surface{--sw:var(--bg-surface)}
-.c-bg-control{--sw:var(--bg-control)}
-.c-bg-control-hover{--sw:var(--bg-control-hover)}
-.c-bg-chip{--sw:var(--bg-chip)}
-.c-bg-well{--sw:var(--bg-well)}
-.c-bg-dock{--sw:var(--bg-dock)}
-.c-bg-pressed{--sw:var(--bg-pressed)}
-.c-bg-brand-mark{--sw:var(--bg-brand-mark)}
-.c-text-primary{--sw:var(--text-primary)}
-.c-text-muted{--sw:var(--text-muted)}
-.c-text-icon{--sw:var(--text-icon)}
-.c-icon-quiet{--sw:var(--icon-quiet)}
-.c-icon-brass{--sw:var(--icon-brass)}
-.c-text-icon-strong{--sw:var(--text-icon-strong)}
-.c-text-chip-hover{--sw:var(--text-chip-hover)}
-.c-text-brass{--sw:var(--text-brass)}
-.c-text-brass-lit{--sw:var(--text-brass-lit)}
-.c-text-brass-chip{--sw:var(--text-brass-chip)}
-.c-text-on-brass{--sw:var(--text-on-brass)}
-.c-text-on-yes{--sw:var(--text-on-yes)}
-.c-text-on-no{--sw:var(--text-on-no)}
-.c-text-on-photo{--sw:var(--text-on-photo)}
-.c-text-strong{--sw:var(--text-strong)}
-.c-color-action{--sw:var(--color-action)}
-.c-color-action-lit{--sw:var(--color-action-lit)}
-.c-color-action-pressed{--sw:var(--color-action-pressed)}
-.c-color-trust{--sw:var(--color-trust)}
-.c-outcome-yes{--sw:var(--outcome-yes)}
-.c-outcome-no{--sw:var(--outcome-no)}
-.c-outcome-yes-text{--sw:var(--outcome-yes-text)}
-.c-outcome-no-text{--sw:var(--outcome-no-text)}
-.c-outcome-yes-fill{--sw:var(--outcome-yes-fill)}
-.c-outcome-no-fill{--sw:var(--outcome-no-fill)}
-.c-outcome-yes-fill-soft{--sw:var(--outcome-yes-fill-soft)}
-.c-outcome-no-fill-soft{--sw:var(--outcome-no-fill-soft)}
-.c-outcome-yes-line{--sw:var(--outcome-yes-line)}
-.c-outcome-no-line{--sw:var(--outcome-no-line)}
-.c-outcome-no-figure{--sw:var(--outcome-no-figure)}
-.c-chart-line{--sw:var(--chart-line)}
-.c-result-won{--sw:var(--result-won)}
-.c-result-won-text{--sw:var(--result-won-text)}
-.c-result-won-fill{--sw:var(--result-won-fill)}
-.c-result-won-line{--sw:var(--result-won-line)}
-.c-result-lost-text{--sw:var(--result-lost-text)}
-.c-result-lost-fill{--sw:var(--result-lost-fill)}
-.c-result-lost-line{--sw:var(--result-lost-line)}
-.c-series-1{--sw:var(--series-1)}
-.c-series-2{--sw:var(--series-2)}
-.c-series-3{--sw:var(--series-3)}
-.c-series-4{--sw:var(--series-4)}
-.c-series-5{--sw:var(--series-5)}
-.c-border-hairline{--sw:var(--border-hairline)}
-.c-border-brass{--sw:var(--border-brass)}
-.c-border-brass-hover{--sw:var(--border-brass-hover)}
-.c-tint-brass-06{--sw:var(--tint-brass-06)}
-.c-tint-brass-09{--sw:var(--tint-brass-09)}
-.c-tint-brass-16{--sw:var(--tint-brass-16)}
-.c-tint-brass-30{--sw:var(--tint-brass-30)}
-.c-tint-brass-45{--sw:var(--tint-brass-45)}
-.c-tint-brass-60{--sw:var(--tint-brass-60)}
+.c-bg-page{--tk-sw:var(--bg-page)}
+.c-bg-canvas{--tk-sw:var(--bg-canvas)}
+.c-bg-slab{--tk-sw:var(--bg-slab)}
+.c-bg-plate{--tk-sw:var(--bg-plate)}
+.c-bg-card{--tk-sw:var(--bg-card)}
+.c-bg-card-quiet{--tk-sw:var(--bg-card-quiet)}
+.c-bg-surface{--tk-sw:var(--bg-surface)}
+.c-bg-control{--tk-sw:var(--bg-control)}
+.c-bg-control-hover{--tk-sw:var(--bg-control-hover)}
+.c-bg-chip{--tk-sw:var(--bg-chip)}
+.c-bg-well{--tk-sw:var(--bg-well)}
+.c-bg-dock{--tk-sw:var(--bg-dock)}
+.c-bg-pressed{--tk-sw:var(--bg-pressed)}
+.c-bg-brand-mark{--tk-sw:var(--bg-brand-mark)}
+.c-text-primary{--tk-sw:var(--text-primary)}
+.c-text-muted{--tk-sw:var(--text-muted)}
+.c-text-icon{--tk-sw:var(--text-icon)}
+.c-icon-quiet{--tk-sw:var(--icon-quiet)}
+.c-icon-brass{--tk-sw:var(--icon-brass)}
+.c-text-icon-strong{--tk-sw:var(--text-icon-strong)}
+.c-text-chip-hover{--tk-sw:var(--text-chip-hover)}
+.c-text-brass{--tk-sw:var(--text-brass)}
+.c-text-brass-lit{--tk-sw:var(--text-brass-lit)}
+.c-text-brass-chip{--tk-sw:var(--text-brass-chip)}
+.c-text-on-brass{--tk-sw:var(--text-on-brass)}
+.c-text-on-yes{--tk-sw:var(--text-on-yes)}
+.c-text-on-no{--tk-sw:var(--text-on-no)}
+.c-text-on-photo{--tk-sw:var(--text-on-photo)}
+.c-text-strong{--tk-sw:var(--text-strong)}
+.c-color-action{--tk-sw:var(--color-action)}
+.c-color-action-lit{--tk-sw:var(--color-action-lit)}
+.c-color-action-pressed{--tk-sw:var(--color-action-pressed)}
+.c-color-trust{--tk-sw:var(--color-trust)}
+.c-outcome-yes{--tk-sw:var(--outcome-yes)}
+.c-outcome-no{--tk-sw:var(--outcome-no)}
+.c-outcome-yes-text{--tk-sw:var(--outcome-yes-text)}
+.c-outcome-no-text{--tk-sw:var(--outcome-no-text)}
+.c-outcome-yes-fill{--tk-sw:var(--outcome-yes-fill)}
+.c-outcome-no-fill{--tk-sw:var(--outcome-no-fill)}
+.c-outcome-yes-fill-soft{--tk-sw:var(--outcome-yes-fill-soft)}
+.c-outcome-no-fill-soft{--tk-sw:var(--outcome-no-fill-soft)}
+.c-outcome-yes-line{--tk-sw:var(--outcome-yes-line)}
+.c-outcome-no-line{--tk-sw:var(--outcome-no-line)}
+.c-outcome-no-figure{--tk-sw:var(--outcome-no-figure)}
+.c-chart-line{--tk-sw:var(--chart-line)}
+.c-result-won{--tk-sw:var(--result-won)}
+.c-result-won-text{--tk-sw:var(--result-won-text)}
+.c-result-won-fill{--tk-sw:var(--result-won-fill)}
+.c-result-won-line{--tk-sw:var(--result-won-line)}
+.c-result-lost-text{--tk-sw:var(--result-lost-text)}
+.c-result-lost-fill{--tk-sw:var(--result-lost-fill)}
+.c-result-lost-line{--tk-sw:var(--result-lost-line)}
+.c-series-1{--tk-sw:var(--series-1)}
+.c-series-2{--tk-sw:var(--series-2)}
+.c-series-3{--tk-sw:var(--series-3)}
+.c-series-4{--tk-sw:var(--series-4)}
+.c-series-5{--tk-sw:var(--series-5)}
+.c-border-hairline{--tk-sw:var(--border-hairline)}
+.c-border-brass{--tk-sw:var(--border-brass)}
+.c-border-brass-hover{--tk-sw:var(--border-brass-hover)}
+.c-tint-brass-06{--tk-sw:var(--tint-brass-06)}
+.c-tint-brass-09{--tk-sw:var(--tint-brass-09)}
+.c-tint-brass-16{--tk-sw:var(--tint-brass-16)}
+.c-tint-brass-30{--tk-sw:var(--tint-brass-30)}
+.c-tint-brass-45{--tk-sw:var(--tint-brass-45)}
+.c-tint-brass-60{--tk-sw:var(--tint-brass-60)}
 
 .tk-ramp{display:flex;flex-wrap:wrap;gap:3px;margin:0 0 10px}
 /* THE STEP NUMBER CAME OFF THE SWATCH ON 2026-08-08, and the audit is why.
@@ -484,7 +499,7 @@
   font-family:var(--font-mono);font-size:9px;color:var(--text-muted)}
 .tk-rc.tk-sw{background:none}
 .tk-rc::before{content:'';display:block;width:60px;height:44px;border-radius:6px;
-  border:1px solid var(--border-hairline);background:var(--sw)}
+  border:1px solid var(--border-hairline);background:var(--tk-sw)}
 
 /* the contrast matrix: roles down, grounds across, one theme per table */
 .tk-mx{display:grid;gap:1px;background:var(--border-hairline);border:1px solid var(--border-hairline);
@@ -502,68 +517,68 @@
 /* The primitive ramps. A component may never read one of these, and a foundations
    page that hides them is hiding the material the roles are cut from, so they are
    painted here and nowhere else in the kit. */
-.p-graphite-950{--sw:var(--graphite-950)}
-.p-graphite-940{--sw:var(--graphite-940)}
-.p-graphite-930{--sw:var(--graphite-930)}
-.p-graphite-920{--sw:var(--graphite-920)}
-.p-graphite-910{--sw:var(--graphite-910)}
-.p-graphite-900{--sw:var(--graphite-900)}
-.p-graphite-880{--sw:var(--graphite-880)}
-.p-graphite-870{--sw:var(--graphite-870)}
-.p-graphite-860{--sw:var(--graphite-860)}
-.p-graphite-850{--sw:var(--graphite-850)}
-.p-graphite-830{--sw:var(--graphite-830)}
-.p-graphite-800{--sw:var(--graphite-800)}
-.p-graphite-780{--sw:var(--graphite-780)}
-.p-graphite-750{--sw:var(--graphite-750)}
-.p-graphite-720{--sw:var(--graphite-720)}
-.p-chalk-940{--sw:var(--chalk-940)}
-.p-chalk-930{--sw:var(--chalk-930)}
-.p-chalk-920{--sw:var(--chalk-920)}
-.p-chalk-910{--sw:var(--chalk-910)}
-.p-chalk-900{--sw:var(--chalk-900)}
-.p-chalk-880{--sw:var(--chalk-880)}
-.p-chalk-870{--sw:var(--chalk-870)}
-.p-chalk-860{--sw:var(--chalk-860)}
-.p-chalk-750{--sw:var(--chalk-750)}
-.p-bone-080{--sw:var(--bone-080)}
-.p-bone-100{--sw:var(--bone-100)}
-.p-bone-200{--sw:var(--bone-200)}
-.p-bone-250{--sw:var(--bone-250)}
-.p-bone-300{--sw:var(--bone-300)}
-.p-bone-500{--sw:var(--bone-500)}
-.p-bone-600{--sw:var(--bone-600)}
-.p-bone-650{--sw:var(--bone-650)}
-.p-bone-700{--sw:var(--bone-700)}
-.p-ink-900{--sw:var(--ink-900)}
-.p-ink-700{--sw:var(--ink-700)}
-.p-ink-500{--sw:var(--ink-500)}
-.p-ink-400{--sw:var(--ink-400)}
-.p-ink-300{--sw:var(--ink-300)}
-.p-brass-200{--sw:var(--brass-200)}
-.p-brass-220{--sw:var(--brass-220)}
-.p-brass-250{--sw:var(--brass-250)}
-.p-brass-300{--sw:var(--brass-300)}
-.p-brass-400{--sw:var(--brass-400)}
-.p-brass-500{--sw:var(--brass-500)}
-.p-brass-600{--sw:var(--brass-600)}
-.p-brass-700{--sw:var(--brass-700)}
-.p-green-200{--sw:var(--green-200)}
-.p-green-250{--sw:var(--green-250)}
-.p-green-300{--sw:var(--green-300)}
-.p-green-500{--sw:var(--green-500)}
-.p-green-700{--sw:var(--green-700)}
-.p-green-800{--sw:var(--green-800)}
-.p-green-950{--sw:var(--green-950)}
-.p-green-975{--sw:var(--green-975)}
-.p-green-050{--sw:var(--green-050)}
-.p-red-300{--sw:var(--red-300)}
-.p-red-400{--sw:var(--red-400)}
-.p-red-500{--sw:var(--red-500)}
-.p-red-700{--sw:var(--red-700)}
-.p-red-800{--sw:var(--red-800)}
-.p-red-950{--sw:var(--red-950)}
-.p-plum-950{--sw:var(--plum-950)}
+.p-graphite-950{--tk-sw:var(--graphite-950)}
+.p-graphite-940{--tk-sw:var(--graphite-940)}
+.p-graphite-930{--tk-sw:var(--graphite-930)}
+.p-graphite-920{--tk-sw:var(--graphite-920)}
+.p-graphite-910{--tk-sw:var(--graphite-910)}
+.p-graphite-900{--tk-sw:var(--graphite-900)}
+.p-graphite-880{--tk-sw:var(--graphite-880)}
+.p-graphite-870{--tk-sw:var(--graphite-870)}
+.p-graphite-860{--tk-sw:var(--graphite-860)}
+.p-graphite-850{--tk-sw:var(--graphite-850)}
+.p-graphite-830{--tk-sw:var(--graphite-830)}
+.p-graphite-800{--tk-sw:var(--graphite-800)}
+.p-graphite-780{--tk-sw:var(--graphite-780)}
+.p-graphite-750{--tk-sw:var(--graphite-750)}
+.p-graphite-720{--tk-sw:var(--graphite-720)}
+.p-chalk-940{--tk-sw:var(--chalk-940)}
+.p-chalk-930{--tk-sw:var(--chalk-930)}
+.p-chalk-920{--tk-sw:var(--chalk-920)}
+.p-chalk-910{--tk-sw:var(--chalk-910)}
+.p-chalk-900{--tk-sw:var(--chalk-900)}
+.p-chalk-880{--tk-sw:var(--chalk-880)}
+.p-chalk-870{--tk-sw:var(--chalk-870)}
+.p-chalk-860{--tk-sw:var(--chalk-860)}
+.p-chalk-750{--tk-sw:var(--chalk-750)}
+.p-bone-080{--tk-sw:var(--bone-080)}
+.p-bone-100{--tk-sw:var(--bone-100)}
+.p-bone-200{--tk-sw:var(--bone-200)}
+.p-bone-250{--tk-sw:var(--bone-250)}
+.p-bone-300{--tk-sw:var(--bone-300)}
+.p-bone-500{--tk-sw:var(--bone-500)}
+.p-bone-600{--tk-sw:var(--bone-600)}
+.p-bone-650{--tk-sw:var(--bone-650)}
+.p-bone-700{--tk-sw:var(--bone-700)}
+.p-ink-900{--tk-sw:var(--ink-900)}
+.p-ink-700{--tk-sw:var(--ink-700)}
+.p-ink-500{--tk-sw:var(--ink-500)}
+.p-ink-400{--tk-sw:var(--ink-400)}
+.p-ink-300{--tk-sw:var(--ink-300)}
+.p-brass-200{--tk-sw:var(--brass-200)}
+.p-brass-220{--tk-sw:var(--brass-220)}
+.p-brass-250{--tk-sw:var(--brass-250)}
+.p-brass-300{--tk-sw:var(--brass-300)}
+.p-brass-400{--tk-sw:var(--brass-400)}
+.p-brass-500{--tk-sw:var(--brass-500)}
+.p-brass-600{--tk-sw:var(--brass-600)}
+.p-brass-700{--tk-sw:var(--brass-700)}
+.p-green-200{--tk-sw:var(--green-200)}
+.p-green-250{--tk-sw:var(--green-250)}
+.p-green-300{--tk-sw:var(--green-300)}
+.p-green-500{--tk-sw:var(--green-500)}
+.p-green-700{--tk-sw:var(--green-700)}
+.p-green-800{--tk-sw:var(--green-800)}
+.p-green-950{--tk-sw:var(--green-950)}
+.p-green-975{--tk-sw:var(--green-975)}
+.p-green-050{--tk-sw:var(--green-050)}
+.p-red-300{--tk-sw:var(--red-300)}
+.p-red-400{--tk-sw:var(--red-400)}
+.p-red-500{--tk-sw:var(--red-500)}
+.p-red-700{--tk-sw:var(--red-700)}
+.p-red-800{--tk-sw:var(--red-800)}
+.p-red-950{--tk-sw:var(--red-950)}
+.p-plum-950{--tk-sw:var(--plum-950)}
 .tk-mx-6{grid-template-columns:minmax(96px,132px) repeat(5,minmax(0,1fr))}
 .tk-mx-4{grid-template-columns:minmax(96px,132px) repeat(3,minmax(0,1fr))}
 @media(max-width:639.98px){.tk-mx-6,.tk-mx-4{grid-template-columns:76px repeat(auto-fit,minmax(0,1fr))}}
@@ -843,3 +858,47 @@
 .tk-tbl td:first-child{color:var(--text-primary)}
 .tk-tbl code{font-family:inherit;color:var(--text-brass)}
 .tk-tbl b{color:var(--text-primary);font-weight:400}
+
+/* ---------------------------------------------------------- responsive.html --
+   THE LIVE DEMONSTRATIONS OF THE THREE WAYS, AND THEY BELONG TO THE STAND.
+   Added 2026-08-11, Responsive step 2. Every rule below styles a specimen and
+   none of it is a product rule: the point of this page is that a reader can DRAG
+   a box and watch the three mechanisms answer differently, which no screenshot
+   and no paragraph can show. `resize:horizontal` is the whole trick, because it
+   lets the reader change a CONTAINER without changing the window, which is
+   exactly the distinction the page is about.
+   THE CONTAINER QUERY HERE IS THE STAND'S AND NOT THE PRODUCT'S. The system
+   declares 0 of them; this one exists so the third way has a specimen. */
+.tk-drag{resize:horizontal;overflow:auto;min-width:180px;max-width:100%;width:100%;
+  border:var(--hairline) dashed var(--border-brass-hover);border-radius:var(--radius-10);
+  padding:var(--space-16);background:var(--bg-well)}
+.tk-drag::-webkit-resizer{background:var(--color-action)}
+.tk-dragnote{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);
+  margin:var(--space-8) 0 0}
+.tk-fluidrow{display:flex;flex-wrap:wrap;gap:var(--space-8)}
+.tk-fluidrow>span{flex:1 1 90px;text-align:center;padding:var(--space-8);
+  border-radius:var(--radius-6);background:var(--bg-surface);
+  border:var(--hairline) solid var(--edge-shade-strong);font-family:var(--font-mono);font-size:11px}
+.tk-livegrid{display:grid;gap:var(--space-8);
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,var(--grid-col-min)),1fr))}
+.tk-livegrid>span{padding:var(--space-16) var(--space-8);text-align:center;
+  border-radius:var(--radius-10);background:var(--bg-surface);
+  border:var(--hairline) solid var(--edge-shade-strong);font-family:var(--font-mono);font-size:11px}
+.tk-measured{max-width:var(--measure)}
+.tk-runs-on{max-width:none}
+.tk-cq{container-type:inline-size}
+.tk-cqbox{padding:var(--space-12);border-radius:var(--radius-10);
+  background:var(--bg-surface);border:var(--hairline) solid var(--edge-shade-strong);
+  display:flex;flex-direction:column;gap:var(--space-8);align-items:flex-start}
+.tk-cqbox .tk-lab b::after{content:'narrow: stacked'}
+@container (min-width: 420px){
+  .tk-cqbox{flex-direction:row;align-items:center;justify-content:space-between}
+  .tk-cqbox .tk-lab b::after{content:'wide: in a row'}
+}
+.tk-rungs{display:grid;gap:var(--space-2);margin:var(--space-16) 0}
+.tk-rung{display:grid;grid-template-columns:74px 1fr;gap:var(--space-12);align-items:center;
+  padding:var(--space-8) 0;border-top:var(--hairline) solid var(--border-hairline)}
+.tk-rung b{font-family:var(--font-mono);font-size:var(--text-13);color:var(--text-brass)}
+.tk-rung span{font-size:var(--text-13);color:var(--text-primary)}
+.tk-rung i{font-style:normal;font-family:var(--font-mono);font-size:10px;color:var(--text-muted);
+  display:block;margin-top:2px}

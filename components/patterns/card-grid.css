@@ -23,5 +23,13 @@
    cleaned up. Deleting the four is what made the !important removable without
    moving a card: a fluid auto-fit track needs no breakpoints, which is also why
    this pattern has no media query of its own. */
-.grid{align-items:stretch;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+/* THE 300 LEFT THIS LINE ON 2026-08-11, Responsive step 2. It stood here as a
+   literal, and a pattern may not invent a width any more than a component may:
+   it is --grid-col-min in tokens.css now, beside the ladder, where the next
+   person looking for "how wide is a card allowed to get" will actually look.
+   `min(100%,...)` stays, and it is the part that makes the track safe below the
+   floor: without it a 300px minimum overflows a 360px phone the moment the
+   gutter is counted. The gap keeps reading the SPACE ladder rather than a grid
+   ladder of its own, and tokens.css says why. */
+.grid{align-items:stretch;grid-template-columns:repeat(auto-fit,minmax(min(100%,var(--grid-col-min)),1fr))}
 .grid{gap:var(--space-16)}

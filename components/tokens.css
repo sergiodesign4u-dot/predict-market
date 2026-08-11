@@ -352,6 +352,53 @@
   --container-sidebar:220px; /* course sidebar, and the body inset that clears it */
   --gutter:40px;             /* the two-stone inset. 14px on mobile, below */
 
+  /* ---- the two values the width stage added, 2026-08-11, Responsive step 2 ---- */
+  --measure:66ch;            /* THE LINE MEASURE FOR CONTINUOUS TEXT, and it is in `ch` on
+                                purpose: `ch` is the width of a zero in the ELEMENT's own
+                                font, so one number caps an 11px legal line and a 16px
+                                paragraph at the same number of characters. A px cap cannot
+                                do that and would need one value per size.
+                                66 comes from the band DESIGN.md section 3 already states,
+                                60 to 75, and it agrees with --container-doc, which was
+                                measured at 67ch of the same face.
+                                THE CENSUS THIS TOKEN EXISTS FOR, taken at 1440 over all 106
+                                painted screens with every dialog open, counting only text
+                                that ACTUALLY WRAPS, because a box is not a line: 41 elements
+                                measure over 75ch, and they are six kinds.
+                                  27  up to 117ch  .related-list p        event detail
+                                   9  up to 106ch  .rules-panel .resolution
+                                   1      154ch    .sys-note in .cat-main
+                                   1      166ch    .protect-page in .cat-main
+                                   2       89ch    .feed-seo p            ALREADY DECIDED
+                                   1       89ch    one unclassed paragraph
+                                The two .feed-seo paragraphs are not a defect: --container-read
+                                twenty lines up says why 89 stands there on purpose. The other
+                                38 are, and the loudest is the 106ch one: `.resolution` is the
+                                NAMED RESOLUTION RULE, which is the second design principle of
+                                this product stated as a sentence, running at 40 per cent over
+                                the measure on the screen where trust is decided.
+                                The token lands here and the placements land on the components
+                                that own those four classes, at step 4. It is deliberately not
+                                a blanket rule on `p`: a paragraph inside a card is already at
+                                38ch and a floor that reaches it teaches the wrong thing. */
+  --grid-col-min:300px;      /* THE CARD FLOOR, and the only number the fluid track needs.
+                                Moved out of patterns/card-grid.css on 2026-08-11, where it
+                                stood as a literal inside `minmax(min(100%,300px),1fr)`: a
+                                pattern may not invent a width any more than a component may.
+                                THERE IS NO --grid-gap AND THAT IS A DECISION. The track gaps
+                                at var(--space-16) and the space ladder is already the gap
+                                ladder, so a second name for 16px would be one number with two
+                                spellings, which is the thing this repository spent a week
+                                removing. A grid is not a special case of spacing.
+                                AND THE COLUMN COUNT IS NOT A TOKEN EITHER. `auto-fit` counts
+                                the columns, so the track works at 1100px, which nobody
+                                designed for. The grey tree does the opposite and it is the
+                                clearest argument for this line: 104 wireframes hard-code
+                                `repeat(3,...)` at 960 and `repeat(4,...)` at 1280, which are
+                                two widths that appear nowhere else in the product and are on
+                                no ladder. Two numbers and two rules to say what one fluid
+                                track says with none. */
+
   /* ---- the breakpoint ladder ----
      A BREAKPOINT CANNOT BE A TOKEN AND THAT IS NOT AN OVERSIGHT. A media query
      condition does not read a custom property: `@media(min-width:var(--x))` is
@@ -410,7 +457,62 @@
      If a file needs a break that is not one of the three, it is either a one-off
      that says so in a comment beside it, or it is a fourth rung and this table
      is where it gets named first. The kit has already paid for the alternative,
-     with a stand label written at 900 standing beside a bar that goes at 640. */
+     with a stand label written at 900 standing beside a bar that goes at 640.
+
+     ---- THIS TABLE IS A REGISTRY, AND THE REGISTRY IS THE INSTRUMENT ----
+     Added 2026-08-11 by the Responsive stage, step 2. Because the literal has to
+     be repeated in every query, the only way this ladder can be checked is by
+     reading every @media in the product and asking whether its number is on this
+     list. That check is cheap and it is the whole reason the list is written out:
+     NO NUMBER MAY APPEAR IN A PRODUCT MEDIA QUERY THAT IS NOT ON IT.
+
+     The census that made the rule, taken the day it was written:
+
+       width      components  wireframes  ui-kit   what it is
+       560px          2           9         0      one-off, named below
+       620px          1           1         0      one-off, named below
+       639.98px       8          57         4      DESK, narrow side
+       640px          6         401         1      DESK
+       759.98px       4         183         5      DETAIL, narrow side
+       760px          3         184         1      DETAIL
+       900px          6          94         0      RAIL
+       960px          0         104         0      *** ON NO LADDER ***
+       980px          1           1         0      one-off, named below
+       1140px         2           0         0      HARNESS, not the product
+       1280px         0         104         0      *** ON NO LADDER ***
+       1440px         0         104         0      *** ON NO LADDER ***
+
+     TWELVE DISTINCT WIDTHS IN THE PRODUCT, and the system holds nine of them,
+     which is really five: three rungs each written twice for its two sides, plus
+     the harness, plus three named one-offs. `ui-kit/_page.css` invents nothing;
+     every width the stand uses is already a rung.
+     THE THREE THAT ARE ON NO LADDER ARE ALL IN THE GREY TREE AND ALL IN ALL 104
+     FILES. 960 and 1280 hard-code a column count the paint computes with
+     `auto-fit` and no query at all; 1440 is the grey harness, the twin of 1140
+     standing at a different number. They are the responsive stage's own backlog.
+
+     ---- AND WHY THIS LADDER IS IN PX AND NOT IN rem ----
+     The argument for rem is real and it is not the one that decides here: a rung
+     in px reads the window only, so a person who enlarges their browser font sits
+     at a desk width with a phone's worth of text in the line. Measured before it
+     was believed, root font 16px against 24px, control first:
+
+       10rem measures 160px then 240px          so rem DOES respond
+       body                16px  ->  24px       follows, because nothing sets it
+       heading             36px  ->  36px       clamp(28px,4vw,38px), vw not rem
+       feed prose          13px  ->  13px       --text-13
+       footer legal        11px  ->  11px       --text-11
+
+     THE WHOLE TYPE SCALE IS PX. Eighteen size tokens from --text-10 to --text-30
+     are px literals and the display sizes are clamp() of px and vw, so 222 of the
+     228 font-size declarations in this system resolve to a number the user's
+     setting cannot move. Putting the RUNGS in rem while the TYPE stays in px
+     would be worse than leaving them: the layout would switch at a different
+     window width for that person while every word on it stayed exactly the same
+     size, which is a breakpoint answering a question the product does not ask
+     anywhere else. It would look like accessibility and do nothing.
+     So the rungs stay px, and the real finding is filed rather than dressed up:
+     the product ignores the browser's font setting, docs/backlog.md item 115. */
 
   /* ---- type ---- */
   --font-display:'Space Grotesk',sans-serif;
