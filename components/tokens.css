@@ -161,8 +161,15 @@
   /* the graph grid that fades in from the top-right corner of a card */
   --brass-grid:repeating-linear-gradient(0deg,transparent 0 27px,var(--brass-a06) 27px 28px),
                repeating-linear-gradient(90deg,transparent 0 27px,var(--brass-a06) 27px 28px);
-  /* the brass up-trend mark before the wordmark */
-  --logo-tick:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='18'%3E%3Cpath d='M2 15 L9 7 L13 10 L24 2' fill='none' stroke='%23c99e3f' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  /* THE BRAND MARK, and it is the one drawing in this file that is not a
+     material. It is a fork: a line rises, splits, and one branch is lit while
+     the one not taken stays at 30 per cent. Two strokes, butt caps, a mitred
+     shoulder, so it reads as cast rather than drawn and holds its mass at 16px.
+     It replaced an up-trend tick on 2026-08-11 with the rename to Yonder, where
+     the same shape is also the Y. Ink 15.8 x 17 centred in a 24 box: the box it
+     stands in is 18px and `contain` paints it at about 12, which is the display
+     face's ascender at 16px. `../docs/decisions.md`. */
+  --logo-y:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath d='M11.6 12.2 5.8 6' stroke='%23c99e3f' stroke-opacity='.3' stroke-width='4.6'/%3E%3Cpath d='M11.6 20.5V12.2L18.2 5.1' stroke='%23c99e3f' stroke-width='4.6'/%3E%3C/svg%3E");
 
   /* ---- space (the grid is 4px, 2 is the only half step) ----
      A value off the grid is not a distance. 1px is a line, so it is --hairline;
@@ -190,7 +197,7 @@
      not a stadium, so only one of the two directions is safe and it is not the
      one that looks tidier.
      CHECKED, ALL SEVEN IN components/: dialog.css twice at 210 x 210, and
-     comments.css --size-28, hiw-dialog.css 224 x 224, course-chrome.css
+     comments.css --size-28, hiw.css 224 x 224, course-chrome.css
      --size-4, hero.css --size-8, toggle.css --icon-16, each declaring its two
      axes equal. **0 of the 7 stand on a rectangle**, so the ambiguity the row
      was filed for does not arise anywhere in the system, and it is written here
@@ -625,8 +632,10 @@
   --brass-grid-lit:repeating-linear-gradient(0deg,transparent 0 27px,var(--brass-a16) 27px 28px),
                    repeating-linear-gradient(90deg,transparent 0 27px,var(--brass-a16) 27px 28px);
   /* the same mark, drawn in the dark brass. The colour is inside the file, so a
-     data URI can only be themed by having a second one */
-  --logo-tick-dark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='18'%3E%3Cpath d='M2 15 L9 7 L13 10 L24 2' fill='none' stroke='%23684f18' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+     data URI can only be themed by having a second one, and the two have to be
+     edited together: the mark is the one place in this system where a shape is
+     written down twice on purpose */
+  --logo-y-dark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath d='M11.6 12.2 5.8 6' stroke='%23684f18' stroke-opacity='.3' stroke-width='4.6'/%3E%3Cpath d='M11.6 20.5V12.2L18.2 5.1' stroke='%23684f18' stroke-width='4.6'/%3E%3C/svg%3E");
 }
 
 /* mobile: the plate breathes on a smaller inset (this is the one responsive token) */
@@ -944,7 +953,7 @@
      from the primitive by 11 component files until the light theme asked for it */
   --surface-grain:var(--grain-fine);        /* from: card, plate, dialog, hero, dock, trust item */
   --surface-grain-coarse:var(--grain-coarse); /* from: the outer slab */
-  --mark-logo:var(--logo-tick);         /* from: the brass up-trend mark before the wordmark */
+  --mark-logo:var(--logo-y);            /* from: the brand mark before the wordmark, components/logo.css */
   --glow-brass:var(--brass-a30);        /* from: the card and chip glow */
   --glow-focus:var(--brass-a16);        /* from: the focus ring on a field */
   --focus-ring:var(--brass-400);        /* same value as --text-brass for now: the ring is not a word,
@@ -1253,7 +1262,7 @@
   --surface-grid:var(--brass-grid-lit);
   --surface-grain:var(--grain-fine-lit);
   --surface-grain-coarse:var(--grain-coarse-lit);
-  --mark-logo:var(--logo-tick-dark);
+  --mark-logo:var(--logo-y-dark);
 
   /* ---- states ----
      The numbers are the same as on graphite and they are written out anyway,

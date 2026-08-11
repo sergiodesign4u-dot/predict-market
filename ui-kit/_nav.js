@@ -90,7 +90,7 @@ window.KIT_NAV = [
        otherwise have a title nobody could click. */
     label: 'Atoms',
     items: [
-      { label: 'All atoms',   page: 'vitrine.html', done: true, note: '10' },
+      { label: 'All atoms',   page: 'vitrine.html', done: true, note: '12' },
       { label: 'Button',      page: 'button.html',  done: true, note: '902' },
       { label: 'Icon button', page: 'iconbtn.html', done: true, note: '1,361' },
       { label: 'Chip',        page: 'chip.html',    done: true, note: '1,679' },
@@ -100,7 +100,9 @@ window.KIT_NAV = [
       { label: 'Yes / No',    page: 'yesno.html',   done: true, note: '116' },
       { label: 'Toast',       page: 'toast.html',   done: true, note: '4' },
       { label: 'Skeleton',    page: 'skeleton.html',done: true, note: '482' },
-      { label: 'Toggle',      page: 'toggle.html',  done: true, note: '3' }
+      { label: 'Toggle',      page: 'toggle.html',  done: true, note: '3' },
+      { label: 'Logo',        page: 'logo.html',    done: true, note: '210' },
+      { label: 'Plate head',  page: 'platehead.html',done: true, note: '339' }
     ]
   },
   {
@@ -153,7 +155,7 @@ window.KIT_NAV = [
       { label: 'Header',        page: 'header.html',       done: true, note: '105' },
       { label: 'Footer',        page: 'footer.html',       done: true, note: '105' },
       { label: 'Dialog',        page: 'dialog.html',       done: true, note: '337' },
-      { label: 'How it works',  page: 'hiw-dialog.html',   done: true, note: '105' },
+      { label: 'How it works',  page: 'hiw.html',         done: true, note: '105' },
       { label: 'Tabs',          page: 'tabs.html',         done: true, note: '96' },
       { label: 'Event detail',  page: 'event-detail.html', done: true, note: '9' },
       { label: 'Bet panel',     page: 'betpanel.html',     done: true, note: '23' },

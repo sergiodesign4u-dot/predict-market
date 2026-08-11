@@ -1,5 +1,5 @@
 ---
-name: Predict Market
+name: Yonder
 description: A spectator's clarity, cast in graphite and brass - a mobile-first prediction market that is not a trader's terminal.
 colors:
   page: "#0f1013"
@@ -152,7 +152,7 @@ components:
     padding: "12px"
 ---
 
-# Design System: Predict Market
+# Design System: Yonder
 
 ## 1. Overview
 

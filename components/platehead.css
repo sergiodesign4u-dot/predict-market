@@ -1,0 +1,104 @@
+/* components/platehead.css
+   Component: plate-head. Classes: .plate-head.
+
+   Reads: --bg-dialog-head-from, --bg-plate-to, --color-action, --color-action-lit, --mask-solid, --text-strong, --tint-brass-30
+   Stand:  ui-kit/plate-head.html, and ui-kit/vitrine.html#plate-head for the level and its reason
+   Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...), 328 elements there and 8 more in ui-kit
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+/* ONE FACE, THREE HEADS, AND UNTIL 2026-08-11 IT WAS WRITTEN DOWN TWICE.
+   The brass-cornered head of a plate is the Vault's loudest single object: a
+   two-stone ground with a brass hotspot in the top right corner, a wave pattern
+   masked away from it, a 210px brass glow bleeding in from outside the box, and
+   a display-face heading standing above all three. It is worn by
+     - the plain sheet head, `.sheet-head` inside a `dialog.app-dialog` that is
+       not an outcome overlay, 225 elements, at 418px;
+     - the how-it-works sheet head, `.hiw-hero`, 111 elements, at 462px;
+     - the how-it-works page hero, `.hiw-page`, 3 elements, at 922px.
+   It was six rules in two files, and the two files agreed to the byte on the
+   ground, on the pattern and on the glow: `dialog.app-dialog:not(.outcome-dialog)
+   .sheet-head` in components/dialog.css and `.hiw-hero` plus `.hiw-glow` in
+   components/hiw.css declared the same radial over the same linear, the same
+   data URI under the same 150deg mask at the same .2, and the same
+   210 / -72 / -52 / blur 42 / .42 / 60 per cent circle. They agreed because the
+   second was edited to agree, that morning, by backlog 98: four numbers were
+   moved on the how-it-works copy so that it would stop being a compensation.
+   FOUR NUMBERS MOVED BY HAND IS NOT A SHARED FACE, IT IS A SHARED FACE THAT WILL
+   DRIFT AGAIN, and the drift is invisible because the three heads are never on
+   one screen. This file is the fifth of them: they are now one rule each.
+
+   WHY THIS IS NOT A RENAME, WHICH IS WHAT BACKLOG 98 ASKED FOR.
+   98 proposed `.hiw-hero` -> `.sheet-head` and `.hiw-body` -> `.sheet-body`. That
+   moves the duplication rather than removing it: the head's paint would land in
+   dialog.css for the sheet, and the page hero, which is not and cannot be a
+   sheet head, would have to have all six rules written out again. A page is not
+   a bigger dialog. The cut that removes the duplication is the one where the
+   FACE is a thing and each of the three hosts says only where it sits and how
+   loud its heading is. Backlog 108, which is 98 re-filed once its values half
+   had closed.
+
+   THE PRECEDENT IS THE HEADER BAND AND THE LOCKUP, BOTH ALREADY IN THIS FOLDER.
+   components/CLAUDE.md: a skin can belong to a SURFACE rather than to a
+   component, because four controls in the header band wear one hover and no
+   component file could own it. components/logo.css, written on 2026-08-11: the
+   header and the footer both hold the lockup and both restyle where it stands,
+   so the FACE is a file and the two places keep only their own padding and
+   centring. This is the same shape one floor up. It loads at level 1 for the
+   logo's reason word for word: it holds nothing from the system, and the two
+   wholes that hold it, dialog and hiw, load at level 3 and must be able to
+   override it on a tie.
+
+   WHAT THIS FILE DOES NOT OWN, AND THE LIST IS THE POINT.
+   Padding is the host's: 24/20/20 in a sheet, 32/24/28 in the how-it-works
+   sheet, 32/24 on the page. The heading SIZE is the host's: --display-sheet in a
+   sheet and --display-hiw in both of the how-it-works heads, and that is the
+   difference between 30px and 38px at 1280. The measure is the host's, 15ch on a
+   sheet title and none on a hero. The edge, the corner and the bottom margin are
+   the PAGE's alone, because a sheet head is flush inside a frame that already
+   has all three and a hero on a page has to draw its own. And the sub is the
+   host's: 34ch at 14px under a sheet title, 32ch at 14px in the how-it-works
+   sheet, 44ch at 16px on the page.
+
+   THE OUTCOME HEAD IS NOT A WEARER, AND IT IS THE NEXT QUESTION RATHER THAN THIS
+   ONE. `dialog.app-dialog.outcome-dialog .sheet-head` has this head's ANATOMY to
+   the declaration - relative, clip, block, 24/20/20, border-bottom 0, the same
+   wave, the same display heading - and a different GROUND and a different GLOW:
+   the win head is a green radial over --result-won-stone and the loss head is a
+   plain linear with no brass radial and no glow at all. So it shares the
+   skeleton and not the face, its pattern is .16 against this file's .2 because
+   an opacity answers to the ground under it, and folding it in here would mean
+   two classes where the row asked for one. Ten elements, filed as its own row
+   with its own numbers. */
+/* The brass corner was 34 per cent longhand. S50, 2026-08-07: the nearest rung,
+   which is 30 on graphite and 45 on chalk, so the glow finally reads as warmly
+   in daylight as it does in the dark. A gradient stop is a tint at a depth,
+   which is what components/tokens.css says the ladder is for. The note arrived
+   here on 2026-08-11 with the gradient it explains. */
+.plate-head{position:relative;overflow:clip;background:radial-gradient(120% 96% at 100% 0%,var(--tint-brass-30),transparent 58%),linear-gradient(158deg,var(--bg-dialog-head-from),var(--bg-plate-to))}
+/* The wave, and the mask is what keeps it out of the brass corner. The same
+   drawing stands in three places in this system and is a data URI in each,
+   because an SVG that has to be masked and tinted per theme cannot be an <img>
+   and a background-image cannot be a file this repo would then have to serve. */
+.plate-head::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='122' viewBox='0 0 200 122'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.2'%3E%3Cpath d='M-10 18 C 20 8 40 28 70 18 S 120 8 150 18 S 200 28 230 18'/%3E%3Cpath d='M-10 40 C 20 30 40 50 70 40 S 120 30 150 40 S 200 50 230 40'/%3E%3Cpath d='M-10 62 C 20 52 40 72 70 62 S 120 52 150 62 S 200 72 230 62'/%3E%3Cpath d='M-10 84 C 20 74 40 94 70 84 S 120 74 150 84 S 200 94 230 84'/%3E%3Cpath d='M-10 106 C 20 96 40 116 70 106 S 120 96 150 106 S 200 116 230 106'/%3E%3C/g%3E%3C/svg%3E") no-repeat right top / cover;-webkit-mask-image:linear-gradient(150deg,var(--mask-solid),transparent 72%);mask-image:linear-gradient(150deg,var(--mask-solid),transparent 72%);opacity:.2;pointer-events:none}
+/* THE GLOW IS A PSEUDO ELEMENT HERE AND IT WAS A SPAN IN ONE OF THE TWO HOSTS.
+   The sheet head drew it with ::after and the how-it-works head drew it with
+   `<span class="hiw-glow" aria-hidden="true">`, a real element carrying 200
+   copies across the three trees, with a `hiw-glow` rule in the system to size it
+   and a second one inline in every grey wireframe that still said 224. The two
+   drew the same circle. A glow is not content, so the mechanism is the one that
+   is not in the markup, and the span is deleted: 112 elements out of the painted
+   tree and the kit, 88 more out of the grey tree where it had no background at
+   all and drew nothing at any width. It bled out of the box in both mechanisms
+   and is clipped by `overflow:clip` above in both, which is why the number is a
+   210px circle sitting at -72 / -52 and not a corner gradient. */
+.plate-head::after{content:'';position:absolute;top:-72px;right:-52px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--color-action-lit) 60%,var(--color-action)) 0%,var(--color-action) 42%,transparent 70%);filter:blur(42px);opacity:.42;pointer-events:none}
+/* The heading, minus the two things a host decides: how loud it is and how wide
+   it may run. Seven declarations were written out three times before this line.
+   `:is(h1,h2)` because a page has exactly one h1 and a dialog is opened over a
+   page that already spent it, so the same heading arrives at two levels.
+   It carries NO z-index, and the two hosts still lift their content two ways:
+   the sheet head raises the title and the sub one by one, the how-it-works head
+   wraps them in `.hiw-hero-inner`. Both clear the glow. Neither is this file's
+   to choose while the markup differs, and one wrapper against two rules is a
+   smaller question than the one this file just answered. */
+.plate-head :is(h1,h2){font-family:var(--font-display);font-weight:var(--weight-bold);line-height:var(--leading-flat);letter-spacing:var(--track-display);color:var(--text-strong);margin:0;text-wrap:balance}

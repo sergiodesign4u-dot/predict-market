@@ -1,8 +1,13 @@
 # components/ - the system itself
 
-This folder IS the design system. 50 stylesheets, 7,034 lines (re-counted 2026-08-10: it said 51 and
-5,651, and the 51st was `account.css`, deleted on 2026-08-08 by backlog 63), `tokens.css` plus one file per
-component, all reached through `index.css`. The 210 screens in `ui-visual/` and `wireframes/` link
+This folder IS the design system. **52 stylesheets, 7,440 lines**: 46 here and 6 in `patterns/`,
+re-counted 2026-08-11 by listing them, after `platehead.css` was written the same day. It said 50 and 7,034 the day before and 51 and 5,651 the day
+before that, and the arithmetic behind each is gone, which is what a count kept in prose costs. The
+one thing that is certain about the earlier numbers is that `account.css` was deleted on 2026-08-08
+by backlog 63, `hiw-dialog.css` became `hiw.css` on 2026-08-11 by backlog 15, and `platehead.css`
+was written the same day by backlog 108 out of six rules that stood in `dialog.css` and `hiw.css` at
+once. `tokens.css` plus
+one file per component, all reached through `index.css`. The 210 screens in `ui-visual/` and `wireframes/` link
 `index.css` and nothing else, so **an edit here reaches every screen at once and no screen can
 override it.** There is no build step and no gate: what you write is what ships.
 
@@ -142,6 +147,24 @@ override it.** There is no build step and no gate: what you write is what ships.
   reading "Solar Bold icon sprite" with **no attribution anywhere**, and the licence is CC BY 4.0,
   which asks for the author, the licence and whether it was changed. `../NOTICE.md` is where every
   bought-in asset now says what it requires.
+- **A `<button>` SUPPLIES THREE PROPERTIES FOR FREE AND THIS FOLDER HAS NOW PAID FOR IT THREE
+  TIMES.** `text-decoration:none`, `text-align:center` and `display:inline-block` are the element's
+  own defaults, so a component whose control is a button wears them without declaring them, and the
+  day the control becomes an `<a href>` all three go at once. `.chip` and `.icon-btn` wrote them out
+  on 2026-08-07 after the header's Favorites crossed over; `.btn`, `.yesno` and `.tabs` wrote them
+  out on 2026-08-11 when backlog 89 turned 818 wrapped buttons into anchors, and without them 166
+  controls take the User Agent's underline and 614 labels go left. **Declare what the element is
+  doing for you, or the next markup change is a regression you cannot see in the stylesheet.**
+- **THE GREY TREE IS A SECOND SYSTEM AND WIDENING THIS ONE DOES NOT REACH IT.** `wireframes/*.html`
+  link no stylesheet at all: 104 inline `<style>` blocks carrying **1,605 occurrences of a selector
+  keyed to an element type**, including its own `.yesno button`, `.tabs button` and `.cta-bar
+  button`. An edit here protects the 90 painted and kit documents and none of the other 104. Any
+  change to what a control IS is two edits, and the grey one is the one that gets forgotten.
+- **A wrapper and its child are ONE control or they are two, and the accessibility tree is where you
+  find out.** 818 anchors each held a button: two tab stops and two hit targets on one visual
+  object, on 77 screens per tree, invisible to every sweep that reads the DOM as boxes. Read the
+  tree, not the markup: `Accessibility.getFullAXTree` over CDP, and count links whose descendants
+  include a button or a tab. It was 32 on one feed screen and it is 0.
 - **A pointer is a claim, and nothing checks a comment.** Every file here carries a `Stand:` line, and
   from 2026-08-07 to 2026-08-08 **all 42 of them pointed at a file that did not exist**: they named
   the generated per-component pages, which were deleted with the vitrine, and no reader noticed

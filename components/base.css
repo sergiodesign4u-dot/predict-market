@@ -237,7 +237,7 @@ svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor!important;stroke:none!impor
    so raising its rows makes the dropdown taller and moves no page content at all.
    docs/backlog.md 50, 59, 64. */
 @media(pointer:coarse){
-  :is(.btn,.chip,.icon-btn,.tabs button,.ptab-lbl,.rules-tab,.market-head,.toc-link,.cc-cat-main,.filter-menu summary,.notif-menu summary,.avatar-menu summary,.logo-btn,.notif-all,.nav-item,.ed-tablabel,.opt-more,.yesno button,a.q,.hf-title,.hh-name,.hh-all):not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small):not(.icon-btn-lift){min-height:max(var(--control-44),var(--control-h))}
+  :is(.btn,.chip,.icon-btn,.tabs :is(a,button),.ptab-lbl,.rules-tab,.market-head,.toc-link,.cc-cat-main,.filter-menu summary,.notif-menu summary,.avatar-menu summary,.logo-btn,.notif-all,.nav-item,.ed-tablabel,.opt-more,.yesno :is(a,button),a.q,.hf-title,.hh-name,.hh-all):not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small):not(.icon-btn-lift){min-height:max(var(--control-44),var(--control-h))}
   .filter-panel li label{min-height:var(--control-44)}
   /* A SQUARE CONTROL NEEDS BOTH SIDES. These carry a mark and no label, so their width does not
      arrive from a word the way a chip's and a button's does. */
@@ -256,7 +256,7 @@ svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor!important;stroke:none!impor
      them, because they are full-width rows and a floor that is already cleared is silent. That
      is the point of naming the FAMILY rather than the short instances: the next narrow chip
      does not have to be found by a sweep first. docs/backlog.md 50. */
-  :is(.btn,.chip,.rules-tab,.tabs button,.ptab-lbl,.ed-tablabel,.cc-cat-main,.market-head,.toc-link,.nav-item,.yesno button,.yesno > a):not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small):not(.icon-btn-lift){min-width:var(--control-44)}
+  :is(.btn,.chip,.rules-tab,.tabs :is(a,button),.ptab-lbl,.ed-tablabel,.cc-cat-main,.market-head,.toc-link,.nav-item,.yesno :is(a,button)):not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small):not(.icon-btn-lift){min-width:var(--control-44)}
 }
 
 /* Marked important on purpose, and it has to stay that way. This is a
@@ -280,7 +280,7 @@ svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor!important;stroke:none!impor
    markup of every painted screen. Measured across 106 screens with every dialog
    forced open, it changed the outcome for 13 of 375 tails and matched ZERO
    elements of the course chrome it was put there to keep the product off. The
-   one place it still discriminates is hiw-dialog.css, where it means the PAGE
+   one place it still discriminates is hiw.css, where it means the PAGE
    rather than the sheet and that file says so. Nothing else may take it. */
 .device{width:100%;max-width:none;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;position:relative;border:0;background-color:var(--bg-slab);background-image:var(--surface-grain-coarse),linear-gradient(180deg,var(--bg-slab-from),var(--bg-slab-to));background-blend-mode:overlay,normal}
 .app-case{position:relative;background:transparent;border:0}

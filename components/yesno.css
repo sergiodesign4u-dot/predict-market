@@ -38,12 +38,15 @@
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .yesno{display:flex;gap:var(--space-8);margin:0 0 var(--space-8)}
-.yesno > a{flex:1;display:flex}
-.yesno > a > button{width:100%}
-.yesno button{flex:1;padding:var(--space-8);font-size:var(--text-12);cursor:pointer}
+.yesno > a{flex:1;display:flex;align-items:center;justify-content:center}
+/* `.yesno > a > button{width:100%}` STOOD HERE AND IS GONE, 2026-08-11, backlog 89.
+   The anchor was the wrapper and the button the item that filled it. There is one
+   element now, so the width is the flex rule two lines up and the centring is on
+   `.yesno > a`, which had to be told what the <button> element was doing for free. */
+.yesno :is(a,button){flex:1;padding:var(--space-8);font-size:var(--text-12);cursor:pointer}
 .yesno.compact > a{flex:0 0 auto}
-.yesno.compact button{flex:0 0 auto}
-.yesno button{border:var(--hairline) solid;font-weight:var(--weight-bold);font-family:var(--font-body);text-decoration:none;min-height:var(--control-44);background:var(--bg-control);transition:background var(--dur-quick) ease,border-color var(--dur-quick) ease}
+.yesno.compact :is(a,button){flex:0 0 auto}
+.yesno :is(a,button){border:var(--hairline) solid;font-weight:var(--weight-bold);font-family:var(--font-body);text-decoration:none;text-align:center;min-height:var(--control-44);background:var(--bg-control);transition:background var(--dur-quick) ease,border-color var(--dur-quick) ease}
 .yesno a,.yesno a:hover{text-decoration:none}
 /* A side is a POSITION IN THE PAIR, not a fact about being wrapped in a link.
    Every colour below hung off `> a`, so a .yesno whose buttons are not inside an
@@ -51,17 +54,17 @@
    buttontext: near black on a graphite card, 1.42:1, on four screens. Same shape
    as the 992 browser-blue links step 7e found. A MISSING COLOUR IS A COLOUR, and
    a component has to say what it is whatever markup it stands in. */
-.yesno > a > button.yes:hover,.yesno > button.yes:hover{background:color-mix(in oklab,var(--outcome-yes) 32%,var(--bg-control));border-color:var(--outcome-yes)}
-.yesno > a > button.no:hover,.yesno > button.no:hover{background:color-mix(in oklab,var(--outcome-no) 32%,var(--bg-control));border-color:var(--outcome-no)}
+.yesno > a.yes:hover,.yesno > button.yes:hover{background:color-mix(in oklab,var(--outcome-yes) 32%,var(--bg-control));border-color:var(--outcome-yes)}
+.yesno > a.no:hover,.yesno > button.no:hover{background:color-mix(in oklab,var(--outcome-no) 32%,var(--bg-control));border-color:var(--outcome-no)}
 .yesno.compact{gap:var(--space-8);margin:0}
-.yesno.compact button{padding:var(--space-4) var(--space-12);font-size:var(--text-11);line-height:var(--leading-tight)}
+.yesno.compact :is(a,button){padding:var(--space-4) var(--space-12);font-size:var(--text-11);line-height:var(--leading-tight)}
 /* No media block for the compact variant: `.yesno button` above sets min-height on every variant,
    compact included, and nothing unsets it. The rule that used to live here re-stated 44px inside a
    640px query, which read as "the target is a mobile concern". It is not. */
-.yesno > a > button.yes,.yesno > button.yes{background:var(--outcome-yes-fill);color:var(--outcome-yes-text);border-color:var(--outcome-yes-line)}
-.yesno > a > button.no,.yesno > button.no{background:var(--outcome-no-fill);color:var(--outcome-no-text);border-color:var(--outcome-no-line)}
-.yesno button{border-radius:var(--radius-10)}
-.yesno.compact button{border-radius:var(--radius-10)}
+.yesno > a.yes,.yesno > button.yes{background:var(--outcome-yes-fill);color:var(--outcome-yes-text);border-color:var(--outcome-yes-line)}
+.yesno > a.no,.yesno > button.no{background:var(--outcome-no-fill);color:var(--outcome-no-text);border-color:var(--outcome-no-line)}
+.yesno :is(a,button){border-radius:var(--radius-10)}
+.yesno.compact :is(a,button){border-radius:var(--radius-10)}
 .opt-list .yesno.compact button{background:var(--bg-control);color:var(--text-primary);border:var(--hairline) solid var(--border-hairline)}
 .opt-list .yesno.compact button.yes{color:var(--outcome-yes-text);border-color:var(--outcome-yes-line);background:var(--outcome-yes-fill-soft)}
 .opt-list .yesno.compact button.no{color:var(--outcome-no-text);border-color:var(--outcome-no-line);background:var(--outcome-no-fill-soft)}
@@ -76,8 +79,8 @@
    screen never hovers, so on a phone the pressed side would otherwise keep its rest edge.
    Measured on the label it carries: the press runs 5.72:1 YES / 4.91:1 NO on graphite and
    5.38 / 5.13 on chalk, all above the hover it follows. */
-.yesno > a > button.yes:active,.yesno > button.yes:active{background:color-mix(in oklab,var(--outcome-yes) 32%,var(--bg-pressed));border-color:var(--outcome-yes)}
-.yesno > a > button.no:active,.yesno > button.no:active{background:color-mix(in oklab,var(--outcome-no) 32%,var(--bg-pressed));border-color:var(--outcome-no)}
+.yesno > a.yes:active,.yesno > button.yes:active{background:color-mix(in oklab,var(--outcome-yes) 32%,var(--bg-pressed));border-color:var(--outcome-yes)}
+.yesno > a.no:active,.yesno > button.no:active{background:color-mix(in oklab,var(--outcome-no) 32%,var(--bg-pressed));border-color:var(--outcome-no)}
 /* The outcome list rests at 0,4,1, so neither the pair's press above nor the hover above ever
    reached a candidate row: these two are the only pointer feedback it has. Same values, because a
    YES held down is one answer wherever the pair stands. :not(.sel) is why they are written out
@@ -103,7 +106,7 @@
    filled colour goes down by depth. --edge-shade-strong is the role for that edge in both themes,
    and it is the same one every lifted stone in this system uses.
    0,4,2 and 0,3,2: above the rest rules they follow, so the shade lands over the fill. */
-.opt-list .yesno.compact button.sel.yes:active,.opt-list .yesno.compact button.sel.no:active,.yesno > a button.sel:active,.yesno > button.sel:active{box-shadow:inset 0 2px 5px var(--edge-shade-strong)}
+.opt-list .yesno.compact button.sel.yes:active,.opt-list .yesno.compact button.sel.no:active,.yesno > a.sel:active,.yesno > button.sel:active{box-shadow:inset 0 2px 5px var(--edge-shade-strong)}
 /* No :disabled, [disabled] or [aria-disabled] rule: 241 yesno blocks across ui-visual, ui-kit and
    wireframes and not one of them is disabled. There is no closed-market state that greys the pair,
    so a rule for it would be a guess about a screen that does not exist.

@@ -1,7 +1,7 @@
 /* components/footer.css
    Component: footer. Classes: .app-footer, .footer-brand, .footer-col, .footer-cols, .footer-inner, .footer-legal, .footer-logo, .footer-popular, .footer-soon, .footer-tagline, .footer-top, .lang-menu, .legal-links, .popular-links, .social-row, .sub-label.
 
-   Reads: --bg-pressed, --bg-surface, --border-hairline, --edge-groove-dark, --edge-groove-light, --mark-logo, --text-brass, --text-muted, --text-primary
+   Reads: --bg-pressed, --bg-surface, --border-hairline, --edge-groove-dark, --edge-groove-light, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/footer.html, and ui-kit/organisms.html#footer for the level and its reason
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -81,10 +81,13 @@
    state could not reach it either. A workaround answers the symptom it was written for and leaves
    every other one standing, which is why the rule now is that the WRAPPER goes rather than the
    control being copied. filters.css owns all three states and reaches this one, measured. */
-.footer-logo{width:auto;height:auto;padding:0;background:none;border:0;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-16);letter-spacing:var(--track-head);color:var(--text-primary)}
+/* THE FACE LEFT THIS FILE ON 2026-08-11, for components/logo.css, and the one line
+   left above is all the footer has to say about the lockup: it centres under a
+   phone. The reset here was five declarations undoing a `<button>` on a `<span>`
+   that never had any of them, which is what a face copied between two placements
+   looks like from the side that did not need it. */
 .footer-legal{border-top:var(--hairline) solid var(--border-hairline)}
 .app-footer{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light)}
-.footer-logo{display:inline-flex;align-items:center;gap:var(--space-8)}
-.footer-logo::first-letter{color:var(--text-primary)}
-.footer-logo::before{content:'';flex:0 0 auto;width:21px;height:var(--icon-16);background:var(--mark-logo) no-repeat center/contain}
+/* The box, the gap and the mark are components/logo.css now, and the mark was the
+   half of the pair that was already right: it read `--mark-logo` and themed. */
 .app-footer .footer-popular,.app-footer .footer-legal{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}

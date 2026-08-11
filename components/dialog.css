@@ -1,7 +1,7 @@
 /* components/dialog.css
-   Component: dialog. Classes: .app-dialog, .fine, .loss-dialog, .outcome-dialog, .sheet-body, .sheet-close, .sheet-head, .sheet-sub, .signin-dialog, .win-dialog.
+   Component: dialog. Classes: .app-dialog, .fine, .hiw-arrow, .hiw-body, .hiw-dialog, .hiw-full, .loss-dialog, .outcome-dialog, .sheet-body, .sheet-close, .sheet-head, .sheet-sub, .signin-dialog, .win-dialog.
 
-   Reads: --bevel-hair, --bevel-lit, --bg-dialog-head-from, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-pressed, --bg-surface, --border-hairline, --color-action, --color-action-lit, --control-knob, --edge-shade-strong, --mask-solid, --result-won, --result-won-stone, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-primary, --text-strong, --tint-brass-30, --tint-brass-45
+   Reads: --bevel-hair, --bevel-lit, --bg-dialog-head-from, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-pressed, --bg-surface, --border-hairline, --color-action, --color-action-lit, --control-knob, --edge-shade-strong, --mask-solid, --result-won, --result-won-stone, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-on-brass, --text-primary, --text-strong, --tint-brass-45
    Stand:  ui-kit/dialog.html, and ui-kit/organisms.html#dialog for the level and its reason
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -10,7 +10,23 @@ dialog.app-dialog{width:92%;max-width:var(--container-sheet);padding:0}
 dialog.app-dialog::backdrop{background:var(--shadow-ink-45)}
 dialog.app-dialog .sheet-head{display:flex;align-items:center;justify-content:space-between;padding:var(--space-8) var(--space-8)}
 dialog.app-dialog .sheet-head :is(h1,h2){font-size:var(--text-14);margin:0}
-dialog.app-dialog .sheet-body{padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-8)}
+/* THE BODY SHARES ITS HEAD'S LEFT EDGE, AND UNTIL 2026-08-11 IT WAS 12px SHORT
+   OF IT. Backlog 104. The padding here was `--space-8` and had been since the
+   rule was written, against a head at `24 20 20` directly above it, so on every
+   sheet that takes this bare body the title stood 20px in and the amount field,
+   the payment widget, both paragraphs and both full-bleed buttons stood at 8.
+   THE ROW ARGUED IT FROM THE SIBLINGS - the signin body is 16, the outcome body
+   20, the how-it-works body 20, and the only 8 is the one nobody decided - and
+   that is a true observation and the wrong reason. What decides a body's
+   horizontal padding is the HEAD DIRECTLY ABOVE IT, because those two edges are
+   the one vertical line a person reads down the middle of a sheet.
+   115 elements, all of them `#depositDialog`, which is a bare `app-dialog` with
+   no skin: the one sheet in the product whose body nobody ever came back to.
+   THE GAP STAYS AT 8. One change per element or nobody can attribute what moved,
+   and the gap is a rhythm rather than an edge: 8 here, 12 on signin and outcome,
+   16 on the how-it-works body, four values for one question, filed as 110 with
+   the two 4px insets this fix leaves standing. */
+dialog.app-dialog .sheet-body{padding:var(--space-20);display:flex;flex-direction:column;gap:var(--space-8)}
 dialog.app-dialog .fine{font-size:var(--text-11);line-height:var(--leading-base)}
 /* .backdrop, .sheet and .grab were here and are gone (step 7e). They are the
    GREY tree's bottom-sheet frame: 17 wireframes carry them and no painted screen
@@ -23,7 +39,7 @@ dialog.app-dialog .fine{font-size:var(--text-11);line-height:var(--leading-base)
 
 .sheet-head{display:flex;align-items:center;justify-content:space-between;padding:var(--space-8) var(--space-8);border-bottom:var(--hairline) solid var(--border-hairline)}
 .sheet-head :is(h1,h2){font-size:var(--text-14);margin:0}
-.sheet-body{padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-8)}
+.sheet-body{padding:var(--space-20);display:flex;flex-direction:column;gap:var(--space-8)}
 /* Fine print is muted wherever it stands, not only inside the containers named
    further down. Without the colour here it inherits body text and reads as
    loudly as the sentence it qualifies, which is what happened to the .fine
@@ -63,23 +79,48 @@ dialog.app-dialog.loss-dialog .sheet-head{background:linear-gradient(158deg,var(
 dialog.app-dialog.outcome-dialog .sheet-head::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='122' viewBox='0 0 200 122'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.2'%3E%3Cpath d='M-10 18 C 20 8 40 28 70 18 S 120 8 150 18 S 200 28 230 18'/%3E%3Cpath d='M-10 40 C 20 30 40 50 70 40 S 120 30 150 40 S 200 50 230 40'/%3E%3Cpath d='M-10 62 C 20 52 40 72 70 62 S 120 52 150 62 S 200 72 230 62'/%3E%3Cpath d='M-10 84 C 20 74 40 94 70 84 S 120 74 150 84 S 200 94 230 84'/%3E%3Cpath d='M-10 106 C 20 96 40 116 70 106 S 120 96 150 106 S 200 116 230 106'/%3E%3C/g%3E%3C/svg%3E") no-repeat right top / cover;-webkit-mask-image:linear-gradient(150deg,var(--mask-solid),transparent 72%);mask-image:linear-gradient(150deg,var(--mask-solid),transparent 72%);opacity:.16;pointer-events:none}
 dialog.app-dialog.win-dialog .sheet-head::after{content:'';position:absolute;top:-72px;right:-52px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--result-won) 70%,var(--control-knob) 6%) 0%,var(--result-won) 42%,transparent 70%);filter:blur(44px);opacity:.34;pointer-events:none}
 dialog.app-dialog.outcome-dialog .sheet-head :is(h1,h2){position:relative;z-index:var(--z-content);font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-sheet);line-height:var(--leading-flat);letter-spacing:var(--track-display);color:var(--text-strong);margin:0;max-width:16ch;text-wrap:balance}
-dialog.app-dialog.outcome-dialog .sheet-head a{position:absolute;top:0;right:0;z-index:var(--z-close);line-height:0;text-decoration:none}
+/* THE ANCHOR RULE THAT USED TO STAND HERE IS GONE, 2026-08-11, backlog 89. It read
+   `.sheet-head a{position:absolute;top:0;right:0;z-index:var(--z-close);line-height:0;
+   text-decoration:none}` and it positioned the WRAPPER of the close disc while the
+   rule twenty lines down positioned the disc inside it. The button is the anchor
+   now, so both would have landed on one element, and at (0,3,2) against (0,2,1)
+   this one would have won: the disc would have jumped from 12 in to flush against
+   the corner, on the six outcome overlays only, with line-height:0 along for the
+   ride. Nothing is lost. `.icon-btn` declares line-height:0 and text-decoration:none
+   in iconbtn.css, and `.sheet-close` below says where the control sits. */
 dialog.app-dialog.outcome-dialog .sheet-body{gap:var(--space-12);padding:var(--space-20) var(--space-20) var(--space-20)}
-.outcome-dialog .fine{color:var(--text-muted);font-size:var(--text-12);line-height:var(--leading-base);margin:0}
+/* `.outcome-dialog .fine` STOOD HERE AND IS GONE, 2026-08-11, backlog 102. At
+   (0,2,0) it was under `dialog.app-dialog .fine` at (0,2,1) on the same elements,
+   and `.outcome-dialog` is only ever worn by a `dialog.app-dialog`, so every one
+   of its four declarations lost to a rule fifteen lines up. Deleted and
+   re-measured: 0 of 248 placements change, margins included. */
 .outcome-dialog .sheet-body>.fine{color:var(--text-primary);font-weight:var(--weight-bold);font-size:var(--text-13)}
-.spinner-box .fine{color:var(--text-muted)}
+/* `.spinner-box .fine` STOOD HERE AND IS GONE, 2026-08-11, backlog 102. It set a
+   colour the bare `.fine` rule fifteen lines above already sets, and it was the
+   last rule in this file naming another component's container. 0 of 248 change. */
 dialog.app-dialog{background-color:var(--bg-plate);background-image:var(--surface-grain),linear-gradient(162deg,var(--bg-plate-from),var(--bg-plate-to));background-blend-mode:overlay,normal;border:var(--hairline) solid var(--edge-shade-strong);box-shadow:inset 0 1px 0 var(--bevel-lit),inset 1px 0 0 var(--bevel-hair),
     inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),
     0 40px 80px -30px var(--shadow-ink-85),0 16px 40px -20px var(--shadow-ink-72)}
 dialog.app-dialog{overflow:clip}
-dialog.app-dialog:not(.outcome-dialog) .sheet-head{position:relative;overflow:clip;display:block;padding:var(--space-24) var(--space-20) var(--space-20);border-bottom:0;/* The brass corner of a sheet head was 34 per cent longhand. S50, 2026-08-07: the
-   nearest rung, which is 30 on graphite and 45 on chalk, so the glow finally reads
-   as warmly in daylight as it does in the dark. A gradient stop is a tint at a
-   depth, which is what components/tokens.css says the ladder is for. */
-background:radial-gradient(120% 96% at 100% 0%,var(--tint-brass-30),transparent 58%),linear-gradient(158deg,var(--bg-dialog-head-from),var(--bg-plate-to))}
-dialog.app-dialog:not(.outcome-dialog) .sheet-head::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='122' viewBox='0 0 200 122'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.2'%3E%3Cpath d='M-10 18 C 20 8 40 28 70 18 S 120 8 150 18 S 200 28 230 18'/%3E%3Cpath d='M-10 40 C 20 30 40 50 70 40 S 120 30 150 40 S 200 50 230 40'/%3E%3Cpath d='M-10 62 C 20 52 40 72 70 62 S 120 52 150 62 S 200 72 230 62'/%3E%3Cpath d='M-10 84 C 20 74 40 94 70 84 S 120 74 150 84 S 200 94 230 84'/%3E%3Cpath d='M-10 106 C 20 96 40 116 70 106 S 120 96 150 106 S 200 116 230 106'/%3E%3C/g%3E%3C/svg%3E") no-repeat right top / cover;-webkit-mask-image:linear-gradient(150deg,var(--mask-solid),transparent 72%);mask-image:linear-gradient(150deg,var(--mask-solid),transparent 72%);opacity:.2;pointer-events:none}
-dialog.app-dialog:not(.outcome-dialog) .sheet-head::after{content:'';position:absolute;top:-72px;right:-52px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--color-action-lit) 60%,var(--color-action)) 0%,var(--color-action) 42%,transparent 70%);filter:blur(42px);opacity:.42;pointer-events:none}
-dialog.app-dialog:not(.outcome-dialog) .sheet-head :is(h1,h2){position:relative;z-index:var(--z-content);font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-sheet);line-height:var(--leading-flat);letter-spacing:var(--track-display);color:var(--text-strong);margin:0;max-width:15ch;text-wrap:balance}
+/* WHERE THIS HEAD SITS, AND SINCE 2026-08-11 THAT IS ALL FOUR OF THESE RULES SAY.
+   The ground, the wave, the glow and six of the heading's declarations left for
+   components/platehead.css, which is the FACE this head shares with the two
+   how-it-works heads: backlog 108. They were written out here and again in
+   hiw.css, agreeing to the byte, and they agreed only because backlog 98 had
+   moved four numbers on the other copy by hand that same morning. The S50 note
+   about the brass corner being a tint at a depth rather than a percentage moved
+   with the gradient it explains.
+   What is left is the four things this head decides and the other two hosts
+   decide differently: it is a block rather than a row, its padding is 24/20/20
+   against 32/24/28 and 32/24, its title is --display-sheet against --display-hiw,
+   and it runs to 15ch where a hero runs as far as it likes. border-bottom:0
+   cancels the two generic rules at the top of this file, which draw a hairline
+   under a head that has no ground of its own; this one has a ground.
+   The lift is per element here and a wrapper in the other host, and it stays
+   both ways until the markup says otherwise: platehead.css carries no z-index
+   for that reason and says so. */
+dialog.app-dialog:not(.outcome-dialog) .sheet-head{display:block;padding:var(--space-24) var(--space-20) var(--space-20);border-bottom:0}
+dialog.app-dialog:not(.outcome-dialog) .sheet-head :is(h1,h2){position:relative;z-index:var(--z-content);font-size:var(--display-sheet);max-width:15ch}
 dialog.app-dialog:not(.outcome-dialog) .sheet-sub{position:relative;z-index:var(--z-content);margin:var(--space-8) 0 0;font-size:var(--text-14);line-height:var(--leading-base);color:var(--text-primary);max-width:34ch}
 /* --------------------------------------------------------- the close disc --
    ONE CONTROL, ONE NAME, ONE MARK, AND IT WAS THREE RULES IN TWO FILES.
@@ -142,30 +183,52 @@ dialog.app-dialog .sheet-close{position:absolute;top:var(--space-12);right:var(-
    it reads 17.1:1 and 11.3:1, up from 10.3 and 3.5 at rest. The border repeats the
    hover's rather than being left out, because a touch screen never hovers and this
    button is a mobile sheet's only way out. */
-/* THE ONE PLACE THE MERGED CONTROL STILL ANSWERS DIFFERENTLY, AND THE GROUND IS
-   THE WHOLE ARGUMENT. Everywhere else this disc stands on a dialog head that
-   THEMES, and the product's brass ring reads on it: measured at the button's own
-   corner where the win head's green hotspot is strongest, 3.76:1 in the Vault and
-   4.58:1 in daylight, against a 3:1 floor for an indicator. The how-it-works head
-   is the exception, because `.hiw-glow` puts a brass radial in exactly that
-   corner, so a brass ring lands on a brass ground: 2.88:1 on average and 2.52:1
-   where the glow is brightest, under the floor, in the Vault only. Daylight passes
-   at 4.75:1, which is why a one-theme check would have missed it.
-   --text-strong is the answer for the reason course-chrome.css writes over its own
-   ring: A RING ANSWERS TO WHAT IT STANDS ON. That role flips with the head under
-   it, so it reads on the lit plate in both themes, 5.33:1 in the Vault and 10.13:1
-   in daylight, where white would have been 6.09 and 1.48. Only the colour moves;
-   the width and the offset stay the ones base.css declares once.
-   It is written HERE and not in hiw-dialog.css, which is where it lived until the
-   merge, because every rule about this control now lives in one file and the scope
-   names the place. `.win-dialog` and `.loss-dialog` are already scoped from here
-   on the same footing. */
-/* The ring this head needs is `.icon-btn-ring-strong` in components/iconbtn.css
-   since 2026-08-06, and the overlay asks for it by putting the class on the
-   element. The REASON is still this file's - .hiw-glow is what makes a brass
-   ring unreadable in that corner - and the reason is written where the rule
-   used to be. An outline-colour is what a control looks like, so it could not
-   stay here: a region may say where an icon button sits and not what it is. */
+/* THE RING, AND THE EXCEPTION TURNED OUT TO BE THE RULE. Backlog 106, 2026-08-11.
+   THE OLD READING. This disc stands on a dialog head that themes, and the
+   product's brass ring was measured as reading on it: 3.76:1 in the Vault at the
+   win head's green hotspot and 4.58:1 in daylight, against a 3:1 floor for an
+   indicator. The how-it-works head was the exception, because `.hiw-glow` put a
+   brass radial in exactly the corner the ring lands in, so a brass ring landed on
+   a brass ground: 2.88:1 average and 2.52:1 at the brightest point, under the
+   floor, in the Vault only. It took `.icon-btn-ring-strong` and nothing else did.
+   THAT MEASUREMENT WAS TAKEN AGAINST A GLOW THAT NO LONGER EXISTS, which is what
+   opened the row: the how-it-works glow went 224 / blur 40 / .5 / 65 per cent to
+   210 / 42 / .42 / 60 that morning, and platehead.css then made it the same rule
+   as the plain head's. RE-MEASURED at the button's own corner, in the annulus the
+   ring actually covers, DPR 2, both widths, both themes:
+
+     head            theme    ring         worst ground     worst contrast
+     how-it-works    Vault    brass-400    rgb(112,95,56)   2.93 at 390, 2.90 at 1280
+     plain sheet     Vault    brass-400    rgb(113,96,56)   2.89 at 390, 2.86 at 1280
+     win outcome     Vault    brass-400    rgb(49,94,64)    3.53 at 390, 3.49 at 1280
+     all three       daylight brass-700                     4.61, 4.61, 4.48
+
+   THE HEAD CARRYING THE EXCEPTION IS THE BETTER OF THE TWO BROWN HEADS BY 0.04,
+   AND THE 222 THAT WERE NOT CARRYING IT ARE WORSE. Neither branch the row wrote
+   down fires. The class cannot come off, because the ring still does not clear
+   3:1 there; and it cannot go "onto the others" as an addition, because a class
+   on 105 of 333 discs is a LIST, and this system has already paid for a list: the
+   44px floor stood in six files as six lists and two of five chips had it. What a
+   list leaves out, nothing says.
+   SO IT IS ONE RULE KEYED TO THE FAMILY, and it is here rather than in
+   iconbtn.css for the reason course-chrome.css writes over its own ring: A RING
+   ANSWERS TO WHAT IT STANDS ON. What all 333 of these discs stand on is a sheet
+   head, and a sheet head is this file's. --text-strong flips with the head under
+   it, so it reads on the lit plate in both themes: 6.21 and 6.12 in the Vault
+   against the two brown heads, 7.48 against the green one, 9.83 to 9.84 in
+   daylight, where a plain white would have been 1.48. Only the colour moves; the
+   width and the offset stay the ones base.css declares once.
+   The win head at 3.53 would pass without this and takes it anyway, because a
+   floor is the family's and an exception carries its reason: half a point of
+   contrast is not a reason, and six discs kept on the other value would be the
+   list again with a different membership.
+   THE RECORD'S OWN 3.76 / 4.58 FOR THE WIN HEAD IS THE DECLARED RECIPE COMPUTED
+   RATHER THAN THE PAGE READ, and it is corrected here rather than quietly
+   replaced: 42 per cent --result-won over --result-won-stone gives exactly 3.75
+   and 4.59, and the head's own green ::after at opacity .34 then lightens that
+   corner to rgb(48,95,65), which costs 0.26. A number that can only be reproduced
+   by re-deriving it is a reading of the stylesheet and not of the paint. */
+dialog.app-dialog .sheet-close:focus-visible{outline-color:var(--text-strong)}
 dialog.app-dialog.signin-dialog .sheet-body{padding:var(--space-16) var(--space-16) var(--space-16);gap:var(--space-12)}
 dialog.app-dialog.signin-dialog .fine a{color:var(--text-brass);text-decoration:none;border-bottom:var(--hairline) solid var(--tint-brass-45);padding-bottom:.4px}
 dialog.app-dialog.signin-dialog .fine a:hover{border-bottom-color:var(--text-brass)}
@@ -266,12 +329,18 @@ dialog.app-dialog:modal{position:fixed}
    and its own close button off the screen with it. min-height:0 because a flex
    item will not shrink below its content without it.
 
-   The how-it-works sheet fills with .hiw-body rather than .sheet-body and takes
-   the same rule in its own file, because a class belongs to the component that
-   owns it: writing it here would move .hiw-body into this file's Classes line
-   and into coverage.md, which are computed and would then disagree with where
-   the block actually lives. It was the worst of the three, 764px tall and
-   unreachable below 900px of viewport at any width.
+   The how-it-works sheet fills with .hiw-body rather than .sheet-body, and its
+   copy of this rule is at the FOOT OF THIS FILE since 2026-08-11, not in one of
+   its own. It stood elsewhere under an objection that has expired: writing it
+   here, the note said, would move .hiw-body onto this file's Classes line and
+   into coverage.md, which are computed and would then disagree with where the
+   block lives. coverage.md is in docs/kit-archive/ and is read by nothing, the
+   generators that computed it went with the vitrine on 2026-08-07, and .hiw-body
+   turns out to stand on 109 elements without one of them outside a sheet. AN
+   OBJECTION WHOSE INSTRUMENT HAS BEEN DELETED IS NOT AN OBJECTION, it is a fact
+   about a tree that no longer exists, and it kept a dialog's own rule out of the
+   dialog's own file for three days. It was the worst of the three, 764px tall
+   and unreachable below 900px of viewport at any width.
 
    Not .bet-sheet: it declares its own position, max-height and overflow-y (see
    betpanel.css) because it is a dock rather than a centred sheet, and making it
@@ -311,3 +380,58 @@ dialog.app-dialog.signin-dialog{max-width:410px}
    was found outside the button family. */
 dialog.app-dialog.outcome-dialog{max-width:var(--container-sheet)}
 .outcome-dialog a{text-decoration:none}
+
+/* ------------------------------------------- the how-it-works sheet, and it --
+   IS A SHEET, WHICH IS WHAT TEN RULES ARRIVING HERE ON 2026-08-11 SETTLE.
+   They came from components/hiw-dialog.css, which is components/hiw.css now.
+   Backlog 15 asked whether that sheet folds in the way signin and outcome-dialog
+   did; backlog 18 asked why its level had to be DECLARED when every other one is
+   computed. Both answers are this cut, because the file held ONE BLOCK WITH TWO
+   HOSTS and the three were being read as one component.
+   THE BLOCK is the explainer: eighteen rules, none of them scoped, standing
+   inside this sheet and on the standalone page alike. THE PAGE HOST is a screen
+   shell: sixteen rules, a grid, a 900 rail, a sticky side column and a .pos
+   placement, and folding those in here would have made this file the shell of a
+   screen. Neither belongs to a dialog.
+   THESE TEN DO, AND EVERY ONE OF THEM IS ABOUT BEING ONE: the sheet's width and
+   its clip, its body as the scroll container and that body's padding, and the
+   brass link out to the full guide with its arrow, its hover and its press. 107
+   elements, every one inside a sheet, and .hiw-full cannot stand on the page at
+   all, because the page IS the full guide.
+   WHY THE MOVE IS SAFE, MEASURED RATHER THAN ARGUED. Folding carries these rules
+   three slots earlier in the 49-import chain, past exactly two files,
+   bets-table.css and card.css. Every element of all 160 linked pages was asked
+   which rules of the old file and which of those two both match it AND write a
+   common longhand: not one pair, at any specificity. The same instrument pointed
+   at THIS file returns 427 candidate pairs, which is how a zero is known to be a
+   zero and not an instrument that matched nothing. They are appended at the END
+   so that they keep their position against everything else, for the reason the
+   signin and outcome skins are at the foot of this file and not at its head.
+   AND .hiw-body IS ON THIS FILE'S Classes LINE NOW, which is the objection at the
+   sheet-scroll rule above, expired and struck. */
+.hiw-full{display:block;box-sizing:border-box;padding:var(--space-12);font-size:var(--text-14);font-weight:var(--weight-bold);text-align:center;text-decoration:none}
+.hiw-full{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border:0;color:var(--text-on-brass);border-radius:var(--radius-10)}
+.app-dialog.hiw-dialog{max-width:var(--container-dialog);overflow:clip}
+/* The sheet is bounded by the viewport and its BODY scrolls, the same rule this
+   file writes for .sheet-body twenty lines up and for the same reason: the frame
+   goes on clipping its own corners, so it cannot also be the scroll container.
+   Its close disc is positioned against the dialog, not against the head, so it
+   stays put while the body moves. */
+dialog.app-dialog.hiw-dialog:modal .hiw-body{overflow:auto;min-height:0}
+.app-dialog.hiw-dialog .hiw-body{padding:var(--space-20) var(--space-20) var(--space-20);display:flex;flex-direction:column;gap:var(--space-16)}
+.app-dialog.hiw-dialog .hiw-full{display:flex;align-items:center;justify-content:center;gap:var(--space-8);font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:var(--space-12);margin-top:var(--space-2)}
+.app-dialog.hiw-dialog .hiw-arrow{width:var(--icon-18);height:var(--icon-18);stroke:var(--text-on-brass);transition:transform var(--dur-base) ease}
+.app-dialog.hiw-dialog .hiw-full:hover .hiw-arrow{transform:translateX(3px)}
+/* The one brass action in the system with no hover of its own: only the arrow
+   moved, so a person on a device with a pointer got a nudge and nothing under it.
+   Same lit face every other brass plate takes, and the same two roles. */
+.app-dialog.hiw-dialog .hiw-full:hover{background:linear-gradient(135deg,var(--color-action-lit),var(--color-action-lit))}
+/* The brass action's press, the same reversal every brass plate in the system
+   makes and with the same two roles the rest state reads: 135deg lights the
+   plate from the top left, 315deg drops the light to the bottom right, which is
+   what a plate pushed IN looks like. No glow to drop, because this one is not
+   lifted at rest, and no darker ground either: it is already lit, so swapping it
+   down would read as disabled.
+   The arrow keeps its nudge. That is the mark moving inside the control, not the
+   control moving, and a press is about the plate. */
+.app-dialog.hiw-dialog .hiw-full:active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit))}

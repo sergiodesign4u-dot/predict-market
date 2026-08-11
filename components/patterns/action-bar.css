@@ -41,7 +41,10 @@
 .cta-bar{display:flex}
 .cta-bar{padding:var(--space-8) 0 0;gap:var(--space-8);margin-top:var(--space-12)}
 .cta-bar>a{flex:1}
-.cta-bar>a>button{width:100%}
+/* `.cta-bar>a>button{width:100%}` stood here and is gone, 2026-08-11, backlog 89.
+   One element, and `.cta-bar>a{flex:1}` above already shares the row between the
+   children. The bare-child rule below stays: the bar still has one, and it opens a
+   dialog rather than navigating. */
 /* And the same sentence for a bare child, which the bar has as often as it has
    an anchor. It arrived here on 2026-08-03 out of the button rule account.css
    was carrying: how the children of a row share the row is the arrangement, and

@@ -250,24 +250,32 @@
     <b>9 screens</b> and <code>.ptabs</code> on 2, and neither had ever been drawn in the kit. A
     reader comparing a tab against a tab was comparing one of three against nothing.</p>
     <p class="tk-note"><b>The plain strip</b>, <code>.tabs</code>, from
-    <code>active-bets.html</code>: two links wearing <code>role="tab"</code>, and the state is
-    <code>aria-selected</code> rather than a class. It is the whole of the My Bets switch, Active
-    against History, and it navigates: each tab is a different URL, so nothing is hidden and shown,
-    the page changes.</p>
+    <code>active-bets.html</code>: two links, and the state is <code>aria-current="page"</code>
+    rather than a class. It is the whole of the My Bets switch, Active against History, and it
+    navigates: each tab is a different URL, so nothing is hidden and shown, the page changes.</p>
+    <p class="tk-why"><b>IT WORE <code>role="tablist"</code> AND <code>role="tab"</code> UNTIL
+    2026-08-11 AND OWNED NOTHING.</b> A tablist owns elements with <code>role="tab"</code>; here the
+    tabs were one level down inside the links, so the relationship was broken on <b>9 screens per
+    tree</b>. Two more things were true at once: <b>there is no <code>role="tabpanel"</code> anywhere
+    in that family</b>, in either tree, so the tabs controlled nothing; and <b>they navigate to
+    another document</b>, which a tab does not do. Moving the role up onto the anchor would have
+    fixed the ownership and left a tab with no panel that leaves the page. So the roles came OFF,
+    the container is a <code>&lt;nav&gt;</code> so its label still names something, and the state is
+    the idiom this product already writes <b>1,228 times</b>. Backlog 89.</p>
     <div class="tk-pairv">
       <div class="tk-th">Vault, dark</div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
-        <div class="tabs" role="tablist" aria-label="My Bets">
-          <a href="#"><button type="button" role="tab" aria-selected="true">Active</button></a>
-          <a href="#"><button type="button" role="tab" aria-selected="false">History</button></a>
-        </div>
+        <nav class="tabs" aria-label="My Bets">
+          <a href="#" aria-current="page">Active</a>
+          <a href="#">History</a>
+        </nav>
       </div>
       <div class="tk-th">Daylight, light</div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
-        <div class="tabs" role="tablist" aria-label="My Bets">
-          <a href="#"><button type="button" role="tab" aria-selected="true">Active</button></a>
-          <a href="#"><button type="button" role="tab" aria-selected="false">History</button></a>
-        </div>
+        <nav class="tabs" aria-label="My Bets">
+          <a href="#" aria-current="page">Active</a>
+          <a href="#">History</a>
+        </nav>
       </div>
     </div>
     <p class="tk-note"><b>The profile strip</b>, <code>.ptabs</code>, from

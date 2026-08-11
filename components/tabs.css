@@ -10,7 +10,7 @@
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .tabs{display:flex}
-.tabs button{border-bottom:var(--hairline) solid var(--border-hairline)}
+.tabs :is(a,button){border-bottom:var(--hairline) solid var(--border-hairline)}
 .ed-tabs{padding:0}
 .ed-tabradio{position:absolute;left:-9999px}
 .ed-tabbar{display:flex;gap:0;overflow-x:auto}
@@ -78,15 +78,30 @@
 /* The comment sort switcher. Its markup stands in comments and its styling has always stood here,
    so the press stands here too, next to the hover it answers rather than in the other file. */
 .tabs{gap:var(--space-8);margin:0 0 var(--space-16)}
-.tabs button{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);cursor:pointer}
-.tabs button:hover{color:var(--text-primary)}
-.tabs button:active{background:var(--bg-pressed)}
+/* A TAB IS AN ANCHOR HERE, AND FIVE OF THESE DECLARATIONS ARE THE <button>
+   ELEMENT'S OWN DEFAULTS WRITTEN DOWN. Backlog 89: these controls navigate to
+   another document, so they were an <a> wrapped round a <button> and the button
+   was supplying inline-block, centred text and no underline for free. `.ptab-lbl`
+   three rules down already declares the same four, because it is a <label> and
+   never had them either. Third time in this system: `.chip` and `.icon-btn` both
+   wrote them out on 2026-08-07 for the same discovery. */
+.tabs :is(a,button){border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;text-align:center;text-decoration:none}
+.tabs :is(a,button):hover{color:var(--text-primary)}
+.tabs :is(a,button):active{background:var(--bg-pressed)}
 /* Both selected grounds in this file were `color-mix(in oklab,var(--color-action)
    16%,transparent)`, which IS a rung and was still off the ladder, because a value
    spelled as a colour function is not a token and does not get the theme. On
    graphite nothing moved; on chalk they step up to 30 per cent like every other
    brass tint, and the label reads 5.72:1 there. S50, 2026-08-07. */
-.tabs button[aria-selected="true"]{background:var(--tint-brass-16);border-color:var(--color-action);color:var(--text-brass);font-weight:var(--weight-bold)}
+/* AND THE STATE IS aria-current NOW, NOT aria-selected. A tablist owns elements
+   with role="tab", and these owned links with the tabs one level down inside
+   them, so the tablist owned nothing on nine screens per tree. They also navigate
+   to another document and there is no tabpanel anywhere in that family, so what
+   they are is navigation with a current-page marker. `aria-current="page"` is the
+   idiom this product already writes 1,228 times and chip.css names out loud.
+   (0,2,0) against (0,2,1), same declarations, so which one wins costs nothing.
+   The aria-selected half stays until 0 elements inside .tabs carry role="tab". */
+.tabs :is(a,button)[aria-selected="true"],.tabs [aria-current="page"]{background:var(--tint-brass-16);border-color:var(--color-action);color:var(--text-brass);font-weight:var(--weight-bold)}
 .ptabs{margin-top:var(--space-20)}
 .ptab-bar{display:flex;gap:var(--space-8);border:0;margin:0 0 var(--space-16);overflow-x:auto;scrollbar-width:none;padding-bottom:var(--space-2)}
 .ptab-bar::-webkit-scrollbar{display:none}

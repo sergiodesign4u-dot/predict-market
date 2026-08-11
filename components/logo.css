@@ -1,0 +1,58 @@
+/* components/logo.css
+   Component: logo. Classes: .logo.
+
+   Reads: --font-display, --mark-logo, --space-8, --text-16, --text-primary, --track-head, --weight-bold
+   Stand:  ui-kit/logo.html, and ui-kit/vitrine.html#logo for the level and its reason
+   Stands on: 210 placements, the header and the footer of all 105 ui-visual screens
+   Colour goes through a role, geometry straight from a primitive. No em dash.
+
+   WHAT IT IS. The brand lockup: the mark, an 8px gap, the wordmark. One face, worn
+   twice per screen, and the only component in the system whose drawing is not made
+   of system ink. `CLAUDE.md` in this folder states that rule from the other end: a
+   brand mark is not in the system, it keeps its own drawing, and no generic glyph
+   may stand in for it, because a paper plane is not Telegram. So the shape lives in
+   `tokens.css` as a data URI, twice, once per theme.
+
+   WHY IT IS A FILE AT ALL, and it is a defect rather than a preference. Until
+   2026-08-11 this lockup was written in TWO component files. `footer.css` read
+   `--mark-logo` and themed correctly. `header.css` carried its own inline copy of
+   the SVG with `%23c99e3f` typed into it, so on all 105 painted screens the header
+   mark stayed mid brass in daylight while the footer mark beside it went to the
+   deep bronze the light theme asks for. Nothing looked broken, because a mark that
+   renders is a mark nobody re-reads, and the two are 900px apart on the page. THE
+   SECOND COPY WAS THE ONE THAT COULD NOT BE THEMED, which is the general case: a
+   value written into the place that uses it is invisible to the file that owns it.
+
+   WHY LEVEL 1. It holds nothing from the system: the mark is its own drawing and
+   the wordmark is the display face. It is imported above `header.css` and
+   `footer.css` because both hold it, and a part is read before the whole that holds
+   it, so a header may restyle the logo standing in it and a logo may not quietly
+   restyle every header.
+
+   WHAT THIS FILE OWNS AND WHAT IT DOES NOT. It owns the FACE: the mark, the gap,
+   the face, the size, the tracking, the ink, and the reset that makes the two
+   placements identical. It owns nothing about WHERE the lockup stands. The press
+   ground and the padding that carries the header's touch target are `header.css`,
+   and the centring under a phone footer is `footer.css`, for the same reason the
+   five marks left that file for `iconbtn.css` on 2026-08-06: a row describes where
+   a control sits, and this describes what it is.
+
+   THE RESET IS PART OF THE FACE, not of either place. The lockup is a `<button>` in
+   the header, because it goes to the Events home, and a `<span>` in the footer,
+   because it goes nowhere. Those two elements do not start from the same place: a
+   button arrives with the User Agent's ground, border, padding, font and centring,
+   and a span arrives with none of them. If the reset stood in `header.css` the two
+   would be one face only for as long as nobody looked, so it stands here and both
+   elements start from nothing.
+
+   THE 44px TOUCH FLOOR IS NOT HERE. It is one rule in `base.css` keyed to the
+   family, and `.logo-btn` is named in it. That is why the button keeps that class
+   rather than being renamed: the floor names places, and this file is a face. */
+
+/* One face. The mark box is 18px and the drawing inside it is about 12 wide under
+   `contain`, which is the display face's ascender at 16px: a mark taller than the
+   letters beside it reads as an icon that has been put next to a word, and a mark
+   shorter than them reads as a bullet. `white-space:nowrap` because a wordmark that
+   wraps is two words. */
+.logo{display:inline-flex;align-items:center;gap:var(--space-8);margin:0;padding:0;background:none;border:0;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-16);letter-spacing:var(--track-head);color:var(--text-primary);white-space:nowrap}
+.logo::before{content:'';flex:0 0 auto;width:18px;height:18px;background:var(--mark-logo) no-repeat center/contain}

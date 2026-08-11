@@ -29,7 +29,7 @@ and they were the entire atom shelf. So every entry below carries a declaration:
 
 ## The core, and what is outside it
 
-**40 of the 46 component files stand on the five anchors.** Six do not: `account`, `cookie-consent`,
+**41 of the 47 component files stand on the five anchors.** Six do not: `account`, `cookie-consent`,
 `profile`, `toc`, `toggle`, `patterns/action-bar`. They were not wrong; they were
 **unmeasured by this pass**, and "holds nothing" is not a reading that was taken about them. They
 get a level when the screens that carry them are walked.
@@ -56,6 +56,8 @@ Uses are elements carrying one of the component's own classes across the 41 scre
 | `toast` | 41 | **ONE CONTROL.** Filed as a molecule in `index.css` and it holds nothing |
 | `skeleton` | 34 | **ONE CONTROL.** A shape that stands where a thing will be |
 | `toggle` | 3 | **ONE CONTROL.** Walked 2026-08-08: three placements, all the same switch, all `aria-checked="false"`, so four of its five faces have no placement in the product |
+| `logo` | 210 | **ONE THING, and it is not a control in half of its placements.** The brand lockup: the mark, a gap, the wordmark. Written 2026-08-11 with the rename to Yonder, out of the two copies that were living in `header.css` and `footer.css`. It holds nothing, and it is the one component whose drawing is not made of system ink, which is the rule this folder already states from the other end: a brand mark keeps its own drawing and no generic glyph may stand in for it. **It is a `<button>` in the header and a `<span>` in the footer**, so the reset that makes those two render identically is part of the face rather than of either place |
+| `platehead` | 339 | **ONE FACE, and it is worn by three different components.** The brass-cornered head of a plate: the ground, the wave masked out of the corner, the 210px glow anchored outside the box, and the display heading. Written 2026-08-11 out of two copies that agreed to the byte, in `dialog.css` for the plain sheet head and in `hiw.css` for the how-it-works head and the page hero. **They agreed because six numbers had been moved by hand on one of them that morning**, by backlog 98, which is the finding rather than the fix. It holds nothing and it loads at level 1 for the lockup's reason: both wholes that hold it load at level 3 and must win a tie. **The `.hiw-glow` span went with it**, 200 elements over three trees drawing what the other host drew with a pseudo. Backlog 105 and 108 |
 
 ### Level 2, molecules
 
@@ -85,8 +87,8 @@ Uses are elements carrying one of the component's own classes across the 41 scre
 |---|---|---|
 | `header` | 668 | **HOLDS** `button`, `chip`, `iconbtn`, `navitem`, `toast`. A shell |
 | `footer` | 615 | **HOLDS** `filters`, `iconbtn`, `toast`, `trustbar`. A shell |
-| `hiw-dialog` | 574 | **HOLDS** `dialog`, `iconbtn` |
-| `dialog` | 291 | **HOLDS** `button`, `chip`, `iconbtn`, `input`, `notice`, `quick` |
+| `hiw` | 1,604 | **HOLDS** `hero` (`.brand-tile` and its six parts) and `position` (`.pos` and its four), which is the arithmetic saying what the ceiling rule already says: level 3 also means the shell of a screen. **This was the last level in the kit that had to be DECLARED, and it is computed since 2026-08-11.** It was filed as `hiw-dialog` at 574 while the file was one block with two hosts plus ten rules about a sheet; the ten are `dialog`'s now and the name stopped saying dialog with them. The 574 is the 41-screen census of 2026-08-07 and the 1,604 is every element wearing one of the thirteen remaining classes across the 105 painted screens on 2026-08-11: **the two are not on one scale**, because the instrument that read 41 screens went with the vitrine, and a figure nobody can reproduce is worse than a figure that says what it counted |
+| `dialog` | 291 | **HOLDS** `button`, `chip`, `iconbtn`, `input`, `notice`, `quick`. **It gained `.hiw-dialog`, `.hiw-body`, `.hiw-full` and `.hiw-arrow` on 2026-08-11**, 420 elements over the same 105 screens, with backlog 15 and 18. It does not HOLD the how-it-works block: the sheet host is one element WEARING two component classes, and what it genuinely holds is `.sheet-close` |
 | `betpanel` | 120 | **HOLDS** `yesno`, `chip`, `button`, `input`, `quick`, `notice`, `state-block` |
 | `tabs` | 153 | **HOLDS** `bets-table`, `comments`, `position`, `button`, `chip` |
 | `event-detail` | 126 | **HOLDS** fourteen, and it is the screen's own shell |

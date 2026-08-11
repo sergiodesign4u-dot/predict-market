@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: plate head</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+  <script src="../assets/icons.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Plate head</h1>
+    <p>Level 1, and <b>the only component in this system that was found by asking what three
+    different classes had in common</b>. The brass-cornered head of a plate: a two-stone ground,
+    a wave masked away from the corner, a 210px glow bleeding in from outside the box, and a
+    display heading standing above all three. <b>339 placements on 105 painted screens</b>, one
+    face, three hosts. Written 2026-08-11 out of the two copies that were standing in
+    <code>dialog.css</code> and <code>hiw.css</code>.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">339 placements</span>
+      <span class="tk-badge">1 face, 3 hosts</span>
+      <span class="tk-badge">4 rules</span>
+      <span class="tk-badge">56 declarations written twice became 28 written once</span>
+    </div>
+  </div>
+
+  <!-- ============================================================ why a page --><section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and the reason for it stay on
+    <a href="vitrine.html#platehead">the atoms page</a>. This page holds what the shelf has no room
+    for, and for this component that is the thing a shelf structurally cannot show: <b>the three
+    heads are never on one screen, in the product or in the kit, so nothing in this repository had
+    ever put them beside each other</b>. That is why the duplication survived four passes over
+    these two files.</p>
+  </section>
+
+  <!-- =========================================================== the finding --><section class="tk-sec" id="finding">
+    <h2 data-n="2">One face, two files, and six numbers moved by hand to make them agree</h2>
+    <p class="tk-note">Until 2026-08-11 the ground, the wave and the glow were written out in
+    <code>components/dialog.css</code> for the sheet head and again in <code>components/hiw.css</code>
+    for the how-it-works head. They agreed to the byte. <b>They agreed because somebody had edited
+    one of them that morning to make them agree</b>: backlog 98 moved six numbers on the
+    how-it-works copy, and the list is the evidence rather than the fix.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>what</th><th>the how-it-works copy</th><th>the sheet head</th><th>after 98</th></tr></thead>
+        <tbody>
+          <tr><td>glow box</td><td>224px</td><td>210px</td><td>210px</td></tr>
+          <tr><td>glow blur</td><td>40px</td><td>42px</td><td>42px</td></tr>
+          <tr><td>glow opacity</td><td>.5</td><td>.42</td><td>.42</td></tr>
+          <tr><td>glow inner mix</td><td>65%</td><td>60%</td><td>60%</td></tr>
+          <tr><td>wave opacity</td><td>.24</td><td>.2</td><td>.2</td></tr>
+          <tr><td>ground radial, vertical stop</td><td>92%</td><td>96%</td><td>96%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>Six numbers moved by hand to make two rules agree is one rule written
+    twice.</b> The seventh edit would have drifted again, and nobody would have seen it, because a
+    sheet head and a page hero cannot appear in the same viewport.</p>
+    <p class="tk-note">The <b>224</b> is worth its own line, because it was not a mistake. It was a
+    compensation: anchored at <code>right:-52px</code> a 224px circle reaches 37.2 per cent into a
+    462px sheet head against the plain head's 37.8 into 418, which is nearly exact. It reaches
+    <b>18.7 per cent</b> into the 922px page hero, which is half. <b>A compensation that fails on
+    the block's other host is not a compensation, it is a second number.</b></p>
+  </section>
+
+  <!-- ========================================================== the placements --><section class="tk-sec" id="heads">
+    <h2 data-n="3">The three heads</h2>
+    <p class="tk-note">One face at three widths, which is the whole component. What differs
+    between them is padding, how loud the heading is, how wide it may run, and whether the box
+    draws its own edge. Nothing else.</p>
+
+    <p class="tk-subh">the plain sheet head, 225 placements, 418px, inside a dialog that is not an outcome overlay</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-dlg">
+        <dialog class="app-dialog signin-dialog" open aria-label="Sign in or create account">
+          <div class="plate-head sheet-head">
+            <h2>Sign in or create account</h2>
+            <p class="sheet-sub">You are about to place a bet. No crypto wallet required.</p>
+            <button type="button" class="icon-btn icon-btn-photo sheet-close" aria-label="Close">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+          </div>
+        </dialog>
+      </div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-dlg">
+        <dialog class="app-dialog signin-dialog" open aria-label="Sign in or create account">
+          <div class="plate-head sheet-head">
+            <h2>Sign in or create account</h2>
+            <p class="sheet-sub">You are about to place a bet. No crypto wallet required.</p>
+            <button type="button" class="icon-btn icon-btn-photo sheet-close" aria-label="Close">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+          </div>
+        </dialog>
+      </div></div>
+    </div>
+
+    <p class="tk-subh">the how-it-works sheet head, 111 placements, 462px, and it lifts its content with a wrapper instead of per element</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="plate-head hiw-hero"><div class="hiw-hero-inner">
+          <h2>How it works</h2>
+          <p class="hiw-tagline">Back the events you follow, in plain language.</p>
+        </div></div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="plate-head hiw-hero"><div class="hiw-hero-inner">
+          <h2>How it works</h2>
+          <p class="hiw-tagline">Back the events you follow, in plain language.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <p class="tk-subh">the how-it-works page hero, 3 placements, 922px, the only one of the three that draws its own edge</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig" data-theme="dark">
+        <div class="plate-head hiw-page"><div class="hiw-hero-inner">
+          <h1>How It Works</h1>
+          <p class="hiw-tagline">You always know what you are doing, why, and what happens to your money. This is a promise, not a FAQ.</p>
+        </div></div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig" data-theme="light">
+        <div class="plate-head hiw-page"><div class="hiw-hero-inner">
+          <h1>How It Works</h1>
+          <p class="hiw-tagline">You always know what you are doing, why, and what happens to your money. This is a promise, not a FAQ.</p>
+        </div></div>
+      </div>
+    </div>
+    <p class="tk-why"><b>The page hero was spelled <code>.hiw-hero.hiw-page</code> until 2026-08-11.</b>
+    Backlog 105: a modifier on a class that means "the head of a sheet", on a box that is not a
+    sheet head and cannot become one. It is <code>.hiw-page</code> now, four elements, and it wears
+    the face directly like the other two.</p>
+  </section>
+
+  <!-- =============================================================== the face --><section class="tk-sec" id="anatomy">
+    <h2 data-n="4">What the face draws</h2>
+    <p class="tk-note">Four rules and twenty-eight declarations. Three of the four are decoration
+    that never touches the flow, which is why the face can be worn by boxes of three different
+    sizes without any of them saying anything about it.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>rule</th><th>what it is</th><th>why</th></tr></thead>
+        <tbody>
+          <tr><td><code>.plate-head</code></td><td>the ground: a brass radial at <code>120% 96% at 100% 0%</code> over a 158deg two-stone linear, plus <code>position:relative</code> and <code>overflow:clip</code></td><td>the corner is <code>--tint-brass-30</code>, a tint at a depth, which is 30 per cent on graphite and 45 on chalk so the corner reads as warmly in daylight as it does in the dark. <code>clip</code> is what keeps the glow inside the box</td></tr>
+          <tr><td><code>.plate-head::before</code></td><td>the wave, a five-line data URI at <code>opacity:.2</code>, masked <code>linear-gradient(150deg, solid, transparent 72%)</code></td><td>the mask is what keeps the pattern OUT of the brass corner. An opacity answers to the ground it is drawn on, which is why the outcome head's copy is .16 against this one's .2</td></tr>
+          <tr><td><code>.plate-head::after</code></td><td>the glow: a 210px circle at <code>top:-72px right:-52px</code>, blurred 42, at <code>opacity:.42</code></td><td>it is anchored OUTSIDE the box on both axes, so how far it reaches into a head is a function of that head's width. That is the fact the 224 was compensating for</td></tr>
+          <tr><td><code>.plate-head :is(h1,h2)</code></td><td>the display face: family, weight, leading, tracking, ink, <code>margin:0</code>, <code>text-wrap:balance</code></td><td><code>:is(h1,h2)</code> because a page has exactly one h1 and a dialog is opened over a page that already spent it. Same heading, two levels</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>The glow was an element in one of the two hosts and a pseudo in the other.</b>
+    <code>&lt;span class="hiw-glow" aria-hidden="true"&gt;</code> carried 200 copies across the three
+    trees, with a rule in the system to size it and a second one inline in every grey wireframe that
+    still said 224. The sheet head next door drew the identical circle with <code>::after</code> and
+    no markup at all. A glow is not content, so the mechanism is the one that is not in the markup.
+    The span is deleted in all three trees.</p>
+  </section>
+
+  <!-- =============================================================== the split --><section class="tk-sec" id="split">
+    <h2 data-n="5">What this file owns, and what it does not</h2>
+    <p class="tk-note">The list is the point. Everything on the right of this table is a host
+    saying where it sits and how loud it is, which is all a host is allowed to say.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>property</th><th>plain sheet head</th><th>how-it-works sheet head</th><th>page hero</th></tr></thead>
+        <tbody>
+          <tr><td>padding</td><td>24 / 20 / 20</td><td>32 / 24 / 28</td><td>32 / 24</td></tr>
+          <tr><td>heading size</td><td><code>--display-sheet</code>, 24 to 30px</td><td><code>--display-hiw</code>, 30 to 38px</td><td><code>--display-hiw</code>, 30 to 38px</td></tr>
+          <tr><td>heading measure</td><td>15ch</td><td>none</td><td>none</td></tr>
+          <tr><td>the sub</td><td><code>.sheet-sub</code>, 14px at 34ch</td><td><code>.hiw-tagline</code>, 14px at 32ch</td><td><code>.hiw-tagline</code>, 16px at 44ch</td></tr>
+          <tr><td>edge, corner, bottom margin</td><td>none, it is flush inside a frame that has all three</td><td>none, same reason</td><td>hairline, 16px corner, 20px below, inset lit lip</td></tr>
+          <tr><td>lifting content over the glow</td><td>per element, on the title and the sub</td><td><code>.hiw-hero-inner</code> wraps both</td><td><code>.hiw-hero-inner</code> wraps both</td></tr>
+          <tr><td>which file says so</td><td><code>dialog.css</code></td><td><code>hiw.css</code></td><td><code>hiw.css</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>The outcome head is not a wearer, and that is deliberate.</b>
+    <code>dialog.app-dialog.outcome-dialog .sheet-head</code> has this head's anatomy to the
+    declaration: relative, clip, block, 24/20/20, <code>border-bottom:0</code>, the same wave, the
+    same display heading. It has a different GROUND and a different GLOW: the win head is a green
+    radial over <code>--result-won-stone</code>, and the loss head is a plain linear with no brass
+    radial and no glow at all. <b>It shares the skeleton and not the face</b>, so folding it in here
+    would mean two classes where the finding is one. Ten elements, filed with its numbers.</p>
+  </section>
+
+  <!-- ================================================================== rule --><section class="tk-sec" id="rule">
+    <h2 data-n="6">The rule</h2>
+    <p class="tk-note"><b>A face that more than one component wears is a file, and each wearer says
+    only where it sits.</b> The precedent is already twice in this folder: four controls in the
+    header band wear one hover and no component file could own it, and the brand lockup stands in
+    the header and in the footer and became <code>logo.css</code> the same week. This is the same
+    shape one floor up, and it loads at level 1 for the lockup's reason word for word: it holds
+    nothing from the system, and the two wholes that hold it load at level 3, so on a tie the host
+    wins and the face cannot quietly redraw it.</p>
+    <p class="tk-note"><b>A decoration that is not content is a pseudo element, not a span.</b>
+    The glow proves it from both ends at once: one host had a real element and one had
+    <code>::after</code>, they drew the identical circle, and the one with the element needed a
+    rule in the system and a second rule inline in every grey wireframe to size a box that painted
+    nothing there at all.</p>
+  </section>
+
+  <!-- ============================================================= anti-rule --><section class="tk-sec" id="antirule">
+    <h2 data-n="7">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never make two rules agree by editing one of them.</b> <i>That is
+    what happened here on the morning of 2026-08-11, six numbers deep, and the result looked like a
+    fix. It was the duplication being paid for a fourth time. If two rules have to be walked into
+    agreement, the finding is not the numbers, it is that there is one rule.</i></p>
+    <p class="tk-lab tk-bad"><b>Never rename a class to remove a duplication.</b> <i>Backlog 98
+    asked for <code>.hiw-hero</code> to become <code>.sheet-head</code>. That moves the duplication
+    rather than removing it: the head's paint would land in <code>dialog.css</code> for the sheet,
+    and the page hero, which is not and cannot be a sheet head, would have all six rules written out
+    again. 1,004 class tokens across 195 files, to end with the same face in two places.</i></p>
+    <p class="tk-lab tk-bad"><b>Never fix a shared face with a second selector.</b> <i>
+    <code>components/CLAUDE.md</code> already says the fix for a scope is never a second selector,
+    and it says it about a chip that was repaired once and whose selected state was not doubled the
+    same day, shipping a brass edge with no ground on 105 screens. A selector list is a face kept in
+    two places and the second place is the one that gets forgotten.</i></p>
+  </section>
+
+  <!-- ============================================================== closing --><section class="tk-sec" id="closing">
+    <h2 data-n="8">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="vitrine.html#platehead">the atoms page</a>.
+    The stylesheet: <code>components/platehead.css</code>, four rules and the account of the two
+    copies it replaced. The hosts: <a href="dialog.html">dialog</a> and
+    <a href="hiw.html">how it works</a>. The heads that do not wear it:
+    <a href="dialog.html#outcome">the outcome overlays</a>. The cut, the numbers and what was
+    refused: <code>../docs/decisions.md</code>, 2026-08-11.</p>
+  </section>
+
+</div>
+</body>
+</html>

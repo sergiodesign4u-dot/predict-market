@@ -50,6 +50,24 @@
 @import url("course-chrome.css");
 
 /* ---- Level 1, atoms: one control, holding nothing from the system ---- */
+/* logo added 2026-08-11 with the rename to Yonder. It is an atom by the same
+   reading as the odds bar below it: it holds nothing, and it is not a control
+   in the footer, where it goes nowhere. It has to load HERE rather than beside
+   the shells, because header and footer both hold it and both restyle where it
+   stands. What it replaced was the same lockup written in those two files, one
+   of them with the mark's colour typed into it and therefore unthemeable. */
+@import url("logo.css");
+/* platehead added 2026-08-11 by backlog 108, and it is here for the logo's
+   reason word for word: it holds nothing from the system, and the two wholes
+   that hold it both load at level 3 and both restyle where it stands. dialog.css
+   says a sheet head is 24/20/20 and its title runs to 15ch, hiw.css says the
+   how-it-works head is 32/24/28 and its title is --display-hiw; neither may
+   quietly redraw the other's ground. On a tie the file imported LAST wins, so a
+   face imported here can be overridden by a host imported there, which is the
+   direction this file exists to enforce. What it replaced was the same six rules
+   in those two files, agreeing to the byte because somebody had edited one of
+   them by hand that morning to make them agree. */
+@import url("platehead.css");
 @import url("oddsbar.css");
 @import url("button.css");
 @import url("iconbtn.css");
@@ -120,7 +138,7 @@
 @import url("dialog.css");
 @import url("bets-table.css");
 @import url("card.css");
-@import url("hiw-dialog.css");
+@import url("hiw.css");
 @import url("betpanel.css");
 @import url("tabs.css");
 @import url("feed.css");

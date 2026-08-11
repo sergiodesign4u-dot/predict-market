@@ -44,6 +44,465 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-11 - One face was written down twice, and the instrument that was supposed to prove it could not see 222 of its 225 placements
+
+Five rows closed in one pass, 104, 105, 106, 107 and 108, and **two of the five had a premise that
+did not survive being measured again**. That is the shape of the day rather than an aside: every one
+of these rows was written by an earlier pass of this same week, and three of them were arithmetic
+taken on trust.
+
+### The face is a file now, and it is the first component here found by comparing two stylesheets
+
+`components/platehead.css`, level 1, four rules. **The brass-cornered head of a plate** is a
+two-stone ground with a brass hotspot at `120% 96% at 100% 0%`, a five-line wave masked away from
+that corner at `opacity:.2`, a 210px glow anchored OUTSIDE the box at `-72 / -52` and blurred 42 at
+`.42`, and a display-face heading over all three. It is worn by three components:
+
+| host | elements | width | what it keeps for itself |
+|---|---|---|---|
+| the plain sheet head, `.sheet-head` in a dialog that is not an outcome overlay | 225 | 418 | padding 24/20/20, `--display-sheet`, 15ch |
+| the how-it-works sheet head, `.hiw-hero` | 111 | 462 | padding 32/24/28, `--display-hiw` |
+| the how-it-works page hero, `.hiw-page` | 3 | 922 | padding 32/24, an edge, a 16px corner, a 20px bottom margin, an inset lit lip, `--display-hiw` |
+
+**339 placements in the painted tree and the kit, and 0 in the grey tree**, which links no
+stylesheet and takes the copy rather than the class, the rule the Yonder rename set the same day.
+**28 declarations that stood twice stand once.**
+
+**WHAT MADE IT FINDABLE WAS A FIX FROM THE SAME MORNING.** Backlog 98 had walked six numbers on the
+how-it-works copy so it would agree with the sheet head's: the glow 224 to 210, its blur 40 to 42,
+its opacity .5 to .42, its inner mix 65 to 60 per cent, the wave .24 to .2 and the ground radial's
+vertical stop 92 to 96. Every one of those was the right value. **Six numbers moved by hand to make
+two rules agree is one rule written twice**, and the seventh edit would have drifted again, because
+the three heads are never on one screen and nothing in this repository had ever put them beside each
+other. That is what the component page is for.
+
+**THE RENAME 98 ASKED FOR IS STILL REFUSED, and this is why it was the wrong shape.** `.hiw-hero` to
+`.sheet-head` moves the duplication rather than removing it: the head's paint lands in `dialog.css`
+for the sheet, and the page hero, which is not and cannot be a sheet head, has all six rules written
+out again. What removes it is a FACE that is a thing, with each host saying only where it sits and
+how loud its heading is. The precedent was already twice in `components/`: four controls in the
+header band wear one hover and no component file could own it, and the brand lockup stands in the
+header and the footer and became `logo.css` four days ago. This is the same move one floor up, and
+it loads at level 1 for the lockup's reason word for word - it holds nothing from the system, and
+both wholes that hold it load at level 3, so on a tie the host wins.
+
+**THE GLOW WAS AN ELEMENT IN ONE HOST AND A PSEUDO IN THE OTHER, DRAWING THE SAME CIRCLE.**
+`<span class="hiw-glow" aria-hidden="true">` carried **200 copies across the three trees** - 106
+painted, 6 in the kit, 88 in the grey tree - with a rule in the system to size it and a second one
+inline in every grey wireframe that still said 224, while the sheet head next door drew it with
+`::after` and no markup at all. In the grey tree it carried no background, so **88 of the 200 painted
+nothing at any width and had never painted anything.** A glow is not content. The span is deleted in
+all three trees and the pseudo is the mechanism.
+
+### 105 was the precondition and it landed as one edit, and it found the same defect one tree over
+
+`.hiw-hero.hiw-page` was a modifier on a class that means "the head of a sheet", on a box that is
+922 x 161.89 at 1280 against a sheet head's 462, at DOM depth 9 rather than 3, with an edge, a
+corner, a margin and a lit lip that no sheet head has, an `<h1>` rather than an `<h2>`, and a tagline
+at 16px/44ch against 14px/32ch. Four elements. It is `.hiw-page` now and it wears the face directly
+like the other two. **A face cannot be shared by three heads while one of them is spelled as a
+modifier on another**, which is why the two rows are one edit and are recorded as one.
+
+**AND THE GREY TREE HAD THE SAME DEFECT WITHOUT THE MODIFIER.**
+`wireframes/_generators/port_chrome.py`, deleted with the other generators, had flattened
+`.hiw-hero.hiw-page` to a bare `.hiw-hero` when it ported the chrome, so **five page-only rules stood
+UNSCOPED in 87 grey files and 86 of those files have no page at all**: the page hero's 32/24 padding,
+its 20px bottom margin, its 16px/44ch tagline and its 14px FAQ have been landing on the how-it-works
+SHEET head on every grey screen that carries one. **430 rules deleted in the 86 files with no page,
+12 re-keyed to `.hiw-page` and `.hiw-cols` in the one that has.** A generator that flattens a
+compound selector writes a rule that is right about the values and wrong about the element, and
+**no sweep in this repository reads a grey stylesheet**, which is the second time this week that the
+second system has been the one carrying the older defect.
+
+### 106: the exception was measured once, against a glow that stopped existing, and it is the rule
+
+The close disc on the how-it-works head took `.icon-btn-ring-strong`, which replaces the system's
+brass focus ring with `--text-strong`, because `.hiw-glow` put a brass radial in exactly the corner
+the ring lands in: 2.88:1 average, 2.52:1 at the brightest point, under the 3:1 floor for an
+indicator, in the Vault only. Re-measured at the button's own corner, in the annulus the ring
+actually covers, DPR 2, both widths, both themes:
+
+| head | Vault, worst | daylight, worst | with `--text-strong` |
+|---|---|---|---|
+| how-it-works | **2.93** at 390, 2.90 at 1280 | 4.61 | 6.21 / 6.14 |
+| plain sheet | **2.89** at 390, 2.86 at 1280 | 4.61 | 6.12 / 6.05 |
+| win outcome | 3.53 at 390, 3.49 at 1280 | 4.48 | 7.48 / 7.40 |
+
+**The head that was carrying the exception is the better of the two brown heads by 0.04, and the 222
+that were not carrying it are worse.** Neither branch the row wrote down fires: the class cannot come
+off, and adding it to the others is not an addition but the same mistake with a bigger membership,
+because **a class on 105 of 333 discs is a LIST** and this folder has already paid for a list - the
+44px touch floor stood in six files as six lists and two of five chips had it. So it is **one rule
+keyed to the family**, `dialog.app-dialog .sheet-close:focus-visible{outline-color:var(--text-strong)}`,
+in the file that owns the surface, for the reason `course-chrome.css` already writes over its own
+ring: **a ring answers to what it stands on**, and what these 333 discs stand on is a sheet head.
+`.icon-btn-ring-strong` is deleted from `iconbtn.css` and from **198 class tokens in 195 files**.
+
+The win head at 3.53 would pass without this and takes it anyway. Half a point of contrast is not a
+reason, and six discs kept on the other value would be the list again with a different membership.
+
+**TWO NUMBERS IN THE RECORD WERE CORRECTED RATHER THAN QUIETLY REPLACED.** The row's "it goes onto
+the other 117" is an arithmetic slip: 222 is the plain-head count, so 327 discs stand on a brass
+glow and 333 on a sheet head of some kind. And `dialog.css`'s own 3.76 / 4.58 for the win head is
+**the declared recipe computed rather than the page read**: 42 per cent `--result-won` over
+`--result-won-stone` gives exactly 3.75 and 4.59, and the head's own green `::after` at `.34` then
+lightens that corner to rgb(48,95,65), which costs 0.26. The paint is 3.53 and 4.48. A number that
+can only be reproduced by re-deriving it is a reading of the stylesheet and not of the paint, which
+is this repository's own rule arriving from a direction it had not come from before.
+
+### 107: the hole does not exist, and the divergence that does is worse than the row thought
+
+The row said the grey tree hides the dock at 640 while the panel arrives at 760, leaving 120px where
+a screen cannot be bet from. **The grey panel arrives at 640, in the same four-line block that hides
+the dock.** Measured at ten widths on all 16 event-detail documents in both trees, the set of widths
+where neither control is visible is **empty on every one of them**.
+
+What is real is the other half. The two trees put the same reflow at two different rungs, so from
+640 to 759 the grey tree draws a second column the product does not have - and **halves its own
+content column to do it: `.ed-main` 635 to 322.73 in one pixel of viewport, and the chart 569 wide to
+255.7**. `DESIGN.md` decides the number by name: 760 is where the event detail gains its second
+column, and 640 is "the one divide, below it a single column with a bottom nav and a mobile dock".
+So the grey block moves, in all 92 files, **and the WHOLE block moves rather than just the dock,
+because moving the dock alone is what would create the hole this row was filed about.** The paint
+needs no change. Forcing the paint the other way was measured too and it is the worse trade: the
+panel fits at 640, its `min-content` is 274.22, and it leaves a **244px** content column for the
+chart, the market block, the tabs and the comments.
+
+**AND THE PAIR TRAP WENT IN THE SAME SWEEP.** `@media(max-width:640px)` in 57 grey files and
+`@media(max-width:760px)` in 87 both match on the same pixel as their `min-width` twin, which is the
+defect `CLAUDE.md` says this repository has been bitten by twice. Read at exactly 760 the grey footer
+trust strip computes one column where the paint computes three. **153 conditions are `639.98` and
+`759.98` now.**
+
+### 104: the row argued from the siblings, and the answer is the head directly above
+
+"Every decided body is 16 or 20 and the only 8 is the one nobody decided" is true and is a
+comparison between siblings. What decides a body's horizontal padding is the head above it, because
+those two edges are the one vertical line a person reads down the middle of a sheet. The bare
+`.sheet-body` stands on **115 elements across the painted tree and the kit and every one of them is
+`#depositDialog`**, a bare `app-dialog` with no skin, under a head at 24/20/20. **So the title stood
+20px in while the amount field, the payment widget, both paragraphs and both full-bleed buttons
+stood at 8.** It is `--space-20` now, in both copies of the rule. The gap stays at 8: one change per
+element, and the four gaps for one rhythm are filed as 110 with the two 4px insets this leaves
+standing.
+
+### The instrument, and it was wrong three times before it was right
+
+**A `<dialog>` WITH NO `open` ATTRIBUTE IS `display:none`, SO 222 OF THE 225 PLATE HEADS LIVE INSIDE
+A BOX THE BROWSER NEVER PAINTS.** A full-page pixel diff over all 106 painted screens is structurally
+blind to almost every placement of the thing being changed, and it would have reported a clean zero
+while saying nothing at all. This is `ui-kit/CLAUDE.md`'s own "a count cannot tell an open dialog
+from a shut one" arriving on the measurement side. The real instrument OPENS each dialog with
+`showModal()`, reads the computed style of every element in its subtree with the **properties
+sorted** (Chrome enumerates custom properties out of a hash map and their order shuffles between runs
+of the same page), and screenshots the DIALOG ELEMENT rather than the page.
+
+**Three instrument defects, each caught by the control rather than by a reading:**
+
+1. **The course chrome poisoned it, for the second time in this repository.** The first pass reported
+   66 non-zero readings over 47 documents. Running the same tree AGAINST ITSELF reproduced the
+   identical box on 28 of those 47: **44 x 44 at `button.rm-toggle`, 26 pixels**, the design-system
+   panel's toggle, `position:fixed`, composited non-deterministically into a full-page capture. It is
+   not the product. Hidden for the read, and the 220px inset `base.css` writes is keyed to
+   `#rmSidebar` EXISTING rather than to its display, so nothing under it moves.
+2. **An image that has not decoded is a region that differs, and `document.fonts.ready` does not wait
+   for one.** The control then returned **60,671 differing pixels over a 274 x 247 box** on
+   `how-it-works.html` at 390, on the same tree against itself: the brand tile in the side column.
+   `networkidle` plus an explicit `decode()` of every `<img>` collapses it to 0.
+3. **The residual floor is stated rather than rounded away.** After both fixes the full-page control
+   still reads **6 non-zero of 376, maximum 46 pixels**, scattered antialiasing on a grain texture.
+   The element-level instrument does not have it: control **0 differing rows and 0 differing pixels
+   over 124 readings and 3,468 elements**.
+
+**What the clean instrument then said.** Before against after, every dialog opened, 3,500 elements
+walked: **the only differing property in the whole tree is one, `outline-color` on the close disc,
+brass to white** - which is 106 landing, and which is visible at all because `showModal()`
+autofocuses that button, so the ring is live on the first paint of every sheet rather than in a rare
+state. The how-it-works head reads **0 pixels** with one element fewer, the deleted glow span. The
+plain sheet head reads **0 differing properties** and 357 pixels, and 357 is the perimeter of a 2px
+ring at a 2px offset around a 32px disc.
+
+### What was found and not fixed
+
+**109**, the outcome head has this face's anatomy to the declaration and a different ground and glow,
+so it shares the skeleton and not the skin and there is no word in the system for that, 10 elements.
+**110**, three of the four sheet bodies do not share a left edge with their own head, and after 104
+the two that are left are 4px rather than 12: signin 16 under 20 on 110 elements, the how-it-works
+body 20 under 24 on 111, and only the outcome sheet aligns. **111**, the close disc on the six
+outcome overlays is an `<a>`, and `dialog.app-dialog a:focus-visible{border-radius:var(--radius-6)}`
+beats `.icon-btn`'s pill, so the disc **stops being a circle the moment it takes focus** - and
+`showModal()` focuses it, so that is the first paint. **112**, the grey tree disagrees with the paint
+at three more addresses, and one is `.hiw-btn`, the 88px control `DESIGN.md` records as the reason 73
+painted screens scrolled horizontally from 641 to 652; the paint hides it below 760 and the grey tree
+ships it down to 320.
+
+The kit is **56 pages and 44 components**: `ui-kit/platehead.html` and the twelfth entry on
+`vitrine.html`. `components/` is 52 stylesheets and 7,440 lines.
+
+---
+
+## 2026-08-11 - The product is called Yonder, and its mark was one shape written down twice
+
+**THE NAME.** `Predict Market` was a description of the category standing in the place a name goes.
+It could not be searched for, could not be owned, and argued nothing to a user whose documented fear
+is "this looks like crypto, so it is a scam". **The product is `Yonder`**: over there, further on,
+out where you cannot quite see yet, which is the one thing this product actually sells. Plain
+English, no finance in it and no crypto in it.
+
+**What was checked before it was chosen, and what it cost.** Six candidates were carried to a
+lockup. `Bellwether` led the set on meaning, the county whose result calls the election, and was
+dropped for its mark: the obvious drawing is a bell, and the header already carries a notification
+bell 44px from the logo. `Callit` was the best-sounding of the six and is **taken in this exact
+category**, callitmarket.com. `Augur`, `Omen`, `Oracle` and `Delphi` are all live in prediction
+markets. `Stake` is unusable on its own because stake.com is a casino and the adjacency alone
+contradicts the trust position. `Yea` was the sharpest idea and was **refused on a system rule**: the
+brand would be standing on one of the two outcomes, and green and red belong to YES and NO while the
+brand stays brass. A name that quietly breaks a load-bearing rule is not a name that got away.
+
+**THE MARK IS A FORK.** A line rises, splits, and one branch is lit while the branch not taken stays
+at 30 per cent: the event, the two outcomes and the choice, in two strokes. Butt caps and a mitred
+shoulder, so it reads as cast rather than drawn. **With this name the same shape is also the Y**, so
+the mark is a monogram and a fork at once and has to be explained as neither. It replaced an
+up-trend tick, which is the mark every prediction market in the category already has.
+
+**Ten candidate marks were generated as vectors and none of them shipped.** They came back in gold
+rather than brass, with gradients, stray inner lines and silhouettes that dissolve under 40px. Two
+were worth the run as ideas, an ingot and a keystone, and the seven cuts that followed were drawn by
+hand against the system's own geometry. **A generator is an idea source and not a drawing**, which is
+the same finding this repository has already written down about measurement machines, arriving from
+the other side.
+
+### The defect the rename uncovered: one lockup, two files, and only one of them could be themed
+
+`header.css` and `footer.css` each drew a mark before a wordmark, and the two were not the same
+thing. The footer's read `--mark-logo` and followed the theme. **The header's carried its own inline
+data URI with `%23c99e3f` typed inside it**, and a colour written inside a data URI is a value no
+custom property can reach, so on all 105 painted screens in daylight the header wore the night
+theme's brass while the footer beside it wore the deep bronze. Nothing looked broken: the two marks
+are a page apart, and a mark that renders is a mark nobody re-reads.
+
+**So the lockup is a component now**, `components/logo.css`, level 1, imported above both shells
+because both hold it. It owns the FACE: the mark, the gap, the display face, the size, the tracking,
+the ink, and the reset that makes a `<button>` in the header and a `<span>` in the footer render
+identically. It owns nothing about WHERE it stands: the padding that carries the touch target and
+the press ground stay in `header.css`, the centring stays in `footer.css`. **The reset is part of the
+face rather than of either place**, because the two elements do not start from the same place and
+would have been one face only for as long as nobody put them beside each other.
+
+Two more rules died with the move, one per file: `::first-letter` set the ink to exactly the value
+the element already inherited, in both copies. **It rendered nothing and read as a decision**, which
+is worse than either.
+
+**Measured after, in a browser, at 390 and 1280 in both themes**: both marks resolve to
+`#c99e3f` on graphite and `#684f18` on chalk, the box is 18x18 in all four readings, the face is
+Space Grotesk 700 at 16px with an 8px gap in all four, and page scroll is 0. The mark is carried
+twice on purpose in `tokens.css`, `--logo-y` and `--logo-y-dark`, because a data URI can only be
+themed by having a second one, and the two are edited together.
+
+**The sweep**: 711 occurrences of the old name across 106 painted screens, 387 across the grey tree,
+52 in the kit, 38 in `ia/`, 8 in `voice/`, plus one address that spelled it as a host. `docs/` was
+not swept and neither was `ui-visual/old/`: **a record says what was true when it was written**, and
+28 archived pages were reverted after the first pass caught them. The grey tree took the copy and not
+the class, because it links no system stylesheet and a system class there would be a promise nothing
+keeps. The script was written in the scratchpad and deleted.
+
+The stand: `ui-kit/logo.html`, `ui-kit/vitrine.html#logo`, and the row in `ui-kit/docs/inventory.md`.
+The kit is 55 pages and 43 components.
+
+---
+
+## 2026-08-11 - A component is not named after one of its places, and 818 controls were two controls each
+
+**EIGHT ROWS CLOSED, ONE ANSWERED IN THE OTHER DIRECTION, SIX OPENED.** 15 and 18 were one edit and
+it is made. 87 is reconciled and took three defects in the paint with it. 89 is done in all three
+trees with the system widened first, and it carried 96 and 97. 101 and 102 went with them. **98 is
+answered and the rename it asked for is refused rather than deferred**, which is written out below,
+because a row talked out of its own plan has to say why.
+
+### The instrument was wrong three times before one number about the product was believed
+
+**A CONTROL THAT READS ZERO ON AN UNCHANGED TREE IS THE ONLY THING THAT MAKES A COMPARISON WORTH
+READING.** Three defects were found in this session's own instrument, and each one has the same
+shape: a value the measurement was choosing without saying so.
+
+- **Chrome enumerates an element's custom properties out of a hash map.** The 78 `--tokens` on an
+  element come back in a different ORDER on two runs of the same page while every value stays put.
+  Unsorted, the control read **28,234 differing rows of 28,258** on a tree nothing had touched. The
+  rows are sorted before hashing.
+- **`localStorage` is per ORIGIN and shared by every page in a browser context.** The harness set
+  `pm-theme` only for the light pass, so a worker that had measured one light page rendered every
+  later DARK page in daylight. **Six `.dark` files read as light**, in the after pass and not in the
+  before pass, because the two runs spread pages over workers differently. It is written for both
+  themes now, which is the same lesson as the touch pass that measured the product with a mouse: an
+  unasserted condition is a value the instrument picked.
+- **`getComputedStyle` resolves `url()` to an ABSOLUTE url.** Comparing against HEAD means serving
+  HEAD from a second port, so the same page differs in every `background-image` it has: **86 of 322
+  files read as differing on one property, the port number inside
+  `url(.../trust-column-full.webp)`.** The origin comes out of every value before hashing.
+
+And a fourth reading that was not a defect and had to be told apart from one: **two browser fleets
+running at once produce transient sub-pixel differences that do not repeat.** 87 files differed on
+the concurrent run; re-measured serially with the origin normalised, **87 of 88 were identical and
+the 88th was identical on a third reading**, with the same tree measured twice against itself
+returning 0. A number that moves when nothing moved is a reading of the instrument.
+
+### 15 and 18: one block, two hosts, and ten rules that were about neither
+
+`hiw-dialog.css` held three things and was being read as one component, which is why its level was
+the last in the kit that had to be DECLARED: not because the arithmetic read too low, but because
+nobody could say what the component WAS.
+
+**The cut is 10 rules out and 34 staying together**, and it is the same cut both rows arrive at from
+opposite sides. The ten are about being a dialog: the sheet's width and its clip, its body as the
+scroll container and that body's padding, and the brass link out to the full guide with its arrow,
+its hover and its press. **107 elements, every one inside a sheet, and `.hiw-full` cannot stand on
+the page at all, because the page IS the full guide.** The file is `components/hiw.css` now, 134
+lines, and the name went with the rules: a dialog is one of the places this block can stand and a
+component is not named after one of its places. `dialog.css` gained `.hiw-arrow`, `.hiw-body`,
+`.hiw-dialog` and `.hiw-full` on its `Classes:` line and `--text-on-brass` on its `Reads:`, which is
+exactly the one role `hiw.css` dropped.
+
+**A stale objection went with them rather than being left standing.** `dialog.css` carried a
+paragraph saying `.hiw-body` must not come here because `coverage.md` is computed and would
+disagree. `coverage.md` is in `docs/kit-archive/`, is read by nothing, and the generators that
+computed it were deleted with the vitrine on 2026-08-07. **An objection whose instrument has been
+deleted is not an objection, it is a fact about a tree that no longer exists**, and it kept a
+dialog's own rule out of the dialog's own file.
+
+**Verified: 0 differing rows.** 161 documents x 2 themes, the three rungs and one pixel either side
+(389/390/391, 639/640/641, 759/760/761, 899/900/901, 1279/1280/1281), `#howitworksDialog` opened by
+`showModal()`, animation and transition frozen, layout settled, the cold pass thrown away, the tree
+at `018a721` in a git worktree on a second port. 314 files in the strict set, **599,370 rows on the
+first comparison and 194,700 on the re-measurement, 0 differing on both**. Four files changed by
+intent and say so: `dialog.html` gained the fourth-variant section, `hiw-dialog.html` is `hiw.html`.
+
+### 87: the grey tree was behind its own contract
+
+The painted mobile dock CHOOSES and raises a sheet; the grey dock CONFIRMED a stake the user never
+entered. **The sheet is not a paint invention.** `ia/docs/sitemap.md` and `wireframes/_conventions.md`
+have both specified "a bottom dock that expands to a sheet on mobile" since before either tree was
+built; the grey file's own HTML comment says so directly above a dock that did not do it; and the
+grey stylesheet has carried `.bet-sheet .bp-amount-row` with **0 elements wearing it** the whole
+time, which is the sheet's outline left behind after the markup was never written. So the grey tree
+came up to its own contract on the four screens that diverged, and the four bet-state screens were
+left alone, where the confirmer is correct in both trees.
+
+**Three defects in the paint went with it**, all found by reading the two trees against each other:
+the sheet's Confirm called `showModal()` on the sign-in dialog unconditionally, so on the screen
+where the bottom nav renders a balance a signed-in person confirmed a bet and was asked to sign in;
+the binary sheet read a `$0.20` fee against the panel's `$0.40` five lines above it, a survivor of a
+template whose label used to say "only if you win"; and `YES selected` was the one string in that
+block with no row in `voice/docs/microcopy.md`.
+
+### 89: the button became the anchor, and three of the properties were the element's own defaults
+
+818 buttons wrapped in an anchor: 326 grey, 324 painted, 168 kit, on 77 screens per product tree.
+An anchor's content model is transparent with one prohibition and interactive content is the
+prohibition, so a screen reader announced a control that was two controls and every one of them was
+two tab stops on one visual object.
+
+**THE SYSTEM WENT FIRST AND NOTHING WAS DELETED UNTIL THE MARKUP HAD MOVED.** 24 widenings across
+`base.css`, `button.css`, `tabs.css`, `yesno.css` and `dialog.css`, every one a strict superset, and
+nine wrapper-only rules deleted afterwards once `a > button` read **0 in all 264 documents**. That
+order is `yesno.css`'s own record of what removing a selector half early costs: four screens shipped
+a YES with no colour.
+
+**THREE PROPERTIES WERE THE `<button>` ELEMENT'S OWN DEFAULTS AND NOBODY HAD WRITTEN THEM DOWN.**
+`.btn` had no `text-decoration`, so 166 controls would have taken the User Agent's underline;
+`.yesno` and `.tabs` had no `text-align`, so 614 labels would have gone left the moment the button
+stopped centring them; `.tabs` had no `display`, so the row would have collapsed to its own text the
+way `navitem.css` records from 2026-08-07. **That is the third time this system has paid for the
+same discovery**, after `.chip` and `.icon-btn` on the same day last week.
+
+**And the grey tree is a second half nobody had counted.** It links no stylesheet at all: 104 inline
+`<style>` blocks and **1,605 occurrences of a selector keyed to the tag**, of which seven reach these
+controls. Widening `components/` protects 90 of 264 documents and none of the other 104, so eight
+grey rules had to move in 103 files before a single grey element could.
+
+**F5 was not a mechanical unwrap.** `role="tablist"` requires its owned elements to be tabs; here the
+tabs were one level down inside the links, so the tablist owned nothing on 9 screens per tree. Two
+more things were true at once: there is no `role="tabpanel"` anywhere in that family, so the tabs
+controlled nothing, and they navigate to another document, which a tab does not do. Moving the role
+up would have fixed the ownership and left a tab with no panel that leaves the page. **The roles came
+OFF**, the container is a `<nav>` so its label still names something, and the state is
+`aria-current="page"`, the idiom this product already writes 1,228 times.
+
+**One consequence is worth stating because it is the grey tree working as designed**: the wireframe
+stylesheet outlines every landmark, `header, nav, main, section, article, footer, aside`, so the tabs
+row gained a 1px box and the page 2px. A row that became a navigation landmark gets a landmark
+outline. And on the painted 404 the only pixels that moved were **385 of them inside a 72 x 9 box**,
+the label of one control, at a maximum channel delta of 34: the same text re-antialiased because it
+is laid out in a flex container now instead of inside a `<button>`. The control's box is identical.
+
+### 96 and 97, which ran on whichever element survived
+
+**96's population is 100 per product tree, not 104.** Read from real element trees rather than by
+regex: 50 `.opt-row` on 14 screens per tree, 100 controls, 38 rows and 76 controls in the kit. The
+name is built out of what is already written: `aria-labelledby` takes a LIST of ids, so pointing at
+the outcome span and then at the control gives **"Sweden YES"** with the wording staying in the one
+place `voice/docs/microcopy.md` owns it. An `aria-label` would have been a second copy of every
+outcome name in the markup, and a second copy is what drifts. 0 duplicate ids and 0 dangling
+references over 264 documents. The accessibility tree on `event-feed.html` went from **32 links
+containing a control and 30 bare YES/NO names to 0 and 18**, and the 18 that are left are the feed
+card's own pair, which is a different question and is row 103.
+
+**97's destination is the screen the overlay is invoked over**, which is the rule the six controls
+that already agreed were following. Eleven pointed at `event-detail.html` in grey and
+`event-feed.html` in paint; they point at `event-detail.html` in both now. **And the name stops
+saying Close**, because on these pages there is nothing to close: the page IS the overlay. It is
+`Back to the event` and `Back to My Bets`, 34 controls over the two trees. The 105 in-page dialogs
+keep `Close`, because theirs is a button that closes.
+
+### 101 and 102
+
+**Two of row 101's eleven were not missing specimens at all: they were specimens that dropped the
+anchor.** `ui-kit/betpanel.html` shipped the confirmer's Confirm bare where every screen wraps it,
+and `ui-kit/dialog.html` shipped the deposit body without either of its two trailing controls, which
+is why `dialog.app-dialog .sheet-body>a` had no stand anywhere. That is the card with its photograph
+left out and the dialog shown shut, a third time: **a specimen with one element missing looks
+finished.** Two more were the second half of a rule whose first half already had a stand.
+
+**102 deleted five rules that reach elements and decide nothing**, and the consequence is not
+cosmetic: three of them were the only reason `.skeleton`, `.w40` and `.w70` were on `position.css`'s
+`Classes:` line, and the only reason its `Stands on:` said 36. By the classes it owns it stands on
+**23**, and the 14 screens in the gap carry no position at all.
+
+### 98: the row asked for a rename and the answer is four numbers and a refusal
+
+Re-measured after the cut, with both sheets open on one page in both themes, 823 computed properties
+per element: **the head is 812 of 823 identical, the pattern 822 of 823, the glow 813 of 823 and the
+body 813 of 823.** The row's five differences are six.
+
+Four are settled, each to the value the FAMILY agrees on rather than the one written first. The
+radial stop goes 92 to **96**, because two rules and 434 elements say 96 and one rule and 196 say 92,
+and the win head says 96 as well. The pattern opacity goes .24 to **.2**, because an opacity answers
+to the GROUND under it, the outcome head has its own ground and its own .16, and this head has the
+plain head's two roles exactly in both themes. The glow goes to **210 / blur 42 / .42 / 60 per
+cent**: the 224 was a compensation for a wider sheet, holding the wash at 37.2 per cent of a 462px
+head against 37.8 of a 418px one, and at **18.7 per cent** on the 922px page hero. A compensation
+that fails on the block's other host is not a compensation, it is a second number.
+
+**The rename is refused, and it is refused rather than deferred, because it moves the duplication
+instead of removing it.** The head's paint is six rules, written once and drawn by one class in both
+of the block's hosts. Rename the sheet head to `.sheet-head` and those six live in `dialog.css` for
+the sheet, while the page hero, which is not and cannot be a `.sheet-head`, has to have them written
+again. That is a duplication against the plain sheet head traded for a duplication against the page
+hero, at a cost of **1,004 class tokens across 195 files** measured with whole-token matching (a
+`\bhiw-hero\b` regex returns 268 in `ui-visual` where the true count is 106, because `-` is not a
+word character). What it actually is: **one FACE worn by three heads under three names**, at 418, 462
+and 922 pixels. The system already has that move and has written it down, a skin belonging to a
+SURFACE rather than to a component, with the header band as the precedent. It is row 108, after row
+105 gives the page hero a name of its own.
+
+### What was swept and what it read
+
+Every sweep was a throwaway script in the scratchpad, run once and deleted. **264 documents at
+389/390/391, 639/640/641, 652, 759/760/761, 899/900/901 and 1279/1280/1281: 4,224 renders, 0
+horizontal scroll, 0 console errors.** `a > button` 818 to 0. `role="tab"` inside `.tabs` 40 to 0.
+Duplicate ids 0, dangling `aria-labelledby` 0. Every href on every page is the href that was there
+before, multiset for multiset, so the navigation the wrapper was doing is the navigation the anchor
+does now.
+
 ## 2026-08-10 - A comment is not inert, and a divider keyed to a tag name had never once drawn where it was needed
 
 **THE LARGEST THING IN THIS ENTRY IS A DEFECT THIS SESSION PUT THERE ITSELF, ONE COMMIT EARLIER.**

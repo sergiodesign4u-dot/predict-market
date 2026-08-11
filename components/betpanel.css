@@ -169,7 +169,13 @@ dialog.app-dialog.bet-sheet[open]{animation:betSheetUp var(--dur-slower) var(--e
    sheet this link stands in are mobile and a thumb never hovers. */
 .bp-change:hover{color:var(--text-strong)}
 .bp-change:active{background:var(--bg-pressed);color:var(--text-strong)}
-.bet-panel a:has(button),.bet-dock a:has(button){text-decoration:none;color:inherit;display:block}
+/* `.bet-panel a:has(button)` AND `.bet-dock a:has(button)` STOOD HERE AND ARE GONE,
+   2026-08-11, backlog 89. They took the underline, the link ink and the inline box
+   off an anchor wrapped round a Confirm, and `:has(button)` goes false in the same
+   keystroke that deletes the button, so the rule that was neutralising the anchor
+   would have stopped applying at the exact moment the anchor became the control.
+   `.btn` declares text-decoration:none and inline-flex now, which is where a
+   control's own face belongs. */
 
 /* The keyframe the bet sheet animates with, moved out of base.css next to its only consumer. */
 @keyframes betSheetUp{

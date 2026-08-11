@@ -1,9 +1,9 @@
 /* components/position.css
-   Component: position. Classes: .pos, .pos-fig, .pos-figures, .pos-lost, .pos-no, .pos-note, .pos-q, .pos-record, .pos-side, .pos-status, .pos-top, .pos-won, .pos-yes, .skeleton, .w40, .w70.
+   Component: position. Classes: .pos, .pos-fig, .pos-figures, .pos-lost, .pos-no, .pos-note, .pos-q, .pos-record, .pos-side, .pos-status, .pos-top, .pos-won, .pos-yes.
 
    Reads: --bg-card-quiet, --bg-control, --bg-control-hover, --bg-pressed, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --edge-groove-light, --outcome-no-fill, --outcome-no-line, --outcome-no-text, --outcome-yes-fill, --outcome-yes-line, --outcome-yes-text, --result-lost-fill, --result-lost-line, --result-lost-text, --result-won-fill, --result-won-line, --result-won-text, --shadow-ink, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/position.html, and ui-kit/molecules.html#position for the level and its reason
-   Stands on: 36 ui-visual screens (active-bets-history-loading.html, active-bets-history.html, active-bets-loading.html, active-bets.html, event-detail-bet-error.html, ...)
+   Stands on: 23 ui-visual screens (active-bets-history.html, active-bets.html, event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .pos{display:flex;flex-direction:column}
@@ -11,8 +11,18 @@
 .pos-side{height:max-content}
 .pos-figures{display:flex;flex-wrap:wrap}
 .pos-fig b{display:block}
-.pos.skeleton .w70{width:70%}
-.pos.skeleton .w40{width:40%}
+/* `.pos.skeleton .w70`, `.pos.skeleton .w40` AND `.pos.skeleton` STOOD HERE AND
+   ARE GONE, 2026-08-11, backlog 102. skeleton.css already declares both widths,
+   all 18 and all 26 matching elements carry `.sk-line`, and `.pos` already sets
+   the gap `.pos.skeleton` restated. Proved by deletion with the instances
+   REMOVED counted, which is the half that matters: 318 removed, 0 of 338
+   readings different, at both widths in both themes, control 0.
+   THE CONSEQUENCE IS NOT COSMETIC. Those three rules were the only reason
+   `.skeleton`, `.w40` and `.w70` were on this file's Classes line and the only
+   reason its `Stands on:` said 36. By the classes it actually OWNS it stands on
+   23, and the 14 screens in the gap carry no position at all. A file was
+   claiming a third of its territory through three rules that change nothing,
+   which is backlog 52's shared-class defect arriving from the other end. */
 .pos-side{padding:0 var(--space-4)}
 .pos-note{font-size:var(--text-11);margin:var(--space-8) 0 0}
 .pos-side{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-6);background:var(--bg-control);color:var(--text-muted);font-size:var(--text-10);font-weight:var(--weight-bold);letter-spacing:var(--track-label);white-space:nowrap}
@@ -28,7 +38,6 @@
 .pos-q{font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-14);letter-spacing:var(--track-question);color:var(--text-primary);line-height:var(--leading-snug)}
 .pos-figures{gap:var(--space-20);color:var(--text-muted);font-size:var(--text-10);text-transform:uppercase;letter-spacing:var(--track-caps)}
 .pos-fig b{font-family:var(--font-mono);font-size:var(--text-13);color:var(--text-primary);font-weight:var(--weight-semibold);letter-spacing:var(--track-none);text-transform:none;margin-top:var(--space-4)}
-.pos.skeleton{gap:var(--space-8)}
 /* THE RECORD GRID AND THE PORTFOLIO SUMMARY ARE THIS ROW WITH ITS BOX TAKEN
    OFF, NOT A SECOND COMPONENT, which is what backlog 16d asked. Both are built
    entirely from .pos* classes, both reuse .pos-figures and .pos-fig, and neither

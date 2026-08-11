@@ -1,7 +1,7 @@
 /* components/iconbtn.css
-   Component: iconbtn. Classes: .bal-add, .bal-swap, .icon-btn, .icon-btn-bare, .icon-btn-lift, .icon-btn-photo, .icon-btn-ring-strong, .icon-btn-small, .icon-btn-tile.
+   Component: iconbtn. Classes: .bal-add, .bal-swap, .icon-btn, .icon-btn-bare, .icon-btn-lift, .icon-btn-photo, .icon-btn-small, .icon-btn-tile.
 
-   Reads: --bevel-strong, --bg-control, --bg-pressed, --border-hairline, --color-action, --color-action-lit, --icon-brass, --icon-quiet, --line-on-photo, --line-on-photo-hover, --scrim-photo, --text-brass, --text-muted, --text-on-brass, --text-on-photo, --text-primary, --text-strong, --tint-brass-09, --tint-brass-16, --tint-brass-45
+   Reads: --bevel-strong, --bg-control, --bg-pressed, --border-hairline, --color-action, --color-action-lit, --icon-brass, --icon-quiet, --line-on-photo, --line-on-photo-hover, --scrim-photo, --text-brass, --text-icon, --text-muted, --text-on-brass, --text-on-photo, --text-primary, --tint-brass-09, --tint-brass-16, --tint-brass-45
    Stand:  ui-kit/iconbtn.html, and ui-kit/vitrine.html#iconbtn for the level and its reason
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -131,20 +131,26 @@
 .icon-btn.icon-btn-photo .ic{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-on-photo);color:var(--text-on-photo)}
 .icon-btn.icon-btn-photo:hover{background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)}
 .icon-btn.icon-btn-photo:active{background:color-mix(in oklab,var(--scrim-photo) 72%,transparent);border-color:var(--line-on-photo-hover)}
-/* THE RING THE OVERLAY ASKS FOR, and the last declaration this control had left
-   in somebody else's file. `components/dialog.css` carried
-   `dialog.app-dialog.hiw-dialog .sheet-close:focus-visible{outline-color:...}`,
-   which is the system's brass ring replaced by a light one on exactly one head:
-   `.hiw-glow` puts a brass radial in the corner the ring lands in, so a brass
-   ring measures 2.52:1 there. Measured focused: rgb(255,255,255) here against
-   rgb(215,172,83) on every other head in the Vault, and rgb(33,31,25) against
-   rgb(104,79,24) in daylight.
-   THE FACT IS THE OVERLAY'S AND THE VOCABULARY IS THE ATOM'S, so the overlay
-   says WEAR IT by putting the class on the element, and this file says what it
-   is. That is the same split as the placement rule, one axis further in, and it
-   is what let `dialog.css` stop drawing this control at all: an outline-colour
-   is what a thing looks like, and the map says a region may not say that. */
-.icon-btn.icon-btn-ring-strong:focus-visible{outline-color:var(--text-strong)}
+/* `.icon-btn-ring-strong` STOOD HERE AND IS GONE, 2026-08-11, backlog 106.
+   It read `.icon-btn.icon-btn-ring-strong:focus-visible{outline-color:var(--text-strong)}`
+   and it was an exception: the system's brass ring replaced by a light one on
+   exactly one head of four, because `.hiw-glow` put a brass radial in the corner
+   the ring lands in and a brass ring measured 2.52:1 there. The overlay asked
+   for it by putting the class on the element, which kept the FACT with the
+   overlay and the VOCABULARY with this atom.
+   IT WAS AN EXCEPTION MEASURED ONCE, AGAINST A GLOW THAT NO LONGER EXISTS, AND
+   RE-MEASURING IT TURNED IT INTO THE RULE. The glow went 224/40/.5/65 to
+   210/42/.42/60 that morning and the two heads became one face. Read at the
+   button's own corner, in the annulus the ring actually covers, at DPR 2:
+   the brass ring is 2.93:1 worst on the how-it-works head and 2.89:1 on the
+   PLAIN sheet head, so the head carrying the exception was the better of the two
+   by 0.04 and the 222 that were not carrying it were worse. Daylight passes
+   everywhere at 4.61. A CLASS ON 105 OF 327 DISCS IS A LIST, and this folder
+   already knows what a list costs: the touch floor stood in six files as six
+   lists and two of five chips had it. So it is one rule keyed to the family, and
+   it is in `components/dialog.css` beside the placement, for the reason
+   `course-chrome.css` writes over its own ring: A RING ANSWERS TO WHAT IT STANDS
+   ON, and what these 333 discs stand on is a sheet head. */
 
 /* ------------------------------------------- three more faces, 2026-08-06 ---
    THE OTHER THREE ICON-ONLY KINDS, and reading them out is what settled how

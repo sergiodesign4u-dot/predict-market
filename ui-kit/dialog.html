@@ -128,32 +128,49 @@
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-dlg">
         <dialog class="app-dialog" open aria-label="Add funds">
-          <div class="sheet-head"><h2>Add funds</h2><p class="sheet-sub">Card or crypto. Your USDC is held 1:1.</p></div>
+          <div class="plate-head sheet-head"><h2>Add funds</h2><p class="sheet-sub">Card or crypto. Your USDC is held 1:1.</p></div>
           <div class="sheet-body">
             <span class="field-label">Amount</span>
             <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="50.00" aria-label="Amount"></div>
             <p class="fine">Minimum $10. Card payments are converted to USDC via Transak. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
+            <a href="#" class="btn btn-secondary btn-md btn-block">How it works</a>
+            <a href="#" class="btn btn-primary btn-md btn-block">Add funds</a>
           </div>
         </dialog>
       </div></div>
       <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-dlg">
         <dialog class="app-dialog" open aria-label="Add funds">
-          <div class="sheet-head"><h2>Add funds</h2><p class="sheet-sub">Card or crypto. Your USDC is held 1:1.</p></div>
+          <div class="plate-head sheet-head"><h2>Add funds</h2><p class="sheet-sub">Card or crypto. Your USDC is held 1:1.</p></div>
           <div class="sheet-body">
             <span class="field-label">Amount</span>
             <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="0" value="50.00" aria-label="Amount"></div>
             <p class="fine">Minimum $10. Card payments are converted to USDC via Transak. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
+            <a href="#" class="btn btn-secondary btn-md btn-block">How it works</a>
+            <a href="#" class="btn btn-primary btn-md btn-block">Add funds</a>
           </div>
         </dialog>
       </div></div>
     </div>
+    <p class="tk-note"><b>The two controls at the foot of that body are ANCHORS, and that is a rule
+    of this file rather than a detail of the markup.</b> On a standalone overlay page the same control
+    navigates instead of opening the next sheet, so the control is an <code>&lt;a href&gt;</code>:
+    <b>14 of them, on nine screens</b>. An anchor decorates its text by default, which is what
+    <code>dialog.app-dialog .sheet-body&gt;a</code> is for, and <b>this page shipped that body without
+    a single one of them until 2026-08-11</b>, so the rule had no stand anywhere in the kit. A
+    specimen with one element missing looks finished.</p>
+    <p class="tk-why"><b>And the reason it never showed is the sharpest example of a skin paying for
+    another skin's markup in this system.</b> The three worst placements are the sign-in sheet's
+    provider rows, and those pages also wore <code>.outcome-dialog</code>, which carries a blanket
+    <code>a{text-decoration:none}</code>. So the underline was killed by a rule about a WIN overlay,
+    on a page that is a sign-in, and the day the two skins were separated it would have appeared on
+    109 screens at once.</p>
     <div class="tk-tblwrap">
       <table class="tk-tbl">
         <thead><tr><th>kind</th><th>placements</th><th>at 390</th><th>at 1280</th></tr></thead>
         <tbody>
           <tr><td>plain sheet</td><td>105 or so per screen family</td><td>349x678</td><td>420x685</td></tr>
           <tr><td><code>.signin-dialog</code></td><td>109</td><td>349x427</td><td>410x423</td></tr>
-          <tr><td><a href="hiw-dialog.html">How it works</a></td><td>105</td><td>349x854</td><td>464x764</td></tr>
+          <tr><td><a href="hiw.html">How it works</a></td><td>105</td><td>349x854</td><td>464x764</td></tr>
           <tr><td><code>.outcome-dialog</code></td><td>6</td><td colspan="2">the win and loss overlays, which recolour the reconcile box</td></tr>
         </tbody>
       </table>
@@ -164,8 +181,67 @@
     for the same reason.</p>
   </section>
 
+  <section class="tk-sec" id="hiw">
+    <h2 data-n="4">The fourth kind, and the ten rules that arrived with it</h2>
+    <p class="tk-why">The How-it-works sheet had a file of its own until 2026-08-11, and that file
+    held <b>three things at once</b>: an explainer BLOCK, the standalone PAGE the block is the content
+    of, and ten rules about being a dialog. <b>The ten are here now</b> and the other thirty-four are
+    <code>components/hiw.css</code>. What decided the cut is that the file was <b>one block with two
+    hosts</b>, which is also why this was the last level in the kit that had to be declared instead of
+    counted: the arithmetic could not read a component nobody could name.</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-dlg">
+        <dialog class="app-dialog hiw-dialog" open aria-label="How it works">
+          <button type="button" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+          <div class="plate-head hiw-hero"><div class="hiw-hero-inner"><h2>How betting works here</h2><p class="hiw-tagline">Back the events you follow, in plain language.</p></div></div>
+          <div class="hiw-body">
+            <div class="hiw-sec"><span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><use href="#i-check-circle-b"/></svg></span><div class="hiw-sec-txt"><span class="hiw-label">How betting works here</span><p>Yonder turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO.</p></div></div>
+            <div class="hiw-sec"><span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><use href="#i-graph-up-b"/></svg></span><div class="hiw-sec-txt"><span class="hiw-label">Why the odds move</span><p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less.</p></div></div>
+            <a href="#" class="hiw-full">Read the full guide <svg class="ic hiw-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </dialog>
+      </div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-dlg">
+        <dialog class="app-dialog hiw-dialog" open aria-label="How it works">
+          <button type="button" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+          <div class="plate-head hiw-hero"><div class="hiw-hero-inner"><h2>How betting works here</h2><p class="hiw-tagline">Back the events you follow, in plain language.</p></div></div>
+          <div class="hiw-body">
+            <div class="hiw-sec"><span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><use href="#i-check-circle-b"/></svg></span><div class="hiw-sec-txt"><span class="hiw-label">How betting works here</span><p>Yonder turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO.</p></div></div>
+            <div class="hiw-sec"><span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><use href="#i-graph-up-b"/></svg></span><div class="hiw-sec-txt"><span class="hiw-label">Why the odds move</span><p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less.</p></div></div>
+            <a href="#" class="hiw-full">Read the full guide <svg class="ic hiw-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </dialog>
+      </div></div>
+    </div>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>what the rule decides</th><th>selector</th><th>rules</th><th>elements</th></tr></thead>
+        <tbody>
+          <tr><td>this sheet is wider than the other three, and it clips</td><td><code>.app-dialog.hiw-dialog</code></td><td>1</td><td>105</td></tr>
+          <tr><td>the frame clips, so the BODY is the scroll container</td><td><code>:modal .hiw-body</code></td><td>1</td><td>105</td></tr>
+          <tr><td>the body's own padding and column</td><td><code>.app-dialog.hiw-dialog .hiw-body</code></td><td>1</td><td>105</td></tr>
+          <tr><td>the brass link out, its arrow, its hover and its press</td><td><code>.hiw-full</code></td><td>6</td><td>107</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>The link out is the sharpest of the three tests the cut was made with:
+    <code>.hiw-full</code> cannot stand on the page at all, because the page IS the full guide.</b> A
+    rule that can only ever fire inside a sheet belongs to the sheet, whatever the block around it is
+    called. The other two tests: eighteen rules draw the same explainer in a sheet at DOM depth 3 and
+    on the page at depth 9, so they are the block's; sixteen more are a grid, a 900 rail and a sticky
+    side column, so they are a screen's shell and folding them in here would have made this file
+    one.</p>
+    <p class="tk-why"><b>It is provably inert, and the proof is a zero that is known not to be an
+    empty question.</b> The move carries these rules three slots earlier past exactly two files. Every
+    element of all 160 linked pages was asked which rules of the old file and which of those two both
+    match it AND write a common longhand: <b>not one pair, at any specificity</b>. The same
+    instrument pointed at this file returns <b>427</b> candidate pairs, which is how the zero is read
+    as a zero rather than as a selector that matched nothing.</p>
+  </section>
+
   <section class="tk-sec" id="close">
-    <h2 data-n="4">One control, one name, one mark, and it was three rules in two files</h2>
+    <h2 data-n="5">One control, one name, one mark, and it was three rules in two files</h2>
     <p class="tk-why"><code>.sheet-close</code> here and a second name in the How-it-works file were
     <b>the same button written twice</b>, and this file's own copy was written twice again, once for
     the outcome overlay and once for everything else. <b>All three agreed on the 32px box, the pill,
@@ -185,7 +261,7 @@
   </section>
 
   <section class="tk-sec" id="fine">
-    <h2 data-n="5">Fine print is muted wherever it stands</h2>
+    <h2 data-n="6">Fine print is muted wherever it stands</h2>
     <p class="tk-note">248 lines of it, and the colour is declared on the class rather than inside
     the containers named further down. <b>Without that, it inherits body text and reads as loudly as
     the sentence it qualifies</b>, which is exactly what happened to the fine print under a
@@ -196,7 +272,7 @@
   </section>
 
   <section class="tk-sec" id="grey">
-    <h2 data-n="6">Three classes deleted, and they were the grey tree's frame</h2>
+    <h2 data-n="7">Three classes deleted, and they were the grey tree's frame</h2>
     <p class="tk-note">A backdrop, a sheet and a grab handle sat in this file. <b>17 wireframes carry
     them and no painted screen and no stand ever has</b>, because the paint expresses an invoked
     screen as a centred dialog. They survived a colour sweep only because it counted the grey tree's
@@ -205,7 +281,7 @@
   </section>
 
   <section class="tk-sec" id="outcome">
-    <h2 data-n="7">The fifth kind, which opens itself</h2>
+    <h2 data-n="8">The fifth kind, which opens itself</h2>
     <p class="tk-why"><b>The page says four kinds and the product ships five.</b>
     <code>.outcome-dialog</code> stands on <b>6 screens</b>, the win and loss cluster, and it had
     never been drawn in the kit. It is the only dialog in the product that opens BY ITSELF: a script
@@ -217,13 +293,13 @@
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-dlg">
-        <dialog class="app-dialog outcome-dialog loss-dialog" open aria-label="Here's what happened"><div class="sheet-head"><h1>Here's what happened</h1><a href="#"><button type="button" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></a></div><div class="sheet-body">
+        <dialog class="app-dialog outcome-dialog loss-dialog" open aria-label="Here's what happened"><div class="sheet-head"><h1>Here's what happened</h1><a href="#" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a></div><div class="sheet-body">
           <p class="fine">Will the US government shut down before March 1, 2027?</p>
           <div class="spinner-box">Loading the resolution...<br><span class="fine">Fetching what resolved and why.</span></div>
         </div></dialog>
       </div></div>
       <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-dlg">
-        <dialog class="app-dialog outcome-dialog loss-dialog" open aria-label="Here's what happened"><div class="sheet-head"><h1>Here's what happened</h1><a href="#"><button type="button" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></a></div><div class="sheet-body">
+        <dialog class="app-dialog outcome-dialog loss-dialog" open aria-label="Here's what happened"><div class="sheet-head"><h1>Here's what happened</h1><a href="#" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a></div><div class="sheet-body">
           <p class="fine">Will the US government shut down before March 1, 2027?</p>
           <div class="spinner-box">Loading the resolution...<br><span class="fine">Fetching what resolved and why.</span></div>
         </div></dialog>
@@ -236,13 +312,13 @@
     <div class="tk-pair2">
       <div class="tk-ph"><span>Won, dark</span><span>Won, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-dlg">
-        <dialog class="app-dialog outcome-dialog win-dialog" open aria-label="You were right"><div class="sheet-head"><h1>You were right</h1><a href="#"><button type="button" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></a></div><div class="sheet-body">
+        <dialog class="app-dialog outcome-dialog win-dialog" open aria-label="You were right"><div class="sheet-head"><h1>You were right</h1><a href="#" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a></div><div class="sheet-body">
           <p class="fine">Will the US government shut down before March 1, 2027?</p>
           <div class="spinner-box">Loading the resolution...<br><span class="fine">Fetching what resolved and why.</span></div>
         </div></dialog>
       </div></div>
       <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-dlg">
-        <dialog class="app-dialog outcome-dialog win-dialog" open aria-label="You were right"><div class="sheet-head"><h1>You were right</h1><a href="#"><button type="button" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></a></div><div class="sheet-body">
+        <dialog class="app-dialog outcome-dialog win-dialog" open aria-label="You were right"><div class="sheet-head"><h1>You were right</h1><a href="#" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a></div><div class="sheet-body">
           <p class="fine">Will the US government shut down before March 1, 2027?</p>
           <div class="spinner-box">Loading the resolution...<br><span class="fine">Fetching what resolved and why.</span></div>
         </div></dialog>
@@ -255,7 +331,7 @@
   </section>
 
   <section class="tk-sec" id="rule">
-    <h2 data-n="8">The rule</h2>
+    <h2 data-n="9">The rule</h2>
     <p class="tk-note"><b>A dialog is outside the app wrapper, so every scope has to name it.</b>
     That is not a preference, it is where the browser puts the element.</p>
     <p class="tk-note"><b>The frame clips and the body scrolls.</b> One box cannot do both.</p>
@@ -264,7 +340,7 @@
   </section>
 
   <section class="tk-sec" id="antirule">
-    <h2 data-n="9">The anti-rule</h2>
+    <h2 data-n="10">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never scope a rule to a wrapper the product's own regions stand
     outside of.</b> <i>526 of 559 dialog buttons were not covered, and neither was the footer or the
     bottom nav. The wrapper is gone from 415 selectors and the one file that kept it means the PAGE
@@ -276,12 +352,12 @@
   </section>
 
   <section class="tk-sec" id="closing">
-    <h2 data-n="10">Where the rest of it is</h2>
+    <h2 data-n="11">Where the rest of it is</h2>
     <p class="tk-note">The level and its reason: <a href="organisms.html#dialog">the organisms
     page</a>. The stylesheet: <code>components/dialog.css</code>. The close disc:
     <a href="iconbtn.html">icon button</a>. The field inside it: <a href="input.html">input</a>. The
     chips beside the field: <a href="quick.html">quick amounts</a>. The long sheet:
-    <a href="hiw-dialog.html">how it works</a>. The reassurance boxes:
+    <a href="hiw.html">how it works</a>. The reassurance boxes:
     <a href="notice.html">notice</a>.</p>
   </section>
 

@@ -148,7 +148,7 @@
 /* A SPECIMEN THAT IS ABSENT ON PURPOSE SAYS SO, AND IT SAYS THE COMPONENT'S OWN
    NUMBER. This was two classes, `.tk-absent` and `.tk-wide-only`, and both were
    written at 900px. 900 IS A REAL BREAKPOINT IN THIS SYSTEM, six declarations across
-   chip, hiw-dialog, catnav, browse-shell and toc, AND IT BELONGS TO NEITHER OF THE
+   chip, hiw, catnav, browse-shell and toc, AND IT BELONGS TO NEITHER OF THE
    TWO COMPONENTS THESE LABELS DESCRIBE: the bottom bar goes at 640 and the bet panel
    arrives at 760. That is why it was never caught by eye. A borrowed number reads
    exactly like the right one, because it IS one of the system's numbers, just not

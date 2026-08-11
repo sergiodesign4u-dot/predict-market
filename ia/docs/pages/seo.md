@@ -75,12 +75,12 @@ Every indexed page below carries the same five blocks.
 
 ### A. Meta tags
 
-- `title`: **Predict Market - bet YES or NO on live events** (46 chars)
+- `title`: **Yonder - bet YES or NO on live events** (46 chars)
 - `meta description`: **Browse live events and back your opinion with a real stake. Plain-language odds, a one-line why, and how each event resolves. Start with no wallet.** (147 chars)
 - `canonical`: `{ROOT}/`
 - `hreflang`: `en` -> `{ROOT}/` (single locale now; more locales `[?]` TBD)
 - `robots`: `index,follow`
-- `og:title`: Predict Market - bet YES or NO on live events
+- `og:title`: Yonder - bet YES or NO on live events
 - `og:description`: Back your opinion on real-world events with a real stake. Odds in plain language, no wallet to start.
 - `og:type`: `website`
 - `og:url`: `{ROOT}/`
@@ -104,7 +104,7 @@ not change the primary layout), logged here so the wireframe can validate the sl
 
 ### C. Ready SEO body text
 
-**How betting works here.** Predict Market turns the events you follow into a real stake. Pick
+**How betting works here.** Yonder turns the events you follow into a real stake. Pick
 an event, read the odds in plain language, and back YES or NO. You see the current odds, a
 one-line why, and how the event resolves before you put in a cent. The minimum bet is one
 dollar, and you can browse and build your bet before you connect a wallet.
@@ -123,7 +123,7 @@ worth more.
 
 ### D. Structured data
 
-- `WebSite` - `name` "Predict Market", `url` `{ROOT}/`. No `SearchAction` (search is deferred, `[?]`).
+- `WebSite` - `name` "Yonder", `url` `{ROOT}/`. No `SearchAction` (search is deferred, `[?]`).
 - `Organization` - `name`, `url`, `logo`, `sameAs` social profiles `[?]`.
 - `CollectionPage` - the feed itself; `mainEntity` -> the `ItemList` below.
 - `ItemList` - the visible events, each `ListItem` linking to its Event Detail URL (`/event/{slug}`). The rich per-event schema lives on Event Detail (§2), not here.
@@ -155,7 +155,7 @@ template slots `{...}`; only the evergreen / reusable copy is fixed.
 
 ### A. Meta tags
 
-- `title` (template, <= 60): **{Question} - Predict Market**. If the question is long, truncate the question, keep the brand suffix. Example: **Will Bitcoin close above $100k on Dec 31? - Predict Market** (58 chars).
+- `title` (template, <= 60): **{Question} - Yonder**. If the question is long, truncate the question, keep the brand suffix. Example: **Will Bitcoin close above $100k on Dec 31? - Yonder** (58 chars).
 - `meta description` (template, <= 155): **{YES}% YES right now on: {Question, truncated}. See the odds in plain language, why they moved, and how this event resolves. Bet from $1.** Dynamic parts are the odds and the question. Example: **62% YES right now on Bitcoin above $100k by Dec 31. See the odds in plain language, why they moved, and how it resolves. Bet from $1.** (133 chars)
 - `canonical`: `{ROOT}/event/{slug}`
 - `hreflang`: `en` -> `{ROOT}/event/{slug}` (more locales `[?]`)
@@ -239,7 +239,7 @@ and other post-MVP categories reuse the same template.
 
 ### A. Meta tags
 
-- `title` (template, <= 60): **{Category} events - Predict Market**. Example: **Politics events - Predict Market** (32 chars).
+- `title` (template, <= 60): **{Category} events - Yonder**. Example: **Politics events - Yonder** (32 chars).
 - `meta description` (template, <= 155): **Bet YES or NO on live {category} events. Plain-language odds, a one-line why, and how each resolves. Browse {category} now, no wallet to start.** Example (politics): **Bet YES or NO on live politics events. Plain-language odds, a one-line why, and how each resolves. Browse politics now, no wallet to start.** (139 chars)
 - `canonical`: `{ROOT}/c/{category}`
 - `hreflang`: `en` -> `{ROOT}/c/{category}` (more locales `[?]`)
@@ -302,7 +302,7 @@ This is a genuine content page (not user content), so the copy below is real shi
 
 ### A. Meta tags
 
-- `title` (<= 60): **How prediction markets work - Predict Market** (44 chars)
+- `title` (<= 60): **How prediction markets work - Yonder** (44 chars)
 - `meta description` (<= 155): **See how betting on real-world events works: pick an event, read the odds in plain language, back YES or NO, and see how it resolves. Bet from $1.** (145 chars)
 - `canonical`: `{ROOT}/how-it-works`
 - `hreflang`: `en` -> `{ROOT}/how-it-works` (more locales `[?]`)
@@ -378,12 +378,12 @@ template slots `{...}`. Only public fields are ever indexed - never email, walle
 
 ### A. Meta tags
 
-- `title` (template, <= 60): **{Handle} - track record - Predict Market**. Example (handle "alex"): **alex - track record - Predict Market** (36 chars).
-- `meta description` (template, <= 155): **See {handle}'s prediction track record on Predict Market: resolved events, the calls that were right, and current bets.** Example: **See alex's prediction track record on Predict Market: resolved events, the calls that were right, and current bets.** (115 chars)
+- `title` (template, <= 60): **{Handle} - track record - Yonder**. Example (handle "alex"): **alex - track record - Yonder** (36 chars).
+- `meta description` (template, <= 155): **See {handle}'s prediction track record on Yonder: resolved events, the calls that were right, and current bets.** Example: **See alex's prediction track record on Yonder: resolved events, the calls that were right, and current bets.** (115 chars)
 - `canonical`: `{ROOT}/u/{handle}`
 - `hreflang`: `en` -> `{ROOT}/u/{handle}` (more locales `[?]`)
 - `robots`: `index,follow` (per-user opt-out -> `noindex` `[?]`)
-- `og:title`: {handle} on Predict Market; `og:description`: the short track-record line; `og:type`: `profile`; `og:url`: `{ROOT}/u/{handle}`; `og:image`: `{ROOT}/og/u/{handle}.png` (`[?]`)
+- `og:title`: {handle} on Yonder; `og:description`: the short track-record line; `og:type`: `profile`; `og:url`: `{ROOT}/u/{handle}`; `og:image`: `{ROOT}/og/u/{handle}.png` (`[?]`)
 - `twitter:card`: `summary_large_image`; mirrors OG
 
 ### B. Heading structure
@@ -396,7 +396,7 @@ template slots `{...}`. Only public fields are ever indexed - never email, walle
 
 ### C. Ready SEO body text
 
-**Evergreen line (reusable).** This is {handle}'s public track record on Predict Market. The
+**Evergreen line (reusable).** This is {handle}'s public track record on Yonder. The
 numbers count resolved events only. Follow real-world events and back your opinion with a real
 stake. The remaining content (record, current bets, activity) is the user's own data.
 
@@ -431,8 +431,8 @@ type in both files.
 
 ### A. Meta tags (ready copy)
 
-- `title`: `{Document name} | Predict Market` for the four legal pages (`Terms of Service | Predict Market`, 33 chars); `About Predict Market` for About (20). All under 60.
-- `meta description`: written per node, under 155, and it states what the document DECIDES rather than that it exists. Terms: `The rules you agree to when you back an event on Predict Market: your account, your funds, how a market resolves, and how disputes are handled.` (144). About: `Who builds Predict Market, how an event resolves, where your USDC sits, and how many events we have settled.` (107).
+- `title`: `{Document name} | Yonder` for the four legal pages (`Terms of Service | Yonder`, 33 chars); `About Yonder` for About (20). All under 60.
+- `meta description`: written per node, under 155, and it states what the document DECIDES rather than that it exists. Terms: `The rules you agree to when you back an event on Yonder: your account, your funds, how a market resolves, and how disputes are handled.` (144). About: `Who builds Yonder, how an event resolves, where your USDC sits, and how many events we have settled.` (107).
 - `canonical`: self-referential, one per node. **No `?print` or `?v=` parameter is ever canonical**, which matters because block B12 (download / print view) is banked as LATER.
 - `hreflang`: `en` only at MVP, with `pt-BR` reserved for the Brazil Phase 2 already named in `sitemap.md`. A jurisdiction variant of a legal page is a different document, not a translation, so a future geo split gets its own URL rather than an `hreflang` alternate.
 - `robots`: `index,follow`. These pages are a ranking surface for brand-plus-trust queries and the destination of every footer link on 104 screens.
@@ -448,7 +448,7 @@ DOCUMENT profile, in the mobile-first block order from `blocks.md`:
 - `H3` - only where a section has genuinely subordinate parts. No skipped levels, in both trees, which gate 15 already reads.
 - The effective-date block (B4) and the money answer (B7) are **not** headings. They stand between the H1 and the first H2 as content, so the outline stays the document's own.
 
-STATEMENT profile: `H1` = `About Predict Market`; `H2` in block order - what we are, how an event resolves, where your money sits, the numbers, people (LATER), then the closing action.
+STATEMENT profile: `H1` = `About Yonder`; `H2` in block order - what we are, how an event resolves, where your money sits, the numbers, people (LATER), then the closing action.
 
 ### C. Ready SEO body text
 

@@ -1,0 +1,174 @@
+/* components/hiw.css
+   Component: hiw. Classes: .hiw-col-main, .hiw-col-side, .hiw-cols, .hiw-faq, .hiw-hero, .hiw-hero-inner, .hiw-ic, .hiw-label, .hiw-page, .hiw-sec, .hiw-sec-txt, .hiw-tagline.
+
+   Reads: --bevel-lit, --bg-control, --border-hairline, --color-action, --edge-shade-strong, --text-brass, --text-muted, --text-primary
+          (the ground, the wave and the glow left for components/platehead.css on 2026-08-11, and six roles went with them: --bg-dialog-head-from, --bg-plate-to, --color-action-lit, --mask-solid, --text-strong, --tint-brass-30)
+   Stand:  ui-kit/hiw.html, and ui-kit/organisms.html#hiw for the level and its reason
+   Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+/* THE FILE STOPPED SAYING DIALOG ON 2026-08-11, AND SO DID THE COMPONENT.
+   It was hiw-dialog.css until then and it held three things at once: an explainer
+   BLOCK, the standalone PAGE that block is the content of, and ten rules about
+   the SHEET the block is usually shown in. The ten went to components/dialog.css,
+   where the reason for the cut is written out in full, and the NAME went with
+   them, because a dialog is one of the places this block can stand and a
+   component is not named after one of its places.
+   WHAT IS LEFT IS ONE BLOCK WITH TWO HOSTS, which is the sentence backlog 18 was
+   waiting for. Eighteen rules below are the block itself, none of them scoped,
+   and they draw the same explainer inside a sheet hanging off <body> at DOM depth
+   3 and on the standalone page at depth 9. Sixteen more are the page, and they
+   are why this component reads level 3 by arithmetic instead of by decree: the
+   page host HOLDS hero (.brand-tile and its six parts) and position (.pos and its
+   four), which is the count saying what the ceiling rule already said, that level
+   3 also means the shell of a screen. THIS WAS THE LAST DECLARED LEVEL IN THE
+   KIT, and it had to be declared for a reason none of the other floors had: not
+   that the arithmetic read too low, but that nobody could say what the component
+   WAS. Backlog 15 and 18 are one edit and this file is its other half. */
+
+/* .hiw-head was here and is gone (step 7e), the fifth rule alive on the same
+   mistake: 87 wireframes carry it, no painted screen and no stand does, and this
+   sheet cannot reach the grey tree. The painted dialog heads it with .sheet-head
+   like every other one. */
+/* AND SIX MORE RULES WENT ON 2026-08-08, the layer step 7f was meant to replace
+   and left standing ON TOP OF IT. They were `dialog.app-dialog .hiw-body`,
+   `.hiw-label`, `.hiw-sec p`, `.hiw-sec dl`, `.hiw-sec dt` and `.hiw-sec dd`, and
+   at (0,2,2) they out-specified every one of the block's own rules below, so
+   inside a sheet the block never wore its own face. The label is written
+   `font-size:14;font-weight:bold;text-transform:none` and rendered ELEVEN PIXELS
+   UPPERCASE on 315 elements; `dt` is written semibold and rendered bold; the FAQ
+   list lost its 8px lead-in and the section paragraph gained a 4px one. The body
+   rule was simply dead, beaten by this file twelve lines further down.
+   `text-transform:none` on the block's own label is the tell: a rule only cancels
+   what something else is doing, so whoever wrote the new layer knew the old one
+   was there and expected it to go. A refactor that leaves the old layer ABOVE the
+   new one has not replaced it, it has buried it. Backlog 67. */
+/* THE CLOSE DISC LEFT THIS FILE ON 2026-08-05, and it took `.hiw-close` with it.
+   It was `.sheet-close` in components/dialog.css written a second time under a
+   second name: same box, same pill, same scrim ladder, same edge, same transition.
+   One control belongs in one file, and the file is the one named for what the
+   control does, which is close a dialog. Its ring was the one thing about it that
+   this sheet decided, because the glow put brass in exactly the corner the ring
+   lands in, and that rule went with the rest so that every line about this control
+   could be read in one place. THAT EXCEPTION IS GONE TOO, 2026-08-11, backlog 106:
+   re-measured against the glow as it is now, the brass ring clears 3:1 on NEITHER
+   of the two brown heads, and the one carrying the exception was the better of them
+   by 0.04. It is `dialog.app-dialog .sheet-close:focus-visible` in dialog.css now,
+   one rule for all 333 discs, and the glow is `.plate-head::after`.
+   THE SENTENCE THAT USED TO END THIS NOTE SAID "what stays here is its width, its
+   body, its hero, its sections", and on 2026-08-11 the first two went the same
+   way the disc did and for the same reason. What stays is the hero and the
+   sections: the block, and the page it is the content of. */
+/* THE BLOCK, NOT THE DIALOG (step 7f). Every rule below used to begin
+   .app-dialog.hiw-dialog, which meant the hero, the icon chips, the section
+   rhythm and the FAQ list could only ever exist inside a dialog. The page this
+   dialog links to as "the full guide" was therefore a document: four bare
+   headings, some paragraphs and two buttons, because not one of these rules
+   could reach it. Scope describes where a thing may stand, and the answer for a
+   block like this is "wherever the block stands". Nothing below is scoped to a
+   dialog any more: the three rules that were, the width, the body padding and
+   the body's scrolling, are in components/dialog.css since 2026-08-11, which is
+   step 7f finished rather than repeated. */
+/* THE GROUND, THE WAVE AND THE GLOW LEFT THIS FILE ON 2026-08-11, backlog 108,
+   and what they left behind is one padding. They are components/platehead.css
+   now: the FACE this head shares with the plain sheet head and with the page
+   hero at the foot of this file, one rule each instead of two copies that had to
+   be kept in step by hand.
+   BACKLOG 98 IS WHAT PROVED THEY WERE ONE FACE AND NOT TWO. It moved six numbers
+   on THIS copy that same morning - the glow 224 to 210, its blur 40 to 42, its
+   opacity .5 to .42, its inner mix 65 to 60 per cent, the wave .24 to .2 and the
+   ground radial's vertical stop 92 to 96 per cent - so that this head would stop
+   compensating for a width it does not have. Six numbers moved by hand to make
+   two rules agree is one rule written twice, and the seventh edit would have
+   drifted again because the three heads are never on one screen.
+   THE GLOW WAS ALSO AN ELEMENT HERE AND IS NOT ONE NOW. `.hiw-glow` was a
+   `<span aria-hidden="true">` in the markup - 106 painted, 6 in the kit, 88 in
+   the grey tree where it carried no background at all and therefore drew nothing
+   at any width - while the sheet head next door drew the identical circle with
+   ::after and no markup at all. A glow is not content, so the mechanism is the
+   one that is not in the markup. The span is deleted in all three trees.
+   What is left of the block's head is its padding and how loud its heading is,
+   which is exactly what the row asked each host to keep. */
+.hiw-hero{padding:var(--space-32) var(--space-24) var(--space-28)}
+.hiw-hero-inner{position:relative;z-index:var(--z-content)}
+/* h1 on the page, h2 in the dialog: a page has exactly one h1 and a dialog is
+   opened over a page that already spent it. Same heading, two levels.
+   The FACE of it is components/platehead.css since 2026-08-11: family, weight,
+   leading, tracking, ink, margin and balance, written out three times before
+   that. What is left here is how LOUD it is, which is the one declaration a
+   38px hero and a 30px sheet title disagree about. */
+.hiw-hero :is(h1,h2){font-size:var(--display-hiw)}
+.hiw-tagline{margin:var(--space-8) 0 0;font-size:var(--text-14);line-height:var(--leading-base);color:var(--text-primary);max-width:32ch}
+.hiw-sec{display:flex;gap:var(--space-12);align-items:flex-start}
+.hiw-ic{flex:0 0 var(--size-32);width:var(--size-32);height:var(--size-32);display:flex;align-items:center;justify-content:center;border-radius:var(--radius-10);background:color-mix(in oklab,var(--color-action) 16%,var(--bg-control));border:var(--hairline) solid color-mix(in oklab,var(--color-action) 30%,var(--border-hairline))}
+.hiw-ic .ic{width:var(--icon-18);height:var(--icon-18);stroke:var(--text-brass);color:var(--text-brass)}
+.hiw-sec-txt{flex:1;min-width:0}
+.hiw-label{display:block;font-family:var(--font-display);font-size:var(--text-14);font-weight:var(--weight-bold);letter-spacing:var(--track-head);text-transform:none;color:var(--text-primary);margin:0 0 var(--space-4)}
+.hiw-sec p{font-size:var(--text-13);line-height:var(--leading-base);color:var(--text-muted);margin:0}
+.hiw-faq{flex-direction:column;gap:0;padding-top:var(--space-16);border-top:var(--hairline) solid var(--border-hairline)}
+.hiw-faq dl{margin:var(--space-8) 0 0}
+.hiw-faq dt{font-size:var(--text-13);font-weight:var(--weight-semibold);color:var(--text-primary);margin:var(--space-12) 0 var(--space-4)}
+.hiw-faq dt:first-of-type{margin-top:var(--space-2)}
+.hiw-faq dd{font-size:var(--text-13);line-height:var(--leading-base);color:var(--text-muted);margin:0}
+
+/* THE PAGE. A page is not a bigger dialog: it has room, so the hero gets an edge
+   of its own instead of the sheet's, the reading column takes the page text size
+   rather than a sheet's 13px, and the sections sit apart instead of stacked in a
+   scroll. The side column exists because the two things that are not the guide,
+   the brand tile and the count of resolved events, are a claim and its proof and
+   belong beside the argument rather than after it.
+   The rule that used to live here, .app-case .hiw-sec > :is(h2,h3), is gone: the
+   heading is .hiw-label now and it is no longer a child of .hiw-sec, so the
+   selector could not match anything the page has.
+
+   AND THE PAGE SAYS SO ITSELF SINCE 2026-08-08. Every rule below opened with
+   `.app-case`, which was the last of that wrapper anywhere in this folder, and
+   it was wrong here for a reason the other 415 did not have: IT WAS RIGHT ABOUT
+   THE PRODUCT AND WRONG ABOUT THE STAND. A kit page carries `app-case` on its
+   BODY, so the specimen in `ui-kit/hiw.html` was a sheet wearing the
+   page's hero edge, the page's 16px tagline, the page's section separators and
+   the page's 44px FAQ indent, with the sheet's 11px label on top of it. It was
+   neither of the two things this file draws, and no screen was wrong, so only
+   the stand could ever have shown it.
+   The split is a class now: `.hiw-page` on the page's hero, and `.hiw-cols` for
+   the rest, which stands on one document in each tree and on no stand at all.
+   A page is a place, and a place that a stand can also be is not a place. */
+/* THE PAGE HERO STOPPED BEING A MODIFIER ON THE SHEET HEAD, 2026-08-11, backlog
+   105. It was `.hiw-hero.hiw-page`, four elements, one per tree plus two kit
+   specimens, and the two classes shared a look and shared nothing else: the hero
+   is 922 x 161.89 at 1280 against a sheet head's 462, it sits at DOM depth 9
+   under div.app-case > main.feed > div.feed-inner > div.cat-layout > div.cat-main
+   rather than at depth 3 off <body>, it carries an edge, a 16px corner, a 20px
+   bottom margin and an inset lit lip that no sheet head has, its heading is an h1
+   rather than an h2, and its tagline is 16px at 44ch against 14px at 32ch.
+   Backlogs 15 and 18 established that a component is not named after one of its
+   places; this is the same cut one class deeper. `.hiw-page` writes the hero
+   outright now instead of leaning on a class that means "the head of the sheet",
+   and it wears the face directly like the other two heads do: markup is
+   `<div class="plate-head hiw-page">`. It was the precondition for backlog 108,
+   because a face cannot be shared by three heads while one of them is spelled as
+   a modifier on another. */
+.hiw-page{padding:var(--space-32) var(--space-24);border:var(--hairline) solid var(--edge-shade-strong);border-radius:var(--radius-16);margin:0 0 var(--space-20);box-shadow:inset 0 1px 0 var(--bevel-lit)}
+.hiw-page :is(h1,h2){font-size:var(--display-hiw)}
+.hiw-page .hiw-tagline{font-size:var(--text-16);max-width:44ch}
+.hiw-cols{display:grid;grid-template-columns:1fr;gap:var(--space-20)}
+.hiw-col-main{display:flex;flex-direction:column;gap:var(--space-20)}
+.hiw-col-side{display:flex;flex-direction:column;gap:var(--space-16)}
+.hiw-cols .hiw-sec p{font-size:var(--text-14)}
+.hiw-cols .hiw-label{font-size:var(--text-18)}
+.hiw-cols .hiw-sec+.hiw-sec{padding-top:var(--space-20);border-top:var(--hairline) solid var(--border-hairline)}
+.hiw-cols .hiw-faq dt{font-size:var(--text-14)}
+.hiw-cols .hiw-faq dd{font-size:var(--text-14)}
+/* The questions block takes no chip, on the page for the same reason as in the
+   dialog: there is no mark for it that the product already draws, and inventing
+   one to fill a slot is how a sheet of icons grows. It takes the INDENT the chip
+   would have made instead, or its heading hangs a chip's width left of the four
+   above it, which reads as a mistake rather than as a different kind of block. */
+.hiw-cols .hiw-faq{padding-left:calc(var(--size-32) + var(--space-12))}
+.hiw-col-side .brand-tile{min-height:250px}
+.hiw-col-side .pos{padding:var(--space-20)}
+/* rung: RAIL 900, a rail beside the content. The ladder is in tokens.css, page frame. */
+@media(min-width:900px){
+  .hiw-cols{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:var(--space-28);align-items:start}
+  .hiw-col-side{position:sticky;top:var(--space-20)}
+}

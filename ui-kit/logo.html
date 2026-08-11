@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: logo</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+  <script src="../assets/icons.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Logo</h1>
+    <p>Level 1, and <b>the only component whose drawing is not made of system ink</b>. The mark, an
+    8px gap, the wordmark. <b>210 placements on 105 painted screens</b>, one face, worn twice per
+    screen: a <code>&lt;button&gt;</code> in the header and a <code>&lt;span&gt;</code> in the
+    footer. Written 2026-08-11 with the rename to Yonder, out of the two copies that were already
+    standing in <code>header.css</code> and <code>footer.css</code>.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">210 placements</span>
+      <span class="tk-badge">1 face</span>
+      <span class="tk-badge">2 rules</span>
+      <span class="tk-badge">1 of the 2 old copies could not be themed</span>
+    </div>
+  </div>
+
+  <!-- ============================================================ why a page -->
+  <section class="tk-sec" id="why">
+    <h2 data-n="1">What this page is for</h2>
+    <p class="tk-note">The level and the reason for it stay on
+    <a href="vitrine.html#logo">the atoms page</a>. This page holds what the shelf has no room for,
+    and for this component that is the state it was found in: <b>one shape written down twice, in
+    two files, in two ways, and only one of the two could follow a theme</b>.</p>
+  </section>
+
+  <!-- =========================================================== the finding -->
+  <section class="tk-sec" id="finding">
+    <h2 data-n="2">One lockup, two files, and the copy that was frozen</h2>
+    <p class="tk-note">This is what the two component files declared until 2026-08-11, side by side.
+    Both drew a mark before a wordmark; only one of them read a role.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th><code>header.css</code></th><th><code>footer.css</code></th></tr></thead>
+        <tbody>
+          <tr><td>the mark</td><td><code>background:url("...stroke='%23c99e3f'...")</code></td><td><code>background:var(--mark-logo)</code></td></tr>
+          <tr><td>in Vault, dark</td><td><b>#c99e3f</b></td><td>#c99e3f</td></tr>
+          <tr><td>in Daylight, light</td><td><b>#c99e3f</b>, unchanged</td><td>#684f18</td></tr>
+          <tr><td>the face</td><td>7 declarations</td><td>the same 7, plus 5 undoing a button</td></tr>
+          <tr><td><code>::first-letter</code></td><td>the colour it already had</td><td>the colour it already had</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>A colour written inside a data URI is a value the theme cannot reach.</b>
+    The shape is delivered as an image, the image carries its own ink, and no custom property is
+    consulted at paint time. That is why <code>tokens.css</code> carries the mark twice on purpose,
+    once per theme, and it is the one place in this system where a shape is deliberately written
+    down two times. The header's copy skipped that arrangement entirely and typed the dark theme's
+    brass into the rule, so <b>on 105 screens in daylight the header wore a mark one step brighter
+    than the footer wore, and both were correct at night</b>.</p>
+    <p class="tk-note"><b>Nothing looked broken, and that is the point.</b> The two marks are the
+    full height of a page apart, so nobody compares them; a mark that renders is a mark nobody
+    re-reads. This is the same shape of defect this folder has already paid for twice, a value
+    written into the place that uses it rather than into the file that owns it, and both earlier
+    ones were also found by asking where a thing is declared rather than by looking at it.</p>
+  </section>
+
+  <!-- ========================================================= the placements -->
+  <section class="tk-sec" id="faces">
+    <h2 data-n="3">One face, two placements</h2>
+
+    <p class="tk-subh">the header, 105 placements, a button that goes to the Events home</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <button type="button" class="logo logo-btn" aria-label="Yonder - go to Events home">Yonder</button>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <button type="button" class="logo logo-btn" aria-label="Yonder - go to Events home">Yonder</button>
+      </div>
+    </div>
+
+    <p class="tk-subh">the footer, 105 placements, a span that goes nowhere</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <span class="logo footer-logo">Yonder</span>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <span class="logo footer-logo">Yonder</span>
+      </div>
+    </div>
+
+    <p class="tk-why"><b>The two elements do not start from the same place, so the reset is part of
+    the face.</b> A button arrives carrying the User Agent's ground, border, padding, font and
+    centring; a span arrives with none of them. If the reset stood in <code>header.css</code> the
+    two would be one face only for as long as nobody put them beside each other, which is what the
+    row above is for. It stands in <code>logo.css</code> and both elements start from nothing.</p>
+    <p class="tk-note"><b>A press is the header's, not the logo's.</b>
+    <code>.logo-btn:active</code> takes the quiet ground square-cornered, and it stays in
+    <code>header.css</code> along with the padding that carries the touch target, because the band
+    is where a finger lands. The footer's copy has no press, because a span is not pressable and
+    saying so twice would be the system inventing a state for an element that cannot have one.</p>
+  </section>
+
+  <!-- =============================================================== the mark -->
+  <section class="tk-sec" id="mark">
+    <h2 data-n="4">The mark, and why it is 18px</h2>
+    <p class="tk-note">A line rises, splits, and one branch is lit while the branch not taken stays
+    at 30 per cent: the event, the two outcomes and the choice, in two strokes. Butt caps and a
+    mitred shoulder, so it reads as something cast rather than something drawn, which is the whole
+    argument of the visual system. With the name Yonder the same shape is also the Y, so the mark is
+    a monogram and a fork at once and has to be explained as neither.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>value</th><th>what it is</th><th>why</th></tr></thead>
+        <tbody>
+          <tr><td>24 x 24</td><td>the viewBox</td><td>the ink is 15.8 x 17 inside it, centred, so the drawing has its own margin and <code>contain</code> has something to fit</td></tr>
+          <tr><td>18px</td><td>the box in the rule</td><td>the ink paints at about 12, which is the display face's ascender at 16px</td></tr>
+          <tr><td>4.6</td><td>the stroke</td><td>a band rather than a line: it holds its mass at 16px, where a 2.6 stroke starts to read as a hairline</td></tr>
+          <tr><td>.3</td><td>the second branch</td><td>a stroke opacity inside the drawing, which is the one place in this system where quiet is allowed to be an opacity, because there is no text under it and no sweep reading its colour</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-lab tk-bad"><b>A mark taller than the letters beside it is an icon that has been
+    put next to a word.</b> <i>And a mark shorter than them is a bullet. The box is sized to the
+    ascender rather than to the line, which is why 18 and not 16 or 22.</i></p>
+  </section>
+
+  <!-- =============================================================== the split -->
+  <section class="tk-sec" id="split">
+    <h2 data-n="5">What this file owns, and what it does not</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>the face, <code>logo.css</code></th><th>the place, <code>header.css</code> and <code>footer.css</code></th></tr></thead>
+        <tbody>
+          <tr><td>the mark, the gap, the display face, the size, the tracking, the ink</td><td>the padding that carries the touch target in the band</td></tr>
+          <tr><td>the reset that makes a button and a span render identically</td><td>the press ground on the button</td></tr>
+          <tr><td><code>white-space:nowrap</code>, because a wordmark that wraps is two words</td><td><code>justify-content:center</code>, because the footer brand block centres on a phone</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note">This is the same division the five marks took when they left
+    <code>footer.css</code> for <code>iconbtn.css</code> on 2026-08-06: <b>a row describes where a
+    control sits and a component describes what it is</b>. And the 44px touch floor is neither: it
+    is one rule in <code>base.css</code> keyed to the family, and it names <code>.logo-btn</code>,
+    which is why the button keeps that class rather than being renamed.</p>
+  </section>
+
+  <!-- ================================================================== rule -->
+  <section class="tk-sec" id="rule">
+    <h2 data-n="6">The rule</h2>
+    <p class="tk-note"><b>The brand mark keeps its own drawing and takes no system ink.</b> It is
+    not an icon, no glyph from the set may stand in for it, and it is the one component here that a
+    shape census will file as a duplicate of something else every single time.</p>
+    <p class="tk-note"><b>The colour lives in a token, not inside the drawing.</b> A data URI cannot
+    read a custom property, so a themed mark is two files' worth of the same shape, declared beside
+    each other in <code>tokens.css</code> and edited together.</p>
+  </section>
+
+  <!-- ============================================================= anti-rule -->
+  <section class="tk-sec" id="antirule">
+    <h2 data-n="7">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never write the lockup in the file that places it.</b> <i>It stood
+    in two files for as long as this system has existed, and the copy that had its colour typed in
+    is the copy that stopped following the theme. A face in two places is a face that is right in
+    one of them.</i></p>
+    <p class="tk-lab tk-bad"><b>Never give the mark a size variant it does not wear.</b> <i>One face,
+    210 placements, and no large version until something in the product asks for one. The stand
+    already knows what a face with no placement looks like: four of the toggle's five.</i></p>
+    <p class="tk-lab tk-bad"><b>Never restate an inherited value as a state.</b> <i>Both old copies
+    carried a <code>::first-letter</code> rule setting the ink to exactly what the element already
+    had. It rendered nothing and read as a decision, which is worse than either.</i></p>
+  </section>
+
+  <!-- ============================================================== closing -->
+  <section class="tk-sec" id="closing">
+    <h2 data-n="8">Where the rest of it is</h2>
+    <p class="tk-note">The level and its reason: <a href="vitrine.html#logo">the atoms page</a>. The
+    stylesheet: <code>components/logo.css</code>, two rules and the account of the two it replaced.
+    The mark itself: <code>components/tokens.css</code>, <code>--logo-y</code> and
+    <code>--logo-y-dark</code>. The places: <a href="header.html">header</a> and
+    <a href="footer.html">footer</a>. The name and why it is Yonder:
+    <code>../docs/decisions.md</code>, 2026-08-11.</p>
+  </section>
+
+</div>
+</body>
+</html>

@@ -33,7 +33,7 @@
     else. This page is the picture of the system <b>before</b> the consolidation pass, so that the
     pass has something to be compared against.</p>
     <div class="tk-badges">
-      <span class="tk-badge">10 atoms</span>
+      <span class="tk-badge">11 atoms</span>
       <span class="tk-badge">2 themes, one document</span>
       <span class="tk-badge">0 generators</span>
       <span class="tk-badge">0 screenshots</span>
@@ -392,12 +392,12 @@
       <span class="tk-colh">Daylight, light</span>
 
       <span class="tk-lab"><b>.yesno</b><i>the card pair. 44px floor, links wrapping buttons</i></span>
-      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="yesno"><a href="#yesno"><button type="button" class="yes">YES</button></a><a href="#yesno"><button type="button" class="no">NO</button></a></div></div>
-      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="yesno"><a href="#yesno"><button type="button" class="yes">YES</button></a><a href="#yesno"><button type="button" class="no">NO</button></a></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="yesno"><a href="#yesno" class="yes">YES</a><a href="#yesno" class="no">NO</a></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="yesno"><a href="#yesno" class="yes">YES</a><a href="#yesno" class="no">NO</a></div></div>
 
       <span class="tk-lab"><b>.yesno.compact</b><i>the multi-outcome row, inside .opt-list</i></span>
-      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="opt-list"><div class="opt-row"><span class="opt-name">Donald Trump</span><span class="opt-prob">22%</span><span class="yesno compact"><button type="button" class="yes">YES</button><button type="button" class="no">NO</button></span></div></div></div>
-      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="opt-list"><div class="opt-row"><span class="opt-name">Donald Trump</span><span class="opt-prob">22%</span><span class="yesno compact"><button type="button" class="yes">YES</button><button type="button" class="no">NO</button></span></div></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="opt-list"><div class="opt-row"><span class="opt-name" id="opt-donald-trump-1">Donald Trump</span><span class="opt-prob">22%</span><span class="yesno compact"><button type="button" class="yes" id="opt-donald-trump-1-yes" aria-labelledby="opt-donald-trump-1 opt-donald-trump-1-yes">YES</button><button type="button" class="no" id="opt-donald-trump-1-no" aria-labelledby="opt-donald-trump-1 opt-donald-trump-1-no">NO</button></span></div></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="opt-list"><div class="opt-row"><span class="opt-name" id="opt-donald-trump-2">Donald Trump</span><span class="opt-prob">22%</span><span class="yesno compact"><button type="button" class="yes" id="opt-donald-trump-2-yes" aria-labelledby="opt-donald-trump-2 opt-donald-trump-2-yes">YES</button><button type="button" class="no" id="opt-donald-trump-2-no" aria-labelledby="opt-donald-trump-2 opt-donald-trump-2-no">NO</button></span></div></div></div>
 
       <span class="tk-lab"><b>.yesno.compact button.sel</b><i>chosen: the tint becomes the colour</i></span>
       <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="opt-list"><div class="opt-row"><span class="opt-name">Donald Trump</span><span class="opt-prob">22%</span><span class="yesno compact"><button type="button" class="sel yes">YES</button><button type="button" class="no">NO</button></span></div></div></div>
@@ -412,8 +412,8 @@
       <div class="tk-theme-fig tk-stack" data-theme="light"><p class="tk-gone tk-above-760">not rendered from 760px up, exactly as on a screen: the dock is the panel's pair below 760 and the panel replaces it above</p><div class="bet-dock"><button type="button" class="yesno-pick yesno-pick-bar bp-side sel yes">YES <span class="bp-pct">38%</span></button><button type="button" class="yesno-pick yesno-pick-bar bp-side no">NO <span class="bp-pct">62%</span></button></div></div>
 
       <span class="tk-lab tk-bad"><b>THE DEFECT: NO written first</b><i>identical classes, order reversed. The rule is :first-of-type and :last-of-type, so the position paints the colour and the WORD does not. Do not copy this row. 81 readings depend on the order</i></span>
-      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="yesno"><a href="#yesno"><button type="button" class="yes">NO</button></a><a href="#yesno"><button type="button" class="no">YES</button></a></div></div>
-      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="yesno"><a href="#yesno"><button type="button" class="yes">NO</button></a><a href="#yesno"><button type="button" class="no">YES</button></a></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="yesno"><a href="#yesno" class="yes">NO</a><a href="#yesno" class="no">YES</a></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="yesno"><a href="#yesno" class="yes">NO</a><a href="#yesno" class="no">YES</a></div></div>
     </div>
     <p class="tk-note"><b>Rule.</b> Green is YES and red is NO, everywhere, and neither colour is
     ever borrowed for anything else in this system. <b>Anti-rule.</b> The pair never appears with
@@ -523,8 +523,79 @@
     control is a checkbox, because the decision is not final until the form is.</p>
   </section>
 
+  <!-- ============================ 11 logo ============================= -->
+  <section class="tk-comp" id="logo">
+    <h2>logo</h2>
+    <ul class="tk-meta">
+      <li>components/logo.css</li>
+      <li>2 rules</li>
+      <li>level 1</li>
+      <li>210 placements</li>
+      <li class="tk-decl">ONE THING, and a control in half of them</li>
+      <li><a href="logo.html">its own page</a></li>
+    </ul>
+    <p class="tk-note">The brand lockup, written 2026-08-11 with the rename to Yonder. It is the one
+    component in this system whose drawing is not made of system ink: the mark is its own shape,
+    carried as a data URI per theme, because <code>components/CLAUDE.md</code> already says a brand
+    mark keeps its own drawing and no generic glyph may stand in for it.</p>
+    <div class="tk-faces">
+      <span class="tk-colh"></span>
+      <span class="tk-colh">Vault, dark</span>
+      <span class="tk-colh">Daylight, light</span>
+
+      <span class="tk-lab"><b>.logo.logo-btn</b><i>the header. A button, because it goes to the Events home</i></span>
+      <div class="tk-theme-fig" data-theme="dark"><button type="button" class="logo logo-btn" aria-label="Yonder - go to Events home">Yonder</button></div>
+      <div class="tk-theme-fig" data-theme="light"><button type="button" class="logo logo-btn" aria-label="Yonder - go to Events home">Yonder</button></div>
+
+      <span class="tk-lab"><b>.logo.footer-logo</b><i>the footer. A span, because it goes nowhere</i></span>
+      <div class="tk-theme-fig" data-theme="dark"><span class="logo footer-logo">Yonder</span></div>
+      <div class="tk-theme-fig" data-theme="light"><span class="logo footer-logo">Yonder</span></div>
+    </div>
+    <p class="tk-note"><b>Rule.</b> One lockup, one file, and the mark's colour lives in a token
+    rather than inside the drawing that uses it. <b>Anti-rule.</b> Never a second copy of the shape
+    in the file that places it: that is exactly what stood here until 2026-08-11, and the copy with
+    the colour typed into it was the one that could not follow the light theme.</p>
+  </section>
+
+  <!-- =========================== 12 platehead ========================== -->
+  <section class="tk-comp" id="platehead">
+    <h2>platehead</h2>
+    <ul class="tk-meta">
+      <li>components/platehead.css</li>
+      <li>4 rules</li>
+      <li>level 1</li>
+      <li>339 placements</li>
+      <li class="tk-decl">ONE FACE, and it is worn by three different components</li>
+      <li><a href="platehead.html">its own page</a></li>
+    </ul>
+    <p class="tk-note">The brass-cornered head of a plate, written 2026-08-11 out of the two copies
+    that were standing in <code>dialog.css</code> and <code>hiw.css</code>. It is an atom by the
+    lockup's reading: it holds nothing from the system, and both of the wholes that hold it load at
+    level 3, so it has to be able to lose a tie to either of them. <b>The third host, the
+    how-it-works page hero, is 922px wide and is on the component's own page</b>, because a shelf
+    column cannot show it without lying about its width.</p>
+    <div class="tk-faces">
+      <span class="tk-colh"></span>
+      <span class="tk-colh">Vault, dark</span>
+      <span class="tk-colh">Daylight, light</span>
+
+      <span class="tk-lab"><b>.plate-head.sheet-head</b><i>a sheet head, 225 placements. 24/20/20, and its title runs to 15ch</i></span>
+      <div class="tk-theme-fig" data-theme="dark"><div class="tk-dlg"><dialog class="app-dialog signin-dialog" open aria-label="Sign in or create account"><div class="plate-head sheet-head"><h2>Sign in or create account</h2><p class="sheet-sub">You are about to place a bet. No crypto wallet required.</p></div></dialog></div></div>
+      <div class="tk-theme-fig" data-theme="light"><div class="tk-dlg"><dialog class="app-dialog signin-dialog" open aria-label="Sign in or create account"><div class="plate-head sheet-head"><h2>Sign in or create account</h2><p class="sheet-sub">You are about to place a bet. No crypto wallet required.</p></div></dialog></div></div>
+
+      <span class="tk-lab"><b>.plate-head.hiw-hero</b><i>the how-it-works sheet head, 111 placements. 32/24/28, and its title is the louder of the two sizes</i></span>
+      <div class="tk-theme-fig" data-theme="dark"><div class="plate-head hiw-hero"><div class="hiw-hero-inner"><h2>How it works</h2><p class="hiw-tagline">Back the events you follow, in plain language.</p></div></div></div>
+      <div class="tk-theme-fig" data-theme="light"><div class="plate-head hiw-hero"><div class="hiw-hero-inner"><h2>How it works</h2><p class="hiw-tagline">Back the events you follow, in plain language.</p></div></div></div>
+    </div>
+    <p class="tk-note"><b>Rule.</b> A face that more than one component wears is a file, and each
+    wearer says only where it sits and how loud it is. <b>Anti-rule.</b> Never make two rules agree
+    by editing one of them: six numbers were moved on the how-it-works copy on the morning of
+    2026-08-11 so that it would match the sheet head, and the result looked like a fix while it was
+    the same duplication being paid for a fourth time.</p>
+  </section>
+
   <section class="tk-sec" id="next">
-    <h2 data-n="11">What this page is not, yet</h2>
+    <h2 data-n="13">What this page is not, yet</h2>
     <p class="tk-note">The molecules and the organisms are not here: trustbar, market, filters,
     catnav, bottomnav and the rest of level 2, then header, footer, card, dialog, betpanel and the
     shells at level 3. They follow in the same format.</p>

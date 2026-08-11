@@ -81,7 +81,7 @@ Content:
 - A retry action
 
 Ready copy:
-- H1: **Predict Market is down for scheduled maintenance**
+- H1: **Yonder is down for scheduled maintenance**
 - Body: **Your bets and funds are safe. We will be back shortly.** (add the expected time when known)
 - Primary action: **Try again**
 

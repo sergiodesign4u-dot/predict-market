@@ -1,8 +1,11 @@
 # ui-kit/ - the vitrine, rebuilt by hand 2026-08-07 to 2026-08-08
 
 **All five steps are done and the plan below is the record of how, not a to-do list.** What is on the
-stand today: **54 pages**, `_page.css`, `_nav.js`, and five reports in `docs/`.
-**0 generators, 0 gates, 0 screenshots.** Every one of the 42 components placed on a level page
+stand today: **56 pages**, `_page.css`, `_nav.js`, and five reports in `docs/`. It was 54 until
+`logo` was written on 2026-08-11 with the rename to Yonder, and 55 until `platehead` was written the
+same day by backlog 108: a face that three components wear, found by asking what `dialog.css` and
+`hiw.css` had in common rather than by walking a screen.
+**0 generators, 0 gates, 0 screenshots.** Every one of the 44 components placed on a level page
 carries its live specimen in both themes, its classes, its declaration, its rule and its anti-rule.
 
 **It was 55 and 43 on 2026-08-08 and it is 54 and 42 the same day.** `account` was walked, given a
@@ -39,23 +42,23 @@ rendered**, and the six that read 0x0 at 390 stand in a panel that is `display:n
 `toggle.html` found the four faces above. None of these was visible from a level page, because a
 level page shows one specimen and every one of them is a fact about a set.
 
-The kit shows the system to a person and it holds no product code. It holds 54 pages plus its
+The kit shows the system to a person and it holds no product code. It holds 56 pages plus its
 stylesheet and its registry: `overview.html`, which says what is happening, **all four foundation
 pages** (`icons.html`, `colour.html`, `typography.html`, `geometry.html`), **a shelf per rung, all
-four** (`vitrine.html` for the ten atoms, `molecules.html` for the fourteen at level 2,
+four** (`vitrine.html` for the twelve atoms, `molecules.html` for the fourteen at level 2,
 `organisms.html` for the thirteen at level 3 and `patterns.html` for the six on the fourth rung), and
-**ten atom pages, one per atom** (`button`, `iconbtn`, `chip`, `navitem`, `oddsbar`, `input`,
-`yesno`, `toast`, `skeleton`, `toggle`) and **sixteen molecule pages** (`trustbar`, `market`,
+**twelve atom pages, one per atom** (`button`, `iconbtn`, `chip`, `navitem`, `oddsbar`, `input`,
+`yesno`, `toast`, `skeleton`, `toggle`, `logo`, `platehead`) and **sixteen molecule pages** (`trustbar`, `market`,
 `comments`, `notice`, `filters`, `bottomnav`, `catnav`, `related`, `state-block`, `position`,
 `quick`, `options`, `seo-plate`, `loadmore`, `cookie-consent`, `toc`) and **thirteen organism pages**
-(`header`, `footer`, `dialog`, `hiw-dialog`, `tabs`, `event-detail`, `betpanel`, `bets-table`,
+(`header`, `footer`, `dialog`, `hiw`, `tabs`, `event-detail`, `betpanel`, `bets-table`,
 `chart`, `card`, `hero`, `feed`, `profile`) and **six pattern pages** (`action-bar`, `browse-shell`,
 `card-grid`, `detail-shell`, `list-head`, `position-list`). `_page.css` is the stand furniture they all share and
 `_nav.js` is the route.
 
 **Every component has a ROW whether or not it has a page.** `_nav.js` groups by level, the level page
 is the first row of its own group (`All atoms`, `All molecules`), and a row with no page renders as a
-`<span>` with a badge. There are no rows waiting any more, so the panel says **54 of 54** and drops its own
+`<span>` with a badge. There are no rows waiting any more, so the panel says **56 of 56** and drops its own
 sentence about rows with no page: that sentence only exists while there IS one.
 
 **The route is written once, in `_nav.js`, and a page declares no part of it**, not even its own

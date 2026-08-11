@@ -42,7 +42,14 @@
 .notif-empty{margin:0;padding:var(--space-12);font-size:var(--text-11);line-height:var(--leading-base)}
 .notif-all{display:block;text-align:center;padding:var(--space-8);font-size:var(--text-11);text-decoration:none}
 .app-header .row{margin:0 auto;padding:var(--space-8) var(--space-20);box-sizing:border-box;min-height:58px}
-.logo-btn{background:transparent;border:0;color:var(--text-primary);font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-16);letter-spacing:var(--track-head);padding:var(--space-8) var(--space-4);white-space:nowrap}
+/* THE FACE LEFT THIS FILE ON 2026-08-11, for components/logo.css, and what is left
+   here is the only thing the header has to say about it: the padding that carries
+   its touch target inside the band. The reset, the display face, the size, the
+   tracking, the ink, the mark and the gap all moved WITH the lockup rather than
+   staying here as a second copy, and the second copy is what the move was for: the
+   mark below used to be an inline data URI with `%23c99e3f` typed into it, so the
+   header's mark did not follow the light theme and the footer's did. */
+.logo-btn{padding:var(--space-8) var(--space-4)}
 .utility{align-items:center;gap:var(--space-8)}
 .utility > *{align-self:center}
 /* ONE CIRCLE, TWO AUTH STATES, AND IT WAS WRITTEN TWICE (ui-kit backlog S17).
@@ -206,9 +213,10 @@
 @media(max-width:759.98px){
   .hiw-btn{display:none}
 }
-.logo-btn{display:inline-flex;align-items:center;gap:var(--space-8)}
-.logo-btn::first-letter{color:var(--text-primary)}
-.logo-btn::before{content:'';flex:0 0 auto;width:23px;height:var(--icon-16);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='18'%3E%3Cpath d='M2 15 L9 7 L13 10 L24 2' fill='none' stroke='%23c99e3f' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/contain}
+/* Three rules stood here and all three are components/logo.css now. The box and the
+   gap were the lockup itself; `::first-letter` set the ink to the value the element
+   already inherited from the rule above it, which is a no-op that reads as a
+   decision; and the mark was the unthemeable copy. */
 .app-header{position:sticky;top:0;z-index:var(--z-header);background:var(--bg-slab-from);border-bottom:var(--hairline) solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light),0 14px 26px -20px var(--shadow-ink-72)}
 .app-header .cat-condensed{max-height:0;opacity:0;overflow:clip;transition:max-height var(--dur-slower) var(--ease-out),opacity var(--dur-slow) ease}
 .app-header.scrolled .cat-condensed{max-height:54px;opacity:1;border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}

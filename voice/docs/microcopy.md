@@ -106,7 +106,7 @@ Header, category nav, bottom nav, footer and the two shared dialogs (Sign in, De
 | Zone | Type | Line | Flag |
 |---|---|---|---|
 | Header | Icon button | Menu (reserved for future scaling) |  |
-| Header | Button | Predict Market |  |
+| Header | Button | Yonder |  |
 | Header | Label | Portfolio |  |
 | Header | Icon button | Swap balance (showing Portfolio) |  |
 | Header | Icon button | Add funds | **same-thing / Deposit vs Add funds** |
@@ -189,7 +189,7 @@ Header, category nav, bottom nav, footer and the two shared dialogs (Sign in, De
 | Footer | Link | Geo restrictions |  |
 | Footer | Text | Prediction markets involve risk of loss. Not available in restricted regions. |  |
 | Footer | Text | [Regulatory / licensing line - placeholder, to be set. No US real-money markets; geo-restrictions and KYC per regulatory requirements.] | **placeholder** |
-| Footer | Text | Copyright (c) Predict Market. Sample wireframe content. | **placeholder** |
+| Footer | Text | Copyright (c) Yonder. Sample wireframe content. | **placeholder** |
 
 ### Sign-in dialog
 
@@ -310,7 +310,7 @@ _13 state page(s): event-detail-bet-error.html, event-detail-bet-insufficient.ht
 | Main | Label | Resolves NO |  |
 | Main | Text | if funding is in place through that date. |  |
 | Main | Label | Source: |  |
-| Main | Text | official US Office of Management and Budget notices. Resolved by the Predict Market team. |  |
+| Main | Text | official US Office of Management and Budget notices. Resolved by the Yonder team. |  |
 | Content tabs | Field label | Comments |  |
 | Content tabs | Field label | Top Holders |  |
 | Content tabs | Field label | Positions | **same-thing / bet vs position** |
@@ -379,7 +379,7 @@ _13 state page(s): event-detail-bet-error.html, event-detail-bet-insufficient.ht
 | Main | Text | Early primaries historically reshuffle the order. |  |
 | Main | Label | Resolves to the candidate |  |
 | Main | Text | who is the Republican Party's official presidential nominee at the 2028 national convention. All other outcomes resolve NO. |  |
-| Main | Text | official Republican National Committee certification. Resolved by the Predict Market team. |  |
+| Main | Text | official Republican National Committee certification. Resolved by the Yonder team. |  |
 | Content tabs | Button | Sign in to join the discussion | **same-thing / Log in vs Sign in** |
 | Content tabs | Text | Outcome |  |
 | Bet panel | Label | YES pre-selected |  |
@@ -890,7 +890,7 @@ _4 state page(s): win-error.html, win-loading.html, win-payout-pending.html, win
 | Main | Text | Your payout is on the way |  |
 | Main | Label | It will arrive in your balance in a few minutes (on-chain settlement delay). You can still share now. |  |
 | Main | Field label | Share Card (auto-generated) |  |
-| Main | Text | Share Card: "Called it - US shutdown, YES from 38%. +$13.20 on Predict Market." (image placeholder) |  |
+| Main | Text | Share Card: "Called it - US shutdown, YES from 38%. +$13.20 on Yonder." (image placeholder) |  |
 | Main | Button | Share |  |
 | Main | Field label | What happened |  |
 | Main | Text | The federal government entered a shutdown on Feb 18, 2027 after Congress missed the funding deadline. The market resolved YES, the side you held. |  |
@@ -1138,13 +1138,18 @@ per-element rules) surfaced the lines the screen-by-screen rewrite (Steps 05-13)
 had missed, plus the one item it had deliberately deferred. Method: a
 chrome-stripped visible-text grep for each Lexicon term (market / position / shares
 / Deposit / bookmark / Log in / trader jargon) and each Forbidden pattern, then
-per-hit judgement (brand name "Predict Market", the voice-sanctioned "the market
+per-hit judgement (brand name "Yonder", the voice-sanctioned "the market
 resolved YES/NO", and user content excluded). Clean on `bookmark`, `Log in`,
 `cents/spread/liquidity/order book/buy-sell`, `Oops/Welcome/Congratulations/Sorry`,
 exclamations and emoji. The stragglers and the deferred cluster, fixed:
 
 | Screen(s) | Was | Became | Rule |
 |---|---|---|---|
+| `deposit*`, `sign-in*` (7 + 4, both trees) | close control `aria-label="Close"` | **`Back to the event`** | 2026-08-11, backlog 97. On a standalone overlay page there is nothing to close: the page IS the overlay, and the control navigates. A name that says Close on a control that goes to another screen describes something that does not happen. The 105 in-page dialogs keep `Close`, because theirs is a button that closes |
+| `win*`, `loss*` (4 + 2, both trees) | close control `aria-label="Close"` | **`Back to My Bets`** | 2026-08-11, backlog 97. Same rule, and these six already agreed on the destination |
+| 14 feed screens per tree, 100 controls each | accessible name **`YES`** / **`NO`** | **`Sweden YES`**, `JD Vance NO`, and so on | 2026-08-11, backlog 96. A person tabbing heard "YES link, NO link" ten times with nothing to tell one row from the next. The name is built with `aria-labelledby` pointing at the outcome span and then at the control, so **the outcome wording stays in the one place this file owns it** and is not typed into the markup a second time |
+| `event-detail*` painted bet sheet (4) | `YES selected` | **`YES pre-selected`** | 2026-08-11, backlog 87. The sheet was the one string in that block with no row in this inventory; the panel five lines above it already said the rowed one |
+| 9 screens per tree | tab strip `role="tablist"` + `role="tab"` + `aria-selected` | **`<nav>` + `aria-current="page"`** | 2026-08-11, backlog 89. The tablist owned nothing, there is no tabpanel in that family, and the tabs navigate to another document. It is navigation with a current-page marker, which is the idiom this product already writes 1,228 times |
 | `event-detail-error`, `event-detail-logged-out-error` | **Something went wrong** while loading the event details. Check your connection and try again. | We couldn't load this event. Check your connection and try again. | Forbidden: drop "Something went wrong" |
 | `event-detail-error`, `-logged-out-error`, `-resolved` | CTA **Back to feed** | **Browse events** | Lexicon: one go-to-events label |
 | `event-detail-resolved` | The **market** closed while you were reading **(event-closed)**. ... You hold a **position**, so you can open your result. | The **event** closed while you were reading. ... You hold a **bet**, so you can open your result. | Lexicon (market->event, position->bet) + strip leaked state code |
@@ -1222,7 +1227,7 @@ provable thing". Source of truth for the text is `system.md`; the wireframes ren
 | 500.html | H1 | **We could not load this page** | names the failure plainly |
 | 500.html | Body | **This is on our side, not your bet or your funds. Your money is safe.** | trust before the ask, even in an error |
 | 500.html | Actions | **Try again** + **Home** | visible exit; reuses the canonical retry label |
-| maintenance.html | H1 | **Predict Market is down for scheduled maintenance** | states the fact, planned not crashed |
+| maintenance.html | H1 | **Yonder is down for scheduled maintenance** | states the fact, planned not crashed |
 | maintenance.html | Body | **Your bets and funds are safe. We will be back shortly.** | trust reassurance |
 | maintenance.html | Action | **Try again** | visible exit |
 | cookie-consent.html | Banner text | **We use cookies to run the site and, only if you allow it, to measure and improve it.** | plain, no dark pattern |
@@ -1415,7 +1420,7 @@ against `voice.md` when it shipped, and the two lines that were not are marked.
 | `How the YES price moves as your bet grows. This market runs on an AMM, not an order book.` | `.md-sub` | principle 1 and principle 3: explains the mechanism in a spectator's words, and says what it is NOT, because an order book is what a trader would assume |
 | `Bet` / `Avg YES price` / `You receive if YES` | `.md-row-head` | column heads in the lexicon: bet, not position; receive, not payout |
 | `Rules` / `Market Context` | `.rules-tab` | two tabs, because what decides the outcome and what explains the odds are different promises. See the note below |
-| `Background from the Predict Market team to explain the odds. It plays no role in how this market resolves.` | `.rules-note` | the sharpest line of the redesign: it exists so the context tab can never be mistaken for the resolution rule |
+| `Background from the Yonder team to explain the odds. It plays no role in how this market resolves.` | `.rules-note` | the sharpest line of the redesign: it exists so the context tab can never be mistaken for the resolution rule |
 | `Not just news.` / `Opinions have value.` / `The market decides.` | `.brand-tile` | principle 5: three specific claims, no superlative |
 | `Every outcome is public and verifiable.` / `1,284 events resolved on-chain` | `.hero-trust` | principle 2: one plain sentence of trust, with a number that can be checked |
 | `Back YES` / `Back NO` | `.hf-btn`, the featured hero | the hero is the one place the verb is written out; the cards keep bare `YES` / `NO` |

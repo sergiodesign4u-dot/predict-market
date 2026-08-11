@@ -132,8 +132,158 @@
     are the same width; the question is a sentence and takes the sentence face.</p>
   </section>
 
+  <section class="tk-sec" id="control">
+    <h2 data-n="4">The row is the control, and it is the whole tap target of two screens</h2>
+    <p class="tk-note">On <b>14 placements over three screens</b> the row is not a box that happens
+    to be clickable: an <code>&lt;a&gt;</code> is wrapped straight round the <code>.pos</code> and the
+    anchor is the subject, which is the shape <a href="related.html">related</a> already uses.
+    <b>This was the largest thing in this component with no specimen anywhere in the kit</b>, and
+    <code>position.css</code> spends 22 lines of comment on the two states it could not be seen
+    in.</p>
+    <p class="tk-note">The list below is <code>notifications.html</code>'s own, copied whole: it
+    carries <b>3 anchored rows, 2 group headings and 3 nowrap time stamps</b>, which is three of this
+    component's unstood rules in one block. It stands in <code>.pos-list</code>, the container the
+    screen ships, because the 8px between rows and the 24px above a heading are that pattern's and
+    not this row's.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="pos-list">
+          <p class="pos-status">Unread</p>
+          <a href="#">
+            <article class="pos">
+              <div class="pos-top">
+                <span class="pos-q">Your bet resolved: US government shutdown - YES won. Tap to see your win.</span>
+                <span class="pos-status">2m</span>
+              </div>
+              <span class="pos-status">Bet resolved</span>
+            </article>
+          </a>
+          <a href="#">
+            <article class="pos">
+              <div class="pos-top">
+                <span class="pos-q">Odds moved: "Bitcoin above $150,000" jumped from 58% to 64%.</span>
+                <span class="pos-status">18m</span>
+              </div>
+              <span class="pos-status">Odds moved significantly</span>
+            </article>
+          </a>
+          <p class="pos-status">Earlier</p>
+          <a href="#">
+            <article class="pos">
+              <div class="pos-top">
+                <span class="pos-q">New in Crypto: "Will ETH flip BTC by 2027?" is now live.</span>
+                <span class="pos-status">Yesterday</span>
+              </div>
+              <span class="pos-status">New event in a followed category</span>
+            </article>
+          </a>
+        </div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="pos-list">
+          <p class="pos-status">Unread</p>
+          <a href="#">
+            <article class="pos">
+              <div class="pos-top">
+                <span class="pos-q">Your bet resolved: US government shutdown - YES won. Tap to see your win.</span>
+                <span class="pos-status">2m</span>
+              </div>
+              <span class="pos-status">Bet resolved</span>
+            </article>
+          </a>
+          <a href="#">
+            <article class="pos">
+              <div class="pos-top">
+                <span class="pos-q">Odds moved: "Bitcoin above $150,000" jumped from 58% to 64%.</span>
+                <span class="pos-status">18m</span>
+              </div>
+              <span class="pos-status">Odds moved significantly</span>
+            </article>
+          </a>
+          <p class="pos-status">Earlier</p>
+          <a href="#">
+            <article class="pos">
+              <div class="pos-top">
+                <span class="pos-q">New in Crypto: "Will ETH flip BTC by 2027?" is now live.</span>
+                <span class="pos-status">Yesterday</span>
+              </div>
+              <span class="pos-status">New event in a followed category</span>
+            </article>
+          </a>
+        </div>
+      </div>
+    </div>
+    <p class="tk-note"><b>A hover and a press are raised by a person, not by a page</b>, as on
+    <a href="button.html">the button page</a>. The rows above are the real control, so raise them
+    here with a pointer. <b>The row comes UP to meet it</b>:
+    <code>--bg-control-hover</code> is lighter than <code>--bg-card-quiet</code> in both themes, so
+    the direction of the state is one decision and not two, and the question takes the brass a linked
+    question takes everywhere else.</p>
+    <p class="tk-why"><b>The press is paid for out of DEPTH, and that is the whole reason it needed
+    its own two rules.</b> <code>--bg-pressed</code> is the system's held-down stone and it was
+    measured against a control resting on <code>--bg-control</code>. This row does not: it rests on
+    <code>--bg-card-quiet</code>, one step deeper, so the press LIGHTENS it by four bytes per channel
+    in the Vault, and in daylight the two roles resolve to the same chalk and the press renders as
+    nothing at all. So the outer drop goes and the lit lip stays: <b>a lifted stone lies down flat
+    under the finger, in both themes</b>. The brass edge and the brass question are restated rather
+    than left to the hover above, because a touch screen never hovers and this row is read on a
+    phone.</p>
+    <p class="tk-note"><b>The other shape the control takes</b>, from
+    <code>active-bets-history.html</code>: the same anchor round the same row, with the figures and a
+    side tag instead of a time stamp. <b>4 of the 14 are this one</b> and 10 are the notification
+    form above.</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <a href="#">
+          <article class="pos">
+            <div class="pos-top">
+              <span class="pos-q">Will the US government shut down before March 1, 2027?</span>
+              <span class="pos-side pos-won">WON</span>
+            </div>
+            <div class="pos-figures">
+              <span class="pos-fig">Stake<b>$5.00</b></span>
+              <span class="pos-fig">Payout<b>+$13.20</b></span>
+              <span class="pos-fig">Your side<b>YES</b></span>
+              <span class="pos-fig">Result<b>YES</b></span>
+            </div>
+            <span class="pos-status">Resolved Jun 27 &middot; tap to see your win</span>
+          </article>
+        </a>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <a href="#">
+          <article class="pos">
+            <div class="pos-top">
+              <span class="pos-q">Will the US government shut down before March 1, 2027?</span>
+              <span class="pos-side pos-won">WON</span>
+            </div>
+            <div class="pos-figures">
+              <span class="pos-fig">Stake<b>$5.00</b></span>
+              <span class="pos-fig">Payout<b>+$13.20</b></span>
+              <span class="pos-fig">Your side<b>YES</b></span>
+              <span class="pos-fig">Result<b>YES</b></span>
+            </div>
+            <span class="pos-status">Resolved Jun 27 &middot; tap to see your win</span>
+          </article>
+        </a>
+      </div>
+    </div>
+    <p class="tk-why"><b>The heading between groups is the same class as the row's own status word
+    and it is a different thing.</b> <code>p.pos-status</code> is a divider, 11px display semibold at
+    <code>--track-caps-loud</code>, the widest tracking the system has, with a <b>16 x 2 brass bar
+    before it</b>; <code>span.pos-status</code> is 10px at <code>--track-caps</code> and says what one
+    row is doing. <b>6 headings against 48 words</b>, measured across the 106 painted screens, and
+    until now the kit stood 26 of the words and none of the headings.</p>
+    <p class="tk-lab tk-bad"><b>Never put the state on the row instead of on the anchor.</b> <i>The
+    anchor is the tap target. A ground that changes inside it would leave the 12 by 16 of padding
+    that a thumb actually lands on saying nothing.</i></p>
+  </section>
+
   <section class="tk-sec" id="sides">
-    <h2 data-n="4">Four side roles, and two of them are the same values written apart</h2>
+    <h2 data-n="5">Four side roles, and two of them are the same values written apart</h2>
     <div class="tk-tblwrap">
       <table class="tk-tbl">
         <thead><tr><th>tag</th><th>worn</th><th>what it says</th></tr></thead>
@@ -159,7 +309,7 @@
   </section>
 
   <section class="tk-sec" id="record">
-    <h2 data-n="5">The summary, which is this component with its box taken off</h2>
+    <h2 data-n="6">The summary, which is this component with its box taken off</h2>
     <p class="tk-note">Two placements, on the two profile screens. It drops the ground, the edge, the
     shadow and the padding, and turns the figures into a GRID: <b>two columns below the desk rung and
     four from 640</b>, each figure in a box of its own. It was 520 until 2026-08-10, which was the
@@ -215,11 +365,69 @@
         </article>
       </div>
     </div>
+    <p class="tk-note"><b>And the third arrangement, which this page has described since it was
+    written and never drawn.</b> Two rows, both standing loose in <code>.cat-main</code> rather than
+    in a list, and <b>the container is on the specimen because the container is the rule</b>:
+    <code>.cat-main&gt;.pos .pos-figures</code> steps the figure labels from 10 to 11, because a
+    summary row is read on its own and a list row is read against its neighbours. The
+    <code>.cta-bar</code> the profile screen puts inside the first article is left out here and that
+    is the one thing that differs: it is <a href="action-bar.html">action bar</a>'s and it already
+    stands twice.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="cat-main">
+          <p class="pos-status">Portfolio</p>
+          <article class="pos" aria-label="Portfolio summary">
+            <div class="pos-figures">
+              <span class="pos-fig">Portfolio total<b>$142.00</b></span>
+              <span class="pos-fig">Cash (available)<b>$92.00</b></span>
+              <span class="pos-fig">In-play<b>$50.00</b></span>
+            </div>
+          </article>
+          <article class="pos" aria-label="Balance summary">
+            <div class="pos-figures">
+              <span class="pos-fig">Portfolio total<b>$142.00</b></span>
+              <span class="pos-fig">Cash (available)<b>$92.00</b></span>
+              <span class="pos-fig">In-play (open bets)<b>$50.00</b></span>
+            </div>
+            <span class="pos-status">Portfolio = Cash + In-play. In-play is locked in open bets until they resolve.</span>
+          </article>
+        </div>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="cat-main">
+          <p class="pos-status">Portfolio</p>
+          <article class="pos" aria-label="Portfolio summary">
+            <div class="pos-figures">
+              <span class="pos-fig">Portfolio total<b>$142.00</b></span>
+              <span class="pos-fig">Cash (available)<b>$92.00</b></span>
+              <span class="pos-fig">In-play<b>$50.00</b></span>
+            </div>
+          </article>
+          <article class="pos" aria-label="Balance summary">
+            <div class="pos-figures">
+              <span class="pos-fig">Portfolio total<b>$142.00</b></span>
+              <span class="pos-fig">Cash (available)<b>$92.00</b></span>
+              <span class="pos-fig">In-play (open bets)<b>$50.00</b></span>
+            </div>
+            <span class="pos-status">Portfolio = Cash + In-play. In-play is locked in open bets until they resolve.</span>
+          </article>
+        </div>
+      </div>
+    </div>
+    <p class="tk-why"><b>Those two articles are the anti-rule below, rendered.</b> Same class, same
+    container, same three figures, same copy in two of the three cells. <b>The only difference is the
+    accessible name</b>, and it decides whether the figures are a three-column grid with a brass
+    first figure or a flex row with neither. Change the label to <i>Balance</i> on the profile screen
+    and the layout goes; nothing in the system would say why. <b>Wallet's row is the control that
+    proves it</b>, because it is the same block that did not get the grid.</p>
   </section>
 
 
   <section class="tk-sec" id="rule">
-    <h2 data-n="6">The rule</h2>
+    <h2 data-n="7">The rule</h2>
     <p class="tk-note"><b>A role per sentence, even when two sentences share a value.</b> The live
     pair and the settled pair are four rules that draw two colours, and that is the system being able
     to change its mind later.</p>
@@ -230,7 +438,7 @@
   </section>
 
   <section class="tk-sec" id="antirule">
-    <h2 data-n="7">The anti-rule</h2>
+    <h2 data-n="8">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never merge the live pair with the settled pair.</b> <i>They agree
     today. The day a resolved loss should stop being red is the day the merge costs a rewrite instead
     of a token.</i></p>
@@ -242,7 +450,7 @@
   </section>
 
   <section class="tk-sec" id="closing">
-    <h2 data-n="8">Where the rest of it is</h2>
+    <h2 data-n="9">Where the rest of it is</h2>
     <p class="tk-note">The level and its reason: <a href="molecules.html#position">the molecules
     page</a>. The stylesheet: <code>components/position.css</code>. The loading face of this row:
     <a href="skeleton.html">skeleton</a>, which is where its 22 marks live. The outcome roles:

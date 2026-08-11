@@ -1,4 +1,4 @@
-# PRODUCT.md - Predict Market
+# PRODUCT.md - Yonder
 
 What the product is and what it sells. The rules for *working on* it are in `CLAUDE.md`;
 the record of what was built is in `docs/decisions.md`; what is still open is in `docs/backlog.md`.
