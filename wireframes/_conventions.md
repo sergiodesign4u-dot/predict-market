@@ -1,6 +1,6 @@
 # Wireframes - Conventions (Step 02)
 
-This is the wireframe rulebook for Predict Market. Every screen and every state
+This is the wireframe rulebook for Yonder. Every screen and every state
 page built in Steps 03 to 08 follows these rules. Wireframes are grey-box, low
 fidelity, structure only: layout and content order are the deliverable, not
 visuals.
@@ -28,7 +28,7 @@ tells you what the screen is.
 
 ### 3. Text: real domain text, never lorem ipsum
 
-Every label and string is real Predict Market content, pulled from
+Every label and string is real Yonder content, pulled from
 `ia/docs/sitemap.md` where the phrasing already exists. Examples of the exact
 phrasings to reuse:
 
@@ -557,11 +557,11 @@ anywhere. Same grey-box styling as the rest; no color.
 
 ---
 
-## Three additions (Predict Market needs these beyond the base 7)
+## Three additions (Yonder needs these beyond the base 7)
 
 ### A. Grey-box rule for data
 
-Predict Market screens carry data the generic demo product does not: a
+Yonder screens carry data the generic demo product does not: a
 probability chart, the % number, fees, payouts, and USDC amounts. The grey-box
 rule still holds, with two clarifications:
 

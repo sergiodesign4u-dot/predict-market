@@ -66,7 +66,7 @@
     .state-switch a:hover { background: #cccccc; }
     .state-switch a[aria-current="page"] { background: #bdbdbd; font-weight: bold; }
     .auth-btns { display: flex; gap: 6px; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; box-sizing: border-box; border: 1px solid #888; cursor: pointer; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; box-sizing: border-box; border: 1px solid #888; cursor: pointer; text-align: center; text-decoration: none; }
     .btn.btn-secondary { background: #d6d6d6; }
     .btn.btn-primary { background: #c4c4c4; font-weight: bold; }
     .btn.btn-sm { padding: 8px 12px; font-size: 12px; }
@@ -212,11 +212,10 @@
     .card .prob-line { font-size: 11px; margin: 8px 0 6px; }
     .card .prob { font-weight: bold; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; }
     .yesno { display: flex; gap: 6px; margin: 0 0 8px; }
-    .yesno > a { flex: 1; display: flex; }
-    .yesno > a > button { width: 100%; }
-    .yesno button { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 9px; font-size: 12px; font-weight: bold; cursor: pointer; }
+    .yesno > a { flex: 1; display: flex; align-items: center; justify-content: center; }
+    .yesno :is(a,button) { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 9px; font-size: 12px; font-weight: bold; cursor: pointer; text-decoration: none; text-align: center; }
     .yesno.compact > a { flex: 0 0 auto; }
-    .yesno.compact button { padding: 4px 8px; font-size: 11px; flex: 0 0 auto; }
+    .yesno.compact :is(a,button) { padding: 4px 8px; font-size: 11px; flex: 0 0 auto; }
 
     .options { margin: 6px 0 8px; }
     .opt-row { display: flex; align-items: center; gap: 6px; border-top: 1px solid #ccc; padding: 6px 0; font-size: 12px; }
@@ -322,7 +321,7 @@
     dialog.app-dialog .hiw-full { display: block; box-sizing: border-box; border: 1px solid #888; background: #c4c4c4; padding: 12px; font-size: 14px; font-weight: bold; text-align: center; text-decoration: none; color: #222; }
     dialog.app-dialog .sheet-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
     dialog.app-dialog .sheet-head :is(h1,h2) { font-size: 14px; margin: 0; }
-    dialog.app-dialog .sheet-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; }
+    dialog.app-dialog .sheet-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; text-decoration: none; }
     dialog.app-dialog .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
     dialog.app-dialog .fine { font-size: 11px; color: #555; line-height: 1.5; }
     dialog.app-dialog .field-label { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
@@ -372,7 +371,7 @@
     @media(pointer:coarse) {
       .cat-nav a { min-height: 44px; }
     }
-    @media(max-width:640px) {
+    @media(max-width:639.98px) {
       .cat-nav a { position: relative; }
       .cat-nav { margin-bottom: 16px; }
     }
@@ -401,7 +400,6 @@
     .app-dialog.hiw-dialog { max-width: 464px; overflow: clip; }
     dialog.app-dialog.hiw-dialog:modal .hiw-body { overflow: auto; min-height: 0; }
     .hiw-hero { position: relative; overflow: clip; padding: 32px 24px 28px; }
-    .hiw-glow { position: absolute; top: -72px; right: -52px; width: 224px; height: 224px; }
     .hiw-hero-inner { position: relative; }
     .hiw-hero :is(h1,h2) { font-weight: 700; line-height: 1.05; letter-spacing: -.03em; margin: 0; }
     .hiw-tagline { margin: 8px 0 0; font-size: 14px; line-height: 1.5; max-width: 32ch; }
@@ -413,11 +411,6 @@
     .hiw-faq dt:first-of-type { margin-top: 2px; }
     .hiw-faq dd { font-size: 13px; line-height: 1.5; margin: 0; }
     .app-dialog.hiw-dialog .hiw-arrow { width: 18px; height: 18px; }
-    .hiw-hero { margin: 0 0 20px; }
-    .hiw-hero { padding: 32px 24px; }
-    .hiw-tagline { font-size: 16px; max-width: 44ch; }
-    .hiw-faq dt { font-size: 14px; }
-    .hiw-faq dd { font-size: 14px; }
     .app-header .cat-condensed { max-height: 0; overflow: clip; }
     .app-header.scrolled .cat-condensed { max-height: 54px; }
     .app-header .cat-condensed ul { list-style: none; margin: 0; display: flex; flex-wrap: nowrap; gap: 8px; padding: 8px 14px; overflow-x: auto; }
@@ -435,7 +428,7 @@
     @media(pointer:coarse) {
       .app-header .cat-condensed a { min-height: 44px; }
     }
-    @media(max-width:760px) {
+    @media(max-width:759.98px) {
       .footer-trust .trust-items { grid-template-columns: 1fr; }
     }
   </style>
@@ -713,7 +706,7 @@
           <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
           </button>
-          <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
+          <button type="button" class="logo-btn" aria-label="Yonder - go to Events home">Yonder</button>
           <button type="button" class="btn btn-ghost btn-xs hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
         </div>
 
@@ -851,7 +844,7 @@
           <p class="state-title">No favorites yet</p>
           <p class="state-msg">You have not saved any events yet. Tap Save on any event to keep it here for quick access.</p>
           <div class="state-actions">
-            <a href="event-feed.html"><button type="button" class="btn btn-primary btn-sm">Browse events</button></a>
+            <a href="event-feed.html" class="btn btn-primary btn-sm">Browse events</a>
           </div>
         </div>
         <!-- /cat-main --><!-- /cat-layout --><!-- /feed-inner -->
@@ -1009,7 +1002,7 @@
           </nav>
           <p>Prediction markets involve risk of loss. Not available in restricted regions.</p>
           <p class="placeholder-line">[Regulatory / licensing line - placeholder, to be set. No US real-money markets; geo-restrictions and KYC per regulatory requirements.]</p>
-          <p>Copyright (c) Predict Market. Sample wireframe content.</p>
+          <p>Copyright (c) Yonder. Sample wireframe content.</p>
         </div>
 
       </div>
@@ -1165,11 +1158,10 @@
   </dialog>
 
   <dialog id="howitworksDialog" class="app-dialog hiw-dialog" aria-label="How it works">
-    <button type="button" class="icon-btn icon-btn-photo icon-btn-ring-strong sheet-close" data-close-dialog aria-label="Close">
+    <button type="button" class="icon-btn icon-btn-photo sheet-close" data-close-dialog aria-label="Close">
       <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
     <div class="hiw-hero">
-      <span class="hiw-glow" aria-hidden="true"></span>
       <div class="hiw-hero-inner">
         <h2>How it works</h2>
         <p class="hiw-tagline">Back the events you follow, in plain language.</p>
@@ -1180,7 +1172,7 @@
         <span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></span>
         <div class="hiw-sec-txt">
           <span class="hiw-label">How betting works here</span>
-          <p>Predict Market turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
+          <p>Yonder turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
         </div>
       </div>
       <div class="hiw-sec">

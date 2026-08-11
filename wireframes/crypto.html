@@ -66,7 +66,7 @@
     .state-switch a:hover { background: #cccccc; }
     .state-switch a[aria-current="page"] { background: #bdbdbd; font-weight: bold; }
     .auth-btns { display: flex; gap: 6px; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; box-sizing: border-box; border: 1px solid #888; cursor: pointer; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; box-sizing: border-box; border: 1px solid #888; cursor: pointer; text-align: center; text-decoration: none; }
     .btn.btn-secondary { background: #d6d6d6; }
     .btn.btn-primary { background: #c4c4c4; font-weight: bold; }
     .btn.btn-sm { padding: 8px 12px; font-size: 12px; }
@@ -212,11 +212,10 @@
     .card .prob-line { font-size: 11px; margin: 8px 0 6px; }
     .card .prob { font-weight: bold; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; }
     .yesno { display: flex; gap: 6px; margin: 0 0 8px; }
-    .yesno > a { flex: 1; display: flex; }
-    .yesno > a > button { width: 100%; }
-    .yesno button { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 9px; font-size: 12px; font-weight: bold; cursor: pointer; }
+    .yesno > a { flex: 1; display: flex; align-items: center; justify-content: center; }
+    .yesno :is(a,button) { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 9px; font-size: 12px; font-weight: bold; cursor: pointer; text-decoration: none; text-align: center; }
     .yesno.compact > a { flex: 0 0 auto; }
-    .yesno.compact button { padding: 4px 8px; font-size: 11px; flex: 0 0 auto; }
+    .yesno.compact :is(a,button) { padding: 4px 8px; font-size: 11px; flex: 0 0 auto; }
 
     .options { margin: 6px 0 8px; }
     .opt-row { display: flex; align-items: center; gap: 6px; border-top: 1px solid #ccc; padding: 6px 0; font-size: 12px; }
@@ -328,7 +327,7 @@
     .opt-list { display: flex; flex-direction: column; }
     .preselect-note { border: 1px solid #999; background: #e0e0e0; padding: 6px 8px; font-size: 11px; margin: 0 10px 0; }
     .cta-bar { background: #e2e2e2; border: 1px solid #999; padding: 8px 0 0; display: flex; gap: 8px; }
-    .cta-bar button { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; font-weight: bold; cursor: pointer; }
+    .cta-bar :is(a,button) { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-align: center; text-decoration: none; }
     @media (min-width: 640px) { .args { flex-direction: row; } .arg-col { flex: 1; } }
 
     /* ---- Invoked overlays (Bet / Sign In / Deposit): modal on desktop, bottom sheet on mobile ---- */
@@ -339,7 +338,7 @@
     .grab { width: 36px; height: 4px; background: #bbb; border-radius: 2px; margin: 6px auto 0; }
     .sheet-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
     .sheet-head :is(h1,h2) { font-size: 14px; margin: 0; }
-    .sheet-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; }
+    .sheet-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; text-decoration: none; }
     .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
     @media (min-width: 640px) { .backdrop { align-items: center; padding: 24px; } .sheet { max-width: 420px; border-bottom: 1px solid #999; } }
 
@@ -362,8 +361,8 @@
 
     /* ---- Active Bets ---- */
     .tabs { display: flex; gap: 0; margin: 0 0 10px; }
-    .tabs button { border: 1px solid #888; border-bottom: 1px solid #bbb; background: #dcdcdc; padding: 8px 14px; font-size: 12px; cursor: pointer; }
-    .tabs button[aria-selected="true"] { background: #f4f4f4; font-weight: bold; border-bottom-color: #f4f4f4; }
+    .tabs :is(a,button) { border: 1px solid #888; border-bottom: 1px solid #bbb; background: #dcdcdc; padding: 8px 14px; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-align: center; text-decoration: none; }
+    .tabs [aria-current="page"] { background: #f4f4f4; font-weight: bold; border-bottom-color: #f4f4f4; }
     .pos-list { display: flex; flex-direction: column; gap: 8px; }
     .pos { border: 1px solid #bbb; background: #ededed; padding: 8px 10px; display: flex; flex-direction: column; gap: 6px; }
     .pos-top { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
@@ -412,7 +411,14 @@
     .bet-dock .dock-meta { font-size: 9px; color: #555; flex: 0 0 auto; text-align: center; }
     .bet-dock .dock-meta b { display: block; font-size: 12px; color: #222; }
 
-    @media (min-width: 640px) {
+    /* rung: DETAIL 760, the detail's second column, and it was 640 here until
+       2026-08-11 while the paint has always said 760. Backlog 107: for 120px of
+       width this tree drew a second column the product does not have, and halved
+       its own content column to do it, 635 to 322.73 in one pixel of viewport.
+       The WHOLE block moves and not just the dock, because moving the dock alone
+       is what would create the hole the row was filed about. DESIGN.md decides
+       the number by name. */
+    @media (min-width: 760px) {
       .ed-layout { flex-direction: row; align-items: flex-start; }
       .ed-main { border-right: 1px solid #999; }
       .bet-panel { display: block; flex: 0 0 300px; position: sticky; top: 8px; align-self: flex-start; }
@@ -488,7 +494,6 @@
     .app-dialog.hiw-dialog { max-width: 464px; overflow: clip; }
     dialog.app-dialog.hiw-dialog:modal .hiw-body { overflow: auto; min-height: 0; }
     .hiw-hero { position: relative; overflow: clip; padding: 32px 24px 28px; }
-    .hiw-glow { position: absolute; top: -72px; right: -52px; width: 224px; height: 224px; }
     .hiw-hero-inner { position: relative; }
     .hiw-hero :is(h1,h2) { font-weight: 700; line-height: 1.05; letter-spacing: -.03em; margin: 0; }
     .hiw-tagline { margin: 8px 0 0; font-size: 14px; line-height: 1.5; max-width: 32ch; }
@@ -500,11 +505,6 @@
     .hiw-faq dt:first-of-type { margin-top: 2px; }
     .hiw-faq dd { font-size: 13px; line-height: 1.5; margin: 0; }
     .app-dialog.hiw-dialog .hiw-arrow { width: 18px; height: 18px; }
-    .hiw-hero { margin: 0 0 20px; }
-    .hiw-hero { padding: 32px 24px; }
-    .hiw-tagline { font-size: 16px; max-width: 44ch; }
-    .hiw-faq dt { font-size: 14px; }
-    .hiw-faq dd { font-size: 14px; }
     .app-header .cat-condensed { max-height: 0; overflow: clip; }
     .app-header.scrolled .cat-condensed { max-height: 54px; }
     .app-header .cat-condensed ul { list-style: none; margin: 0; display: flex; flex-wrap: nowrap; gap: 8px; padding: 8px 14px; overflow-x: auto; }
@@ -522,7 +522,7 @@
     @media(pointer:coarse) {
       .app-header .cat-condensed a { min-height: 44px; }
     }
-    @media(max-width:760px) {
+    @media(max-width:759.98px) {
       .footer-trust .trust-items { grid-template-columns: 1fr; }
     }
   /* ---- ported from the painted twin by port_structure.py ---- */
@@ -554,11 +554,11 @@
     @media(pointer:coarse) {
       .cat-nav a { min-height: 44px; }
     }
-    @media(max-width:760px) {
+    @media(max-width:759.98px) {
       .feed-seo-wrap { grid-template-columns: 1fr; gap: 24px; padding: 28px 24px 32px; }
       .seo-brand { padding-left: 0; padding-top: 24px; }
     }
-    @media(max-width:640px) {
+    @media(max-width:639.98px) {
       .cat-nav a { position: relative; }
       .cat-nav { margin-bottom: 16px; }
     }
@@ -853,7 +853,7 @@
           <button type="button" class="icon-btn" aria-label="Menu (reserved for future scaling)">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
           </button>
-          <button type="button" class="logo-btn" aria-label="Predict Market - go to Events home">Predict Market</button>
+          <button type="button" class="logo-btn" aria-label="Yonder - go to Events home">Yonder</button>
           <button type="button" class="btn btn-ghost btn-xs hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
         </div>
 
@@ -995,7 +995,7 @@
                 <div class="top-txt"><a class="q" href="event-detail.html">Will Bitcoin close above $150,000 before October 1, 2026?</a><p class="why">Price has held above $120k for three weeks as inflows climb.</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">61%</span></p>
-              <div class="yesno"><a href="event-detail.html"><button type="button" class="yes">YES</button></a><a href="event-detail.html"><button type="button" class="no">NO</button></a></div>
+              <div class="yesno"><a href="event-detail.html" class="yes">YES</a><a href="event-detail.html" class="no">NO</a></div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $212,900</span><span>Closes: Oct 1, 2026</span></span>
                 <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="true" aria-label="Saved">
@@ -1012,7 +1012,7 @@
                 <div class="top-txt"><a class="q" href="event-detail.html">Will Ethereum complete its next major network upgrade before November 1, 2026?</a><p class="why">The upgrade is on the testnet with a target window announced.</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">72%</span></p>
-              <div class="yesno"><a href="event-detail.html"><button type="button" class="yes">YES</button></a><a href="event-detail.html"><button type="button" class="no">NO</button></a></div>
+              <div class="yesno"><a href="event-detail.html" class="yes">YES</a><a href="event-detail.html" class="no">NO</a></div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $147,650</span><span>Closes: Nov 1, 2026</span></span>
                 <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
@@ -1029,7 +1029,7 @@
                 <div class="top-txt"><a class="q" href="event-detail.html">Will a spot Solana ETF be approved before September 1, 2027?</a><p class="why">Two issuers have active filings under review this quarter.</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">44%</span></p>
-              <div class="yesno"><a href="event-detail.html"><button type="button" class="yes">YES</button></a><a href="event-detail.html"><button type="button" class="no">NO</button></a></div>
+              <div class="yesno"><a href="event-detail.html" class="yes">YES</a><a href="event-detail.html" class="no">NO</a></div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $71,300</span><span>Closes: Sep 1, 2027</span></span>
                 <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
@@ -1046,7 +1046,7 @@
                 <div class="top-txt"><a class="q" href="event-detail.html">Will Ethereum stay above $4,000 through the end of 2026?</a><p class="why">It has traded in a tight band above $4k for a month.</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">54%</span></p>
-              <div class="yesno"><a href="event-detail.html"><button type="button" class="yes">YES</button></a><a href="event-detail.html"><button type="button" class="no">NO</button></a></div>
+              <div class="yesno"><a href="event-detail.html" class="yes">YES</a><a href="event-detail.html" class="no">NO</a></div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $63,200</span><span>Closes: Dec 31, 2026</span></span>
                 <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
@@ -1063,7 +1063,7 @@
                 <div class="top-txt"><a class="q" href="event-detail.html">Will a US spot XRP ETF be approved before June 1, 2027?</a><p class="why">One filing cleared its first review step this month.</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">31%</span></p>
-              <div class="yesno"><a href="event-detail.html"><button type="button" class="yes">YES</button></a><a href="event-detail.html"><button type="button" class="no">NO</button></a></div>
+              <div class="yesno"><a href="event-detail.html" class="yes">YES</a><a href="event-detail.html" class="no">NO</a></div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $38,900</span><span>Closes: Jun 1, 2027</span></span>
                 <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
@@ -1080,8 +1080,8 @@
                 <div class="top-txt"><a class="q" href="event-detail-multi.html">Which chain will hold the largest stablecoin supply at the end of 2026?</a><p class="why">The top two chains are within a few points on current balances.</p></div>
               </div>
               <div class="options">
-                <div class="opt-row"><span class="opt-name">Ethereum</span><span class="opt-prob">58%</span><span class="yesno compact"><a href="event-detail-multi.html"><button type="button" class="yes">YES</button></a><a href="event-detail-multi.html"><button type="button" class="no">NO</button></a></span></div>
-                <div class="opt-row"><span class="opt-name">Tron</span><span class="opt-prob">34%</span><span class="yesno compact"><a href="event-detail-multi.html"><button type="button" class="yes">YES</button></a><a href="event-detail-multi.html"><button type="button" class="no">NO</button></a></span></div>
+                <div class="opt-row"><span class="opt-name" id="opt-ethereum-1">Ethereum</span><span class="opt-prob">58%</span><span class="yesno compact"><a href="event-detail-multi.html" class="yes" id="opt-ethereum-1-yes" aria-labelledby="opt-ethereum-1 opt-ethereum-1-yes">YES</a><a href="event-detail-multi.html" class="no" id="opt-ethereum-1-no" aria-labelledby="opt-ethereum-1 opt-ethereum-1-no">NO</a></span></div>
+                <div class="opt-row"><span class="opt-name" id="opt-tron-2">Tron</span><span class="opt-prob">34%</span><span class="yesno compact"><a href="event-detail-multi.html" class="yes" id="opt-tron-2-yes" aria-labelledby="opt-tron-2 opt-tron-2-yes">YES</a><a href="event-detail-multi.html" class="no" id="opt-tron-2-no" aria-labelledby="opt-tron-2 opt-tron-2-no">NO</a></span></div>
                               <a class="opt-more" href="event-detail-multi.html">+1 more outcome</a>
 </div>
               <p class="meta">
@@ -1125,7 +1125,7 @@
         <aside class="seo-brand">
           <svg class="seo-tick" viewBox="0 0 26 18" aria-hidden="true"><path d="M2 15 L9 7 L13 10 L24 2" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <p class="seo-tagline">Not just news.<br>Your <em>stake.</em></p>
-          <span class="seo-by">Predict Market</span>
+          <span class="seo-by">Yonder</span>
         </aside>
         </div><!-- /feed-seo-wrap -->
       
@@ -1281,7 +1281,7 @@
           </nav>
           <p>Prediction markets involve risk of loss. Not available in restricted regions.</p>
           <p class="placeholder-line">[Regulatory / licensing line - placeholder, to be set. No US real-money markets; geo-restrictions and KYC per regulatory requirements.]</p>
-          <p>Copyright (c) Predict Market. Sample wireframe content.</p>
+          <p>Copyright (c) Yonder. Sample wireframe content.</p>
         </div>
 
       </div>
@@ -1436,11 +1436,10 @@
   </dialog>
 
   <dialog id="howitworksDialog" class="app-dialog hiw-dialog" aria-label="How it works">
-    <button type="button" class="icon-btn icon-btn-photo icon-btn-ring-strong sheet-close" data-close-dialog aria-label="Close">
+    <button type="button" class="icon-btn icon-btn-photo sheet-close" data-close-dialog aria-label="Close">
       <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
     <div class="hiw-hero">
-      <span class="hiw-glow" aria-hidden="true"></span>
       <div class="hiw-hero-inner">
         <h2>How it works</h2>
         <p class="hiw-tagline">Back the events you follow, in plain language.</p>
@@ -1451,7 +1450,7 @@
         <span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></span>
         <div class="hiw-sec-txt">
           <span class="hiw-label">How betting works here</span>
-          <p>Predict Market turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
+          <p>Yonder turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
         </div>
       </div>
       <div class="hiw-sec">
