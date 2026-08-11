@@ -2,19 +2,37 @@
    Component: plate-head. Classes: .plate-head.
 
    Reads: --bg-dialog-head-from, --bg-plate-to, --color-action, --color-action-lit, --mask-solid, --text-strong, --tint-brass-30
-   Stand:  ui-kit/plate-head.html, and ui-kit/vitrine.html#plate-head for the level and its reason
-   Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...), 328 elements there and 8 more in ui-kit
+   Stand:  ui-kit/platehead.html, and ui-kit/vitrine.html#platehead for the level and its reason
+     BOTH POINTERS WERE WRONG FOR A DAY. They said `plate-head.html` and
+     `#plate-head`, and neither exists: the file is `platehead.html` and the
+     anchor is `#platehead`. This folder's own note says a pointer is a claim and
+     nothing checks a comment, and the note was written the week a file was born
+     with two broken ones. Corrected 2026-08-11 by opening both.
+   Stands on: 106 ui-visual screens and 56 ui-kit pages, 359 elements, counted in a browser
+     rather than by grep, because `class="plate-head` inside a `<code>` block is
+     markup to a regex and not an element to the page: 334 in ui-visual, 25 in
+     ui-kit, 0 in wireframes.
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-/* ONE FACE, THREE HEADS, AND UNTIL 2026-08-11 IT WAS WRITTEN DOWN TWICE.
+/* ONE FACE, FOUR HEADS, AND UNTIL 2026-08-11 IT WAS WRITTEN DOWN THREE TIMES.
    The brass-cornered head of a plate is the Vault's loudest single object: a
    two-stone ground with a brass hotspot in the top right corner, a wave pattern
    masked away from it, a 210px brass glow bleeding in from outside the box, and
    a display-face heading standing above all three. It is worn by
      - the plain sheet head, `.sheet-head` inside a `dialog.app-dialog` that is
-       not an outcome overlay, 225 elements, at 418px;
-     - the how-it-works sheet head, `.hiw-hero`, 111 elements, at 462px;
-     - the how-it-works page hero, `.hiw-page`, 3 elements, at 922px.
+       not an outcome overlay, 229 elements, at 418px;
+     - the how-it-works sheet head, `.hiw-hero`, 115 elements, at 462px;
+     - the how-it-works page hero, `.hiw-page`, 5 elements, at 922px;
+     - the outcome head, `.sheet-head` inside `.outcome-dialog`, 10 elements,
+       added 2026-08-11 by backlog 109, and it is the one that proves the shape
+       of this file. It had the anatomy to the declaration and a different SKIN,
+       so folding it in needed no second class: a host that wants another skin
+       names the parts it wants and inherits the rest, and `.outcome-dialog`,
+       `.win-dialog` and `.loss-dialog` were already on the element's ancestors.
+       THIS FILE IS AN ANATOMY PLUS A DEFAULT SKIN, and that sentence was written
+       after the fourth host arrived rather than before, which is the honest
+       order: three hosts wearing one skin is a face, and four with one of them
+       different is a face with a default.
    It was six rules in two files, and the two files agreed to the byte on the
    ground, on the pattern and on the glow: `dialog.app-dialog:not(.outcome-dialog)
    .sheet-head` in components/dialog.css and `.hiw-hero` plus `.hiw-glow` in

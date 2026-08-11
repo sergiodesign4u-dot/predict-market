@@ -44,6 +44,154 @@ record, moved there on 2026-08-07), `wireframes/_critique.md` (the wireframe def
 
 ---
 
+## 2026-08-11 - The head that was filed as not a wearer was the fourth wearer, and the ring rule was a shape rule the whole time
+
+The tail of the plate-head chain: backlog **109, 110, 111 and 112**, all four opened that
+morning by the pass that wrote `components/platehead.css`. Three of the four had a premise
+that did not survive being measured again, which over two passes is five rows of nine.
+
+### 109. A face turns out to be an anatomy plus a default skin, and it took a fourth host to say so
+
+The row asked a real question and offered two answers: either the anatomy is a third thing,
+or the face should have been split into an anatomy and a skin from the start. **The measured
+answer is the option it did not list.** Read against `.plate-head` with both overlays open:
+
+| what | identical | what differs |
+|---|---|---|
+| the box, 15 properties | **13** | the ground, and the content's own height |
+| the wave `::before`, 15 | **13** | one opacity, `.16` against `.2` |
+| the win glow `::after`, 15 | **12** | colour, opacity, and a blur two apart |
+| the heading, 11 | **10** | one `ch` count, 16 against 15 |
+
+And the wave's data URI was **byte-identical**, md5 `c87f8063`: the same 300 bytes standing
+twice, for the second time in one week.
+
+The row's stated objection was that folding it in would cost two classes where backlog 108
+found one. **It cost none.** `.outcome-dialog`, `.win-dialog` and `.loss-dialog` already sit
+on the element's ancestors, so the scope was there the whole time and only the markup had to
+say `plate-head`. `dialog.css` went from six rules carrying anatomy and skin together to
+seven carrying skin only, and `.plate-head` is on **10 more elements**, 6 painted and 4 in
+the kit.
+
+**The loss head is the one plate head with no glow, and it now has to say so out loud**,
+because inheriting the face means inheriting a brass one, and brass on a loss head is the
+brand borrowing an outcome's place. `content:none` rather than `opacity:0`: a transparent
+210px blurred circle is still a composited layer.
+
+One number went with it. The win glow blurred at **44** here and at **42** on the face, and
+it blurs at 42 now, which is backlog 98's finding rather than a decision. Collapsed and then
+measured rather than the other way round: **0 differing pixels of 27,160, control 0.** The
+glow is anchored outside the box and clipped, so two pixels of blur radius never reached a
+pixel anybody could see. A number can be wrong for months and cost nothing, and that is not
+an argument for leaving it: it is the reason nobody found it.
+
+The file's own `Stand:` line was wrong in both halves, `plate-head.html` and `#plate-head`
+against the real `platehead.html` and `#platehead`. **The folder's note that a pointer is a
+claim and nothing checks a comment was written the same week a file was born with two broken
+ones.** Corrected by opening both.
+
+The placement count moved 339 to **359** and was re-taken in a browser rather than by grep,
+because `class="plate-head` inside a `<code>` block is markup to a regex and not an element
+to the page: 334 in `ui-visual`, 25 in `ui-kit`, 0 in `wireframes`.
+
+### 110. A body shares its head's horizontal padding, and the gap is a different question
+
+The sentence the row said was missing is written now, beside the placement. Measured over all
+four sheets in both themes at 390 and 1280, **identical at all eight readings**:
+
+| sheet | head | body, before | step | body, after |
+|---|---|---|---|---|
+| bare, 115 elements | 24 / 20 / 20 | 20 all round | +0 since backlog 104 | unchanged |
+| sign-in, 110 | 24 / 20 / 20 | **16 all round** | **-4** | 16 / 20 |
+| outcome, 12 | 24 / 20 / 20 | 20 all round | +0 | unchanged |
+| how-it-works, 111 | 32 / 24 / 28 | **20 all round** | **-4** | 20 / 24 |
+
+That was a 4px step between a title and the content beneath it on **221 of 348 sheets**, and
+not the same 4px twice. **Neither was an optical correction**, which is the argument the row
+left open: an optical correction is one value applied on purpose, and these were two
+different values arrived at by accident, a small sheet padding all four sides equally and the
+generic body value standing under a hero that pads 24 because a hero is bigger.
+
+**The vertical padding and the gap are deliberately untouched.** An edge is shared with
+another element and has to agree; a gap is between siblings of one body and says how dense
+that body's content is. Four bodies at 8, 12, 12 and 16 may be four densities or may be
+drift, and nothing in the system says which, so it is filed as item 114 rather than swept.
+Half a row closed on purpose beats a whole row closed on a guess.
+
+### 111. The first reading said zero, and the zero was the instrument
+
+**Read the instrument before you read the finding, for the third pass running.** The first
+measurement focused anchors from script and reported that nothing changed shape. Two things
+were wrong with it and the control found both: `:focus-visible` matches a scripted `focus()`
+only when the last interaction was keyboard, so **2,689 anchors were focused and 17 matched**;
+and the query asked for a descendant of `.hiw-full` when the element in question **is**
+`a.hiw-full`, so the rule's loudest victim was never in the list.
+
+Re-read with CDP `CSS.forcePseudoState`, which does not guess:
+
+| what | count | at rest | focused |
+|---|---|---|---|
+| the close disc, `.icon-btn.sheet-close` | 17 | **100px** | 6px |
+| `.hiw-full` block links | 17 | 10px | 6px |
+| `.btn` blocks that are anchors | 14 | 10px | 6px |
+| class-less text links | 40 | 0px | 6px |
+
+So the row's "one control on six overlays" is **48 shaped controls on 17 pages**, plus the 40
+the rule was actually written for. **An outline follows its element's `border-radius`**, so
+the only way to round a ring is to round the element, and a rule that reads as being about a
+ring was silently a rule about every shape in a sheet. The disc is the worst of them because
+`showModal()` autofocuses the first focusable child, which makes it the **first paint** of
+every one of those sheets rather than a rare state. Contrast is unaffected either way, 3.53:1.
+
+**The fix is the scope and not a second selector**, and not a list either.
+`dialog.app-dialog a:not([class]):focus-visible` is one condition and it is the rule's own
+sentence: an anchor with no component on it has no shape, so the ring gets one. A list of the
+three components being overwritten fails in the wrong direction, silently catching the fourth
+shaped anchor to arrive; this fails in the right one, because a new component brings a class
+and keeps its shape with no edit here. After, with the control proving the rule fires at all
+(**2,706 anchors read, the ring changes on 2,706**): 40 still take the corner, 48 keep their
+own.
+
+### 112. The grey tree, at three addresses, and the third one is only half a styling question
+
+| what | the paint | the grey tree, before | after |
+|---|---|---|---|
+| `.hiw-btn` | hidden below 760, `header.css` | **no rule at all**, shipped to 320 | hidden below 759.98 in 87 files |
+| `.chart-svg` | 160, steps to 280 at 760 | **130 at every width** | 160, steps to 280 at 760, in 92 files |
+| the `.subcat` rail | pinned at **900**, `catnav.css` | **640 in 92 files, 900 in one** | 900 in all 92 |
+
+`.hiw-btn` is the 88px control that put 73 painted screens into horizontal scroll from 641 to
+652 before it was moved, which is why the grey tree shipping it at 320 mattered more than its
+own width did. The chart's base moved 130 to 160 as well, so both ends of the rung tell the
+paint's story rather than only the top one.
+
+The rail is the interesting one: **the tree held the right rule and the wrong rule for one
+component**, one file at 900 and 92 at 640. The `.cat-layout` declarations went with the fix
+because **0 grey files carry that markup** and a rule for absent markup is a fossil. What is
+left is markup rather than styling, and it is item 113: `<!-- /cat-main --><!-- /cat-layout -->`
+closes in **76 grey files with nothing opening it**, while the paint has the wrapper on 77
+screens. That has two opposite answers, the grey tree lost it in a port or the paint invented
+it, and a closing comment with no opening tag is evidence of the first rather than proof of
+it, so it is filed rather than guessed.
+
+### What was measured, and what the control said first
+
+- **The four rows, computed style, every dialog opened.** A `<dialog>` with no `open` is
+  `display:none`, so this is the only instrument that can see 222 of the 225 plain plate heads
+  and all 10 outcome heads.
+- **The blur collapse, pixels.** Control 0 over 27,160, comparison 0.
+- **Row 111 by forced pseudo-state**, after the scripted-focus reading was proved to be
+  measuring 17 elements out of 2,689.
+- **All three trees smoked at the rungs and one pixel either side** - 359, 360, 361, 639, 640,
+  641, 694, 759, 760, 761, 899, 900, 901, 1280 - after 92 grey files had a rung moved:
+  **3,724 readings, 0 horizontal scroll, 0 console errors.** 694 is in the list because it is
+  the width the desk header asks for.
+- **The comment integrity of every stylesheet touched**, because a note that closes its own
+  comment early cost this repository a day: 29 properly paired comments in `dialog.css` and 0
+  unclosed, with the naive grep count of 30 explained by one `/*` quoted inside a comment.
+
+Sweeps were throwaways in the scratchpad and are deleted.
+
 ## 2026-08-11 - One face was written down twice, and the instrument that was supposed to prove it could not see 222 of its 225 placements
 
 Five rows closed in one pass, 104, 105, 106, 107 and 108, and **two of the five had a premise that

@@ -1,9 +1,12 @@
 /* components/dialog.css
    Component: dialog. Classes: .app-dialog, .fine, .hiw-arrow, .hiw-body, .hiw-dialog, .hiw-full, .loss-dialog, .outcome-dialog, .sheet-body, .sheet-close, .sheet-head, .sheet-sub, .signin-dialog, .win-dialog.
 
-   Reads: --bevel-hair, --bevel-lit, --bg-dialog-head-from, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-pressed, --bg-surface, --border-hairline, --color-action, --color-action-lit, --control-knob, --edge-shade-strong, --mask-solid, --result-won, --result-won-stone, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-on-brass, --text-primary, --text-strong, --tint-brass-45
+   Reads: --bevel-hair, --bevel-lit, --bg-dialog-head-from, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-pressed, --bg-surface, --border-hairline, --color-action, --color-action-lit, --control-knob, --edge-shade-strong, --result-won, --result-won-stone, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-on-brass, --text-primary, --text-strong, --tint-brass-45
    Stand:  ui-kit/dialog.html, and ui-kit/organisms.html#dialog for the level and its reason
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   --mask-solid left this line on 2026-08-11 with backlog 109: the wave it masked
+     is components/platehead.css's now, in both directions, and this file's second
+     copy of the same data URI went with it.
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 dialog.app-dialog{width:92%;max-width:var(--container-sheet);padding:0}
@@ -73,12 +76,37 @@ dialog.app-dialog{background:var(--bg-surface);border-radius:var(--radius-16);co
 dialog.app-dialog .sheet-head{border-bottom:var(--hairline) solid var(--border-hairline)}
 dialog.app-dialog .fine{color:var(--text-muted)}
 .outcome-dialog .sheet-body>.fine:first-child{font-weight:var(--weight-bold);font-size:var(--text-13);margin:0}
-dialog.app-dialog.outcome-dialog .sheet-head{position:relative;overflow:clip;display:block;padding:var(--space-24) var(--space-20) var(--space-20);border-bottom:0}
-dialog.app-dialog.win-dialog .sheet-head{background:radial-gradient(120% 96% at 100% 0%,color-mix(in oklab,var(--result-won) 42%,transparent),transparent 60%),linear-gradient(158deg,var(--result-won-stone),var(--bg-plate-to))}
-dialog.app-dialog.loss-dialog .sheet-head{background:linear-gradient(158deg,var(--bg-dialog-head-from),var(--bg-plate-to))}
-dialog.app-dialog.outcome-dialog .sheet-head::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='122' viewBox='0 0 200 122'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.2'%3E%3Cpath d='M-10 18 C 20 8 40 28 70 18 S 120 8 150 18 S 200 28 230 18'/%3E%3Cpath d='M-10 40 C 20 30 40 50 70 40 S 120 30 150 40 S 200 50 230 40'/%3E%3Cpath d='M-10 62 C 20 52 40 72 70 62 S 120 52 150 62 S 200 72 230 62'/%3E%3Cpath d='M-10 84 C 20 74 40 94 70 84 S 120 74 150 84 S 200 94 230 84'/%3E%3Cpath d='M-10 106 C 20 96 40 116 70 106 S 120 96 150 106 S 200 116 230 106'/%3E%3C/g%3E%3C/svg%3E") no-repeat right top / cover;-webkit-mask-image:linear-gradient(150deg,var(--mask-solid),transparent 72%);mask-image:linear-gradient(150deg,var(--mask-solid),transparent 72%);opacity:.16;pointer-events:none}
-dialog.app-dialog.win-dialog .sheet-head::after{content:'';position:absolute;top:-72px;right:-52px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--result-won) 70%,var(--control-knob) 6%) 0%,var(--result-won) 42%,transparent 70%);filter:blur(44px);opacity:.34;pointer-events:none}
-dialog.app-dialog.outcome-dialog .sheet-head :is(h1,h2){position:relative;z-index:var(--z-content);font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-sheet);line-height:var(--leading-flat);letter-spacing:var(--track-display);color:var(--text-strong);margin:0;max-width:16ch;text-wrap:balance}
+/* WHAT IS LEFT OF THE OUTCOME HEAD IS THE SKIN, 2026-08-11, BACKLOG 109.
+   The row asked whether the anatomy is a third thing or whether the face should
+   have been split into an anatomy and a skin from the start, and the measurement
+   answers it. Read against `.plate-head` with both overlays open: of the 15 box
+   properties 13 were already identical and the two that were not are the GROUND
+   and the content's own height; of the 15 on the wave, 13 identical and the one
+   difference is an opacity; of the 15 on the win glow, 12 identical; of the 11 on
+   the heading, 10 identical and the difference is one ch count. The wave's data
+   URI was byte-identical to platehead.css, md5 c87f8063: the same 300 bytes
+   standing twice, for the second time in one week.
+   SO THE ANATOMY WAS NEVER THIS HEAD'S. The face is an anatomy plus a default
+   skin, and a host that wants another skin says which parts and inherits the
+   rest. It costs no second class on the element, which is what the row feared:
+   the host already carries `.outcome-dialog`, and the two outcomes already carry
+   `.win-dialog` and `.loss-dialog`, so the scope was there the whole time.
+   THE LOSS HEAD IS THE ONE PLATE HEAD WITH NO GLOW, and now it has to say so out
+   loud, because inheriting the face means inheriting a brass one and brass on a
+   loss head is the brand borrowing an outcome's place. `content:none` rather than
+   `opacity:0`: a transparent 210px blur is still a composited layer.
+   The blur was 44 here against 42 on the face and it is 42 now. Two numbers two
+   apart on one blurred circle is backlog 98's finding and not a decision.
+   The heading keeps position and z-index because the lift is per element on this
+   host and a wrapper on the other, which is why platehead.css carries no z-index
+   and says so. */
+dialog.app-dialog.outcome-dialog .sheet-head{display:block;padding:var(--space-24) var(--space-20) var(--space-20);border-bottom:0}
+dialog.app-dialog.outcome-dialog .plate-head::before{opacity:.16}
+dialog.app-dialog.win-dialog .plate-head{background:radial-gradient(120% 96% at 100% 0%,color-mix(in oklab,var(--result-won) 42%,transparent),transparent 60%),linear-gradient(158deg,var(--result-won-stone),var(--bg-plate-to))}
+dialog.app-dialog.win-dialog .plate-head::after{background:radial-gradient(circle,color-mix(in oklab,var(--result-won) 70%,var(--control-knob) 6%) 0%,var(--result-won) 42%,transparent 70%);opacity:.34}
+dialog.app-dialog.loss-dialog .plate-head{background:linear-gradient(158deg,var(--bg-dialog-head-from),var(--bg-plate-to))}
+dialog.app-dialog.loss-dialog .plate-head::after{content:none}
+dialog.app-dialog.outcome-dialog .sheet-head :is(h1,h2){position:relative;z-index:var(--z-content);font-size:var(--display-sheet);max-width:16ch}
 /* THE ANCHOR RULE THAT USED TO STAND HERE IS GONE, 2026-08-11, backlog 89. It read
    `.sheet-head a{position:absolute;top:0;right:0;z-index:var(--z-close);line-height:0;
    text-decoration:none}` and it positioned the WRAPPER of the close disc while the
@@ -229,7 +257,21 @@ dialog.app-dialog .sheet-close{position:absolute;top:var(--space-12);right:var(-
    corner to rgb(48,95,65), which costs 0.26. A number that can only be reproduced
    by re-deriving it is a reading of the stylesheet and not of the paint. */
 dialog.app-dialog .sheet-close:focus-visible{outline-color:var(--text-strong)}
-dialog.app-dialog.signin-dialog .sheet-body{padding:var(--space-16) var(--space-16) var(--space-16);gap:var(--space-12)}
+/* A BODY SHARES ITS HEAD'S HORIZONTAL PADDING, 2026-08-11, BACKLOG 110. Measured
+   over all four sheets in both themes at 390 and 1280, identical at every one:
+   the bare body sits at 20 under a head at 20 since backlog 104, the outcome body
+   at 20 under 20, and these two sat 4px inside their own heads, 16 under 20 here
+   and 20 under 24 on the how-it-works body. That is 221 of 348 sheets shipping a
+   step between a title and the content under it, and a step nobody chose: the 16
+   here is a small sheet padding all four sides equally, and the 20 there is the
+   generic body value standing under a hero that pads 24 because a hero is bigger.
+   Neither is an optical correction, because an optical correction is one value
+   applied on purpose and these are two different values arrived at by accident.
+   The VERTICAL padding is left alone and so is the gap: an edge is shared with
+   another element and has to agree, a gap is between siblings of one body and
+   says how dense that body's content is. Four bodies at 8, 12, 12 and 16 is the
+   open half of this row and it is filed rather than guessed at. */
+dialog.app-dialog.signin-dialog .sheet-body{padding:var(--space-16) var(--space-20);gap:var(--space-12)}
 dialog.app-dialog.signin-dialog .fine a{color:var(--text-brass);text-decoration:none;border-bottom:var(--hairline) solid var(--tint-brass-45);padding-bottom:.4px}
 dialog.app-dialog.signin-dialog .fine a:hover{border-bottom-color:var(--text-brass)}
 /* The Terms and Privacy links, and they are the file's only text links. Already brass at
@@ -243,7 +285,28 @@ dialog.app-dialog.signin-dialog .fine a:hover{border-bottom-color:var(--text-bra
 dialog.app-dialog.signin-dialog .fine a:active{background:var(--bg-pressed);border-bottom-color:var(--text-brass)}
 /* the ring itself comes from base.css; this only rounds it, because a link inside a dialog is
    a block with a corner and a square ring around it reads as a mistake */
-dialog.app-dialog a:focus-visible{border-radius:var(--radius-6)}
+/* AN ANCHOR WITH NO COMPONENT ON IT HAS NO SHAPE, SO THE RING GETS ONE, AND THAT
+   IS ALL THIS RULE EVER MEANT, 2026-08-11, backlog 111. It was written for a text
+   link inside a sheet, where a square ring on a bare inline word reads as a
+   mistake, and it was keyed to every anchor in a sheet. An outline follows its
+   element's border-radius, so the only way to round a ring is to round the
+   element, and at (0,2,1) this rule was rounding CONTROLS: measured under a forced
+   focus-visible over the 17 overlay pages, 88 anchors changed radius and 48 of
+   them had a shape of their own. 17 close discs went from 100px to 6px, a circle
+   becoming a cornered square; 17 `.hiw-full` blocks and 14 `.btn` blocks went from
+   10px to 6px. The disc is the worst of them because `showModal()` autofocuses the
+   first focusable child, so that is the FIRST paint of every one of those sheets
+   and not a rare state. Contrast is unaffected either way, measured 3.53:1. It is
+   the shape that jumps.
+   `:not([class])` and not a list of the three components that were being
+   overwritten. A list is what this folder has already paid for twice, and it fails
+   in the wrong direction: the fourth shaped anchor to arrive would be overwritten
+   silently. This condition fails in the right one, because a new component brings
+   a class and keeps its shape without editing anything here. The 40 anchors this
+   rule was written for carry no class at all, which is what the measurement found
+   and what makes the condition the rule's own sentence rather than an exception
+   list. The fix for a scope is never a second selector. */
+dialog.app-dialog a:not([class]):focus-visible{border-radius:var(--radius-6)}
 /* AND NO RING OF ITS OWN FOR .sheet-close ON ANY HEAD BUT ONE, WHICH IS NOT WHAT THE ROLE
    NAMES SAY. (The one is the how-it-works head, and its rule and its measurement are up
    with the disc.) The disc
@@ -418,7 +481,8 @@ dialog.app-dialog.outcome-dialog{max-width:var(--container-sheet)}
    Its close disc is positioned against the dialog, not against the head, so it
    stays put while the body moves. */
 dialog.app-dialog.hiw-dialog:modal .hiw-body{overflow:auto;min-height:0}
-.app-dialog.hiw-dialog .hiw-body{padding:var(--space-20) var(--space-20) var(--space-20);display:flex;flex-direction:column;gap:var(--space-16)}
+/* Backlog 110: 20 horizontal under a hero that pads 24. It is 24 now. */
+.app-dialog.hiw-dialog .hiw-body{padding:var(--space-20) var(--space-24);display:flex;flex-direction:column;gap:var(--space-16)}
 .app-dialog.hiw-dialog .hiw-full{display:flex;align-items:center;justify-content:center;gap:var(--space-8);font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:var(--space-12);margin-top:var(--space-2)}
 .app-dialog.hiw-dialog .hiw-arrow{width:var(--icon-18);height:var(--icon-18);stroke:var(--text-on-brass);transition:transform var(--dur-base) ease}
 .app-dialog.hiw-dialog .hiw-full:hover .hiw-arrow{transform:translateX(3px)}

@@ -164,6 +164,37 @@
     <code>a{text-decoration:none}</code>. So the underline was killed by a rule about a WIN overlay,
     on a page that is a sign-in, and the day the two skins were separated it would have appeared on
     109 screens at once.</p>
+    <p class="tk-note"><b>THE ANCHOR RULE NEXT TO IT WAS OVERWRITING THE SHAPE OF EVERY CONTROL IN A
+    SHEET, and it took a forced focus state to see it.</b> Backlog 111.
+    <code>dialog.app-dialog a:focus-visible{border-radius:var(--radius-6)}</code> was written for a
+    text link: an outline follows its element's <code>border-radius</code>, so the only way to round
+    a ring is to round the element, and at (0,2,1) this one beat every control that is an anchor.
+    Measured under a forced <code>:focus-visible</code> across the 17 overlay pages, <b>88 anchors
+    changed radius and 48 of them had a shape of their own</b>: <b>17 close discs went from 100px to
+    6px</b>, a circle becoming a cornered square, plus 17 <code>.hiw-full</code> blocks and 14
+    <code>.btn</code> blocks from 10px to 6px. The disc is the worst because <code>showModal()</code>
+    autofocuses the first focusable child, so that is the <b>first paint</b> of every one of those
+    sheets. Contrast is unaffected either way, 3.53:1. It is the shape that jumps.</p>
+    <p class="tk-why"><b>The fix is one condition and not a list of the three components it was
+    overwriting.</b> It is <code>a:not([class])</code> now, which is the rule's own sentence: an
+    anchor with no component on it has no shape, so the ring gets one. The 40 anchors it was written
+    for carry no class at all, which is what the measurement found. A list of three would fail in the
+    wrong direction, silently overwriting the fourth shaped anchor to arrive; this fails in the right
+    one, because a new component brings a class and keeps its shape with no edit here. After:
+    <b>40 anchors still take the corner and all 48 controls keep theirs</b>, with the control proving
+    the rule fires at all, 2,706 anchors read and the ring changing on 2,706.</p>
+    <p class="tk-note"><b>A body shares its head's horizontal padding, and three of the four did not.</b>
+    Backlog 110, measured over all four sheets in both themes at 390 and 1280 and identical at every
+    one. The bare body sits at 20 under a head at 20 since backlog 104 and the outcome body at 20
+    under 20, but the sign-in body sat at 16 under 20 and the how-it-works body at 20 under 24: a
+    <b>4px step between a title and the content beneath it on 221 of 348 sheets</b>, and not the same
+    4px twice. Neither was an optical correction, because an optical correction is one value applied
+    on purpose and these were two values arrived at by accident: a small sheet padding all four sides
+    equally, and the generic body value standing under a hero that pads 24 because a hero is bigger.
+    All four step <b>+0px</b> now. <b>The vertical padding and the gap are left alone on purpose</b>:
+    an edge is shared with another element and has to agree, a gap is between siblings of one body
+    and says how dense that body's content is. Four bodies at 8, 12, 12 and 16 is the open half of
+    that row, and it is filed rather than guessed at.</p>
     <div class="tk-tblwrap">
       <table class="tk-tbl">
         <thead><tr><th>kind</th><th>placements</th><th>at 390</th><th>at 1280</th></tr></thead>
@@ -293,13 +324,13 @@
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-dlg">
-        <dialog class="app-dialog outcome-dialog loss-dialog" open aria-label="Here's what happened"><div class="sheet-head"><h1>Here's what happened</h1><a href="#" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a></div><div class="sheet-body">
+        <dialog class="app-dialog outcome-dialog loss-dialog" open aria-label="Here's what happened"><div class="plate-head sheet-head"><h1>Here's what happened</h1><a href="#" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a></div><div class="sheet-body">
           <p class="fine">Will the US government shut down before March 1, 2027?</p>
           <div class="spinner-box">Loading the resolution...<br><span class="fine">Fetching what resolved and why.</span></div>
         </div></dialog>
       </div></div>
       <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-dlg">
-        <dialog class="app-dialog outcome-dialog loss-dialog" open aria-label="Here's what happened"><div class="sheet-head"><h1>Here's what happened</h1><a href="#" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a></div><div class="sheet-body">
+        <dialog class="app-dialog outcome-dialog loss-dialog" open aria-label="Here's what happened"><div class="plate-head sheet-head"><h1>Here's what happened</h1><a href="#" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a></div><div class="sheet-body">
           <p class="fine">Will the US government shut down before March 1, 2027?</p>
           <div class="spinner-box">Loading the resolution...<br><span class="fine">Fetching what resolved and why.</span></div>
         </div></dialog>
@@ -312,13 +343,13 @@
     <div class="tk-pair2">
       <div class="tk-ph"><span>Won, dark</span><span>Won, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-dlg">
-        <dialog class="app-dialog outcome-dialog win-dialog" open aria-label="You were right"><div class="sheet-head"><h1>You were right</h1><a href="#" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a></div><div class="sheet-body">
+        <dialog class="app-dialog outcome-dialog win-dialog" open aria-label="You were right"><div class="plate-head sheet-head"><h1>You were right</h1><a href="#" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a></div><div class="sheet-body">
           <p class="fine">Will the US government shut down before March 1, 2027?</p>
           <div class="spinner-box">Loading the resolution...<br><span class="fine">Fetching what resolved and why.</span></div>
         </div></dialog>
       </div></div>
       <div class="tk-theme-fig tk-stack" data-theme="light"><div class="tk-dlg">
-        <dialog class="app-dialog outcome-dialog win-dialog" open aria-label="You were right"><div class="sheet-head"><h1>You were right</h1><a href="#" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a></div><div class="sheet-body">
+        <dialog class="app-dialog outcome-dialog win-dialog" open aria-label="You were right"><div class="plate-head sheet-head"><h1>You were right</h1><a href="#" class="icon-btn icon-btn-photo sheet-close" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a></div><div class="sheet-body">
           <p class="fine">Will the US government shut down before March 1, 2027?</p>
           <div class="spinner-box">Loading the resolution...<br><span class="fine">Fetching what resolved and why.</span></div>
         </div></dialog>

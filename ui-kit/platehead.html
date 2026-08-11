@@ -21,14 +21,15 @@
     <p>Level 1, and <b>the only component in this system that was found by asking what three
     different classes had in common</b>. The brass-cornered head of a plate: a two-stone ground,
     a wave masked away from the corner, a 210px glow bleeding in from outside the box, and a
-    display heading standing above all three. <b>339 placements on 105 painted screens</b>, one
-    face, three hosts. Written 2026-08-11 out of the two copies that were standing in
-    <code>dialog.css</code> and <code>hiw.css</code>.</p>
+    display heading standing above all three. <b>359 placements on 106 painted screens</b>, one
+    face, four hosts. Written 2026-08-11 out of the two copies that were standing in
+    <code>dialog.css</code> and <code>hiw.css</code>, and given its fourth host the same day when
+    <b>the head that was filed as "not a wearer" turned out to be a wearer with a different skin</b>.</p>
     <div class="tk-badges">
-      <span class="tk-badge">339 placements</span>
-      <span class="tk-badge">1 face, 3 hosts</span>
+      <span class="tk-badge">359 placements</span>
+      <span class="tk-badge">1 face, 4 hosts</span>
       <span class="tk-badge">4 rules</span>
-      <span class="tk-badge">56 declarations written twice became 28 written once</span>
+      <span class="tk-badge">an anatomy plus a default skin</span>
     </div>
   </div>
 
@@ -175,25 +176,42 @@
     saying where it sits and how loud it is, which is all a host is allowed to say.</p>
     <div class="tk-tblwrap">
       <table class="tk-tbl">
-        <thead><tr><th>property</th><th>plain sheet head</th><th>how-it-works sheet head</th><th>page hero</th></tr></thead>
+        <thead><tr><th>property</th><th>plain sheet head</th><th>outcome head</th><th>how-it-works sheet head</th><th>page hero</th></tr></thead>
         <tbody>
-          <tr><td>padding</td><td>24 / 20 / 20</td><td>32 / 24 / 28</td><td>32 / 24</td></tr>
-          <tr><td>heading size</td><td><code>--display-sheet</code>, 24 to 30px</td><td><code>--display-hiw</code>, 30 to 38px</td><td><code>--display-hiw</code>, 30 to 38px</td></tr>
-          <tr><td>heading measure</td><td>15ch</td><td>none</td><td>none</td></tr>
-          <tr><td>the sub</td><td><code>.sheet-sub</code>, 14px at 34ch</td><td><code>.hiw-tagline</code>, 14px at 32ch</td><td><code>.hiw-tagline</code>, 16px at 44ch</td></tr>
-          <tr><td>edge, corner, bottom margin</td><td>none, it is flush inside a frame that has all three</td><td>none, same reason</td><td>hairline, 16px corner, 20px below, inset lit lip</td></tr>
-          <tr><td>lifting content over the glow</td><td>per element, on the title and the sub</td><td><code>.hiw-hero-inner</code> wraps both</td><td><code>.hiw-hero-inner</code> wraps both</td></tr>
-          <tr><td>which file says so</td><td><code>dialog.css</code></td><td><code>hiw.css</code></td><td><code>hiw.css</code></td></tr>
+          <tr><td>padding</td><td>24 / 20 / 20</td><td>24 / 20 / 20</td><td>32 / 24 / 28</td><td>32 / 24</td></tr>
+          <tr><td>heading size</td><td><code>--display-sheet</code>, 24 to 30px</td><td><code>--display-sheet</code>, 24 to 30px</td><td><code>--display-hiw</code>, 30 to 38px</td><td><code>--display-hiw</code>, 30 to 38px</td></tr>
+          <tr><td>heading measure</td><td>15ch</td><td>16ch</td><td>none</td><td>none</td></tr>
+          <tr><td>the sub</td><td><code>.sheet-sub</code>, 14px at 34ch</td><td>none, the body carries the line</td><td><code>.hiw-tagline</code>, 14px at 32ch</td><td><code>.hiw-tagline</code>, 16px at 44ch</td></tr>
+          <tr><td>edge, corner, bottom margin</td><td>none, it is flush inside a frame that has all three</td><td>none, same reason</td><td>none, same reason</td><td>hairline, 16px corner, 20px below, inset lit lip</td></tr>
+          <tr><td>lifting content over the glow</td><td>per element, on the title and the sub</td><td>per element, on the title</td><td><code>.hiw-hero-inner</code> wraps both</td><td><code>.hiw-hero-inner</code> wraps both</td></tr>
+          <tr><td>the ground</td><td>inherited, brass</td><td><b>its own</b>: green radial over <code>--result-won-stone</code>, or a plain linear on the loss head</td><td>inherited, brass</td><td>inherited, brass</td></tr>
+          <tr><td>the wave</td><td>inherited at <code>.2</code></td><td><b>its own opacity</b>, <code>.16</code>, and the ground is why</td><td>inherited at <code>.2</code></td><td>inherited at <code>.2</code></td></tr>
+          <tr><td>the glow</td><td>inherited, brass at <code>.42</code></td><td><b>green at <code>.34</code>, and NONE at all on the loss head</b></td><td>inherited, brass at <code>.42</code></td><td>inherited, brass at <code>.42</code></td></tr>
+          <tr><td>which file says so</td><td><code>dialog.css</code></td><td><code>dialog.css</code></td><td><code>hiw.css</code></td><td><code>hiw.css</code></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="tk-note"><b>The outcome head is not a wearer, and that is deliberate.</b>
-    <code>dialog.app-dialog.outcome-dialog .sheet-head</code> has this head's anatomy to the
-    declaration: relative, clip, block, 24/20/20, <code>border-bottom:0</code>, the same wave, the
-    same display heading. It has a different GROUND and a different GLOW: the win head is a green
-    radial over <code>--result-won-stone</code>, and the loss head is a plain linear with no brass
-    radial and no glow at all. <b>It shares the skeleton and not the face</b>, so folding it in here
-    would mean two classes where the finding is one. Ten elements, filed with its numbers.</p>
+    <p class="tk-note"><b>The outcome head was filed as "not a wearer" on the morning this page
+    was written, and it is the fourth wearer by the afternoon.</b> That row was 109, and the
+    measurement it asked for answered it in one direction. Read against this face with both
+    overlays open: <b>of the 15 box properties 13 were already identical</b> and the two that were
+    not are the ground and the content's own height; of the 15 on the wave, 13 identical and the
+    difference is one opacity; of the 15 on the win glow, 12 identical; of the 11 on the heading,
+    10 identical and the difference is one <code>ch</code> count. <b>The wave's data URI was
+    byte-identical, md5 and all</b>, which is the same 300 bytes standing twice for the second time
+    in one week.</p>
+    <p class="tk-note">So the fear in the row, that folding it in would need two classes where the
+    finding is one, was not true: <b>the host already carried the scope.</b>
+    <code>.outcome-dialog</code>, <code>.win-dialog</code> and <code>.loss-dialog</code> sit on the
+    element's ancestors, so the skin is said there and the anatomy is inherited. What this file is
+    turns out to be <b>an anatomy plus a default skin</b>, and the loss head is the one plate head
+    with no glow, which it now has to say out loud, because inheriting the face means inheriting a
+    brass one and brass on a loss head is the brand borrowing an outcome's place.</p>
+    <p class="tk-note tk-lab"><b>One number went with it.</b> The win glow blurred at 44 here and
+    at 42 on the face, and it blurs at 42 now. Two numbers two apart on one circle is backlog 98's
+    finding rather than a decision, and the collapse was measured before it was believed:
+    <b>0 differing pixels of 27,160, with the control at 0</b>. The glow is anchored outside the box
+    and clipped, so 2px of blur radius never reached a pixel anybody could see.</p>
   </section>
 
   <!-- ================================================================== rule --><section class="tk-sec" id="rule">

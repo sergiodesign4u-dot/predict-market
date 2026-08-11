@@ -102,7 +102,7 @@ window.KIT_NAV = [
       { label: 'Skeleton',    page: 'skeleton.html',done: true, note: '482' },
       { label: 'Toggle',      page: 'toggle.html',  done: true, note: '3' },
       { label: 'Logo',        page: 'logo.html',    done: true, note: '210' },
-      { label: 'Plate head',  page: 'platehead.html',done: true, note: '339' }
+      { label: 'Plate head',  page: 'platehead.html',done: true, note: '359' }
     ]
   },
   {
