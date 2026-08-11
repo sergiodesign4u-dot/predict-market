@@ -28,7 +28,7 @@
    this file's containment is EMPTY and the level was therefore being answered by
    arithmetic with no information in it. See ui-kit/docs/defects.md row 63. */
 .lang-menu .filter-panel{top:auto;bottom:calc(100% + 4px);right:auto;left:0;min-width:150px}
-.filter-panel{background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;z-index:var(--z-menu);min-width:196px}
+.filter-panel{background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;z-index:var(--z-menu);min-width:var(--menu-min)}
 /* ALL THREE STATES ARE HERE AND THEY REACH ALL 193 MENUS, 2026-08-08. These three rules were
    scoped to `.app-case`, and 105 of the 193 summaries in the product are the footer's language
    picker, which stands outside it: that one control had no rest face, no hover, and a press only

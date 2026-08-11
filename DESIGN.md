@@ -561,3 +561,46 @@ Six roles carry every interactive state in the product, and `--opacity-disabled`
 | `--opacity-disabled` | `.45` in both themes | *not a pair* | *not a pair* |
 
 Three things the table says that a list of values would not. **`--color-action-pressed` is the tightest in the system at 5.48:1**, and it is the only state where the ink is dark on a light ground: a pressed brass CTA is the one state that cannot be made deeper without taking the label with it. **`--chrome-pressed` reads the same in both themes on purpose** - the course chrome is the frame around the work and does not follow the product's theme, so its state does not either. **`--opacity-disabled` is the exception the other six exist to make rare**: opacity is the one state that is not a colour, so no sweep reading `getComputedStyle().color` can see it, and it stays at `.45` on exactly three rules rather than becoming a habit.
+
+---
+
+## 9. Responsive
+
+Added 2026-08-12, stage 10. The full record is `ui-kit/docs/responsive.md` and the stand is
+`ui-kit/responsive.html`. What belongs in the visual language rather than in the report:
+
+**Three ways, and a point is the last one you are allowed.** Fluid first (`clamp`, `%`,
+`minmax(auto-fit)`, `flex-wrap`), then a container (`max-width`, and the measure in `ch`), and only
+then a point. A point is permitted once the two above it physically cannot answer, and the reason
+goes in the audit row. "It is easier to write that way" is not one.
+
+**Three rungs, each named by what ARRIVES at it.** A width with no event at it is a width somebody
+will round.
+
+| rung | what arrives |
+|---|---|
+| **640 DESK** | the one divide: one column, a bottom nav and a mobile dock below; the desk above |
+| **760 DETAIL** | the event detail gains its second column, the bet panel docks, the chart takes full height |
+| **900 RAIL** | a vertical rail arrives beside the content: sub-categories, contents, the how-it-works side column |
+
+**1140 is the review harness and it is not the product's.** It is 900 + 220 + 20 on purpose, so the
+chrome can never take width the widest product rung is counting on.
+
+**A rung is one pixel and it belongs to the wide side.** Below a rung is `max-width:639.98px`, never
+`max-width:640px`: both match at exactly 640 and the rung then renders a page that exists at no other
+width. That cost this repository 73 screens for a day.
+
+**The measure is 66ch and it is in `ch` on purpose.** `ch` is the width of a zero in the element's
+own font, so one number caps an 11px legal line and a 16px paragraph at the same character count.
+The band is the one section 3 already states, 60 to 75.
+
+**The rungs are px and the reason is that the type is px.** A rung in rem while eighteen size tokens
+are px literals would switch the layout at a different window width for a person with an enlarged
+browser font while every word on the page stayed the same size. That looks like accessibility and
+does nothing. The finding it exposes is real and is filed as `docs/backlog.md` 115.
+
+**Green and red stay outcome semantics at every width**, and nothing that arrives on a wide screen
+takes a colour it did not have on a phone. A rail, a second column and a docked panel are
+arrangements; the ground under them is the same two-stone plate. The one thing a wide width brings
+that a phone never showed is a surface with its own edge beside the content, and that surface is
+checked in the dark theme as well, because it is the one place a hole in a theme could hide.

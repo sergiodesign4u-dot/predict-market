@@ -46,7 +46,15 @@
   border:var(--hairline) solid color-mix(in oklab,var(--color-trust) 24%,var(--border-hairline));
   border-radius:var(--radius-10);
   background:color-mix(in oklab,var(--color-trust) 8%,var(--bg-surface));color:var(--text-primary)}
-.protect.protect-page{border-color:var(--tint-brass-30);background:var(--tint-brass-06);color:var(--text-muted)}
+/* THE PAGE FACE IS THE ONE THAT GETS A MEASURE, and the inline one must not have it. `.protect`
+   inside a sheet is already inside a 464px sheet and a cap there would bind nothing; the page
+   face is dropped into `.cat-main`, a column sized for cards, and takes whatever the column is:
+   77ch in `.read-col` on terms and 150ch of available width on wallet, where the sentence
+   happens to be short enough not to wrap and so ran 117 characters on ONE line. Both are the
+   same defect and only one of them wraps, which is why the cap is on the box rather than on a
+   rule about wrapping. A notice narrower than its column is what a notice looks like.
+   Responsive step 4, tokens.css page frame. */
+.protect.protect-page{border-color:var(--tint-brass-30);background:var(--tint-brass-06);color:var(--text-muted);max-width:var(--measure)}
 .protect b,.protect strong{color:var(--text-primary)}
 .push-banner{background:color-mix(in oklab,var(--color-trust) 8%,var(--bg-surface));border:var(--hairline) solid color-mix(in oklab,var(--color-trust) 22%,var(--border-hairline));border-radius:var(--radius-10);color:var(--text-primary)}
 .inline-error{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary);font-size:var(--text-12);line-height:var(--leading-base);padding:var(--space-8)}

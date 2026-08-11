@@ -79,9 +79,9 @@
    browser that has not learned svh, not a second opinion. */
 /* rung: RAIL 900, a rail beside the content. The ladder is in tokens.css, page frame. */
 @media(min-width:900px){
-  .toc{flex:0 0 214px;position:sticky;top:66px;align-self:flex-start;
-       max-height:calc(100vh - 66px - 16px);
-       max-height:calc(100svh - 66px - 16px);
+  .toc{flex:0 0 var(--rail-width);position:sticky;top:66px;align-self:flex-start;
+       max-height:calc(100vh - 66px - var(--space-16));
+       max-height:calc(100svh - 66px - var(--space-16));
        overflow-y:auto;overscroll-behavior:contain}
   .toc-head{display:none}
   .toc-d::details-content{display:block;content-visibility:visible}

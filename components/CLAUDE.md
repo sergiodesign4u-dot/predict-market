@@ -40,6 +40,13 @@ override it.** There is no build step and no gate: what you write is what ships.
   contains atoms, level 3 contains molecules or is a shell. A component built out of its own class
   names reads as containing nothing, and seven of seventeen such readings were once the whole atom
   shelf and not one of them was an atom.
+- **A MEDIA QUERY MAY NOT STAND IN A SCREEN FILE, EVER**, and it is written here and in
+  `ui-visual/CLAUDE.md` both, because a rule kept in one place is a rule half the hands never meet.
+  Adaptation lives in a token, a component, a pattern or the shell. Measured at Responsive step 4:
+  **33 width queries in this folder, 0 in any of the 106 painted screens.** And the counterpart
+  reading is what makes the rule cheap to keep: **35 of 43 components have no width behaviour of
+  their own at all** and simply fill what they are given, so a query appearing in a screen is almost
+  never the screen discovering something, it is a component's rule written in the wrong file.
 - **A component may not invent a width.** There are three rungs, named by what arrives at them:
   **640** the desk, **760** the detail's second column, **900** the rail beside the content. If a
   file needs a break that is not one of them it is a one-off and says so in a comment beside itself,
@@ -165,6 +172,20 @@ override it.** There is no build step and no gate: what you write is what ships.
   object, on 77 screens per tree, invisible to every sweep that reads the DOM as boxes. Read the
   tree, not the markup: `Accessibility.getFullAXTree` over CDP, and count links whose descendants
   include a button or a tab. It was 32 on one feed screen and it is 0.
+- **HIDING A THING FROM THE EYE IS THREE DIFFERENT DECISIONS AND ONLY ONE OF THEM REACHES THE TAB
+  ORDER.** `max-height:0` takes a band off the page, `overflow:clip` takes it away from the pointer,
+  and `opacity:0` takes its ink; **none of the three makes a control unfocusable**, so the condensed
+  category band handed a keyboard **440 focus stops on 88 painted screens at every width**, five per
+  screen, each one invisible AND under `aria-hidden="true"`, which is a stop the eye cannot see and a
+  screen reader will not name. `display:none` and `visibility:hidden` are the two that do reach it,
+  and between them the difference is the box: `display:none` collapses it, so it cannot be used
+  where a transition needs the box to stay, and `visibility` is animatable discretely so it holds
+  `visible` through the whole collapse and flips at the end. **The mirror is just as easy to write
+  and harder to see**: `aria-hidden` on a band that is open and operable tells a screen reader that a
+  visible navigation does not exist. **Read this with a Tab walk, never with a stylesheet**, and
+  filter the walk by focusing the element and asking where focus landed, because a census of
+  everything invisible sweeps in every `display:none` control the rungs turn off and reports 1,063
+  where there are 440.
 - **A pointer is a claim, and nothing checks a comment.** Every file here carries a `Stand:` line, and
   from 2026-08-07 to 2026-08-08 **all 42 of them pointed at a file that did not exist**: they named
   the generated per-component pages, which were deleted with the vitrine, and no reader noticed

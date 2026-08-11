@@ -43,7 +43,15 @@
 .resolved-panel .state-msg{font-size:var(--text-13);line-height:var(--leading-base);color:var(--text-muted);margin:0}
 .resolved-panel .state-actions{flex-direction:column;width:100%;gap:var(--space-8);margin-top:var(--space-8)}
 .resolved-panel .state-actions a{display:block;width:100%}
-.sys-note{color:var(--text-muted);font-size:var(--text-12);line-height:var(--leading-loose);margin:var(--space-12) 0 0}
+/* THE LONGEST LINE IN THE PRODUCT, 139ch at 1440, and the token exists for exactly this.
+   It is one element on one screen and it is the worst of the 775 wrapping text blocks the
+   Responsive step 4 walk measured, nearly twice the top of the 60 to 75ch band DESIGN.md
+   states. It stands in `.cat-main`, which is a browse column sized for cards, so nothing
+   above it was ever going to hold the line: a note dropped into a layout column takes the
+   column's width, and the column is not a reading measure. `--measure` is in `ch`, so this
+   11px note and a 16px paragraph cap at the same CHARACTER count rather than the same pixels,
+   which is the whole reason the token is not in px. tokens.css, page frame. */
+.sys-note{color:var(--text-muted);font-size:var(--text-12);line-height:var(--leading-loose);margin:var(--space-12) 0 0;max-width:var(--measure)}
 .sys-links{margin-top:var(--space-20);border-top:var(--hairline) solid var(--border-hairline);padding-top:var(--space-16)}
 .sys-links h2{font-family:var(--font-display);font-size:var(--text-13);font-weight:var(--weight-semibold);text-transform:uppercase;letter-spacing:var(--track-caps);color:var(--text-muted);margin:0 0 var(--space-12)}
 .sys-link-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:var(--space-8) var(--space-20)}

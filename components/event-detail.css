@@ -36,7 +36,12 @@
    direct child would still have caught a nested head. The distinction is not depth, it is which
    block the heading belongs to, so it is the nested blocks that say so, one specificity step up. */
 .ed-section :is(h2,h3){font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-brass-lit);margin:0 0 var(--space-8)}
-.resolution{font-size:var(--text-13);line-height:var(--leading-loose);color:var(--text-primary)}
+/* THE LOUDEST OF THE FIFTEEN, and not because it is the longest. 92ch on 9 screens at 1440,
+   against a band of 60 to 75. `.resolution` is the named resolution rule, which is the second
+   design principle of this product written out as a sentence, and it ran 17ch over the measure
+   on the one screen where trust is decided. A rule nobody finishes reading is a rule that was
+   not stated. tokens.css, page frame, and ui-kit/docs/responsive.md for the walk. */
+.resolution{font-size:var(--text-13);line-height:var(--leading-loose);color:var(--text-primary);max-width:var(--measure)}
 .resolution strong{color:var(--text-primary)}
 .rules-note{margin:var(--space-12) 0 0;font-size:var(--text-12);line-height:var(--leading-base);color:var(--text-muted)}
 .ed-actions{position:absolute;top:var(--space-16);right:18px;display:flex;gap:var(--space-8);z-index:var(--z-float)}

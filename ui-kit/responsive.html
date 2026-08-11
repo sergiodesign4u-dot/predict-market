@@ -27,6 +27,8 @@
       <span class="tk-badge">0 in a screen file</span>
       <span class="tk-badge">104 screens audited</span>
       <span class="tk-badge">new behaviour: 0</span>
+      <span class="tk-badge">shell: A, one carrier</span>
+      <span class="tk-badge">440 ghost tab stops, now 0</span>
     </div>
   </div>
 
@@ -64,9 +66,9 @@
       <p class="tk-runs-on">The market price is what people are willing to pay right now, not a
       forecast anybody published. It moves when the balance of buyers and sellers moves, and the
       resolution rule beneath it never does. This paragraph is capped at nothing, which is what
-      38 elements in the product do today.</p>
+      12 elements in the product did until step 4 placed the token.</p>
     </div>
-    <p class="tk-dragnote">no cap. At 1440 the worst of these measures 166ch</p>
+    <p class="tk-dragnote">no cap. At 1440 the worst of them measured 154ch, and it is capped now</p>
 
     <p class="tk-subh">3. Point, and there are two kinds of it</p>
     <p class="tk-note"><b>A media query asks about the SCREEN and a container query asks about the
@@ -112,10 +114,12 @@
     being read. <b>That turns the limitation into the instrument</b>: the only possible check is to
     read every media query in the product and ask whether its number is on the list above, and
     <b>no number may appear that is not</b>.</p>
-    <p class="tk-note tk-lab tk-bad"><b>Three numbers in the product are on no ladder</b>, all in the
-    grey tree and all in all 104 files: <b>960</b> and <b>1280</b> hard-code a column count that the
-    paint computes with <code>auto-fit</code> and no query at all, and <b>1440</b> is the grey
-    harness, the twin of 1140 standing at a different number.</p>
+    <p class="tk-note tk-lab tk-bad"><b>Three numbers were on no ladder when this page was written,
+    and two of them are gone.</b> <b>960</b> and <b>1280</b> hard-coded a column count in all 104 grey
+    files that the paint computes with <code>auto-fit</code> and no query at all; step 4 deleted both
+    along with the two-column rule at 640, and neither tree declares a count any more. <b>1440</b>
+    stays: it is the grey harness, the twin of 1140 standing at a different number, and a harness is
+    not the product.</p>
   </section>
 
   <!-- =================================================================== grid --><section class="tk-sec" id="grid">
@@ -140,19 +144,122 @@
 
   <!-- ================================================================== shell --><section class="tk-sec" id="shell">
     <h2 data-n="04">The shell</h2>
-    <p class="tk-note">Filled by step 3. The fork is already half decided upstream:
-    <code>ia/docs/sitemap.md</code> records that the mobile bottom nav is replaced on desktop by the
-    lean header, and <code>bottomnav.css</code> already does it at DESK 640. <b>What is missing is
-    the proof</b> that exactly one top-level navigation carrier stands at any width, by computed
-    style and a tab pass, because a hidden carrier stays in the accessibility tree after the eye has
-    stopped seeing it.</p>
+    <p class="tk-note"><b>The fork is answered A, and it was answered at 03a rather than here.</b>
+    This stage decides the FORM of the navigation and never its items, so the three questions are
+    asked of <code>ia/docs/sitemap.md</code> and the answers are read off it.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>the question</th><th>the answer</th><th>where it is written</th></tr></thead>
+        <tbody>
+          <tr><td>how many top-level items</td><td><b>four</b>: Events, My Bets, Favorites, Portfolio</td><td>bottom-nav table</td></tr>
+          <tr><td>a second level that must stay visible</td><td><b>no</b>: the categories band rides the sticky header and only on the browse screens</td><td>D-desktop-1</td></tr>
+          <tr><td>side space for new behaviour</td><td><b>no</b>: the audit named 0 new behaviour</td><td>section 07 above</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note">Four items and no permanent second level is branch <b>A</b>, the items move
+    into the header. The product's version of A is the <b>lean header</b>: Events becomes the logo,
+    My Bets and Profile fold into the avatar menu, Favorites and Notifications become icons in the
+    utility cluster, and the balance is the cluster's swap. No rail arrives, and the desktop
+    introduces no destination the phone does not have. <b>It was already built</b>, so step 3 is a
+    proof rather than a design.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>read over 106 painted screens</th><th>below 640</th><th>640 and above</th></tr></thead>
+        <tbody>
+          <tr><td><code>.bottom-nav</code>, computed</td><td><b>painted on 105 of 106</b></td><td><b><code>display:none</code> on all 105</b></td></tr>
+          <tr><td><code>.desk-only</code>, 178 elements</td><td><code>none</code> on all 178</td><td><code>flex</code> on all 178</td></tr>
+          <tr><td>tab stops inside the bar</td><td><b>4</b></td><td><b>0</b></td></tr>
+          <tr><td><code>Primary (mobile)</code> in the accessibility tree</td><td><b>present</b></td><td><b>absent</b></td></tr>
+          <tr><td>header tab stops</td><td>3</td><td>7 at 640, <b>8 from 760</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note">The swap happens at one pixel, in one direction, and the carrier that leaves
+    leaves the paint, the tab order and the accessibility tree together. <b>A hidden carrier does not
+    linger here</b>, which is the whole reason the check is a Tab walk and not a stylesheet read.</p>
+    <p class="tk-note"><b>What "exactly one carrier" is actually true of, stated rather than
+    assumed.</b> Below the rung it is <b>bottom nav plus footer</b> on 73 screens and the footer alone
+    on 32; above it, <b>header plus footer</b> on 73 and the footer alone on 32. There is exactly one
+    PRIMARY carrier at every width and there is a footer at every width, and the footer is not a
+    defect: it never changes at a rung and it carries Events and My Bets on all 105. The 32 are the
+    logged-out screens, where the bar and the cluster have nothing to point at.</p>
+    <p class="tk-why"><b>What the Tab walk found that no stylesheet could: 440 focus stops on
+    invisible controls, on 88 screens, at every width.</b> All of them are the five links of the
+    condensed category band. <code>max-height:0</code> takes a band off the page,
+    <code>overflow:clip</code> takes it away from the pointer and <code>opacity:0</code> takes its
+    ink, and <b>not one of the three touches the tab order</b>. Every one of the five also sits under
+    <code>aria-hidden="true"</code>, so the stop was invisible to the eye and unnamed to a screen
+    reader at once. <code>visibility</code> is the property that closes it, and it is in both trees
+    now: <b>440 to 0 in the paint and 0 in the grey</b>, the band still opening on all 87 grey files,
+    and the layout control at 0 differing rows of 24, which it had to be, because
+    <code>visibility</code> reserves the box it hides. <b>The open state is left on purpose</b>: with
+    <code>.scrolled</code> forced on the band is 54px of visible operable links still calling itself
+    <code>aria-hidden</code>, and on <b>48 of the 105 screens it is the only category navigation in
+    the document</b>. Which way that resolves is a question about the navigation model, and this stage
+    may not answer it: <code>docs/backlog.md</code> item 118.</p>
+    <p class="tk-why"><b>Three instrument errors, recorded because each one changed a number.</b> A
+    rect plus a <code>display</code> walk called a shut dropdown painted <b>1,752 times</b>, because a
+    closed <code>&lt;details&gt;</code> puts its children at <code>content-visibility:hidden</code>
+    where they keep a box and are never rendered; <code>checkVisibility</code> is the only instrument
+    that caught both that and the <code>opacity:0</code> band. The first Tab walk was <b>capped at 120
+    stops</b> and never reached the bottom bar, which sits after the footer in the DOM, so it reported
+    0 stops in a carrier that has 4: the bar's first stop on the event feed is number <b>87 of
+    118</b>. And the harness arrived in the accessibility tree as a fifth landmark, which is the
+    <b>fifth</b> reading this chrome has entered in this stage. The ghost census itself was wrong
+    twice before it was right: it first called 1,063 controls ghosts by counting everything invisible,
+    and <b><code>display:none</code> is the RIGHT way to hide</b>, because it takes the control out of
+    the tab order with it. 1,063 became 446, of which 440 were the band. <b>And 18 of the 105 were
+    hiding behind a modal</b>: a shown <code>&lt;dialog&gt;</code> makes the rest of the document
+    inert, so the honest pair is 440 on 88 screens now and 525 on 105 the moment a sheet is shut.</p>
   </section>
 
   <!-- ============================================================= components --><section class="tk-sec" id="components">
     <h2 data-n="05">What each component does with width</h2>
-    <p class="tk-note">Filled by step 4, together with the placements of <code>--measure</code> on the
-    four classes the audit named.</p>
-  </section>
+    <p class="tk-note"><b>The registry holds, and it was checked rather than trusted.</b> Every
+    <code>@media</code> in <code>components/</code> read and every number compared against the
+    ladder: <b>33 width queries, every number on the registry, and 0 in any of the 106 screen
+    files</b>. Three are named one-offs, 560, 620 and 980, and each carries beside it what
+    collapsing it to the nearest rung would cost in pixels.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>the measure, at 1440 over 106 screens</th><th>before</th><th>after</th></tr></thead>
+        <tbody>
+          <tr><td>continuous wrapping text blocks</td><td>775</td><td>777</td></tr>
+          <tr><td><b>over 75ch</b></td><td><b>15</b></td><td><b>3</b></td></tr>
+          <tr><td><code>.resolution</code>, <code>event-detail.css</code></td><td>9 at up to <b>106ch</b></td><td>capped</td></tr>
+          <tr><td><code>.sys-note</code>, <code>state-block.css</code></td><td>1 at <b>154ch</b>, the longest line in the product</td><td>capped</td></tr>
+          <tr><td><code>.protect-page</code>, <code>notice.css</code></td><td>2 at 77ch, plus one 117-character line that never wrapped</td><td>capped</td></tr>
+          <tr><td><code>.feed-seo</code>, two paragraphs and a <code>dd</code></td><td>89ch</td><td><b>left</b>: <code>--container-read</code> already decided it</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>Step 1 said 38 and the number is 12.</b> That pass measured the element's
+    BOX, and <code>.related-list li</code> is a flex row of a 46px thumbnail, a question clamped to
+    two lines and an odds figure: <b>a 106ch box with no 106ch line in it</b>, 27 times, which was 27
+    of the 38. The corrected filter is the finding, and it lives beside the token: of 775 candidates
+    it throws out 261 standing on one line, 40 line-clamped, <b>27 whose child is laid out as a
+    row</b>, and 3 holding a block of their own. <b>A cap was also written and taken off within the
+    hour</b>: the walk reported one <code>dd</code> at 89ch and the only <code>dd</code> family the
+    how-it-works page has is <code>.hiw-faq dd</code>, so the rule went there with a paragraph of
+    reasoning. Read by ancestor chain rather than by tag name the element is
+    <code>dd &lt; dl &lt; section.feed-seo</code>, a family already decided and measuring inside its
+    own rule. <b>A selector is not an identification</b>, and the reverted rule keeps its comment so
+    the next reader does not repeat it.</p>
+    <p class="tk-note"><b>The grey tree computes its columns now instead of declaring them</b>, which
+    closes <code>docs/backlog.md</code> 116. Three rules and two unnamed widths, 960 and 1280, deleted
+    from all 104 grey files and replaced by the one fluid track the paint already used. Counted in a
+    browser: painted 1/1/1/1/2/2/2/3/3/4/4 and grey 1/2/2/2/2/2/3/3/4/4/4 from 360 to 1600.
+    <b>The mechanism agrees and the container does not</b>, which is a different statement from the
+    one the row opened with: the grey reaches each step earlier because its content column is wider at
+    the same window and its gap is 10px against the painted 16.</p>
+    <p class="tk-why"><b>Container thresholds: still none, and the reason is a measurement rather
+    than a preference.</b> <code>@container</code> and <code>container-type</code> are 0 in all four
+    corpora. A container query earns its place when one component stands in two materially different
+    slots, because that is the case a media query answers wrongly, and the three families the audit
+    marked "container" each stand in exactly one place in this product. <b>A container query with one
+    placement is a media query wearing a different name.</b> The threshold to revisit is the first
+    component placed in two columns of different widths.</p>
 
   <!-- ============================================================== transcript --><section class="tk-sec" id="transcript">
     <h2 data-n="06">The transcript: what already depended on width</h2>
@@ -267,19 +374,56 @@
     dressed up: <code>docs/backlog.md</code> item 115.</p>
   </section>
 
+  <!-- ================================================================== sweep --><section class="tk-sec" id="sweep">
+    <h2 data-n="09">The width sweep, and the control that had to come first</h2>
+    <p class="tk-note"><b>A defect lives between the points.</b> Three snapshots at three widths
+    prove three widths, and the worst width is the one where something no longer fits and no rung has
+    fired yet. <b>320 to 1600 at 40px, 10px within 20 of each rung, one pixel either side of each
+    rung: 50 widths.</b></p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th></th><th>readings</th><th>result</th></tr></thead>
+        <tbody>
+          <tr><td>painted tree, horizontal scroll</td><td>106 x 50 = <b>5,300</b></td><td><b>0 chasm widths</b></td></tr>
+          <tr><td>grey tree, horizontal scroll</td><td>104 x 50 = <b>5,200</b></td><td><b>0 chasm widths</b></td></tr>
+          <tr><td>carriers and <code>.desk-only</code></td><td><b>5,250</b></td><td><b>0 disagreements</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>The control came first, because 0 is the answer a blind probe gives too.</b>
+    A 2000px block injected into five screens was seen in <b>20 of 20</b> readings at 320, 640, 900
+    and 1600, and only then was the 0 worth reporting. <b>New behaviour, step 5, is answered in the
+    short form</b>: the audit named none, the product has exactly one list-and-detail pair, and Event
+    Detail is a mandatory context screen carrying the growth zone the product exists to serve. A
+    split view would halve exactly the screen this stage widens. A step answered with a reason is an
+    answer.</p>
+  </section>
+
   <!-- ================================================================ closing --><section class="tk-sec" id="closing">
-    <h2 data-n="09">What this page decided</h2>
+    <h2 data-n="10">What this page decided</h2>
     <ol class="tk-steps">
       <li><b>1</b><span><b>The ladder stays three rungs in px</b>, and it becomes a registry: no number
       may stand in a product media query that is not on it. The limitation that a query cannot read a
       variable is what makes the check possible at all.</span></li>
-      <li><b>2</b><span><b>Two tokens are added and two are refused.</b> <code>--measure</code> and
-      <code>--grid-col-min</code> exist; <code>--grid-gap</code> does not, because the space ladder is
-      already the gap ladder, and a column-count token does not, because the track counts.</span></li>
+      <li><b>2</b><span><b>Four tokens are added and four are refused.</b> <code>--measure</code>,
+      <code>--grid-col-min</code>, <code>--rail-width</code> and <code>--menu-min</code> exist;
+      <code>--grid-gap</code> does not, because the space ladder is already the gap ladder, a
+      column-count token does not, because the track counts, a <code>--sticky-gap</code> does not, for
+      the same reason as the first, and rem rungs do not, for the reason in section 08. <b>The test
+      for a name is how many files share the fact</b>: 44 of the 88 layout literals stand in one file
+      and stay there, and of the 15 shared values only two were one fact.</span></li>
       <li><b>3</b><span><b>New behaviour is 0</b>, and the reason is upstream: the one list-and-detail
       pair in this product has a rule saying the detail may never be bypassed.</span></li>
-      <li><b>4</b><span><b>The audit's real harvest is 38 over-long lines</b>, of four named kinds,
-      and the worst of them is the sentence the product's second principle is about.</span></li>
+      <li><b>4</b><span><b>The audit said 38 over-long lines and the number is 12</b>, because the
+      first pass measured the BOX: a flex row of a thumbnail, a clamped question and an odds figure has
+      a 106ch box and no 106ch line, 27 times. The worst of the 12 is still the sentence the product's
+      second principle is about, and 15 over the measure is 3 now.</span></li>
+      <li><b>6</b><span><b>The shell fork is A, and it was proved rather than designed.</b> The bottom
+      bar leaves the paint, the tab order and the accessibility tree at one pixel, and the Tab walk
+      found 440 focus stops on invisible controls that no stylesheet reading could have.</span></li>
+      <li><b>7</b><span><b>The sweep is 320 to 1600 over 50 widths</b>: 10,500 readings, 0 chasm
+      widths, 5,250 carrier readings, 0 disagreements, and a deliberate overflow seen 20 of 20 first,
+      because 0 is also what a blind probe reports.</span></li>
       <li><b>5</b><span><b>rem is refused with its measurement attached</b>, and the finding it
       uncovered is bigger than the question that found it: the product ignores the browser's font
       setting entirely.</span></li>

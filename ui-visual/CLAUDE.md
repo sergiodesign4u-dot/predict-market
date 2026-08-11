@@ -6,6 +6,15 @@ type, radius, photography, texture. It does not own what is on the page.
 ## The invariants
 
 - **A screen carries no styles of its own.** One link, `../components/index.css`, and nothing else.
+- **AND THAT INCLUDES A MEDIA QUERY. NEVER, IN ANY SCREEN FILE.** Adaptation lives in a token, a
+  component, a pattern or the shell, and nowhere else. It is written here as well as in
+  `components/CLAUDE.md` because the day it breaks is not the day it is written: this tree is
+  assembled by many hands at once, and twenty hands each adding one honest little breakpoint is how
+  the adaptive layer ends up scattered across twenty files that no rung and no registry can see, the
+  same way inline CSS scattered across this tree once before. Measured at Responsive step 4, over all
+  106 screens: **0**. The registry that makes the check possible is in `components/tokens.css`, page
+  frame, and the reason a query cannot simply read a token is that `@media` resolves before the
+  variable cascade and fails silently.
   A `<style>` block or a `style=` attribute is a rule in the one place the system cannot see. Three
   things are not styling and may stay: a datum (a bar drawn to a width), the event photograph as
   `style="background-image:..."`, and a value the page script writes at run time.

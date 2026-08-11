@@ -109,6 +109,14 @@
 .hiw-faq dl{margin:var(--space-8) 0 0}
 .hiw-faq dt{font-size:var(--text-13);font-weight:var(--weight-semibold);color:var(--text-primary);margin:var(--space-12) 0 var(--space-4)}
 .hiw-faq dt:first-of-type{margin-top:var(--space-2)}
+/* A CAP WAS WRITTEN HERE ON 2026-08-12 AND TAKEN OFF THE SAME HOUR, and the reason is worth
+   the four lines. The step 4 walk reported one `dd` at 89ch and this is the only `dd` family
+   the how-it-works page has, so the cap went here with a paragraph of reasoning about the
+   icon column. Re-reading the ancestor chain instead of the tag name, the 89ch element is
+   `dd < dl < section.feed-seo`, on `event-feed-logged-out.html`, which is the SEO plate and
+   a decision already taken: `--container-read` owns that column and says why. So the rule
+   capped a family that measures INSIDE the band, and its comment stated a cause that was not
+   the cause. A selector is not an identification. */
 .hiw-faq dd{font-size:var(--text-13);line-height:var(--leading-base);color:var(--text-muted);margin:0}
 
 /* THE PAGE. A page is not a bigger dialog: it has room, so the hero gets an edge

@@ -203,18 +203,284 @@ pair is a property of the semantic level, which is colour. Width and spacing are
 
 ## The shell
 
-To be filled by step 3. The fork is already half decided upstream: `ia/docs/sitemap.md` records that
-the mobile bottom nav is replaced on desktop by the lean header, and `bottomnav.css` already does it
-at DESK 640. What is missing is the proof that exactly one top-level navigation carrier stands at any
-width, by computed style and a tab pass.
+Step 3, 2026-08-11. **The fork is answered A, and it was answered at 03a rather than here.** This
+stage decides the FORM of the navigation and never its items, so the three questions are asked of
+`ia/docs/sitemap.md` and the answers are read off it.
+
+| the question | the answer | where it is written |
+|---|---|---|
+| how many top-level items | **four**: Events, My Bets, Favorites, Portfolio | bottom-nav table, `sitemap.md` |
+| a second level that must stay visible | **no**: the categories band is a second level and it is not permanent, it rides the sticky header and only on the browse screens | D-desktop-1 |
+| does a wide screen take side space for new behaviour | **no**: the audit named 0 new behaviour | Part B above |
+
+Four items and no permanent second level is branch **A**, the items move into the header. The
+product's version of A is the **lean header**: Events becomes the logo, My Bets and Profile fold into
+the avatar menu, Favorites and Notifications become icons in the utility cluster, and the balance is
+the cluster's swap. No vertical rail arrives, and the desktop introduces no destination the phone
+does not have.
+
+**It was already built, and step 3 is therefore a proof rather than a design.** `bottomnav.css` hides
+the bar from DESK 640 up and `base.css` turns `.desk-only` on at the same rung.
+
+### The proof, on three instruments, over 106 painted screens
+
+| what was read | below 640 | at 640 and above |
+|---|---|---|
+| `.bottom-nav` computed | **painted on 105 of 106** | **`display:none` on all 105** |
+| `.desk-only` computed, 178 elements | `none` on all 178 | `flex` on all 178 |
+| tab stops inside the bar | **4** | **0** |
+| `Primary (mobile)` in the accessibility tree | **present** | **absent** |
+| header tab stops | 3 | 7 at 640, **8 from 760** where `.hiw-btn` returns |
+
+So the swap happens at one pixel, in one direction, and the carrier that leaves leaves the paint,
+the tab order and the accessibility tree together. **A hidden carrier does not linger here**, which is
+the whole reason the check is a Tab walk and not a stylesheet read.
+
+The one screen of the 106 that has neither carrier is `overview.html`, which is the tree's own index
+and not a product screen.
+
+### What "exactly one carrier" is actually true of, stated rather than assumed
+
+Counting every rendered link to one of the four destinations, by the region that holds it:
+
+| width | carriers offering a top-level destination |
+|---|---|
+| 360, 639 | **bottom nav + footer** on 73 screens, footer alone on 32 |
+| 640 to 1440 | **header + footer** on 73 screens, footer alone on 32 |
+
+**There is exactly one PRIMARY carrier at every width and there is a footer at every width**, and the
+footer is not a defect: it is secondary navigation, it never changes at a rung, and it carries Events
+and My Bets on all 105. The 32 screens with the footer alone are the logged-out ones, where the bar
+and the cluster have nothing to point at. Saying "one carrier" without saying this would be true of
+the primary and false of the page.
+
+**Two of the four destinations are one interaction deeper on the desk**, My Bets and Portfolio, both
+inside the avatar menu, so neither is a rendered link until it is opened. That is not a finding of
+this stage: `sitemap.md` D-desktop-1 states the tradeoff and records that it was accepted for a lean
+header, with the hamburger reserved to surface more as the app scales.
+
+### What the tab pass found that the stylesheet could not
+
+**440 focus stops on invisible controls, on 88 screens, at every width**, all of them the five links
+of the condensed category band. `max-height:0` takes a band off the page, `overflow:clip` takes it
+away from the pointer, and `opacity:0` takes its ink, and **not one of the three touches the tab
+order**. Every one of the five also sits under `aria-hidden="true"`, so the stop was invisible to the
+eye and unnamed to a screen reader at the same time.
+
+`visibility` is the property that closes it, and it is now in both trees: the collapsed band is
+`visibility:hidden` and the `.scrolled` band is `visibility:visible`, in `components/header.css` and
+in the 87 grey files that carry their own copy of the rule. **440 to 0 in the paint and 0 in the
+grey, with the band still opening on all 87.** The layout control is 0 differing rows of 24, which it
+had to be: `visibility` reserves the box it hides.
+
+**The open state is left, on purpose, as `docs/backlog.md` 118.** With `.scrolled` forced on, the
+band is 54px tall with five visible operable links and still says `aria-hidden="true"`, and on **48 of
+the 105 screens it is the only category navigation in the document**. Which way that resolves is a
+question about the navigation model, and this stage may not answer it.
+
+### Three instrument errors, recorded because each one changed a number
+
+- **`getBoundingClientRect` plus a `display` walk called a shut dropdown painted**, 1,752 times. A
+  closed `<details>` puts its children in `::details-content` at `content-visibility:hidden`: they
+  keep a box and a computed `display` and are never rendered. `checkVisibility` is the only one of
+  the three instruments that caught both this and the `opacity:0` band, so it is the one the numbers
+  above are taken with.
+- **The first Tab walk was capped at 120 stops and never reached the bottom bar**, which sits after
+  the footer in the DOM: it reported 0 stops in a carrier that has 4. The bar's first tab stop on the
+  event feed is number **87 of 118**.
+- **The harness counted as product navigation**, `.wf-nav` arriving in the accessibility tree as a
+  fifth landmark. That is the fifth reading this chrome has entered in this stage, so it is removed
+  before the walk rather than subtracted after it.
+
+And the census that had to be corrected twice: a first pass called 1,063 controls ghosts by counting
+anything invisible, which swept in every `display:none` control the rungs turn off. **`display:none`
+is the RIGHT way to hide, because it takes the control out of the tab order with it.** A ghost is
+only a control that is invisible AND still has a box, and it is proved by focusing it and asking
+where focus landed. 1,063 became 446, of which 440 were the band and 6 are `.ptab-in`, the visually
+hidden radio of the CSS-only profile tabs, whose ring `tabs.css` already forwards to the label.
+
+**And 18 of the 105 were hiding behind a modal.** The sheet screens read 0 ghosts not because the
+band is fixed there but because a `<dialog>` shown modally makes the rest of the document inert. The
+honest pair of numbers is 440 on 88 screens now and 525 on 105 the moment a sheet is shut.
 
 ## Component behaviour on width
 
-To be filled by step 4, together with the placements of `--measure` on the four classes named above.
+Step 4, 2026-08-12.
+
+### The registry holds, and it was checked rather than trusted
+
+Every `@media` in `components/` read and every number compared against the ladder:
+
+| number | rules | verdict |
+|---|---|---|
+| 639.98 / 640 | 8 / 6 | DESK, both sides |
+| 759.98 / 760 | 4 / 3 | DETAIL, both sides |
+| 900 | 6 | RAIL |
+| 560, 620, 980 | 2, 1, 1 | **named one-offs**, and each carries its own measurement beside it, closed by backlog 72 |
+| 1140 | 2 | HARNESS, not the product |
+
+**33 width queries, every number on the registry, and 0 `@media` in any of the 106 screen files.**
+The three one-offs were not taken on trust either: each one says in a comment what collapsing it to
+the nearest rung would cost, in pixels, and 560 and 980 both cost a control or a card going backwards.
+
+### The measure, placed on three classes, and the audit's own number corrected
+
+| | before | after |
+|---|---|---|
+| continuous wrapping text blocks | 775 | 777 |
+| **over 75ch** | **15** | **3** |
+
+The three that remain are the `.feed-seo` family, two paragraphs and a `dd`, and they are an existing
+decision: `--container-read` is 800px and `tokens.css` says why.
+
+| placed on | file | was |
+|---|---|---|
+| `.resolution` | `event-detail.css` | 9 elements at up to **106ch** |
+| `.sys-note` | `state-block.css` | 1 at **154ch**, the longest line in the product |
+| `.protect.protect-page` | `notice.css` | 2 at 77ch, and one 117-character line that never wrapped |
+
+**Step 1 said 38 and the number is 12.** The step-1 pass measured the element's box, and
+`.related-list li` is a flex row of a 46px thumbnail, a question clamped to two lines and an odds
+figure: **a 106ch box with no 106ch line in it**, 27 times, which was 27 of the 38. The corrected
+filter is itself the finding, and it is written into `tokens.css` beside the token: of 775 candidates
+it throws out 261 standing on one line, 40 line-clamped, **27 whose child is laid out as a row**, and
+3 holding a block of their own.
+
+**A cap was also written and taken off within the hour.** The walk reported one `dd` at 89ch, and the
+only `dd` family the how-it-works page has is `.hiw-faq dd`, so the cap went there with a paragraph
+about the icon column. Reading the ancestor chain rather than the tag name, the element is
+`dd < dl < section.feed-seo` on `event-feed-logged-out.html`: a family already decided, measuring
+inside its own rule. **A selector is not an identification**, and the reverted rule keeps its four
+lines in `hiw.css` so the next reader does not repeat it.
+
+### Backlog 116 closed: the grey tree computes its columns now instead of declaring them
+
+104 grey files carried `@media (min-width:960px){repeat(3,...)}` and `@media
+(min-width:1280px){repeat(4,...)}` plus a two-column rule at 640, against a painted tree that says
+the same thing with `repeat(auto-fit,minmax(min(100%,var(--grid-col-min)),1fr))` and no query at all.
+**Three rules and two unnamed widths deleted from all 104, replaced by the one fluid track.**
+
+Counted in a browser rather than read, one column count per width:
+
+| | 360 | 639 | 640 | 641 | 760 | 900 | 960 | 1100 | 1280 | 1440 | 1600 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| painted | 1 | 1 | 1 | 1 | 2 | 2 | 2 | 3 | 3 | 4 | 4 |
+| grey | 1 | 2 | 2 | 2 | 2 | 2 | 3 | 3 | 4 | 4 | 4 |
+
+**The mechanism agrees and the container does not**, which is a different statement from the one the
+row opened with. Both trees now compute from a 300px floor and neither declares a count; the grey
+reaches each step earlier because its content column is wider at the same window and its gap is 10px
+against the painted `--space-16`. The row asked for the hard-coded count to go, and it is gone. The
+column-width difference between the trees is not this row and is not invented by this edit.
 
 ## Container thresholds
 
-To be filled by step 4. There are none today: `@container` and `container-type` are both 0.
+**Still none, and the reason is a measurement rather than a preference.** `@container` and
+`container-type` are both 0 in all four corpora, and a container query earns its place when one
+component stands in two materially different slots, because that is the case a media query answers
+wrongly. The three families the audit marked "container" (Notifications, Wallet, How it works) each
+stand in exactly one place in this product, so a query on their container would resolve the same as a
+query on the window, every time, in more syntax. **A container query with one placement is a media
+query wearing a different name.** The threshold to revisit is the first component placed in two
+columns of different widths.
+
+### What each component does with width, filled for all 45
+
+`inventory.md` carries the column now, read from the product at twelve widths on the screen where
+each component stands widest, with every dialog opened.
+
+| verdict | n | what it means |
+|---|---|---|
+| **FILLS its container** | 35 | no width behaviour of its own at all |
+| **FIXED** | 5 | chip 81px, filters 152, logo 86, navitem 258, toggle 44 |
+| **CHANGES its share** | 3 | betpanel, dialog, skeleton |
+| **GONE in a band, then fixed** | 2 | button through `.hiw-btn`, iconbtn through the hamburger |
+
+**35 of 45 have nothing to say about width**, which is the system working: adaptation lives in the
+shell, the patterns and the page frame, and the bricks take what they are given. So the
+"What it does with width" section was written on the **21** pages whose component owns a width query,
+and on no others, because a section saying "nothing" on 24 pages is noise that the inventory column
+already carries once.
+
+**The column reads the component against its PARENT'S CONTENT BOX, and that correction is the
+finding.** Measured against the window, **33 of 43 read as stepping at 640**, because the page gutter
+goes 14 to 40 there and takes 51px out of the content column: that is the frame's behaviour arriving
+in every row. Measured against the parent's BORDER box, seven more read as changing their share,
+because the parent's own padding steps at the same pixel. **A component that is fluid inside a
+container that steps is still fluid.** The same pass first picked `.sel` as the probe class for three
+different components, because a class named by two component files is nobody's, and it read `button`
+as "gone in a band" because the widest `.btn` in the product is `.hiw-btn`, which is one face of
+eight and `display:none` below DETAIL.
+
+### The ban is written in two places
+
+**No `@media` in a screen file, ever.** It is in `components/CLAUDE.md` and in `ui-visual/CLAUDE.md`
+both, because a rule kept in one place is a rule half the hands never meet, and this tree is
+assembled by many hands at once. Measured: 33 width queries in the system, **0 in any of the 106
+painted screens**.
+
+### Backlog 43, and the answer is no
+
+The row had been open since 2026-08-08 waiting for this stage by name: **do the raw layout px need a
+scale of their own?** Censused with comments and media queries excluded, because prose is not a rule
+and a rung is registered elsewhere: **88 genuine layout literals in 51 distinct values, not 81.** The
+row's 81 had counted **127 box-shadow numbers and 6 filter numbers**, and a shadow offset is not a
+layout dimension.
+
+**No, and it is not a shrug.** A ladder is for values standing in a RELATION, which is what makes
+`--space-8` and `--space-12` two steps of one thing. 214, 300, 196, 322 and 160 stand in no relation
+at all: each is one measurement of one part, and a shared scale would invent an arithmetic nobody
+measured and send every later reader looking for meaning in the gaps.
+
+**What some of them needed was a name, and the test is how many files use one.**
+
+| | |
+|---|---|
+| in exactly one file | **44 literals**, 36 values, 18 files. Each is that component's own measurement and stays there |
+| shared by two files or more | **44 literals**, 15 values, of which only **two are one fact** |
+| `--rail-width:214px` | `toc.css` and `catnav.css` had already agreed **in prose**: the comment says "the same 214px" and nothing held it |
+| `--menu-min:196px` | the floor of any panel hanging off a control, in `header.css` and `filters.css` |
+| refused | a `--sticky-gap`. The 16px at the foot of the three sticky columns is `var(--space-16)` now, for the reason `--grid-gap` was refused |
+| left raw | the three sticky top offsets, 120, 120 and 66: they measure what stands above each column, and that differs |
+
+Tokenisation proved inert: **0 differing rows of 30** computed readings, six elements over five widths.
+
+---
+
+## Step 5. New behaviour, in the short form
+
+The audit named none, and the stage does not invent one to fill a step. The full argument is under
+"New behaviour is refused" above and it rests on `ia/docs/flows.md`: the product has exactly one
+list-and-detail pair, and Event Detail is a **mandatory context screen** carrying growth zone 2 from
+`cjm-as-is.md`, "explain the number, tell the story". A split view would halve exactly the screen the
+product exists to widen, and none of the five named growth zones is "I lose my place going back and
+forth". There is no second pair: bets, notifications and the wallet have no detail screen at all.
+
+**A step answered in the short form with a reason is an answer.** No new state, no focus management,
+no history handling, and no microcopy for an empty pane that would have needed writing.
+
+## Step 6. The width sweep
+
+The instrument of the whole stage, because **a defect lives between the points**: three snapshots at
+three widths prove three widths, and the worst width is the one where something no longer fits and no
+rung has fired yet.
+
+**320 to 1600 at 40px, 10px within 20 of each rung, and one pixel either side of each rung: 50
+widths.** Each screen is loaded once and resized, so the reading is of the layout rather than of
+10,000 page loads.
+
+| | readings | result |
+|---|---|---|
+| painted tree, horizontal scroll | 106 x 50 = **5,300** | **0 chasm widths** |
+| grey tree, horizontal scroll | 104 x 50 = **5,200** | **0 chasm widths** |
+| carriers and `.desk-only` | **5,250** | **0 disagreements** |
+
+Below 640 the bar stands and every `.desk-only` is off; from 640 up the mirror. At every one of the
+50 widths, on every screen that carries both.
+
+**The control came first, because 0 is the answer a blind probe gives too.** A 2000px block injected
+into five screens was seen in **20 of 20** readings at 320, 640, 900 and 1600. The probe is not blind,
+and only then was the 0 worth reporting.
 
 ---
 

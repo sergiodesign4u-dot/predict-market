@@ -353,6 +353,38 @@
   --gutter:40px;             /* the two-stone inset. 14px on mobile, below */
 
   /* ---- the two values the width stage added, 2026-08-11, Responsive step 2 ---- */
+  --rail-width:214px;        /* THE VERTICAL RAIL THAT ARRIVES AT RUNG 900, and it is a token
+                                because TWO components already agreed on it in prose and nothing
+                                held the agreement: `toc.css` says "the same 214px" in a comment
+                                beside `.toc{flex:0 0 214px}` and `catnav.css` says it again for
+                                `.subcat`. A number written twice with a sentence explaining that
+                                it is the same number is the definition of a fact with no name. */
+  --menu-min:196px;          /* THE FLOOR OF A DROPPED PANEL, read by `header.css` for the avatar
+                                and notification menus and by `filters.css` for the filter panel.
+                                Two files, one role: a panel hanging off a control is never
+                                narrower than this, whatever the control is. */
+  /* ---- AND WHY THERE ARE ONLY TWO OF THEM, which is backlog 43's actual question ----
+     43 asked whether the raw layout px in this system need a scale of their own. Censused
+     2026-08-12, comments and media queries excluded because prose is not a rule and a rung is
+     registered elsewhere: 88 genuine LAYOUT literals in 51 distinct values. The 81 the row
+     counted included 127 box-shadow numbers and 6 filter numbers, and a shadow offset is not a
+     layout dimension.
+     THE ANSWER IS NO, AND IT IS NOT A SHRUG. A ladder is for values that stand in a RELATION,
+     which is what makes --space-8 and --space-12 two steps of one thing. 214, 300, 196, 322 and
+     160 stand in no relation at all: each is one measurement of one part, and putting them on a
+     shared scale would invent an arithmetic nobody measured and would make every later reader
+     look for a meaning in the gaps.
+     WHAT SOME OF THEM NEEDED WAS A NAME, AND THE TEST IS HOW MANY FILES USE THEM. 44 of the 88
+     stand in exactly one file, 36 values across 18 files, and every one of those is that
+     component's own measurement and stays where it is, with its reason beside it. The other 44
+     are shared, and of the 15 shared VALUES only these two are one FACT: the rest are
+     coincidences of arithmetic, a 4px that is an offset here and an inset there, an 18px that is
+     a logo mark in one file and an icon in another.
+     AND ONE WAS REFUSED FOR THE REASON --grid-gap WAS REFUSED. The `16px` at the foot of the
+     three sticky columns is `var(--space-16)` now, not a `--sticky-gap`: the space ladder is
+     already that number, and a second name for 16px is one number with two spellings. The three
+     sticky TOP offsets stay raw, 120, 120 and 66, because they are not one fact either: they
+     measure what happens to stand above each column, and what stands above differs. */
   --measure:66ch;            /* THE LINE MEASURE FOR CONTINUOUS TEXT, and it is in `ch` on
                                 purpose: `ch` is the width of a zero in the ELEMENT's own
                                 font, so one number caps an 11px legal line and a 16px
@@ -361,26 +393,34 @@
                                 66 comes from the band DESIGN.md section 3 already states,
                                 60 to 75, and it agrees with --container-doc, which was
                                 measured at 67ch of the same face.
-                                THE CENSUS THIS TOKEN EXISTS FOR, taken at 1440 over all 106
-                                painted screens with every dialog open, counting only text
-                                that ACTUALLY WRAPS, because a box is not a line: 41 elements
-                                measure over 75ch, and they are six kinds.
-                                  27  up to 117ch  .related-list p        event detail
+                                THE CENSUS THIS TOKEN EXISTS FOR, re-taken at step 4 at 1440 over
+                                all 106 painted screens with every dialog open. It counts only
+                                CONTINUOUS TEXT THAT WRAPS, and the filter is the finding: of
+                                775 candidates it throws out 261 that stand on one line, 40 that
+                                are line-clamped, 27 whose child is laid out as a ROW, and 3 that
+                                hold a block of their own. 15 are over 75ch, in five kinds.
                                    9  up to 106ch  .rules-panel .resolution
                                    1      154ch    .sys-note in .cat-main
-                                   1      166ch    .protect-page in .cat-main
+                                   2       77ch    .protect-page in .cat-main
                                    2       89ch    .feed-seo p            ALREADY DECIDED
-                                   1       89ch    one unclassed paragraph
-                                The two .feed-seo paragraphs are not a defect: --container-read
-                                twenty lines up says why 89 stands there on purpose. The other
-                                38 are, and the loudest is the 106ch one: `.resolution` is the
-                                NAMED RESOLUTION RULE, which is the second design principle of
-                                this product stated as a sentence, running at 40 per cent over
-                                the measure on the screen where trust is decided.
-                                The token lands here and the placements land on the components
-                                that own those four classes, at step 4. It is deliberately not
-                                a blanket rule on `p`: a paragraph inside a card is already at
-                                38ch and a floor that reaches it teaches the wrong thing. */
+                                   1       89ch    a dd, and it is .feed-seo too
+                                STEP 1 SAID 38 AND THE NUMBER IS 12, because the first pass
+                                measured the element's BOX. `.related-list li` is a flex row of
+                                a 46px thumbnail, a question clamped to two lines and an odds
+                                figure: it has a 106ch box and no 106ch line, and it was 27 of
+                                the 38. The three .feed-seo elements are not a defect either:
+                                --container-read twenty lines up says why 89 stands there.
+                                The loudest of the 12 is the 106ch one: `.resolution` is the
+                                NAMED RESOLUTION RULE, the second design principle of this
+                                product stated as a sentence, running 40 per cent over the
+                                measure on the screen where trust is decided.
+                                PLACED AT STEP 4 on three classes, in the three components that
+                                own them: .resolution (event-detail.css), .sys-note
+                                (state-block.css) and .protect-page (notice.css). 15 over the
+                                measure becomes 3, and the 3 are the .feed-seo family.
+                                It is deliberately not a blanket rule on `p`: a paragraph inside
+                                a card is already at 38ch and a floor that reaches it teaches
+                                the wrong thing. */
   --grid-col-min:300px;      /* THE CARD FLOOR, and the only number the fluid track needs.
                                 Moved out of patterns/card-grid.css on 2026-08-11, where it
                                 stood as a literal inside `minmax(min(100%,300px),1fr)`: a

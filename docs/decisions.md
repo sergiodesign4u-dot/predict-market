@@ -10,6 +10,173 @@ so a claim here is true as of its own date and nowhere else.
 
 Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
+---
+
+## 2026-08-12 - Responsive is closed, and the two numbers the stage is proudest of are the ones it took back
+
+Steps 4, 5 and 6. The stage ends with 33 width queries, 0 in a screen file, three rungs kept as a
+registry, four tokens added and four refused. **What is worth writing down is not that, it is that
+the stage corrected its own findings twice and its own instrument five times.**
+
+**THE REGISTRY HOLDS AND IT WAS CHECKED RATHER THAN TRUSTED.** Every `@media` in `components/` read
+and every number compared: 639.98 and 640 (8 and 6 rules), 759.98 and 760 (4 and 3), 900 (6), the
+three named one-offs 560, 620 and 980, and 1140 which is the harness. **0 media queries in any of the
+106 painted screen files.** The three one-offs were not taken on trust either: each says in a comment
+what collapsing it to the nearest rung would cost, in pixels, and two of them cost a control or a
+card going backwards.
+
+**STEP 1 SAID 38 OVER-LONG LINES AND THE NUMBER IS 12.** The step-1 pass measured the element's BOX,
+and `.related-list li` is a flex row of a 46px thumbnail, a question clamped to two lines and an odds
+figure: **a 106ch box with no 106ch line in it**, 27 times, which was 27 of the 38. The corrected
+filter is the finding and it lives beside the token: of 775 candidate blocks it throws out 261 that
+stand on one line, 40 that are line-clamped, **27 whose child is laid out as a row**, and 3 that hold
+a block of their own. `--measure` is placed on three classes, `.resolution` (9 at up to 106ch, the
+named resolution rule, which is this product's second design principle written as a sentence),
+`.sys-note` (154ch, the longest line in the product) and `.protect-page`. **15 over the measure
+becomes 3**, and the 3 are `.feed-seo`, which `--container-read` decided long ago.
+
+**AND A CAP WAS WRITTEN AND TAKEN OFF WITHIN THE HOUR.** The walk reported one `dd` at 89ch and the
+only `dd` family the how-it-works page has is `.hiw-faq dd`, so the rule went there with a paragraph
+of reasoning about the icon column. Read by ancestor chain rather than by tag name, the element is
+`dd < dl < section.feed-seo` on `event-feed-logged-out.html`: a family already decided, measuring
+inside its own rule. **A selector is not an identification.** The reverted rule keeps its comment in
+`hiw.css` so the next reader does not repeat it.
+
+**BACKLOG 116: THE GREY TREE COMPUTES ITS COLUMNS NOW.** Three rules and two unnamed widths, 960 and
+1280, deleted from all 104 grey files and replaced by the one fluid track the paint already used.
+Counted in a browser rather than read: painted 1/1/1/1/2/2/2/3/3/4/4 and grey 1/2/2/2/2/2/3/3/4/4/4
+from 360 to 1600. **The mechanism agrees and the container does not**, which is a different sentence
+from the one the row opened with, and it is not invented by this edit: the grey content column is
+wider at the same window and its gap is 10px against the painted 16.
+
+**BACKLOG 43: DO THE RAW LAYOUT PX NEED A SCALE OF THEIR OWN? NO, AND IT IS NOT A SHRUG.** Censused
+with comments and media queries excluded: **88 genuine layout literals in 51 values, not 81.** The
+row's 81 had counted **127 box-shadow numbers and 6 filter numbers**, and a shadow offset is not a
+layout dimension. A ladder is for values standing in a RELATION, which is what makes `--space-8` and
+`--space-12` two steps of one thing; 214, 300, 196, 322 and 160 stand in no relation at all, and a
+shared scale would invent an arithmetic nobody measured. **What some of them needed was a name, and
+the test is how many files use one.** 44 of the 88 stand in exactly one file and stay there. Of the
+15 shared values exactly two are one fact: `--rail-width:214px`, which `toc.css` and `catnav.css` had
+already agreed on **in prose**, the comment reading "the same 214px" while nothing held it, and
+`--menu-min:196px`. A `--sticky-gap` was refused for the reason `--grid-gap` was refused, and the
+16px is `var(--space-16)` now. Tokenisation proved inert: **0 differing rows of 30**.
+
+**WHAT EACH COMPONENT DOES WITH WIDTH, AND THE THREE WAYS THAT READING WAS WRONG.** 35 of 45
+components have **no width behaviour of their own at all**: they fill what they are given. 5 are
+fixed, 3 change their share, 2 go in a band. Getting there took three corrections. Measured against
+the WINDOW, **33 of 43 read as stepping at 640**, because the page gutter goes 14 to 40 there and
+takes 51px out of the content column: the frame's behaviour arriving in every row. Measured against
+the parent's BORDER box, seven more read as changing their share, because the parent's own padding
+steps at the same pixel. **A component that is fluid inside a container that steps is still fluid.**
+And the probe first picked `.sel` for three different components, because a class named by two
+component files is nobody's, and read `button` as "gone in a band" because the widest `.btn` in the
+product is `.hiw-btn`, one face of eight. The column is in `inventory.md` for all 45; the
+"What it does with width" section is on the **21** pages whose component owns a width query and on no
+others, because a section saying "nothing" on 24 pages is noise the column already carries once.
+
+**STEP 5 IS ANSWERED IN THE SHORT FORM AND THAT IS AN ANSWER.** The audit named no new behaviour, and
+the stage does not invent one to fill a step. The product has exactly one list-and-detail pair, Event
+Detail is a mandatory context screen carrying growth zone 2 from `cjm-as-is.md`, and a split view
+would halve exactly the screen the product exists to widen. No new state, no focus management, no
+history handling, and no microcopy for an empty pane.
+
+**STEP 6, THE SWEEP, AND THE CONTROL THAT HAD TO COME FIRST.** 320 to 1600 at 40px, 10px within 20 of
+each rung, one pixel either side: **50 widths**. Painted tree 5,300 readings, grey tree 5,200,
+carriers 5,250. **0 chasm widths and 0 carrier disagreements.** Below 640 the bar stands and every
+`.desk-only` is off; from 640 up the mirror, at every one of the 50 widths. **The control ran first
+because 0 is also what a blind probe reports**: a 2000px block injected into five screens was seen in
+**20 of 20** readings, and only then was the zero worth writing down.
+
+**AND THE INSTRUMENT FAILURE THAT WAS MINE, WHICH INVALIDATED THREE EARLIER VERIFICATIONS.**
+`ctx.newPage({viewport})` silently ignores the viewport: in Playwright those options belong to
+`newContext`, not to `newPage` on a context. Three runs therefore measured **1280 while reporting six
+different widths**, including the tree smoke test that closed step 3. Re-run with `setViewportSize`,
+the measure numbers held and the column comparison turned out to have been nonsense: the container
+read 1142px at a nominal 360. **An option that is ignored rather than rejected is the same class of
+defect as a media query that reads a variable**, and this repository now has both written down.
+
+---
+
+## 2026-08-11 - The shell was already right and the way it hid one band was not, and three properties that remove a thing from the eye remove it from nothing else
+
+Responsive step 3. The step's job was a fork with three legal answers, and the fork turned out to
+have been decided a stage earlier and built two stages ago, so the work became a proof. **The proof
+is what found the defect, and no reading of the stylesheet could have.**
+
+**The fork is A and it is read off 03a rather than argued here.** The stage decides the form of the
+navigation and never its items, so the three questions go to `ia/docs/sitemap.md`: four top-level
+items, no second level that has to stay visible, and no side space wanted for new behaviour, which
+the audit had already put at zero. Four items and no permanent second level is branch A, the items
+move into the header, and the product's version of A is the lean header that D-desktop-1 describes:
+Events becomes the logo, My Bets and Profile fold into the avatar menu, Favorites and Notifications
+become icons, the balance is the cluster's swap. **No rail, and no destination the phone does not
+have.**
+
+**The swap itself measures clean on three instruments.** Over all 106 painted screens at 360, 639,
+640, 641, 759, 760, 761, 899, 900, 901, 1280 and 1440: `.bottom-nav` is painted on 105 below the rung
+and `display:none` on all 105 above it; all 178 `.desk-only` elements go `none` to `flex` at the same
+pixel; the bar holds 4 tab stops below and 0 above; and `Primary (mobile)` is in the accessibility
+tree below and gone above. **The carrier that leaves leaves the paint, the tab order and the
+accessibility tree together**, which is the property the step exists to check, because a carrier
+hidden the wrong way stays reachable after the eye has stopped seeing it.
+
+**"Exactly one carrier" is true of the PRIMARY one and the page also has a footer, and that is
+written down rather than waved past.** Counting rendered links to the four destinations by region:
+below the rung it is the bottom nav plus the footer on 73 screens and the footer alone on 32; above
+it, the header plus the footer on 73 and the footer alone on 32. The footer never changes at a rung
+and carries Events and My Bets on all 105, and the 32 are the logged-out screens. Two of the four
+destinations are one interaction deeper on the desk, My Bets and Portfolio, both inside the avatar
+menu; that tradeoff is stated and accepted in D-desktop-1 and is not this stage's to reopen.
+
+**THE FINDING: 440 FOCUS STOPS ON CONTROLS NOBODY CAN SEE, ON 88 SCREENS, AT EVERY WIDTH.** All of
+them are the five links of the condensed category band. The band is hidden by `max-height:0`,
+`overflow:clip` and `opacity:0`, which between them take it off the page, away from the pointer and
+out of the ink, and **not one of the three touches the tab order**. Every one of the five also sits
+under `aria-hidden="true"`, so a person tabbing landed on a control the eye cannot see and a screen
+reader will not name, which is the pairing that makes it worse than either half.
+
+`visibility` is the property that closes it and `display:none` is the one that cannot be used: the
+band exists to transition, and `display` collapses the box the transition needs. `visibility` is
+animatable discretely, so it holds `visible` for the whole collapse and flips at the end. It is in
+`components/header.css` and in the 87 grey files that carry their own copy of the rule, because the
+tab order is structure and the grey tree owns structure. **440 to 0 in the paint and 0 in the grey,
+the band still opening on all 87, and the layout control at 0 differing rows of 24**, which it had to
+be, since `visibility` reserves the box it hides.
+
+**Half of it is deliberately not fixed, and the half is named.** With `.scrolled` forced on, the band
+is 54px of visible, operable links still carrying `aria-hidden="true"`. On the 57 screens that also
+carry the main `.cat-nav` that is arguably right, because announcing five categories twice is noise.
+**On the other 48 it is not right at all: those screens carry the condensed band and no main band, so
+the only route to a category is the one marked as not existing.** The two answers are opposite, the
+choice is about the navigation model rather than about a header, and the stage's own rule is that the
+model belongs to 03a. `backlog.md` 118.
+
+**FOUR INSTRUMENT ERRORS, AND THE STEP IS THE FOURTH PASS RUNNING WHERE THE INSTRUMENT WAS WRONG
+BEFORE THE FINDING WAS.**
+
+1. A rect plus a `display` walk called a shut dropdown painted, **1,752 times**. A closed `<details>`
+   puts its children in `::details-content` at `content-visibility:hidden`, where they keep a box and
+   a computed `display` and are never rendered. This repository had already written that down, in the
+   step 5 audit, about a different element.
+2. The first Tab walk was **capped at 120 stops** and never reached the bottom bar, which sits after
+   the footer in the DOM. It reported 0 stops in a carrier that has 4. The bar's first stop on the
+   event feed is number **87 of 118**, which is itself worth knowing about a phone's primary
+   navigation.
+3. The `ui-visual` harness arrived in the accessibility tree as a fifth navigation landmark. **That
+   is the fifth reading this chrome has entered in this stage alone.**
+4. The ghost census called **1,063** controls ghosts by counting everything invisible, which swept in
+   every `display:none` control the rungs correctly turn off. **`display:none` is the RIGHT way to
+   hide, because it takes the control out of the tab order with it.** Filtered by focusing each
+   candidate and asking where focus landed: 446, of which 440 are the band and 6 are `.ptab-in`, the
+   visually hidden radio of the CSS-only profile tabs, whose ring `tabs.css` already forwards to the
+   visible label.
+
+**And 18 of the 105 were hiding behind a modal.** The deposit, sign-in, win and loss screens ship
+with a `<dialog>` shown, which makes the rest of the document inert, so they read 0 ghosts while
+carrying five each. The honest pair of numbers is **440 on 88 screens with the sheets as they ship,
+and 525 on 105 the moment a sheet is shut**, and a single number would have been a claim about the
+sheet rather than about the band.
+
 ## The stage numbers in this file are the old ones
 
 The project used to count thirteen stages and ran one number ahead of the course from Information

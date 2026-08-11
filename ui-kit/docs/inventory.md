@@ -168,3 +168,65 @@ equal specificity are decided by which file was read last. Measured against the 
 which is exactly the class of change that renders identically until the day it does not. The reorder
 belongs in `consolidation.md` with a before-and-after measurement over the 41 screens, and it is the
 first thing that pass does.
+
+## Behaviour on width
+
+Added 2026-08-12 by Responsive step 4, and **filled for every component**, because an empty cell
+here would mean nobody knows what the part does on a wide screen. Read from the product at twelve
+widths, three rungs and one pixel either side of each, on the screen where each component stands
+widest, with every dialog opened.
+
+**The column measures the component against its PARENT'S CONTENT BOX and not against the window**,
+and that is the whole reason the numbers are worth anything. Measured against the window, 33 of the
+43 read as stepping at 640, because the page gutter goes 14 to 40 there and takes 51px out of the
+content column: that is the frame's behaviour arriving in every row. Measured against the parent's
+BORDER box, seven more read as changing their share, because the parent's own padding steps.
+**A component that is fluid inside a container that steps is still fluid.**
+
+| Component | Its own width query | What it does with width |
+|---|---|---|
+| `action-bar` | none | **FILLS** its container |
+| `betpanel` | 760 | **CHANGES** its share |
+| `browse-shell` | 900 | **FILLS** its container |
+| `button` | none | **GONE in a band**, then fixed |
+| `card` | 640 | **FILLS** its container |
+| `card-grid` | none | **FILLS** its container |
+| `catnav` | 640, 900 | **FILLS** its container |
+| `chart` | 760 | **FILLS** its container |
+| `chip` | 640, 900 | **FIXED**, 81px |
+| `comments` | none | **FILLS** its container |
+| `cookie-consent` | none | **FILLS** its container |
+| `detail-shell` | 760 | **FILLS** its container |
+| `dialog` | 640 | **CHANGES** its share |
+| `event-detail` | 560, 640 | **FILLS** its container |
+| `feed` | none | **FILLS** its container |
+| `filters` | 640 | **FIXED**, 152px |
+| `footer` | 640 | **FILLS** its container |
+| `header` | 640, 760 | **FILLS** its container |
+| `hero` | 620, 980 | **FILLS** its container |
+| `hiw` | 900 | **FILLS** its container |
+| `iconbtn` | 560 | **GONE in a band**, then fixed |
+| `input` | none | **FILLS** its container |
+| `list-head` | none | **FILLS** its container |
+| `loadmore` | none | **FILLS** its container |
+| `logo` | none | **FIXED**, 86px |
+| `market` | none | **FILLS** its container |
+| `navitem` | none | **FIXED**, 258px |
+| `notice` | none | **FILLS** its container |
+| `oddsbar` | none | **FILLS** its container |
+| `options` | none | **FILLS** its container |
+| `platehead` | none | **FILLS** its container |
+| `position` | 640 | **FILLS** its container |
+| `position-list` | none | **FILLS** its container |
+| `profile` | none | **FILLS** its container |
+| `quick` | none | **FILLS** its container |
+| `related` | none | **FILLS** its container |
+| `seo-plate` | 760 | **FILLS** its container |
+| `skeleton` | none | **CHANGES** its share |
+| `state-block` | none | **FILLS** its container |
+| `tabs` | none | **FILLS** its container |
+| `toast` | none | **FILLS** its container |
+| `toc` | 900 | **FILLS** its container |
+| `toggle` | none | **FIXED**, 44px |
+| `trustbar` | 760 | **FILLS** its container |
+| `yesno` | none | **FILLS** its container |

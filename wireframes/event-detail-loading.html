@@ -10,9 +10,10 @@
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
        Simple monochrome outline icons (stroke grey) so element footprint is real.
        Base = mobile (1 column, bottom nav). Min-width expansions:
-       640px -> bottom nav hidden, 2-column feed
-       960px -> 3-column feed
-       1280px -> 4-column feed
+       640px -> bottom nav hidden, desk header
+       the feed grid takes no query at all: auto-fit counts the columns from a 300px
+       floor, which is what the painted tree does through --grid-col-min. 960 and 1280
+       were a column count written by hand and are gone (docs/backlog.md 116).
        Header is the same lean component at all widths (logo + icon cluster);
        the second-level category nav sits directly under it. */
     * { box-sizing: border-box; }
@@ -198,7 +199,7 @@
     .toggle { border: 1px solid #888; background: #cfcfcf; font-size: 10px; padding: 2px 8px; cursor: pointer; }
     .toggle[aria-checked="true"] { background: #b8b8b8; font-weight: bold; }
 
-    .grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 10px; }
     .card { background: #ededed; display: flex; flex-direction: column; }
     .card .card-body { padding: 8px 10px; flex: 1; }
     .card .top { display: flex; gap: 8px; align-items: flex-start; }
@@ -297,14 +298,11 @@
     @media (min-width: 640px) {
       .bottom-nav { display: none; }
       .desk-only { display: inline-flex; }
-      .grid { grid-template-columns: repeat(2, minmax(280px, 1fr)); }
       .side { display: flex; gap: 16px; align-items: flex-start; }
       .side aside, .side section { margin: 0; }
       .side > aside { flex: 2; }
       .side > .nav-col { flex: 1; }
     }
-    @media (min-width: 960px) { .grid { grid-template-columns: repeat(3, minmax(280px, 1fr)); } }
-    @media (min-width: 1280px) { .grid { grid-template-columns: repeat(4, minmax(280px, 1fr)); } }
     /* ---- Shared in-page dialogs (native <dialog>) - injected for event-feed family ---- */
     dialog.app-dialog { width: 92%; max-width: 420px; border: 1px solid #999; background: #f0f0f0; color: #222; padding: 0; }
     dialog.app-dialog::backdrop { background: rgba(0,0,0,.4); }
@@ -576,8 +574,8 @@
     .hiw-faq dt:first-of-type { margin-top: 2px; }
     .hiw-faq dd { font-size: 13px; line-height: 1.5; margin: 0; }
     .app-dialog.hiw-dialog .hiw-arrow { width: 18px; height: 18px; }
-    .app-header .cat-condensed { max-height: 0; overflow: clip; }
-    .app-header.scrolled .cat-condensed { max-height: 54px; }
+    .app-header .cat-condensed { max-height: 0; overflow: clip; visibility: hidden; }
+    .app-header.scrolled .cat-condensed { max-height: 54px; visibility: visible; }
     .app-header .cat-condensed ul { list-style: none; margin: 0; display: flex; flex-wrap: nowrap; gap: 8px; padding: 8px 14px; overflow-x: auto; }
     .app-header .cat-condensed li { flex: 0 0 auto; }
     .app-header .cat-condensed a { display: inline-flex; align-items: center; min-height: 0; font-weight: 600; font-size: 13px; padding: 8px 12px; }

@@ -140,7 +140,7 @@
    contrast to check. It was found by building the header's own kit page and opening the
    menu on purpose, which is the one thing a stand does that a sweep does not.
    The position stays where it was declared first and this rule carries the SKIN only. */
-.avatar-menu .dropdown,.notif-menu .dropdown{background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);z-index:var(--z-menu);min-width:196px}
+.avatar-menu .dropdown,.notif-menu .dropdown{background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);z-index:var(--z-menu);min-width:var(--menu-min)}
 .avatar-menu li,.notif-drop li{border-top:var(--hairline) solid var(--border-hairline)}
 /* THE ACCOUNT MENU'S ROWS LEFT THIS FILE ON 2026-08-06 for components/navitem.css, and
    the three selectors above were SPLIT rather than moved, for the reason the <summary>
@@ -218,8 +218,25 @@
    already inherited from the rule above it, which is a no-op that reads as a
    decision; and the mark was the unthemeable copy. */
 .app-header{position:sticky;top:0;z-index:var(--z-header);background:var(--bg-slab-from);border-bottom:var(--hairline) solid var(--edge-groove-dark);box-shadow:0 1px 0 var(--edge-groove-light),0 14px 26px -20px var(--shadow-ink-72)}
-.app-header .cat-condensed{max-height:0;opacity:0;overflow:clip;transition:max-height var(--dur-slower) var(--ease-out),opacity var(--dur-slow) ease}
-.app-header.scrolled .cat-condensed{max-height:54px;opacity:1;border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
+/* THE COLLAPSED BAND WAS STILL IN THE TAB ORDER, ON EVERY SCREEN AND AT EVERY WIDTH, and
+   `visibility` is the one property that closes it, 2026-08-11, Responsive step 3.
+   `max-height:0` with `overflow:clip` takes the band off the page for the eye and for the
+   pointer, and `opacity:0` takes its ink. NEITHER OF THEM TOUCHES THE TAB ORDER. Walked with
+   Tab over the painted tree at 360, 639, 640 and 1440: five `.chip-quiet` links took focus on
+   every screen that carries a header, which is 440 focus stops on 88 screens with the sheet
+   screens excluded and 525 on 105 the moment a sheet is shut, because a modal <dialog> makes
+   the rest of the document inert and was masking eighteen of them rather than fixing them.
+   Every one of the five is invisible AND sits under `aria-hidden="true"`, so a person tabbing
+   landed on a control the eye cannot see and the screen reader will not name.
+   `display:none` would do it and cannot be used: it kills the transition this band exists for.
+   `visibility` is animatable discretely, so it holds `visible` for the whole collapse and flips
+   at the end, which is why it is in the transition list with the slower of the two durations.
+   THIS IS HALF THE DEFECT AND THE HALF THAT IS A COMPONENT'S TO FIX. The other half is that
+   the band is `aria-hidden="true"` while OPEN as well, where it is visible and operable, and
+   on 48 of the 105 screens it is the only category navigation in the document. That is a
+   question about the navigation model and it belongs to 03a, not to a stylesheet: docs/backlog.md 118. */
+.app-header .cat-condensed{max-height:0;opacity:0;visibility:hidden;overflow:clip;transition:max-height var(--dur-slower) var(--ease-out),opacity var(--dur-slow) ease,visibility var(--dur-slower)}
+.app-header.scrolled .cat-condensed{max-height:54px;opacity:1;visibility:visible;border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 /* THE CONDENSED STRIP'S CHIPS LEFT THIS FILE ON 2026-08-06 for components/chip.css, where
    they are `.chip.chip-quiet`: transparent on a transparent 1px band inside a pill, which
    is the face a chip wears on a scrolling strip where a ground would make a row of eight
