@@ -379,7 +379,9 @@
     .ed-main { flex: 1; min-width: 0; }
     /* schematic probability chart (raised fidelity per design call: a drawn grey line, still no color) */
     .chart-wrap { padding: 0; }
-    .chart-svg { width: 100%; height: 130px; display: block; border: 1px solid #bbb; background: #ededed; }
+    .chart-svg { width: 100%; height: 160px; display: block; border: 1px solid #bbb; background: #ededed; }
+    /* rung: DETAIL 760. The paint steps this chart 160 -> 280 there: components/chart.css. */
+    @media (min-width: 760px) { .chart-svg { height: 280px; } }
     .chart-svg polyline { fill: none; stroke: #777; stroke-width: 1.5; }
     .chart-svg .grid-l { stroke: #d2d2d2; stroke-width: 1; }
     .chart-svg .nowline { stroke: #999; stroke-width: 1; stroke-dasharray: 3 3; }
@@ -426,7 +428,6 @@
     }
 
     /* ---- Category page: side sub-category panel + filtered feed ---- */
-    .cat-layout { display: flex; flex-direction: column; gap: 0; }
     .cat-main { flex: 1; min-width: 0; }
     .subcat { background: #ededed; }
     .subcat .zone-tag { background: #d2d2d2; }
@@ -437,8 +438,10 @@
       white-space: nowrap; display: inline-flex; gap: 6px; align-items: center; }
     .subcat li[aria-current="page"] button { background: #b8b8b8; border-width: 2px; font-weight: bold; }
     .subcat .cnt { font-size: 9px; color: #555; border: 1px solid #bbb; background: #e8e8e8; padding: 0 4px; }
-    @media (min-width: 640px) {
-      .cat-layout { flex-direction: row; align-items: flex-start; }
+    /* rung: RAIL 900, a rail beside the content. The paint pins it there:
+       components/catnav.css. This block said 640 in 92 files and 900 in one.
+       `.cat-layout` left with it: 0 files in this tree carry that markup. */
+    @media (min-width: 900px) {
       .subcat { flex: 0 0 210px; position: sticky; top: 8px; border: 1px solid #999; }
       .subcat ul { flex-direction: column; overflow: visible; flex-wrap: nowrap; }
       .subcat button { width: 100%; justify-content: space-between; }
@@ -451,6 +454,9 @@
     dialog.app-dialog::backdrop { background: rgba(0,0,0,.4); }
     /* ---- How it works: header button + quick-explainer dialog (WF) ---- */
     .hiw-btn { border: 1px solid #999; background: #e0e0e0; padding: 5px 10px; font-size: 12px; cursor: pointer; }
+    /* rung: DETAIL 760, and this is BELOW it. The paint hides this 88px control there
+       because the desk row asks 694px without it: components/header.css. */
+    @media (max-width: 759.98px) { .hiw-btn { display: none; } }
     dialog.app-dialog .hiw-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
     dialog.app-dialog .hiw-head h2 { font-size: 14px; margin: 0; }
     dialog.app-dialog .hiw-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
