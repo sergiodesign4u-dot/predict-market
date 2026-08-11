@@ -36,11 +36,21 @@
    direct child would still have caught a nested head. The distinction is not depth, it is which
    block the heading belongs to, so it is the nested blocks that say so, one specificity step up. */
 .ed-section :is(h2,h3){font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-brass-lit);margin:0 0 var(--space-8)}
-/* THE LOUDEST OF THE FIFTEEN, and not because it is the longest. 92ch on 9 screens at 1440,
+/* THE LOUDEST OF THE FIFTEEN, and not because it is the longest. 106ch on 9 screens at 1440,
    against a band of 60 to 75. `.resolution` is the named resolution rule, which is the second
-   design principle of this product written out as a sentence, and it ran 17ch over the measure
-   on the one screen where trust is decided. A rule nobody finishes reading is a rule that was
-   not stated. tokens.css, page frame, and ui-kit/docs/responsive.md for the walk. */
+   design principle of this product written out as a sentence, and it ran 31ch over the top of
+   that band on the one screen where trust is decided. A rule nobody finishes reading is a rule
+   that was not stated. tokens.css, page frame, and ui-kit/docs/responsive.md for the walk.
+   THIS COMMENT SAID 92ch UNTIL 2026-08-12, AND THAT WAS THE INSTRUMENT TALKING, NOT THE PAGE.
+   The pass that wrote it opened each screen with `context.newPage({viewport:{width:1440,...}})`,
+   which Playwright silently ignores, so every reading in it was taken at the default 1280 and
+   filed as 1440. tokens.css, ui-kit/docs/responsive.md and docs/decisions.md all said 106 the
+   whole time, and this was the one copy of the number a maintainer meets while editing the rule
+   it belongs to. Re-measured 2026-08-12 with the cap lifted and the viewport set through
+   `page.setViewportSize`, on all 9 screens at 1440: 105.8ch, identical on every one of them,
+   and the reading repeated twice unchanged with 0 difference before it was believed. The wrong
+   number is recorded here rather than quietly swapped, because this repository files its
+   instrument failures instead of hiding them. */
 .resolution{font-size:var(--text-13);line-height:var(--leading-loose);color:var(--text-primary);max-width:var(--measure)}
 .resolution strong{color:var(--text-primary)}
 .rules-note{margin:var(--space-12) 0 0;font-size:var(--text-12);line-height:var(--leading-base);color:var(--text-muted)}

@@ -2,7 +2,7 @@
    Component: catnav. Classes: .cat-nav, .feed-subfilter, .subcat, .subcat-head.
 
    Reads: --edge-groove-dark, --edge-groove-light, --text-muted
-   Stand:  ui-kit/catnav.html, and ui-kit/molecules.html#catnav for the level and its reason
+   Stand:  ui-kit/catnav.html, and ui-kit/molecules.html#catnav-lt for the level and its reason (the -lt is the shelf's own id suffix and not a variant of this component: ui-kit/CLAUDE.md)
    Stands on: 57 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
@@ -91,10 +91,23 @@
 .cat-main .feed-subfilter{margin:var(--space-2) 0 var(--space-16)}
 .cat-main .feed-subfilter ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:var(--space-8)}
 .cat-main .feed-subfilter li{flex:0 0 auto}
-/* .cat-main .feed-subfilter a was here. The sub-filter has no links any more:
-   it filters the page it is on instead of navigating away from it, so its
-   chips are buttons. The only <a> left inside one is in ui-kit/kit.html, and
-   the frozen kit is provenance, not product. */
+/* `.cat-main .feed-subfilter a` was here. The sub-filter has no links any more:
+   it filters the page it is on instead of navigating away from it, so its chips
+   are buttons, and the rule that painted an anchor had nothing left to reach.
+   THE EXCEPTION THIS NOTE USED TO CARRY NAMED A DELETED FILE. Until 2026-08-12
+   it read "the only <a> left inside one is in ui-kit/kit.html, and the frozen
+   kit is provenance, not product". THAT FILE DOES NOT EXIST: it went with the
+   old vitrine on 2026-08-07 and survives only as prose in `docs/kit-archive/`,
+   so the sentence was defending a rule against a page nobody could open.
+   RE-MEASURED 2026-08-12 over every .html in the repository, .git excluded: the
+   tree holds **4 `.feed-subfilter` blocks and 20 chips, 20 of 20 `<button>` and
+   0 `<a>`, in 0 files**. There is no exception any more, which is the stronger
+   version of the same rule: the sub-filter is a control and not a route.
+   The CONTRAST is the reason this is written down at all. `.cat-nav` above it
+   IS a route, and its chips are 602 anchors against 24 buttons across the same
+   corpus. Two strips that look alike and one navigates: the element is the
+   difference, so a rule keyed to `a` inside a sub-filter is a rule written for
+   the wrong strip. */
 .feed-inner .cat-nav{margin:0}
 .feed-inner .cat-nav>ul{max-width:none;margin:0;padding:var(--space-2);gap:var(--space-8);display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
 .feed-inner .cat-nav>ul::-webkit-scrollbar{display:none}

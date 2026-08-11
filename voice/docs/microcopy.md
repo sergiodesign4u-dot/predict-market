@@ -101,6 +101,21 @@ full at the end of this file.
 
 Header, category nav, bottom nav, footer and the two shared dialogs (Sign in, Deposit) are byte-identical across pages, so they are listed once here rather than repeated per screen.
 
+### Skip link
+
+Added 2026-08-12 with the fix for WCAG 2.4.1. It is the FIRST focusable element in every screen that
+has a header, 105 painted and 87 grey, and it is invisible until a keyboard reaches it, so it is the
+one string in the product that a person only ever meets by pressing Tab.
+
+| Zone | Type | Line | Flag |
+|---|---|---|---|
+| Skip link | Link | Skip to main content |  |
+
+The line is the platform's own convention rather than this product's voice on purpose. `voice.md`
+asks for plain, specific, human copy, and a skip link is the one control where a familiar phrase
+beats a well-written one: a screen-reader user recognises it by its exact wording, and an inventive
+version of it costs them the recognition without buying anything.
+
 ### Header
 
 | Zone | Type | Line | Flag |

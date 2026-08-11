@@ -7,12 +7,27 @@
    still need, extracted rule by rule from the original on 2026-08-07 with the
    values unchanged. It grows one rule at a time as the kit is rebuilt.
 
-   Nothing here is product. No product class is styled here and no product SCREEN
-   links this file. The two index pages do - ui-kit/overview.html and
-   ui-visual/overview.html - because an index is a stand page that happens to live
-   next to the screens it lists. Product css lives in components/.
+   SIX RULES HERE STYLE A PRODUCT CLASS, ON PURPOSE, AND THIS PARAGRAPH USED TO
+   SAY NONE DID. It read "Nothing here is product. No product class is styled
+   here", which was written when the file held two index pages' furniture and was
+   still true of nothing after 2026-08-09. The six are `dialog[open]`,
+   `.bet-dock`, `.bet-panel`, `.ed-layout`, `.bottom-nav` and
+   `.filter-menu[open] > .filter-panel`, each of them a BARGAIN a specimen has to
+   strike to be visible at all: a shut dialog is `display:none`, an absolute panel
+   takes no room in the flow, a sticky dock is a claim about a scrolling screen
+   and not about a 100px cell. Every one is written below with its reason and its
+   measurement, and every one is scoped under a `.tk-*` ancestor, so it cannot
+   reach a screen: `_page.css` is linked by two index pages and no product screen
+   at all. THE SENTENCE WAS THE DEFECT AND NOT THE RULES. A stylesheet that
+   claims a purity it does not have teaches the next reader to trust the claim
+   instead of the file, and the one thing that stops a bargain becoming a habit is
+   that it has to be declared, counted and argued for where it stands. Six today.
+   The rule that governs them is the scope: a stand may pin a product class INSIDE
+   a specimen cell, and may never style one loose. Product css lives in
+   components/.
 
-   Prefix: .tk-* (tokens stand). No em dash. */
+   Prefix: .tk-* (tokens stand), and since 2026-08-12 that is true of the classes
+   as well as of the custom properties. No em dash. */
 
 /* THE STAND'S FOUR CUSTOM PROPERTIES ALL CARRY --tk-, SINCE 2026-08-11, AND ONE
    OF THEM HAD TO BE RENAMED TO GET THERE. `--measure` was declared here as a
@@ -28,7 +43,28 @@
    stand is a guest in it. `--cell`, `--sw` and `--u` were equally exposed and are
    renamed with it, so the collision is impossible rather than fixed once.
    The one exception is deliberate and is two hundred lines down: `.tk-measured`
-   reads the SYSTEM's `--measure`, because that specimen IS the system token. */
+   reads the SYSTEM's `--measure`, because that specimen IS the system token.
+
+   AND THE CLASSES WERE NOT FIXED WITH THEM UNTIL 2026-08-12, WHICH LEFT THE
+   POSTMORTEM ABOVE ARGUING AGAINST 195 LIVE CASES OF ITSELF. The four properties
+   were renamed and the utilities were left bare: `.c-*` 66, `.p-*` 62, `.sz-*`
+   12, `.sp-*` 11, `.s-*` 10, `.d-*` 8, `.l-*` 6, `.r-*` 6, `.w-*` 4, `.ic-*` 4,
+   `.ct-*` 3, `.f-*` 3. Every one of them is one word in the same shared
+   namespace the paragraph above is about, and this file loads AFTER
+   `components/index.css` on all 57 pages, so the stand would win the collision
+   silently the way it won `--measure`.
+   TWO OF THE TWELVE WERE ALREADY TOUCHING THE SYSTEM. `base.css` owns `.ic` and
+   `.ic-sm` and this file owned `.ic-12/16/18/22`: one family, two owners, four
+   names apart. And `oddsbar.css` writes `.l-yes` and `.l-no`, scoped under
+   `.oddsbar`, in the same `.l-*` family this file used for line height. Neither
+   collided, which is the point: `--measure` did not collide either, for the
+   months before it did.
+   So the 195 are `.tk-` prefixed, weights as `.tk-wt-*` because `.tk-w-288` was
+   already a width, and the icons page's 72px box is `.tk-icbox` so it cannot be
+   read as the `.tk-sz-*` ramp. Proved inert rather than eyeballed: 114 renders of
+   all 57 pages at 360 and 1440, control 0 differing rows of 69,928 twice over,
+   and 8 rows after the rename, all of them the two class NAMES this kit prints in
+   its own prose getting three characters longer. */
 :root{--tk-measure:74ch}
 
 /* ---- page frame ---- */
@@ -39,8 +75,13 @@
 .tk-hero{padding:44px 0 4px}
 .tk-hero h1{font-family:var(--font-display);color:var(--text-primary);
   font-size:clamp(30px,5vw,44px);font-weight:700;letter-spacing:-.03em;margin:0;text-wrap:balance}
-/* 66 and not the measure: this is the lead under a display title, and a lead reads
-   as a lead by being shorter than the body under it. */
+/* 66 and not the measure, and the two used to be the same number by accident. This is the
+   lead under a display title, and the reason written here was "a lead reads as a lead by being
+   shorter than the body under it", which was true while --measure was 66ch and is not now: the
+   token moved to 46ch on 2026-08-12 when `ch` turned out to be 1.48 characters rather than one.
+   The literal stays because the relation it was chosen for was never to the token, it was to the
+   display title above it. What changed is that the coincidence is gone and the sentence that
+   depended on it has to go with it. */
 .tk-hero p{color:var(--text-muted);font-family:var(--font-body);
   margin:10px 0 0;max-width:66ch;line-height:1.55;font-size:14px}
 .tk-hero code,.tk-note code{font-family:var(--font-mono);font-size:.9em;color:var(--text-brass)}
@@ -67,7 +108,17 @@
 /* A ROW THAT HAS NO PAGE YET IS STILL IN THE ROW, dashed and unclickable, for
    the same reason the side panel keeps it: a jump row that lists only what is
    finished looks finished. Same box as the link so the gap in the row is a
-   border style and not a hole. */
+   border style and not a hole.
+   IT DRAWS NOTHING TODAY AND IT IS KEPT, WHICH IS THE ONE EXCEPTION ON THIS FILE
+   AND IT HAS TO BE ARGUED FOR. The dead-selector sweep of 2026-08-12 found this
+   rule matching nothing on any of the 57 pages, because `_nav.js` has 0 rows with
+   `done:false` and every other dead selector was deleted the same day. This one is
+   not dead, it is UNEXERCISED: `jump()` in `_nav.js` still writes a `<span>` for a
+   row with no page, that branch is live and deliberate, and the panel's own mirror
+   of it is `.sidebar-page-link .planned` in `course-chrome.css`, which nothing in
+   this folder owns. Delete the paint and the branch still runs, so the day somebody
+   adds a planned row the jump row gains an unstyled naked word and nobody sees the
+   badge. THE TEST IS WHETHER A LIVE BRANCH WRITES IT, not whether it painted today. */
 .tk-jump span{font-family:var(--font-mono);font-size:11px;
   color:var(--text-icon);border:1px dashed var(--border-hairline);border-radius:100px;
   padding:5px 12px;cursor:default}
@@ -207,8 +258,13 @@
 /* Layout the specimens need and the product does not provide. These exist so that
    no `style=` attribute has to carry a layout value: the only inline styles left
    on this page are the two the rules allow, a datum (the odds fill width) and the
-   event photograph. */
-.tk-pair{display:flex;gap:8px}
+   event photograph.
+   `.tk-pair` STOOD HERE UNTIL 2026-08-12 AND ITS OWN POSTMORTEM OUTLIVED IT BY
+   THREE DAYS. It was `display:flex;gap:8px`, the stand's stand-in for the bet
+   pick's container, and the paragraph below is the record of it being replaced by
+   the product's `.bp-dir` on 2026-08-09. The rule was left behind, matching nothing
+   on any of the 57 pages, under a comment explaining why nothing should ever match
+   it again. A COMMENT IS NOT A DELETION. */
 /* A PAIR THAT IS AS WIDE AS THE CELL IS A PAIR THE PRODUCT NEVER DRAWS, and for
    a control whose label wraps that is a different HEIGHT, not just a different
    width. `.yesno-pick.bp-side` stands in `.bet-panel`, which is `flex:0 0 322px`,
@@ -327,8 +383,12 @@
   background:
     linear-gradient(to right,transparent calc(50% - .5px),var(--color-action) calc(50% - .5px) calc(50% + .5px),transparent calc(50% + .5px)),
     linear-gradient(to bottom,transparent calc(50% - .5px),var(--color-action) calc(50% - .5px) calc(50% + .5px),transparent calc(50% + .5px))}
-.tk-cell.tk-plain{background-image:none}
-.tk-cell.tk-plain::before,.tk-cell.tk-plain::after{content:none}
+/* `.tk-plain` STOOD HERE UNTIL 2026-08-12, three rules that turned the module grid,
+   the safe field and the geometric centre back off again. Nothing has ever worn it:
+   every cell on `icons.html` wants the scaffolding, because the scaffolding IS the
+   argument that a set is a grid with rules rather than a sheet of pictures. A
+   modifier that undoes the point of the page it was written for is a modifier with
+   no case, and it was written for a page that could imagine one. */
 .tk-cell-lg{--tk-cell:264px}
 .tk-cell-sm{--tk-cell:72px}
 
@@ -338,7 +398,12 @@
 /* The sprite half is Solar Bold: filled, no stroke, and its paths say
    fill="currentColor", so the ink arrives as `color` and not as `fill`. */
 .tk-glyph.tk-fill{fill:var(--text-primary);stroke:none;color:var(--text-primary)}
-.tk-glyph.tk-brand{stroke:var(--text-brass);stroke-width:2.6}
+/* `.tk-brand` stood here until 2026-08-12, a brass stroke at 2.6 for a brand GLYPH.
+   There is no brand glyph. The mark is a wordmark, `.logo`, and `logo.html` draws it
+   as the product's own text control in four placements. A class named for a thing
+   the product does not have is the same defect as `.icon-btn-photo` being named for
+   a ground it does not stand on, and this one never even had a placement to be wrong
+   about. */
 
 .tk-glyphs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;
   margin:0 0 8px}
@@ -346,7 +411,11 @@
 .tk-gl figcaption{font-family:var(--font-mono);font-size:11px;color:var(--text-primary);
   display:flex;flex-direction:column;gap:2px;line-height:1.35}
 .tk-gl figcaption i{font-style:normal;font-size:10px;color:var(--text-muted)}
-.tk-gl figcaption em{font-style:normal;font-size:10px;color:var(--outcome-no-text)}
+/* An `em` in the same caption painted it in the NO red, a warning slot for a glyph
+   with something wrong with it. Deleted 2026-08-12, worn by none of the 52. The
+   page says what is wrong with a glyph in the sentence under the grid, where the
+   reader is already reading, and `.tk-lab.tk-bad` is the family that does this on
+   a cell. Two ways to mark a defect is one way and a hole. */
 .tk-row{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end;margin:0 0 8px}
 .tk-anat{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:start;
   margin:0 0 8px}
@@ -377,7 +446,7 @@
    `.ic-sm` declare a weight, and a component that wants the glyph at 16 or 20
    writes only width and height. Copying 1.6 into this file would have made the
    demonstration a picture of this stylesheet instead of a picture of that one. */
-.tk-sz{display:flex;align-items:center;justify-content:center;width:72px;height:72px;
+.tk-icbox{display:flex;align-items:center;justify-content:center;width:72px;height:72px;
   border:1px solid var(--border-hairline);border-radius:10px;background:var(--bg-well)}
 .tk-b16{width:var(--icon-16);height:var(--icon-16)}
 .tk-b18{width:var(--icon-18);height:var(--icon-18)}
@@ -395,7 +464,7 @@
 /* ==========================================================================
    FOUNDATIONS: COLOUR. Added 2026-08-07 for colour.html.
 
-   ONE CLASS PER ROLE, AND IT CARRIES NO VALUE. `.c-bg-plate{--tk-sw:var(--bg-plate)}`
+   ONE CLASS PER ROLE, AND IT CARRIES NO VALUE. `.tk-c-bg-plate{--tk-sw:var(--bg-plate)}`
    names the role and hands the resolving to tokens.css, so a swatch on this page
    can never disagree with the system: if the role changes, the swatch changes.
 
@@ -405,73 +474,88 @@
    whose colours are invisible to the system is the exact thing being audited. */
 .tk-sw{background:var(--tk-sw)}
 .tk-ink{color:var(--tk-sw)}
+/* A LINE ROLE DRAWN AS A FILL IS THE WRONG DEMONSTRATION, and eight of the fifteen
+   roles this page did not show until 2026-08-12 are lines: three borders, two
+   outcome edges, two result edges and the chart's stroke. `--border-brass` is
+   `--brass-a30`, and a 30 per cent brass painted as a 52px block reads as a pale
+   ground rather than as the hairline it is. So a border role is drawn as a BORDER
+   and a stroke as a stroke, both taking the same `--tk-sw` the fill takes, which is
+   how a swatch here still carries no value of its own. */
+.tk-edge{border:var(--hairline) solid var(--tk-sw)}
+.tk-line{display:block;width:100%;height:var(--size-2);border-radius:var(--radius-2);
+  background:var(--tk-sw)}
 
-.c-bg-page{--tk-sw:var(--bg-page)}
-.c-bg-canvas{--tk-sw:var(--bg-canvas)}
-.c-bg-slab{--tk-sw:var(--bg-slab)}
-.c-bg-plate{--tk-sw:var(--bg-plate)}
-.c-bg-card{--tk-sw:var(--bg-card)}
-.c-bg-card-quiet{--tk-sw:var(--bg-card-quiet)}
-.c-bg-surface{--tk-sw:var(--bg-surface)}
-.c-bg-control{--tk-sw:var(--bg-control)}
-.c-bg-control-hover{--tk-sw:var(--bg-control-hover)}
-.c-bg-chip{--tk-sw:var(--bg-chip)}
-.c-bg-well{--tk-sw:var(--bg-well)}
-.c-bg-dock{--tk-sw:var(--bg-dock)}
-.c-bg-pressed{--tk-sw:var(--bg-pressed)}
-.c-bg-brand-mark{--tk-sw:var(--bg-brand-mark)}
-.c-text-primary{--tk-sw:var(--text-primary)}
-.c-text-muted{--tk-sw:var(--text-muted)}
-.c-text-icon{--tk-sw:var(--text-icon)}
-.c-icon-quiet{--tk-sw:var(--icon-quiet)}
-.c-icon-brass{--tk-sw:var(--icon-brass)}
-.c-text-icon-strong{--tk-sw:var(--text-icon-strong)}
-.c-text-chip-hover{--tk-sw:var(--text-chip-hover)}
-.c-text-brass{--tk-sw:var(--text-brass)}
-.c-text-brass-lit{--tk-sw:var(--text-brass-lit)}
-.c-text-brass-chip{--tk-sw:var(--text-brass-chip)}
-.c-text-on-brass{--tk-sw:var(--text-on-brass)}
-.c-text-on-yes{--tk-sw:var(--text-on-yes)}
-.c-text-on-no{--tk-sw:var(--text-on-no)}
-.c-text-on-photo{--tk-sw:var(--text-on-photo)}
-.c-text-strong{--tk-sw:var(--text-strong)}
-.c-color-action{--tk-sw:var(--color-action)}
-.c-color-action-lit{--tk-sw:var(--color-action-lit)}
-.c-color-action-pressed{--tk-sw:var(--color-action-pressed)}
-.c-color-trust{--tk-sw:var(--color-trust)}
-.c-outcome-yes{--tk-sw:var(--outcome-yes)}
-.c-outcome-no{--tk-sw:var(--outcome-no)}
-.c-outcome-yes-text{--tk-sw:var(--outcome-yes-text)}
-.c-outcome-no-text{--tk-sw:var(--outcome-no-text)}
-.c-outcome-yes-fill{--tk-sw:var(--outcome-yes-fill)}
-.c-outcome-no-fill{--tk-sw:var(--outcome-no-fill)}
-.c-outcome-yes-fill-soft{--tk-sw:var(--outcome-yes-fill-soft)}
-.c-outcome-no-fill-soft{--tk-sw:var(--outcome-no-fill-soft)}
-.c-outcome-yes-line{--tk-sw:var(--outcome-yes-line)}
-.c-outcome-no-line{--tk-sw:var(--outcome-no-line)}
-.c-outcome-no-figure{--tk-sw:var(--outcome-no-figure)}
-.c-chart-line{--tk-sw:var(--chart-line)}
-.c-result-won{--tk-sw:var(--result-won)}
-.c-result-won-text{--tk-sw:var(--result-won-text)}
-.c-result-won-fill{--tk-sw:var(--result-won-fill)}
-.c-result-won-line{--tk-sw:var(--result-won-line)}
-.c-result-lost-text{--tk-sw:var(--result-lost-text)}
-.c-result-lost-fill{--tk-sw:var(--result-lost-fill)}
-.c-result-lost-line{--tk-sw:var(--result-lost-line)}
-.c-series-1{--tk-sw:var(--series-1)}
-.c-series-2{--tk-sw:var(--series-2)}
-.c-series-3{--tk-sw:var(--series-3)}
-.c-series-4{--tk-sw:var(--series-4)}
-.c-series-5{--tk-sw:var(--series-5)}
-.c-border-hairline{--tk-sw:var(--border-hairline)}
-.c-border-brass{--tk-sw:var(--border-brass)}
-.c-border-brass-hover{--tk-sw:var(--border-brass-hover)}
-.c-tint-brass-06{--tk-sw:var(--tint-brass-06)}
-.c-tint-brass-09{--tk-sw:var(--tint-brass-09)}
-.c-tint-brass-16{--tk-sw:var(--tint-brass-16)}
-.c-tint-brass-30{--tk-sw:var(--tint-brass-30)}
-.c-tint-brass-45{--tk-sw:var(--tint-brass-45)}
-.c-tint-brass-60{--tk-sw:var(--tint-brass-60)}
+.tk-c-bg-page{--tk-sw:var(--bg-page)}
+.tk-c-bg-canvas{--tk-sw:var(--bg-canvas)}
+.tk-c-bg-slab{--tk-sw:var(--bg-slab)}
+.tk-c-bg-plate{--tk-sw:var(--bg-plate)}
+.tk-c-bg-card{--tk-sw:var(--bg-card)}
+.tk-c-bg-card-quiet{--tk-sw:var(--bg-card-quiet)}
+.tk-c-bg-surface{--tk-sw:var(--bg-surface)}
+.tk-c-bg-control{--tk-sw:var(--bg-control)}
+.tk-c-bg-control-hover{--tk-sw:var(--bg-control-hover)}
+.tk-c-bg-chip{--tk-sw:var(--bg-chip)}
+.tk-c-bg-well{--tk-sw:var(--bg-well)}
+.tk-c-bg-dock{--tk-sw:var(--bg-dock)}
+.tk-c-bg-pressed{--tk-sw:var(--bg-pressed)}
+.tk-c-bg-brand-mark{--tk-sw:var(--bg-brand-mark)}
+.tk-c-text-primary{--tk-sw:var(--text-primary)}
+.tk-c-text-muted{--tk-sw:var(--text-muted)}
+.tk-c-text-icon{--tk-sw:var(--text-icon)}
+.tk-c-icon-quiet{--tk-sw:var(--icon-quiet)}
+.tk-c-icon-brass{--tk-sw:var(--icon-brass)}
+.tk-c-text-icon-strong{--tk-sw:var(--text-icon-strong)}
+.tk-c-text-chip-hover{--tk-sw:var(--text-chip-hover)}
+.tk-c-text-brass{--tk-sw:var(--text-brass)}
+.tk-c-text-brass-lit{--tk-sw:var(--text-brass-lit)}
+.tk-c-text-brass-chip{--tk-sw:var(--text-brass-chip)}
+.tk-c-text-on-brass{--tk-sw:var(--text-on-brass)}
+.tk-c-text-on-yes{--tk-sw:var(--text-on-yes)}
+.tk-c-text-on-no{--tk-sw:var(--text-on-no)}
+.tk-c-text-on-photo{--tk-sw:var(--text-on-photo)}
+/* The ground `--text-on-photo` stands on, so the ink can be shown on the thing it
+   was measured against rather than on a plate it never meets. A photograph would
+   have wanted a `style="background-image:..."`, which is a datum the rules allow on
+   the element and is still the one thing `colour.html` has never carried. */
+.tk-c-scrim-photo{--tk-sw:var(--scrim-photo)}
+.tk-c-text-strong{--tk-sw:var(--text-strong)}
+.tk-c-color-action{--tk-sw:var(--color-action)}
+.tk-c-color-action-lit{--tk-sw:var(--color-action-lit)}
+.tk-c-color-action-pressed{--tk-sw:var(--color-action-pressed)}
+.tk-c-color-trust{--tk-sw:var(--color-trust)}
+.tk-c-outcome-yes{--tk-sw:var(--outcome-yes)}
+.tk-c-outcome-no{--tk-sw:var(--outcome-no)}
+.tk-c-outcome-yes-text{--tk-sw:var(--outcome-yes-text)}
+.tk-c-outcome-no-text{--tk-sw:var(--outcome-no-text)}
+.tk-c-outcome-yes-fill{--tk-sw:var(--outcome-yes-fill)}
+.tk-c-outcome-no-fill{--tk-sw:var(--outcome-no-fill)}
+.tk-c-outcome-yes-fill-soft{--tk-sw:var(--outcome-yes-fill-soft)}
+.tk-c-outcome-no-fill-soft{--tk-sw:var(--outcome-no-fill-soft)}
+.tk-c-outcome-yes-line{--tk-sw:var(--outcome-yes-line)}
+.tk-c-outcome-no-line{--tk-sw:var(--outcome-no-line)}
+.tk-c-outcome-no-figure{--tk-sw:var(--outcome-no-figure)}
+.tk-c-chart-line{--tk-sw:var(--chart-line)}
+.tk-c-result-won{--tk-sw:var(--result-won)}
+.tk-c-result-won-text{--tk-sw:var(--result-won-text)}
+.tk-c-result-won-fill{--tk-sw:var(--result-won-fill)}
+.tk-c-result-won-line{--tk-sw:var(--result-won-line)}
+.tk-c-result-lost-text{--tk-sw:var(--result-lost-text)}
+.tk-c-result-lost-fill{--tk-sw:var(--result-lost-fill)}
+.tk-c-result-lost-line{--tk-sw:var(--result-lost-line)}
+.tk-c-series-1{--tk-sw:var(--series-1)}
+.tk-c-series-2{--tk-sw:var(--series-2)}
+.tk-c-series-3{--tk-sw:var(--series-3)}
+.tk-c-series-4{--tk-sw:var(--series-4)}
+.tk-c-series-5{--tk-sw:var(--series-5)}
+.tk-c-border-hairline{--tk-sw:var(--border-hairline)}
+.tk-c-border-brass{--tk-sw:var(--border-brass)}
+.tk-c-border-brass-hover{--tk-sw:var(--border-brass-hover)}
+.tk-c-tint-brass-06{--tk-sw:var(--tint-brass-06)}
+.tk-c-tint-brass-09{--tk-sw:var(--tint-brass-09)}
+.tk-c-tint-brass-16{--tk-sw:var(--tint-brass-16)}
+.tk-c-tint-brass-30{--tk-sw:var(--tint-brass-30)}
+.tk-c-tint-brass-45{--tk-sw:var(--tint-brass-45)}
+.tk-c-tint-brass-60{--tk-sw:var(--tint-brass-60)}
 
 .tk-ramp{display:flex;flex-wrap:wrap;gap:3px;margin:0 0 10px}
 /* THE STEP NUMBER CAME OFF THE SWATCH ON 2026-08-08, and the audit is why.
@@ -517,68 +601,68 @@
 /* The primitive ramps. A component may never read one of these, and a foundations
    page that hides them is hiding the material the roles are cut from, so they are
    painted here and nowhere else in the kit. */
-.p-graphite-950{--tk-sw:var(--graphite-950)}
-.p-graphite-940{--tk-sw:var(--graphite-940)}
-.p-graphite-930{--tk-sw:var(--graphite-930)}
-.p-graphite-920{--tk-sw:var(--graphite-920)}
-.p-graphite-910{--tk-sw:var(--graphite-910)}
-.p-graphite-900{--tk-sw:var(--graphite-900)}
-.p-graphite-880{--tk-sw:var(--graphite-880)}
-.p-graphite-870{--tk-sw:var(--graphite-870)}
-.p-graphite-860{--tk-sw:var(--graphite-860)}
-.p-graphite-850{--tk-sw:var(--graphite-850)}
-.p-graphite-830{--tk-sw:var(--graphite-830)}
-.p-graphite-800{--tk-sw:var(--graphite-800)}
-.p-graphite-780{--tk-sw:var(--graphite-780)}
-.p-graphite-750{--tk-sw:var(--graphite-750)}
-.p-graphite-720{--tk-sw:var(--graphite-720)}
-.p-chalk-940{--tk-sw:var(--chalk-940)}
-.p-chalk-930{--tk-sw:var(--chalk-930)}
-.p-chalk-920{--tk-sw:var(--chalk-920)}
-.p-chalk-910{--tk-sw:var(--chalk-910)}
-.p-chalk-900{--tk-sw:var(--chalk-900)}
-.p-chalk-880{--tk-sw:var(--chalk-880)}
-.p-chalk-870{--tk-sw:var(--chalk-870)}
-.p-chalk-860{--tk-sw:var(--chalk-860)}
-.p-chalk-750{--tk-sw:var(--chalk-750)}
-.p-bone-080{--tk-sw:var(--bone-080)}
-.p-bone-100{--tk-sw:var(--bone-100)}
-.p-bone-200{--tk-sw:var(--bone-200)}
-.p-bone-250{--tk-sw:var(--bone-250)}
-.p-bone-300{--tk-sw:var(--bone-300)}
-.p-bone-500{--tk-sw:var(--bone-500)}
-.p-bone-600{--tk-sw:var(--bone-600)}
-.p-bone-650{--tk-sw:var(--bone-650)}
-.p-bone-700{--tk-sw:var(--bone-700)}
-.p-ink-900{--tk-sw:var(--ink-900)}
-.p-ink-700{--tk-sw:var(--ink-700)}
-.p-ink-500{--tk-sw:var(--ink-500)}
-.p-ink-400{--tk-sw:var(--ink-400)}
-.p-ink-300{--tk-sw:var(--ink-300)}
-.p-brass-200{--tk-sw:var(--brass-200)}
-.p-brass-220{--tk-sw:var(--brass-220)}
-.p-brass-250{--tk-sw:var(--brass-250)}
-.p-brass-300{--tk-sw:var(--brass-300)}
-.p-brass-400{--tk-sw:var(--brass-400)}
-.p-brass-500{--tk-sw:var(--brass-500)}
-.p-brass-600{--tk-sw:var(--brass-600)}
-.p-brass-700{--tk-sw:var(--brass-700)}
-.p-green-200{--tk-sw:var(--green-200)}
-.p-green-250{--tk-sw:var(--green-250)}
-.p-green-300{--tk-sw:var(--green-300)}
-.p-green-500{--tk-sw:var(--green-500)}
-.p-green-700{--tk-sw:var(--green-700)}
-.p-green-800{--tk-sw:var(--green-800)}
-.p-green-950{--tk-sw:var(--green-950)}
-.p-green-975{--tk-sw:var(--green-975)}
-.p-green-050{--tk-sw:var(--green-050)}
-.p-red-300{--tk-sw:var(--red-300)}
-.p-red-400{--tk-sw:var(--red-400)}
-.p-red-500{--tk-sw:var(--red-500)}
-.p-red-700{--tk-sw:var(--red-700)}
-.p-red-800{--tk-sw:var(--red-800)}
-.p-red-950{--tk-sw:var(--red-950)}
-.p-plum-950{--tk-sw:var(--plum-950)}
+.tk-p-graphite-950{--tk-sw:var(--graphite-950)}
+.tk-p-graphite-940{--tk-sw:var(--graphite-940)}
+.tk-p-graphite-930{--tk-sw:var(--graphite-930)}
+.tk-p-graphite-920{--tk-sw:var(--graphite-920)}
+.tk-p-graphite-910{--tk-sw:var(--graphite-910)}
+.tk-p-graphite-900{--tk-sw:var(--graphite-900)}
+.tk-p-graphite-880{--tk-sw:var(--graphite-880)}
+.tk-p-graphite-870{--tk-sw:var(--graphite-870)}
+.tk-p-graphite-860{--tk-sw:var(--graphite-860)}
+.tk-p-graphite-850{--tk-sw:var(--graphite-850)}
+.tk-p-graphite-830{--tk-sw:var(--graphite-830)}
+.tk-p-graphite-800{--tk-sw:var(--graphite-800)}
+.tk-p-graphite-780{--tk-sw:var(--graphite-780)}
+.tk-p-graphite-750{--tk-sw:var(--graphite-750)}
+.tk-p-graphite-720{--tk-sw:var(--graphite-720)}
+.tk-p-chalk-940{--tk-sw:var(--chalk-940)}
+.tk-p-chalk-930{--tk-sw:var(--chalk-930)}
+.tk-p-chalk-920{--tk-sw:var(--chalk-920)}
+.tk-p-chalk-910{--tk-sw:var(--chalk-910)}
+.tk-p-chalk-900{--tk-sw:var(--chalk-900)}
+.tk-p-chalk-880{--tk-sw:var(--chalk-880)}
+.tk-p-chalk-870{--tk-sw:var(--chalk-870)}
+.tk-p-chalk-860{--tk-sw:var(--chalk-860)}
+.tk-p-chalk-750{--tk-sw:var(--chalk-750)}
+.tk-p-bone-080{--tk-sw:var(--bone-080)}
+.tk-p-bone-100{--tk-sw:var(--bone-100)}
+.tk-p-bone-200{--tk-sw:var(--bone-200)}
+.tk-p-bone-250{--tk-sw:var(--bone-250)}
+.tk-p-bone-300{--tk-sw:var(--bone-300)}
+.tk-p-bone-500{--tk-sw:var(--bone-500)}
+.tk-p-bone-600{--tk-sw:var(--bone-600)}
+.tk-p-bone-650{--tk-sw:var(--bone-650)}
+.tk-p-bone-700{--tk-sw:var(--bone-700)}
+.tk-p-ink-900{--tk-sw:var(--ink-900)}
+.tk-p-ink-700{--tk-sw:var(--ink-700)}
+.tk-p-ink-500{--tk-sw:var(--ink-500)}
+.tk-p-ink-400{--tk-sw:var(--ink-400)}
+.tk-p-ink-300{--tk-sw:var(--ink-300)}
+.tk-p-brass-200{--tk-sw:var(--brass-200)}
+.tk-p-brass-220{--tk-sw:var(--brass-220)}
+.tk-p-brass-250{--tk-sw:var(--brass-250)}
+.tk-p-brass-300{--tk-sw:var(--brass-300)}
+.tk-p-brass-400{--tk-sw:var(--brass-400)}
+.tk-p-brass-500{--tk-sw:var(--brass-500)}
+.tk-p-brass-600{--tk-sw:var(--brass-600)}
+.tk-p-brass-700{--tk-sw:var(--brass-700)}
+.tk-p-green-200{--tk-sw:var(--green-200)}
+.tk-p-green-250{--tk-sw:var(--green-250)}
+.tk-p-green-300{--tk-sw:var(--green-300)}
+.tk-p-green-500{--tk-sw:var(--green-500)}
+.tk-p-green-700{--tk-sw:var(--green-700)}
+.tk-p-green-800{--tk-sw:var(--green-800)}
+.tk-p-green-950{--tk-sw:var(--green-950)}
+.tk-p-green-975{--tk-sw:var(--green-975)}
+.tk-p-green-050{--tk-sw:var(--green-050)}
+.tk-p-red-300{--tk-sw:var(--red-300)}
+.tk-p-red-400{--tk-sw:var(--red-400)}
+.tk-p-red-500{--tk-sw:var(--red-500)}
+.tk-p-red-700{--tk-sw:var(--red-700)}
+.tk-p-red-800{--tk-sw:var(--red-800)}
+.tk-p-red-950{--tk-sw:var(--red-950)}
+.tk-p-plum-950{--tk-sw:var(--plum-950)}
 .tk-mx-6{grid-template-columns:minmax(96px,132px) repeat(5,minmax(0,1fr))}
 .tk-mx-4{grid-template-columns:minmax(96px,132px) repeat(3,minmax(0,1fr))}
 @media(max-width:639.98px){.tk-mx-6,.tk-mx-4{grid-template-columns:76px repeat(auto-fit,minmax(0,1fr))}}
@@ -600,41 +684,41 @@
    FOUNDATIONS: TYPOGRAPHY. Added 2026-08-07 for typography.html.
    Same rule as the colour page: a class names the token and never carries a
    value, so a specimen cannot drift from the system. */
-.f-display{font-family:var(--font-display)}
-.f-body{font-family:var(--font-body)}
-.f-mono{font-family:var(--font-mono)}
-.w-medium{font-weight:var(--weight-medium)}
-.w-semibold{font-weight:var(--weight-semibold)}
-.w-bold{font-weight:var(--weight-bold)}
+.tk-f-display{font-family:var(--font-display)}
+.tk-f-body{font-family:var(--font-body)}
+.tk-f-mono{font-family:var(--font-mono)}
+.tk-wt-medium{font-weight:var(--weight-medium)}
+.tk-wt-semibold{font-weight:var(--weight-semibold)}
+.tk-wt-bold{font-weight:var(--weight-bold)}
 /* THE ONLY LITERAL IN THIS BLOCK, AND IT IS THE FINDING. 400 is the weight 192
    of 260 text elements on the feed render at, and it is the one step of the ramp
    tokens.css never named. There is nothing to reference, so the page has to type
    the number, which is exactly what a component would have to do. */
-.w-regular{font-weight:400}
-.s-10{font-size:var(--text-10)}
-.s-11{font-size:var(--text-11)}
-.s-12{font-size:var(--text-12)}
-.s-13{font-size:var(--text-13)}
-.s-14{font-size:var(--text-14)}
-.s-16{font-size:var(--text-16)}
-.s-18{font-size:var(--text-18)}
-.s-20{font-size:var(--text-20)}
-.s-24{font-size:var(--text-24)}
-.s-30{font-size:var(--text-30)}
-.d-feed{font-size:var(--display-feed)}
-.d-hiw{font-size:var(--display-hiw)}
-.d-sheet{font-size:var(--display-sheet)}
-.d-seo{font-size:var(--display-seo)}
-.d-question{font-size:var(--display-question)}
-.d-hero{font-size:var(--display-hero)}
-.d-quote{font-size:var(--display-quote)}
-.d-tagline{font-size:var(--display-tagline)}
-.l-none{line-height:var(--leading-none)}
-.l-flat{line-height:var(--leading-flat)}
-.l-tight{line-height:var(--leading-tight)}
-.l-snug{line-height:var(--leading-snug)}
-.l-base{line-height:var(--leading-base)}
-.l-loose{line-height:var(--leading-loose)}
+.tk-wt-regular{font-weight:400}
+.tk-s-10{font-size:var(--text-10)}
+.tk-s-11{font-size:var(--text-11)}
+.tk-s-12{font-size:var(--text-12)}
+.tk-s-13{font-size:var(--text-13)}
+.tk-s-14{font-size:var(--text-14)}
+.tk-s-16{font-size:var(--text-16)}
+.tk-s-18{font-size:var(--text-18)}
+.tk-s-20{font-size:var(--text-20)}
+.tk-s-24{font-size:var(--text-24)}
+.tk-s-30{font-size:var(--text-30)}
+.tk-d-feed{font-size:var(--display-feed)}
+.tk-d-hiw{font-size:var(--display-hiw)}
+.tk-d-sheet{font-size:var(--display-sheet)}
+.tk-d-seo{font-size:var(--display-seo)}
+.tk-d-question{font-size:var(--display-question)}
+.tk-d-hero{font-size:var(--display-hero)}
+.tk-d-quote{font-size:var(--display-quote)}
+.tk-d-tagline{font-size:var(--display-tagline)}
+.tk-l-none{line-height:var(--leading-none)}
+.tk-l-flat{line-height:var(--leading-flat)}
+.tk-l-tight{line-height:var(--leading-tight)}
+.tk-l-snug{line-height:var(--leading-snug)}
+.tk-l-base{line-height:var(--leading-base)}
+.tk-l-loose{line-height:var(--leading-loose)}
 
 .tk-type{display:grid;grid-template-columns:minmax(84px,120px) minmax(0,1fr);gap:10px 18px;
   align-items:baseline;margin:0 0 10px}
@@ -651,7 +735,7 @@
 .tk-card h3{margin:0 0 2px;font-family:var(--font-body);font-size:12px;font-weight:700;
   letter-spacing:.06em;text-transform:uppercase;color:var(--text-brass)}
 /* `:not([class])` and not `p`. The first version of this rule was `.tk-card p`,
-   specificity 0-1-1, and it beat every `.f-display` and `.s-30` utility in this
+   specificity 0-1-1, and it beat every `.tk-f-display` and `.tk-s-30` utility in this
    same file at 0-1-0: the three family specimens rendered in DM Sans at 12px and
    the page silently showed one typeface three times. It is the same failure the
    `@import` order in components/index.css exists to prevent, met inside the stand
@@ -664,42 +748,64 @@
 /* ==========================================================================
    FOUNDATIONS: GEOMETRY. Added 2026-08-07 for geometry.html.
    Same rule again: a class names the token, the token holds the value. */
-.sp-2{width:var(--space-2);height:var(--space-2)}
-.sp-4{width:var(--space-4);height:var(--space-4)}
-.sp-8{width:var(--space-8);height:var(--space-8)}
-.sp-12{width:var(--space-12);height:var(--space-12)}
-.sp-16{width:var(--space-16);height:var(--space-16)}
-.sp-20{width:var(--space-20);height:var(--space-20)}
-.sp-24{width:var(--space-24);height:var(--space-24)}
-.sp-28{width:var(--space-28);height:var(--space-28)}
-.sp-32{width:var(--space-32);height:var(--space-32)}
-.sp-40{width:var(--space-40);height:var(--space-40)}
-.sp-56{width:var(--space-56);height:var(--space-56)}
-.sz-2{width:var(--size-2);height:var(--size-2)}
-.sz-4{width:var(--size-4);height:var(--size-4)}
-.sz-8{width:var(--size-8);height:var(--size-8)}
-.sz-12{width:var(--size-12);height:var(--size-12)}
-.sz-16{width:var(--size-16);height:var(--size-16)}
-.sz-20{width:var(--size-20);height:var(--size-20)}
-.sz-24{width:var(--size-24);height:var(--size-24)}
-.sz-28{width:var(--size-28);height:var(--size-28)}
-.sz-32{width:var(--size-32);height:var(--size-32)}
-.sz-40{width:var(--size-40);height:var(--size-40)}
-.sz-56{width:var(--size-56);height:var(--size-56)}
-.sz-72{width:var(--size-72);height:var(--size-72)}
-.ct-32{height:var(--control-32)}
-.ct-36{height:var(--control-36)}
-.ct-44{height:var(--control-44)}
-.ic-12{width:var(--icon-12);height:var(--icon-12)}
-.ic-16{width:var(--icon-16);height:var(--icon-16)}
-.ic-18{width:var(--icon-18);height:var(--icon-18)}
-.ic-22{width:var(--icon-22);height:var(--icon-22)}
-.r-2{border-radius:var(--radius-2)}
-.r-6{border-radius:var(--radius-6)}
-.r-10{border-radius:var(--radius-10)}
-.r-16{border-radius:var(--radius-16)}
-.r-pill{border-radius:var(--radius-pill)}
-.r-half{border-radius:50%}
+.tk-sp-2{width:var(--space-2);height:var(--space-2)}
+.tk-sp-4{width:var(--space-4);height:var(--space-4)}
+.tk-sp-8{width:var(--space-8);height:var(--space-8)}
+.tk-sp-12{width:var(--space-12);height:var(--space-12)}
+.tk-sp-16{width:var(--space-16);height:var(--space-16)}
+.tk-sp-20{width:var(--space-20);height:var(--space-20)}
+.tk-sp-24{width:var(--space-24);height:var(--space-24)}
+.tk-sp-28{width:var(--space-28);height:var(--space-28)}
+.tk-sp-32{width:var(--space-32);height:var(--space-32)}
+.tk-sp-40{width:var(--space-40);height:var(--space-40)}
+.tk-sp-56{width:var(--space-56);height:var(--space-56)}
+.tk-sz-2{width:var(--size-2);height:var(--size-2)}
+.tk-sz-4{width:var(--size-4);height:var(--size-4)}
+.tk-sz-8{width:var(--size-8);height:var(--size-8)}
+.tk-sz-12{width:var(--size-12);height:var(--size-12)}
+.tk-sz-16{width:var(--size-16);height:var(--size-16)}
+.tk-sz-20{width:var(--size-20);height:var(--size-20)}
+.tk-sz-24{width:var(--size-24);height:var(--size-24)}
+.tk-sz-28{width:var(--size-28);height:var(--size-28)}
+.tk-sz-32{width:var(--size-32);height:var(--size-32)}
+.tk-sz-40{width:var(--size-40);height:var(--size-40)}
+.tk-sz-56{width:var(--size-56);height:var(--size-56)}
+.tk-sz-72{width:var(--size-72);height:var(--size-72)}
+/* THE CONTROL LADDER AND THE ICON LADDER, AND UNTIL 2026-08-12 NEITHER WAS DRAWN.
+   These eleven classes were declared and worn NOWHERE, on the one foundation page
+   whose whole subject is dimension: `geometry.html` printed both ladders as a `<dl>`
+   of prose while the space ramp and the size ramp beside them were drawn at their
+   own sizes. So the page stated the 44px touch floor as a number and put nothing on
+   the page at 44px, which is this kit's own rule failing on the ladder the floor is
+   built from: a page about a rule with nothing under it cannot be checked by reading
+   it. THE THREE MISSING RUNGS WERE THE FINDING. The ladder is six, 28 / 32 / 36 / 44
+   / 48 / 56, and this file held three of them, because the ramp was written when
+   `census.md` said three heights were declared and was never re-read after
+   2026-08-09 declared the other three. A ramp that has to be DRAWN cannot be short
+   without somebody seeing the hole. */
+.tk-ct-28{height:var(--control-28)}
+.tk-ct-32{height:var(--control-32)}
+.tk-ct-36{height:var(--control-36)}
+.tk-ct-44{height:var(--control-44)}
+.tk-ct-48{height:var(--control-48)}
+.tk-ct-56{height:var(--control-56)}
+.tk-ic-12{width:var(--icon-12);height:var(--icon-12)}
+.tk-ic-16{width:var(--icon-16);height:var(--icon-16)}
+.tk-ic-18{width:var(--icon-18);height:var(--icon-18)}
+.tk-ic-22{width:var(--icon-22);height:var(--icon-22)}
+/* The icon ladder is drawn twice on that section, once as the BOX and once as a
+   real mark inside it, because a mark is not the size of its box: the sprite half
+   is filled and the stroked half paints half of `--stroke-mark` outside its
+   geometry. The box is this rule; the ink is `.ic` in base.css, untouched. */
+.tk-icwell{display:inline-flex;align-items:center;justify-content:center;
+  width:var(--size-40);height:var(--size-40);border-radius:var(--radius-6);
+  background:var(--bg-well);border:var(--hairline) solid var(--border-hairline)}
+.tk-r-2{border-radius:var(--radius-2)}
+.tk-r-6{border-radius:var(--radius-6)}
+.tk-r-10{border-radius:var(--radius-10)}
+.tk-r-16{border-radius:var(--radius-16)}
+.tk-r-pill{border-radius:var(--radius-pill)}
+.tk-r-half{border-radius:50%}
 .tk-hair{border:var(--hairline) solid var(--border-hairline)}
 .tk-ring{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
 

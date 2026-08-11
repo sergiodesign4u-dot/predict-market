@@ -514,7 +514,10 @@
     /* ---- Event Detail content tabs (Comments / Top Holders / Positions / Activity) ---- */
     .ed-tabs { padding: 0; }
     .ed-tabwrap { border-top: 1px solid #ccc; }
-    .ed-tabradio { position: absolute; left: -9999px; }
+    /* Not parked off-canvas: an off-canvas radio keeps its box and its hit test, so 36 native
+       13x13 controls sat outside the page and answered a pointer. Same three declarations the
+       painted tree uses (components/tabs.css), and the label is the target. 2026-08-12. */
+    .ed-tabradio { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
     .ed-tabbar { display: flex; gap: 0; overflow-x: auto; border-bottom: 1px solid #999; background: #ededed; }
     .ed-tablabel { flex: 0 0 auto; padding: 9px 12px; font-size: 12px; cursor: pointer; border-right: 1px solid #ccc; white-space: nowrap; color: #555; }
     .ed-tab-count { font-size: 10px; color: #777; }
@@ -728,7 +731,16 @@
     @media(max-width:759.98px) {
       .footer-trust .trust-items { grid-template-columns: 1fr; }
     }
-  </style>
+      /* Skip link (WCAG 2.4.1 Bypass Blocks). The first focusable element on the page, clipped to
+       a 1x1 box until it takes focus, because display:none and visibility:hidden are the two ways
+       of hiding that also remove a control from the tab order, which is the whole point of it.
+       clip-path clips hit testing too, so the parked box cannot swallow a click. Grey, like the
+       rest of this tree; the colour copy takes its look from components/base.css. */
+    .skip-link { position: fixed; top: 8px; left: 8px; z-index: 10; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    .skip-link:focus { width: auto; height: auto; min-height: 44px; overflow: visible; clip-path: none;
+      display: inline-flex; align-items: center; padding: 0 16px; font-size: 14px; text-decoration: none;
+      background: #e2e2e2; color: #333; border: 1px solid #999; border-radius: 4px; }
+</style>
 </head>
 <body>
   <!-- ===== Wireframe screen-tree nav (meta navigation, identical on every wireframe page) ===== -->
@@ -993,6 +1005,11 @@
   </nav>
 
   <div class="device">
+
+    <!-- Bypass block, WCAG 2.4.1: the first focusable thing in the document, clipped to 1x1
+         until it takes focus. Structure lives here; the painted twin takes its look from
+         components/base.css. -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- Header (lean: logo = Events/home, right icon cluster) -->
     <header class="app-header">
       <div class="row">
@@ -1071,7 +1088,7 @@
     </header>
     <!-- Second-level navigation: categories route to their own pages (links) -->
     
-    <main class="feed">
+    <main class="feed" id="main-content" tabindex="-1">
       
         <nav class="cat-nav" aria-label="Categories (second level)">
           <ul>

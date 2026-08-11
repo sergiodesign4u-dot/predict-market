@@ -1,7 +1,7 @@
 /* components/base.css
    the page frame itself: reset, body type, the device shell and the shared utility classes.
 
-   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-page, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-slab, --bg-slab-from, --bg-slab-to, --edge-groove-dark, --edge-groove-light, --focus-ring, --scrim, --scroll-thumb, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --surface-grain-coarse, --text-icon, --text-primary
+   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-page, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-slab, --bg-slab-from, --bg-slab-to, --bg-surface, --border-brass, --edge-groove-dark, --edge-groove-light, --focus-ring, --scrim, --scroll-thumb, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --surface-grain-coarse, --text-brass, --text-icon, --text-primary
    Stand:  every page of the kit, because this is the frame they stand in and not a specimen on one of them
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
@@ -125,6 +125,82 @@ svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor!important;stroke:none!impor
    speaks up when it needs something different (the theme switch wants an inset ring, a dialog link
    wants a radius, the bet amount field has to out-specify its own outline:none). */
 :focus-visible{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
+
+/* THE BYPASS, DECLARED ONCE, AND IT IS THE THIRD FLOOR IN THIS FILE. The ring above is for a
+   person who navigates by keyboard and the 44px below is for a person who navigates by thumb;
+   this is the one that gets the first of them PAST the furniture instead of through it.
+
+   IT WAS MISSING FROM ALL 210 SCREENS. Measured 2026-08-12: 0 skip links in either tree. A Tab
+   walk of ui-visual/event-feed.html gave 113 stops at 390 and 114 at 1280, and stop 1 was a control
+   of the app header on every screen walked: the brand logo on the painted feed at 390, the header
+   hamburger at 1280 and on the grey feed. The first stop inside <main> was 4 at 390 and 9 at 1280,
+   so a keyboard walked the whole app header before it reached a word of the page, with no mechanism
+   to skip it. WCAG 2.4.1 Bypass Blocks, level A.
+
+   ONE LINK AND NOT TWO, AND THE MEASUREMENT IS WHAT DECIDED IT. The mobile bottom bar is the other
+   candidate target: on the feed at 390 its first slot is stop 82 of 113, which is 81 stops from the
+   top of the document. It is still one link, for three reasons that were read rather than assumed.
+   (1) 2.4.1 asks for a way PAST a repeated block, and the bar is at the END of the document, so
+   nothing has to get past it. (2) Three of its four destinations already have an earlier reach at
+   390: Events is the logo at stop 1, and My Bets and Portfolio are both in the avatar menu at stop
+   3. The fourth, Favorites, has no earlier reach at 390 because the header heart is `.desk-only`,
+   and that is a navigation gap in the product rather than a bypass failure, so it is filed and not
+   fixed here. (3) The bar is `display:none` from the DESK 640 rung up (bottomnav.css), so a second
+   link would point at nothing at every width above the rung unless it grew a rung of its own, and
+   this repository has already paid twice for a control that lies: the `pattern` attribute on 113
+   amount fields with no <form> to consult it, and the grab handle drawn for a gesture nobody built.
+
+   HIDING IT IS THE WHOLE DIFFICULTY, and components/CLAUDE.md already writes down why: `display:none`
+   and `visibility:hidden` are the two ways of hiding that DO reach the tab order, so either one
+   deletes the link this rule exists to provide. It is clipped instead: a 1x1 box with
+   `clip-path:inset(50%)`, which paints nothing and, unlike the old `clip:rect()` idiom it replaces,
+   ALSO clips hit testing, so the box parked in the corner cannot swallow a click meant for whatever
+   is under it. That is the defect this repository has just had to fix elsewhere and it is not
+   re-introduced here: nothing is left off-canvas and clickable.
+
+   `fixed` AND NOT `absolute`, because `.device` is the positioning parent and `.device` is the whole
+   scrolling document. An absolutely placed link sits at the top of the page, not at the top of the
+   window, so the moment the page has scrolled and focus arrives here by Shift+Tab the link would be
+   revealed somewhere off screen. Fixed puts it where the eye is. No ancestor of it declares a
+   transform, a filter or a will-change, which are the three things that would turn `fixed` into
+   `absolute` underneath it.
+
+   `:focus` AND NOT `:focus-visible` FOR THE REVEAL. A scripted `focus()` does not match
+   `:focus-visible` unless the last interaction was a key, and a link that is focused and still
+   invisible is worse than no link at all. The RING is not declared here at all: it arrives from the
+   rule above, which is the point of that rule.
+
+   44 WHEN SHOWN, FOR EVERY POINTER. The floor below is inside `@media(pointer:coarse)` and this
+   control is never shown to a pointer of any kind until it is focused, so it declares the height
+   itself rather than joining a list that only fires for a thumb.
+
+   `--z-menu` IS THE ROLE, not a number: it is the one product layer above `--z-header`, which is the
+   sticky band this link has to be readable over. A dialog is in the browser's top layer and stays
+   above it, which is correct and was measured rather than assumed: on the 17 painted overlay screens
+   the sheet is open as a real modal (`:modal` is true), so the document behind it is inert and the
+   first Tab lands on the first control in the sheet, not here. A modal traps focus and there is
+   nothing behind it to skip to. Their 17 grey twins carry no header at all, so they carry no link.
+
+   WHERE IT STANDS: 105 of the 106 painted screens and 87 of the 104 grey ones, 192 in all. The 18
+   documents that have none and should have none are the 17 grey overlays just described and
+   ui-visual/overview.html, which is a stand rather than a screen: its only <header> is the hero
+   INSIDE its <main>, so there is no repeated block in front of the content to bypass.
+
+   COLOUR THROUGH ROLES, so it has a value in both themes without this file knowing either: the app
+   header's own ground, the link ink this system paints every link with, and the brass hairline.
+   Measured on the focused control rather than read off the tokens: 7.80:1 in Vault and 7.14:1 in
+   daylight, ink and ring alike, and the box comes up 171 x 44 at 8,8 inside the viewport at every
+   width. AND THE FIRST READING OF ALL THAT WAS WRONG, which is the instrument note this file already
+   carries one axis over: getComputedStyle called in the same turn as the synthetic Tab returns the
+   PRE-focus values, 16px/400 in the user agent's link blue with a 3px ring. Let the recalc land
+   before believing any of it. */
+.skip-link{position:fixed;top:var(--space-8);left:var(--space-8);z-index:var(--z-menu);width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip-link:focus{width:auto;height:auto;min-height:var(--control-44);overflow:visible;clip-path:none;display:inline-flex;align-items:center;padding:0 var(--space-16);background:var(--bg-surface);color:var(--text-brass);border:var(--hairline) solid var(--border-brass);border-radius:var(--radius-10);font-family:var(--font-body);font-size:var(--text-14);font-weight:var(--weight-medium);text-decoration:none}
+/* THE TARGET IS A LANDMARK AND NOT A CONTROL, so it takes `tabindex="-1"` in the markup and keeps
+   the system ring when the link lands on it. The ring is left alone deliberately: a jump that moves
+   focus 80 stops without saying so is the same silence the skip link was written to end, and a
+   2px brass outline around the content region is the only thing on the page that says "focus is
+   here now". Nothing is declared for it here, which is the point. */
 
 /* THE TOUCH FLOOR, DECLARED ONCE, and it is the rule above read for a thumb instead of for a
    keyboard. A finger is not asking each component separately either.

@@ -1,7 +1,7 @@
 /* components/chart.css
    Component: chart. Classes: .chart-svg, .ed-chart-area, .ed-chart-foot, .ed-chart-head, .ed-chart-now, .ed-legend, .ed-plot, .ed-xaxis, .ed-yaxis, .grid-l, .lg-item, .ml-line, .nowline.
 
-   Reads: --bg-chart-well, --border-brass-hover, --border-hairline, --chart-line, --chart-line-glow, --line-grid, --outcome-yes-text, --text-muted
+   Reads: --bg-chart-well, --border-brass-hover, --border-hairline, --chart-line, --chart-line-glow, --line-grid, --outcome-yes-text, --text-muted, --text-primary
    Script hooks: .ed-chart, .ed-chart-multi. These carry NO rule and are not meant to: a page script reads them
      to decide what to draw. They are declared here because a class nothing styles and
      nothing declares is indistinguishable from dead markup, and this repository has now

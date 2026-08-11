@@ -486,6 +486,16 @@ dialog.app-dialog.hiw-dialog:modal .hiw-body{overflow:auto;min-height:0}
 .app-dialog.hiw-dialog .hiw-full{display:flex;align-items:center;justify-content:center;gap:var(--space-8);font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:var(--space-12);margin-top:var(--space-2)}
 .app-dialog.hiw-dialog .hiw-arrow{width:var(--icon-18);height:var(--icon-18);stroke:var(--text-on-brass);transition:transform var(--dur-base) ease}
 .app-dialog.hiw-dialog .hiw-full:hover .hiw-arrow{transform:translateX(3px)}
+/* AND THE NUDGE IS REMOVED BY NAME UNDER REDUCED MOTION, 2026-08-12. This is the only
+   TRANSLATION IN THE SYSTEM THAT IS NOT A LIFT: a 3px sideways slide reads as travel, which
+   is the one motion a person who asked for less of it is most likely to have asked about.
+   The global block in base.css shortens `transition-duration` to .01ms and never touches
+   `transform`, so the arrow was jumping 3px with the easing stripped off. The brass face
+   that arrives with it, on the rule below, is the affordance that stays: this control still
+   answers a pointer, it just stops moving. */
+@media(prefers-reduced-motion:reduce){
+  .app-dialog.hiw-dialog .hiw-full:hover .hiw-arrow{transform:none}
+}
 /* The one brass action in the system with no hover of its own: only the arrow
    moved, so a person on a device with a pointer got a nudge and nothing under it.
    Same lit face every other brass plate takes, and the same two roles. */

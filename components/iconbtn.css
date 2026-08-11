@@ -339,6 +339,16 @@
 .icon-btn.icon-btn-lift:hover .ic{stroke:var(--text-primary);color:var(--text-primary)}
 .icon-btn.icon-btn-lift:active{background:var(--bg-pressed);transform:translateY(0)}
 .icon-btn.icon-btn-lift:active .ic{stroke:var(--text-primary);color:var(--text-primary)}
+/* THE LIFT IS REMOVED BY NAME UNDER REDUCED MOTION, 2026-08-12, and the ground is not.
+   base.css declares reduced motion once for the whole system and it writes durations, not
+   properties: `transition-duration:.01ms` makes this -2px instant, it does not make it stop.
+   The class is called `icon-btn-lift` because the movement IS the affordance, so under
+   reduced motion the affordance has to become the colour change that is already here, which
+   is why only the transform is dropped. Same three words in button.css, card.css and
+   hero.css. */
+@media(prefers-reduced-motion:reduce){
+  .icon-btn.icon-btn-lift:hover{transform:none}
+}
 
 /* The X is drawn rather than fetched: two bars in currentColor, so the mark
    moves with the ink and the two cannot drift apart. The bar is --size-8 and

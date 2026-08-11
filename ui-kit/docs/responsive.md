@@ -37,7 +37,7 @@ Mechanical, by grep, over four corpora, because their fates differ.
 |---|---|---|---|---|---|
 | **`components/` THE HOME** | **38**, of which **33 are about width** | **0** | clamp 8, minmax 12, auto-fit 1, flex-wrap 31, vw 9, `%` 37 | max-width 28, min-width 32, margin-inline 3, `ch` 6 | **stays** |
 | **`ui-visual/` THE SCREENS** | **0** | 0 | **0** | **0** | **nothing to move** |
-| **`ui-kit/` THE STAND** | 11, all in `_page.css` | 0 | clamp 10, minmax 13, auto-fit 4 | max-width 12, `ch` 15 | stays in `_page.css`, not a product rule |
+| **`ui-kit/` THE STAND** | 11, all in `_page.css` | **1**, with 1 `container-type` | clamp 10, minmax 13, auto-fit 4 | max-width 12, `ch` 15 | stays in `_page.css`, not a product rule |
 | **`wireframes/` THE GREY TREE** | **1,386 in 104 files** | 0 | minmax 431, auto-fill 92, flex-wrap 2,142 | max-width 1,265, `ch` 90 | the corpus of evidence |
 
 **The stage's most expensive trap is already closed on the painted side.** A screen file may not carry
@@ -46,8 +46,18 @@ The only width sign in the whole painted tree is 46 percentages, and **all 46 si
 attribute** with values like `88%`, `58%`, `30%` and `12%`. Those are odds-bar fills, which is a
 datum, and a datum is one of the three things `CLAUDE.md` allows on the element.
 
-**What is genuinely new: `@container` is 0 and `container-type` is 0 in all four corpora.** No
-component in this system measures its own place. Every adaptive rule here asks about the window.
+**What is genuinely new: `@container` and `container-type` are 0 in the three corpora that are the
+product**, `components/`, `ui-visual/` and `wireframes/`. No component in this system measures its
+own place. Every adaptive rule here asks about the window.
+
+**The fourth corpus is not 0, and this table said it was until 2026-08-12.** `ui-kit/_page.css`
+declares one `container-type` and one `@container`, both of them `.tk-cq` and the box it wraps on
+`responsive.html`, and **they were added by step 2 of this same stage, after this grep was taken and
+before this file was read again**. A transcript is a measurement with a date on it, and the one thing
+that can invalidate it is the work it was taken for. The claim it made about the product still holds;
+the claim it made about all four corpora did not. The caption under the specimen on the stand hedged
+correctly the whole time, "the system declares 0 of these today", which is how the disagreement was
+found.
 
 ### The headline number: twelve distinct widths
 
@@ -375,8 +385,10 @@ column-width difference between the trees is not this row and is not invented by
 
 ## Container thresholds
 
-**Still none, and the reason is a measurement rather than a preference.** `@container` and
-`container-type` are both 0 in all four corpora, and a container query earns its place when one
+**Still none in the product, and the reason is a measurement rather than a preference.** `@container`
+and `container-type` are both 0 in `components/`, in `ui-visual/` and in `wireframes/`, and 1 each in
+`ui-kit/_page.css`, where `.tk-cq` gives the third mechanism a specimen a reader can drag. A
+container query earns its place when one
 component stands in two materially different slots, because that is the case a media query answers
 wrongly. The three families the audit marked "container" (Notifications, Wallet, How it works) each
 stand in exactly one place in this product, so a query on their container would resolve the same as a

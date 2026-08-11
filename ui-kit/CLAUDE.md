@@ -1,12 +1,25 @@
 # ui-kit/ - the vitrine, rebuilt by hand 2026-08-07 to 2026-08-08
 
 **All five steps are done and the plan below is the record of how, not a to-do list.** What is on the
-stand today: **56 pages**, `_page.css`, `_nav.js`, and five reports in `docs/`. It was 54 until
-`logo` was written on 2026-08-11 with the rename to Yonder, and 55 until `platehead` was written the
-same day by backlog 108: a face that three components wear, found by asking what `dialog.css` and
-`hiw.css` had in common rather than by walking a screen.
-**0 generators, 0 gates, 0 screenshots.** Every one of the 44 components placed on a level page
+stand today: **57 pages**, `_page.css`, `_nav.js`, and five reports in `docs/`. It was 54 until
+2026-08-11, when three landed the same day: `logo` with the rename to Yonder, `platehead` by backlog
+108 (a face that three components wear, found by asking what `dialog.css` and `hiw.css` had in
+common rather than by walking a screen), and **`responsive.html`, the FIFTH foundation**.
+
+**This file said 56 and the third page is why.** Every enumeration here and in `README.md` still
+read "all four foundation pages" and listed `icons`, `colour`, `typography`, `geometry`, so the
+page the Responsive stage added was missing from the list that the total was added up from, and the
+total came out one short in both files at once. **A count taken by adding up a list is only as good
+as the list**, which is the argument for the tally that `_nav.js` computes and against the one typed
+into prose beside it. Counted 2026-08-12 by listing `ui-kit/*.html` and by parsing the registry, and
+the two agree: 1 overview, 5 foundations, 4 shelves, 12 atoms, 16 molecules, 13 organisms, 6
+patterns.
+**0 generators, 0 gates, 0 screenshots.** Every one of the **47** components placed on a level page
 carries its live specimen in both themes, its classes, its declaration, its rule and its anti-rule.
+**47, not the 44 this line said**: counted 2026-08-12 from the `<section id>` of each shelf, 12 on
+`vitrine.html`, 16 on `molecules.html`, 13 on `organisms.html` and 6 on `patterns.html`, which is
+also the number of files in `components/` once `index`, `tokens`, `base`, `course-chrome` and
+`fonts` are taken out and the six in `patterns/` are put in.
 
 **It was 55 and 43 on 2026-08-08 and it is 54 and 42 the same day.** `account` was walked, given a
 level, and deleted within hours of each other: its whole stylesheet was the action bar's stone and
@@ -42,10 +55,10 @@ rendered**, and the six that read 0x0 at 390 stand in a panel that is `display:n
 `toggle.html` found the four faces above. None of these was visible from a level page, because a
 level page shows one specimen and every one of them is a fact about a set.
 
-The kit shows the system to a person and it holds no product code. It holds 56 pages plus its
-stylesheet and its registry: `overview.html`, which says what is happening, **all four foundation
-pages** (`icons.html`, `colour.html`, `typography.html`, `geometry.html`), **a shelf per rung, all
-four** (`vitrine.html` for the twelve atoms, `molecules.html` for the fourteen at level 2,
+The kit shows the system to a person and it holds no product code. It holds 57 pages plus its
+stylesheet and its registry: `overview.html`, which says what is happening, **all five foundation
+pages** (`icons.html`, `colour.html`, `typography.html`, `geometry.html`, `responsive.html`), **a
+shelf per rung, all four** (`vitrine.html` for the twelve atoms, `molecules.html` for the sixteen at level 2,
 `organisms.html` for the thirteen at level 3 and `patterns.html` for the six on the fourth rung), and
 **twelve atom pages, one per atom** (`button`, `iconbtn`, `chip`, `navitem`, `oddsbar`, `input`,
 `yesno`, `toast`, `skeleton`, `toggle`, `logo`, `platehead`) and **sixteen molecule pages** (`trustbar`, `market`,
@@ -58,7 +71,7 @@ four** (`vitrine.html` for the twelve atoms, `molecules.html` for the fourteen a
 
 **Every component has a ROW whether or not it has a page.** `_nav.js` groups by level, the level page
 is the first row of its own group (`All atoms`, `All molecules`), and a row with no page renders as a
-`<span>` with a badge. There are no rows waiting any more, so the panel says **56 of 56** and drops its own
+`<span>` with a badge. There are no rows waiting any more, so the panel says **57 of 57** and drops its own
 sentence about rows with no page: that sentence only exists while there IS one.
 
 **The route is written once, in `_nav.js`, and a page declares no part of it**, not even its own
@@ -83,9 +96,11 @@ count on the right of a row, and one `.tk-jump span` to `_page.css` for the dash
 `style=` attribute on `colour.html`: a colour written inline is a value this stylesheet cannot see,
 and a colour page whose colours are invisible to the system is the exact thing being audited.
 
-**The foundations are `colour`, `typography`, `geometry` and `icons`, one flat page each**, and they
-are the visible half of step 3. A value may only change in that step, and it changes in the page and
-in `components/` together.
+**The foundations are `colour`, `typography`, `geometry`, `icons` and, since 2026-08-11,
+`responsive`, one flat page each**, and the first four are the visible half of step 3. A value may
+only change in that step, and it changes in the page and in `components/` together. **The fifth came
+from a later stage and was left out of every enumeration in this file and in `README.md` until
+2026-08-12**, which is where both files' page totals went one short.
 
 ## What was here and why it is not
 
@@ -300,7 +315,8 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
    named turned out **not** to be holes, and the page is corrected rather than the file.
 4. **The pages, by level.** A live specimen, its states in both themes, its classes, its rule and
    its anti-rule. **4a atoms is `vitrine.html`** (done as step 2.5, ten atoms, 50 faces). **4b
-   molecules is DONE 2026-08-08, `molecules.html`**: fourteen at level 2, 36 theme pairs, the real
+   molecules is DONE 2026-08-08, `molecules.html`**: fourteen at level 2 on the day, sixteen since
+   `cookie-consent` and `toc` were walked, 36 theme pairs, the real
    markup the screens ship. Two of the fourteen were filed as atoms and hold their own named parts,
    which is the case the declaration exists for. Three more (`account`, `cookie-consent`, `toc`)
    stand on no anchor screen and are marked **unmeasured** rather than given a level. **4c organisms

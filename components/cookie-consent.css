@@ -2,7 +2,7 @@
    Component: cookie-consent. Classes: .cc-actions, .cc-banner, .cc-btn, .cc-cat, .cc-cat-desc, .cc-cat-main, .cc-cat-name, .cc-cats, .cc-inner, .cc-manage, .cc-note, .cc-page, .cc-ph, .cc-ph-line, .cc-policy, .cc-text, .w40, .w60, .w80, .w90.
 
    Reads: --bg-card-quiet, --bg-control, --border-hairline, --color-action, --color-action-pressed, --edge-groove-light, --glow-brass, --opacity-locked, --shadow-ink, --text-brass, --text-muted, --text-primary
-   Stand:  ui-kit/cookie-consent.html, and ui-kit/molecules.html#cookie-consent for the level and its reason. WALKED 2026-08-08: HOLDS button, 3 of them, plus its own rows, level 2, so the word UNMEASURED came off
+   Stand:  ui-kit/cookie-consent.html, and ui-kit/molecules.html#cookie-consent-lt for the level and its reason (the -lt is the shelf's own id suffix and not a variant of this component: ui-kit/CLAUDE.md). WALKED 2026-08-08: HOLDS button, 3 of them, plus its own rows, level 2, so the word UNMEASURED came off
    Stands on: 2 ui-visual screens (cookie-consent.html, toasts.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 

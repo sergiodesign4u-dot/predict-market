@@ -35,20 +35,41 @@
    one the majority already wore, so the migration is the smallest move that ends
    the disagreement rather than a fifth opinion added to four.
 
-   EVERY SELECTOR HERE REQUIRES `.btn`, AND THAT IS NOT STYLE. `ui-kit/kit.html`
-   is frozen provenance and it still carries `class="btn-primary btn-lg"` and its
-   five siblings, with its own copy of nine declarations in its own <style>,
-   scoped `.app-case .btn-primary`. A bare `.btn-primary` rule here would land on
-   that page at equal specificity and repaint the record of what was proposed.
-   Its markup has no `.btn`, so `.btn.btn-primary` cannot reach it, and the
-   frozen page goes on rendering exactly as it did. Measured after the migration:
-   unchanged.
+   EVERY SELECTOR HERE REQUIRES `.btn`, AND THE PAGE THAT ARGUMENT NAMED IS GONE.
+   Until 2026-08-12 this paragraph said the requirement existed to keep a bare
+   `.btn-primary` off `ui-kit/kit.html`, which was frozen provenance carrying
+   `class="btn-primary btn-lg"` in markup with no `.btn`. THAT FILE DOES NOT
+   EXIST: `find . -name kit.html` returns nothing, it went with the old vitrine on
+   2026-08-07, and it survives only as prose in `docs/kit-archive/`. A constraint
+   on every selector in a file, justified by a path that opens nothing, is the
+   worst shape drift takes: the next reader either keeps it for a dead reason or
+   drops it without knowing whether a live one applies.
+
+   THE REQUIREMENT STAYS, AND THESE ARE THE TWO READINGS THAT HOLD IT UP NOW.
+   FIRST, IT COSTS NOTHING. Every `class=` attribute in the repository, read
+   2026-08-12 with `<code>` prose excluded: **2,030 elements carry `.btn` and the
+   eleven modifiers below are worn 5,597 times, with ZERO placements of any
+   modifier without `.btn`.** The one `class="btn-primary btn-lg"` left in the
+   tree is inside a `<code>` element on `ui-kit/button.html`, prose about this
+   rule and not an attribute, so nothing paints it. No placement has to change to
+   keep the constraint, and none would have to change to drop it either.
+
+   SECOND, AND THIS IS THE LIVE REASON: `.btn` IS THE ANATOMY AND EVERY MODIFIER
+   BELOW IS AN ADJECTIVE. `.btn` alone declares the display, the box, the 1px
+   band, the corner, the family, the cursor and `min-height:var(--control-h)`.
+   `.btn-primary` declares a ground, an ink and a weight and NOT ONE of those. A
+   bare `.btn-primary` would therefore paint brass onto a control with no shape,
+   no height and no focus geometry: a thing that looks like it worked. Requiring
+   `.btn` makes that unwritable rather than merely discouraged, because the
+   selector does not fire at all. The reach is exact and small: only `ui-kit/`
+   (57 pages) and `ui-visual/` (106) link `components/index.css`, so the rule
+   governs 163 documents and has 0 exceptions in them.
 
    AND `.app-case` IS GONE FROM THIS FILE for the same reason it was here. It
-   scoped these rules away from the frozen kit, and it cost every state rule a
-   second copy for dialogs, which are NOT inside `.app-case` in this product. The
-   `.btn` requirement does that job with no duplicate: eleven scoped selectors
-   became four.
+   scoped these rules away from the then-frozen kit, itself deleted on 2026-08-07,
+   and it cost every state rule a second copy for dialogs, which are NOT inside
+   `.app-case` in this product. The `.btn` requirement does that job with no
+   duplicate: eleven scoped selectors became four.
    ============================================================================ */
 
 /* The anatomy every button has, whatever it says and wherever it stands.
@@ -340,6 +361,16 @@
   background var(--dur-quick) ease,transform var(--dur-fast) ease}
 .btn.btn-provider:hover{transform:translateY(-1px)}
 .btn.btn-provider:active{transform:translateY(0)}
+/* AND THE LIFT IS REMOVED BY NAME UNDER REDUCED MOTION, 2026-08-12. The global block in
+   base.css shortens `transition-duration` to .01ms; it never touches `transform`, so this
+   -1px went on happening for a person who asked for less motion, just without the easing.
+   Four files in this system declare a hover lift and only card.css had written this: the
+   other three were found together and answered the same way. `transform` is the only
+   property a system-wide motion rule cannot reach, because there is no value it could
+   safely write for every element that has one. */
+@media(prefers-reduced-motion:reduce){
+  .btn.btn-provider:hover{transform:none}
+}
 /* The brand marks: filled with the current colour rather than stroked, because a
    logotype is not an icon. `.prov-google` carries its own brand colours in the
    markup and correctly has no rule. */

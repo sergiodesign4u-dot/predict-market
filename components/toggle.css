@@ -1,7 +1,7 @@
 /* components/toggle.css
    Component: toggle. Classes: .toggle.
 
-   Reads:
+   Reads: --bg-control, --bg-control-hover, --bg-pressed, --border-hairline, --color-action, --color-action-pressed, --control-knob, --opacity-disabled, --text-muted
    Stand:  ui-kit/toggle.html, and ui-kit/vitrine.html#toggle for the level and its reason
    Stands on: 3 ui-visual screens (favorites-empty.html, favorites-loading.html, favorites.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */

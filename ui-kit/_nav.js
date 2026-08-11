@@ -18,7 +18,7 @@
    own into 104, 1,247 KB. Neither has drifted, and neither could have stayed in
    step by hand: `_resync_sidebar.py` held them, and it was deleted too. The kit
    had seven pages when this was written, twelve on 2026-08-08 and nineteen by
-   the end of the same day, on the way to 55.
+   the end of the same day, on the way to the 57 it stands at now.
    Nineteen copies of one list would be nineteen edits for every row, and the root rule says
    a fact written twice will drift. So the list is written once, here, and no page
    of the stand declares any part of it. THE SENTENCE ABOVE HAS BEEN CORRECTED
@@ -126,8 +126,9 @@ window.KIT_NAV = [
        bar's stone and its negation, and the walk that gave it a level is the
        same walk that found the stone worn once of three placements. Its page
        and its writing are on `action-bar.html` now, where the rest of the bar
-       already was. The tally below is computed from this list, so the panel says
-       54 of 54 without anybody typing a number. Backlog 63. */
+       already was. The tally below is computed from this list, so the panel said
+       54 of 54 that day and says 57 of 57 today without anybody typing a number.
+       Backlog 63. */
     label: 'Molecules',
     items: [
       { label: 'All molecules', page: 'molecules.html', done: true, note: '16' },
@@ -183,14 +184,24 @@ window.KIT_NAV = [
   {
     /* The reports are documents rather than stands, so they are indented. Each
        one is the artefact of a step, and a step whose artefact nobody can reach
-       from the stand is a step that will be taken again. */
+       from the stand is a step that will be taken again.
+
+       AND THE FIFTH ONE WAS UNREACHABLE FOR A DAY, WHICH IS THAT SENTENCE
+       FAILING ON THE FILE IT IS WRITTEN IN. `docs/responsive.md` was written on
+       2026-08-11 with `responsive.html` beside it, the page was added to
+       Foundations and the report was added to nothing. The panel is the only
+       route to a document in this folder: a report not listed here is a report
+       reachable by knowing its file name, which is the same as unreachable. It is
+       last because it is the newest step and not because it is the least, and the
+       order of this group is the order the steps were taken. */
     label: 'The reports',
     kind: 'doc',
     items: [
       { label: 'Census',        page: 'docs/census.md',        done: true },
       { label: 'Inventory',     page: 'docs/inventory.md',     done: true },
       { label: 'Consolidation', page: 'docs/consolidation.md', done: true },
-      { label: 'Audit',         page: 'docs/audit.md',         done: true }
+      { label: 'Audit',         page: 'docs/audit.md',         done: true },
+      { label: 'Responsive',    page: 'docs/responsive.md',    done: true }
     ]
   }
 ];
@@ -214,10 +225,12 @@ window.KIT_NAV = [
 
     var file = (location.pathname.split('/').pop() || 'overview.html');
     /* The tally counts STAND PAGES, so the document groups are out of it and
-       overview.html, which is not a row of any group, is in it. Counting the four
-       reports as pages would make it 23 of 59 instead of 19 of 55 and mean less
+       overview.html, which is not a row of any group, is in it. Counting the five
+       reports as pages would make it 62 of 62 instead of 57 of 57 and mean less
        than either: a report is done or it does not exist, so it can only ever add
-       the same number to both sides. */
+       the same number to both sides. Both numbers are computed and neither is
+       typed anywhere; the two in this sentence are the arithmetic, not a copy the
+       panel reads. */
     var total = 1, done = 1;
     window.KIT_NAV.forEach(function (g) {
       if (g.kind === 'doc') return;

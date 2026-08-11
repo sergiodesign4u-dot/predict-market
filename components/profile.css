@@ -12,8 +12,13 @@
 .idrow .av{display:inline-flex;width:var(--size-72);height:var(--size-72);flex:0 0 var(--size-72);border:0;border-radius:var(--radius-pill);background:var(--bg-control) url(../assets/avatar-2.jpg) center/cover;overflow:hidden;color:transparent;font-size:0;box-shadow:0 0 0 3px var(--bg-canvas),0 0 0 4px var(--tint-brass-60)}
 /* The brass ring was 55 per cent written as a colour function, five hundredths off
    the ladder's last rung and invisible to the rescale map for exactly that reason.
-   S50, 2026-08-07. It is the only tint in this pass that does NOT move in daylight,
-   because --tint-brass-60 is the one rung components/tokens.css leaves unshifted. */
+   S50, 2026-08-07. IT USED TO BE THE ONLY TINT IN THIS PASS THAT DID NOT MOVE IN DAYLIGHT, and
+   that sentence stood here until 2026-08-12 as a statement about this ring when it was really a
+   statement about a hole: --tint-brass-60 was the one rung tokens.css left unshifted because
+   --brass-a60 was the top of the alpha ladder and the light theme's "every tint steps one rung"
+   law had nowhere to send it. The seventh rung exists now, so the ring moves like the rest of
+   them, 1.543 to 1.740 against its ground, still quiet. A comment that describes a neighbour's
+   limitation ages the moment the neighbour is fixed. */
 .idrow .who{display:flex;flex-direction:column;gap:var(--space-4);flex:1 1 150px;min-width:0}
 .idrow .who br{display:none}
 .idrow .name{font-family:var(--font-display);font-size:var(--text-20);font-weight:var(--weight-bold);letter-spacing:var(--track-head);color:var(--text-primary);line-height:var(--leading-flat)}

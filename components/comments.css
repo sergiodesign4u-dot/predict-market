@@ -2,7 +2,7 @@
    Component: comments. Classes: .cmt, .cmt-actions, .cmt-av, .cmt-badge, .cmt-body, .cmt-compose, .cmt-controls, .cmt-input, .cmt-list, .cmt-meta, .cmt-signin, .cmt-text, .cmt-user, .reply, .seg.
 
    Reads: --bg-control, --bg-well, --border-brass, --border-hairline, --color-action, --text-brass, --text-muted, --text-primary, --tint-brass-09
-   Stand:  ui-kit/comments.html, and ui-kit/molecules.html#comments for the level and its reason
+   Stand:  ui-kit/comments.html, and ui-kit/molecules.html#comments-lt for the level and its reason (the -lt is the shelf's own id suffix and not a variant of this component: ui-kit/CLAUDE.md)
    Stands on: 9 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
@@ -55,7 +55,17 @@
    WHAT SURVIVES OF THE ARGUMENT is the part that was never about a number: these
    read as text and not as chips, no ground, no edge, no radius, and none of that
    moved. A floor is a target size and a target size is not a look. */
-.cmt-actions .ic{width:var(--icon-12);height:var(--icon-12);color:var(--text-muted);stroke:var(--text-muted)}
+/* THE SIZE AND THE INK IN ONE RULE, 2026-08-12, and the two halves disagreed for 50 lines.
+   This rule declared `stroke:var(--text-muted)` and a second `.cmt-actions .ic` rule down at
+   the actions' press declared `stroke:none`: same selector, same specificity, so source order
+   handed it to the later one and **the stroke written here has never fired**. Nothing rendered
+   wrong, because these marks are Solar Bold and take their ink from `fill:currentColor`, and
+   that is exactly why it survived: a dead declaration that agrees with the outcome is
+   invisible. `stroke:none` is the live one and it is now written here, beside the size, with
+   `fill:currentColor`, so the mark's paint is one rule and not two rules half a file apart.
+   Both properties are named on purpose: a stroked glyph reads `stroke` and a filled one reads
+   `fill`, and components/CLAUDE.md carries what it cost to name only one of them. */
+.cmt-actions .ic{width:var(--icon-12);height:var(--icon-12);color:var(--text-muted);fill:currentColor;stroke:none}
 /* TWO AVATAR PLACEHOLDERS LEFT THIS FILE ON 2026-08-08, and they were half alive.
    They were `.cmt-list .cmt-av` and `.cmt-list .cmt:nth-child(even) .cmt-av`, two sample
    photographs alternating down the thread, and the note under them said the product would write
@@ -105,7 +115,8 @@
 /* Reply and like carry no ground of their own, so the press is the ground arriving: the same
    --bg-pressed, drawn tight around the label because the button's padding is 0 and a state may not
    move the control. footer.css presses a bare text link the same way, for the same reason. */
-.cmt-actions .ic{fill:currentColor;stroke:none}
+/* `.cmt-actions .ic{fill:currentColor;stroke:none}` stood here and is now written once,
+   with the size rule above. It was the winning half of a pair. */
 /* THE COMMENT SORT SWITCHER, moved here from tabs.css on 2026-08-03 (docs/backlog.md 17).
    tabs.css held it because "that file owns every switcher", and that sentence was the
    defect: every one of the seven rules is scoped `.cmt-controls`, so the ownership was a

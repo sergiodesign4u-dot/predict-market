@@ -1,13 +1,26 @@
 /* components/filters.css
    Component: filters. Classes: .filter-menu, .filter-panel, .reverse-row.
 
-   Reads: --bg-control, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --color-action, --focus-ring, --shadow-ink, --text-brass, --text-muted, --text-primary, --text-strong, --tint-brass-16
-   Stand:  ui-kit/filters.html, and ui-kit/molecules.html#filters for the level and its reason
+   Reads: --bg-control, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --focus-ring, --shadow-ink, --text-brass, --text-muted, --text-primary, --text-strong, --tint-brass-16
+   Stand:  ui-kit/filters.html, and ui-kit/molecules.html#filters-lt for the level and its reason (the -lt is the shelf's own id suffix and not a variant of this component: ui-kit/CLAUDE.md)
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .filter-menu{position:relative}
-.filter-menu summary{list-style:none;padding:var(--space-4) var(--space-8);font-size:var(--text-11);cursor:pointer;display:inline-flex;align-items:center;gap:var(--space-4)}
+/* THE REST GEOMETRY IS DECLARED ONCE NOW, AT THE CHIP RULE 30 LINES DOWN, AND IT WAS
+   DECLARED TWICE UNTIL 2026-08-12. This rule also carried
+   `padding:var(--space-4) var(--space-8)` and `gap:var(--space-4)`: the SAME selector at
+   the SAME specificity as the chip face below, so source order settled it and the chip's
+   `var(--space-8) var(--space-20)` and `var(--space-8)` won every time. **193 menus on 105
+   screens and the 4/8 padding has never rendered on one of them.** Nothing looked wrong,
+   which is the whole cost: a value that cannot draw still reads like the value, so anyone
+   tuning the summary's padding here would have edited a rule, seen no change, and had
+   nothing in the file to tell them why. Deleted rather than reconciled, because the
+   cascade had already chosen and the deletion is what makes the choice visible.
+   `display:inline-flex` and `align-items:center` are still written in both, with identical
+   values, so they are redundant and not dead; they are left where a reader of the first
+   rule expects them. */
+.filter-menu summary{list-style:none;font-size:var(--text-11);cursor:pointer;display:inline-flex;align-items:center}
 .filter-menu summary::-webkit-details-marker{display:none}
 .filter-panel{right:0}
 .filter-panel ul{list-style:none;margin:0;padding:var(--space-4) 0}

@@ -171,62 +171,172 @@ first thing that pass does.
 
 ## Behaviour on width
 
-Added 2026-08-12 by Responsive step 4, and **filled for every component**, because an empty cell
-here would mean nobody knows what the part does on a wide screen. Read from the product at twelve
-widths, three rungs and one pixel either side of each, on the screen where each component stands
-widest, with every dialog opened.
+Added 2026-08-12 by Responsive step 4 and **RE-MEASURED THE SAME DAY, because the first reading
+measured one placement per component and three of its five FIXED verdicts were wrong.** The first
+pass took each component's widest single placement at 1440 and read only that one, so the number in
+the row was a fact about one slot printed as a fact about the component. `navitem` was published
+`FIXED, 258px`, the width of the third most common of its three slots, while the dominant one, 420
+of its 995 placements, runs 79 to 159 and is fully fluid. `chip` was published `FIXED, 81px` and is
+intrinsic, standing at nine different widths from 18 to 206 in one document. `filters` was published
+`FIXED, 152px` and is fixed at five different numbers. Only `logo` and `toggle` survived, and `logo`
+survived by half: 86.1 is the header's placement and the footer's fills.
+
+**The table is now a statement about the SET of a component's placements, and where they disagree
+the row says so** rather than choosing one. Every element wearing a class that only that component's
+file declares was measured, on all 105 screens of `ui-visual/` (`overview.html` is an index and not
+a screen), at thirteen widths: **320, 360, 639, 640, 641, 759, 760, 761, 899, 900, 901, 1280,
+1440**, three rungs and one pixel either side of each, plus the two phone widths and two desks.
+Placements are grouped by the container they stand in, and the row names the container when the
+containers disagree.
 
 **The column measures the component against its PARENT'S CONTENT BOX and not against the window**,
-and that is the whole reason the numbers are worth anything. Measured against the window, 33 of the
-43 read as stepping at 640, because the page gutter goes 14 to 40 there and takes 51px out of the
-content column: that is the frame's behaviour arriving in every row. Measured against the parent's
-BORDER box, seven more read as changing their share, because the parent's own padding steps.
+and that is the one thing the first pass got right and is kept unchanged. Measured against the
+window, 33 of the 43 rows it then had read as stepping at 640, because the page gutter goes 14 to 40
+there and takes 51px out of the content column: that is the frame's behaviour arriving in every row.
+Measured against the parent's BORDER box, seven more read as changing their share, because the
+parent's own padding steps at the same pixel.
 **A component that is fluid inside a container that steps is still fluid.**
 
-| Component | Its own width query | What it does with width |
-|---|---|---|
-| `action-bar` | none | **FILLS** its container |
-| `betpanel` | 760 | **CHANGES** its share |
-| `browse-shell` | 900 | **FILLS** its container |
-| `button` | none | **GONE in a band**, then fixed |
-| `card` | 640 | **FILLS** its container |
-| `card-grid` | none | **FILLS** its container |
-| `catnav` | 640, 900 | **FILLS** its container |
-| `chart` | 760 | **FILLS** its container |
-| `chip` | 640, 900 | **FIXED**, 81px |
-| `comments` | none | **FILLS** its container |
-| `cookie-consent` | none | **FILLS** its container |
-| `detail-shell` | 760 | **FILLS** its container |
-| `dialog` | 640 | **CHANGES** its share |
-| `event-detail` | 560, 640 | **FILLS** its container |
-| `feed` | none | **FILLS** its container |
-| `filters` | 640 | **FIXED**, 152px |
-| `footer` | 640 | **FILLS** its container |
-| `header` | 640, 760 | **FILLS** its container |
-| `hero` | 620, 980 | **FILLS** its container |
-| `hiw` | 900 | **FILLS** its container |
-| `iconbtn` | 560 | **GONE in a band**, then fixed |
-| `input` | none | **FILLS** its container |
-| `list-head` | none | **FILLS** its container |
-| `loadmore` | none | **FILLS** its container |
-| `logo` | none | **FIXED**, 86px |
-| `market` | none | **FILLS** its container |
-| `navitem` | none | **FIXED**, 258px |
-| `notice` | none | **FILLS** its container |
-| `oddsbar` | none | **FILLS** its container |
-| `options` | none | **FILLS** its container |
-| `platehead` | none | **FILLS** its container |
-| `position` | 640 | **FILLS** its container |
-| `position-list` | none | **FILLS** its container |
-| `profile` | none | **FILLS** its container |
-| `quick` | none | **FILLS** its container |
-| `related` | none | **FILLS** its container |
-| `seo-plate` | 760 | **FILLS** its container |
-| `skeleton` | none | **CHANGES** its share |
-| `state-block` | none | **FILLS** its container |
-| `tabs` | none | **FILLS** its container |
-| `toast` | none | **FILLS** its container |
-| `toc` | 900 | **FILLS** its container |
-| `toggle` | none | **FIXED**, 44px |
-| `trustbar` | 760 | **FILLS** its container |
-| `yesno` | none | **FILLS** its container |
+**A class named by two component files belongs to nobody and is excluded**, or the probe measures
+the wrong thing: `.sel` is declared by `bets-table`, `chip`, `options`, `tabs` and `yesno`, and the
+other eight are `.feed-seo`, `.no`, `.subcat`, `.toc`, `.w40`, `.w60`, `.w80` and `.yes`. That is 9
+of 426 declared class names. Every one of the 47 components still has at least one class of its own
+after the exclusion, so no component lost its measurement to it.
+
+**How the state was set, because a state that is not set is a value the instrument picked.** The
+review harness (`#rmSidebar`, `#rmOverlay`, `#rmToggle`) was removed before every read, since
+`base.css` insets any body that contains it by 220px and a media query reads the window while the
+layout gets the container. Every `<dialog>` was opened and every `<details>` expanded, or 337 sheets
+measure zero. Animations were finished with `getAnimations().forEach(a => a.finish())` before each
+read. **And a second pass cycled every tab radio**, which is the only reason `bets-table` has a row
+at all: all ten of its slots live in a panel that is `display:none` until its radio is checked, so
+the first reading saw 0 painted placements of a component that is 469 elements on 9 screens.
+
+**The instrument was proved before the finding was believed.** The tree was frozen to a snapshot at
+01:44 on 2026-08-12 first, because `components/*.css` was being edited by other hands while the
+probe ran and a control taken across those edits reported **13 differing cells, every one of them
+`.ed-tabradio` reading 13px in one pass and 1px in the next**, which is an edit to `--hairline` and
+not a reading. Against the frozen snapshot, two identical passes gave **0 differing cells of
+4,238**. The five verdicts that carry the corrections, `navitem`, `chip`, `filters`, `logo` and
+`toggle`, were then re-read against the live tree after those edits landed and are unchanged.
+
+**Three verdicts are not one.** `FILLS` says the box is as wide as its container's content box and
+says nothing about how wide that is: `navitem` FILLS in all three of its slots and measures 79, 194
+and 258 at one viewport width. So every row carries the pixels as well as the relation.
+
+| Verdict | What it means |
+|---|---|
+| **FILLS** | as wide as the parent's content box at every width. The pixels are the parent's |
+| **CONSTANT SHARE** | a fixed fraction of the parent below 1, unchanged across the ladder |
+| **INTRINSIC** | sized by its content: the same value at every width, different values per instance |
+| **FIXED** | one number, at every width and in every instance of that slot |
+| **CHANGES its share** | the fraction of the parent moves across the ladder |
+| **GONE in a band** | not painted at some widths and painted at others |
+
+**47 rows for 47 components.** The first table had 45 and claimed to be filled for every one:
+`bets-table` and `bottomnav` had no row at all, and both are measurable, one of them only with the
+tabs cycled. Placements are elements wearing a class no other component file declares, counted over
+the 105 screens.
+
+| Component | Its own width query | Placements | What it does with width |
+|---|---|---|---|
+| `action-bar` | none | 3 on 3 | **FILLS** both its containers, 200 to 1,228. Three placements is the pattern threshold exactly, and one face |
+| `betpanel` | 760 | 240 on 11 | **Two faces that never coexist.** `.bet-panel` is GONE below 760 and FILLS a 320px column above it; `.bet-dock` is GONE at 760 and above and is a CONSTANT 49 per cent of the dock below it. Inside: `.bp-inner` FILLS 280 to 520, `.bp-dir` a constant 49 per cent, `.bp-head` INTRINSIC 54.9-107.3 |
+| `bets-table` | 640 | 469 on 9 | **Measured only with the tab radios cycled**, which is why the first table had no row: all ten slots are `display:none` until their radio is checked. The panels and `.act-list` FILL, 285 at 760 to 925 at 1440; `.hold-col` FILLS its column; `.hold-row` and `.hold-name` are INTRINSIC (12-821.6, 36.8-74.8); `.act-row` CHANGES its share |
+| `bottomnav` | 640 | 178 on 105 | **FILLS the viewport below 640** (320, 360, 639) and is **GONE at 640 and above**, on all 105 screens. `.bn-bal` inside it is FIXED 36.3 |
+| `browse-shell` | 900 | 154 on 77 | **FILLS** both slots. The 900 rule is spent on what the rail takes out of `.cat-layout`, not on the shell's own width |
+| `button` | none | 1,224 on 105 | **Six behaviours across fifteen slots.** FILLS in `.sheet-body` (368 to 597) and `.bp-inner`; FIXED 18 for the provider mark, 51.8 in the compose row, 135.8 in the identity row; FIXED 88.4 for the desk-only header button, which is GONE below 760; INTRINSIC in `.cmt-actions` 30.7-36.8, `.auth-btns` 64-69.2 and `.state-actions` 59.9-380; CHANGES its share in `.cta-bar` (96 to 627) and `.cc-actions`. The old row's "GONE in a band, then fixed" describes 105 of the 1,224 |
+| `card` | 640 | 1,501 on 36 | **FILLS `.grid`, and the box it fills is not monotonic in the window**: 232 at 320, 500 at 640, 300.5 at 759, 371-527 at 900, 368-444 at 1280 and **301.5-330 at 1440**. A card is narrower at 1440 than at 640. Inside: `.top` and `.meta` CHANGE their share, `span in .meta-txt` INTRINSIC 42-72, `.gallery` FIXED 172. **`.prob-line`, 63 placements, is painted at no width**: a page script hides it |
+| `card-grid` | none | 23 on 23 | **FILLS** `.cat-main`, 234 to 1,262. The column count is a token, not a query, which is why the file has none |
+| `catnav` | 640, 900 | 90 on 57 | **FILLS all three slots, and one of them changes what filling means**: `.subcat` is 761 wide at 899 and **214 at 900**, because its own 900 rule turns it into the rail |
+| `chart` | 760 | 132 on 11 | **FILLS** `.ed-chart`, `.ed-plot` and `.chart-svg`; `.ed-chart-area` CHANGES its share; `.ed-legend` 49-95.2 and `.ed-chart-head` 85.8-124.8 are INTRINSIC |
+| `chip` | 640, 900 | 2,276 on 105 | **INTRINSIC, and the published 81px was one instance of one slot.** At a single viewport it stands at 18 (the count inside a nav chip), 24.6-44.4 (the count inside a lane chip), 28.7-45.1 (quick amounts), 36-39.3 (`.ed-range`), 42.2-75.2 (`.feed-subfilter`), 45-68 (the segmented control), 81.4-200 (the lane), 119-132.4 (`.cat-nav`) and 162.3 (load more). **One of the nine moves with width**: the lane chip is 81.4-200 to 899 and 206 at 900, by `.chip-lane{width:100%}` in its own 900 rule. **525 placements are painted at none of the thirteen widths**, the five condensed-band chips per screen: `.cat-condensed` is `visibility:hidden` until `.app-header.scrolled`, and forced open it measures 69.7-82.1 at every width |
+| `comments` | none | 435 on 9 | **FILLS** `.cmt-body`, `.cmt-list` and the panel; `.cmt`, `.cmt.reply` and `.cmt-compose` CHANGE their share; `.cmt-meta` INTRINSIC 50.9-122.4; `.cmt-controls` FIXED 197.8; the avatar FIXED 28 in the holders and activity panels, which need the tabs cycled |
+| `cookie-consent` | none | 33 on 2 | **FILLS** eight of eleven slots; `.cc-ph` is a CONSTANT 90 per cent of its row; `.cc-actions` and `.cc-cat-main` CHANGE their share |
+| `detail-shell` | 760 | 22 on 11 | `.feed-inner` FILLS; **`.ed-layout` CHANGES its share at 760**, 611 at 639 to 342 at 760, which is the second column arriving |
+| `dialog` | 640 | 1,902 on 105 | The sheet **FILLS a box the sheet itself caps**: 292.4-318 at 320, 408 to 462 from 640 up and never wider. Against the body's content box it CHANGES its share, 294.4 at 320 to 410-464 above 640. `.sheet-head` INTRINSIC 32-325.6; `.hiw-full` FIXED 18 |
+| `event-detail` | 560, 640 | 162 on 11 | `.ed-main` **FILLS**, 291 at 320 to 981 at 1440; `.rules-panel` CHANGES its share and caps at 586.9; `.ed-head` CHANGES its share. **`.args`, 18 placements, is painted at no width** |
+| `feed` | none | 105 on 105 | **FILLS the viewport**, 320 to 1440, one slot and one behaviour. The only component of the 47 whose container is the page |
+| `filters` | 640 | 389 on 105 | **FIXED, at five different numbers, none of which moves at any of the thirteen widths**: 121.6 in the footer brand, 150 for the language menu, 152.4-153.5 in `.feed-controls`, 194 for the open panel, 196 for the filter menu. The published 152 named one of the five |
+| `footer` | 640 | 2,100 on 105 | `.app-footer` FILLS the viewport to 1280 and **caps at 1400**; `.footer-cols` is 611 at 639 and **120 from 640 up**; `.footer-top` CHANGES its share; `li in .footer-col` INTRINSIC 20.5-65.2; five more slots FILL |
+| `header` | 640, 760 | 1,570 on 105 | `.app-header` FILLS the viewport and **caps at 1400**; `.left`, `.row` and `.utility` CHANGE their share; the balance figure is **GONE below 640**; the two menus FILL at 196 and 256-260 and neither moves |
+| `hero` | 620, 980 | 76 on 2 | **Eighteen slots on two screens and no majority.** `.hf-graph` a CONSTANT 91 per cent; `.hf-info`, `.hero-main` and `.hero-side` FILL; `.feed-hero`, `.hero-duo` and `.hero-feature` CHANGE their share, at 980 and 620 rather than at any rung |
+| `hiw` | 900 | 1,391 on 105 | `.hiw-body` and the sheet **FILL at 414 from 640 up**; `.hiw-sec` 32-717 and `.hiw-faq` are INTRINSIC; `.hiw-cols` CHANGES its share at 900, where the side column arrives |
+| `iconbtn` | 560 | 1,361 on 105 | **FIXED, at five numbers**: 24 in a toast, 28 in the social row, 32 in a plate head, 36 in the utility row, 44 in the card meta. Two slots are **GONE below 640**. **One placement of the 1,361 moves**: `.ed-actions` steps 28 to 36 between 360 and 639, which is this file's own 560 rule |
+| `input` | none | 598 on 105 | **FILLS** the sheet row; `.amount-row` CHANGES its share, 10.9 to 378; `.bp-amount-row` INTRINSIC 18.2-150; the two reconcile boxes FIXED at 158.8 and 39.1 |
+| `list-head` | none | 115 on 71 | **FILLS** `.cat-main`; `.feed-head` CHANGES its share, 234 at 320 and 313.9 from 639 up |
+| `loadmore` | none | 9 on 9 | **FILLS** `.cat-main`, 234 at 320 to 1,262 at 1440. One slot |
+| `logo` | none | 210 on 105 | **Two placements, two answers, and the published 86 is one of them.** FIXED 86.1 in the header at all thirteen widths, a `<button>` shrink-wrapped in a flex row; **FILLS `.footer-brand`** in the footer, 292 at 320, 611 at 639 and 240 from 640 up, a `<span>` in a block. Both are `display:flex` and the difference is what holds them |
+| `market` | none | 369 on 9 | **FILLS** six of eight slots; `.md-row` CHANGES its share; `.market-head` INTRINSIC 16-177.4 |
+| `navitem` | none | 995 on 105 | **FLUID, not fixed, and the published 258 is the third of three slots.** It FILLS its `<li>` in all three, and the three are three widths: in `.bottom-nav`, **420 placements on 105 screens**, `li{flex:1}` gives **79.3 at 320, 89.3 at 360 and 159 at 639**, and the bar is GONE at 640 and above; in the avatar menu, 365 placements, **194** at every width; in the notification menu, 210 placements, **254 at 320 and 258 from 360 up** |
+| `notice` | none | 254 on 105 | **FILLS** the sheet body, 368-597; one slot in `.bp-inner` is GONE below 760; `.push-banner` CHANGES its share |
+| `oddsbar` | none | 405 on 21 | **FILLS** the card body and the detail head; `.track` is a CONSTANT 38 per cent, and the fill on top of it is a datum written on the element; `.lbls` INTRINSIC 42.9-50.9 |
+| `options` | none | 203 on 14 | **FILLS** `.options` and the card body; `.opt-row` CHANGES its share; `.bp-sel-name` FIXED 23.4 and `.opt-name` FIXED 52 |
+| `platehead` | none | 334 on 105 | **FILLS all six of its slots**, 292.4 at 320 and 408 to 462 from 640 up: the head is exactly as wide as the plate wearing it and has no width of its own anywhere. The cleanest FILLS in the table |
+| `position` | 640 | 303 on 23 | **FILLS four containers of four different widths at one viewport**: `.pos-list` 1,142, the tab panel 925, `.cat-main` 1,262 and `.hiw-col-side` 483.9, all at 1440. `.pos-top` and `.pos-figures` CHANGE their share; the table cells are INTRINSIC. Four of thirteen slots need the tabs cycled |
+| `position-list` | none | 13 on 13 | **FILLS** `.cat-main` and the profile tab panel |
+| `profile` | none | 13 on 2 | `.who` FILLS; `.idrow` CHANGES its share, 72 to 234 at 320. Thirteen placements on two screens is the whole of it |
+| `quick` | none | 120 on 105 | **FILLS** both slots: the sheet's row at 378 and the panel's at 288-520 |
+| `related` | none | 119 on 10 | `.related-events` and `.feed-inner` FILL; the list's anchors are INTRINSIC, 46 to 1,145.4 |
+| `seo-plate` | 760 | 73 on 9 | `.seo-brand` and `.feed-inner` FILL; **`.feed-seo-wrap` CHANGES its share at 760**, where one column becomes two; the heading FIXED 22 |
+| `skeleton` | none | 614 on 19 | **CONSTANT shares, which is not the same as changing one.** `.sk-head` 80 per cent, `.sk-row` 49, `.pos.skeleton` 40, `.ed-section` 80; the card body FILLS; `.top` CHANGES its share; one slot is GONE below 760. The published "CHANGES its share" named the one slot of nine that does |
+| `state-block` | none | 156 on 40 | Three slots FILL; **the block itself CHANGES its share and caps at 380**: 79.5-250 at 320, 79.5-380 from 639 up |
+| `tabs` | none | 220 on 20 | **FILLS** `.ed-main`, `.ed-section` and `.cat-main`; the bar and the wrap are INTRINSIC; `.ed-chart-foot` FIXED 172.5 and `.ed-tablabel` FIXED 15.7. The 1px readings in the wrap are the visually hidden radios at `width:var(--hairline)` and are not a defect |
+| `toast` | none | 15 on 1 | **FILLS the group**, which is the page column, so a toast is 234 wide at 320 and 1,262 at 1440 and has no cap of its own. Its inner parts CHANGE their share. Fifteen placements on one screen |
+| `toc` | 900 | 31 on 1 | **FILLS, and the container is what moves**: 234 at 320, 761 at 899 and **214 from 900 up**, which is the rail arriving. The link marker is FIXED 13.2 |
+| `toggle` | none | 3 on 3 | **FIXED 44** at all thirteen widths, one slot, three placements. The published 44 holds, and it is one of only two components whose every placement holds one number at every width |
+| `trustbar` | 760 | 1,260 on 105 | `.footer-trust` and `.footer-inner` FILL; **`.trust-items` CHANGES its share hard at 760**, 631 at 759 and 200 at 760; `.trust-item` CHANGES its share with it |
+| `yesno` | none | 160 on 22 | **FILLS** the card body; the pair's halves are FIXED 96.7 in `.opt-row`; `.bp-dir` is a CONSTANT 49 per cent; the dock's pair is GONE at 760 and above |
+
+### What the 47 rows add up to, and it is three numbers rather than one
+
+The old summary sentence merged them, and the two files disagreed about which it was: this file said
+"33 of the 43" and `components/CLAUDE.md` said "35 of 43 components have no width behaviour of their
+own at all". Neither is a reading anybody can reproduce, because 35 was the count of rows that read
+FILLS in a table with one placement per component. Measured over every placement:
+
+- **10 of 47 have EVERY painted placement filling its container**: `catnav`, `feed`, `loadmore`,
+  `navitem`, `platehead`, `quick`, `action-bar`, `browse-shell`, `card-grid`, `position-list`. And
+  `navitem` is in that list while running 79 to 258, which is the reason FILLS alone is not a
+  verdict.
+- **26 of 47 declare no width query of their own.**
+- **8 of 47 are both**, and they are the only components of which "no width behaviour of its own at
+  all" is true without a footnote: `feed`, `loadmore`, `navitem`, `platehead`, `quick`,
+  `action-bar`, `card-grid`, `position-list`.
+- **36 of 47 have placements that disagree with each other**, which is what the one-placement method
+  could not see and is the whole reason this section was re-measured.
+- **45 of 47 have at least one placement whose pixels move across the ladder.** The two that do not
+  are `filters` and `toggle`.
+- **9 of 47 have a placement that is GONE in a width band**, and **3 have a placement painted at no
+  width at all**: `card` (`.prob-line`), `chip` (the condensed band) and `event-detail` (`.args`).
+
+### The refusal of container queries does not hold on the ground it was refused
+
+Responsive refused them because "a container query with one placement is a media query wearing a
+different name", and named the threshold to revisit: **the first component placed in two columns of
+different widths.** Measured at a single viewport width, counting only slots with five placements or
+more and more than 25 per cent apart:
+
+- **35 of 47 stand in two or more materially different containers**, 22 in three or more, 15 in
+  four or more and 10 in five or more. The threshold is not met once, it is met thirty-five times.
+
+**The refusal is answered, and three components carry the case:**
+
+1. **`card` is the decisive one, because its own query is keyed to a window that does not predict
+   its box.** `card.css` has one rule, `max-width:639.98px`. The card measures 232 at viewport 320
+   (branch on), 500 at 640 (branch off), **300.5 at 759 (branch off)** and **301.5 at 1440 (branch
+   off)**. The box at 1440 is within 70px of the box at 320 and 200px away from the box at 640, so
+   the branch fires on the one hand and not on the other for boxes of the same size. This is not a
+   preference, it is the media query answering a question about the wrong element.
+2. **The rail is one container change written as a window query in two files.** `.subcat` goes 761
+   at 899 to 214 at 900 by `catnav.css`, and `chip.css` carries its own `@media(min-width:900px)`
+   to make `.chip-lane` `width:100%` for the same event. Two files, one number, one cause, and the
+   cause is the container.
+3. **`navitem` has no query at all and stands at 79-159, 194 and 254-258 in one document**, 995
+   placements over 105 screens. Its own stylesheet argued about a control's shape "above 860" in a
+   comment until the rung ladder was written. This is exactly the component the threshold described.
+
+**No container query is written here and none may be**: this file does not own `components/*.css`.
+The finding is filed as a measurement so the Responsive stage can act on it, and the honest
+statement of it is that the refusal was correct when it was made about a table with one placement
+per component, and is not correct about this one.

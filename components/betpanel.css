@@ -55,7 +55,37 @@
 .bp-head h3{font-family:var(--font-display);font-size:var(--text-16);font-weight:var(--weight-bold);color:var(--text-primary)}
 .bp-hint{color:var(--text-muted);font-size:var(--text-11)}
 .bp-dir{display:flex;gap:var(--space-8);padding:0;background:transparent;border:0}
-.bp-dir .bp-side .bp-pct{display:block;font-family:var(--font-mono);font-size:var(--text-11);font-weight:var(--weight-medium);color:inherit;opacity:.78;margin-top:var(--space-4)}
+/* THE FIGURE'S QUIET WAS AN OPACITY, AND OPACITY IS NOT A COLOUR. This rule carried
+   `opacity:.78` and the dock's copy below carried `.85`, and the fade pulled the ink of the
+   unselected side down into its own ground until the composite fell under AA. Measured
+   against the real painted ground on the 8 screens that carry a bet control, both themes,
+   390 and 1280: the NO side read 3.93:1 in the Vault and 4.37:1 in daylight at 11px here,
+   and 4.39:1 in the dock at 10px, where the floor for both sizes is 4.5. Those 24 elements
+   were the ONLY contrast failures in the product, out of 16,918 text elements per render
+   set, and no sweep could see them because every one of them computes
+   `color: rgb(164,157,143)` and passes on its own. components/CLAUDE.md states the rule:
+   quiet is a colour, not an opacity.
+   THE INK IS THE CONTROL'S OWN ROLE NOW, which is what `color:inherit` already said before
+   the fade ate 22 per cent of it: --text-muted on the quiet side, --text-on-yes or
+   --text-on-no on the filled one. No new token, and no single named role could serve both,
+   because the two sides stand on two different grounds (--bg-control and a flat outcome
+   fill) and the system carries one ink for each. Measured after, same 8 screens, both themes,
+   both widths: quiet side 5.49:1 in the Vault and 7.67:1 in daylight, filled YES side 6.42:1
+   in both, worst of all 160 readings 5.49 and 0 under the floor. The rank between the word
+   and the figure was never the fade's to carry: it is a 16px bold label against an 11px
+   medium figure here, and 12 against 10 in the dock.
+   AND THE WORST OF THE 24 WAS NOT ONE OF THEM. Every shipped screen opens with YES chosen, so
+   the audit read the fade over a green fill; the panel script writes `.sel` onto the NO side
+   the moment a person picks it, and --text-on-no has 4.64:1 on --outcome-no to begin with,
+   which yesno.css measured and wrote down. Faded, that state reads 3.64:1 in the panel and
+   3.99:1 in the dock, measured by putting `.sel` on the second side and the old opacities back:
+   a failure in the state a bet is actually placed from, in no screenshot, on both themes at
+   once because neither the fill nor its ink moves with the theme. It is 4.64:1 now, which is
+   the number the label beside it has always had.
+   AND THE TWO PLACEMENTS AGREE NOW. .78 and .85 were two numbers for one class that no
+   comment ever argued; what still differs between them is the size, and the size of the
+   control decides that. */
+.bp-dir .bp-side .bp-pct{display:block;font-family:var(--font-mono);font-size:var(--text-11);font-weight:var(--weight-medium);color:inherit;margin-top:var(--space-4)}
 /* THE SECOND HOVER THIS PASS FOUND ALIVE IN ONE THEME ONLY. --bevel-strong is
    the LIT LIP of an emboss, and section 3 takes it to --white-a70 because a lip
    needs far more light on pale stone. As a hover BORDER on a chalk control that
@@ -100,7 +130,11 @@
 :is(.bet-panel,.bet-sheet) .line.total{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 :is(.bet-panel,.bet-sheet) .line.total span:last-child{color:var(--text-brass)}
 .bet-dock{position:sticky;bottom:52px;z-index:var(--z-dock);gap:var(--space-8);padding:var(--space-8) var(--space-12);border:0;border-top:var(--hairline) solid var(--border-brass);background-color:var(--bg-dock);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-dock-from),var(--bg-card-to));background-blend-mode:overlay,normal;box-shadow:0 -14px 26px -18px var(--shadow-ink-85)}
-.bet-dock .bp-side .bp-pct{display:block;font-family:var(--font-mono);font-size:var(--text-10);font-weight:var(--weight-medium);color:inherit;opacity:.85}
+/* The dock's copy of the figure, and it lost its `opacity:.85` with the panel's `.78` for the
+   reason written out beside that rule: 4.39:1 on the NO side in the Vault at 10px, and the
+   dock IS this panel below 760px, so one control cannot fade its ink two different amounts.
+   It takes the same inherited role and keeps only the size the smaller control asks for. */
+.bet-dock .bp-side .bp-pct{display:block;font-family:var(--font-mono);font-size:var(--text-10);font-weight:var(--weight-medium);color:inherit}
 /* THE DOCK HAD NO POINTER STATE OF ANY KIND, and it is the control a bet is actually placed
    with: it is the panel's YES/NO pair below 760px, where the panel is display:none. So on
    the width the product is designed for first, choosing a side answered with nothing at all.

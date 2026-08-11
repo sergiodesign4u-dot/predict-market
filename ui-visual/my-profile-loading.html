@@ -252,6 +252,10 @@ document.addEventListener('click', function (e) {
 <!-- ============ THE RESPONSIVE PRODUCT SCREEN ============ -->
   <div class="device">
 
+    <!-- Bypass block, WCAG 2.4.1: the first focusable thing in the document, clipped to 1x1
+         until it takes focus. The rule and the reason are components/base.css, .skip-link. -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
     <!-- Header (lean: logo = Events/home, right icon cluster) -->
     <div class="app-case">
     <header class="app-header">
@@ -334,7 +338,7 @@ document.addEventListener('click', function (e) {
 
 
     <!-- Feed -->
-    <main class="feed">
+    <main class="feed" id="main-content" tabindex="-1">
       <div class="feed-inner">
         <div class="cat-layout">
         <div class="cat-main" aria-busy="true">

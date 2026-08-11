@@ -559,7 +559,16 @@
     @media(max-width:759.98px) {
       .footer-trust .trust-items { grid-template-columns: 1fr; }
     }
-  </style>
+      /* Skip link (WCAG 2.4.1 Bypass Blocks). The first focusable element on the page, clipped to
+       a 1x1 box until it takes focus, because display:none and visibility:hidden are the two ways
+       of hiding that also remove a control from the tab order, which is the whole point of it.
+       clip-path clips hit testing too, so the parked box cannot swallow a click. Grey, like the
+       rest of this tree; the colour copy takes its look from components/base.css. */
+    .skip-link { position: fixed; top: 8px; left: 8px; z-index: 10; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    .skip-link:focus { width: auto; height: auto; min-height: 44px; overflow: visible; clip-path: none;
+      display: inline-flex; align-items: center; padding: 0 16px; font-size: 14px; text-decoration: none;
+      background: #e2e2e2; color: #333; border: 1px solid #999; border-radius: 4px; }
+</style>
   <style>
     .idrow { display: flex; align-items: center; gap: 12px; padding: 4px 0 10px; }
     .idrow .av { width: 56px; height: 56px; flex: 0 0 56px; border: 1px solid #999; background: #d2d2d2;
@@ -836,6 +845,11 @@
   </nav>
 
   <div class="device">
+
+    <!-- Bypass block, WCAG 2.4.1: the first focusable thing in the document, clipped to 1x1
+         until it takes focus. Structure lives here; the painted twin takes its look from
+         components/base.css. -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- Header (lean: logo = Events/home, right icon cluster) -->
     <header class="app-header">
       <div class="row">
@@ -912,7 +926,7 @@
         </ul>
       </div>
     </header>
-    <main class="feed">
+    <main class="feed" id="main-content" tabindex="-1">
       
         
         

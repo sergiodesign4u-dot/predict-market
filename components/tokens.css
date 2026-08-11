@@ -80,7 +80,7 @@
   --brass-300:#d9b968;      /* gradient lit end. merged: --lime, same value */
   --brass-400:#d7ac53;      /* text-safe brass on graphite */
   --brass-500:#c7a24e;      /* brand brass. merged: --brass, same value */
-  /* one ladder, six steps. A brass wash, a tint, a hairline and a glow are the
+  /* one ladder, seven steps. A brass wash, a tint, a hairline and a glow are the
      same colour at different depths; a step of .05 is below what a screen shows */
   --brass-a06:rgba(199,162,78,.06);   /* the quietest wash */
   --brass-a09:rgba(199,162,78,.09);   /* a tint under a small block */
@@ -88,6 +88,30 @@
   --brass-a30:rgba(199,162,78,.30);   /* the inset hairline of a plate, the card glow */
   --brass-a45:rgba(199,162,78,.45);   /* a border on hover */
   --brass-a60:rgba(199,162,78,.6);    /* a selected edge */
+  /* THE SEVENTH RUNG EXISTS SO THE LIGHT LADDER CAN STEP, and until 2026-08-12 it
+     did not. Section 3's law is that every brass tint moves up one rung on chalk;
+     five of six could and the sixth had nothing above it, so --tint-brass-60 and
+     --line-brass-strong stood on --brass-a60 in BOTH themes while --tint-brass-45
+     and --border-brass-hover stepped up ONTO it. Four roles that are two distinct
+     strengths on graphite were one value on chalk, and nobody had written down
+     that the top of the ladder was the reason.
+     .75 IS MEASURED, NOT EXTRAPOLATED. One ground held fixed (the .opt-row.sel
+     border on ui-visual/event-detail-multi.html), the alpha swept, the rendered
+     edge read out of a screenshot at device scale 4 rather than computed from the
+     hex. Between neighbours a rung on chalk is worth 1.080, 1.096 and 1.087 of
+     contrast (16 to 30 to 45 to 60); .75 lands 1.095 above .60, which is one rung
+     and no more. The same three rungs on graphite are 1.315, 1.312 and 1.287, so
+     a rung on chalk carries about a third of the separation it carries on
+     graphite: that is the "about a third" section 3 already claimed, with a
+     number under it for the first time.
+     AND THE VAULT'S OWN SEPARATION IS NOT REACHABLE HERE, which is the half of
+     this worth keeping. Measured edge against edge on one screen, .opt-row.sel
+     beside .chip-amount.sel: the two stand 1.445 apart on graphite, 1.148 apart
+     on chalk at this rung, and even OPAQUE brass would reach only 1.328. Daylight
+     is honestly weaker at the top of this ladder in the same way it is for muted
+     text and the brass link, and .75 is chosen because it is one rung and still a
+     tint. 1.0 would buy 0.18 more separation by leaving the ladder altogether. */
+  --brass-a75:rgba(199,162,78,.75);   /* daylight's selected edge, and its input hover */
 
   /* ---- plum (the near-black the brass carries as text) ---- */
   --plum-950:#180810;
@@ -338,15 +362,26 @@
      footer under it and the page had two measures. */
   --container-max:1400px;    /* the product grid, and every band inside it */
   --container-read:800px;    /* SEO reading column: the plate at the foot of the feed.
-                                MEASURED, 2026-08-03: 792px of it holds 89 characters of the
-                                13px prose face (1ch = 8.89px), against the 60 to 75 DESIGN.md
-                                section 3 decided. It is left alone because it is a two-column
-                                plate on ten feed screens and not a document, and the 60ch cap
-                                that block does have lives one selector deeper. */
+                                MEASURED, 2026-08-03: 792px of it is 89ch of the 13px prose face
+                                (1ch = 8.89px). THAT LINE READ "89 characters" UNTIL 2026-08-12
+                                AND IT IS 132, because 1ch is 1.48 prose characters in DM Sans:
+                                see --measure below, which had the same mistake for the same
+                                reason. It is left alone anyway, and now for a measured reason
+                                rather than an assumed one: this is the PLATE, not the line. The
+                                prose inside it is capped one selector deeper and runs 87
+                                characters, measured at 1440 on event-feed-crypto.html. A
+                                container is not a measure. */
   --container-doc:600px;     /* the reading column of a long document: 67ch of the same face,
                                 measured the same way. A separate value and not a correction of
                                 the one above, because the two answer different questions and a
-                                single number would move ten shipped screens to fix one. */
+                                single number would move ten shipped screens to fix one.
+                                67ch IS 99 CHARACTERS, by the same conversion, so this column is
+                                over the band as a line and inside it as a column. It stays 600px
+                                because it is a COLUMN: what wraps inside it is capped by
+                                --measure, and terms.html reads 68 characters on its longest line
+                                with both in force, measured at 1440. The day a document puts
+                                uncapped prose straight into this column, the cap belongs on the
+                                prose and not here. */
   --container-dialog:464px;  /* how-it-works dialog */
   --container-sheet:420px;   /* outcome overlay */
   --container-sidebar:220px; /* course sidebar, and the body inset that clears it */
@@ -385,42 +420,105 @@
      already that number, and a second name for 16px is one number with two spellings. The three
      sticky TOP offsets stay raw, 120, 120 and 66, because they are not one fact either: they
      measure what happens to stand above each column, and what stands above differs. */
-  --measure:66ch;            /* THE LINE MEASURE FOR CONTINUOUS TEXT, and it is in `ch` on
-                                purpose: `ch` is the width of a zero in the ELEMENT's own
-                                font, so one number caps an 11px legal line and a 16px
-                                paragraph at the same number of characters. A px cap cannot
-                                do that and would need one value per size.
-                                66 comes from the band DESIGN.md section 3 already states,
-                                60 to 75, and it agrees with --container-doc, which was
-                                measured at 67ch of the same face.
-                                THE CENSUS THIS TOKEN EXISTS FOR, re-taken at step 4 at 1440 over
+  --measure:46ch;            /* THE LINE MEASURE FOR CONTINUOUS TEXT.
+                                `ch` IS NOT A CHARACTER, and until 2026-08-12 this token was
+                                written as though it were. `ch` is the advance width of the
+                                digit ZERO in the element's own font, and a lining digit is
+                                one of the widest things a prose face draws. MEASURED IN DM
+                                SANS, by rendering every capped element and counting the
+                                characters inside each line BOX rather than dividing the box
+                                by 1ch: 1ch runs 1.45 to 1.53 times the mean prose advance,
+                                ten readings over five placements at 1440 and at 360, mean
+                                1.48. So 66ch was never 66 characters. It was about 98, and
+                                the longest full line measured 99 in .sys-note, 93 in
+                                .resolution and 93 in .protect-page at 1440: the improvement
+                                66ch bought was real and it stopped short. Uncapped, the same
+                                elements run 153.6 / 105.7 / 79.7ch, which is 224, 153 and 114
+                                characters on the longest line; 66ch took them to 99, 93 and
+                                93, still 30 per cent over the band in the only unit the band
+                                is about. The instrument could not see it because the
+                                census computed width / 1ch, so it asked the token's own
+                                question back and got the token's own answer.
+                                THE BAND IS IN CHARACTERS AND SO IS THE FIX. DESIGN.md section
+                                3 says 60 to 75 characters, its middle is 67.5, and 67.5 / 1.48
+                                is 45.6. AFTER, at 1440, longest full line: .resolution 65,
+                                .sys-note 62 and 68, .protect-page 66 and 60. Swept as well as
+                                derived, because one number that lands is a coincidence and a
+                                window is a reading: the range in which all five placements sit
+                                inside 60 to 75 is 45ch to 48ch. 42ch drops .protect-page to 57
+                                and 50ch takes .sys-note to 78. 46 is where the arithmetic lands
+                                AND it is inside the swept window, which is two instruments
+                                agreeing rather than one being trusted.
+                                AT 360 NOTHING IS CAPPED AND NOTHING EVER WAS. The same
+                                elements run 32.7 to 36.4ch of available width and 46 to 51
+                                characters, so this token is a desk rule; the phone is capped by
+                                the gutter.
+                                WHY `ch` SURVIVES THE CORRECTION. It is the only unit that holds
+                                a character count across type sizes, which is what the rule is
+                                about, and the three sizes here are real: 11, 12 and 13px. The
+                                px alternative was swept rather than dismissed, and it does
+                                work TODAY: one px value puts all five placements inside 60 to
+                                75 anywhere from 373 to 405px, a window 33px wide, and it is
+                                that wide only because 11, 12 and 13 sit close together. What
+                                it cannot do is hold when a size arrives. At the advance this
+                                face actually draws, 0.465 of the font size, a 16px paragraph
+                                capped anywhere in that window runs 52 to 54 characters, under
+                                the band at every point of it, and a 14px one runs 60 to 62 and
+                                clears only at the top. A px cap is solved for the sizes that
+                                happen to be there; the cap is a typographic rule and it takes
+                                a typographic unit.
+                                AND THE OLD JUSTIFICATION NAMED A CASE THE PRODUCT DOES NOT
+                                HAVE. It said one number caps "an 11px legal line and a 16px
+                                paragraph" at one character count. There is no 16px capped
+                                paragraph: all five placements are 11, 12 and 13px, counted in
+                                the browser. The argument is right and the example was invented.
+                                THE THREE RIGHT EDGES ARE NOT AN ARGUMENT AGAINST IT EITHER, and
+                                that was checked rather than waved off. A constant character
+                                count buys three pixel widths, 409 / 378 / 346, so the page frame
+                                twenty lines up cannot give these blocks a shared edge. Measured
+                                across all 106 painted screens: .resolution, .sys-note and
+                                .protect-page NEVER STAND ON THE SAME SCREEN, 9 and 2 and 2
+                                screens with no overlap, so there is no page on which two of
+                                those edges can disagree. The page frame is about the bands a
+                                page is built from; a measure is about one block of prose.
+                                THE CENSUS THIS TOKEN EXISTS FOR, taken at step 4 at 1440 over
                                 all 106 painted screens with every dialog open. It counts only
                                 CONTINUOUS TEXT THAT WRAPS, and the filter is the finding: of
                                 775 candidates it throws out 261 that stand on one line, 40 that
                                 are line-clamped, 27 whose child is laid out as a ROW, and 3 that
-                                hold a block of their own. 15 are over 75ch, in five kinds.
-                                   9  up to 106ch  .rules-panel .resolution
-                                   1      154ch    .sys-note in .cat-main
-                                   2       77ch    .protect-page in .cat-main
-                                   2       89ch    .feed-seo p            ALREADY DECIDED
-                                   1       89ch    a dd, and it is .feed-seo too
+                                hold a block of their own. 15 were over 75ch, in five kinds. What
+                                it recorded is CH, which is all the census could see. The second
+                                column is this pass: the first three rows counted in the browser
+                                with the cap taken off, the last two converted at 1ch = 1.48
+                                characters, and the two agree to within 4 per cent.
+                                                                       ch    characters
+                                   9  .rules-panel .resolution     up to 106      153
+                                   1  .sys-note in .cat-main             154      224
+                                   2  .protect-page in .cat-main          77      114
+                                   2  .feed-seo p                         89      131
+                                   1  a dd, and it is .feed-seo too       89      131
                                 STEP 1 SAID 38 AND THE NUMBER IS 12, because the first pass
                                 measured the element's BOX. `.related-list li` is a flex row of
                                 a 46px thumbnail, a question clamped to two lines and an odds
                                 figure: it has a 106ch box and no 106ch line, and it was 27 of
-                                the 38. The three .feed-seo elements are not a defect either:
-                                --container-read twenty lines up says why 89 stands there.
-                                The loudest of the 12 is the 106ch one: `.resolution` is the
-                                NAMED RESOLUTION RULE, the second design principle of this
-                                product stated as a sentence, running 40 per cent over the
-                                measure on the screen where trust is decided.
-                                PLACED AT STEP 4 on three classes, in the three components that
-                                own them: .resolution (event-detail.css), .sys-note
-                                (state-block.css) and .protect-page (notice.css). 15 over the
-                                measure becomes 3, and the 3 are the .feed-seo family.
-                                It is deliberately not a blanket rule on `p`: a paragraph inside
+                                the 38. The loudest of the 12 is `.resolution`: the NAMED
+                                RESOLUTION RULE, the second design principle of this product
+                                stated as a sentence, on the screen where trust is decided.
+                                PLACED AT STEP 4 on three classes in the three components that
+                                own them, .resolution (event-detail.css), .sys-note
+                                (state-block.css) and .protect-page (notice.css), and the
+                                .feed-seo family joined them on 2026-08-12 in seo-plate.css, so
+                                the token has five reader selectors in four files.
+                                IT IS DELIBERATELY NOT A BLANKET RULE ON `p`: a paragraph inside
                                 a card is already at 38ch and a floor that reaches it teaches
-                                the wrong thing. */
+                                the wrong thing.
+                                ONE READER STILL OUT-SPECIFIES THIS TOKEN and it is worth naming
+                                rather than assuming: `seo-plate.css` line 83 caps the SEO prose
+                                at a literal 60ch inside `.feed-seo-wrap`, which wins on 9 of the
+                                11 screens that carry the plate. Measured 2026-08-12 at 1440 on
+                                event-feed-crypto.html: 533.5px, 87 characters on the longest
+                                line. That is over the band by the same arithmetic as everything
+                                above, and it is that file's decision to take. */
   --grid-col-min:300px;      /* THE CARD FLOOR, and the only number the fluid track needs.
                                 Moved out of patterns/card-grid.css on 2026-08-11, where it
                                 stood as a literal inside `minmax(min(100%,300px),1fr)`: a
@@ -506,30 +604,41 @@
      list. That check is cheap and it is the whole reason the list is written out:
      NO NUMBER MAY APPEAR IN A PRODUCT MEDIA QUERY THAT IS NOT ON IT.
 
-     The census that made the rule, taken the day it was written:
+     The census, RE-TAKEN 2026-08-12 by reading every @media condition in the
+     four trees with comments stripped first, because a width quoted in prose is
+     not a rule and this table quotes several. Occurrences, and the files they
+     stand in, out of 52 components, 104 wireframes, 58 ui-kit and 106 ui-visual:
 
-       width      components  wireframes  ui-kit   what it is
-       560px          2           9         0      one-off, named below
-       620px          1           1         0      one-off, named below
-       639.98px       8          57         4      DESK, narrow side
-       640px          6         401         1      DESK
-       759.98px       4         183         5      DETAIL, narrow side
-       760px          3         184         1      DETAIL
-       900px          6          94         0      RAIL
-       960px          0         104         0      *** ON NO LADDER ***
-       980px          1           1         0      one-off, named below
-       1140px         2           0         0      HARNESS, not the product
-       1280px         0         104         0      *** ON NO LADDER ***
-       1440px         0         104         0      *** ON NO LADDER ***
+       width      components  wireframes   ui-kit   ui-visual   what it is
+       560px         2 [2]       9 [9]      0 [0]     0 [0]     one-off, named below
+       620px         1 [1]       1 [1]      0 [0]     0 [0]     one-off, named below
+       639.98px      8 [8]      57 [57]     4 [1]     0 [0]     DESK, narrow side
+       640px         6 [6]     401 [104]    1 [1]     0 [0]     DESK
+       759.98px      4 [4]     183 [87]     5 [1]     0 [0]     DETAIL, narrow side
+       760px         3 [3]     184 [92]     1 [1]     0 [0]     DETAIL
+       900px         6 [5]      94 [93]     0 [0]     0 [0]     RAIL
+       980px         1 [1]       1 [1]      0 [0]     0 [0]     one-off, named below
+       1140px        2 [2]       0 [0]      0 [0]     0 [0]     HARNESS, not the product
+       1440px        0 [0]     104 [104]    0 [0]     0 [0]     *** ON NO LADDER ***
 
-     TWELVE DISTINCT WIDTHS IN THE PRODUCT, and the system holds nine of them,
-     which is really five: three rungs each written twice for its two sides, plus
-     the harness, plus three named one-offs. `ui-kit/_page.css` invents nothing;
-     every width the stand uses is already a rung.
-     THE THREE THAT ARE ON NO LADDER ARE ALL IN THE GREY TREE AND ALL IN ALL 104
-     FILES. 960 and 1280 hard-code a column count the paint computes with
-     `auto-fit` and no query at all; 1440 is the grey harness, the twin of 1140
-     standing at a different number. They are the responsive stage's own backlog.
+     TEN DISTINCT WIDTHS IN THE PRODUCT, and the system holds nine of them, which
+     is really five: three rungs each written twice for its two sides, plus the
+     harness, plus three named one-offs. `ui-kit/_page.css` invents nothing and
+     the 106 painted screens carry NO width query at all, which is the rule in
+     ../CLAUDE.md rendered as a column of zeroes.
+     ONE WIDTH IS ON NO LADDER, and it is 1440 in all 104 grey files: the grey
+     harness, the twin of 1140 standing at a different number. It is the
+     responsive stage's own backlog.
+
+     IT SAID TWELVE AND THREE UNTIL 2026-08-12, AND THE CORRECTION IS RECORDED
+     RATHER THAN OVERWRITTEN, because a table that only ever shows today's number
+     teaches nobody what moved. 960 and 1280 stood here as off-ladder widths in
+     all 104 grey files: they hard-coded a three- and a four-column track that the
+     paint computes with `auto-fit` and no query at all. Backlog 116 closed the
+     same day and deleted both from every grey file, so two of the three rows are
+     gone and the table went from twelve widths to ten. Every OTHER row in it
+     re-counted byte-identical to the 2026-08-11 reading, which is the control
+     that says the two censuses are the same instrument and not two opinions.
 
      ---- AND WHY THIS LADDER IS IN PX AND NOT IN rem ----
      The argument for rem is real and it is not the one that decides here: a rung
@@ -759,6 +868,18 @@
                                a selected chip puts brass on brass and that is the
                                ground the value was solved against, not bare stone */
   --green-800:#225b35;      /* quiet YES text on chalk, over its own 12% fill */
+  --green-a42-lit:rgba(63,125,85,.42); /* the pair of --green-a42, derived the same way: the alpha is
+                               unchanged and the INK is the green daylight's chart line is actually
+                               drawn in (--green-700). --green-a42 is --green-250 at .42, and
+                               --green-250 is the bright chart green that section 3 already says
+                               "disappears on chalk", so the glow was the only part of that line
+                               still wearing it. Measured on ui-visual/event-detail.html by shooting
+                               the chart twice, once with the drop-shadow and once with filter:none,
+                               and differencing: the halo's mean delta per byte was -3.25 red, -0.97
+                               green, -2.02 blue, a green cast of +1.11 about its own mean, which is
+                               the Vault's own halo (+1.14) because it was the Vault's own ink. With
+                               this value it is -3.33 / -2.21 / -2.77, a cast of +0.56, the cast of
+                               the line under it. 13 chart screens */
   --red-800:#863228;        /* quiet NO text on chalk, over its own 12% fill */
   --green-050:#e4f0e7;      /* the win sheet head stone, in daylight */
 
@@ -1005,7 +1126,8 @@
                                                 the quiet green loses against the image */
   --outcome-line-no:var(--red-400);          /* from: the NO line on the same photo */
   --chart-line:var(--green-250);             /* from: the price line on the event chart */
-  --chart-line-glow:var(--green-a42);        /* from: the glow under that line */
+  --chart-line-glow:var(--green-a42);        /* from: the glow under that line. Themed as a PAIR with
+                                                --chart-line above it, because one rule reads both */
 
   /* ---- the categorical series ----
      from: the five lines and legend swatches of the multi-outcome chart. Until
@@ -1118,7 +1240,10 @@
   --line-grid:var(--white-a06);         /* same value as --tint-hover for now: a line on a chart and
                                            a wash under a cursor, which move apart the moment either
                                            needs to .            From: the chart grid, same story: a line, not a lip */
-  --line-brass-strong:var(--brass-a60); /* from: the input hover border */
+  --line-brass-strong:var(--brass-a60); /* from: the input hover border. One rung above
+                                           --border-brass-hover, which is what makes it its own
+                                           role; section 3 keeps that step, and did not until
+                                           2026-08-12 */
   --bg-dock-from:var(--graphite-860);   /* from: the mobile bet dock gradient */
   --veil-photo-edge:var(--graphite-a12);/* from: the featured hero veil, transparent end */
   --veil-photo-from:var(--graphite-a50);/* from: the same veil, where it starts to bite */
@@ -1318,8 +1443,12 @@
                                            word. The Vault's own runs at 1.1:1 */
   --edge-groove-dark:var(--chalk-750);
   --edge-groove-light:var(--white-a70);
-  /* every brass tint steps up one rung: the same alpha over a pale stone reads
-     about a third as strongly as it does over graphite */
+  /* EVERY brass tint steps up one rung, and until 2026-08-12 "every" was six of
+     seven roles rather than all of them: the same alpha over a pale stone reads
+     about a third as strongly as it does over graphite, and the number under that
+     sentence is now beside --brass-a75 in section 1 (a rung is 1.08 to 1.10 of
+     edge contrast here against 1.29 to 1.32 there). The rule only holds while the
+     ladder has a rung above the loudest role, which is what --brass-a75 is for. */
   --border-brass:var(--brass-a45);
   --border-brass-hover:var(--brass-a60);
   --tint-brass-06:var(--brass-a09);
@@ -1336,6 +1465,27 @@
   --tint-brass-16:var(--brass-a30);
   --tint-brass-30:var(--brass-a45);
   --tint-brass-45:var(--brass-a60);
+  /* THE TOP OF THE LADDER, AND THE TWO ROLES THAT USED TO HAVE NO LIGHT VALUE AT
+     ALL. Both were --brass-a60 in section 2 and unmentioned here, so daylight
+     inherited the graphite number in silence, which is the one thing a theme block
+     exists to prevent. Measured on ui-visual/event-detail-multi.html at 1440 in
+     both themes, the rendered edge read from a screenshot at device scale 4:
+       .opt-row.sel [--tint-brass-60] vs .chip-amount.sel [--tint-brass-45]
+         graphite  edge/ground 3.749 and 2.759, the two edges 1.445 apart
+         chalk BEFORE          1.759 and 1.682, the two edges 1.048 apart, and the
+                               .048 was the two GROUNDS, not the ink: both roles
+                               resolved to the same rgba(199,162,78,.6)
+         chalk AFTER           1.927 and 1.682, the two edges 1.148 apart
+       .amount-input:hover [--line-brass-strong] vs .btn-secondary:hover
+       [--border-brass-hover], measured on ui-visual/deposit.html with the sheet open
+         graphite  edge/inside 3.519 and 2.388, one rung apart as designed
+         chalk BEFORE          1.632 and 1.593, a tie the input was meant to win
+         chalk AFTER           1.852 and 1.593
+     --line-brass-strong is one rung louder than --border-brass-hover on purpose:
+     a field under a pointer says more than a quiet button does. It said it in the
+     Vault only, on 105 screens, for as long as the light theme existed. */
+  --tint-brass-60:var(--brass-a75);
+  --line-brass-strong:var(--brass-a75);
   --glow-brass:var(--brass-a45);
   --glow-focus:var(--brass-a45);
   --tint-hover:var(--ink-a10);          /* on chalk a hover reaches for the ink, not for the light */
@@ -1347,6 +1497,11 @@
   --outcome-no-text:var(--red-800);         /* 6.2:1 over the NO fill, 5.6 over the strong one */
   --outcome-no-figure:var(--red-800);       /* 5.3:1 */
   --chart-line:var(--green-700);            /* the bright chart green disappears on chalk */
+  --chart-line-glow:var(--green-a42-lit);   /* ONE RULE READS BOTH OF THESE, chart.css line 25, so a
+                                               theme that moves one and not the other paints a halo in
+                                               a hue the line no longer has. That is what daylight did
+                                               on 13 chart screens: a dark green line under a mint
+                                               halo. A pair is themed as a pair */
   /* the series is text as well as line: the reading under the chart is drawn in
      the selected series colour, so all five clear 4.5 on the chart well */
   --series-1:var(--cyan-700);               /* 6.1:1 */

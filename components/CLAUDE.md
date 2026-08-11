@@ -1,15 +1,30 @@
 # components/ - the system itself
 
-This folder IS the design system. **52 stylesheets, 7,440 lines**: 46 here and 6 in `patterns/`,
-re-counted 2026-08-11 by listing them, after `platehead.css` was written the same day. It said 50 and 7,034 the day before and 51 and 5,651 the day
+This folder IS the design system. **52 stylesheets, 7,767 lines**: 46 here and 6 in `patterns/`,
+counted 2026-08-12 by `cat components/*.css components/patterns/*.css | wc -l`. The file count was
+re-counted 2026-08-11 by listing them, after `platehead.css` was written the same day, and was
+right; **the line count published beside it was 7,440 and was 327 short**, which is what a number
+kept in prose costs even on the day it is re-taken. It said 50 and 7,034 the day before and 51 and 5,651 the day
 before that, and the arithmetic behind each is gone, which is what a count kept in prose costs. The
 one thing that is certain about the earlier numbers is that `account.css` was deleted on 2026-08-08
 by backlog 63, `hiw-dialog.css` became `hiw.css` on 2026-08-11 by backlog 15, and `platehead.css`
 was written the same day by backlog 108 out of six rules that stood in `dialog.css` and `hiw.css` at
 once. `tokens.css` plus
-one file per component, all reached through `index.css`. The 210 screens in `ui-visual/` and `wireframes/` link
-`index.css` and nothing else, so **an edit here reaches every screen at once and no screen can
-override it.** There is no build step and no gate: what you write is what ships.
+one file per component, all reached through `index.css`.
+
+**163 documents link `index.css` and nothing else, and they are not the ones this line used to
+name.** Counted 2026-08-12 with `grep -l`: **106 of 106** documents in `ui-visual/` and **57 of 57**
+pages in `ui-kit/`. **0 of the 104 in `wireframes/` link any stylesheet at all**, and they carry 104
+inline `<style>` blocks instead, which this file already says out loud further down and said the
+opposite of here for as long as both sentences stood. So **an edit here reaches every painted screen
+and every kit page at once and none of them can override it, and it reaches the grey tree not at
+all.** There is no build step and no gate: what you write is what ships.
+
+**106 and 105 are both right and they count different things, so every number below says which.**
+`ui-visual/` holds **106 documents**; **105 of them are screens** and `overview.html` is the index of
+the tree rather than a screen in it, which is why about twenty `Stands on:` lines in this folder read
+105 and are exact. A sweep over `ui-visual/*.html` reads 106. A statement about the product reads
+105.
 
 ## The invariants
 
@@ -43,16 +58,26 @@ override it.** There is no build step and no gate: what you write is what ships.
 - **A MEDIA QUERY MAY NOT STAND IN A SCREEN FILE, EVER**, and it is written here and in
   `ui-visual/CLAUDE.md` both, because a rule kept in one place is a rule half the hands never meet.
   Adaptation lives in a token, a component, a pattern or the shell. Measured at Responsive step 4:
-  **33 width queries in this folder, 0 in any of the 106 painted screens.** And the counterpart
-  reading is what makes the rule cheap to keep: **35 of 43 components have no width behaviour of
-  their own at all** and simply fill what they are given, so a query appearing in a screen is almost
-  never the screen discovering something, it is a component's rule written in the wrong file.
+  **33 width queries in this folder, 0 in any of the 106 documents in `ui-visual/`.** The counterpart
+  reading used to say "35 of 43 components have no width behaviour of their own at all", **and that
+  number was three numbers wearing one sentence, taken from a table with one placement per
+  component.** Re-measured 2026-08-12 over every placement of all 47 components on the 105 painted
+  screens, at thirteen widths: **10 of 47 have every painted placement filling its container, 26 of
+  47 declare no width query of their own, and 8 of 47 are both** and are the only ones of which "no
+  width behaviour of its own" is true without a footnote. **36 of 47 have placements that disagree
+  with each other.** The rule still holds and for a smaller reason: a query appearing in a screen is
+  almost never the screen discovering something, it is a component's rule written in the wrong file.
+  The table and its method are in `../ui-kit/docs/inventory.md`, behaviour on width.
 - **A component may not invent a width.** There are three rungs, named by what arrives at them:
   **640** the desk, **760** the detail's second column, **900** the rail beside the content. If a
   file needs a break that is not one of them it is a one-off and says so in a comment beside itself,
   or it is a fourth rung and gets named in the ladder in `tokens.css` FIRST. A breakpoint cannot be a
   token: a media query condition does not read a custom property and there is no build step here, so
-  the ladder is kept by being read, and each of the 32 media rules names its rung. The alternative
+  the ladder is kept by being read. **There are 33 width rules, not the 32 this line said**, counted
+  2026-08-12 from the comment-stripped source, and the number ten lines above was the right one:
+  **27 name one of the three rungs, 2 name the 1140 harness, and the 4 that name no rung** (560 in
+  `event-detail.css` and `iconbtn.css`, 620 and 980 in `hero.css`) **each carry the one-off comment
+  beside itself that this rule asks for**, verified by reading all four. The alternative
   has already been paid for twice: a stand label written at 900 standing beside a bar that goes at
   640, and `navitem.css` arguing about a control's shape "above 860" when the rule that changes it is
   at 900. **A rung is one pixel and it belongs to the wide side**: below it is `max-width:639.98px`,
@@ -82,14 +107,14 @@ override it.** There is no build step and no gate: what you write is what ships.
   widths and in both themes.
 - **An attribute can be a guard that never fires.** 113 of the 121 amount fields carried
   `pattern="[0-9.$]*"` and the product contains **0 `<form>` elements**, measured across all 106
-  painted screens: a pattern is only consulted at form validation, so it validated nothing at any
+  documents in `ui-visual/`: a pattern is only consulted at form validation, so it validated nothing at any
   moment and read as a constraint to everyone who opened the markup. The other 8 did not carry it
   and the two trees disagreed about which. **Absent and inert are the same amount of nothing**, which
   is why the divergence went unnoticed. The field is `type="number"` now and the browser is the
   guard, verified by typing into it.
 - **A scope is a claim about where the product IS, and it is the claim least likely to be checked.**
   `.app-case` opened **415 selectors in 36 of the 50 files, 31 per cent of everything declared here**,
-  and it existed to keep these rules off the course chrome. Measured across 106 painted screens with
+  and it existed to keep these rules off the course chrome. Measured across all 106 documents in `ui-visual/` with
   every dialog open: it changed the outcome for **13 of 375 selector tails**, eight of them one file
   drawing a page differently from a sheet on purpose, and it matched **0 elements of the chrome**. The
   bottom nav, the footer and all 337 dialogs stand outside it, so what the wrapper actually did was
@@ -165,8 +190,11 @@ override it.** There is no build step and no gate: what you write is what ships.
 - **THE GREY TREE IS A SECOND SYSTEM AND WIDENING THIS ONE DOES NOT REACH IT.** `wireframes/*.html`
   link no stylesheet at all: 104 inline `<style>` blocks carrying **1,605 occurrences of a selector
   keyed to an element type**, including its own `.yesno button`, `.tabs button` and `.cta-bar
-  button`. An edit here protects the 90 painted and kit documents and none of the other 104. Any
-  change to what a control IS is two edits, and the grey one is the one that gets forgotten.
+  button`. An edit here protects the **163** painted and kit documents, 106 plus 57, counted
+  2026-08-12 with `grep -l`, and none of the other 104. **This line said 90 and the 90 counted
+  nothing that exists**, which is the same defect as the sentence at the top of this file that this
+  one was written to contradict. Any change to what a control IS is two edits, and the grey one is
+  the one that gets forgotten.
 - **A wrapper and its child are ONE control or they are two, and the accessibility tree is where you
   find out.** 818 anchors each held a button: two tab stops and two hit targets on one visual
   object, on 77 screens per tree, invisible to every sweep that reads the DOM as boxes. Read the

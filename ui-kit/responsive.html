@@ -53,15 +53,19 @@
     <p class="tk-subh">2. Container, and it is the answer for prose</p>
     <p class="tk-note">The content <b>could</b> stretch and must not. A line past roughly 75
     characters loses the eye on the way back to the start of the next one.
-    <code>--measure</code> is <code>66ch</code>, and <code>ch</code> is the width of a zero in
-    <b>the element's own font</b>, so one number caps an 11px legal line and a 16px paragraph at the
-    same character count. Drag both boxes.</p>
+    <code>--measure</code> is <code>46ch</code>, and <code>ch</code> is the width of a zero in
+    <b>the element's own font</b>, so one number caps an 11px legal line and a 13px paragraph at the
+    same character count. <b>It said 66ch until 2026-08-12 and 66 was never 66 characters</b>: a zero
+    in DM Sans is <b>1.48</b> average prose advances, so 66ch bought about 98 characters and the cap
+    that was supposed to land inside the 60 to 75 band landed 30 per cent over it. 46 is
+    <code>67.5 / 1.48</code>, and swept rather than only derived: the window where every capped
+    placement sits in the band is 45ch to 48ch. Drag both boxes.</p>
     <div class="tk-drag">
       <p class="tk-measured">The market price is what people are willing to pay right now, not a
       forecast anybody published. It moves when the balance of buyers and sellers moves, and the
       resolution rule beneath it never does. This paragraph is capped at the measure.</p>
     </div>
-    <p class="tk-dragnote">max-width: var(--measure) &nbsp;=&nbsp; 66ch</p>
+    <p class="tk-dragnote">max-width: var(--measure) &nbsp;=&nbsp; 46ch &nbsp;=&nbsp; about 66 characters</p>
     <div class="tk-drag">
       <p class="tk-runs-on">The market price is what people are willing to pay right now, not a
       forecast anybody published. It moves when the balance of buyers and sellers moves, and the
@@ -253,9 +257,13 @@
     <b>The mechanism agrees and the container does not</b>, which is a different statement from the
     one the row opened with: the grey reaches each step earlier because its content column is wider at
     the same window and its gap is 10px against the painted 16.</p>
-    <p class="tk-why"><b>Container thresholds: still none, and the reason is a measurement rather
-    than a preference.</b> <code>@container</code> and <code>container-type</code> are 0 in all four
-    corpora. A container query earns its place when one component stands in two materially different
+    <p class="tk-why"><b>Container thresholds: still none in the product, and the reason is a
+    measurement rather than a preference.</b> <code>@container</code> and
+    <code>container-type</code> are 0 in <code>components/</code>, 0 in <code>ui-visual/</code> and 0
+    in <code>wireframes/</code>, and <b>1 each in <code>ui-kit/_page.css</code></b>, which is the
+    specimen two paragraphs up: <code>.tk-cq</code> and its one query exist so a reader can drag a box
+    and watch the third mechanism answer. A container query earns its place when one component stands
+    in two materially different
     slots, because that is the case a media query answers wrongly, and the three families the audit
     marked "container" each stand in exactly one place in this product. <b>A container query with one
     placement is a media query wearing a different name.</b> The threshold to revisit is the first
@@ -272,7 +280,7 @@
         <tbody>
           <tr><td><code>components/</code> <b>the home</b></td><td><b>38</b>, 33 about width</td><td><b>0</b></td><td>clamp 8, minmax 12, auto-fit 1, flex-wrap 31</td><td>max-width 28, min-width 32, <code>ch</code> 6</td><td>stays</td></tr>
           <tr><td><code>ui-visual/</code> <b>the screens</b></td><td><b>0</b></td><td>0</td><td><b>0</b></td><td><b>0</b></td><td>nothing to move</td></tr>
-          <tr><td><code>ui-kit/</code> <b>the stand</b></td><td>11, all in <code>_page.css</code></td><td>0</td><td>clamp 10, minmax 13</td><td>max-width 12, <code>ch</code> 15</td><td>not a product rule</td></tr>
+          <tr><td><code>ui-kit/</code> <b>the stand</b></td><td>11, all in <code>_page.css</code></td><td><b>1</b>, with 1 <code>container-type</code></td><td>clamp 10, minmax 13</td><td>max-width 12, <code>ch</code> 15</td><td>not a product rule</td></tr>
           <tr><td><code>wireframes/</code> <b>grey</b></td><td><b>1,386</b> in 104 files</td><td>0</td><td>minmax 431, flex-wrap 2,142</td><td>max-width 1,265</td><td>the evidence</td></tr>
         </tbody>
       </table>
@@ -282,10 +290,19 @@
     only width sign in the whole painted tree is <b>46 percentages, and all 46 sit inside a
     <code>style=</code> attribute</b> with values like 88%, 58% and 30%. Those are odds-bar fills,
     which is a datum, and a datum is one of the three things the element is allowed to carry.</p>
-    <p class="tk-why"><b>What is genuinely new: <code>@container</code> is 0 and
-    <code>container-type</code> is 0 in all four corpora.</b> No component in this system measures
-    its own place. Every adaptive rule here asks about the window, including the ones standing inside
-    a column whose width the window does not describe.</p>
+    <p class="tk-why"><b>What is genuinely new: <code>@container</code> and
+    <code>container-type</code> are 0 in the three corpora that are the product</b>,
+    <code>components/</code>, <code>ui-visual/</code> and <code>wireframes/</code>. No component in
+    this system measures its own place. Every adaptive rule here asks about the window, including the
+    ones standing inside a column whose width the window does not describe.</p>
+    <p class="tk-note"><b>The fourth corpus is not 0 and this table said it was until 2026-08-12.</b>
+    <code>_page.css</code> declares one <code>container-type</code> and one <code>@container</code>,
+    both of them <code>.tk-cq</code> and its box in section 02, and they were added to this stand on
+    2026-08-11 <b>by the same step that published this transcript</b>: the grep was taken before the
+    specimen was written and the number was never re-read. <b>A transcript is a measurement with a
+    date on it</b>, and the one thing that can invalidate it is the work it was taken for. The claim
+    it made about the product still holds; the claim it made about all four corpora did not, and the
+    caption on the specimen itself hedged correctly the whole time, which is how it was found.</p>
   </section>
 
   <!-- =================================================================== audit --><section class="tk-sec" id="audit">

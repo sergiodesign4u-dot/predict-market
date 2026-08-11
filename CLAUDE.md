@@ -61,7 +61,11 @@ because it is a stance rather than a principle, and it is written once, here.
   is a page**, in both trees. The six differences that ARE the layer boundary are declared in
   `wireframes/_conventions.md`.
 - **One system.** `components/` holds `tokens.css` plus one file per component, reached through
-  `components/index.css`. Every screen links that one file and nothing else. The visual language is
+  `components/index.css`. **Every PAINTED screen links that one file and nothing else, and the grey
+  tree links no stylesheet at all**: 106 of 106 in `ui-visual/` and 57 of 57 in `ui-kit/` link it,
+  **0 of the 104 in `wireframes/` do**, and those 104 carry an inline `<style>` block each. Counted
+  2026-08-12. The sentence here said "every screen" until then, and the folder file it contradicted
+  is the one that had it right. The visual language is
   **Vault**, specified in `DESIGN.md`, and its one rule that decides others: **green and red are
   outcome semantics (YES / NO), brass is the brand.**
 - **One vitrine.** `ui-kit/` shows the system to a person, and it was rebuilt by hand between
@@ -71,7 +75,7 @@ because it is a stance rather than a principle, and it is written once, here.
   job, and taking one apart needs room a shelf does not have, because a shelf gives every component
   one specimen and one rule. **The threshold is not a placement count** - `toast` has four and
   `toggle` has three, and four of the toggle's five faces have no placement in the product at all, so
-  a stand built by walking screens would show one grey oval and call it the component. **55 of 55 pages written**, one route in `_nav.js`, 0 generators and 0 gates. It was 54 until `logo` was written on 2026-08-11 with the rename to Yonder, and 55 before that until `account` was deleted on 2026-08-08, a component whose whole stylesheet was a face nothing wore.
+  a stand built by walking screens would show one grey oval and call it the component. **57 of 57 pages written**, one route in `_nav.js`, 0 generators and 0 gates. **The panel computes the tally from `_nav.js` and this line was typed by hand, which is why it said 55 while 57 files stood on disk**: 1 overview, 5 foundations, 4 shelves, 12 atoms, 16 molecules, 13 organisms, 6 patterns, counted 2026-08-12 by listing `ui-kit/*.html` and by parsing the registry, and the two agree. It was 54 until 2026-08-11, when three pages landed the same day: `logo` with the rename to Yonder, `platehead` by backlog 108, and `responsive.html`, the FIFTH foundation, which is the page every enumeration in this repository was still leaving out. And it had been 55 before that until `account` was deleted on 2026-08-08, a component whose whole stylesheet was a face nothing wore.
 
 ---
 
@@ -109,9 +113,19 @@ because it is a stance rather than a principle, and it is written once, here.
   every branch above it a branch chosen for a page that is not there. **And one pixel either side
   found the next one the day after**: a rung written as a PAIR, `max-width:640px` in eight files and
   `min-width:640px` in five, matches on both sides at once, so 640 rendered a page that existed at no
-  other width, and the desk header it turned on asks for 694px, which put **73 of the 106 painted
-  screens into horizontal scroll from 641 to 652**. A rung is one pixel and it belongs to the wide
-  side. The ladder is named in `components/tokens.css`, page frame.
+  other width, and the desk header it turned on asks for 694px, which put **73 of the 106 documents
+  in `ui-visual/` into horizontal scroll from 641 to 652**. A rung is one pixel and it belongs to the
+  wide side. The ladder is named in `components/tokens.css`, page frame. **106 and 105 both name a
+  true thing and every number in this repository has to say which**: `ui-visual/` holds 106
+  documents, 105 of them screens, and `overview.html` is the index of the tree rather than a screen
+  in it.
+- **A verdict about a component is a statement about the SET of its placements.** A reading taken on
+  one placement and printed as a property of the component is a fact about a slot wearing a
+  component's name: `navitem` was published FIXED at 258px, the width of the third of its three
+  slots, while 420 of its 995 placements run 79 to 159 and are fully fluid, and `chip` was published
+  FIXED at 81px while standing at nine widths from 18 to 206 in one document. **Where placements
+  disagree, say so; do not pick one.** The measurement is `ui-kit/docs/inventory.md`, behaviour on
+  width.
 - **Read the instrument before you read the finding: measure the same thing twice, unchanged, and
   the difference has to be zero.** A before-and-after over 19 screens reported 31 files changed by an
   edit that could not change anything; re-reading the unchanged tree gave **3,587 differing rows of

@@ -2,7 +2,8 @@
    Component: seo-plate. Classes: .feed-seo, .feed-seo-wrap, .seo-brand, .seo-by, .seo-h-ic, .seo-tagline, .seo-text, .seo-tick.
 
    Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-plate, --bg-plate-from, --bg-plate-to, --border-brass, --border-hairline, --edge-groove-dark, --edge-groove-light, --mask-solid, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass-lit, --text-muted, --text-primary
-   Stand:  ui-kit/seo-plate.html, and ui-kit/molecules.html#seo-plate for the level and its reason
+   Stand:  ui-kit/seo-plate.html, and ui-kit/molecules.html#seo-plate-lt for the level and its reason
+     (the shelf suffixes every id it draws twice; ui-kit/CLAUDE.md owns the rule)
    Stands on: 9 ui-visual screens. The header counted .feed-seo, and that class is shared:
      patterns/browse-shell.css declares it too, as the SLOT. The plate itself (.feed-seo-wrap,
      .seo-brand, .seo-by, .seo-h-ic, .seo-tagline, .seo-text, .seo-tick) stands on 9, and on
@@ -38,6 +39,26 @@
 .feed-seo + .feed-seo{border-top:var(--hairline) solid var(--border-hairline);padding-top:var(--space-12);margin-top:0}
 .feed-seo h2{font-family:var(--font-display);font-size:var(--display-seo);font-weight:var(--weight-bold);letter-spacing:var(--track-head);color:var(--text-primary);margin-bottom:var(--space-8);text-wrap:balance}
 .feed-seo p,.feed-seo dd{color:var(--text-muted)}
+/* THE MEASURE IS THE TEXT'S AND NOT THE PLATE'S, SINCE 2026-08-12. The only cap this
+   component had was written `.feed-seo-wrap .feed-seo p, .feed-seo-wrap .feed-seo dd`, and
+   9 of the 11 screens that carry `.feed-seo` wear that wrapper. The other two hold the blocks
+   bare in the slot and fell straight through it. Measured at 1280 before, over all 11:
+   event-feed-logged-out.html ran an 89.1ch box with lines at 88.4, 87.9 and 86.9ch, which is
+   exactly the three elements tokens.css still lists as the last of the fifteen over the
+   measure. A SELECTOR IS NOT AN IDENTIFICATION: the Responsive stage waved those three
+   through by naming --container-read, and the nine that passed passed because of a wrapper,
+   not because anybody had measured the line.
+   THE SECOND SCREEN WAS NOT THE ONE THE WAVE-THROUGH NAMED EITHER. terms.html has no wrapper
+   and no cap, and it does not take --container-read: its blocks stand in `.cat-main.read-col`,
+   which patterns/browse-shell.css holds at --container-doc, so it measured 66.6ch. It was
+   inside the band by the accident of standing in a different column, which is the same kind of
+   fact as the nine passing by the accident of a wrapper.
+   The family takes --measure now, the role step 4 placed on .resolution, .sys-note and
+   .protect-page, and the last three of the fifteen close with it. After, at 1280:
+   event-feed-logged-out 66.0ch, terms.html 66.0ch, a 0.6ch trim that leaves the document
+   column's own 67ch measurement standing. At 390 neither screen reaches the cap (33.3ch) and
+   nothing moves. */
+.feed-seo p,.feed-seo dd{max-width:var(--measure)}
 .feed-seo dt{color:var(--text-primary)}
 .feed-inner>.feed-seo-wrap{background-color:var(--bg-plate);background-image:var(--surface-grain),linear-gradient(162deg,var(--bg-plate-from),var(--bg-plate-to));background-blend-mode:overlay,normal;border:var(--hairline) solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-hi),inset 0 3px 9px -5px var(--bevel-lo),
     inset 1px 0 0 var(--bevel-faint),
@@ -51,7 +72,19 @@
    for the darker plate surface. (0,3,0) beats the (0,2,0) pair above it, so the
    plate's edge replaces the page's rather than racing it on source order. */
 .feed-seo-wrap .feed-seo + .feed-seo{border-top:var(--hairline) solid var(--shadow-ink-45);box-shadow:inset 0 1px 0 var(--bevel-faint)}
-.feed-seo-wrap .feed-seo p,.feed-seo-wrap .feed-seo dd{max-width:60ch}
+/* THE PLATE'S OWN 60ch STOOD HERE AND IT IS GONE, 2026-08-12, AND THE WAY IT DIED IS THE POINT.
+   It was written as the TIGHTER number: with no cap the plate's text side offers 73.9ch at 1280
+   and 82.2ch at 1440, and 60ch pulled that back inside the band. It was measured, it was argued,
+   and at (0,2,1) it beat the family rule above it at (0,1,1) on all nine plate screens.
+   Then --measure moved from 66ch to 46ch the same day, because `ch` is the advance of a zero and
+   in DM Sans that is 1.48 prose characters, so 66ch had been buying 98 characters and not 66.
+   THE MOMENT THE FAMILY GOT TIGHTER, THIS RULE INVERTED: it went on winning on specificity and
+   what it now won was 60ch against 46, which is 89 characters against 66, so the rule written to
+   pull the plate IN was holding it OUT, on nine screens, silently. Nobody wrote that; it is what
+   two correct edits do to each other when one of them is a literal and the other is a token.
+   Deleted rather than restated at 46ch, because a second cap that agrees with the first is one
+   number with two spellings, and the family rule already covers every .feed-seo the product has.
+   Measured after: the nine plate screens read 46ch, 65 characters at 1280 and at 1440. */
 .feed-seo-wrap .feed-seo h2{display:flex;align-items:center;gap:var(--space-12)}
 .seo-h-ic{width:var(--icon-22);height:var(--icon-22);flex:0 0 var(--icon-22);color:var(--text-brass-lit);fill:currentColor}
 .seo-text{min-width:0}

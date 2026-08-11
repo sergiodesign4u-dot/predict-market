@@ -12,7 +12,29 @@
 .tabs{display:flex}
 .tabs :is(a,button){border-bottom:var(--hairline) solid var(--border-hairline)}
 .ed-tabs{padding:0}
-.ed-tabradio{position:absolute;left:-9999px}
+/* HIDING THE SWITCH OFF THE CANVAS LEAVES A CONTROL ON THE CANVAS. This was
+   `position:absolute;left:-9999px`, and the box it made was 13x13 with visibility:visible,
+   opacity:1 and POINTER-EVENTS:AUTO: a live, hit-testable native radio parked to the left of
+   the document. Counted 2026-08-12 over the two trees that link index.css: 4 on each of the 9
+   painted detail screens and 20 more in the kit (8 on event-detail, 8 on tabs, 4 on
+   organisms), 56 in all, and every touch-target sweep this repository has run reported all of
+   them at 13x13 from this one declaration. `.ptab-in` nineteen lines down and
+   `.filter-panel input[type=radio]` in filters.css both hide the same kind of switch the other
+   way and filters.css writes the reason beside it, so the technique stood in the folder twice
+   while this line kept a third spelling of the same intention.
+   IT IS THE SAME THREE DECLARATIONS NOW: a 1px box at zero alpha that the pointer passes
+   through. Focus is untouched, which is the part that matters here - the radio is not
+   display:none and not visibility:hidden, so it keeps its tab stop, the `<label for>` still
+   drives it, and the `:focus-visible ~` rules at the foot of this file still put the ring on
+   the label. Measured after on all 9 painted screens, both themes, 390 and 1280: 4 radios each
+   at 1x1 with pointer-events none, :focus-visible still matching on the radio, the ring landing
+   on .ed-tablabel at 2px solid --focus-ring inset 2px with its whole box inside the bar, and
+   scrollX 0 and 0 document overflow through an 80-press Tab pass on each of the 36 runs.
+   AND THE GREY TREE STILL PARKS IT AT -9999px, because wireframes/ links no stylesheet: the
+   same declaration stands in the inline <style> of 9 wireframe screens and this edit does not
+   reach one of them. components/CLAUDE.md names that as the standing trap; the row belongs in
+   docs/backlog.md, not here. */
+.ed-tabradio{position:absolute;width:var(--hairline);height:var(--hairline);opacity:0;pointer-events:none}
 .ed-tabbar{display:flex;gap:0;overflow-x:auto}
 .ed-tablabel{flex:0 0 auto;padding:var(--space-8) var(--space-12);cursor:pointer;white-space:nowrap}
 .ed-tab-count{font-size:var(--text-10)}
@@ -56,11 +78,13 @@
 .ed-tab-count{color:var(--text-muted)}
 .ed-tabwrap > .ed-tabradio:nth-of-type(1):checked ~ .ed-tabbar > .ed-tablabel:nth-of-type(1),.ed-tabwrap > .ed-tabradio:nth-of-type(2):checked ~ .ed-tabbar > .ed-tablabel:nth-of-type(2),.ed-tabwrap > .ed-tabradio:nth-of-type(3):checked ~ .ed-tabbar > .ed-tablabel:nth-of-type(3),.ed-tabwrap > .ed-tabradio:nth-of-type(4):checked ~ .ed-tabbar > .ed-tablabel:nth-of-type(4){background:transparent;color:var(--text-brass);font-weight:var(--weight-bold);box-shadow:inset 0 -2px 0 var(--color-action)}
 /* FOCUS, AND THE ONE PLACE THE SYSTEM'S SINGLE RING CANNOT LAND. base.css draws the ring once, on
-   the element that has focus, and the element that has focus here is the RADIO, which line 12 of
-   this file parks at left:-9999px. So the indicator was painted off the left edge of the document
-   and a person tabbing into the tab strip saw nothing at all. The radio is still focusable, which
-   is the part that matters: it is offscreen, not display:none, so the strip is reachable and only
-   the indicator was missing.
+   the element that has focus, and the element that has focus here is the RADIO, which this file
+   hides. It used to hide it at left:-9999px, so the indicator was painted off the left edge of the
+   document; it is a 1px box at zero alpha now, so the indicator is painted in the right place and
+   at no alpha, which is the same nothing and is what .ptab-in has always done. Either way a person
+   tabbing into the tab strip saw nothing at all. The radio is still focusable, which is the part
+   that matters: it is not display:none, so the strip is reachable and only the indicator was
+   missing.
    The ring therefore moves to the thing that is visible, the label, and only to the label of the
    radio that actually has focus, so the mapping is written out per tab exactly the way :checked is
    written out above. A clicked radio does not match :focus-visible, so this is the keyboard's.
