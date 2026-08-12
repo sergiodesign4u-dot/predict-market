@@ -231,10 +231,20 @@
    `display:none` would do it and cannot be used: it kills the transition this band exists for.
    `visibility` is animatable discretely, so it holds `visible` for the whole collapse and flips
    at the end, which is why it is in the transition list with the slower of the two durations.
-   THIS IS HALF THE DEFECT AND THE HALF THAT IS A COMPONENT'S TO FIX. The other half is that
-   the band is `aria-hidden="true"` while OPEN as well, where it is visible and operable, and
-   on 48 of the 105 screens it is the only category navigation in the document. That is a
-   question about the navigation model and it belongs to 03a, not to a stylesheet: docs/backlog.md 118. */
+   THIS IS HALF THE DEFECT AND THE HALF THAT IS A COMPONENT'S TO FIX. The other half CLOSED
+   2026-08-13, and it turned out to be a markup fix rather than the navigation-model question
+   this comment filed it as. **The band is `<nav aria-label="Categories (sticky header)">` now
+   and carries no `aria-hidden` at all.** Two readings settled it. First, the rule above already
+   does the hiding: on the 48 screens with no main band the condensed strip is absent from the
+   accessibility tree with `aria-hidden` gone, because `visibility:hidden` removes a subtree from
+   that tree as surely as it removes it from the eye. **`aria-hidden` was redundant exactly where
+   the band is hidden and harmful exactly where it is shown.** Second, the 48 were the wrong half:
+   the strip is revealed by an IntersectionObserver that observes `.feed-inner > .cat-nav` and
+   returns early when there is none, so **on those 48 screens the band cannot open at all** and
+   the marking cost nothing there. The 57 that DO open it were the defect: 54px tall, five links
+   painted, five reachable by Tab, and the whole band marked as not existing, which is **285 focus
+   stops a screen reader was told were not there**, at 390 and at 1280 alike. Measured 0 after.
+   The band that never opens is `docs/backlog.md` 142. */
 .app-header .cat-condensed{max-height:0;opacity:0;visibility:hidden;overflow:clip;transition:max-height var(--dur-slower) var(--ease-out),opacity var(--dur-slow) ease,visibility var(--dur-slower)}
 .app-header.scrolled .cat-condensed{max-height:54px;opacity:1;visibility:visible;border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 /* THE CONDENSED STRIP'S CHIPS LEFT THIS FILE ON 2026-08-06 for components/chip.css, where
