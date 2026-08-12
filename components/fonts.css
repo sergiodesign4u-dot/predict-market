@@ -36,6 +36,32 @@
 
    No em dash. */
 
+/* ---- THE METRIC-MATCHED FALLBACK WAS BUILT, MEASURED AND REFUSED, 2026-08-13 ----
+
+   Backlog 100 asked for `size-adjust` and `ascent-override`, which is what every
+   performance guide recommends and what this tree measures as a REGRESSION. Two faces
+   were written here, `local('Arial')` bent to DM Sans and Space Grotesk metrics taken
+   from this product's own render at 100px (101.59% and 107.14% of Arial's advance, with
+   the ascent and descent divided by the same ratio), and the tree was measured with the
+   preload removed so the swap would actually happen. Over all 106 documents in
+   `ui-visual/` at 390 on a throttled link, mean CLS went from **0.0021 to 0.0076**, the
+   worst screen from **0.0438 to 0.1793**, which crosses Google's 0.1 for the first time,
+   and **43 screens got worse against 7 better**. Dropping `size-adjust` and keeping only
+   the vertical overrides fixed the two worst and left `terms` at 0.0036 to 0.0275 and
+   `loss` at 0.0219 to 0.0370.
+
+   THE REASON IS STRUCTURAL AND IT IS WHY THE ADVICE DOES NOT TRANSFER. The shift is not
+   the fallback being wrong, it is the fallback being REPLACED, so anything that changes
+   the fallback's box changes what has to move. Matching one sentence's average advance
+   does not match any particular string's WRAPPING, and a rewrapped block moves far more
+   than a line that changes height. The technique pays where a fallback is shown for a
+   long time; here the preload means it is shown for no time at all.
+
+   What is here instead is the `<link rel="preload">` on all 163 documents, measured at
+   106 of 106 screens at exactly 0.0000, at 1.6 Mbps and at 400 Kbps alike, and proved by
+   stripping the preload from one screen and watching 0.0438 come back. `docs/decisions.md`,
+   2026-08-13. Do not re-attempt this without re-running that sweep. ---- */
+
 /* ---- DM Sans, one variable file per range, 400 to 700 ---- */
 @font-face{font-family:'DM Sans';font-style:normal;font-weight:400 700;font-display:swap;src:url(../assets/fonts/dm-sans-var-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
 @font-face{font-family:'DM Sans';font-style:normal;font-weight:400 700;font-display:swap;src:url(../assets/fonts/dm-sans-var-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}

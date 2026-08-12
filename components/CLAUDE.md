@@ -93,6 +93,17 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
 - **A font is served from this repo.** No page may call a font host: the request carries a visitor's
   IP to a third party before the consent banner has asked anything. Faces are woff2 in
   `assets/fonts/`, declared once in `fonts.css`, imported first by `index.css`.
+- **AND THE TWO FACES A FIRST PAINT NEEDS ARE PRELOADED IN THE DOCUMENT, WHICH IS THE ONE THING
+  ABOUT THIS SYSTEM THAT CANNOT LIVE IN THIS FOLDER.** `fonts.css` is the first of 51 `@import`s,
+  and that is still three levels down: HTML, then `index.css`, then `fonts.css`, then the woff2,
+  and no font is even requested until layout finds a glyph that wants it. A `<link rel="preload">`
+  has to be in the head to be early, so all **163** documents carry two of them, with `crossorigin`,
+  because a font is fetched in CORS mode even from its own origin and without it the preload is
+  discarded and the file fetched twice. It took every screen in the product from a worst layout
+  shift of 0.0438 to **exactly 0.0000**, at 390 and at 1280, at 1.6 Mbps and at 400 Kbps.
+  **Re-cutting a face is therefore two edits and the second one is in 163 files**, which is
+  `../docs/backlog.md` 141. And do not reach for `size-adjust`: it was built here with measured
+  metrics and made the tree four times worse, with the reason written into `fonts.css`.
 
 ## The traps this folder has already paid for
 
