@@ -63,3 +63,23 @@
 .bp-sel-name .opt-prob{font-family:var(--font-mono);background:transparent;border:0;color:var(--text-brass)}
 .opt-list .opt-row{cursor:pointer}
 .opt-list .opt-row.sel{border-color:var(--tint-brass-60);background:var(--tint-brass-16)}
+/* BELOW THE DESK THE ROW IS TWO LINES, because its min-content is the SUM OF ITS PARTS and it
+   had no way to give anything back. `.yesno.compact` is `flex:0 0 auto` and `.opt-name` was
+   `flex:1` with the default `min-width:auto`, so the row could only overflow, and `.card` is
+   `overflow:clip`, which is why every horizontal-scroll sweep read zero over a NO button that
+   was cut off: at 320 it was 32 clipped elements on 8 feed screens, worst 28.9px, and the
+   document did not scroll on any of them. A CLIP IS NOT THE ABSENCE OF OVERFLOW, IT IS
+   OVERFLOW WITH THE EVIDENCE REMOVED.
+   The wrap is here and the pair's share of it is in `yesno.css`, because the two files own two
+   different things: this one decides that the row has a second line, that one decides what the
+   pair does with it. `min-width:0` is what lets a long name shrink instead of pushing the
+   percentage off the first line; measured across all nine feed screens at 320, 330, 340, 360
+   and 390 it truncates nothing. The half-step padding goes to a whole one because a wrapped row
+   has a gap between its lines to answer to and 4px does not read as one. */
+/* rung: DESK 640, the one divide, and this is BELOW it. 639.98 rather than 640,
+   because the rung belongs to the desk: tokens.css, page frame. */
+@media(max-width:639.98px){
+  .opt-row{flex-wrap:wrap;row-gap:var(--space-8)}
+  .card .opt-row,.card .opt-row:first-child{padding:var(--space-8)}
+  .card .opt-row .opt-name{flex:1 1 auto;min-width:0}
+}

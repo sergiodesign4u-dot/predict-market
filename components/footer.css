@@ -40,6 +40,26 @@
    same x as the logo above it and the first card between them */
 .app-footer .footer-inner{max-width:var(--container-max);margin:0 auto;box-sizing:border-box;padding:var(--space-20) var(--gutter)}
 .app-footer a{color:var(--text-muted);text-decoration:none}
+/* THE ONE PLACE IN THIS PRODUCT THAT FAILS WCAG 2.5.8 AA OUTRIGHT, AND IT FAILED BOTH HALVES.
+   Measured at 390 with the pointer asserted coarse: `.footer-col a` is a **36.5 x 14** box, which
+   misses the 24 x 24 minimum, and the criterion's escape hatch misses too, because a target under
+   24 is excused only when a 24px circle centred on it touches no other target's circle, and these
+   sit **20.5px centre to centre**. 1,154 links on 105 screens. It is here rather than in the
+   coarse-pointer family list in base.css BECAUSE THE TWO FLOORS ARE DIFFERENT HEIGHTS FOR DIFFERENT
+   REASONS: 44 is 2.5.5 AAA and the project's own stance, and putting a column of eleven footer
+   links on it adds 330px to a phone footer to buy nothing the AA criterion asks for.
+   `padding-block` and not `min-height`, because the box has to grow from the ladder the way every
+   other control here grows, and because a min-height would sit beside the 44 floor arguing with it.
+   MEASURED, all three candidates, at 390 and 1280: this one gives **36 x 25 and 28.5 centre to
+   centre**, so it clears the criterion on the SIZE half and does not lean on the spacing escape at
+   all, and costs 88px of footer at 390 and 33px at 1280. `--space-8` gives 36 x 33 for exactly
+   twice the height and no additional compliance. Raising the list gap to 12 costs the same 88px and
+   passes on the escape hatch alone, leaving the target 14px tall: **a rule that satisfies the
+   criterion without making the target easier to hit has answered the audit and not the person.**
+   `.popular-links a` and `.legal-links a` are NOT in this rule and are not defects: 80 x 16 at 26.1
+   apart and 30.8 x 14 at 41.9 apart, both passing on spacing. They miss the project's 44 and that
+   is `docs/backlog.md` 137. */
+.footer-col a{display:inline-flex;align-items:center;padding-block:var(--space-4)}
 /* A ROW THAT GOES NOWHERE IS NOT AN `<a>`, which is the rule the side panel has had since it was
    written and the footer never got. `docs/backlog.md` 28. Three labels here are destinations the
    MAP REFUSES: `ia/docs/sitemap.md` declares Leaderboard, Help Center and FAQ `[ORPHAN]`, meaning

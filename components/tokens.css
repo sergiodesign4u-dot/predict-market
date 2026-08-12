@@ -385,7 +385,13 @@
   --container-dialog:464px;  /* how-it-works dialog */
   --container-sheet:420px;   /* outcome overlay */
   --container-sidebar:220px; /* course sidebar, and the body inset that clears it */
-  --gutter:40px;             /* the two-stone inset. 14px on mobile, below */
+  --gutter:40px;             /* the page gutter, OUTSIDE the two-stone plate. 14px on mobile, below */
+  --plate-inset:28px;        /* the inset INSIDE the plate, and it is a token because it is the
+                                second half of a step that had only ever been taken by the first:
+                                --gutter goes 40 to 14 at rung DESK and this held 28 at every
+                                width, so on a 360 phone the two nested gutters took 42px a side,
+                                84 of 360, before a card began. Written in ONE place, base.css,
+                                the two-stone plate. 16px on mobile, below. */
 
   /* ---- the two values the width stage added, 2026-08-11, Responsive step 2 ---- */
   --rail-width:214px;        /* THE VERTICAL RAIL THAT ARRIVES AT RUNG 900, and it is a token
@@ -652,16 +658,22 @@
        feed prose          13px  ->  13px       --text-13
        footer legal        11px  ->  11px       --text-11
 
-     THE WHOLE TYPE SCALE IS PX. Eighteen size tokens from --text-10 to --text-30
-     are px literals and the display sizes are clamp() of px and vw, so 222 of the
-     228 font-size declarations in this system resolve to a number the user's
-     setting cannot move. Putting the RUNGS in rem while the TYPE stays in px
-     would be worse than leaving them: the layout would switch at a different
-     window width for that person while every word on it stayed exactly the same
-     size, which is a breakpoint answering a question the product does not ask
-     anywhere else. It would look like accessibility and do nothing.
-     So the rungs stay px, and the real finding is filed rather than dressed up:
-     the product ignores the browser's font setting, docs/backlog.md item 115. */
+     THE WHOLE TYPE SCALE WAS PX AND IT IS REM SINCE 2026-08-12, so the table above
+     is the reading that CAUSED the change and not a description of the tree. Ten
+     --text-* steps and eight --display-* clamps carried px literals, 213 of the
+     229 font-size declarations here come through them, and a reader who set a
+     24px default therefore got a page 0.2 per cent taller and not one additional
+     word. The ramp is ratios now and the same reader gets every word. That was
+     docs/backlog.md 115 and it is closed.
+     THE RUNGS ARE STILL PX AND THE REASON WRITTEN HERE NO LONGER HOLDS. It was
+     "a rung in rem while the type is px switches the layout at a different window
+     width while every word stays the same size", which was true and was an
+     argument about the TYPE. The type moved, so the argument is spent: a rung in
+     rem now means what it is supposed to mean, that a reader whose words are 50
+     per cent wider reaches the one-column layout at a wider window. Whether it
+     SHOULD is a decision nobody has taken, and taking it silently in the sweep
+     that moved the type would be the fourth time in this repository that a rule
+     outlived its reason without anyone noticing. It is a row, docs/backlog.md 135. */
 
   /* ---- type ---- */
   --font-display:'Space Grotesk',sans-serif;
@@ -673,18 +685,36 @@
      carry (9.5, 10.5, 11.5, 12.5, 13.5) were rem arithmetic from the grey
      wireframe, not sizes anyone chose; they were rounded up, so no line got
      smaller. 10px is the floor a mobile product should set. */
-  --text-10:10px;  --text-11:11px;  --text-12:12px;  --text-13:13px;
-  --text-14:14px;  --text-16:16px;  --text-18:18px;  --text-20:20px;
-  --text-24:24px;  --text-30:30px;
-  /* a display size is fluid, so it is one token and not a size plus a rule */
-  --display-feed:clamp(28px,4vw,38px);        /* the feed heading */
-  --display-hiw:clamp(30px,7vw,38px);         /* the how-it-works hero */
-  --display-sheet:clamp(24px,5.6vw,30px);     /* a dialog or outcome sheet heading */
-  --display-seo:clamp(20px,2.6vw,24px);       /* an SEO section heading */
-  --display-question:clamp(19px,2vw,24px);    /* an event question as a page heading */
-  --display-hero:clamp(19px,1.5vw,23px);      /* the same question on the featured card, one rank down */
-  --display-quote:clamp(20px,1.85vw,26px);    /* the brand tile quote */
-  --display-tagline:clamp(23px,2.3vw,31px);   /* the SEO brand tagline */
+  /* THE NAME IS THE PIXEL AT THE DEFAULT ROOT AND THE VALUE IS A RATIO TO IT, since 2026-08-12.
+     `--text-13` is 13px for everyone who has changed nothing, which is what it always was, and
+     0.8125 x whatever the reader has set for everyone who has. Every step divides by 16 exactly,
+     so the move is arithmetically inert at the default and there is no rounding anywhere.
+     WHY THE NAMES STAYED PIXELS. A ramp named `--text-0-8125` would be a scale nobody can read,
+     and the number in the name is what a designer says out loud. The name is the value at the
+     root the whole world ships; the unit is what happens when a reader disagrees with it.
+     WHAT THIS FIXED, MEASURED RATHER THAN ASSUMED, docs/backlog.md 115. Nothing in this system
+     sets font-size on html, :root or body, so the root has always been the reader's own setting
+     and rem has always responded to it. It reached nothing: with the ramp in px, a reader who
+     set a 24px default got a page 0.2 PER CENT taller and not one additional word, on all 105
+     screens, because 213 of the 229 font-size declarations here come through this ramp. The 717
+     computed sizes that did move were containers with no text of their own. */
+  --text-10:0.625rem;   --text-11:0.6875rem;  --text-12:0.75rem;    --text-13:0.8125rem;
+  --text-14:0.875rem;   --text-16:1rem;       --text-18:1.125rem;   --text-20:1.25rem;
+  --text-24:1.5rem;     --text-30:1.875rem;
+  /* a display size is fluid, so it is one token and not a size plus a rule.
+     THE FLOOR AND THE CEILING FOLLOW THE READER AND THE MIDDLE TERM FOLLOWS THE WINDOW, and
+     that is the whole point of the shape rather than a compromise inside it: `vw` is left in vw
+     because it answers a different question. At a 24px root on a 360 phone the middle term is
+     the smallest of the three and the clamp sits on its rem floor, so the reader is obeyed; on
+     a desk it sits in the fluid band, where the window is what should decide. */
+  --display-feed:clamp(1.75rem,4vw,2.375rem);        /* the feed heading */
+  --display-hiw:clamp(1.875rem,7vw,2.375rem);        /* the how-it-works hero */
+  --display-sheet:clamp(1.5rem,5.6vw,1.875rem);      /* a dialog or outcome sheet heading */
+  --display-seo:clamp(1.25rem,2.6vw,1.5rem);         /* an SEO section heading */
+  --display-question:clamp(1.1875rem,2vw,1.5rem);    /* an event question as a page heading */
+  --display-hero:clamp(1.1875rem,1.5vw,1.4375rem);   /* the same question on the featured card, one rank down */
+  --display-quote:clamp(1.25rem,1.85vw,1.625rem);    /* the brand tile quote */
+  --display-tagline:clamp(1.4375rem,2.3vw,1.9375rem);/* the SEO brand tagline */
 
   /* 400 is the root default and the weight 192 of 260 text elements on the feed
      render at, and until 2026-08-07 it was the one step of this ramp with no
@@ -901,11 +931,13 @@
   --logo-y-dark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath d='M11.6 12.2 5.8 6' stroke='%23684f18' stroke-opacity='.3' stroke-width='4.6'/%3E%3Cpath d='M11.6 20.5V12.2L18.2 5.1' stroke='%23684f18' stroke-width='4.6'/%3E%3C/svg%3E");
 }
 
-/* mobile: the plate breathes on a smaller inset (this is the one responsive token) */
+/* mobile: the plate breathes on a smaller inset. These are the two responsive tokens,
+   and the line here said ONE until 2026-08-12, which is exactly how the inside of the
+   plate came to keep 28px at a width where the outside had already dropped to 14. */
 /* rung: DESK 640, the one divide, and this is BELOW it. 639.98 rather than 640,
    because the rung belongs to the desk: the page frame above argues it. */
 @media(max-width:639.98px){
-  :root{--gutter:14px}
+  :root{--gutter:14px;--plate-inset:16px}
 }
 
 /* WHEN TWO ROLES HOLD THE SAME VALUE. Twenty-seven groups below resolve to one

@@ -313,7 +313,28 @@ svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor!important;stroke:none!impor
    so raising its rows makes the dropdown taller and moves no page content at all.
    docs/backlog.md 50, 59, 64. */
 @media(pointer:coarse){
-  :is(.btn,.chip,.icon-btn,.tabs :is(a,button),.ptab-lbl,.rules-tab,.market-head,.toc-link,.cc-cat-main,.filter-menu summary,.notif-menu summary,.avatar-menu summary,.logo-btn,.notif-all,.nav-item,.ed-tablabel,.opt-more,.yesno :is(a,button),a.q,.hf-title,.hh-name,.hh-all):not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small):not(.icon-btn-lift){min-height:max(var(--control-44),var(--control-h))}
+  /* THREE NAMES ADDED 2026-08-12, docs/backlog.md 122, and each was outside the list for its own
+     reason rather than by anybody's decision. `.bp-change` measured 35.2 x 15 and is the control
+     that takes a person BACK to the outcome they are changing, which is the one thing in a bet
+     panel a mis-tap costs money on. `.sys-link-list a` is 39.6 x 21 and stands on 404 and 500,
+     where seven of the eight routes off a dead end are those links and the eighth is the one
+     control on the page that is a `.btn` and therefore already had the floor. `.related-list a`
+     measured 286 x 43.5 on terms.html, HALF A PIXEL under, and half a pixel is the argument for
+     naming a family rather than the instances a sweep happened to catch: the same class stands
+     over 44 on every other screen it appears on, so this rule is silent there and would have
+     caught this one before it was written. */
+  :is(.btn,.chip,.icon-btn,.tabs :is(a,button),.ptab-lbl,.rules-tab,.market-head,.toc-link,.cc-cat-main,.filter-menu summary,.notif-menu summary,.avatar-menu summary,.logo-btn,.notif-all,.nav-item,.ed-tablabel,.opt-more,.yesno :is(a,button),a.q,.hf-title,.hh-name,.hh-all,.bp-change,.sys-link-list a,.related-list a):not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small):not(.icon-btn-lift){min-height:max(var(--control-44),var(--control-h))}
+  /* THE FLOOR HAS A PRECONDITION AND NOBODY HAD WRITTEN IT DOWN: `min-height` does not apply to a
+     non-replaced INLINE box, so a name added to the list above is silently inert unless the control
+     already has a box. Every member had one by accident of being a `.btn`, a `.chip` or an
+     `.icon-btn`, all of them inline-flex already, so the precondition never showed itself in two
+     years of the rule. It showed on 2026-08-12 the first time a bare `<a>` joined: the computed
+     style read `min-height:44px` and the box read **39.6 x 21**, which is the rule applying and
+     doing nothing. THAT IS THE SAME DEFECT AS THE `pattern` ATTRIBUTE ON A FIELD IN NO FORM AND THE
+     `aria-hidden` ON AN OPERABLE BAND: a declaration that is present, correct and consulted by
+     nothing. It is here rather than in the component's own file because it is the FLOOR that needs
+     the box, not the component that wants the display. */
+  :is(.sys-link-list a,.bp-change){display:inline-flex;align-items:center}
   .filter-panel li label{min-height:var(--control-44)}
   /* A SQUARE CONTROL NEEDS BOTH SIDES. These carry a mark and no label, so their width does not
      arrive from a word the way a chip's and a button's does. */
@@ -453,7 +474,10 @@ body.app-case{background:var(--bg-page)}
     inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),
     0 30px 58px -34px var(--shadow-ink-85),0 12px 26px -18px var(--shadow-ink-72)}
 .feed-inner>.cat-nav{padding:var(--space-12) var(--space-16)}
-.feed-inner>.cat-layout{padding:var(--space-24) var(--space-28) var(--space-28)}
+/* The SIDES read --plate-inset and the top and bottom do not, because only the sides
+   are nested inside another gutter: --gutter is already spent before this padding
+   starts, and vertical space has nothing above it competing for the same 360px. */
+.feed-inner>.cat-layout{padding:var(--space-24) var(--plate-inset) var(--space-28)}
 .ed-main{position:relative;overflow:clip;background-color:var(--bg-plate);background-image:var(--surface-grain),linear-gradient(162deg,var(--bg-plate-from),var(--bg-page));background-blend-mode:overlay,normal;border:var(--hairline) solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-hi),inset 0 3px 9px -5px var(--bevel-lo),
     inset 1px 0 0 var(--bevel-faint),
     inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),

@@ -130,7 +130,19 @@
 .hero-hot{display:flex;flex-direction:column;padding:var(--space-16) var(--space-20) var(--space-16)}
 .hh-head{display:flex;align-items:center;gap:var(--space-8);margin-bottom:var(--space-8)}
 .hh-head svg{width:var(--icon-18);height:var(--icon-18);color:var(--text-brass-lit)}
-.hh-head h3{font-family:var(--font-display);font-size:var(--text-16);font-weight:var(--weight-bold);letter-spacing:var(--track-question);color:var(--text-primary);margin:0}
+/* A HEADING LEVEL IS THE DOCUMENT OUTLINE AND NOT A TYPE SIZE, docs/backlog.md 123. This was an
+   <h3> and it is the FIRST heading in event-feed.html, sitting before the page's own
+   <h1>Trending, so a screen reader walking the document was told the first thing on the page is a
+   third-level section of a section that has never started. It renders correctly to the eye the
+   whole time, because the block sits BESIDE the heading in the hero rather than under it.
+   IT IS NOT A HEADING NOW RATHER THAN A DIFFERENT LEVEL, and that is the part worth reading: an
+   <h2> here would still stand before the <h1> and would still be an outline that opens at the
+   second level. The h1 cannot move, because it is the feed's own heading and the hero is
+   physically above it. So the label stops being a section and becomes what it actually is, the
+   NAME OF THE LIST under it, carried by `aria-labelledby` on the <ol>. A screen reader still hears
+   "Hot right now" and hears it as a list name, which is what it is. The face does not move: this
+   rule is the same declaration with the tag swapped for the class. */
+.hh-head .hh-title{font-family:var(--font-display);font-size:var(--text-16);font-weight:var(--weight-bold);letter-spacing:var(--track-question);color:var(--text-primary);margin:0}
 .hh-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;flex:1}
 .hh-list li{display:grid;grid-template-columns:20px minmax(0,1fr) auto auto;align-items:center;gap:var(--space-8);padding:var(--space-8) 0;border-top:var(--hairline) solid var(--shadow-ink-45);box-shadow:inset 0 1px 0 var(--bevel-hair)}
 .hh-list li:first-child{border-top:0;box-shadow:none}

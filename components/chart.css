@@ -19,6 +19,15 @@
    so the non-neutral colour sweep called them the moment the port landed. That is the pair working as
    intended: a fossil is only visible once the thing it was a fossil OF is gone. */
 .chart-svg polyline{fill:none}
+/* THE ONE FONT-SIZE IN THIS SYSTEM THAT IS NOT A FONT SIZE, and it stayed px on 2026-08-12 when
+   the whole type ramp went to rem. The host is `viewBox="0 0 300 100"` with
+   `preserveAspectRatio="none"` drawn into `height:160px;width:100%`, so 7 is a USER UNIT in a
+   coordinate system that is stretched to fill the box, by a different factor on each axis. It is a
+   drawing dimension that happens to be spelled `font-size`. In rem it would follow the reader's
+   browser setting while the chart it labels went on following the viewBox, and the label would
+   grow out of the plot it belongs to. The census that found "229 font-size declarations, of which
+   exactly one is a raw px literal" counted this as the exception to sweep up; it is the exception
+   to leave. A UNIT IS ONLY A UNIT INSIDE THE COORDINATE SYSTEM THAT READS IT. */
 .chart-svg text{font-size:7px}
 .chart-svg{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-chart-well)}
 .chart-svg polyline,.chart-svg line{vector-effect:non-scaling-stroke}

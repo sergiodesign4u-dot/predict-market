@@ -23,7 +23,7 @@
     arrives at it. <b>Twelve distinct widths were counted in the product</b> before a single one of
     them was called a decision, and three of the twelve turned out to have no name at all.</p>
     <div class="tk-badges">
-      <span class="tk-badge">3 rungs, 33 width queries</span>
+      <span class="tk-badge">3 rungs, 35 width queries</span>
       <span class="tk-badge">0 in a screen file</span>
       <span class="tk-badge">104 screens audited</span>
       <span class="tk-badge">new behaviour: 0</span>
@@ -97,11 +97,11 @@
     lives in <code>components/tokens.css</code> under "the breakpoint ladder"; this is the registry.</p>
     <div class="tk-rungs">
       <div class="tk-rung"><b>640</b><span>DESK. The one divide: one column, a bottom nav and a mobile dock below it; the desk above.
-        <i>13 rules in 13 files. It is the only rung most components ever meet.</i></span></div>
+        <i>16 rules in 15 files. It is the only rung most components ever meet.</i></span></div>
       <div class="tk-rung"><b>760</b><span>DETAIL. The event detail gains its second column: the bet panel docks as a sidebar, the dock goes, the chart takes full height.
-        <i>5 rules. Audit row: event detail, 13 screens, FJ2.</i></span></div>
+        <i>7 rules in 7 files. Audit row: event detail, 13 screens, FJ2.</i></span></div>
       <div class="tk-rung"><b>900</b><span>RAIL. A vertical rail arrives BESIDE the content: sub-categories, the table of contents, the how-it-works side column.
-        <i>6 rules. Audit rows: category feeds, how it works.</i></span></div>
+        <i>6 rules in 5 files. Audit rows: category feeds, how it works.</i></span></div>
       <div class="tk-rung"><b>1140</b><span>HARNESS, and it is <b>not the product's</b>. The review panel docks and the body takes its 220px inset.
         <i>900 + 220 + 20 on purpose, so the chrome can never take width the widest product rung is counting on.</i></span></div>
     </div>
@@ -222,7 +222,7 @@
     <h2 data-n="05">What each component does with width</h2>
     <p class="tk-note"><b>The registry holds, and it was checked rather than trusted.</b> Every
     <code>@media</code> in <code>components/</code> read and every number compared against the
-    ladder: <b>33 width queries, every number on the registry, and 0 in any of the 106 screen
+    ladder: <b>35 width queries, every number on the registry, and 0 in any of the 106 screen
     files</b>. Three are named one-offs, 560, 620 and 980, and each carries beside it what
     collapsing it to the nearest rung would cost in pixels.</p>
     <div class="tk-tblwrap">
@@ -389,6 +389,16 @@
     breakpoint answering a question the product does not ask anywhere else <b>looks like
     accessibility and does nothing</b>. The rungs stay px, and the real finding is filed rather than
     dressed up: <code>docs/backlog.md</code> item 115.</p>
+    <p class="tk-why tk-bad"><b>AND IT WAS ACTED ON, 2026-08-12, SO THIS SECTION IS THE ARGUMENT AND
+    NOT THE TREE.</b> The type is in <code>rem</code>: ten <code>--text-*</code> steps and eight
+    <code>--display-*</code> clamps are ratios to the root, the root is the reader's own setting
+    because nothing sets <code>font-size</code> on <code>html</code>, <code>:root</code> or
+    <code>body</code>, and every step divides by 16 exactly, so the move measured <b>0 differing font
+    sizes of 44,547 readings</b> at the default. At a 24px root the phone page is <b>38.4 per cent
+    longer and carries every word</b>, against 0.2 per cent and no extra word the day before.
+    <b>The rungs stayed px on a different ground than the one above</b>, which is now spent: a rung in
+    rem finally means what it is meant to mean, and whether it should is a decision nobody has taken,
+    filed as item 135 rather than smuggled in with the type.</p>
   </section>
 
   <!-- ================================================================== sweep --><section class="tk-sec" id="sweep">
@@ -422,7 +432,15 @@
       <li><b>1</b><span><b>The ladder stays three rungs in px</b>, and it becomes a registry: no number
       may stand in a product media query that is not on it. The limitation that a query cannot read a
       variable is what makes the check possible at all.</span></li>
-      <li><b>2</b><span><b>Four tokens are added and four are refused.</b> <code>--measure</code>,
+      <li><b>2</b><span><b>Five tokens are added and four are refused</b>, and the fifth landed on
+      2026-08-12, after this page was written, which is the entry worth reading twice.
+      <code>--plate-inset</code> is the inset INSIDE the two-stone plate, 28px and 16px below the
+      desk. It exists because <code>--gutter</code>, the gutter OUTSIDE the plate, had been taking
+      that step alone since the stage shipped: the two are nested, only one of them stepped, and a
+      360px phone spent <b>42px a side, 84 of 360, before a card began</b>. The comment beside the
+      one that stepped read <i>"this is the one responsive token"</i>, which was true when it was
+      written and is exactly the sentence that stops the next reader looking for a second.
+      <code>--measure</code>,
       <code>--grid-col-min</code>, <code>--rail-width</code> and <code>--menu-min</code> exist;
       <code>--grid-gap</code> does not, because the space ladder is already the gap ladder, a
       column-count token does not, because the track counts, a <code>--sticky-gap</code> does not, for

@@ -58,9 +58,29 @@
 .yesno > a.no:hover,.yesno > button.no:hover{background:color-mix(in oklab,var(--outcome-no) 32%,var(--bg-control));border-color:var(--outcome-no)}
 .yesno.compact{gap:var(--space-8);margin:0}
 .yesno.compact :is(a,button){padding:var(--space-4) var(--space-12);font-size:var(--text-11);line-height:var(--leading-tight)}
-/* No media block for the compact variant: `.yesno button` above sets min-height on every variant,
-   compact included, and nothing unsets it. The rule that used to live here re-stated 44px inside a
-   640px query, which read as "the target is a mobile concern". It is not. */
+/* THE HEIGHT OF THE TARGET IS NOT A MOBILE CONCERN AND THE WIDTH OF THIS PAIR IS, which is why
+   there is a media block below and there is still none for `min-height`. `.yesno :is(a,button)`
+   above sets it on every variant, compact included, and nothing unsets it; the rule that used to
+   live here re-stated 44px inside a 640px query and read as "the target is a mobile concern".
+   IT IS THE OTHER AXIS THAT WAS NEVER CHECKED. The pair holds `flex:0 0 auto`, so it cannot grow
+   or shrink anywhere, and it measured 42.7 to 46px wide on 52 of 52 placements at 320, 360 and
+   390 alike: 42 in cards on 12 screens and 10 in the detail list on 2. So the height floor was
+   met and the same control missed 44 on the axis beside it, at every width there is.
+   WHAT THE BLOCK DOES AND WHY IT IS HERE RATHER THAN A WIDTH ON THE BUTTON. Below the desk the
+   pair takes the whole line under the outcome's name, which is the shape the BINARY card has
+   used all along: `.yesno` on a card is already a full-width pair, and the compact variant was
+   the one place in the product where the same decision wore a second, cramped geometry. The
+   button then grows to 103px at 320 and 123px at 360 because it is a flex item of a full-width
+   row, not because anything here names a size. The wrap itself belongs to `.opt-row` and is in
+   `options.css`; what stands here is only what the PAIR does once the row has made room.
+   The cost is 69px of card height and 3.2 per cent of feed length, and it is paid on purpose:
+   it also clears the last 12 clipped elements at 320. `../docs/decisions.md`, 2026-08-12. */
+/* rung: DESK 640, the one divide, and this is BELOW it. 639.98 rather than 640,
+   because the rung belongs to the desk: tokens.css, page frame. */
+@media(max-width:639.98px){
+  .opt-row .yesno.compact{flex:1 0 100%}
+  .opt-row .yesno.compact :is(a,button){flex:1 1 0}
+}
 .yesno > a.yes,.yesno > button.yes{background:var(--outcome-yes-fill);color:var(--outcome-yes-text);border-color:var(--outcome-yes-line)}
 .yesno > a.no,.yesno > button.no{background:var(--outcome-no-fill);color:var(--outcome-no-text);border-color:var(--outcome-no-line)}
 .yesno :is(a,button){border-radius:var(--radius-10)}

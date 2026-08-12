@@ -76,6 +76,14 @@ found.
 | **1280** | 0 | **104** | 0 | 0 | **on no ladder** |
 | **1440** | 0 | **104** | 0 | 0 | **on no ladder** |
 
+**The transcript is not restated and the system has moved twice since it was taken.** `ui-kit/`
+gained its `container-type` at step 2, recorded above, and on **2026-08-12 `components/` went from
+33 width queries to 35**: `options.css` and `yesno.css` each took one at 639.98 so the outcome row
+could wrap below the desk. Counted the same day from the comment-stripped source of all 52
+stylesheets: **35 width queries, of which 16 at the desk in 15 files, 7 at the detail in 7, 6 at the
+rail in 5, 2 at the 1140 harness and 4 one-offs**. The registry did not move and no rung was added,
+which is the only thing the transcript was taken to protect.
+
 The nine in the system are really **five**: three rungs each written twice for its two sides, plus
 the harness, plus three named one-offs. The stand invents nothing.
 
@@ -151,9 +159,15 @@ be a token, is in `components/tokens.css` under "the breakpoint ladder".
 
 | rung | what arrives | rules |
 |---|---|---|
-| **640 DESK** | the one divide: one column, a bottom nav and a mobile dock below; the desk above | 13 in 13 files |
-| **760 DETAIL** | the event detail gains its second column, the bet panel docks, the chart takes full height | 5 |
-| **900 RAIL** | a vertical rail arrives beside the content: sub-categories, the table of contents, the how-it-works side column | 6 |
+| **640 DESK** | the one divide: one column, a bottom nav and a mobile dock below; the desk above | 16 in 15 files |
+| **760 DETAIL** | the event detail gains its second column, the bet panel docks, the chart takes full height | 7 in 7 files |
+| **900 RAIL** | a vertical rail arrives beside the content: sub-categories, the table of contents, the how-it-works side column | 6 in 5 files |
+
+**The three counts were 13, 5 and 6 when this table was written and two of the three were already
+wrong**, re-taken 2026-08-12 from the comment-stripped source of all 52 stylesheets. The desk gained
+two on that date, `options.css` and `yesno.css`, when the outcome row was given a second line below
+it; the detail's 7 was never 5. **A rule count is a claim like any other**, and this one had no
+reader between the day it was typed and the day something forced it to be taken again.
 
 And one that is not the product's: **1140 HARNESS**, where the review panel docks. It is 900 + 220 +
 20 on purpose, so the chrome can never take width the widest product rung is counting on.
@@ -189,14 +203,26 @@ different window width for that person while every word on it stayed exactly the
 breakpoint answering a question the product does not ask anywhere else looks like accessibility and
 does nothing. The rungs stay px and the real finding is filed as `docs/backlog.md` item 115.
 
+**AND THE FINDING WAS ACTED ON, 2026-08-12: THE TYPE IS IN REM AND THIS SECTION'S ARGUMENT IS SPENT.**
+Everything above is left standing because it is the argument the stage made, because it was correct,
+and because it is the reason the type moved at all. What it may no longer be read as is a defence of
+the rungs. Ten `--text-*` steps and eight `--display-*` clamps are ratios to the root now; the move
+was proved inert at the default with **0 differing font sizes and 0 differing line heights of 44,547
+readings over 210 screen-and-width pairs**, and at a 24px root the phone page grows 38.4 per cent and
+carries every word. **The rungs stayed px in the same pass, deliberately and on a different ground**:
+the old ground was about the type, and a rule whose reason has expired is what this repository keeps
+paying for, so the rung question is open on its own merits as `docs/backlog.md` 135 rather than
+answered as a side effect of something else. Item 115 is closed.
+
 ---
 
 ## The tokens this stage added
 
 | token | value | why |
 |---|---|---|
-| `--measure` | `66ch` | the line measure for continuous text, in `ch` so one number caps an 11px legal line and a 16px paragraph at the same character count. 66 is inside the 60-75 band `DESIGN.md` states and agrees with `--container-doc`, measured at 67ch |
+| `--measure` | `46ch` | the line measure for continuous text, in `ch` so one number caps an 11px legal line and a 16px paragraph at the same character count. **It was `66ch` here and in the token until 2026-08-12, on the stated ground that 66 is inside the 60-75 band `DESIGN.md` states, and the ground was a unit error**: `ch` is the advance of the digit zero and a lining digit is one of the widest glyphs a prose face draws, so in DM Sans 1ch is 1.48 mean prose advances and 66ch bought about 98 characters. The census could not see it because it computed `width / 1ch` and compared the answer to a band written in characters, which is asking the token its own question. 46 is `67.5 / 1.48`, and it was swept as well as derived: the window in which every capped placement sits inside 60 to 75 is 45ch to 48ch |
 | `--grid-col-min` | `300px` | the card floor, moved out of `patterns/card-grid.css` where it stood as a literal |
+| `--plate-inset` | `28px`, `16px` below rung DESK | the inset INSIDE the two-stone plate, added 2026-08-12. It is the second half of a step the first half had been taking alone: `--gutter` is the page gutter OUTSIDE the plate and goes 40 to 14 at the rung, and this one held 28 at every width, so the two nested gutters took 42px a side on a phone, 84 of 360, before a card began. Read in one place, `base.css`, the two-stone plate, and only by the SIDES: vertical space has nothing above it competing for the same 360px |
 
 **There is no `--grid-gap`, and that is a decision.** The track gaps at `var(--space-16)`, and the
 space ladder is already the gap ladder; a second name for 16px would be one number with two
@@ -329,7 +355,9 @@ Every `@media` in `components/` read and every number compared against the ladde
 | 560, 620, 980 | 2, 1, 1 | **named one-offs**, and each carries its own measurement beside it, closed by backlog 72 |
 | 1140 | 2 | HARNESS, not the product |
 
-**33 width queries, every number on the registry, and 0 `@media` in any of the 106 screen files.**
+**35 width queries, every number on the registry, and 0 `@media` in any of the 106 screen files.**
+It read 33 until 2026-08-12, when `options.css` and `yesno.css` each took one at the desk rung so the
+outcome row could wrap; both name 639.98 and the registry did not move.
 The three one-offs were not taken on trust either: each one says in a comment what collapsing it to
 the nearest rung would cost, in pixels, and 560 and 980 both cost a control or a card going backwards.
 
@@ -396,6 +424,22 @@ query on the window, every time, in more syntax. **A container query with one pl
 query wearing a different name.** The threshold to revisit is the first component placed in two
 columns of different widths.
 
+**THE THRESHOLD WAS CROSSED, AND IT HAD ALREADY BEEN CROSSED WHEN THIS SECTION WAS WRITTEN.**
+Re-measured 2026-08-12 over every placement of all 47 components on the 105 painted screens at
+thirteen widths: **35 of 47 meet the test stated above**, 22 standing in three or more slots more
+than 25 per cent apart, 15 in four, 10 in five. **The reason the stage missed it is worth more than
+the number**: it went looking for the case among the organisms its own audit had marked AIR, and the
+case was in the atoms, which the audit had no row for. Three components carry it. `card` declares one
+rule, `max-width:639.98px`, while its box measures 232 at 320, 500 at 640, 300.5 at 759 and 301.5 at
+1440, so the branch fires and does not fire for boxes of the same size, which is the one question a
+window cannot answer. The rail is a single container change, `.subcat` going 761 to 214 at RAIL,
+written as a WINDOW query in two files. `navitem`, 995 placements, has no rule at all and stands at
+79 to 159 in the bottom bar, 194 in the avatar menu and 254 to 258 in the notification menu.
+**The refusal above is left standing rather than rewritten, because it is the argument that was
+made and the record is of what was decided**; what is corrected is the belief that its own condition
+had not been met. Whether the answer is a container query or placements that stop disagreeing is a
+design decision and not a measurement, and it is `docs/backlog.md` 129.
+
 ### What each component does with width, filled for all 45
 
 `inventory.md` carries the column now, read from the product at twelve widths on the screen where
@@ -428,7 +472,7 @@ eight and `display:none` below DETAIL.
 
 **No `@media` in a screen file, ever.** It is in `components/CLAUDE.md` and in `ui-visual/CLAUDE.md`
 both, because a rule kept in one place is a rule half the hands never meet, and this tree is
-assembled by many hands at once. Measured: 33 width queries in the system, **0 in any of the 106
+assembled by many hands at once. Measured: 35 width queries in the system, **0 in any of the 106
 painted screens**.
 
 ### Backlog 43, and the answer is no

@@ -595,14 +595,23 @@ chrome can never take width the widest product rung is counting on.
 `max-width:640px`: both match at exactly 640 and the rung then renders a page that exists at no other
 width. That cost this repository 73 screens for a day.
 
-**The measure is 66ch and it is in `ch` on purpose.** `ch` is the width of a zero in the element's
+**The measure is 46ch and it is in `ch` on purpose.** `ch` is the width of a zero in the element's
 own font, so one number caps an 11px legal line and a 16px paragraph at the same character count.
-The band is the one section 3 already states, 60 to 75.
+The band is the one section 3 already states, 60 to 75. **This line said 66ch until 2026-08-12 while
+section 3 above already said 46**, which is the whole argument for writing a value once: a number
+kept in prose in two places is a number that will disagree with itself, and here it did so 318 lines
+apart inside one file.
 
-**The rungs are px and the reason is that the type is px.** A rung in rem while eighteen size tokens
-are px literals would switch the layout at a different window width for a person with an enlarged
-browser font while every word on the page stayed the same size. That looks like accessibility and
-does nothing. The finding it exposes is real and is filed as `docs/backlog.md` 115.
+**The type is in rem since 2026-08-12 and the rungs are still px, and the second half no longer has
+the reason the first half used to give it.** The ramp is ten `--text-*` steps and eight
+`--display-*` clamps, all of them ratios to the root, and the root is the reader's own browser
+setting because nothing here sets `font-size` on `html`, `:root` or `body`. Before the move a reader
+who set a 24px default got a page **0.2 per cent taller and not one additional word**, measured over
+all 105 screens; that was `docs/backlog.md` 115 and it is closed. **The rungs stayed px in the same
+pass on purpose and not on the old ground**: the old ground was that a rung in rem while the type is
+px switches the layout at a different window width while every word stays the same size, which was an
+argument about the TYPE and is spent now that the type moved. Whether the rungs should follow is a
+decision, it is open, and it is `docs/backlog.md` 135.
 
 **Green and red stay outcome semantics at every width**, and nothing that arrives on a wide screen
 takes a colour it did not have on a phone. A rail, a second column and a docked panel are
