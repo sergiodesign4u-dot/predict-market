@@ -142,8 +142,18 @@
    min-height, not padding: the field used to reach 45px because its padding
    happened to add up to it, and on the 4px grid the same padding lands at 41
    with the touch target gone. A target is a rule, so it is written as one. */
+/* THE FIELD READS --border-field AND NOT --border-hairline, 2026-08-12, docs/backlog.md 121.
+   A field is the one control in this product whose boundary IS its identification: a chip, a
+   button and a menu all carry a word or a mark that says what they are, and an input carries the
+   person's own text, which says nothing about the box. So WCAG 1.4.11 reaches this edge and does
+   not reach theirs, and that distinction is the whole reason there are two roles rather than one
+   hairline raised a step. Raising the hairline would have repainted every plate, card and divider
+   in the product to fix three fields. Measured from the RENDER at device pixel ratio 3, sampling
+   the strongest edge pixel along the top border against the ground beside it, because a border
+   colour read off the computed style says nothing about what a gradient underneath it does:
+   1.32 in graphite and 2.11 in daylight before, and the role is calibrated to 5.49 and 4.43. */
 .amount-input{flex:1;box-sizing:border-box;min-height:var(--control-44);padding:var(--space-8);
-  border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);
+  border:var(--hairline) solid var(--border-field);border-radius:var(--radius-10);
   background:var(--bg-well);color:var(--text-primary);
   font-family:var(--font-display);font-size:var(--text-18);
   transition:border-color var(--dur-quick) ease,box-shadow var(--dur-quick) ease,opacity var(--dur-quick) ease}
@@ -186,7 +196,7 @@
    counting. */
 .amount-input.amount-bet{-webkit-appearance:none;appearance:none;
   min-height:0;padding:0 var(--space-2) var(--space-4);
-  border:0;border-bottom:1.5px solid var(--border-hairline);border-radius:0;
+  border:0;border-bottom:1.5px solid var(--border-field);border-radius:0;
   background:transparent;outline:none;
   line-height:var(--leading-none);font-size:var(--text-30);font-weight:var(--weight-bold);text-align:right}
 .amount-input.amount-bet:hover:not(:disabled){border-color:transparent;border-bottom-color:var(--border-brass-hover)}
@@ -194,7 +204,7 @@
 /* this one has to out-specify the outline:none the face above sets, so it cannot
    come from the one-line default in base.css */
 .amount-input.amount-bet:focus-visible{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
-.amount-input.amount-bet:disabled{opacity:var(--opacity-disabled);cursor:not-allowed;background:transparent;border-bottom-color:var(--border-hairline)}
+.amount-input.amount-bet:disabled{opacity:var(--opacity-disabled);cursor:not-allowed;background:transparent;border-bottom-color:var(--border-field)}
 .amount-input.amount-bet::placeholder{color:var(--text-muted)}
 
 /* ================================================= the address, 1 of the 122 --

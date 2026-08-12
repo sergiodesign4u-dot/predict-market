@@ -1055,6 +1055,17 @@
 
   /* ---- edges ---- */
   --border-hairline:var(--graphite-750);   /* from: 89 border declarations */
+  --border-field:var(--bone-500);          /* THE BOUNDARY THAT IS THE CONTROL, and it is a second
+                                              role rather than a stronger hairline because the two
+                                              answer different questions. A hairline SEPARATES two
+                                              areas and 1.4.11 does not reach it; a field's edge is
+                                              the only thing on the screen that says text may be
+                                              typed here, so it is "visual information required to
+                                              identify a user interface component" and owes 3:1.
+                                              Measured from the render, not the token: on the
+                                              hairline the amount field read 1.32 in graphite and
+                                              2.11 in daylight against the surface it stands on.
+                                              This step reads 5.49. docs/backlog.md 121. */
   --border-brass:var(--brass-a30);         /* from: the inset hairline of card, plate, thumb, badge */
   --border-brass-hover:var(--brass-a45);   /* from: the hover border of the quiet button family */
   --tint-brass-06:var(--brass-a06);        /* from: the quietest brass wash (funds-safety line) */
@@ -1551,6 +1562,7 @@
 
   /* ---- feedback ---- */
   --border-notice:var(--chalk-750);
+  --border-field:var(--ink-300);        /* 4.43:1 on the page and the sheet. The graphite half argues it. */
   --bevel-notice:var(--white-a70);
   /* One step lighter than the graphite thumb, not darker, which is the whole
      argument for the role: chalk needs LESS ink than graphite needs light. */
