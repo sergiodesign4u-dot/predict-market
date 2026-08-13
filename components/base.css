@@ -162,7 +162,20 @@ button,select,summary{font:inherit}
    nothing. Measure `fill` and `stroke` on the `<use>`, or measure the pixels. This is
    the third instance of one trap: a rule that paints an icon must name BOTH properties,
    because the two kinds of mark read different ones. */
-svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor!important;stroke:none!important}
+/* AND IT ASKS FOR `#i-` RATHER THAN FOR ANY `use` SINCE 2026-08-13, WHICH IS WHAT LET THE OTHER
+   FAMILY INTO THE SPRITE AT ALL. Written as `:has(use)` this rule said "a mark that comes from the
+   one file is a FILLED mark", and that was true only because the file held nothing else. The six
+   stroked drawings, a cross, a chevron, a plus, a tick, an arrow and a hamburger, therefore could
+   not be put in it: a `<use>` would arrive here and be given `fill:currentColor` and `stroke:none`,
+   and a path with no area and no stroke paints nothing. So they stayed hand-written in the markup
+   of 163 documents, 971 of them, and the close mark had already drifted into two drawings 17% apart.
+   `#i-` is the Solar filled family and `#l-` is the line family, so **the family is a property of
+   the GLYPH and is carried by its name**, which is the same argument backlog 133 used against a
+   class per icon size: a class in a document is a decision taken in the one place the system cannot
+   see. A `#l-` symbol falls through to `.ic` above and takes the fill, stroke, width and caps that
+   the hand-written path took, and it carries `vector-effect` as an attribute because that property
+   is not inherited and no rule here can reach into a shadow tree. ../docs/decisions.md, 2026-08-13. */
+svg.ic:has(use[href^="#i-"]),svg.ic-sm:has(use[href^="#i-"]){fill:currentColor!important;stroke:none!important}
 /* FOCUS, DECLARED ONCE. Fourteen component files carried this exact rule and twenty-four did not,
    which is the shape reduced-motion had before step 7 gathered it here: a person navigating by
    keyboard is not asking each component separately. The default is below; a component now only

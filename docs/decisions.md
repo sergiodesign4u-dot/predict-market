@@ -12,6 +12,75 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-13, later - The plus was never in the icon file, because the rule that reads the icon file said a mark from it is a filled mark
+
+Reported by the product owner, looking at the header: the plus does not come from the kit. **It does
+not, and it never did.** `assets/icons.js` held 29 Solar filled symbols and no cross, no chevron, no
+plus, no tick, no arrow and no hamburger, so those six stood as hand-written `<path>` elements in the
+markup of **119 documents, 983 placements**, four of the seven marks in the product header among
+them.
+
+**FIRST, WHAT WAS NOT WRONG, because the report was that it had CHANGED.** It had not. A worktree at
+`a9edf6a`, the commit this session started from, was served beside the current tree on a second
+port: the `.bal-add` screenshot at ratio 3 is **byte-identical**, and across **85 placements** in
+`ui-visual/` and `ui-kit/` the computed reading is one single value in both trees, 32x32 button,
+22x22 svg, stroke 1.65px, `non-scaling-stroke`, brass gradient ground. The product and the kit's own
+`header.html` and `iconbtn.html` agree exactly. **What the eye had caught was true and older than
+the session**: in a row of four filled sprite glyphs the plus is the only stroked mark and the only
+inverted one, and it is not in the file the other four come from.
+
+**WHY IT COULD NOT BE, AND IT IS ONE DECLARATION.** `components/base.css` carried
+`svg.ic:has(use){fill:currentColor!important;stroke:none!important}`, which says "a mark that comes
+from the one file is a FILLED mark". That was true only because the file held nothing else, and it
+was a floor with an `!important`, so a two-stroke drawing arriving through it gets no area and no
+stroke and **paints nothing**. The rule that made the sprite safe is the rule that kept half the
+marks out of it. It asks for `#i-` now, and the line family is `#l-`, so **a family is a property of
+the GLYPH and is carried by its name** rather than by a class in a document, which is the same
+argument backlog 133 used against a class per icon rung: a class in the markup is a decision taken
+in the one place the system cannot see.
+
+**`vector-effect` IS AN ATTRIBUTE IN THE SYMBOL AND NOT A RULE, and that is the one thing that had
+to be got right.** It is not an inherited property, and CSS from the outer document does not reach
+into a `<use>` shadow tree, so `.ic *{vector-effect:non-scaling-stroke}` cannot touch a symbol's
+paths. Without the attribute the stroke scales with the box and a 22px mark in a 24 viewBox renders
+**1.51 instead of the 1.65 the system declares**. Everything else, the fill, the stroke, the width
+and the caps, IS inherited and arrives from `.ic` exactly as it did when the paths were written out
+by hand. Proved on one placement before the sweep ran: same `getBBox`, **pixel-identical at ratio
+4**.
+
+**THE STAND STOPPED THE SWEEP ONCE, AND IT WAS RIGHT TO.** Two cross drawings stand in this
+repository, `M6 6l12 12M18 6L6 18` on 348 placements and `M5 5l14 14M19 5L5 19` on 4, the second 17%
+larger across the same box, and the pass unified them as drift. `ui-kit/icons.html` had already ruled
+on exactly that pair: **the second is the X brand mark of the footer social row and it stays a brand
+mark.** Backlog 144 cut that row, so it has 0 product placements and 4 on the stand, which are now
+the only copies of it anywhere. They are written out by hand on purpose and the page says why.
+**Two drawings that look alike are not evidence of drift, and the page that already decided is the
+place to look before unifying anything.** The pixel diff is what surfaced it: 236 of 238 identical
+and the two that moved were that page.
+
+**IT BUYS ONE SOURCE AND NOT BYTES, and the number is written down rather than dressed up.** The
+markup lost 4,947 bytes and the sprite gained 2,334, a net **2,613 over 163 documents**, because
+`<use href="#l-chevron-down"/>` is longer than the chevron it replaces. What it buys is that each of
+these six drawings now has one place to be wrong in, which is the whole reason the file exists: the
+note at its head records `i-bookmark-b` having been two different drawings, the product's on 111
+documents and an older one on 3 kit pages, invisible because every copy is internally consistent.
+
+**PROOF: 238 full-page screenshots over the 119 documents that carry these marks, at 1280 and 390,
+ratio 2, animation frozen and the cold pass thrown away. 0 differing of 238, against a control of 0
+of 238 taken the same way before anything was edited.** Then the whole-tree sweep: 1,475 readings
+over 295 documents at five widths, 0 page or console errors, 0 responses at 400 or above.
+
+**WHAT IS LEFT, NAMED RATHER THAN IMPLIED.** Two families are still hand-written. The **16 line
+specimens on `ui-kit/icons.html`** are the last copies of those six drawings, and they stay because
+that page draws its specimens at 70, 94 and 262px with `vector-effect:none`, so a `<use>` there would
+render the product's 1.65px hairline instead of a proportional stroke: **that is a decision about how
+a catalogue shows a mark**, and it is written into the page rather than taken quietly. The **three
+brand logos**, `prov-x`, `prov-google` and `prov-apple`, stand at 111, 111 and 109 placements as raw
+paths; they are filled, so they need no new mechanism at all and would drop straight into `#i-`.
+Neither is in this pass because neither is what was reported.
+
+---
+
 ## 2026-08-13, one hour later - The luminance mask painted a brass rectangle in the browser the product is actually read in, and `@supports` is blind to exactly that failure
 
 **Rolled back whole**, the same hour it shipped. `assets/trust-*-mask.webp` deleted, the four

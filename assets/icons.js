@@ -18,6 +18,12 @@
    which and why. The ink is NOT here: it comes from the referencing element through
    currentColor.
 
+   TWO FAMILIES SINCE 2026-08-13, AND THE PREFIX IS THE DIFFERENCE. `#i-` is Solar filled,
+   29 symbols. `#l-` is the line family, 6 symbols, and they are NOT Solar: they are the
+   product's own two-stroke drawings, which is why a cross has no interior and why the
+   consolidation of 2026-08-09 could not fill them. `components/base.css` keys its filled
+   floor to `#i-`, so a symbol declares its family by its name and no document has to.
+
    A copy in 121 places is a copy that drifts, which is why there is one file at all:
    i-bookmark-b was TWO different drawings, the product's on 111 documents and an older
    one on 3 kit pages, and nothing could see it because every copy is internally
@@ -55,7 +61,44 @@
     '<symbol id="i-transfer-horizontal-b" viewBox="0 0 24 24"><path fill="currentColor" d="M10.25 4a.75.75 0 0 0-1.303-.507l-5.5 6A.75.75 0 0 0 4 10.75h16a.75.75 0 0 0 0-1.5h-9.75zm3.5 16v-5.25H4a.75.75 0 0 1 0-1.5h16a.75.75 0 0 1 .553 1.257l-5.5 6A.75.75 0 0 1 13.75 20"/></symbol>',
     '<symbol id="i-user-b" viewBox="0 0 24 24"><circle cx="12" cy="6" r="4" fill="currentColor"/><path fill="currentColor" d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5"/></symbol>',
     '<symbol id="i-verified-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M9.592 3.2a6 6 0 0 1-.495.399c-.298.2-.633.338-.985.408c-.153.03-.313.043-.632.068c-.801.064-1.202.096-1.536.214a2.71 2.71 0 0 0-1.655 1.655c-.118.334-.15.735-.214 1.536a6 6 0 0 1-.068.632c-.07.352-.208.687-.408.985c-.087.13-.191.252-.399.495c-.521.612-.782.918-.935 1.238c-.353.74-.353 1.6 0 2.34c.153.32.414.626.935 1.238c.208.243.312.365.399.495c.2.298.338.633.408.985c.03.153.043.313.068.632c.064.801.096 1.202.214 1.536a2.71 2.71 0 0 0 1.655 1.655c.334.118.735.15 1.536.214c.319.025.479.038.632.068c.352.07.687.209.985.408c.13.087.252.191.495.399c.612.521.918.782 1.238.935c.74.353 1.6.353 2.34 0c.32-.153.626-.414 1.238-.935c.243-.208.365-.312.495-.399c.298-.2.633-.338.985-.408c.153-.03.313-.043.632-.068c.801-.064 1.202-.096 1.536-.214a2.71 2.71 0 0 0 1.655-1.655c.118-.334.15-.735.214-1.536c.025-.319.038-.479.068-.632c.07-.352.209-.687.408-.985c.087-.13.191-.252.399-.495c.521-.612.782-.918.935-1.238c.353-.74.353-1.6 0-2.34c-.153-.32-.414-.626-.935-1.238a6 6 0 0 1-.399-.495a2.7 2.7 0 0 1-.408-.985a6 6 0 0 1-.068-.632c-.064-.801-.096-1.202-.214-1.536a2.71 2.71 0 0 0-1.655-1.655c-.334-.118-.735-.15-1.536-.214a6 6 0 0 1-.632-.068a2.7 2.7 0 0 1-.985-.408a6 6 0 0 1-.495-.399c-.612-.521-.918-.782-1.238-.935a2.71 2.71 0 0 0-2.34 0c-.32.153-.626.414-1.238.935m6.781 6.663a.814.814 0 0 0-1.15-1.15l-4.85 4.85l-1.596-1.595a.814.814 0 0 0-1.15 1.15l2.17 2.17a.814.814 0 0 0 1.15 0z" clip-rule="evenodd"/></symbol>',
-    '<symbol id="i-widget-b" viewBox="0 0 24 24"><path fill="currentColor" d="M2 6.5c0-2.121 0-3.182.659-3.841S4.379 2 6.5 2s3.182 0 3.841.659S11 4.379 11 6.5s0 3.182-.659 3.841S8.621 11 6.5 11s-3.182 0-3.841-.659S2 8.621 2 6.5m11 11c0-2.121 0-3.182.659-3.841S15.379 13 17.5 13s3.182 0 3.841.659S22 15.379 22 17.5s0 3.182-.659 3.841S19.621 22 17.5 22s-3.182 0-3.841-.659S13 19.621 13 17.5m-11 0c0-2.121 0-3.182.659-3.841S4.379 13 6.5 13s3.182 0 3.841.659S11 15.379 11 17.5s0 3.182-.659 3.841S8.621 22 6.5 22s-3.182 0-3.841-.659S2 19.621 2 17.5m11-11c0-2.121 0-3.182.659-3.841S15.379 2 17.5 2s3.182 0 3.841.659S22 4.379 22 6.5s0 3.182-.659 3.841S19.621 11 17.5 11s-3.182 0-3.841-.659S13 8.621 13 6.5"/></symbol>'
+    '<symbol id="i-widget-b" viewBox="0 0 24 24"><path fill="currentColor" d="M2 6.5c0-2.121 0-3.182.659-3.841S4.379 2 6.5 2s3.182 0 3.841.659S11 4.379 11 6.5s0 3.182-.659 3.841S8.621 11 6.5 11s-3.182 0-3.841-.659S2 8.621 2 6.5m11 11c0-2.121 0-3.182.659-3.841S15.379 13 17.5 13s3.182 0 3.841.659S22 15.379 22 17.5s0 3.182-.659 3.841S19.621 22 17.5 22s-3.182 0-3.841-.659S13 19.621 13 17.5m-11 0c0-2.121 0-3.182.659-3.841S4.379 13 6.5 13s3.182 0 3.841.659S11 15.379 11 17.5s0 3.182-.659 3.841S8.621 22 6.5 22s-3.182 0-3.841-.659S2 19.621 2 17.5m11-11c0-2.121 0-3.182.659-3.841S15.379 2 17.5 2s3.182 0 3.841.659S22 4.379 22 6.5s0 3.182-.659 3.841S19.621 11 17.5 11s-3.182 0-3.841-.659S13 8.621 13 6.5"/></symbol>',
+    /* ---- the LINE family, added 2026-08-13. Six drawings, 983 placements, and until today
+       every one of them was a hand-written <path> in the markup of 163 documents rather
+       than a reference to anything, over 119 documents. `ui-kit/icons.html` calls them what they are: a cross, a
+       chevron, a plus, a tick, an arrow and a hamburger are MOVEMENTS, NOT THINGS, so they
+       are stroked where the Solar glyphs above are filled, and that is why they were never
+       in this file: `base.css` turned every <use> into the filled family with an
+       !important. The floor asks for `#i-` now, so a family is a property of the GLYPH and
+       is carried by its name, which is the same argument backlog 133 used against a class
+       per icon size. **THIS BUYS ONE SOURCE AND NOT BYTES, and the honest number says so**:
+       the markup lost 4,947 bytes and this file gained 2,334, a net 2,613 over 163 documents,
+       because `<use href="#l-chevron-down"/>` is longer than the chevron it replaces. What it
+       buys is that a drawing has one place to be wrong in. Proof it changed nothing: 238
+       full-page screenshots over 119 documents at two widths, **0 differing of 238**, against
+       a control of 0 of 238 taken the same way.
+
+       ONE OF THE SIX HAS A NEAR-TWIN THAT IS NOT A COPY OF IT, and the sweep swallowed it
+       before the stand said so. `M5 5l14 14M19 5L5 19` is a cross 17% larger than the close
+       across the same box, and `ui-kit/icons.html` had already ruled on it: it is the X
+       BRAND mark of the footer social row, not a close, and it stays a brand mark. It has 0
+       product placements since backlog 144 cut that row and 4 on the stand, which are the
+       only copies of it left and are written out by hand on purpose. The lesson is the
+       cheap one: two drawings that look alike are not evidence of drift, and the page that
+       already decided is the place to look before unifying anything.
+
+       `vector-effect` is an ATTRIBUTE here and not a rule, because it is not an inherited
+       property and `.ic *` cannot reach into a <use> shadow tree. Without it the stroke
+       would scale with the box and a 22px mark in a 24 viewBox would render 1.51 rather
+       than the 1.65 the system declares. Everything else, the fill, the stroke, the width
+       and the caps, IS inherited and comes from `.ic` exactly as it did when these were
+       written out by hand. */
+    '<symbol id="l-close" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M6 6l12 12M18 6L6 18"/></symbol>',
+    '<symbol id="l-chevron-down" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M6 9l6 6 6-6"/></symbol>',
+    '<symbol id="l-menu" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M3 6h18M3 12h18M3 18h18"/></symbol>',
+    '<symbol id="l-arrow-right" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M5 12h14M13 6l6 6-6 6"/></symbol>',
+    '<symbol id="l-plus" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M12 5v14M5 12h14"/></symbol>',
+    '<symbol id="l-check" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M4 13l4 4L20 5"/></symbol>'
+
   ].join('');
   var box = document.createElement('div');
   box.id = 'pm-icon-sprite';
