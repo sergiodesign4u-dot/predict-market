@@ -93,6 +93,19 @@
 .hf-graph-wrap{flex:1;min-height:148px}
 .hf-graph{width:100%;height:100%;display:block}
 .hf-grid line{stroke:var(--line-grid)}
+/* THESE TWO FILLS NAME A DOCUMENT-UNIQUE ID AND THERE IS NO OTHER WAY TO WRITE THEM, which is
+   what is left of backlog 45. That row counted **9 declarations over 13 ids** and said a component
+   keyed to an id is not a component: `tabs.css` held 6 of them and moved to `:nth-of-type` on
+   2026-08-10, so the row's own population is these two paints plus four `#rm*` in the harness that
+   the row itself calls correct. **The fix it proposed for these is not available**: an SVG
+   `fill` takes a paint server, and a paint server IS an element referenced by id, so
+   `linear-gradient()` is not a legal value here and there is nothing for the CSS to hold instead.
+   What is true is that two heroes in one document would both paint from the first `#hfyes`, which
+   looks plausible rather than broken. Measured 2026-08-13 over **267 documents in all three trees:
+   0 with any duplicate id**, and `#hfyes` stands once in `ui-visual/event-feed.html` and once in
+   `ui-kit/feed.html`. The constraint is declared here rather than defended by a gate: **a document
+   may hold one hero chart**, and the kit's own rule for a specimen drawn twice is to suffix every
+   id a cell redefines, which `ui-kit/CLAUDE.md` already carries. */
 .hf-area{fill:url(#hfyes)}
 .hf-vol-area{fill:url(#hfvol)}
 .hf-vol-line{fill:none;stroke:var(--tint-brass-60);stroke-width:1.4;stroke-dasharray:2 3}

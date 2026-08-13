@@ -435,10 +435,18 @@
       white-space: nowrap; display: inline-flex; gap: 6px; align-items: center; }
     .subcat li[aria-current="page"] button { background: #b8b8b8; border-width: 2px; font-weight: bold; }
     .subcat .cnt { font-size: 9px; color: #555; border: 1px solid #bbb; background: #e8e8e8; padding: 0 4px; }
-    /* rung: RAIL 900, a rail beside the content. The paint pins it there:
-       components/catnav.css. This block said 640 in 92 files and 900 in one.
-       `.cat-layout` left with it: 0 files in this tree carry that markup. */
+    /* THE WRAPPER CAME BACK ON 2026-08-13, docs/backlog.md 113, AND THIS BLOCK IS THE PROOF THAT
+       THE GREY TREE LOST IT RATHER THAN THE PAINT INVENTING IT. `.cat-main { flex: 1 }` and
+       `.subcat { flex: 0 0 210px }` are written here and BOTH NEED A FLEX PARENT, and the parent
+       was `.cat-layout`, which 76 files still carried the closing comment for and 0 carried the
+       opening tag for. So the rail has never once stood beside the content in this tree at any
+       width: two flex children of a block box. A closing comment with no opening tag is evidence;
+       a stylesheet written against the missing element is the proof.
+       rung: RAIL 900, a rail beside the content. The paint pins it there: components/catnav.css
+       and components/patterns/browse-shell.css. This block said 640 in 92 files and 900 in one. */
+    .cat-layout { display: flex; flex-direction: column; gap: 12px; }
     @media (min-width: 900px) {
+      .cat-layout { flex-direction: row; align-items: flex-start; gap: 16px; }
       .subcat { flex: 0 0 210px; position: sticky; top: 8px; border: 1px solid #999; }
       .subcat ul { flex-direction: column; overflow: visible; flex-wrap: nowrap; }
       .subcat button { width: 100%; justify-content: space-between; }
@@ -889,6 +897,8 @@
         
         <div class="state-block state-problem" role="alert">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+          <div class="cat-layout">
+          <div class="cat-main">
           <h1 class="state-title">This page does not exist</h1>
           <p class="state-msg">The link may be old, or the event may have been removed.</p>
           <div class="state-actions">

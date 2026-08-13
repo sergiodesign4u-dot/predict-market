@@ -57,6 +57,18 @@
    than a line that changes height. The technique pays where a fallback is shown for a
    long time; here the preload means it is shown for no time at all.
 
+   THE 163 DOCUMENTS ARE A DEPENDENT AND THIS FILE IS WHERE THAT IS WRITTEN DOWN, docs/backlog.md
+   141. A preload has to stand in the HTML head to be early, which is the whole point of it, so no
+   token, component, pattern or shell can own it and a script that injects one has already lost the
+   race it was written to win. That makes the two font paths the second literal repeated across a
+   whole tree in this repository, after the grey harness width, and the failure mode is the same and
+   is silent: rename or re-cut a face and the CSS follows it while 163 preloads point at a file that
+   is gone, the page still renders, and a 404 preload costs one request and prints one warning
+   nobody reads. There is no build step here to catch it, on purpose. **So the answer is a
+   re-measurement and it takes one command**: resolve every `href` on every `<link rel="preload">`
+   in `ui-visual/` and `ui-kit/` against the file system. Taken 2026-08-13: **two distinct paths,
+   163 documents each, 326 references, 0 missing.**
+
    What is here instead is the `<link rel="preload">` on all 163 documents, measured at
    106 of 106 screens at exactly 0.0000, at 1.6 Mbps and at 400 Kbps alike, and proved by
    stripping the preload from one screen and watching 0.0438 come back. `docs/decisions.md`,

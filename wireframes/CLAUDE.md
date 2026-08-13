@@ -16,6 +16,20 @@ what it says. The painted tree follows it.
   particular to it - and the browse screens carry logged-in and logged-out. **A state is a page.**
 - **A UI string gets a row in `../voice/docs/microcopy.md` before it ships**, then goes into both
   trees. For one whole stage that was not true and 43 shipped lines had no row.
+- **THE BROWSE SHELL WAS MISSING FROM THIS TREE UNTIL 2026-08-13, AND ITS OWN STYLESHEET IS WHAT
+  PROVED IT.** `docs/backlog.md` 113. `<!-- /cat-main --><!-- /cat-layout -->` stood in **76 files
+  with no opening tag above it**, and 92 files styled `.cat-main { flex: 1 }` and, at the RAIL rung,
+  `.subcat { flex: 0 0 210px }`. **Both need a flex parent and the parent was not there**, so the
+  sub-category rail had never once stood beside the content in this tree at any width: two flex
+  children of a block box. The row could not choose between its two answers by reading, because a
+  closing comment with no opening tag is evidence and not proof; **a stylesheet written against the
+  missing element is the proof**, and it says the tree lost the wrapper in a port rather than the
+  paint inventing an arrangement. Both tags are back in all 76, 33 of them around a rail, with the
+  `.cat-layout` rule in the 92 that style its children. Measured after: 104 files at six widths, **0
+  horizontal scroll, 0 page errors, and 0 files where a rail that renders is not beside the
+  content**. **A grey file cannot hold a token, so every number in it is written as many times as it
+  is used**: the harness width moved the same day and cost 312 edits across 104 files for one
+  number, which is `docs/backlog.md` 119.
 
 ## The contract and the log
 
