@@ -12,6 +12,43 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-13, later still - There was no bolder plus in the design system, there was a catalogue drawing the same plus at 3.18 times life size
+
+The product owner pointed at `ui-kit/icons.html`, where the plus is a fat confident mark, and asked
+why the header does not simply use it. **There is no second drawing.** It is the same path,
+`M12 5v14M5 12h14`, now the same symbol. The catalogue draws its specimens in cells of 70, 94 and
+262px with `vector-effect:none`, so the stroke scales with the box and a mark declared at 1.6 units
+renders **4.67px there against 1.65px in the header**. Put the two at 22px side by side and they are
+the same mark, and the product's is 12% heavier in PROPORTION, 7.5% of its box against 6.67%. **The
+catalogue's look does not exist at 22px**: in that proportion the stroke would be 1.47px, thinner
+than what ships. A reader inferred a drawing from a magnification, which is a property of the page
+and not a mistake by the reader, so the page now says its own scale out loud.
+
+**AND THE THING BEHIND THE QUESTION WAS REAL, SO IT IS FIXED.** `.bal-add` is the only control in
+this product standing on a SOLID brass ground. Its mark is not a mark beside a word, it IS the
+button, and a 1.65px stroke on a filled disc reads as unfinished between the Solar mass of the swap
+and the bookmark either side of it. The system's rule, "a movement is a line", was written for a
+mark on a transparent ground next to a label, and this placement is not that. So the deposit control
+takes `#i-plus-b`, a filled plus of two rounded rects, **on the same optical grid as the line it
+replaces**: paint 16.2 x 16.2 and field 3.9, the numbers this page audits, so only the WEIGHT
+differs, 2.6 units against 1.8. **The exception is a NAME and not a stroke override in a component**,
+which is the same shape as the `#i-` / `#l-` split itself.
+
+**THE DECISION WAS TAKEN ON A NUMBER THAT WAS WRONG, AND THE CORRECTION MAKES IT BIGGER RATHER THAN
+SMALLER.** It was offered as "filled on this control, line on the other 84", and there are no other
+84: **all 85 plus marks in the product stand on `.bal-add`**. So the product's plus is filled, full
+stop, and `#l-plus` became a symbol nothing references. It is deleted rather than kept waiting: a
+`<use>` that finds nothing fails without a word, which is the hazard the head of `assets/icons.js`
+names, and this repository has twice deleted a face nothing wore. The sprite is 35 symbols, 30
+filled and 5 line.
+
+**Measured: 78 of the 119 documents change and 77 of them carry `.bal-add`.** The 78th is
+`ui-kit/icons.html`, whose prose changed in the same pass. Nothing else in the two painted trees
+moved. Whole-tree sweep after: 1,475 readings over 295 documents at five widths, 0 page or console
+errors, 0 responses at 400 or above.
+
+---
+
 ## 2026-08-13, later - The plus was never in the icon file, because the rule that reads the icon file said a mark from it is a filled mark
 
 Reported by the product owner, looking at the header: the plus does not come from the kit. **It does

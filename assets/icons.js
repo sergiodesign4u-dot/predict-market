@@ -62,7 +62,27 @@
     '<symbol id="i-user-b" viewBox="0 0 24 24"><circle cx="12" cy="6" r="4" fill="currentColor"/><path fill="currentColor" d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5"/></symbol>',
     '<symbol id="i-verified-b" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M9.592 3.2a6 6 0 0 1-.495.399c-.298.2-.633.338-.985.408c-.153.03-.313.043-.632.068c-.801.064-1.202.096-1.536.214a2.71 2.71 0 0 0-1.655 1.655c-.118.334-.15.735-.214 1.536a6 6 0 0 1-.068.632c-.07.352-.208.687-.408.985c-.087.13-.191.252-.399.495c-.521.612-.782.918-.935 1.238c-.353.74-.353 1.6 0 2.34c.153.32.414.626.935 1.238c.208.243.312.365.399.495c.2.298.338.633.408.985c.03.153.043.313.068.632c.064.801.096 1.202.214 1.536a2.71 2.71 0 0 0 1.655 1.655c.334.118.735.15 1.536.214c.319.025.479.038.632.068c.352.07.687.209.985.408c.13.087.252.191.495.399c.612.521.918.782 1.238.935c.74.353 1.6.353 2.34 0c.32-.153.626-.414 1.238-.935c.243-.208.365-.312.495-.399c.298-.2.633-.338.985-.408c.153-.03.313-.043.632-.068c.801-.064 1.202-.096 1.536-.214a2.71 2.71 0 0 0 1.655-1.655c.118-.334.15-.735.214-1.536c.025-.319.038-.479.068-.632c.07-.352.209-.687.408-.985c.087-.13.191-.252.399-.495c.521-.612.782-.918.935-1.238c.353-.74.353-1.6 0-2.34c-.153-.32-.414-.626-.935-1.238a6 6 0 0 1-.399-.495a2.7 2.7 0 0 1-.408-.985a6 6 0 0 1-.068-.632c-.064-.801-.096-1.202-.214-1.536a2.71 2.71 0 0 0-1.655-1.655c-.334-.118-.735-.15-1.536-.214a6 6 0 0 1-.632-.068a2.7 2.7 0 0 1-.985-.408a6 6 0 0 1-.495-.399c-.612-.521-.918-.782-1.238-.935a2.71 2.71 0 0 0-2.34 0c-.32.153-.626.414-1.238.935m6.781 6.663a.814.814 0 0 0-1.15-1.15l-4.85 4.85l-1.596-1.595a.814.814 0 0 0-1.15 1.15l2.17 2.17a.814.814 0 0 0 1.15 0z" clip-rule="evenodd"/></symbol>',
     '<symbol id="i-widget-b" viewBox="0 0 24 24"><path fill="currentColor" d="M2 6.5c0-2.121 0-3.182.659-3.841S4.379 2 6.5 2s3.182 0 3.841.659S11 4.379 11 6.5s0 3.182-.659 3.841S8.621 11 6.5 11s-3.182 0-3.841-.659S2 8.621 2 6.5m11 11c0-2.121 0-3.182.659-3.841S15.379 13 17.5 13s3.182 0 3.841.659S22 15.379 22 17.5s0 3.182-.659 3.841S19.621 22 17.5 22s-3.182 0-3.841-.659S13 19.621 13 17.5m-11 0c0-2.121 0-3.182.659-3.841S4.379 13 6.5 13s3.182 0 3.841.659S11 15.379 11 17.5s0 3.182-.659 3.841S8.621 22 6.5 22s-3.182 0-3.841-.659S2 19.621 2 17.5m11-11c0-2.121 0-3.182.659-3.841S15.379 2 17.5 2s3.182 0 3.841.659S22 4.379 22 6.5s0 3.182-.659 3.841S19.621 11 17.5 11s-3.182 0-3.841-.659S13 8.621 13 6.5"/></symbol>',
-    /* ---- the LINE family, added 2026-08-13. Six drawings, 983 placements, and until today
+    /* THE ONE PLUS THAT IS NOT A LINE, added 2026-08-13. `.bal-add` is the only control in the
+       product standing on a SOLID brass ground: its mark is not beside a word, the mark IS the
+       button, and a 1.65px stroke on a filled disc reads as unfinished next to the Solar mass of
+       the swap and the bookmark either side of it. The rule "a movement is a line" was written for
+       a mark on a transparent ground beside a label and this placement is not that, so the
+       exception is a NAME here rather than a stroke override in a component.
+       AND THE LINE PLUS IS GONE WITH IT, WHICH IS NOT WHAT THE DECISION EXPECTED. The choice was
+       taken as "filled on this control, line on the other 84", and there are no other 84: **all
+       85 plus marks in the product stand on `.bal-add`**, so the product's plus IS filled and
+       `#l-plus` became a symbol nothing references. A `<use>` that finds nothing fails without a
+       word, which is the hazard the head of this file names, so the drawing leaves rather than
+       waits. It is recorded in ../docs/decisions.md and on `ui-kit/icons.html`, and the family
+       rule it belonged to is unchanged: a plus is a movement, and this product's only plus does
+       not stand where that rule was written for.
+       IT IS ON THE SAME OPTICAL GRID AS THE LINE IT REPLACES, which is what stops this being a
+       second drawing of one thing: paint 16.2 x 16.2 and field 3.9, the numbers `ui-kit/icons.html`
+       audits for `plus`, so only the WEIGHT differs, 2.6 units against 1.8. Two rounded rects and
+       not a path, because a union of two rects is exactly a plus and a hand-written path of the
+       same shape is a chance to get a corner wrong. ../docs/decisions.md, 2026-08-13. */
+    '<symbol id="i-plus-b" viewBox="0 0 24 24"><rect x="10.7" y="3.9" width="2.6" height="16.2" rx="1.3" fill="currentColor"/><rect x="3.9" y="10.7" width="16.2" height="2.6" rx="1.3" fill="currentColor"/></symbol>',
+    /* ---- the LINE family, added 2026-08-13. Five drawings, 898 placements, and until today
        every one of them was a hand-written <path> in the markup of 163 documents rather
        than a reference to anything, over 119 documents. `ui-kit/icons.html` calls them what they are: a cross, a
        chevron, a plus, a tick, an arrow and a hamburger are MOVEMENTS, NOT THINGS, so they
@@ -96,7 +116,6 @@
     '<symbol id="l-chevron-down" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M6 9l6 6 6-6"/></symbol>',
     '<symbol id="l-menu" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M3 6h18M3 12h18M3 18h18"/></symbol>',
     '<symbol id="l-arrow-right" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M5 12h14M13 6l6 6-6 6"/></symbol>',
-    '<symbol id="l-plus" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M12 5v14M5 12h14"/></symbol>',
     '<symbol id="l-check" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M4 13l4 4L20 5"/></symbol>'
 
   ].join('');

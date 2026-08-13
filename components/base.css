@@ -168,7 +168,13 @@ button,select,summary{font:inherit}
    stroked drawings, a cross, a chevron, a plus, a tick, an arrow and a hamburger, therefore could
    not be put in it: a `<use>` would arrive here and be given `fill:currentColor` and `stroke:none`,
    and a path with no area and no stroke paints nothing. So they stayed hand-written in the markup
-   of 163 documents, 971 of them, and the close mark had already drifted into two drawings 17% apart.
+   of 119 documents, 983 of them.
+   FIVE OF THE SIX ARE `#l-` AND THE PLUS IS `#i-plus-b`, which is this rule doing its job rather
+   than an exception to it. `.bal-add` is the only control in the product standing on a solid brass
+   ground, its mark IS the button rather than a mark beside a word, and a 1.65px stroke on a filled
+   disc reads as unfinished between the Solar mass of the swap and the bookmark. All 85 plus marks
+   in the product stand there, so the product's plus is filled and the line plus has no placement
+   left. The name carries it: nothing here needed a class, a modifier or a stroke override.
    `#i-` is the Solar filled family and `#l-` is the line family, so **the family is a property of
    the GLYPH and is carried by its name**, which is the same argument backlog 133 used against a
    class per icon size: a class in a document is a decision taken in the one place the system cannot
