@@ -377,6 +377,19 @@ rung. **The harness moves and the product does not**, whether what it is taking 
   900px got the mouse target. **Raises, not sets**: the floor is `max(--control-44, --control-h)`
   since 2026-08-09, because written as a plain assignment it out-specified a control that had
   declared 48 and stood it at 47 under a finger and 48 under a mouse.
+- **44 GOVERNS CONTROLS. A NAVIGATION LIST IS HELD BY 2.5.8 AA AND NOT BY 44, and this line exists
+  because the number was quietly true of some families and quietly false of others.** 44x44 is WCAG
+  2.5.5 AAA and a stance this project took on its own, and it has never once been applied to a dense
+  list of links: `.popular-links a` stands 80x16 at 26.1 centre to centre, `.legal-links a` 30.8x14
+  at 41.9, and the 1,154 footer column links 36x25 at 28.5. **All three pass 2.5.8 AA, which is the
+  binding criterion, and all three miss 44.** The boundary is not a concession, it is what the two
+  numbers are FOR: 44 is the size of a thing you press to make something happen, and a footer column
+  is a table of contents you read and occasionally follow. Putting eleven links on a 44 floor adds
+  330px to a phone footer and buys nothing any criterion asks for. So a control gets 44 through
+  `@media(pointer:coarse)`; a list of destinations gets height enough to clear 24x24 or the spacing
+  escape, measured, and `components/footer.css` holds the measurement for each family it applies to.
+  Written 2026-08-13, backlog 137, which had been open since the pass that met the AA criterion and
+  found this distance left over.
 - **Enforcement, and there is none, which is the point.** The system is `components/` and nothing
   else. Until 2026-08-07 three gates failed the build on the three rules below, and **all 41 gates
   were deleted with the vitrine that fed them**, because the measurement had become a machine that

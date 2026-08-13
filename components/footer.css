@@ -56,8 +56,10 @@
    passes on the escape hatch alone, leaving the target 14px tall: **a rule that satisfies the
    criterion without making the target easier to hit has answered the audit and not the person.**
    `.popular-links a` and `.legal-links a` are NOT in this rule and are not defects: 80 x 16 at 26.1
-   apart and 30.8 x 14 at 41.9 apart, both passing on spacing. They miss the project's 44 and that
-   is `docs/backlog.md` 137. */
+   apart and 30.8 x 14 at 41.9 apart, both passing on spacing. They miss the project's 44, **and
+   since 2026-08-13 that is not a gap, it is a boundary the system states out loud**: 44 governs
+   CONTROLS and a navigation list is held by 2.5.8 AA. `DESIGN.md`, adaptive rules, is where it is
+   written and why; backlog 137 closed on it. */
 .footer-col a{display:inline-flex;align-items:center;padding-block:var(--space-4)}
 /* A ROW THAT GOES NOWHERE IS NOT AN `<a>`, which is the rule the side panel has had since it was
    written and the footer never got. `docs/backlog.md` 28. Three labels here are destinations the

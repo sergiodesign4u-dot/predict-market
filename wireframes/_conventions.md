@@ -555,6 +555,31 @@ anywhere. Same grey-box styling as the rest; no color.
 - **Every new wireframe screen gets this same panel**, with its own node marked
   active. Keep the tree in sync when screens or states are added.
 
+### S7. Featured slot (one screen, decided 2026-08-13)
+
+The Trending feed opens with a **featured event**, above the grid: `.feed-hero` in both trees,
+one occurrence on `event-feed.html` and nowhere else. It was in the markup for three weeks
+before it was in any document, which is `docs/backlog.md` 77 and the reason this section exists:
+**a block that arrives by being built is a block nobody has decided.** It is kept.
+
+- **Scope: one slot, on the Trending feed only.** Not on the four category feeds, not on
+  Favorites, not on any logged-out variant of them, and not on a screen that is not a feed.
+  A second featured slot is a new decision, not an extension of this one.
+- **What fills it: the event with the highest 24-hour volume among open markets.** A measurement
+  the product already holds, so the slot needs no editorial queue and no admin screen for MVP,
+  and it cannot show an event that has resolved. If the feed is empty the slot is absent, which
+  is why the empty, error and loading states of `event-feed.html` do not carry it.
+- **It is a bigger card, not a different object.** The question, the odds, the volume, the close
+  date and the two outcome buttons are the card's, in the card's order; what it adds is room, a
+  chart of the last 30 days, and the event photograph. Nothing in it is reachable only there.
+- **It is not a state.** There is no "no featured event" copy, because the absent slot is the
+  feed's own empty state.
+- **The photograph is the paint's**, S3's rule, and the grey tree carries the slot without it.
+  On 2026-08-13 the painted photograph was found to have drawn the top-left 9.8% of its frame
+  since the day it landed, so what the featured slot has actually been showing for three weeks
+  is empty sky. `components/hero.css` holds the cause. **Nobody noticed, and that is the fact
+  this decision was taken with**, not against.
+
 ---
 
 ## Three additions (Yonder needs these beyond the base 7)

@@ -46,10 +46,37 @@
 .footer-trust .tr-txt{position:relative;z-index:var(--z-content)}
 .footer-trust .tr-txt b{color:var(--text-primary)}
 .footer-trust .tr-txt i{color:var(--text-muted)}
-.footer-trust .trust-item::after{content:'';position:absolute;top:0;bottom:0;right:0;width:46%;z-index:var(--z-under);pointer-events:none;opacity:.5;background-repeat:no-repeat;background-position:center right;background-size:cover;-webkit-mask-image:linear-gradient(to left,var(--mask-solid) 60%,transparent 99%);mask-image:linear-gradient(to left,var(--mask-solid) 60%,transparent 99%)}
-.footer-trust .trust-item:nth-child(1)::after{background-image:url("../assets/trust-column.webp")}
-.footer-trust .trust-item:nth-child(2)::after{background-image:url("../assets/trust-source.webp")}
-.footer-trust .trust-item:nth-child(3)::after{background-image:url("../assets/trust-globe.webp")}
+/* THE DRAWING IS ONE BRASS AND A COVERAGE, and storing it any other way is what made this strip
+   the heaviest thing on 105 screens. The three decorations shipped as WebP whose COLOUR plane was
+   nearly empty and whose ALPHA plane held the line art and the halftone, and WebP codes alpha with
+   a lossless coder, so 346,492 bytes of them would not come out by re-encoding: backlog 140 filed
+   that and called both ways out of it re-authoring. **It is not re-authoring, and the masters said
+   so.** `visuals/masters/trust-*.png` are FULLY OPAQUE, 100% of pixels at alpha 255: brass line
+   art on black, a LUMINANCE drawing. The alpha plane was manufactured from it on the way here, and
+   the mean of the master's luminance and the mean of the shipped alpha agree, 23.8 against 22.3.
+   So this puts the drawing back in the plane it was drawn in, where a real DCT codec can reach it,
+   and paints it in the role it was always one colour of. 346,492 to 182,460, and the coverage is
+   the shipped file's OWN alpha channel, unchanged, so no mark moves by a pixel.
+
+   WHAT IT COSTS, measured rather than asserted: the drawing loses its internal shading, which was
+   the only thing the colour plane carried. Over the six readings of this strip, two widths and two
+   themes, 12.3 to 15.1 per cent of pixels differ, mean 6.3 to 6.7 of 255 and never more than 42.
+   Ground-independent by construction, because the error is `coverage x (was - is)` and the ground
+   cancels.
+
+   `@supports` IS THE FIRST ONE IN THIS SYSTEM and it guards the one thing that fails LOUDLY. A
+   mask image is read as alpha unless `mask-mode` says otherwise, and this file is opaque, so a
+   browser that takes the mask and drops the mode paints a flat brass rectangle over 46% of every
+   tile. Nothing is the correct degradation for a decoration; a rectangle is not. */
+.footer-trust .trust-item::after{content:'';position:absolute;top:0;bottom:0;right:0;width:46%;z-index:var(--z-under);pointer-events:none;opacity:.5}
+@supports (mask-mode:luminance){
+  .footer-trust .trust-item::after{background-color:var(--color-trust);
+    mask-repeat:no-repeat,no-repeat;mask-position:center right,center;mask-size:cover,cover;
+    mask-mode:luminance,alpha;mask-composite:intersect}
+  .footer-trust .trust-item:nth-child(1)::after{mask-image:url("../assets/trust-column-mask.webp"),linear-gradient(to left,var(--mask-solid) 60%,transparent 99%)}
+  .footer-trust .trust-item:nth-child(2)::after{mask-image:url("../assets/trust-source-mask.webp"),linear-gradient(to left,var(--mask-solid) 60%,transparent 99%)}
+  .footer-trust .trust-item:nth-child(3)::after{mask-image:url("../assets/trust-globe-mask.webp"),linear-gradient(to left,var(--mask-solid) 60%,transparent 99%)}
+}
 /* rung: DETAIL 47.5rem, 760px at the default root, the detail's second column, and this is BELOW it. 759.98 rather
    than 760, because the rung belongs to the wide side: tokens.css, page frame. */
 @media(max-width:47.49875rem){

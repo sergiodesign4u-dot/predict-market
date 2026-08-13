@@ -32,8 +32,13 @@ it was `ui-visual/terms.html`, the first page of a type the system had never dra
 no new class, no new token and no new rule, and what it lacked became rows in a backlog rather than
 edits to the system in the middle of building a screen.
 
-## The sidebars here are static markup
+## The roadmap sidebar is ONE registry now, and it is not in this folder
 
-Three scripts used to keep every page's roadmap panel in step and they were deleted on 2026-08-07. A
-change to the roadmap is now a sweep by hand across the pages that carry it, or a throwaway script in
-the scratchpad that is not kept.
+Three scripts used to keep every page's roadmap panel in step and they were deleted on 2026-08-07,
+which left the panel as hand-written markup in **28 documents across five folders**, 21 of them here.
+It is `assets/_roadmap.js` since 2026-08-13: the route is written once, the prefix is computed from
+the script's own `src` so a page declares neither its name nor its depth, and the active row comes
+from the path. **A page still declares its own section anchors** and nothing else, in an empty
+`<aside class="sidebar" id="sidebar">`. 890 lines of markup left; the rendered panel is identical on
+28 of 28. `docs/backlog.md` 117, and the argument is `ui-kit/_nav.js`, which had answered it for the
+stand one folder over a week earlier.

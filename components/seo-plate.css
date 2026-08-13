@@ -1,7 +1,7 @@
 /* components/seo-plate.css
    Component: seo-plate. Classes: .feed-seo, .feed-seo-wrap, .seo-brand, .seo-by, .seo-h-ic, .seo-tagline, .seo-text, .seo-tick.
 
-   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-plate, --bg-plate-from, --bg-plate-to, --border-brass, --border-hairline, --edge-groove-dark, --edge-groove-light, --mask-solid, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass-lit, --text-muted, --text-primary
+   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-plate, --bg-plate-from, --bg-plate-to, --border-brass, --border-hairline, --color-trust, --edge-groove-dark, --edge-groove-light, --mask-solid, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass-lit, --text-muted, --text-primary
    Stand:  ui-kit/seo-plate.html, and ui-kit/molecules.html#seo-plate-lt for the level and its reason
      (the shelf suffixes every id it draws twice; ui-kit/CLAUDE.md owns the rule)
    Stands on: 9 ui-visual screens. The header counted .feed-seo, and that class is shared:
@@ -93,7 +93,20 @@
 .seo-tagline{margin:0;font-family:var(--font-display);font-weight:var(--weight-bold);text-transform:uppercase;font-size:var(--display-tagline);line-height:var(--leading-flat);letter-spacing:var(--track-caps-lg);color:var(--text-primary);text-wrap:balance}
 .seo-tagline em{font-style:normal;color:var(--text-brass-lit)}
 .seo-by{margin-top:var(--space-24);font-family:var(--font-body);font-size:var(--text-13);letter-spacing:var(--track-caps);color:var(--text-brass-lit)}
-.seo-brand::after{content:'';position:absolute;inset:0 -12px 0 0;z-index:var(--z-under);pointer-events:none;opacity:.18;background:url("../assets/trust-column-full.webp") no-repeat right center;background-size:auto 122%;-webkit-mask-image:linear-gradient(to left,var(--mask-solid) 40%,transparent 90%);mask-image:linear-gradient(to left,var(--mask-solid) 40%,transparent 90%)}
+/* THIS IS THE PLACEMENT THAT SET THE SIZE OF THE FILE, and it was the one asking for more than the
+   file had. `background-size:auto 122%` scales the drawing to the height of a plate that grows with
+   the page, so at every width from 760 up it drew the source at 1.21 to 1.25, an upscale before the
+   device ratio is considered at all, while `.card::after` asks 168x194 of the same file and needs
+   nothing. 520x600 served neither: too small here, three times too big there. It is 640x738 now,
+   which is what this placement asks for at ratio 1, and it is LIGHTER than the 520 was, because the
+   drawing moved out of the alpha plane. The reasoning is in trustbar.css. docs/backlog.md 139, 140. */
+.seo-brand::after{content:'';position:absolute;inset:0 -12px 0 0;z-index:var(--z-under);pointer-events:none;opacity:.18}
+@supports (mask-mode:luminance){
+  .seo-brand::after{background-color:var(--color-trust);
+    mask-image:url("../assets/trust-column-full-mask.webp"),linear-gradient(to left,var(--mask-solid) 40%,transparent 90%);
+    mask-repeat:no-repeat,no-repeat;mask-position:right center,center;mask-size:auto 122%,cover;
+    mask-mode:luminance,alpha;mask-composite:intersect}
+}
 .seo-brand>*{position:relative;z-index:var(--z-content)}
 /* rung: DETAIL 47.5rem, 760px at the default root, the detail's second column, and this is BELOW it. 759.98 rather
    than 760, because the rung belongs to the wide side: tokens.css, page frame. */
