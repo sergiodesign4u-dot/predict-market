@@ -76,13 +76,18 @@ found.
 | **1280** | 0 | **104** | 0 | 0 | **on no ladder** |
 | **1440** | 0 | **104** | 0 | 0 | **on no ladder** |
 
-**The transcript is not restated and the system has moved twice since it was taken.** `ui-kit/`
-gained its `container-type` at step 2, recorded above, and on **2026-08-12 `components/` went from
-33 width queries to 35**: `options.css` and `yesno.css` each took one at 639.98 so the outcome row
-could wrap below the desk. Counted the same day from the comment-stripped source of all 52
-stylesheets: **35 width queries, of which 16 at the desk in 15 files, 7 at the detail in 7, 6 at the
-rail in 5, 2 at the 1140 harness and 4 one-offs**. The registry did not move and no rung was added,
-which is the only thing the transcript was taken to protect.
+**The transcript is not restated and the system has moved three times since it was taken.**
+`ui-kit/` gained its `container-type` at step 2, recorded above; on **2026-08-12 `components/` went
+from 33 width queries to 35**, `options.css` and `yesno.css` each taking one at 639.98 so the
+outcome row could wrap below the desk; and on **2026-08-13 it went back to 33**, because backlog 129
+deleted two. Counted from the comment-stripped source of all 53 stylesheets: **33 width queries, of
+which 14 at the desk in 13 files, 7 at the detail in 7, 6 at the rail in 5, 2 at the 1140 harness
+and 4 one-offs**. The registry did not move and no rung was added or removed by any of the three,
+which is the only thing the transcript was taken to protect. **The two that went are worth naming,
+because neither was replaced**: `tokens.css` held the page gutter and the plate inset at one pair of
+values below the desk and another above, and both are a `clamp()` now; `card.css` held the bookmark
+pull for phones alone, and it holds it for every card now. **A query that leaves with nothing put in
+its place is a query that was answering a question its subject never asked.**
 
 The nine in the system are really **five**: three rungs each written twice for its two sides, plus
 the harness, plus three named one-offs. The stand invents nothing.
@@ -222,7 +227,7 @@ answered as a side effect of something else. Item 115 is closed.
 |---|---|---|
 | `--measure` | `46ch` | the line measure for continuous text, in `ch` so one number caps an 11px legal line and a 16px paragraph at the same character count. **It was `66ch` here and in the token until 2026-08-12, on the stated ground that 66 is inside the 60-75 band `DESIGN.md` states, and the ground was a unit error**: `ch` is the advance of the digit zero and a lining digit is one of the widest glyphs a prose face draws, so in DM Sans 1ch is 1.48 mean prose advances and 66ch bought about 98 characters. The census could not see it because it computed `width / 1ch` and compared the answer to a band written in characters, which is asking the token its own question. 46 is `67.5 / 1.48`, and it was swept as well as derived: the window in which every capped placement sits inside 60 to 75 is 45ch to 48ch |
 | `--grid-col-min` | `300px` | the card floor, moved out of `patterns/card-grid.css` where it stood as a literal |
-| `--plate-inset` | `28px`, `16px` below rung DESK | the inset INSIDE the two-stone plate, added 2026-08-12. It is the second half of a step the first half had been taking alone: `--gutter` is the page gutter OUTSIDE the plate and goes 40 to 14 at the rung, and this one held 28 at every width, so the two nested gutters took 42px a side on a phone, 84 of 360, before a card began. Read in one place, `base.css`, the two-stone plate, and only by the SIDES: vertical space has nothing above it competing for the same 360px |
+| `--plate-inset` | `clamp(16px, …, 28px)`, ramping DESK to DETAIL | the inset INSIDE the two-stone plate, added 2026-08-12. It is the second half of a step the first half had been taking alone: `--gutter` is the page gutter OUTSIDE the plate and went 40 to 14 at the rung, and this one held 28 at every width, so the two nested gutters took 42px a side on a phone, 84 of 360, before a card began. Read in one place, `base.css`, the two-stone plate, and only by the SIDES: vertical space has nothing above it competing for the same 360px. **Both STEPPED at DESK until 2026-08-13 and both RAMP now**, 640 to 760, because a step of 38px a side against a window that has grown by one pixel takes 76px out of the content column at the rung: backlog 129 |
 
 **There is no `--grid-gap`, and that is a decision.** The track gaps at `var(--space-16)`, and the
 space ladder is already the gap ladder; a second name for 16px would be one number with two
@@ -355,9 +360,13 @@ Every `@media` in `components/` read and every number compared against the ladde
 | 560, 620, 980 | 2, 1, 1 | **named one-offs**, and each carries its own measurement beside it, closed by backlog 72 |
 | 1140 | 2 | HARNESS, not the product |
 
-**35 width queries, every number on the registry, and 0 `@media` in any of the 106 screen files.**
-It read 33 until 2026-08-12, when `options.css` and `yesno.css` each took one at the desk rung so the
-outcome row could wrap; both name 639.98 and the registry did not move.
+**33 width queries, every number on the registry, and 0 `@media` in any of the 106 screen files.**
+It read 33 when this table was drawn, 35 from 2026-08-12 when `options.css` and `yesno.css` each
+took one at the desk rung so the outcome row could wrap, and 33 again from 2026-08-13, when backlog
+129 deleted the one in `tokens.css` and the one in `card.css`. **The table above was not edited on
+either day and is right for the third time by accident**, which is the argument for reading a count
+out of the source and not out of a paragraph: the prose beside it said 16 at the desk for a day
+while the table said 14, and only one of them was ever recounted.
 The three one-offs were not taken on trust either: each one says in a comment what collapsing it to
 the nearest rung would cost, in pixels, and 560 and 980 both cost a control or a card going backwards.
 
@@ -440,6 +449,82 @@ made and the record is of what was decided**; what is corrected is the belief th
 had not been met. Whether the answer is a container query or placements that stop disagreeing is a
 design decision and not a measurement, and it is `docs/backlog.md` 129.
 
+### Backlog 129 answered, 2026-08-13: neither query, and the threshold was the wrong test
+
+**The answer is that no container query is written, and the ground is a third measurement rather
+than either of the two above.** The threshold the stage named, one component in two columns of
+different widths, is a NECESSARY condition and was read as a sufficient one. It says nothing about
+whether the component has anything to say about width: the table further down this page reads **35
+of 45 filling their container with no width behaviour of their own at all**, and a component with
+no rule has no branch that can fire wrongly. So the count of 35 of 47 is true and does not decide
+anything. **The population that CAN misfire is the 21 components that own a width query**, and it
+was measured directly instead: every selector standing inside a width query in `components/`, read
+against its PARENT'S CONTENT BOX on all 105 screens at each rung and one pixel either side.
+
+| the 52 selectors that stand inside the 33 width queries | n |
+|---|---|
+| the page frame, the shell and the harness, where the window IS the subject | 14 |
+| a positioning context, `position:relative` under a dropped panel, which has no width in it | 2 |
+| a component in a slot | 36 |
+
+**Of the 36, 25 stand in the product on both sides of their own rung and were tested for the only
+thing that decides this question: SEPARABILITY.** A container query can stand in for a window query
+exactly when some container width T divides the placements the same way the rung does, in either
+direction. Measured before the two fixes below: **24 of 25 separable.** For every one of those a
+container query would resolve identically at every placement on all 105 screens, which is the
+sentence the stage wrote, and the count of 35 of 47 never touched it. The two selectors with a
+genuinely large spread between placements, `.chip-nav` at 119 to 537 and `.filter-menu` at 314 to
+611, are exactly the two that set a positioning context: they are the only rules whose container
+really does disagree, and a containing block has no width in it to get wrong.
+
+**What the measurement did find is the opposite defect, and it was one token.** Both page insets
+STEPPED at DESK 640, `--gutter` 14 to 40 and `--plate-inset` 16 to 28: **38px a side, 76px in
+total, spent at the pixel where the window got ONE pixel wider.** The content column went 611 to 560
+and the card on `event-feed.html` went 577 to 502 and did not reach 577 again until 715. Nine
+component rules are keyed to that rung and every one of them fires on the wrong side of its own box:
+the bookmark pull in `card.css`, the outcome wrap in `options.css` and `yesno.css`, the four-column
+figures in `position.css` and three rules in `footer.css`. **That is what a rule asking the window a
+question about a container looks like, and it needed no container query to show it, only a reading
+taken one pixel either side of the rung.** Both insets ramp now, DESK 640 to DETAIL 760, and the
+length of the ramp is derived: 38px a side has to be spent at no more than half a pixel per pixel of
+window or the column still goes backwards, so it cannot be shorter than 76px, and 760 is the next
+rung on the ladder. Below 640 and at 760 and above, **0 geometry readings of 18,660 differ.**
+
+**And `card`, the component the row put first, carries the case exactly as the row said and for none
+of the reasons it gave.** Its one rule is the bookmark pull, and the pull is not a phone fact: the
+bare icon button pulls its own invisible 44px target back by `(44 - 16) / 2 = 14px`, a card has 13px
+from its content edge to its clip edge, and `.card` is `overflow:clip`, so **one pixel of a 44px
+target was cut off 84 cards at every width from 640 to 1600** while the query hid it below the rung.
+The rule is unconditional now. **The answer to "container query or media query" was neither**, and
+the card is 12px taller at the desk because its meta row finally reserves the target that mobile has
+always reserved: 25px to 37px, which is the phone's number.
+
+Measured after both edits, all 105 screens at twelve widths: **boxes overflowing 247 to 163 at every
+width at and above 640, which is the number the tree already read below it; controls cut by the card
+they stand in 84 to 0, worst overhang 5px to 0; horizontal scroll 0 before and after.** The control
+for the instrument was an unchanged tree measured twice: **0 differing readings of 18,660.**
+
+**AND THE RAMP MADE THE FIRST REAL CONTAINER-QUERY CASE THIS SYSTEM HAS EVER HAD, which is the one
+result nobody was going to guess.** Re-running separability after the fix gives **22 of 25**, not 25:
+by taking the discontinuity out of the column at 640 it also took away the thing that let a container
+threshold stand in for the window there. The three that a container query can no longer reproduce are
+named rather than converted:
+
+- **`.icon-btn.icon-btn-tile` at the 560 one-off**, and it was the one exception before the fix as
+  well. Its container measures **92 on both sides of the rung**, so no threshold divides anything:
+  the rule is about the screen the control is on and not about its box, which is the honest reason a
+  window query owns it.
+- **`.opt-row` in `options.css` and `.yesno.compact` in `yesno.css`**, the pair that makes the
+  outcome buttons take a row of their own below the desk. Their container now reads **551 to 570 at
+  639 and 552 to 571 at 640**: continuous, which is what the ramp was for. So two rows of the same
+  width, one at 639 and one at 640, lay their outcome pair out completely differently, and the pair
+  goes from 268px a half to 46 and 42.5 at one pixel of window. **That is the case the stage was
+  looking for, and it did not exist until this file made the column honest.**
+
+They are filed and not converted, because converting them means declaring `container-type` on the
+row's container, and size containment is a change to what an element's width MEANS rather than to
+what it measures. That needs its own measurement and its own day: `docs/backlog.md` 145.
+
 ### What each component does with width, filled for all 45
 
 `inventory.md` carries the column now, read from the product at twelve widths on the screen where
@@ -472,7 +557,7 @@ eight and `display:none` below DETAIL.
 
 **No `@media` in a screen file, ever.** It is in `components/CLAUDE.md` and in `ui-visual/CLAUDE.md`
 both, because a rule kept in one place is a rule half the hands never meet, and this tree is
-assembled by many hands at once. Measured: 35 width queries in the system, **0 in any of the 106
+assembled by many hands at once. Measured: 33 width queries in the system, **0 in any of the 106
 painted screens**.
 
 ### Backlog 43, and the answer is no

@@ -1,6 +1,6 @@
 # components/ - the system itself
 
-This folder IS the design system. **53 stylesheets, 8,556 lines**: 47 here and 6 in `patterns/`,
+This folder IS the design system. **53 stylesheets, 8,587 lines**: 47 here and 6 in `patterns/`,
 re-counted 2026-08-13 by `cat components/*.css components/patterns/*.css | wc -l` after `print.css`
 was written (`docs/backlog.md` 125). It was 52 and 7,767 on 2026-08-12. The file count was
 re-counted 2026-08-11 by listing them, after `platehead.css` was written the same day, and was
@@ -59,8 +59,12 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
 - **A MEDIA QUERY MAY NOT STAND IN A SCREEN FILE, EVER**, and it is written here and in
   `ui-visual/CLAUDE.md` both, because a rule kept in one place is a rule half the hands never meet.
   Adaptation lives in a token, a component, a pattern or the shell. Measured at Responsive step 4:
-  **35 width queries in this folder, 0 in any of the 106 documents in `ui-visual/`.** It was 33 until
-  2026-08-12, when the outcome row and the outcome pair each took one at the desk rung. The counterpart
+  **33 width queries in this folder, 0 in any of the 106 documents in `ui-visual/`.** It was 33, then
+  35 on 2026-08-12 when the outcome row and the outcome pair each took one at the desk rung, and 33
+  again on 2026-08-13 when backlog 129 deleted the one in `tokens.css` and the one in `card.css`
+  **and put nothing in either place**: the two page insets ramp with a `clamp()` now and the bookmark
+  pull is unconditional. **A query that leaves with no replacement was answering a question its
+  subject never asked.** The counterpart
   reading used to say "35 of 43 components have no width behaviour of their own at all", **and that
   number was three numbers wearing one sentence, taken from a table with one placement per
   component.** Re-measured 2026-08-12 over every placement of all 47 components on the 105 painted
@@ -75,9 +79,10 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   file needs a break that is not one of them it is a one-off and says so in a comment beside itself,
   or it is a fourth rung and gets named in the ladder in `tokens.css` FIRST. A breakpoint cannot be a
   token: a media query condition does not read a custom property and there is no build step here, so
-  the ladder is kept by being read. **There are 35 width rules, and there were 33 when this line was written**, counted
-  2026-08-12 from the comment-stripped source, and the number ten lines above was the right one:
-  **29 name one of the three rungs, 2 name the 1140 harness, and the 4 that name no rung** (560 in
+  the ladder is kept by being read. **There are 33 width rules, and this line has said 33, then 35,
+  then 33 again**, counted each time from the comment-stripped source and never from the sentence
+  before it:
+  **27 name one of the three rungs, 2 name the 1140 harness, and the 4 that name no rung** (560 in
   `event-detail.css` and `iconbtn.css`, 620 and 980 in `hero.css`) **each carry the one-off comment
   beside itself that this rule asks for**, verified by reading all four. The alternative
   has already been paid for twice: a stand label written at 900 standing beside a bar that goes at

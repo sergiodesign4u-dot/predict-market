@@ -31,7 +31,7 @@
     arrives at it. <b>Twelve distinct widths were counted in the product</b> before a single one of
     them was called a decision, and three of the twelve turned out to have no name at all.</p>
     <div class="tk-badges">
-      <span class="tk-badge">3 rungs, 35 width queries</span>
+      <span class="tk-badge">3 rungs, 33 width queries</span>
       <span class="tk-badge">0 in a screen file</span>
       <span class="tk-badge">104 screens audited</span>
       <span class="tk-badge">new behaviour: 0</span>
@@ -105,7 +105,8 @@
     lives in <code>components/tokens.css</code> under "the breakpoint ladder"; this is the registry.</p>
     <div class="tk-rungs">
       <div class="tk-rung"><b>640</b><span>DESK. The one divide: one column, a bottom nav and a mobile dock below it; the desk above.
-        <i>16 rules in 15 files. It is the only rung most components ever meet.</i></span></div>
+        <i>14 rules in 13 files. It is the only rung most components ever meet, and it lost two on
+        2026-08-13 when backlog 129 found both page insets STEPPING here.</i></span></div>
       <div class="tk-rung"><b>760</b><span>DETAIL. The event detail gains its second column: the bet panel docks as a sidebar, the dock goes, the chart takes full height.
         <i>7 rules in 7 files. Audit row: event detail, 13 screens, FJ2.</i></span></div>
       <div class="tk-rung"><b>900</b><span>RAIL. A vertical rail arrives BESIDE the content: sub-categories, the table of contents, the how-it-works side column.
@@ -230,7 +231,7 @@
     <h2 data-n="05">What each component does with width</h2>
     <p class="tk-note"><b>The registry holds, and it was checked rather than trusted.</b> Every
     <code>@media</code> in <code>components/</code> read and every number compared against the
-    ladder: <b>35 width queries, every number on the registry, and 0 in any of the 106 screen
+    ladder: <b>33 width queries, every number on the registry, and 0 in any of the 106 screen
     files</b>. Three are named one-offs, 560, 620 and 980, and each carries beside it what
     collapsing it to the nearest rung would cost in pixels.</p>
     <div class="tk-tblwrap">
@@ -276,6 +277,32 @@
     marked "container" each stand in exactly one place in this product. <b>A container query with one
     placement is a media query wearing a different name.</b> The threshold to revisit is the first
     component placed in two columns of different widths.</p>
+    <p class="tk-why"><b>Backlog 129, answered 2026-08-13: still none, and the threshold named above
+    was the wrong test.</b> One component in two columns of different widths is NECESSARY and was read
+    as sufficient: 35 of 45 components fill their container and have no width behaviour at all, and a
+    component with no rule has no branch that can fire wrongly. So the population was taken instead
+    from the queries themselves - <b>52 selectors inside 33 width queries: 14 are the page frame, the
+    shell or the harness, 2 set a positioning context, 36 are a component in a slot</b> - and the 25
+    that stand on both sides of their own rung were tested for SEPARABILITY: does any container width
+    divide the placements the way the rung does. <b>24 of 25 did</b>, so a container query would have
+    resolved identically at every placement on all 105 screens.</p>
+    <p class="tk-note tk-lab tk-bad"><b>What the measurement found instead was the opposite defect and
+    it was one token.</b> Both page insets STEPPED at DESK 640, <code>--gutter</code> 14 to 40 and
+    <code>--plate-inset</code> 16 to 28: <b>38px a side spent at the pixel where the window got one
+    pixel wider</b>, so the content column went 611 to 560 and the feed card went 577 to 502 and did
+    not reach 577 again until 715. Nine component rules are keyed to that rung and every one of them
+    fired on the wrong side of its own box. Both insets ramp now, DESK 640 to DETAIL 760, and the
+    length is derived rather than chosen: 38px a side has to be spent at no more than half a pixel per
+    pixel of window, so the ramp cannot be shorter than 76px, and 760 is the next rung on the ladder.
+    <b>0 geometry readings of 18,660 differ below 640 or at 760 and above.</b></p>
+    <p class="tk-why"><b>And the ramp made the first real container-query case this system has ever
+    had.</b> Separability re-run after the fix reads <b>22 of 25</b>: taking the discontinuity out of
+    the column at 640 also took away the thing that let a container threshold stand in for the window
+    there. <code>.opt-row</code> and <code>.yesno.compact</code> now sit in a container measuring 551
+    to 570 at 639 and 552 to 571 at 640, so two rows of the same width lay their outcome pair out
+    completely differently across one pixel. Filed as backlog 145 rather than converted, because
+    declaring <code>container-type</code> changes what an element's width MEANS and that needs its own
+    measurement.</p>
 
   <!-- ============================================================== transcript --><section class="tk-sec" id="transcript">
     <h2 data-n="06">The transcript: what already depended on width</h2>
@@ -448,6 +475,9 @@
       360px phone spent <b>42px a side, 84 of 360, before a card began</b>. The comment beside the
       one that stepped read <i>"this is the one responsive token"</i>, which was true when it was
       written and is exactly the sentence that stops the next reader looking for a second.
+      <b>Neither steps any more, since 2026-08-13</b>: both are a <code>clamp()</code> ramping from
+      DESK to DETAIL, because two nested steps taken at one pixel took 76px out of the content column
+      at the rung, and that column is what every width query above it is really asking about.
       <code>--measure</code>,
       <code>--grid-col-min</code>, <code>--rail-width</code> and <code>--menu-min</code> exist;
       <code>--grid-gap</code> does not, because the space ladder is already the gap ladder, a

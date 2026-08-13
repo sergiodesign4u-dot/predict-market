@@ -277,7 +277,7 @@
 
   <!-- ================================================================== width --><section class="tk-sec" id="width">
     <h2>What it does with width</h2>
-    <p class="tk-note"><b>Its own width query: 640 DESK.</b> The card itself does not change width at any rung: it FILLS the grid track it is given, and the track is the pattern's decision, not the card's. The one thing the rung moves is the bookmark button's negative margin below DESK, so the mark sits into the padding on a phone and inside it on a desk.</p>
+    <p class="tk-note"><b>Its own width query: none, since 2026-08-13.</b> The card does not change width at any rung: it FILLS the grid track it is given, and the track is the pattern's decision, not the card's. It had exactly one query, moving the bookmark button's negative margin below DESK, <b>and that query was the defect</b>. The bare icon button pulls its invisible 44px target back by <code>(44 - 16) / 2 = 14px</code>; a card has 13px from its content edge to its clip edge and is <code>overflow:clip</code>; so above the rung, where this rule switched off, <b>one pixel of a 44px target was cut off 84 cards at every width from 640 to 1600</b>. Measured: the button's right edge is 603 against a card edge of 608 at 639, and was 610 against 609 at 640, unchanged at 900 and 1440. A card holds its bookmark the same way in every card, so the rule is unconditional now and the card's meta row is 37px at the desk as it has always been on a phone, up from 25. <b>Backlog 129 named this component as the container-query case and it was: the answer was neither query.</b></p>
   </section>
 
   <section class="tk-sec" id="rule">

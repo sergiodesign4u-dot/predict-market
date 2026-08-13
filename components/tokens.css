@@ -385,13 +385,36 @@
   --container-dialog:464px;  /* how-it-works dialog */
   --container-sheet:420px;   /* outcome overlay */
   --container-sidebar:220px; /* course sidebar, and the body inset that clears it */
-  --gutter:40px;             /* the page gutter, OUTSIDE the two-stone plate. 14px on mobile, below */
-  --plate-inset:28px;        /* the inset INSIDE the plate, and it is a token because it is the
-                                second half of a step that had only ever been taken by the first:
-                                --gutter goes 40 to 14 at rung DESK and this held 28 at every
-                                width, so on a 360 phone the two nested gutters took 42px a side,
-                                84 of 360, before a card began. Written in ONE place, base.css,
-                                the two-stone plate. 16px on mobile, below. */
+  /* THE TWO PAGE INSETS, AND THEY RAMP RATHER THAN STEP. --gutter is the inset OUTSIDE the
+     two-stone plate and --plate-inset the one INSIDE it; the second is a token because it is
+     the half of a step that had only ever been taken by the first, so on a 360 phone the two
+     nested gutters took 42px a side, 84 of 360, before a card began. Both are read in ONE
+     place for the frame, base.css, the two-stone plate.
+
+     UNTIL 2026-08-13 THEY BOTH STEPPED AT DESK 640, in a `:root` block below this registry:
+     14 to 40 and 16 to 28, **38px a side and 76px in total, spent against a window that had
+     grown by one pixel.** Measured on `event-feed.html`: the card was 577 wide at 639, 502 at
+     640, and did not reach 577 again until the window was 715. **A column that shrinks while
+     the window grows makes every width query above it a question asked the wrong way round**,
+     and nine component rules are keyed to this rung: the bookmark pull in `card.css`, the
+     outcome wrap in `options.css` and `yesno.css`, the four-column figures in `position.css`
+     and three rules in `footer.css`. Every one of them turns on at the moment its own box gets
+     smaller. That is the finding `docs/backlog.md` 129 went looking for in container queries.
+
+     THE RAMP RUNS FROM ONE RUNG TO THE NEXT, DESK 640 to DETAIL 760, and its LENGTH is derived
+     and not chosen: 38px a side has to be spent at no more than 0.5px per pixel of window or
+     the column still goes backwards, so the ramp cannot be shorter than 76px. 760 is the next
+     rung on the ladder, so this adds no width the system does not already name. Below 640 the
+     clamps floor at 14 and 16 and at 760 they ceil at 40 and 28, which are the two pairs that
+     were there before: **the product is unchanged outside 640 to 759, and this is only ever
+     the fix for the band that was broken.** It is also one width query fewer, which is the
+     right direction: a ramp is mechanism one on this stage's own ladder and a rung is three.
+
+     Both clamps read 100vw, which is the same instrument the deleted query read: it counts the
+     scrollbar and it does not know about a docked panel. Neither fact reaches the ramp, because
+     the review sidebar docks at 1140 and both clamps are pinned long before that. */
+  --gutter:clamp(14px, calc(14px + (100vw - 640px) * 13 / 60), 40px);
+  --plate-inset:clamp(16px, calc(16px + (100vw - 640px) / 10), 28px);
 
   /* ---- the two values the width stage added, 2026-08-11, Responsive step 2 ---- */
   --rail-width:214px;        /* THE VERTICAL RAIL THAT ARRIVES AT RUNG 900, and it is a token
@@ -931,14 +954,15 @@
   --logo-y-dark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath d='M11.6 12.2 5.8 6' stroke='%23684f18' stroke-opacity='.3' stroke-width='4.6'/%3E%3Cpath d='M11.6 20.5V12.2L18.2 5.1' stroke='%23684f18' stroke-width='4.6'/%3E%3C/svg%3E");
 }
 
-/* mobile: the plate breathes on a smaller inset. These are the two responsive tokens,
-   and the line here said ONE until 2026-08-12, which is exactly how the inside of the
-   plate came to keep 28px at a width where the outside had already dropped to 14. */
-/* rung: DESK 640, the one divide, and this is BELOW it. 639.98 rather than 640,
-   because the rung belongs to the desk: the page frame above argues it. */
-@media(max-width:639.98px){
-  :root{--gutter:14px;--plate-inset:16px}
-}
+/* THE ONLY WIDTH QUERY THIS FILE EVER HELD WAS HERE AND IT IS GONE, 2026-08-13. It set
+   `--gutter:14px` and `--plate-inset:16px` below DESK 640, and the two values still exist:
+   they are the FLOORS of the two clamps in the page-frame group above, which is where the
+   argument for them now lives. It is deleted rather than kept beside them because a token
+   with a fluid value and a query that overrides it is a token with two answers, and the
+   query was the half that asked the wrong question: it took 76px out of the content column
+   at the pixel where the window got wider. `docs/backlog.md` 129 and `decisions.md`
+   2026-08-13. The registry is 34 width queries in the system now, not 35, and this file
+   holds none of them. */
 
 /* WHEN TWO ROLES HOLD THE SAME VALUE. Twenty-seven groups below resolve to one
    colour in both themes: --outcome-yes and --result-won are both #4fa96b,

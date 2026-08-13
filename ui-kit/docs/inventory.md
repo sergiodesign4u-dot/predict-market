@@ -253,7 +253,7 @@ the 105 screens.
 | `bottomnav` | 640 | 178 on 105 | **FILLS the viewport below 640** (320, 360, 639) and is **GONE at 640 and above**, on all 105 screens. `.bn-bal` inside it is FIXED 36.3 |
 | `browse-shell` | 900 | 154 on 77 | **FILLS** both slots. The 900 rule is spent on what the rail takes out of `.cat-layout`, not on the shell's own width |
 | `button` | none | 1,224 on 105 | **Six behaviours across fifteen slots.** FILLS in `.sheet-body` (368 to 597) and `.bp-inner`; FIXED 18 for the provider mark, 51.8 in the compose row, 135.8 in the identity row; FIXED 88.4 for the desk-only header button, which is GONE below 760; INTRINSIC in `.cmt-actions` 30.7-36.8, `.auth-btns` 64-69.2 and `.state-actions` 59.9-380; CHANGES its share in `.cta-bar` (96 to 627) and `.cc-actions`. The old row's "GONE in a band, then fixed" describes 105 of the 1,224 |
-| `card` | 640 | 1,501 on 36 | **FILLS `.grid`, and the box it fills is not monotonic in the window**: 232 at 320, 500 at 640, 300.5 at 759, 371-527 at 900, 368-444 at 1280 and **301.5-330 at 1440**. A card is narrower at 1440 than at 640. Inside: `.top` and `.meta` CHANGE their share, `span in .meta-txt` INTRINSIC 42-72, `.gallery` FIXED 172. **`.prob-line`, 63 placements, is painted at no width**: a page script hides it |
+| `card` | **none**, was 640 | 1,501 on 36 | **FILLS `.grid`, and the box it fills is not monotonic in the window**: 232 at 320, 500 at 640, 300.5 at 759, 371-527 at 900, 368-444 at 1280 and **301.5-330 at 1440**. A card is narrower at 1440 than at 640. Inside: `.top` and `.meta` CHANGE their share, `span in .meta-txt` INTRINSIC 42-72, `.gallery` FIXED 172. **`.prob-line`, 63 placements, is painted at no width**: a page script hides it. **The 640 in this row went on 2026-08-13**: it moved the bookmark's negative margin below the desk and above the desk left one pixel of a 44px target outside the card's clip edge on 84 cards, so the rule is unconditional and the column reads none. The card at 640 is 578 now and not 502, because the page insets ramp: backlog 129 |
 | `card-grid` | none | 23 on 23 | **FILLS** `.cat-main`, 234 to 1,262. The column count is a token, not a query, which is why the file has none |
 | `catnav` | 640, 900 | 90 on 57 | **FILLS all three slots, and one of them changes what filling means**: `.subcat` is 761 wide at 899 and **214 at 900**, because its own 900 rule turns it into the rail |
 | `chart` | 760 | 132 on 11 | **FILLS** `.ed-chart`, `.ed-plot` and `.chart-svg`; `.ed-chart-area` CHANGES its share; `.ed-legend` 49-95.2 and `.ed-chart-head` 85.8-124.8 are INTRINSIC |
@@ -347,3 +347,24 @@ more and more than 25 per cent apart:
 The finding is filed as a measurement so the Responsive stage can act on it, and the honest
 statement of it is that the refusal was correct when it was made about a table with one placement
 per component, and is not correct about this one.
+
+**ANSWERED 2026-08-13, AND THE COUNT ABOVE IS TRUE AND DECIDES NOTHING.** `docs/backlog.md` 129 was
+closed by measuring the other half of the same question, and the correction belongs here because
+this section is where the count was made. **Standing in two columns of different widths is a
+NECESSARY condition and was read as a sufficient one.** It says nothing about whether the component
+has anything to say about width, and the table above this section says **35 of 45 fill their
+container with no width behaviour of their own at all**: a component with no rule has no branch that
+can fire wrongly, so thirty-five of the thirty-five are components that would not use a container
+query if they had one. The population that can misfire was taken from the queries instead - **52
+selectors inside the 33 width queries in `components/`, of which 14 are the page frame, the shell or
+the harness, 2 set a positioning context and 36 are a component in a slot** - and the 25 that stand
+on both sides of their own rung were read against their PARENT'S CONTENT BOX on all 105 screens.
+**24 of 25 are separable**: some container width divides the placements exactly the way the rung
+does, so a container query would resolve identically everywhere. **Of the three components named
+above, `card` carried the case and the rail and `navitem` did not.** `navitem` has no width rule at
+all and a component with no rule cannot answer wrongly; the rail's container reads 761 on one side
+of RAIL and 214 on the other, which separates. `card`'s rule was the bookmark pull, and it was never
+a phone fact: the bare icon button pulls its 44px target back by 14px, a card has 13px from content
+edge to clip edge, and **one pixel of that target was being cut off 84 cards at every width from 640
+to 1600** while the query hid it below the rung. It is unconditional now. The account is in
+`responsive.md`, container thresholds.

@@ -47,20 +47,27 @@
    the same reason. The two mark rules mirror the two hovers above rather than leaning on them: a
    card is the tap target of the feed, a finger never hovers, and without them a thumb would get a
    grey square where a pointer gets brass. */
-/* The 44px box is unconditional above, so this block is not a touch-target rule any more: what is
-   left is a narrow-screen layout fact, the enlarged button pulled tighter into the meta row. It
-   stays on a width query for that reason, and its raw -8px went onto the grid. */
-/* rung: DESK 640, the one divide, and this is BELOW it. 639.98 rather than 640,
-   because the rung belongs to the desk: tokens.css, page frame. */
-@media(max-width:639.98px){
-  /* WHERE IT SITS, AND SINCE 2026-08-06 THAT IS ALL THIS FILE SAYS ABOUT IT.
-     The control is `.icon-btn.icon-btn-bare` in components/iconbtn.css, and the
-     bare face pulls its own invisible 44 target back out of the flow, because
-     an untouchable box that spreads the row it sits in is the atom's problem
-     wherever it stands. What is left here is this card's own narrower answer to
-     the same question on a phone. */
-  .card .bookmark-btn{margin:calc(var(--space-8) * -1) calc(var(--space-8) * -1) calc(var(--space-8) * -1) 0}
-}
+/* WHERE IT SITS, AND SINCE 2026-08-06 THAT IS ALL THIS FILE SAYS ABOUT IT. The control is
+   `.icon-btn.icon-btn-bare` in components/iconbtn.css, and the bare face pulls its own invisible
+   44 target back out of the flow, because an untouchable box that spreads the row it sits in is
+   the atom's problem wherever it stands. What is left here is this card's own narrower answer to
+   the same question.
+
+   IT STOOD INSIDE `@media(max-width:639.98px)` UNTIL 2026-08-13, AND THAT QUERY WAS THE DEFECT.
+   The atom pulls by exactly `(44 - 16) / 2 = 14px`, which puts the invisible box flush with the
+   16px mark and 14px past the row's content edge. **A card has 13px from that edge to its clip
+   edge**, 12 of body padding and 1 of border, and `.card` is `overflow:clip`, so the atom's own
+   arithmetic ends ONE PIXEL outside the card and that pixel is cut off the touch target. Below
+   the rung this rule's 8px hid it; at 640 and above the rule switched off and the button hung
+   past the card at every width to 1600. Measured on `event-feed.html`: button right 603 against
+   a card edge of 608 at 639, and 610 against 609 at 640, unchanged at 900 and at 1440.
+
+   **So it was never a narrow-screen fact and the card's box was never the window's business.**
+   `docs/backlog.md` 129 named `card` as the component that had crossed the container-query
+   threshold, and it had: this is the rule that proves it. The answer is neither query. A card
+   holds its bookmark the same way in every card, so the rule is unconditional and one more
+   width query leaves the registry. */
+.card .bookmark-btn{margin:calc(var(--space-8) * -1) calc(var(--space-8) * -1) calc(var(--space-8) * -1) 0}
 .card::before{content:'';position:absolute;inset:0;width:auto;height:auto;z-index:var(--z-under);pointer-events:none;opacity:1;background-color:transparent;background-repeat:repeat;background-size:auto;background-image:var(--surface-grid)}
 .thumb{border-color:var(--border-brass)}
 .card{background-color:var(--bg-card);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-card-from),var(--bg-card-to));background-blend-mode:overlay,normal;border:var(--hairline) solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-xs),inset 1px 0 0 var(--bevel-hair),inset -1px 0 0 var(--edge-shade),inset 0 -1px 0 var(--edge-shade-strong),0 16px 30px -18px var(--shadow-ink-85),0 5px 12px -6px var(--shadow-ink-60);transition:transform var(--dur-slower) var(--ease-out),box-shadow var(--dur-slower) var(--ease-out)}
