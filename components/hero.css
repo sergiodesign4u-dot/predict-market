@@ -1,7 +1,7 @@
 /* components/hero.css
    Component: hero. Classes: .brand-tile, .bt-by, .bt-photo, .bt-quote, .bt-tick, .bt-veil, .feed-hero, .hero-duo, .hero-feature, .hero-hot, .hero-main, .hero-promo, .hero-side, .hero-trust, .hf-area, .hf-bar, .hf-chart, .hf-chart-cap, .hf-chart-legend, .hf-cta, .hf-eyebrow, .hf-foot, .hf-graph, .hf-graph-wrap, .hf-grid, .hf-info, .hf-line, .hf-no, .hf-odds, .hf-odds-row, .hf-photo, .hf-tag, .hf-title, .hf-veil, .hf-vol-area, .hf-vol-line, .hf-why, .hf-yes, .hh-all, .hh-head, .hh-list, .hh-name, .hh-prob, .hh-rank, .hh-vol, .ht-art, .ht-badge, .ht-body, .no, .vol, .yes.
 
-   Reads: --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --border-brass, --border-hairline, --color-action, --color-trust, --line-grid, --mask-solid, --outcome-line-no, --outcome-line-yes, --outcome-no, --outcome-no-figure, --outcome-yes, --outcome-yes-text, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-brass-lit, --text-chip-hover, --text-muted, --text-primary, --tint-brass-60, --veil-brand, --veil-photo-edge, --veil-photo-from, --veil-photo-mid, --veil-photo-to
+   Reads: --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --border-brass, --border-hairline, --color-action, --line-grid, --mask-solid, --outcome-line-no, --outcome-line-yes, --outcome-no, --outcome-no-figure, --outcome-yes, --outcome-yes-text, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-brass-lit, --text-chip-hover, --text-muted, --text-primary, --tint-brass-60, --veil-brand, --veil-photo-edge, --veil-photo-from, --veil-photo-mid, --veil-photo-to
    Stand:  ui-kit/hero.html, and ui-kit/organisms.html#hero for the level and its reason
    Stands on: 2 ui-visual screens (event-feed.html, how-it-works.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -25,7 +25,7 @@
 .hero-trust:active{transform:translateY(0)}
 .hero-feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr)}
 .hf-info{position:relative;overflow:clip;padding:var(--space-20) var(--space-24);display:flex;flex-direction:column;min-width:0}
-/* THE TWO LENGTHS BELOW ARE WHAT MAKES THE THREE ABOVE THEM MEAN ANYTHING, and without them
+/* THE TWO LENGTHS BELOW ARE WHAT MAKES THE THREE AFTER THEM MEAN ANYTHING, and without them
    `object-fit` and `object-position` were inert on this element for as long as it has stood.
    An absolutely positioned REPLACED element with `left` and `right` both given and a width of
    `auto` does not stretch the way `.hf-veil` on the identical inset does: it takes its intrinsic
@@ -138,23 +138,7 @@
 .hf-tag.vol i{background:var(--color-action)}
 .hf-chart-cap{font-family:var(--font-mono);font-size:var(--text-11);letter-spacing:var(--track-label);color:var(--text-muted);margin-top:var(--space-8)}
 .hero-trust{display:flex;align-items:center;gap:var(--space-12);padding:var(--space-16) var(--space-20);min-height:82px}
-/* THIS STOPPED BEING AN `<img>` ON 2026-08-13 and the reason is that it was the SECOND encoding of
-   a drawing the footer already loads. `trust-column` and `trust-globe` stand twice on the feed, as
-   the mask behind two footer tiles and as a photograph inside two hero tiles, and while the second
-   pair were `<img src>` they held the old alpha-plane files alive at 208,464 bytes for one screen.
-   Pointed at the same two masks, they cost NOTHING: the browser has already fetched both by the
-   time this renders. The element stays, because a decoration that marks where it stands is easier
-   to read than a `::after` on a tile, and it is a `<span>` rather than an `<img>` because what it
-   carries is now a colour and a coverage rather than a picture. WHICH artwork is positional, the
-   way the footer strip's three already are. trustbar.css holds the reasoning. docs/backlog.md 140. */
-.ht-art{position:absolute;top:0;bottom:0;right:0;height:100%;width:48%;opacity:.6;z-index:var(--z-under);pointer-events:none}
-@supports (mask-mode:luminance){
-  .ht-art{background-color:var(--color-trust);
-    mask-repeat:no-repeat,no-repeat;mask-position:center right,center;mask-size:cover,cover;
-    mask-mode:luminance,alpha;mask-composite:intersect}
-  .hero-duo .hero-trust:nth-of-type(1) .ht-art{mask-image:url("../assets/trust-column-mask.webp"),linear-gradient(to left,var(--mask-solid) 62%,transparent 99%)}
-  .hero-duo .hero-trust:nth-of-type(2) .ht-art{mask-image:url("../assets/trust-globe-mask.webp"),linear-gradient(to left,var(--mask-solid) 62%,transparent 99%)}
-}
+.ht-art{position:absolute;top:0;bottom:0;right:0;height:100%;width:48%;object-fit:cover;object-position:center right;opacity:.6;z-index:var(--z-under);pointer-events:none;-webkit-mask-image:linear-gradient(to left,var(--mask-solid) 62%,transparent 99%);mask-image:linear-gradient(to left,var(--mask-solid) 62%,transparent 99%)}
 .hero-trust .ht-badge,.hero-trust .ht-body{position:relative;z-index:var(--z-content)}
 .ht-badge{width:var(--size-40);height:var(--size-40);flex:0 0 var(--size-40);border-radius:var(--radius-10);display:grid;place-items:center;color:var(--text-brass-lit);background:linear-gradient(140deg,var(--bg-control-brass),var(--bg-control) 74%);border:var(--hairline) solid var(--border-hairline-brass)}
 .ht-badge svg{width:var(--size-20);height:var(--size-20)}

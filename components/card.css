@@ -1,7 +1,7 @@
 /* components/card.css
    Component: card. Classes: .bookmark-btn, .card, .card-body, .m-label, .m-val, .meta, .meta-txt, .prob, .prob-line, .q, .thumb, .top, .top-txt, .why.
 
-   Reads: --bevel-faint, --bevel-hair, --bevel-lo, --bevel-xs, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --bg-surface, --border-brass, --border-hairline, --color-action, --color-trust, --edge-groove-light, --edge-shade, --edge-shade-strong, --mask-mid, --mask-solid, --outcome-no-figure, --outcome-yes-text, --shadow-ink, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --surface-grid, --text-brass, --text-muted, --text-primary
+   Reads: --bevel-faint, --bevel-hair, --bevel-lo, --bevel-xs, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --bg-surface, --border-brass, --border-hairline, --color-action, --edge-groove-light, --edge-shade, --edge-shade-strong, --mask-mid, --mask-solid, --outcome-no-figure, --outcome-yes-text, --shadow-ink, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --surface-grid, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/card.html, and ui-kit/organisms.html#card for the level and its reason
    Stands on: 36 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -81,19 +81,7 @@
    stripped event-detail card is untouched by either property: its own rest and hover rules stand
    at 0,3,1 and out-specify this one. */
 .card:active{transform:translateY(0);box-shadow:inset 0 1px 0 var(--bevel-xs),inset 1px 0 0 var(--bevel-hair),inset -1px 0 0 var(--edge-shade),inset 0 -1px 0 var(--edge-shade-strong),0 16px 30px -18px var(--shadow-ink-85),0 5px 12px -6px var(--shadow-ink-60)}
-/* The column behind the card is a MASK now and not a photograph, for the reason written at length
-   in trustbar.css: the drawing was stored in an alpha plane that WebP codes losslessly, and the
-   master it came from is opaque brass line art, so it goes back into the luminance plane and takes
-   its colour from the role. 142,350 to 73,962 while getting BIGGER, 640x738 against 520x600,
-   because this file has two placements and they pull in opposite directions: this one asks 168x194
-   of it and the seo plate asks 629x726 and was upscaling. docs/backlog.md 139 and 140, one edit. */
-.card::after{content:'';display:block;position:absolute;left:-52px;bottom:0;width:168px;height:78%;z-index:var(--z-under);pointer-events:none;opacity:.20}
-@supports (mask-mode:luminance){
-  .card::after{background-color:var(--color-trust);
-    mask-image:url("../assets/trust-column-full-mask.webp"),linear-gradient(to right,var(--mask-solid) 44%,transparent 94%);
-    mask-repeat:no-repeat,no-repeat;mask-position:center bottom,center;mask-size:contain,cover;
-    mask-mode:luminance,alpha;mask-composite:intersect}
-}
+.card::after{content:'';display:block;position:absolute;left:-52px;bottom:0;width:168px;height:78%;z-index:var(--z-under);pointer-events:none;opacity:.20;background:url("../assets/trust-column-full.webp") no-repeat center bottom;background-size:contain;-webkit-mask-image:linear-gradient(to right,var(--mask-solid) 44%,transparent 94%);mask-image:linear-gradient(to right,var(--mask-solid) 44%,transparent 94%)}
 .card .card-body{position:relative;z-index:var(--z-content)}
 .card::before{background-position:0 -10px;-webkit-mask-image:linear-gradient(to bottom left,var(--mask-solid) 0%,var(--mask-mid) 24%,transparent 56%);mask-image:linear-gradient(to bottom left,var(--mask-solid) 0%,var(--mask-mid) 24%,transparent 56%)}
 .card .meta{border-top:var(--hairline) solid var(--shadow-ink-45);box-shadow:inset 0 1px 0 var(--bevel-faint);margin-top:auto}

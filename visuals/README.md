@@ -9,7 +9,7 @@ in `assets/`. The look is set by root `DESIGN.md`, not reinvented here.
 that costs bytes**: their five 1254x1254 masters, 8,322,176 of them, sat in `assets/`, the folder
 the screens load, referenced by nothing, while the photographs' masters sat here as the README
 says. `masters/` holds all eleven now, and `assets/` holds only what a screen asks for:
-**9,690,253 bytes to 1,107,186.** Two things here are the master of nothing shipped and are named so
+**9,690,253 bytes to 1,339,606.** Two things here are the master of nothing shipped and are named so
 that nobody takes them for one: `trust-source-alt.png` is the unpicked second variant of the source
 drawing, kept because the note above says every subject was generated in two; and
 `trust-column.svg` with `trust-globe.svg` are a SIMPLER schematic of the same subjects, dated an
@@ -45,22 +45,23 @@ directly answers Alex's documented fear, "this looks like crypto, so it is a sca
   which covers a phone at device pixel ratio 3. The re-export took the four files from 1,158,832
   bytes to 116,050 and the composited thumbnail at ratio 3 is indistinguishable from the one it
   replaced. `docs/decisions.md`, 2026-08-12.
-- **The trust decorations are not made here, and since 2026-08-13 they are MASKS rather than
-  pictures.** They shipped as four `trust-*.webp` whose drawing lived in the ALPHA channel, 65 to
-  73 per cent of each file, and WebP codes alpha with a lossless coder, so 488,842 bytes of them
-  on 105 screens would not come out by re-encoding: `-alpha_q 10` had already been tried.
-  **The masters settled it, and they say the alpha plane should never have existed.** All five
+- **The four `trust-*.webp` decorations are not made here and are not resized, ever.** Their
+  drawing lives in the alpha channel, which is 65 to 73 per cent of each file, and three of the
+  four have no fully opaque pixel at all. One of them is a halftone, and resampling a halftone
+  destroys it at every ratio. They are re-encoded in place with
+  `cwebp -q 92 -alpha_q 10 -alpha_filter best -sharp_yuv`, which touches no dimension.
+  `docs/backlog.md` 140 is what is left of their weight.
+- **AND ON 2026-08-13 A LUMINANCE-MASK VERSION OF THEM SHIPPED AND WAS ROLLED BACK THE SAME HOUR,
+  which is worth keeping because the finding under it survives the rollback.** All five
   `masters/trust-*.png` are 1254x1254 and **100 per cent opaque**: brass line art on black, a
   LUMINANCE drawing, and the mean of a master's luminance and the mean of the alpha made from it
-  agree, 23.8 against 22.3. So the four shipped files are `*-mask.webp` now, greyscale and opaque,
-  used as `mask-image` with `mask-mode:luminance` over a flat `--color-trust`. **256,422 bytes for
-  what cost 488,842**, because a DCT codec can reach a luminance plane and the alpha coder could
-  not. Dimensions are still not a free parameter and the halftone is still not resampled: three
-  keep their exact size and their exact coverage, taken from the shipped file's own alpha channel.
-  The fourth GREW, 520x600 to 640x738, because it has two placements pulling opposite ways and the
-  seo plate was upscaling it: it is cut from `masters/trust-column-full.png` at (121, 84, 1014 x
-  1171), which is the crop the 520 was cut from, solved by matching the drawing's bounding box.
-  `docs/backlog.md` 139 and 140, closed together.
+  agree, 23.8 against 22.3. **The alpha plane was manufactured from a luminance drawing on the way
+  to the shipped file**, which is exactly why no encoder reaches it. Put back into luminance and
+  read as `mask-image` with `mask-mode:luminance` over a flat `--color-trust`, the four files come
+  to 256,422 bytes from 488,842, and the composite was measured and accepted. **It renders as a
+  brass rectangle in a browser that parses `mask-mode` and does not honour it**, and `@supports`
+  cannot tell those two apart, so it was reverted whole. The measurement stands and the mechanism
+  does not: `docs/backlog.md` 140.
 
 ## The set
 

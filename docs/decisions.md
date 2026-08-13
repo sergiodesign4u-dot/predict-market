@@ -12,6 +12,47 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-13, one hour later - The luminance mask painted a brass rectangle in the browser the product is actually read in, and `@supports` is blind to exactly that failure
+
+**Rolled back whole**, the same hour it shipped. `assets/trust-*-mask.webp` deleted, the four
+original `trust-*.webp` restored, and the mask blocks in `components/trustbar.css`, `card.css`,
+`seo-plate.css` and `hero.css` reverted with the `<img class="ht-art">` markup that went with them.
+Backlog **139 and 140 are open again**. What is NOT rolled back is the `.hf-photo` box fix, which
+shares a row with none of this and was never in question.
+
+**WHAT BROKE.** A mask image is read as ALPHA unless `mask-mode` says otherwise, and these files
+are opaque by design, so a browser that treats the mask as alpha paints the entire mask box: a flat
+brass rectangle over 46 per cent of every footer tile, over the corner of every feed card, and over
+the whole seo plate, shaped only by the fade gradient that was the second mask layer. That is
+exactly the failure the entry above says the `@supports` guard was written to prevent, and
+**the guard could not see it**, because `@supports (mask-mode: luminance)` asks whether the property
+PARSES and not whether the mode is HONOURED, and there is a browser where those two answers differ.
+
+**AND THE INSTRUMENT AGREED WITH THE BROKEN PAGE THAT NOTHING WAS WRONG.** Chromium computed
+`mask-mode: luminance, alpha` and `mask-composite: intersect` on the real elements over `http://`
+and over `file://` alike, the composite diff came back with the numbers the decision was taken on,
+and the screenshots I read were Chromium's. **A rendering engine is part of the instrument, and one
+engine is one reading.** This repository already wrote that sentence once, on 2026-08-09, when an
+external `<use>` drew 0 of 34 glyphs from disk and the fix was to stop being clever about how the
+asset is reached. It did not occur to me to apply it to a mask.
+
+**WHAT SURVIVES, AND IT IS THE WHOLE POINT OF WRITING THIS DOWN.** The measurement is not wrong and
+is now in row 140 rather than in a deleted branch: all five `visuals/masters/trust-*.png` are 100
+per cent opaque brass line art on black, the shipped alpha plane was MANUFACTURED from that
+luminance drawing, and the two agree at 23.8 against 22.3. That is why no encoder reaches those
+bytes, and it is a fact about the artwork rather than about CSS. **The row now asks for a mechanism
+rather than for a measurement**, and names the condition the next attempt has to meet: degrade to
+NOTHING rather than to a rectangle. Three candidates are written into it, and the first thing any of
+them needs is a second engine in the harness.
+
+**THE COST OF THE ROLLBACK, stated rather than smoothed over.** `assets/` is 1,339,606 bytes and not
+1,107,186; the trust strip is 488,842 bytes on 105 screens again; the seo plate upscales its
+decoration by 1.21 to 1.25 again; and the hero tiles hold the second encoding of a drawing the
+footer already loads. Five open rows rather than three. **The featured hero keeps its fix** and is
+still showing its photograph for the first time.
+
+---
+
 ## 2026-08-13 - The alpha plane held a drawing that had been made in luminance, and the featured hero had been showing empty sky since the day it landed
 
 Backlog 138, 139, 140, 117, 128, 137 and 77 closed, 146 opened. Nine open rows become three, and the two that remain belong to Stage 11, which has not run. **Proof over all three product trees plus the thirteen course documents: 1,475 readings over 295 documents at five widths, 0 page or console errors, 0 responses at 400 or above, and 0 horizontal scroll in the 1,335 readings that are product.** The five that are not are row 146.
