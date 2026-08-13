@@ -1,5 +1,5 @@
 /* components/footer.css
-   Component: footer. Classes: .app-footer, .footer-brand, .footer-col, .footer-cols, .footer-inner, .footer-legal, .footer-logo, .footer-popular, .footer-soon, .footer-tagline, .footer-top, .lang-menu, .legal-links, .popular-links, .social-row, .sub-label.
+   Component: footer. Classes: .app-footer, .footer-brand, .footer-col, .footer-cols, .footer-inner, .footer-legal, .footer-logo, .footer-popular, .footer-soon, .footer-tagline, .footer-top, .lang-menu, .legal-links, .popular-links, .sub-label.
 
    Reads: --bg-pressed, --bg-surface, --border-hairline, --edge-groove-dark, --edge-groove-light, --text-brass, --text-icon, --text-muted, --text-primary
    Stand:  ui-kit/footer.html, and ui-kit/organisms.html#footer for the level and its reason
@@ -14,7 +14,6 @@
 .footer-brand{display:flex;flex-direction:column;gap:var(--space-12)}
 .footer-logo{justify-content:center}
 .footer-tagline{margin:0;max-width:280px}
-.social-row{display:flex;gap:var(--space-8)}
 .lang-menu{width:max-content}
 .lang-menu summary .ic{width:var(--icon-16);height:var(--icon-16)}
 .lang-menu summary .ic-sm{width:var(--icon-12);height:var(--icon-12)}
@@ -77,9 +76,16 @@
    in `ui-visual/` and 7 kit specimens point at it now. The remaining four here are `Privacy`,
    `Contact`, `About` and `Responsible play`, and the grey tree keeps all five because
    `ia/docs/sitemap.md` records that Terms of Service is the first screen in this product with no
-   grey twin. **The five social marks beside them are a different thing and are not in this count**:
-   525 anchors, five per screen on 105, pointing at accounts that are external and do not exist, so
-   they will never become an internal route the way these four will. `docs/backlog.md` 144. */
+   grey twin.
+   **AND THE FIVE SOCIAL MARKS BESIDE THEM CAME OUT ON 2026-08-13**, `docs/backlog.md` 144, which is
+   why `.social-row` has left this file's Classes line and its one rule with it. They were **525
+   anchors, five per screen on 105 painted and 435 more in the grey**, pointing at accounts that are
+   external and do not exist. They were a third kind of placeholder and neither of the rules that
+   settled this footer reached them: row 27 cut a link the MAP refuses and row 28 kept a link the map
+   registers with no screen yet, and **a social account is neither**, because it can never become an
+   internal route and so cannot be waiting for one. The deciding fact is where they stood: five dead
+   links directly under the footer trust strip. They come back the day the accounts exist, and until
+   then the product does not claim them. It took `href="#"` in `ui-visual/` from 1,059 to 534. */
 .app-footer .footer-soon{color:var(--text-icon);cursor:default}
 .app-footer a:hover,.popular-links a:hover,.footer-col a:hover,.legal-links a:hover{color:var(--text-brass);text-decoration:none}
 /* Press, the axis this file was missing. Every one of these is a nav row, and the footer is

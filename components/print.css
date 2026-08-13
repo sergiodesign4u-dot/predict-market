@@ -47,10 +47,11 @@
   .app-header .utility,.app-header .cat-condensed,.app-header .hiw-btn,
   .notif-menu,.avatar-menu,.bal-toggle,.auth-btns{display:none!important}
 
-  /* 4. The trust strip is 183px of photograph per document and the language picker and the
-     social row are controls. The legal line stays: on a printed legal page it is the part a
+  /* 4. The trust strip is 183px of photograph per document and the language picker is a control.
+     `.social-row` was in this list until 2026-08-13 and left with the markup, `docs/backlog.md` 144:
+     a print rule for an element that is not there is the same fossil as any other. The legal line stays: on a printed legal page it is the part a
      reader may actually need. */
-  .footer-trust,.social-row,.lang-menu,.footer-popular{display:none!important}
+  .footer-trust,.lang-menu,.footer-popular{display:none!important}
 
   /* 5. ONE GROUND AND ONE INK, AND THE FIRST VERSION OF THIS BLOCK ENUMERATED AND WAS WRONG.
      It re-pointed `--bg-canvas`, `--bg-surface`, `--bg-control` and `--bg-chip` at white and

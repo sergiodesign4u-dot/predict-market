@@ -400,8 +400,8 @@
       <span class="tk-colh">Daylight, light</span>
 
       <span class="tk-lab"><b>.yesno</b><i>the card pair. 44px floor, links wrapping buttons</i></span>
-      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="yesno"><a href="#yesno" class="yes">YES</a><a href="#yesno" class="no">NO</a></div></div>
-      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="yesno"><a href="#yesno" class="yes">YES</a><a href="#yesno" class="no">NO</a></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="yesno"><a href="#yesno?side=yes" class="yes">YES</a><a href="#yesno?side=no" class="no">NO</a></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="yesno"><a href="#yesno?side=yes" class="yes">YES</a><a href="#yesno?side=no" class="no">NO</a></div></div>
 
       <span class="tk-lab"><b>.yesno.compact</b><i>the multi-outcome row, inside .opt-list</i></span>
       <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="opt-list"><div class="opt-row"><span class="opt-name" id="opt-donald-trump-1">Donald Trump</span><span class="opt-prob">22%</span><span class="yesno compact"><button type="button" class="yes" id="opt-donald-trump-1-yes" aria-labelledby="opt-donald-trump-1 opt-donald-trump-1-yes">YES</button><button type="button" class="no" id="opt-donald-trump-1-no" aria-labelledby="opt-donald-trump-1 opt-donald-trump-1-no">NO</button></span></div></div></div>
@@ -420,8 +420,8 @@
       <div class="tk-theme-fig tk-stack" data-theme="light"><p class="tk-gone tk-above-760">not rendered from 760px up, exactly as on a screen: the dock is the panel's pair below 760 and the panel replaces it above</p><div class="bet-dock"><button type="button" class="yesno-pick yesno-pick-bar bp-side sel yes">YES <span class="bp-pct">38%</span></button><button type="button" class="yesno-pick yesno-pick-bar bp-side no">NO <span class="bp-pct">62%</span></button></div></div>
 
       <span class="tk-lab tk-bad"><b>THE DEFECT: NO written first</b><i>identical classes, order reversed. The rule is :first-of-type and :last-of-type, so the position paints the colour and the WORD does not. Do not copy this row. 81 readings depend on the order</i></span>
-      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="yesno"><a href="#yesno" class="yes">NO</a><a href="#yesno" class="no">YES</a></div></div>
-      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="yesno"><a href="#yesno" class="yes">NO</a><a href="#yesno" class="no">YES</a></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="yesno"><a href="#yesno?side=yes" class="yes">NO</a><a href="#yesno?side=no" class="no">YES</a></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="yesno"><a href="#yesno?side=yes" class="yes">NO</a><a href="#yesno?side=no" class="no">YES</a></div></div>
     </div>
     <p class="tk-note"><b>Rule.</b> Green is YES and red is NO, everywhere, and neither colour is
     ever borrowed for anything else in this system. <b>Anti-rule.</b> The pair never appears with

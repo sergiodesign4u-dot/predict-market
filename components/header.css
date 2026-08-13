@@ -244,7 +244,13 @@
    the marking cost nothing there. The 57 that DO open it were the defect: 54px tall, five links
    painted, five reachable by Tab, and the whole band marked as not existing, which is **285 focus
    stops a screen reader was told were not there**, at 390 and at 1280 alike. Measured 0 after.
-   The band that never opens is `docs/backlog.md` 142. */
+   **THE 48 THAT COULD NOT OPEN IT HAVE NO BAND AT ALL SINCE 2026-08-13**, `docs/backlog.md` 142:
+   the markup went from 48 painted screens and 30 grey twins, 240 anchors and 150, and the 57 that
+   do open it keep it. **A route the markup promises and the runtime withholds reads as present to
+   anyone opening the file**, which is what that row was about and is why the answer was the markup
+   rather than another anchor for the observer: giving those 48 a category strip is a navigation
+   decision and belongs to 03a, while taking away one that no eye and no keyboard could ever reach
+   changes nothing a person can see. This rule now stands on 57 screens and not 105. */
 .app-header .cat-condensed{max-height:0;opacity:0;visibility:hidden;overflow:clip;transition:max-height var(--dur-slower) var(--ease-out),opacity var(--dur-slow) ease,visibility var(--dur-slower)}
 .app-header.scrolled .cat-condensed{max-height:54px;opacity:1;visibility:visible;border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 /* THE CONDENSED STRIP'S CHIPS LEFT THIS FILE ON 2026-08-06 for components/chip.css, where

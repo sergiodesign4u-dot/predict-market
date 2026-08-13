@@ -272,9 +272,18 @@
 
 /* --------------------------------------- the sixth face, and the fifth kind ---
    THE ONE THE MAP HAD IN THE WRONG ATOM, and it took a measurement rather than an
-   argument to find out. `.social-row a` is 525 placements, five marks in the
+   argument to find out. `.social-row a` WAS 525 placements, five marks in the
    footer of all 105 screens, and `ui-kit/docs/atoms.md` filed them as `navitem`
    because they GO somewhere: an <a> with an icon and no label, nav by role.
+
+   **THEY CAME OUT ON 2026-08-13 AND THIS FACE HAS 0 PLACEMENTS IN THE PRODUCT NOW**, backlog 144:
+   five anchors per screen pointing at accounts that do not exist, standing directly under the
+   footer trust strip. **The face is kept rather than deleted, and the difference from `account.css`
+   is the reason**: that one was a name with no face left and nothing to come back for, and this is a
+   face whose placements are coming back the day the accounts are made. It still stands 9 times on
+   `ui-kit/iconbtn.html` and `ui-kit/vitrine.html`, which is where a face with no current placement
+   is supposed to be visible. Every reading below was taken while the 525 stood and is left as
+   written.
 
    READ IN THE BROWSER AT 1440 AND AT 380 IT IS THIS CONTROL, exactly. Ground
    rgb(36,40,47), edge rgb(43,47,56) at 1px, corner 10px, centred flex, an 18px
@@ -325,7 +334,9 @@
    `.icon-btn-lift` is one of the four names in the touch floor's `:not()` chain in
    base.css, and until 2026-08-10 that chain was the only place it was written down,
    so the largest exclusion in the system, **525 placements**, was a name in a
-   selector and not an argument. It is the footer's row of five social marks. The
+   selector and not an argument. It was the footer's row of five social marks, and that row came out
+   on 2026-08-13: the exclusion now covers 0 placements in the product and 9 on the stand, and it
+   stays because the marks do. The
    argument: they clear WCAG 2.5.8 AA at 24x24 with four to spare, they are the
    LAST row of the page and nothing sits under them to mis-hit, and a row of five
    44px plates across a 390 phone is 220 of solid furniture under the site's own

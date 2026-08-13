@@ -665,6 +665,15 @@ desktop question; none of them changes a mobile decision.
   header. Categories are navigation (second level); the feed sort control is a
   feed control on the "Live events" heading row, not navigation. See the Event
   Feed screen description.
+  **THE CATEGORY BAND IS ON THE SCREENS THAT HAVE ONE, AND NOWHERE ELSE, decided 2026-08-13,
+  `docs/backlog.md` 142.** The sticky header repeats the band once the main one has scrolled away,
+  and it is revealed by an observer that watches the main band: **on the 48 painted screens with no
+  main band it could not open at any width**, so those screens carried five named category links
+  that no eye saw and no keyboard reached. The markup is out of those 48 and their 30 grey twins;
+  the 57 that have a main band keep it, and it opens on 57 of 57, measured. **The alternative was to
+  give the observer another anchor, which would put a category route on the wallet, the deposit,
+  the profile and the error screens**, and that is an addition to the navigation model rather than a
+  repair: it stays refused until this file asks for it.
 - **Final desktop header composition:** left: hamburger (reserved) + logo (=
   Events home). Right utility cluster: Portfolio / Cash balance swap, Favorites
   (heart), Notifications (bell + badge), avatar (dropdown). Second-level category

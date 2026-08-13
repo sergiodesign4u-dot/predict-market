@@ -141,6 +141,15 @@ Event Detail from a card:
 - Tap YES or NO on the card: opens Event Detail with the side pre-selected and,
   for multi-outcome, the option pre-selected (the informed user who wants to move
   faster).
+  **THE SIDE IS IN THE URL, decided 2026-08-13, `docs/backlog.md` 143.** Both halves of every
+  YES / NO pair sent the reader to the same address until then, 126 pairs of 126, so the card
+  offered three tab stops to one destination and, once backlog 103 had made each control say
+  which side it takes, **the accessible name promised a distinction the link did not make**. It is
+  `?side=yes` and `?side=no` now, 212 anchors in the paint, 212 in the grey and 72 on the stand.
+  The consequence is the reason it is an IA line and not a markup one: **a pre-selection that lives
+  in the URL survives a share, a bookmark and a back button**, and one that lives in a click does
+  not. It also gives the multi-outcome row somewhere to put the option the sentence above already
+  promises.
 Both land on Event Detail, so FJ2 (context before the bet) is preserved for
 everyone. The bet is still placed on Event Detail (in its inline bet panel). There
 is no Feed -> bet edge: nothing bypasses the context screen. Event Detail must
