@@ -114,6 +114,21 @@ because it is a stance rather than a principle, and it is written once, here.
   and Space Grotesk never arrive**. Measure over `file://` as well as `http://`, and in more than one
   engine. WebKit is installed: `playwright@1.62.0` is global, and `webkit` in the harness is the same
   build as the Safari on this machine.
+- **THE REVIEW PANEL IS 220 PHYSICAL PIXELS AND IT IS INSIDE THE FRAME OF EVERY FULL-PAGE
+  COMPARISON TAKEN HERE.** A whole-page sweep over 163 documents on two engines reported a worst
+  channel delta of 198 spread thinly over dozens of product screens, which reads exactly like a
+  regression. Every one of those pixels was at x below 220: the panel's own text, one device pixel
+  lower, because it scrolls its active row into view and the scroll now lands on final font metrics.
+  Re-diffed from x=220 rightwards the product was **0.000 per cent differing on every screen**.
+  **Crop the chrome out before believing a page-level number**, the same way a media query that
+  reads the window has to be read against a layout that gets the container.
+- **`scrollWidth > clientWidth` IS NOT A PAGE THAT SCROLLS SIDEWAYS**, and that predicate is behind
+  every horizontal-scroll number this repository has published. Four course documents were filed as
+  scrolling on a phone; set `document.scrollingElement.scrollLeft = 9999` on any of them, before the
+  fix or after, and it reads back **0**. Content standing past the right edge with no way to reach
+  it is a worse defect and a different one, and the fix it asks for is different too: the culprits
+  were four pieces of `white-space:nowrap` on prose and one flex row, not the tables the row named,
+  because **every element that sweep called a culprit was already inside a scrolling container**.
 - **A reading that does not move when the input moves is not a reading of the page**, and it is the
   twin of the rule above about a number that moves when nothing moved. A two-layer mask measured
   against the shipped tree gave 13 to 55 per cent of pixels differing at a mean under 6 of 255 on

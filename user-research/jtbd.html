@@ -333,7 +333,10 @@
   .evidence-row:last-child { border-bottom: none; padding-bottom: 0; }
 
   .evidence-text { color: #bbb; }
-  .evidence-source { font-size: 11px; color: var(--muted); white-space: nowrap; font-family: var(--mono); }
+  /* Was white-space:nowrap, which made a 264px source slug unbreakable and put this document
+     into horizontal scroll at 320, 360 AND 390. A filename is exactly the string that has to be
+     allowed to break, so overflow-wrap:anywhere rather than a wrapper. docs/backlog.md 146. */
+  .evidence-source { font-size: 11px; color: var(--muted); overflow-wrap: anywhere; font-family: var(--mono); }
 
   /* Status badges */
   .conf-high {

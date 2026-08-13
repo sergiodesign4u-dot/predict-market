@@ -120,16 +120,22 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
 - **A font is served from this repo.** No page may call a font host: the request carries a visitor's
   IP to a third party before the consent banner has asked anything. Faces are woff2 in
   `assets/fonts/`, declared once in `fonts.css`, imported first by `index.css`.
-- **AND THE TWO FACES A FIRST PAINT NEEDS ARE PRELOADED IN THE DOCUMENT, WHICH IS THE ONE THING
-  ABOUT THIS SYSTEM THAT CANNOT LIVE IN THIS FOLDER.** `fonts.css` is the first of 51 `@import`s,
-  and that is still three levels down: HTML, then `index.css`, then `fonts.css`, then the woff2,
-  and no font is even requested until layout finds a glyph that wants it. A `<link rel="preload">`
-  has to be in the head to be early, so all **163** documents carry two of them, with `crossorigin`,
-  because a font is fetched in CORS mode even from its own origin and without it the preload is
-  discarded and the file fetched twice. It took every screen in the product from a worst layout
-  shift of 0.0438 to **exactly 0.0000**, at 390 and at 1280, at 1.6 Mbps and at 400 Kbps.
-  **Re-cutting a face is therefore two edits and the second one is in 163 files**, which is
-  `../docs/backlog.md` 141. And do not reach for `size-adjust`: it was built here with measured
+- **AND THE FOUR FACES THE PRODUCT USES ARE INSIDE `fonts.css` AS `data:` URIs SINCE 2026-08-14, SO
+  NO DOCUMENT SAYS ANYTHING ABOUT A FONT ANY MORE.** It used to be a `<link rel="preload">` in the
+  head of all **163** documents, two each, 326 lines, carrying `crossorigin` because a font is
+  fetched in CORS mode even from its own origin. **That last clause is the whole story**: `file://`
+  gives every file its own opaque origin, so from a disk page the CORS fetch has nothing to match,
+  Chromium refuses the preload and loads the face through `@font-face` anyway, and **WebKit refuses
+  both and renders the entire product in a fallback**. Measured by probe string at 40px from disk:
+  `'DM Sans',serif` came back at **369px, the serif fallback to the pixel**, against 410 in
+  Chromium, and 410 in both after the change. Inlining does what the preload did and does it
+  earlier, because there is no fetch to start: CLS re-measured at 400 Kbps over a quarter of the
+  painted tree is **0.0000 mean before and after, worst 0.0000 against 0.0001**. It costs
+  **+38,605 bytes on the mean screen**, CSS 877,387 to 984,717 against fonts 68,725 to 0, and the
+  53 documents that never use the mono now carry it. **The 163-document dependent of
+  `../docs/backlog.md` 141 is not managed now, it is deleted.** Only the four `-latin` faces are
+  inlined: the four `-latin-ext` files are requested **0 times** by any of the 163 documents,
+  measured, and stay as files. And do not reach for `size-adjust`: it was built here with measured
   metrics and made the tree four times worse, with the reason written into `fonts.css`.
 
 ## The traps this folder has already paid for

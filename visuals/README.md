@@ -10,7 +10,8 @@ that costs bytes**: their five 1254x1254 masters, 8,322,176 of them, sat in `ass
 the screens load, referenced by nothing, while the photographs' masters sat here as the README
 says. `masters/` holds all eleven now, and `assets/` holds only what a screen asks for:
 **9,690,253 bytes to 1,339,606**, and to **1,193,741 in 25 tracked files** on 2026-08-13 when the
-trust drawings became masks and two more of them stopped being asked for. Two things here are the master of nothing shipped and are named so
+trust drawings became masks, and to **985,277 in 23** on 2026-08-14 when the last placement of them
+stopped being a picture. Two things here are the master of nothing shipped and are named so
 that nobody takes them for one: `trust-source-alt.png` is the unpicked second variant of the source
 drawing, kept because the note above says every subject was generated in two; and
 `trust-column.svg` with `trust-globe.svg` are a SIMPLER schematic of the same subjects, dated an
@@ -67,10 +68,10 @@ directly answers Alex's documented fear, "this looks like crypto, so it is a sca
   CORS-enabled fetch and a background image is not**, so from a page opened off the disk the `.webp`
   was blocked in both engines while the same file loaded as a background beside it. A `data:` URI is
   not a fetch. `docs/decisions.md` and `docs/backlog.md` 140.
-- **What is left in `assets/` of these four, and why.** `trust-column.webp` and `trust-globe.webp`
-  stay, because `.ht-art` on `event-feed.html` and `ui-kit/feed.html` draws them as `<img>` at
-  `opacity:.6` and that placement was deliberately not converted: 208,464 bytes on one product
-  screen where they used to stand on 105. `docs/backlog.md` 148. `trust-source.webp` and
+- **Nothing is left in `assets/` of these four, since 2026-08-14.** The fourth placement, `.ht-art`
+  on `event-feed.html` and `ui-kit/feed.html`, was six `<img>` elements and is `.hero-trust::after`
+  now, so `trust-column.webp` and `trust-globe.webp` joined the other two here. `assets/` is
+  **985,277 bytes in 23 tracked files**. `docs/backlog.md` 148. `trust-source.webp` and
   `trust-column-full.webp` are asked for by nothing and sit here as `*-shipped.webp`, kept rather
   than deleted because **the masks were derived from their alpha planes** and the crop that made
   those frames cannot be recovered from the square masters: searched by correlation across every

@@ -39,14 +39,6 @@ for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
 push();});})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Concept - Event Feed (loading state)</title>
-  <!-- The two faces a first paint needs, discovered here rather than three levels down.
-       The chain is HTML -> index.css -> @import fonts.css -> woff2, and a font is not even
-       requested until layout finds a glyph that wants it. components/fonts.css owns the
-       faces; these two lines are the only thing about them that has to stand in a document.
-       crossorigin is not optional: a font is fetched in CORS mode even from its own origin,
-       and without it the preload is discarded and fetched a second time. docs/backlog.md 100. -->
-  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/dm-sans-var-latin.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/space-grotesk-var-latin.woff2" crossorigin>
   <link rel="stylesheet" href="../components/index.css">
   <script src="../assets/icons.js"></script>
 </head>

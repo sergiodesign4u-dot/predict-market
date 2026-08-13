@@ -4,14 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Foundations: typography</title>
-<!-- The two faces a first paint needs, discovered here rather than three levels down.
-     The chain is HTML -> index.css -> @import fonts.css -> woff2, and a font is not even
-     requested until layout finds a glyph that wants it. components/fonts.css owns the
-     faces; these two lines are the only thing about them that has to stand in a document.
-     crossorigin is not optional: a font is fetched in CORS mode even from its own origin,
-     and without it the preload is discarded and fetched a second time. docs/backlog.md 100. -->
-<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/dm-sans-var-latin.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/space-grotesk-var-latin.woff2" crossorigin>
 <link rel="stylesheet" href="../components/index.css">
 <link rel="stylesheet" href="_page.css">
 <script src="_nav.js"></script>
@@ -85,6 +77,19 @@
     transfer of personal data. It is also three round trips on the critical path, two of them DNS
     and TLS to a host that serves nothing else. Latin and latin-ext only,
     <code>font-display:swap</code> on every face.</p>
+    <p class="tk-note"><b>And since 2026-08-14 the four faces the product uses are not fetched at
+    all: they are <code>data:</code> URIs inside <code>fonts.css</code>.</b> A font is fetched in
+    CORS mode even from its own origin, and <code>file://</code> gives every file its own opaque
+    origin, so from a page opened off the disk there was nothing for the fetch to match. Chromium
+    refused the preload, said so in the console, and loaded the face through
+    <code>@font-face</code> anyway; <b>WebKit refused both and drew the whole product in a fallback
+    face</b>. Measured with a probe string at 40px from disk: <code>'DM Sans',serif</code> came back
+    at <b>369px, the serif fallback to the pixel</b>, against 410 in Chromium, and 410 in both
+    after. <b>Only four of the eight files were ever requested by anything</b> (163, 163, 109 and
+    104 times across the 163 documents, and <b>0</b> for each of the four latin-ext cuts), which is
+    what made inlining small enough to take: +105,980 bytes of base64 against 68,725 of font
+    requests, and the 326 <code>&lt;link rel="preload"&gt;</code> lines deleted. Layout shift
+    re-measured at 400 Kbps over 27 screens: <b>0.0000 mean before and after</b>.</p>
     <p class="tk-note"><b>18 files, 373 KB, and 131 KB of unique typeface.</b> Checksums say why:</p>
     <dl class="tk-type">
       <dt>DM Sans</dt>

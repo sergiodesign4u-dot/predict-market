@@ -121,7 +121,11 @@
 
   /* LEGEND */
   .legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px; font-size: 12px; color: var(--muted); }
-  .legend span { white-space: nowrap; }
+  /* nowrap is right for 'EF = Event Feed' and wrong for the one legend entry that carries a
+     parenthetical, 359px of it, which is what put this document into horizontal scroll at 320.
+     The keys still hold together because the break is only offered where there is a space to
+     take it, and the two-word entries have none inside them. docs/backlog.md 146. */
+  .legend span { white-space: normal; }
 
   /* INLINE CODE */
   code { font-family: var(--mono); font-size: 12px; background: rgba(255,255,255,.06); padding: 1px 5px; border-radius: 3px; color: #bbb; }

@@ -42,7 +42,12 @@
   }
 
   /* --- the app-bar + framed content region (header wraps the content) --- */
-  .appbar{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--panel);
+  /* flex-wrap:wrap is the whole fix for this document's horizontal scroll at 320 and 360. The
+     demo header is drawn at document width and its seven items need 370px, so below that it
+     pushed the page rather than the row. Wrapping is what the shipped header does too; the
+     spacer keeps the right-hand group right-aligned on whichever line it lands on.
+     docs/backlog.md 146. */
+  .appbar{display:flex;flex-wrap:wrap;align-items:center;gap:14px;padding:14px 18px;background:var(--panel);
     background-image:var(--grain);background-blend-mode:overlay;
     border:1px solid var(--brass-line);border-bottom:0;border-radius:16px 16px 0 0;
     box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}

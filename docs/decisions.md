@@ -12,6 +12,104 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-14 - The same origin rule had a third victim and it was the type, and the sweep that opened the horizontal-scroll row could not tell a page that scrolls from a page that cannot
+
+Four open rows worked in one pass, and three of the four turned out to be about a premise rather than
+about the thing in the title.
+
+**147, the type, is the third time `file://` has cost this repository something, and it is the
+largest.** `assets/icons.js` had to be a script because an external `<use>` is a cross-document
+reference and a disk page drew 0 of 34 glyphs. The trust drawings had to become `data:` URIs because
+a mask image is a CORS-enabled fetch. **A font is a CORS-mode fetch too, even from its own origin**,
+which `components/fonts.css` has said out loud since the day the preload was written, as the reason
+`crossorigin` was not optional on it. Nobody followed the sentence through. Measured on 2026-08-14 by
+rendering a probe string at 40px from disk rather than by reading the file: in WebKit
+`'DM Sans',serif` came back at **369px, which is the serif fallback to the pixel**, and so did
+`'Space Grotesk',serif`, against 410 and 435 in Chromium. Only IBM Plex Mono arrived, through the one
+`local()` in the file. **So the product read from disk in Safari was set in a fallback face, whole**,
+and every reading anybody has ever taken here of type, measure, line length, wrapping or layout shift
+on a disk page in that engine was taken of something else.
+
+**Only four of the eight faces were ever fetched by anything, which is what made the fix small
+enough to take.** All 163 documents were rendered and their font requests counted: `dm-sans-var-latin`
+163, `space-grotesk-var-latin` 163, `ibm-plex-mono-600-latin` 109, `ibm-plex-mono-500-latin` 104, and
+the four `-latin-ext` files **0 times each**, because the product contains no extended-latin
+character. The four that are used are `data:` URIs in `fonts.css` now, 79,480 bytes raw and 105,980
+as base64; the four that are not stay as file references, and on the day a European name appears they
+will work over http and fail from disk in WebKit, which is written into the file rather than left to
+be discovered.
+
+**And the 326 `<link rel="preload">` lines went with them, along with the comment block above each
+pair, so no document in this repository now says anything about a font.** A preload exists to start a
+fetch early; a `data:` URI has no fetch to start and the face is ready the instant the stylesheet
+parses. The 0.0000 layout shift those lines bought was re-measured at 400 Kbps over a quarter of the
+painted tree, 27 screens, before and after: **mean 0.0000 both ways, worst 0.0000 against 0.0001, 0
+screens above 0.0005.** `docs/backlog.md` 141 named the 163 documents as a dependent that had to be
+managed by re-measurement; the dependent is deleted instead.
+
+**The price is named and it is real: +38,605 bytes on the mean screen.** Every response body on all
+106 painted documents, mean CSS 877,387 to 984,717 against mean fonts 68,725 to 0. The 53 documents
+that never use the mono carry it now anyway, and that is the genuinely worse half of the trade. What
+it buys is the type system working in both engines over both protocols, and a whole class of edit
+that no longer touches 163 files.
+
+**148, the last placement of the trust drawings, is a mask now too.** `.ht-art` was six `<img>`
+elements across two documents, the fourth and most visible placement at `opacity:.6`, and it is
+`.hero-trust::after` taking `--trust-art-column` and `--trust-art-globe`. **Which drawing is a
+decoration's question and not a screen's**, so it is keyed on `nth-of-type` the way the footer strip
+keys its three. That is the OPPOSITE call `card.css` makes about the event photograph, and the
+difference is the test: a photograph names the event and somebody editing the feed chooses it, while
+a column and a globe behind a trust claim are the component saying the same thing twice and nobody
+chooses between them. Measured on both engines at 390 and 1280 with a control of 0.00: 13 to 30 per
+cent of the hero region's pixels differ at a mean of 1.58 to 2.59 of 255, the largest of the four
+placements because it is the least faded, and the drawing reads slightly cleaner rather than worse.
+`assets/` is **985,277 bytes in 23 tracked files**, from 9,690,253 two days ago.
+
+**146 was wrong about the mechanism in two ways at once, and the second one matters more than the
+row.** It said four course documents scroll horizontally and blamed tables, with the fix named as
+`overflow-x:auto` per table. Every element the opening sweep called a culprit was already inside a
+scrolling container. The real overflowers are **four pieces of `white-space:nowrap` on prose and one
+flex row**: `.funnel-step-metric` and `.gap-item .source` in `research/research.html`,
+`.evidence-source` in `user-research/jtbd.html` at 264px of unbreakable filename, `.legend span` in
+`ia/sitemap.html` at 359px, and `concept/concept.html`'s seven-item `.appbar` needing 370. **A
+filename is exactly the string that has to be allowed to break.** After: `scrollWidth` equals
+`clientWidth` exactly on jtbd at 320, 360 and 390, on sitemap and concept at 320 and 360.
+
+**And none of those documents ever scrolled.** Set `document.scrollingElement.scrollLeft = 9999` on
+any of the four, before the fix or after it, and it reads back **0**. The content stood past the right
+edge with no way to reach it, which is a worse thing than scrolling and a different one.
+**`scrollWidth > clientWidth` is not a page that scrolls sideways**, and it is the predicate behind
+every horizontal-scroll number this repository has published, including the 1,335 readings that
+proved the product trees clean. What is left is 15px on `research/research.html` at 320 alone,
+bisected leaf by leaf to no single element, the largest contributor a `<p>` of ordinary wrapping prose
+worth 8px.
+
+**The sweep after all of it says the product did not move, and getting to that sentence needed the
+review panel taken out of the frame.** 163 documents, both engines, 390 and 1280, against the
+pre-change tree, control 0.00 and 0 size mismatches outside `ui-kit/typography.html`, whose prose
+this change rewrote. Read whole, 127 of 326 readings differ in Chromium and 100 in WebKit, with a
+worst channel delta of **198** spread thinly over dozens of product screens, which reads like a
+regression and is not one. **Every one of those pixels is at x below 220**, inside the review
+sidebar, and it is the panel's text sitting one device pixel lower: the panel scrolls its active row
+into view, and with the faces now ready at first layout that scroll lands on final metrics instead
+of on metrics that were still arriving. Re-diffed from x=220 rightwards, the product is **0.000 per
+cent differing, worst 0, on every screen in both engines** except `event-feed.html`, which is the one
+screen `.ht-art` stands on and moves 0.51 to 0.56 per cent at a worst of 46 in Chromium and 89 in
+WebKit. **The review chrome is 220 physical pixels and it is inside the frame of every full-page
+comparison taken here**, so a whole-page sweep reports the instrument's own furniture as a finding.
+
+**139 is now the smallest it will get without a design decision.** The byte objection that blocked a
+bigger export is gone, because the drawing is a q20 mask and a bigger one costs almost nothing. What
+blocks it is that **the shipped 520x600 frame is not in the 1254x1254 master.** Searched three ways:
+horizontal-only at the shipped aspect gave a flat curve, best 30.02 of 255 against a worst of 32.23;
+a full two-dimensional sweep over offset and scale found signal but no match, best 18.66; and a local
+refinement fitting the best gamma and gain at every candidate, which is the mapping that would explain
+an alpha plane made from a luminance one, only reached **15.94 at gamma 1.2** where a true alignment
+would be single digits. These four shipped frames are not a crop of these masters. **There is a
+cheaper answer that touches no artwork**: the demand comes from `mask-size:auto 122%` tying the
+drawing to a plate that grows with the page, and `.card::after` asks 168x194 of the same drawing and
+needs nothing. The plate is asking for too much; the drawing is not too small.
+
 ## 2026-08-13, last - A mask image is fetched with CORS and a background image is not, so the thing that broke the trust strip was reading the page from disk
 
 **The rollback four hours ago named the wrong cause, and the entry that recorded it is the one this

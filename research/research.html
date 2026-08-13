@@ -280,12 +280,16 @@
     color: #aaa;
   }
 
+  /* white-space:nowrap stood here and it is what put this document into horizontal scroll at
+     320: the caption under the figure is prose, 'active on day 7' is 99px of it, and the figure
+     is already on its own line because .val is display:block. Nothing needed the caption to be
+     unbreakable. docs/backlog.md 146. */
   .funnel-step-metric {
     font-family: var(--mono);
     font-size: 11px;
     color: var(--muted);
-    white-space: nowrap;
     text-align: right;
+    overflow-wrap: anywhere;
   }
   .funnel-step-metric .val {
     display: block;
@@ -483,7 +487,11 @@
     font-size: 13px;
     color: #bbb;
   }
-  .gap-item .source { font-size: 11px; color: var(--muted); white-space: nowrap; }
+  /* nowrap on a citation line, 216px of it, and the second of the two things that put this
+     document into horizontal scroll at 320. Same species as .funnel-step-metric above and as
+     .evidence-source in user-research/jtbd.html: a filename is the one string that must be
+     allowed to break. docs/backlog.md 146. */
+  .gap-item .source { font-size: 11px; color: var(--muted); overflow-wrap: anywhere; }
 
   /* ── OPEN QUESTIONS ─────────────────────────────────── */
   .questions {
