@@ -14,7 +14,15 @@
    kinds measure exactly that and they came here from two files.
 
      the bottom nav slot          420 placements, components/bottomnav.css
-     a row of the account menu    365 placements, components/header.css
+     a row of the account menu    438 placements, components/header.css
+
+   The menu figure was 365 until 2026-08-13, which is 73 signed-in screens times
+   five rows. It is 73 times SIX now: Favorites joined the account menu, because
+   it was the one top-level destination of four with no route on a phone but the
+   bottom bar, and the bottom bar sits after the footer in the document, so it
+   stood between 18 and 96 tab stops deep depending on how long the page was.
+   Recounted in a browser rather than multiplied: 438 over 73 screens, 6.0 each.
+   docs/backlog.md 130.
 
    MEASURED AT REST, AT 1440 AND AT 380, BOTH THEMES: transparent ground, 0px
    border, 0px corner, full width, and a press on --bg-pressed. Every one of

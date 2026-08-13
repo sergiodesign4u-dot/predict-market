@@ -42,6 +42,13 @@ show it has nothing left to draw. Its row below carries the account.
 
 Uses are elements carrying one of the component's own classes across the 41 screens.
 
+**`navitem`'s figure below was taken before 2026-08-13 and is now short by one row per account
+menu.** Favorites joined that menu on that date (`docs/backlog.md` 130), taking it from five rows
+to six, and over all of `ui-visual/` the count went from 365 to 438, recounted in a browser. It is
+not corrected here because the 41-screen sample this column is measured over is not written down
+anywhere, and **a number guessed to look current is worse than a number dated**. Whoever
+re-measures this table should re-derive the sample first.
+
 ### Level 1, atoms
 
 | Component | Uses | Declaration |
