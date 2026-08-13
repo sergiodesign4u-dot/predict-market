@@ -105,7 +105,7 @@ because it is a stance rather than a principle, and it is written once, here.
   the computed result, in a browser, at both widths and in both themes.
 - **"Both widths" is not a measurement of a responsive system: measure AT the rungs and one pixel
   either side of each.** A defect can live entirely between the two widths everybody reads. The
-  system breaks at 640, 760 and 900 and the review chrome docked at 860, and every audit here read
+  system breaks at 40rem, 47.5rem and 56.25rem and the review chrome docked at 860, and every audit here read
   390 and 1280, so for a day **73 of 160 pages scrolled horizontally at exactly one width** and every
   sweep reported zero. The same rung took the browse content column from 530 to 297 and `.ed-main`
   from 430 to 211 between 859 and 860. **A media query reads the WINDOW and a layout gets the
@@ -115,7 +115,14 @@ because it is a stance rather than a principle, and it is written once, here.
   `min-width:640px` in five, matches on both sides at once, so 640 rendered a page that existed at no
   other width, and the desk header it turned on asks for 694px, which put **73 of the 106 documents
   in `ui-visual/` into horizontal scroll from 641 to 652**. A rung is one pixel and it belongs to the
-  wide side. The ladder is named in `components/tokens.css`, page frame. **106 and 105 both name a
+  wide side. The ladder is named in `components/tokens.css`, page frame, **and it is in `rem` since
+  2026-08-13**: 40rem, 47.5rem and 56.25rem are 640, 760 and 900 at the default browser font and MOVE
+  WITH IT, so a reader who set a 24px default reaches the desk at 960 and keeps one column until
+  then. **A length in a media query resolves against the INITIAL font size and ignores every
+  declaration on the root element**, so a sweep that writes `html{font-size:24px}` reports the rungs
+  not moving and is measuring nothing; only the browser's own default setting, CDP
+  `Page.setFontSizes`, changes both the type and the rung. The 1140 harness stays in px, because a
+  docked panel is 220 physical pixels whatever the reader's font is. **106 and 105 both name a
   true thing and every number in this repository has to say which**: `ui-visual/` holds 106
   documents, 105 of them screens, and `overview.html` is the index of the tree rather than a screen
   in it.

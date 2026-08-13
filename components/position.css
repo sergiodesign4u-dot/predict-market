@@ -66,11 +66,37 @@
    where the collapse onto the ladder was free: it takes a width out of the system and
    the wrap band with it. The other three stay, each with its own reading beside it.
    docs/backlog.md 72, closed 2026-08-10.
-   rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
-@media(min-width:640px){
+   rung: DESK 40rem, 640px at the default root, the one divide. The ladder is in tokens.css, page frame. */
+@media(min-width:40rem){
   .pos-record .pos-figures{grid-template-columns:repeat(4,1fr)}
 }
-.pos[aria-label="Portfolio summary"] .pos-figures{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-12)}
+/* THE SUMMARY WRAPS INSTEAD OF DECLARING THREE COLUMNS, and the reason is the type and not the
+   width. Backlog 136. It was `display:grid;grid-template-columns:repeat(3,1fr)`, and at 320px with
+   a 24px root `my-profile.html` gained **23px of horizontal scroll**, one screen of 105, at the
+   narrowest width and the largest root and nowhere else. `1fr` is `minmax(auto,1fr)`, so a track
+   cannot shrink below its content: the figure's min-content is **3.875em at every root** (62px at
+   16, 77.5 at 20, 93 at 24, measured), so three of them plus two 12px gaps need 303px inside a
+   container that is 224. **A declared column count is a promise the content cannot keep at a size
+   the reader chooses**, which is the same defect backlog 116 deleted from 104 grey files, arriving
+   through the one door that pass did not open.
+   `auto-fit` was the obvious replacement and is wrong here: it counts columns from a floor and not
+   from content, so a 62px floor in an 888px container gives TWELVE. `minmax(0,1fr)` keeps three and
+   pushes the overflow into the figure instead of the page. **What the summary actually wants is as
+   many of its three figures per row as fit and never more than three, and with exactly three items
+   that is what a wrapping flex line already does**, which is mechanism one on this system's ladder
+   rather than mechanism three. `flex:1 1 0` makes them equal thirds when all three fit, exactly as
+   `1fr` did; `min-width:min-content` is what makes the line WRAP rather than overflow, because a
+   flex line collects items at their hypothetical size and moves the one that does not fit.
+   THE COST IS ZERO AT THE DEFAULT AND THAT WAS NOT THE PREDICTION. Measured at 16 / 20 / 24px roots
+   and six widths: **at a 16px root all eighteen figure widths are identical to the grid's, 320
+   included**, where the tracks read 65.4 / 69.3 / 65.4 before and after. The flex line reproduces
+   `minmax(auto,1fr)` exactly, because free space distributed from a zero basis over three items with
+   different minimums IS what that grid function computes. At 20 and 24 the row becomes two figures
+   and one below 640, and the 23px of horizontal scroll is 0. **The row said every candidate fix
+   moves the default rendering, and it was the reason it stayed open; the one that does not is the
+   mechanism the ladder puts first.** */
+.pos[aria-label="Portfolio summary"] .pos-figures{display:flex;flex-wrap:wrap;gap:var(--space-12)}
+.pos[aria-label="Portfolio summary"] .pos-fig{flex:1 1 0;min-width:min-content}
 .ed-panel-activity .pos-note{margin:0 0 var(--space-8)}
 .cat-main>.pos .pos-figures,.ptab-panel>.pos .pos-figures{font-size:var(--text-11)}
 a:has(>.pos){text-decoration:none;color:inherit;display:block}

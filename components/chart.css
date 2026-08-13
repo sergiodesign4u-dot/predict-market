@@ -44,8 +44,8 @@
 .ed-chart-foot{display:flex;justify-content:flex-end;margin-top:var(--space-12)}
 .chart-svg{height:160px;display:block;width:100%}
 div.chart-svg{display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:var(--text-11)}
-/* rung: DETAIL 760, the detail's second column. The ladder is in tokens.css, page frame. */
-@media(min-width:760px){
+/* rung: DETAIL 47.5rem, 760px at the default root, the detail's second column. The ladder is in tokens.css, page frame. */
+@media(min-width:47.5rem){
   .chart-svg{height:280px}
 }
 .chart-svg .ml-line{filter:none;fill:none;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;transition:opacity var(--dur-base) ease,stroke-width var(--dur-base) ease}

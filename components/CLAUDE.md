@@ -85,7 +85,14 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   almost never the screen discovering something, it is a component's rule written in the wrong file.
   The table and its method are in `../ui-kit/docs/inventory.md`, behaviour on width.
 - **A component may not invent a width.** There are three rungs, named by what arrives at them:
-  **640** the desk, **760** the detail's second column, **900** the rail beside the content. If a
+  **40rem** the desk, **47.5rem** the detail's second column, **56.25rem** the rail beside the
+  content, which are 640, 760 and 900 at the default browser font and MOVE WITH IT: at a 24px
+  default the desk arrives at 960 and the rail at 1350, measured. **They went to `rem` on
+  2026-08-13**, `docs/backlog.md` 135, once the type had moved and the old argument for px had
+  expired with it. The narrow side of a rung is written exactly, `39.99875rem` and `47.49875rem`,
+  and never rounded, because the pair rule is what stops both sides matching at once. **The 1140
+  harness stays in px**, and so does the review toggle: the review sidebar is 220 physical pixels of
+  chrome whatever the reader's font is. If a
   file needs a break that is not one of them it is a one-off and says so in a comment beside itself,
   or it is a fourth rung and gets named in the ladder in `tokens.css` FIRST. A breakpoint cannot be a
   token: a media query condition does not read a custom property and there is no build step here, so

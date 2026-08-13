@@ -431,9 +431,9 @@ dialog.app-dialog:modal{position:fixed}
 dialog.app-dialog:modal:not(.bet-sheet){display:flex;flex-direction:column}
 dialog.app-dialog:modal .sheet-body{overflow:auto;min-height:0}
 
-/* rung: DESK 640, the one divide, and this is BELOW it. 639.98 rather than 640,
+/* rung: DESK 40rem, 640px at the default root, the one divide, and this is BELOW it. 39.99875rem rather than 40rem, which is 639.98 against 640 at the default root,
    because the rung belongs to the desk: tokens.css, page frame. */
-@media (max-width:639.98px){
+@media (max-width:39.99875rem){
   dialog.app-dialog:modal{width:100%;max-width:none;margin:auto auto 0;
     max-height:88dvh;
     border-radius:var(--radius-16) var(--radius-16) 0 0;border-bottom-width:0;

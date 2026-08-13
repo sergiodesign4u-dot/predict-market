@@ -27,15 +27,15 @@
 
 .cat-layout{display:flex;flex-direction:column;gap:var(--space-12)}
 .cat-main{flex:1;min-width:0}
-/* rung: RAIL 900, a rail beside the content. The ladder is in tokens.css, page frame. */
-@media(min-width:900px){
+/* rung: RAIL 56.25rem, 900px at the default root, a rail beside the content. The ladder is in tokens.css, page frame. */
+@media(min-width:56.25rem){
   .cat-layout{flex-direction:row;align-items:flex-start}
 }
 /* The gap belongs to the wide arrangement, and it is written apart from the
    direction above because at 900px the rail arrives and the distance between
    two columns is not the distance between two stacked blocks. */
-/* rung: RAIL 900, a rail beside the content. The ladder is in tokens.css, page frame. */
-@media(min-width:900px){
+/* rung: RAIL 56.25rem, 900px at the default root, a rail beside the content. The ladder is in tokens.css, page frame. */
+@media(min-width:56.25rem){
   .cat-layout{gap:var(--space-20)}
 }
 /* WITH NO RAIL THERE IS NOTHING TO ALIGN TO, so the column takes the full height

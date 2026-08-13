@@ -633,11 +633,11 @@
 
      A RUNG IS ONE PIXEL AND IT BELONGS TO THE WIDE SIDE. Until 2026-08-10 this
      ladder was written as pairs - `max-width:640px` in eight files and
-     `min-width:640px` in five - and BOTH of those match at exactly 640, so the
+     `min-width:40rem` in five - and BOTH of those match at exactly 640, so the
      rung rendered a page that exists at no other width. Measured on ten screens:
      nine showed the desk utility, the balance figure and its icon button, on a
      14px mobile gutter under a mobile header with no bottom nav, matching neither
-     639 nor 641. Below a rung is `max-width:639.98px` now, and the .98 is not
+     639 nor 641. Below a rung is `max-width:39.99875rem` now, and the .98 is not
      ceremony: a zoomed window reports a fractional width, 639.4 has to be mobile,
      and an integer bound would leave a gap where NEITHER branch applies, which is
      worse than the overlap it was fixing. The same pair stood at 760 and is
@@ -662,25 +662,34 @@
      stand in, out of 52 components, 104 wireframes, 58 ui-kit and 106 ui-visual:
 
        width      components  wireframes   ui-kit   ui-visual   what it is
-       560px         2 [2]       9 [9]      0 [0]     0 [0]     one-off, named below
-       620px         1 [1]       1 [1]      0 [0]     0 [0]     one-off, named below
-       639.98px      8 [8]      57 [57]     4 [1]     0 [0]     DESK, narrow side
-       640px         6 [6]     401 [104]    1 [1]     0 [0]     DESK
-       759.98px      4 [4]     183 [87]     5 [1]     0 [0]     DETAIL, narrow side
-       760px         3 [3]     184 [92]     1 [1]     0 [0]     DETAIL
-       900px         6 [5]      94 [93]     0 [0]     0 [0]     RAIL
-       980px         1 [1]       1 [1]      0 [0]     0 [0]     one-off, named below
+       560px         2 [2]       9 [9]      0 [0]     0 [0]     one-off, named below   [35rem]
+       620px         1 [1]       1 [1]      0 [0]     0 [0]     one-off, named below   [38.75rem]
+       639.98px      8 [8]      57 [57]     4 [1]     0 [0]     DESK, narrow side   [39.99875rem]
+       640px         6 [6]     401 [104]    1 [1]     0 [0]     DESK   [40rem]
+       759.98px      4 [4]     183 [87]     5 [1]     0 [0]     DETAIL, narrow side   [47.49875rem]
+       760px         3 [3]     184 [92]     1 [1]     0 [0]     DETAIL   [47.5rem]
+       900px         6 [5]      94 [93]     0 [0]     0 [0]     RAIL   [56.25rem]
+       980px         1 [1]       1 [1]      0 [0]     0 [0]     one-off, named below   [61.25rem]
        1140px        2 [2]       0 [0]      0 [0]     0 [0]     HARNESS, not the product
-       1440px        0 [0]     104 [104]    0 [0]     0 [0]     *** ON NO LADDER ***
+       1170px        0 [0]     104 [104]    0 [0]     0 [0]     GREY HARNESS, and it derives
 
      TEN DISTINCT WIDTHS IN THE PRODUCT, and the system holds nine of them, which
      is really five: three rungs each written twice for its two sides, plus the
      harness, plus three named one-offs. `ui-kit/_page.css` invents nothing and
      the 106 painted screens carry NO width query at all, which is the rule in
      ../CLAUDE.md rendered as a column of zeroes.
-     ONE WIDTH IS ON NO LADDER, and it is 1440 in all 104 grey files: the grey
-     harness, the twin of 1140 standing at a different number. It is the
-     responsive stage's own backlog.
+     IT WAS 1440 UNTIL 2026-08-13 AND IT IS 1170, WHICH IS THE SAME ARITHMETIC ITS
+     TWIN ALREADY USED. Backlog 119. 1140 is `900 + 220 + 20`: the RAIL rung, the
+     review sidebar and its inset, which is why it is a harness and not an
+     invention. The grey screen-tree rail measures 250px in the same file, so the
+     same derivation gives 900 + 250 + 20 = 1170, and 1440 was 270px of window
+     that no rung, no rail and no gutter asked for. **The row was the arithmetic
+     and not the number**: a harness width that does not derive is a preference
+     wearing a harness's name, and 1440 is a laptop somebody had. Moved in all 104
+     grey files, 312 occurrences: the media query, the drawer script's own
+     threshold and the sentence above it, which is three copies of one number per
+     file and the reason a grey file cannot hold a token. 0 occurrences of 1440
+     are left in `wireframes/`.
 
      IT SAID TWELVE AND THREE UNTIL 2026-08-12, AND THE CORRECTION IS RECORDED
      RATHER THAN OVERWRITTEN, because a table that only ever shows today's number
@@ -692,7 +701,7 @@
      re-counted byte-identical to the 2026-08-11 reading, which is the control
      that says the two censuses are the same instrument and not two opinions.
 
-     ---- AND WHY THIS LADDER IS IN PX AND NOT IN rem ----
+     ---- WHY THIS LADDER WAS IN PX, AND WHY IT IS IN rem SINCE 2026-08-13 ----
      The argument for rem is real and it is not the one that decides here: a rung
      in px reads the window only, so a person who enlarges their browser font sits
      at a desk width with a phone's worth of text in the line. Measured before it
@@ -711,15 +720,47 @@
      24px default therefore got a page 0.2 per cent taller and not one additional
      word. The ramp is ratios now and the same reader gets every word. That was
      docs/backlog.md 115 and it is closed.
-     THE RUNGS ARE STILL PX AND THE REASON WRITTEN HERE NO LONGER HOLDS. It was
-     "a rung in rem while the type is px switches the layout at a different window
-     width while every word stays the same size", which was true and was an
-     argument about the TYPE. The type moved, so the argument is spent: a rung in
-     rem now means what it is supposed to mean, that a reader whose words are 50
-     per cent wider reaches the one-column layout at a wider window. Whether it
-     SHOULD is a decision nobody has taken, and taking it silently in the sweep
-     that moved the type would be the fourth time in this repository that a rule
-     outlived its reason without anyone noticing. It is a row, docs/backlog.md 135. */
+     THE RUNGS WENT TO rem ON 2026-08-13, docs/backlog.md 135, AND THE HEADING ABOVE
+     IS LEFT STANDING BECAUSE IT IS THE ARGUMENT THAT WAS MADE. It was "a rung in
+     rem while the type is px switches the layout at a different window width while
+     every word stays the same size", which was true and was an argument about the
+     TYPE. The type moved on 2026-08-12, so the argument was spent, and the rungs
+     were then held by nothing except that nobody had decided.
+
+     THE LADDER IS NOW: DESK 40rem, DETAIL 47.5rem, RAIL 56.25rem, and the three
+     one-offs with them, 35rem, 38.75rem and 61.25rem. **The narrow side of a rung
+     is 39.99875rem and 47.49875rem**, which is 639.98px and 759.98px converted
+     exactly rather than rounded, because the rule that a rung is one pixel and
+     belongs to the wide side is a rule about the PAIR: any rounding here reopens
+     the hole that put 73 of 106 documents into horizontal scroll for a day.
+     **The 1140 harness stays in px and so does the review toggle's 759.98**, both
+     in course-chrome.css and one line here in base.css: the review sidebar is 220
+     physical pixels of chrome whatever the reader's font is, so a rung that
+     clears it may not move with the type.
+
+     WHAT IT BUYS, MEASURED. At a browser default of 24px the DESK rung arrives at
+     **960px** instead of 640 and the RAIL at 1350: a reader whose words are half
+     as wide again keeps the one-column layout until the window is half as wide
+     again, which is the whole content of the sentence "a rung responds to the
+     reader". At 20px it is 800. Swept over all 105 screens at twenty widths from
+     320 to 1600 at three browser defaults, **6,300 readings: 0 horizontal scroll,
+     0 readings with anything other than exactly one navigation carrier**, and at
+     the default root **0 differing readings of 2,100 against the tree before the
+     change**.
+
+     **AND THE INSTRUMENT WAS WRONG FIRST, WHICH IS THE PART WORTH KEEPING.** The
+     first sweep set `html{font-size:24px}` and reported the rungs NOT moving: the
+     bottom bar still went at 640 on all 105 screens at every root. That is correct
+     CSS and a useless measurement, because **a length in a media query resolves
+     against the INITIAL font size and ignores every declaration on the root
+     element**, including the one the sweep had just written. A reader does not set
+     `html{font-size}`, they set the browser's default, and only that changes both.
+     It takes CDP `Page.setFontSizes` to simulate, and with it `(min-width:40rem)`
+     is false at a 700px window while `(min-width:640px)` is true. **The same
+     injection was the right instrument for item 115 and the wrong one here**,
+     because that pass measured the type and this one measures a rung: the two
+     instruments agree at the default, 0 of 2,100, which is what says they are the
+     same instrument and not two opinions. */
 
   /* ---- type ---- */
   --font-display:'Space Grotesk',sans-serif;

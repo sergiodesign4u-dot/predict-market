@@ -77,8 +77,8 @@
    TALL viewport and a browser that hides its chrome on scroll would put the foot
    of the rail back under the fold. The vh line above it is the fallback for a
    browser that has not learned svh, not a second opinion. */
-/* rung: RAIL 900, a rail beside the content. The ladder is in tokens.css, page frame. */
-@media(min-width:900px){
+/* rung: RAIL 56.25rem, 900px at the default root, a rail beside the content. The ladder is in tokens.css, page frame. */
+@media(min-width:56.25rem){
   .toc{flex:0 0 var(--rail-width);position:sticky;top:66px;align-self:flex-start;
        max-height:calc(100vh - 66px - var(--space-16));
        max-height:calc(100svh - 66px - var(--space-16));

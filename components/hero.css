@@ -186,7 +186,7 @@
    on a window 260px wider than the one that sets it, and it would make the hero 82px
    taller from 901 to 980 while closing nothing. It stays.
    tokens.css page frame, docs/backlog.md 72, closed 2026-08-10. */
-@media(max-width:980px){
+@media(max-width:61.25rem){
   .feed-hero{grid-template-columns:1fr}
   .hero-feature{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
 }
@@ -196,7 +196,7 @@
    two columns and 634 in one - and it closes nothing: at 621 the two columns are 295.5
    each, WIDER than the 279.5 the same card already takes at 641. The card's own step is
    not what binds it, the gutter is. tokens.css page frame, docs/backlog.md 72. */
-@media(max-width:620px){
+@media(max-width:38.75rem){
   .hero-feature{grid-template-columns:1fr}
   .hf-chart{border-left:0;box-shadow:none;border-top:var(--hairline) solid var(--shadow-ink-45)}
   .hero-duo{grid-template-columns:1fr}

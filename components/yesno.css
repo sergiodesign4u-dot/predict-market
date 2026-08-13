@@ -75,9 +75,28 @@
    `options.css`; what stands here is only what the PAIR does once the row has made room.
    The cost is 69px of card height and 3.2 per cent of feed length, and it is paid on purpose:
    it also clears the last 12 clipped elements at 320. `../docs/decisions.md`, 2026-08-12. */
-/* rung: DESK 640, the one divide, and this is BELOW it. 639.98 rather than 640,
-   because the rung belongs to the desk: tokens.css, page frame. */
-@media(max-width:639.98px){
+/* AND IT STAYS A WINDOW QUERY, WHICH IS BACKLOG 145 AND IS THE OPPOSITE OF WHAT THAT ROW EXPECTED.
+   145 was opened by 129's fix: making the content column continuous at the desk rung removed the
+   discontinuity that had let a container width stand in for the window here, so this rule and the
+   wrap in `options.css` became the first two in the system that a container query would answer
+   differently. **Measured, that is a reason to keep the window and not to leave it.**
+   Forced into the inline layout at every width from 320 to 1600 and read on `event-detail-multi`:
+   **the two halves measure 46 and 42.7px at every container width from 251 to 628.** They are
+   content-sized inline; the name absorbs everything else, so **the container tells you nothing
+   about what the pair gets.** What the container does decide is whether the NAME fits, and it
+   clips at a container of 251 and not at 271. So a container query would have to be keyed at about
+   260, which puts the inline layout on every phone in the product, where the pair's halves are
+   42.7px against this rule's 268 and one of the two is under the 44px floor this project set
+   itself.
+   **The rule is not about the box. It is about the pointer, and a pointer is a screen fact.**
+   Non-separability is what a rule looks like when the window is carrying information the container
+   does not have, which is exactly the case a media query exists for. So 129's test is necessary and
+   is not sufficient either, in both directions: a separable rule may still belong to the window,
+   and a non-separable one may belong to it MORE.
+   rung: DESK 40rem, 640px at the default root in rem since 2026-08-13, and this is BELOW it. The narrow side is 39.99875rem,
+   which is 639.98px converted exactly rather than rounded, because the rung belongs to the desk and
+   any rounding reopens the pair hole: tokens.css, page frame. */
+@media(max-width:39.99875rem){
   .opt-row .yesno.compact{flex:1 0 100%}
   .opt-row .yesno.compact :is(a,button){flex:1 1 0}
 }

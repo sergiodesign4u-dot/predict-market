@@ -177,9 +177,9 @@
 .notif-all:active{background:var(--bg-pressed)}
 /* The bell used to be lifted to the strong icon token because it was the one filled mark in
    a row of stroked ones. The row is filled now and the exception went with the reason. */
-/* rung: DESK 640, the one divide, and this is BELOW it. 639.98 rather than 640,
+/* rung: DESK 40rem, 640px at the default root, the one divide, and this is BELOW it. 39.99875rem rather than 40rem, which is 639.98 against 640 at the default root,
    because the rung belongs to the desk: tokens.css, page frame. */
-@media(max-width:639.98px){
+@media(max-width:39.99875rem){
   /* the three targets that used to be sized here are in the pointer:coarse block below, with the
      other four. One rule, one trigger. */
   .app-header .left > .icon-btn{display:none}
@@ -209,8 +209,8 @@
    and fits from 641 on, and at 760 it asks 694 with 66 to spare. Nothing is lost in
    the band, because How it works is not only here: every feed carries a second
    trigger for the same dialog and `how-it-works.html` is a page of its own.
-   rung: DETAIL 760, and this is BELOW it. tokens.css, page frame. */
-@media(max-width:759.98px){
+   rung: DETAIL 47.5rem, 760px at the default root, and this is BELOW it. tokens.css, page frame. */
+@media(max-width:47.49875rem){
   .hiw-btn{display:none}
 }
 /* Three rules stood here and all three are components/logo.css now. The box and the

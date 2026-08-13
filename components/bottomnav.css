@@ -11,8 +11,8 @@
 .bottom-nav li{flex:1;text-align:center}
 .bottom-nav li:last-child{border-right:none}
 .bn-bal{font-weight:var(--weight-bold);font-size:var(--text-12);padding:0 var(--space-4);line-height:var(--leading-base)}
-/* rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
-@media (min-width: 640px){
+/* rung: DESK 40rem, 640px at the default root, the one divide. The ladder is in tokens.css, page frame. */
+@media (min-width: 40rem){
   .bottom-nav{display:none}
 }
 .bottom-nav{background:var(--bg-surface);z-index:var(--z-nav)}

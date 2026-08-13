@@ -58,8 +58,8 @@
    figures. docs/backlog.md 90. */
 .hold-name{color:var(--text-primary);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .hold-amt{font-family:var(--font-mono);color:var(--text-muted)}
-/* rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
-@media(min-width:640px){
+/* rung: DESK 40rem, 640px at the default root, the one divide. The ladder is in tokens.css, page frame. */
+@media(min-width:40rem){
   .hold-col:first-child{border-right:var(--hairline) solid var(--edge-groove-dark)}
 }
 .ptable th{color:var(--text-muted)}

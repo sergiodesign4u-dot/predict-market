@@ -50,8 +50,8 @@
 .footer-trust .trust-item:nth-child(1)::after{background-image:url("../assets/trust-column.webp")}
 .footer-trust .trust-item:nth-child(2)::after{background-image:url("../assets/trust-source.webp")}
 .footer-trust .trust-item:nth-child(3)::after{background-image:url("../assets/trust-globe.webp")}
-/* rung: DETAIL 760, the detail's second column, and this is BELOW it. 759.98 rather
+/* rung: DETAIL 47.5rem, 760px at the default root, the detail's second column, and this is BELOW it. 759.98 rather
    than 760, because the rung belongs to the wide side: tokens.css, page frame. */
-@media(max-width:759.98px){
+@media(max-width:47.49875rem){
   .footer-trust .trust-items{grid-template-columns:1fr}
 }

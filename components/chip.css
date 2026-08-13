@@ -223,9 +223,9 @@
    only opens a containing block and nothing in the chip is positioned against
    it; it came from components/catnav.css with the face and it is written here so
    that whoever deletes it deletes it on purpose. */
-/* rung: DESK 640, the one divide, and this is BELOW it. 639.98 rather than 640,
+/* rung: DESK 40rem, 640px at the default root, the one divide, and this is BELOW it. 39.99875rem rather than 40rem, which is 639.98 against 640 at the default root,
    because the rung belongs to the desk: tokens.css, page frame. */
-@media(max-width:639.98px){
+@media(max-width:39.99875rem){
   .chip-nav{position:relative}
 }
 /* THREE CHIPS DECLARE A RUNG, 2026-08-10 (docs/backlog.md 40). All three stood at a height
@@ -251,8 +251,8 @@
    (0,1,1) from outside it. The same holds here at (0,3,0) against (0,2,0), and
    the chosen chip is settled by the one rule below, so the query says only what
    the column changes. */
-/* rung: RAIL 900, a rail beside the content. The ladder is in tokens.css, page frame. */
-@media(min-width:900px){
+/* rung: RAIL 56.25rem, 900px at the default root, a rail beside the content. The ladder is in tokens.css, page frame. */
+@media(min-width:56.25rem){
   .chip-lane{width:100%;justify-content:space-between;border-color:transparent;border-radius:var(--radius-10);padding:var(--space-8) var(--space-8)}
 }
 /* THE CHOSEN CHIP, ONE RULE FOR THE WHOLE FAMILY, and since 2026-08-07 it names

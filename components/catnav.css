@@ -70,8 +70,8 @@
    a new SURFACE and not the rail placing it, and the lane face carries the query
    itself. What is left here is the rail: how wide it is, where it pins and how
    far it may run. */
-/* rung: RAIL 900, a rail beside the content. The ladder is in tokens.css, page frame. */
-@media(min-width:900px){
+/* rung: RAIL 56.25rem, 900px at the default root, a rail beside the content. The ladder is in tokens.css, page frame. */
+@media(min-width:56.25rem){
   .subcat{flex:0 0 var(--rail-width);position:sticky;top:120px;
           max-height:calc(100vh - 120px - var(--space-16));
           max-height:calc(100svh - 120px - var(--space-16));
@@ -112,8 +112,8 @@
 .feed-inner .cat-nav>ul{max-width:none;margin:0;padding:var(--space-2);gap:var(--space-8);display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
 .feed-inner .cat-nav>ul::-webkit-scrollbar{display:none}
 .feed-inner .cat-nav li{flex:0 0 auto}
-/* rung: DESK 640, the one divide, and this is BELOW it. 639.98 rather than 640,
+/* rung: DESK 40rem, 640px at the default root, the one divide, and this is BELOW it. 39.99875rem rather than 40rem, which is 639.98 against 640 at the default root,
    because the rung belongs to the desk: tokens.css, page frame. */
-@media(max-width:639.98px){
+@media(max-width:39.99875rem){
   .feed-inner .cat-nav{margin-bottom:var(--space-16)}
 }

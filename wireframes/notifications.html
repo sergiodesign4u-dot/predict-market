@@ -51,7 +51,7 @@
     .wf-states a:hover { text-decoration: underline; }
     .wf-note { padding: 2px 12px 4px 30px; color: #777; font-style: italic; }
 
-    @media (min-width: 1440px) {
+    @media (min-width: 1170px) {
       .wf-nav { transform: none; }
       .wf-toggle, .wf-overlay { display: none !important; }
       body { padding-left: 250px; padding-top: 0; }
@@ -1171,7 +1171,7 @@
       }
     })();
 
-    // Wireframe screen-tree drawer (toggle on small screens; a fixed rail at >= 1440px).
+    // Wireframe screen-tree drawer (toggle on small screens; a fixed rail at >= 1170px).
     (function () {
       var nav = document.getElementById('wfNav');
       var ov = document.getElementById('wfOverlay');
@@ -1189,7 +1189,7 @@
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
       // Choosing a screen on a narrow viewport closes the drawer.
       nav.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', function () { if (window.innerWidth < 1440) set(false); });
+        a.addEventListener('click', function () { if (window.innerWidth < 1170) set(false); });
       });
     })();
   </script>

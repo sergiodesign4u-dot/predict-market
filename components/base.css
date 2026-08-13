@@ -407,8 +407,8 @@ svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor!important;stroke:none!impor
    balance cluster would show up in the 380px header. In the flat kit the two
    sat in one file and the utility happened to come last. */
 .desk-only{display:none!important}
-/* rung: DESK 640, the one divide. The ladder is in tokens.css, page frame. */
-@media (min-width: 640px){
+/* rung: DESK 40rem, 640px at the default root, the one divide. The ladder is in tokens.css, page frame. */
+@media (min-width: 40rem){
   .desk-only{display:inline-flex!important}   /* pairs with the rule above */
 }
 /* The device is the slab the product sits on, and .app-case is the product
@@ -423,7 +423,24 @@ svg.ic:has(use),svg.ic-sm:has(use){fill:currentColor!important;stroke:none!impor
    elements of the course chrome it was put there to keep the product off. The
    one place it still discriminates is hiw.css, where it means the PAGE
    rather than the sheet and that file says so. Nothing else may take it. */
-.device{width:100%;max-width:none;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;position:relative;border:0;background-color:var(--bg-slab);background-image:var(--surface-grain-coarse),linear-gradient(180deg,var(--bg-slab-from),var(--bg-slab-to));background-blend-mode:overlay,normal}
+/* THE SHELL EVERY SCREEN STANDS IN, AND IT WAS THE ONE PLACE THAT NEVER GOT THE `svh` ARGUMENT.
+   Backlog 124. `betpanel.css` writes it twice, `toc.css` three times and `catnav.css` twice: on a
+   mobile browser `vh` is the LARGEST viewport, the one with the URL bar retracted, so a box sized
+   in `vh` is taller than the window it stands in until the person scrolls. This file said `svh` 0
+   times and declared `min-height:100vh` on the box that wraps all 106 painted screens. **The three
+   files that discussed it are the small ones and the one that never did is the one that holds
+   them.**
+   It rendered acceptably and that is exactly why it survived: `min-height` only ever ADDS room, so
+   the cost is not a clipped page, it is a page that can always be scrolled by the height of the
+   retracting chrome even when it has nothing more to show. On an iPhone that is about 60px of
+   nothing under every short screen in the product.
+   **Two declarations and not one**, the same pair the other three files write: a browser that has
+   not learned `svh` takes the first and every browser that has takes the second, which is a
+   fallback rather than a second opinion. Headless Chromium has no retracting chrome, so `svh`,
+   `lvh` and `vh` are one number there and this edit measures as zero on every sweep in this
+   repository: **the thing it fixes cannot be read by the instrument that guards it**, which is the
+   reason the argument is written here rather than left as a value. */
+.device{width:100%;max-width:none;margin:0 auto;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;position:relative;border:0;background-color:var(--bg-slab);background-image:var(--surface-grain-coarse),linear-gradient(180deg,var(--bg-slab-from),var(--bg-slab-to));background-blend-mode:overlay,normal}
 .app-case{position:relative;background:transparent;border:0}
 /* HIDDEN IS A STATE, NOT A STYLE, so nothing may out-declare it. The user agent
    hides with display:none from ITS sheet and any author declaration beats that
@@ -504,9 +521,9 @@ body.app-case{background:var(--bg-page)}
    centres and the padding keeps the same edge the header row has had all
    along. */
 .feed .feed-inner{max-width:var(--container-max);margin:var(--gutter) auto;margin-top:var(--space-12);padding:0 var(--gutter);box-sizing:border-box;background:none;border:0;border-radius:0;box-shadow:none;display:flex;flex-direction:column;gap:var(--space-16)}
-/* rung: DESK 640, the one divide, and this is BELOW it. 639.98 rather than 640,
+/* rung: DESK 40rem, 640px at the default root, the one divide, and this is BELOW it. 39.99875rem rather than 40rem, which is 639.98 against 640 at the default root,
    because the rung belongs to the desk: tokens.css, page frame. */
-@media(max-width:639.98px){
+@media(max-width:39.99875rem){
   .feed .feed-inner{margin-top:var(--space-16);padding:0 var(--gutter)}
 }
 /* The two-stone plate: one declaration, three places it lands. The category

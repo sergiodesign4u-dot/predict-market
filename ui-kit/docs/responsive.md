@@ -73,8 +73,8 @@ found.
 | **960** | 0 | **104** | 0 | 0 | **on no ladder** |
 | 980 | 1 | 1 | 0 | 0 | one-off, named |
 | 1140 | 2 | 0 | 0 | 0 | HARNESS, not the product |
+| **1170** | 0 | **104** | 0 | 0 | **the grey harness, and it derives**: 900 + 250 + 20. It read **1440** and stood on no ladder until backlog 119 closed on 2026-08-13 |
 | **1280** | 0 | **104** | 0 | 0 | **on no ladder** |
-| **1440** | 0 | **104** | 0 | 0 | **on no ladder** |
 
 **The transcript is not restated and the system has moved three times since it was taken.**
 `ui-kit/` gained its `container-type` at step 2, recorded above; on **2026-08-12 `components/` went
@@ -92,10 +92,16 @@ its place is a query that was answering a question its subject never asked.**
 The nine in the system are really **five**: three rungs each written twice for its two sides, plus
 the harness, plus three named one-offs. The stand invents nothing.
 
-**The three that are on no ladder are all in the grey tree and all in all 104 files.** 960 and 1280
-hard-code `repeat(3,...)` and `repeat(4,...)`, a column count the paint computes with `auto-fit` and
-no query at all. 1440 is the grey harness, the twin of the paint's 1140 standing at a different
-number. They are this stage's own backlog, item 116.
+**The three that were on no ladder were all in the grey tree and all in all 104 files, and none of
+them is left.** 960 and 1280 hard-coded `repeat(3,...)` and `repeat(4,...)`, a column count the paint
+computes with `auto-fit` and no query at all, and backlog 116 deleted both on 2026-08-12. The third
+was **1440**, the grey harness, and it was left standing that day because a harness is not a column
+count and nobody then asked whether it DERIVES. It does not: 1140 is `900 + 220 + 20`, the RAIL rung
+plus the review sidebar plus its inset, and the grey screen-tree rail is 250px, so the same
+arithmetic gives **1170**. Backlog 119, closed 2026-08-13, moved it in all 104 files, 312
+occurrences, three per file because a grey file writes the number in its query, in its drawer script
+and in the sentence above it. **A harness width that does not derive is a preference wearing a
+harness's name**, and 1440 was a laptop somebody had.
 
 ---
 
@@ -552,6 +558,57 @@ container that steps is still fluid.** The same pass first picked `.sel` as the 
 different components, because a class named by two component files is nobody's, and it read `button`
 as "gone in a band" because the widest `.btn` in the product is `.hiw-btn`, which is one face of
 eight and `display:none` below DETAIL.
+
+### Backlog 135 answered, 2026-08-13: the rungs are in `rem`, and the first instrument for it measured nothing
+
+The stage kept the rungs in px on a stated ground: a rung in `rem` while every word is a fixed size
+switches the layout at a different window width and changes nothing a reader can see, which "looks
+like accessibility and does nothing". **That was true and it was an argument about the TYPE**, and
+the type moved to `rem` on 2026-08-12 as backlog 115, so the argument was spent the same hour and
+the rungs were then held by nothing except that nobody had decided.
+
+They are **40rem, 47.5rem and 56.25rem** now, with the three one-offs at 35rem, 38.75rem and
+61.25rem, and the narrow side of a rung written exactly rather than rounded: **39.99875rem and
+47.49875rem**, which are 639.98px and 759.98px converted. The rounding matters because the pair rule
+is what stops both sides of a rung matching at once, and this repository has already paid for that
+with 73 of 106 documents in horizontal scroll for a day. **The 1140 harness stays in px**, with the
+review toggle beside it: a docked panel is 220 physical pixels of chrome whatever the reader's font
+is, so a rung that clears it may not move with the type.
+
+| browser default | DESK | RAIL | measured on 105 screens |
+|---|---|---|---|
+| 16px | 640 | 900 | the tree before the change, to the reading |
+| 20px | 800 | 1125 | one column to 800 |
+| 24px | **960** | **1350** | one column to 960 |
+
+**6,300 readings over all 105 screens at twenty widths from 320 to 1600 at three browser defaults: 0
+horizontal scroll, 0 readings with anything other than exactly one navigation carrier**, and at the
+default **0 differing readings of 2,100** against the tree before the change.
+
+**AND THE FIRST INSTRUMENT REPORTED THE RUNGS NOT MOVING, WHICH IS THE PART WORTH KEEPING.** It set
+`html{font-size:24px}`, the way the item 115 sweep had, and the bottom bar still went at 640 on all
+105 screens at every root. That is correct CSS: **a length in a media query resolves against the
+INITIAL font size and ignores every declaration on the root element**, including the one the sweep
+had just written. A reader does not set `html{font-size}`; they set the browser's default, and only
+that moves both the type and the rung. It takes CDP `Page.setFontSizes` to simulate, and with it
+`(min-width:40rem)` is false at a 700px window while `(min-width:640px)` is true. **The same
+injection was the right instrument for the type and the wrong one for a rung**, and the two agree at
+the default, 0 of 2,100, which is what says they are one instrument and not two opinions. The probe
+was then shown a deliberate 2,000px box on five screens and saw it 5 of 5.
+
+### Backlog 145 answered the same day: the two non-separable rules stay on the window, and non-separability is why
+
+129's fix created them and 145 asked whether to convert them. **Measured, the answer is that
+non-separability is a reason to KEEP the window rather than to leave it.** Forced into the inline
+layout at every width from 320 to 1600, the outcome pair's two halves measure **46 and 42.7px at
+every container width from 251 to 628**: they are content-sized inline and the name absorbs the rest,
+so the container tells you nothing about what the pair gets. What the container decides is whether
+the NAME fits, and it clips at 251 and not at 271, so a container query would have to be keyed near
+260 and would put the inline layout on every phone in the product, where the pair's halves are 42.7
+against this rule's 268 and one of the two is under the 44px floor this project set itself. **The
+rule is about the pointer, and a pointer is a screen fact.** So 129's test is necessary and not
+sufficient in BOTH directions: a separable rule may still belong to the window, and a non-separable
+one may belong to it more.
 
 ### The ban is written in two places
 

@@ -31,7 +31,7 @@
     arrives at it. <b>Twelve distinct widths were counted in the product</b> before a single one of
     them was called a decision, and three of the twelve turned out to have no name at all.</p>
     <div class="tk-badges">
-      <span class="tk-badge">3 rungs, 33 width queries</span>
+      <span class="tk-badge">3 rungs in rem, 33 width queries</span>
       <span class="tk-badge">0 in a screen file</span>
       <span class="tk-badge">104 screens audited</span>
       <span class="tk-badge">new behaviour: 0</span>
@@ -104,16 +104,27 @@
     <p class="tk-note">A width with no event at it is a width somebody will round. The full argument
     lives in <code>components/tokens.css</code> under "the breakpoint ladder"; this is the registry.</p>
     <div class="tk-rungs">
-      <div class="tk-rung"><b>640</b><span>DESK. The one divide: one column, a bottom nav and a mobile dock below it; the desk above.
+      <div class="tk-rung"><b>40rem</b><span>DESK. The one divide: one column, a bottom nav and a mobile dock below it; the desk above.
         <i>14 rules in 13 files. It is the only rung most components ever meet, and it lost two on
         2026-08-13 when backlog 129 found both page insets STEPPING here.</i></span></div>
-      <div class="tk-rung"><b>760</b><span>DETAIL. The event detail gains its second column: the bet panel docks as a sidebar, the dock goes, the chart takes full height.
+      <div class="tk-rung"><b>47.5rem</b><span>DETAIL. The event detail gains its second column: the bet panel docks as a sidebar, the dock goes, the chart takes full height.
         <i>7 rules in 7 files. Audit row: event detail, 13 screens, FJ2.</i></span></div>
-      <div class="tk-rung"><b>900</b><span>RAIL. A vertical rail arrives BESIDE the content: sub-categories, the table of contents, the how-it-works side column.
+      <div class="tk-rung"><b>56.25rem</b><span>RAIL. A vertical rail arrives BESIDE the content: sub-categories, the table of contents, the how-it-works side column.
         <i>6 rules in 5 files. Audit rows: category feeds, how it works.</i></span></div>
       <div class="tk-rung"><b>1140</b><span>HARNESS, and it is <b>not the product's</b>. The review panel docks and the body takes its 220px inset.
         <i>900 + 220 + 20 on purpose, so the chrome can never take width the widest product rung is counting on.</i></span></div>
     </div>
+    <p class="tk-note tk-lab"><b>The ladder went to rem on 2026-08-13, backlog 135.</b> 40rem, 47.5rem
+    and 56.25rem are 640, 760 and 900 at the default browser font and <b>move with it</b>: a reader
+    who set a 24px default reaches the desk at <b>960</b> and the rail at 1350, and keeps one column
+    until then. The stage had kept them in px on the ground that the TYPE was px, which was true and
+    expired the hour the type moved. <b>6,300 readings over 105 screens at twenty widths and three
+    browser defaults: 0 horizontal scroll, 0 readings with anything but exactly one navigation
+    carrier</b>, and 0 differing readings of 2,100 at the default. <b>The first instrument reported
+    the rungs not moving</b>, because it set <code>html{font-size}</code> and a length in a media
+    query resolves against the INITIAL font size and ignores every declaration on the root element.
+    Only the browser's own default moves both. The 1140 harness stays in px: a docked panel is 220
+    physical pixels whatever the reader's font is.</p>
     <p class="tk-note"><b>A rung is one pixel and it belongs to the wide side.</b> Below a rung is
     <code>max-width:639.98px</code>, never <code>max-width:640px</code>: both of those match at
     exactly 640, and the rung then renders a page that exists at no other width. That cost this

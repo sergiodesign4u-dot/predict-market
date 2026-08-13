@@ -53,7 +53,7 @@
    the atom's problem wherever it stands. What is left here is this card's own narrower answer to
    the same question.
 
-   IT STOOD INSIDE `@media(max-width:639.98px)` UNTIL 2026-08-13, AND THAT QUERY WAS THE DEFECT.
+   IT STOOD INSIDE `@media(max-width:39.99875rem)` UNTIL 2026-08-13, AND THAT QUERY WAS THE DEFECT.
    The atom pulls by exactly `(44 - 16) / 2 = 14px`, which puts the invisible box flush with the
    16px mark and 14px past the row's content edge. **A card has 13px from that edge to its clip
    edge**, 12 of body padding and 1 of border, and `.card` is `overflow:clip`, so the atom's own

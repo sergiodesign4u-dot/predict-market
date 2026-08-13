@@ -266,7 +266,7 @@
    the short of it is that collapsing 560 up to the DESK rung would take these three from
    36 to 28 on 79 widths that have room for them, which is a floor running backwards.
    tokens.css page frame, docs/backlog.md 72, closed 2026-08-10. */
-@media(max-width:560px){
+@media(max-width:35rem){
   .icon-btn.icon-btn-tile{width:var(--size-28);height:var(--size-28)}
 }
 
