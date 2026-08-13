@@ -68,7 +68,18 @@
    no focus stop, and one step quieter than a live label so that the difference is visible rather
    than only true. The other eight the footer promised and the map omitted were cut outright on the
    same day, which is row 27; five remain `<a href="#">` on purpose, because they are registered
-   nodes with screens still to build. */
+   nodes with screens still to build.
+   **FOUR, FROM 2026-08-13, AND THE FIFTH IS WHY THE COUNT IS WORTH KEEPING.** `Terms` was in that
+   five and `ui-visual/terms.html` has existed since 2026-08-03, so the one legal page this product
+   has BUILT was reachable from the review sidebar 106 times and from the product ONCE, on
+   `overview.html`, which is the index of the tree and not a screen in it. **A placeholder is a
+   promise with a date on it, and nobody went back to the list when the date passed.** 213 anchors
+   in `ui-visual/` and 7 kit specimens point at it now. The remaining four here are `Privacy`,
+   `Contact`, `About` and `Responsible play`, and the grey tree keeps all five because
+   `ia/docs/sitemap.md` records that Terms of Service is the first screen in this product with no
+   grey twin. **The five social marks beside them are a different thing and are not in this count**:
+   525 anchors, five per screen on 105, pointing at accounts that are external and do not exist, so
+   they will never become an internal route the way these four will. `docs/backlog.md` 144. */
 .app-footer .footer-soon{color:var(--text-icon);cursor:default}
 .app-footer a:hover,.popular-links a:hover,.footer-col a:hover,.legal-links a:hover{color:var(--text-brass);text-decoration:none}
 /* Press, the axis this file was missing. Every one of these is a nav row, and the footer is

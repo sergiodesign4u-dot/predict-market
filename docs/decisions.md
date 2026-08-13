@@ -12,6 +12,22 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-13 - The one legal page this product has built was linked from the review sidebar 106 times and from the product once
+
+Backlog 48. **1,902 placeholder anchors were 1,272 before this pass and are 1,059 now**, and the row's 23 distinct labels are 15. Three things changed and only one of them is the thing the row was written about.
+
+**THE COUNT WAS 630 STALE AND THE ROW SAID SO WOULD HAPPEN.** It was taken on 2026-08-08 against rows 27 and 28, which both closed on 2026-08-10 by cutting the eight destinations the map refuses. Re-measured today in a browser, by accessible name so that an anchor with nested markup is not missed: **1,272 anchors, 105 documents, 17 labels** in `ui-visual/`, **1,086 on 104** in `wireframes/`, **327 on 25** in `ui-kit/`. The row's own list of what they are is obsolete in the same move: Sports, Leaderboard, API, Status, Help Center, FAQ, Careers, Press, Brand and Geo restrictions are gone.
+
+**AND THE LARGEST GROUP IS ONE THE ROW NEVER NAMED.** 525 of the 1,272, five per screen on 105, are the social marks: X, Discord, Telegram, Instagram, TikTok. They are not registered map nodes and no screen will ever be built for them, so they are not the same kind of placeholder as the four beside them and are not fixed by the same decision. `docs/backlog.md` 144.
+
+**THE THING WORTH FIXING WAS NOT IN THE ROW AT ALL.** `Terms` was one of the five the footer keeps at `#` "because they are registered nodes with screens still to build", and **`ui-visual/terms.html` was built on 2026-08-03**. Measured: **1 link to it from anywhere in the product, on `overview.html`, which is the index of the tree rather than a screen in it, against 106 from the review sidebar.** Meanwhile **213 anchors labelled Terms sat at `#`**, 105 in the footer's legal strip and 108 in the sign-in and deposit fine print, on screens that were offering a document the repository already had. **A placeholder is a promise with a date on it, and nothing goes back to the list when the date passes.** 213 anchors in `ui-visual/` and 7 kit specimens point at `terms.html` now, 221 product links, 0 broken. The grey tree keeps its 194 at `#` and that is correct: `ia/docs/sitemap.md` records that Terms of Service is the first screen in this product with no grey twin.
+
+**THE COPY DEFECT THE ROW DID NAME IS REAL AND IT IS NOT THE ONE IT DESCRIBED.** The row says `Privacy` and `Privacy Policy` are the same destination under two names in the footer. **The footer carries only `Privacy`**, and it shortens every legal node the same way: the map's nodes are `Terms of Service`, `Privacy Policy`, `Cookie Policy`, `Responsible betting`, `Contact / Support`, and the strip says `Terms`, `Privacy`, `Responsible play`, `Contact`. That is a register, not a drift. The other spelling stands in the sign-in fine print, where the full legal name is right. **What is a drift is the case**: the cookie banner wrote `Privacy policy` and `Cookie policy` while 109 other instances and the map itself write `Privacy Policy`, and `terms.html` writes `Cookie Policy`. 10 labels on 3 documents across all three trees, normalised to the map's names.
+
+**AND THE INSTRUMENT REPRODUCED THE ROW'S OWN SEVENTH FAULT.** The label reader returned `Privacy Policynot built` and `Cookie Policynot built`, exactly as the audit of 2026-08-08 did before withdrawing them: the markup on `terms.html` is `<span class="rel-q">Privacy Policy</span><span class="rel-odds">not built</span>` inside one anchor, and reading `textContent` joins the two spans. **A defect that a previous pass documented and withdrew will be found again by the next reader who builds the same instrument**, which is the argument for writing the withdrawal down rather than only the finding.
+
+Verified over 267 documents in all three trees: **0 console errors, 0 horizontal scroll, 0 broken links to `terms.html`.**
+
 ## 2026-08-13 - Favorites was 96 tab stops deep on a phone, and the walk that found it had to open the menus first
 
 Backlog 130. **Favorites moved from tab stop 96 to tab stop 11 at 390, on every screen, and it stopped depending on how long the page is.** It is a sixth row in the account dropdown, beside My Bets. Nothing moved into the phone header, the bottom bar keeps all four slots, and the header with the menu closed is pixel identical in all three trees at both widths.
