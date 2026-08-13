@@ -94,7 +94,7 @@
    token and a filled one at muted, so Events and Favorites sat at two different values in
    the same row. It is muted for both now, which is the ink the label beside it already
    takes, and brass for both when the slot is current. */
-.nav-slot .ic{width:var(--size-20);height:var(--size-20);stroke:var(--text-muted);color:var(--text-muted)}
+.nav-slot .ic{width:var(--icon-20);height:var(--icon-20);stroke:var(--text-muted);color:var(--text-muted)}
 /* `aria-current` sits on the <li>, not on the control, so the state is reached
    from an ancestor. It is written with the attribute alone rather than with the
    bar's class, because being the current item is the ATOM's state wherever the

@@ -359,7 +359,7 @@
    new value. */
 .btn.btn-provider{transition:border-color var(--dur-quick) ease,
   background var(--dur-quick) ease,transform var(--dur-fast) ease}
-.btn.btn-provider:hover{transform:translateY(-1px)}
+.btn.btn-provider:hover{transform:translateY(calc(-1px * var(--motion)))}
 .btn.btn-provider:active{transform:translateY(0)}
 /* AND THE LIFT IS REMOVED BY NAME UNDER REDUCED MOTION, 2026-08-12. The global block in
    base.css shortens `transition-duration` to .01ms; it never touches `transform`, so this
@@ -368,9 +368,14 @@
    other three were found together and answered the same way. `transform` is the only
    property a system-wide motion rule cannot reach, because there is no value it could
    safely write for every element that has one. */
-@media(prefers-reduced-motion:reduce){
-  .btn.btn-provider:hover{transform:none}
-}
+/* THE REDUCED-MOTION BLOCK THAT STOOD HERE WENT ON 2026-08-13, backlog 132, and so did the four
+   copies of it in the other files that lift something. The distance above is multiplied by
+   `--motion`, which `base.css` sets to 0 under `prefers-reduced-motion`, so the floor is one
+   value in one place instead of five rules in five files. **A blanket `*:hover{transform:none}`
+   was the obvious fix and was refused by a census**: 5 of the system's 20 transforms are
+   movement, and one of the other 15 is `.market-chevron` turning over when its market opens,
+   which is an element and would have been flattened for as long as a pointer rested on it.
+   The argument and the count are in `tokens.css` beside `--motion`. */
 /* The brand marks: filled with the current colour rather than stroked, because a
    logotype is not an icon. `.prov-google` carries its own brand colours in the
    markup and correctly has no rule. */

@@ -53,7 +53,7 @@
 .pos-record .pos-figures{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-8);margin:0;font-size:var(--text-10);letter-spacing:var(--track-caps)}
 .pos-record .pos-fig{background:var(--bg-control);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);padding:var(--space-12) var(--space-12);gap:var(--space-4);color:var(--text-muted)}
 .pos-record .pos-fig b{font-family:var(--font-mono);font-size:var(--text-20);color:var(--text-primary);font-weight:var(--weight-semibold);margin-top:var(--space-2);letter-spacing:var(--track-none);text-transform:none}
-.pos-record .pos-fig:nth-child(2){border-color:color-mix(in oklab,var(--color-action) 42%,var(--border-hairline));background:linear-gradient(150deg,color-mix(in oklab,var(--color-action) 15%,var(--bg-control)),var(--bg-control) 74%)}
+.pos-record .pos-fig:nth-child(2){border-color:var(--border-hairline-brass);background:linear-gradient(150deg,var(--bg-control-brass),var(--bg-control) 74%)}
 .pos-record .pos-fig:nth-child(2) b{color:var(--text-brass);font-size:var(--text-24)}
 /* THE FOUR COLUMNS ARRIVE AT THE DESK RUNG NOW, AND 520 WAS NEVER A DECISION: it was
    the width at which four columns first fit, not the width at which four columns first

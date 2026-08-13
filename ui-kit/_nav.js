@@ -55,7 +55,7 @@ window.KIT_NAV = [
   {
     label: 'Foundations',
     items: [
-      { label: 'Colour',     page: 'colour.html',     done: true, note: '133 roles' },
+      { label: 'Colour',     page: 'colour.html',     done: true, note: '134 roles' },
       { label: 'Typography', page: 'typography.html', done: true, note: '3 families' },
       { label: 'Geometry',   page: 'geometry.html',   done: true, note: '4px grid' },
       { label: 'Responsive', page: 'responsive.html', done: true, note: '3 rungs' },

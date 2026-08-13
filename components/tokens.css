@@ -267,7 +267,30 @@
   --icon-12:12px;      /* a mark inside a control that already has a label */
   --icon-16:16px;      /* the default mark */
   --icon-18:18px;      /* a mark that carries a control on its own */
+  --icon-20:20px;      /* a mark that IS the control, in a slot with a label under it: the bottom
+                          bar. Added 2026-08-13 by backlog 133, and it was `--size-20` in
+                          navitem.css: a mark sized off the SPACE ladder is a mark that moves when
+                          somebody re-spaces a row */
   --icon-22:22px;      /* a state or hero mark */
+  --icon-28:28px;      /* the mark of a whole SCREEN state, standing alone above a sentence: the
+                          empty, error and resolved blocks. Added 2026-08-13 with --icon-20 and for
+                          the same reason, from `--size-28` in state-block.css */
+  /* THE FOUR RUNGS ABOVE WERE READ AND THE LADDER WAS STILL SHORT, WHICH IS BACKLOG 133 AND IS NOT
+     WHAT THAT ROW SAID. It said `--icon-16` and `--icon-18` are "reachable only by writing a width
+     and a height by hand", and they are: `base.css` gives `.ic` the 22 and `.ic-sm` the 12, and
+     everything else is a placement writing the size itself. **That is the correct mechanism and
+     the row asked for the wrong fix.** A class in the markup would put a SIZE in a document, and
+     the size of a mark is a fact about where it stands: the same rule that says `container-type`
+     is declared by whoever places a component. Counted 2026-08-13: 13 rules in the system resize a
+     mark, and 8 of them read the two rungs the row called unreachable.
+     **What was actually off the ladder was three placements and one of them was on no ladder at
+     all**: `.nav-slot .ic` at `--size-20`, `.state-block .ic` at `--size-28` twice, and
+     `.market-title .ic` at a raw `13px` on 9 placements, one pixel off a rung that already exists.
+     The first two are why this ladder is six rungs now; the third reads `--icon-12`.
+     **AND THE INSTRUMENT WAS WRONG BEFORE THE FINDING WAS, for the fourth pass running.** A sweep
+     over all 105 screens reported marks at 13, 28 and 40 with 362 placements off the ladder, and
+     40px is a 22px mark inside a padded tile: it was reading `getBoundingClientRect()`, which is a
+     border box. **A mark's size is its declared width and never the box around it.** */
   /* THE WEIGHT OF A STROKED MARK, IN SCREEN PIXELS AND NOT IN USER UNITS, which is the
      whole point of it. `stroke-width` inside a 24 viewBox scales with the box, so one
      declared number renders at as many weights as the set has sizes: measured 2026-08-10
@@ -800,6 +823,27 @@
   --dur-slower:.3s;
   --ease-out:cubic-bezier(.2,.7,.2,1);
   --ease-inout:cubic-bezier(.4,0,.2,1);
+  /* THE MOVEMENT SWITCH, AND IT IS A MULTIPLIER RATHER THAN A RULE. 1 normally, 0 under
+     `prefers-reduced-motion`, and every transform that MOVES something multiplies its distance by
+     it: `translateY(calc(-3px * var(--motion)))`. Backlog 132, 2026-08-13.
+     **The row asked for one rule keyed to a family and the family does not exist as a selector.**
+     `base.css` already declares the global floor for duration, but shortening a transition never
+     removes a `transform`, so five components each carried their own
+     `@media(prefers-reduced-motion:reduce){...:hover{transform:none}}`. Censused first, because a
+     blanket rule was the obvious fix and it is wrong: **the system holds 20 transform declarations
+     and only 5 of them are movement.** Nine are rest geometry (a chevron drawn by rotating a
+     square, a knob centred with `translate(-50%,-50%)`), two are a STATE that carries meaning
+     rather than motion (`.toc-d[open]` and `.market-box[open]` turning a chevron over), and the
+     rest are the harness drawer and two keyframes. **`*:hover{transform:none}` would flatten
+     `.market-chevron` while the pointer is on it, so an open market would point its chevron the
+     wrong way for exactly as long as you looked at it.** Pseudo-elements survive that rule and
+     `.market-chevron` is an element, which is the whole difference and is why the count had to be
+     taken before the rule was written.
+     A multiplier works where a selector cannot, because it is the DECLARATION that knows whether
+     its transform is a movement, and each component keeps its own distance in its own file: a card
+     lifts 3px, a badge 2 and a provider button 1, and those are three decisions and not a ladder.
+     At rest it is exactly what was there before, `calc(-3px * 1)` being `-3px`. */
+  --motion:1;
 
   /* ======================================================================
      The light theme's own raw values. Declared here, with the rest of the
@@ -1028,6 +1072,33 @@
 
   --bg-surface:var(--graphite-830);     /* from: .app-header, dialog, dropdown, .filter-panel,
                                            .state-block, .app-footer (18 declarations) */
+  /* THE TWO BRASS BLENDS, AND THEY ARE A ROLE RATHER THAN SIX EYEBALL DECISIONS. Backlog 120.
+     A blend is not an alpha: `--tint-brass-*` is one ink at a depth over whatever is behind, and
+     these END in an opaque base, so row 14 was right that they cannot share that ladder. **What
+     row 14 did not ask is whether they agree with each other, and they did not.** Ten brass
+     `color-mix` declarations in seven files fell into two jobs and five values: brass into
+     `--bg-control` at 11 (card), 15 (position), 16 (hiw), 20 (comments), 20 (iconbtn) and 22
+     (hero), and brass into `--border-hairline` at 30 (hiw), 30 (hero) and 42 (position).
+     **Resolved in a browser in both themes, three of the five distinctions do not exist.** 15 and
+     16 are 0.0045 apart in oklab lightness, which is below anything an eye reads on a 32px tile;
+     the two 20s are the same number; and **the 42 edge and the 30 edge are 0.001 apart in
+     DAYLIGHT**, because the light hairline is already close to brass in lightness, so the one value
+     that looks like a deliberate emphasis is invisible on half the product. Counted by placement,
+     **568 of 576 already agreed at 20 per cent**: `.icon-btn-lift:hover` is 525 and `.cmt-av` is
+     43, against 4 hiw tiles, 2 hero badges and 2 position figures. **The 11, the value furthest
+     from every other, stands on 6 cards and a first probe said zero**, because `.gallery .card`
+     lives inside `.ptab-panel#p-wins` on the two profile screens and a sweep that walks a page as
+     it loads sees the tab that is open. It is the same lesson as the dialog that is `display:none`
+     and the odds bar a script writes: **a component behind a tab is invisible to a reading taken at
+     load, and zero is what a blind probe reports.** The before-and-after caught it because that one
+     compares every element whether painted or not.
+     So it is one value per job, and it can be a role precisely because the BASE is the same in all
+     six: what varies is the amount of brass, which is the thing a role is for. Declared in both
+     theme blocks rather than once, because a theme here is an attribute on any element and a
+     custom property holding a `var()` resolves against the element that DECLARES it: a single
+     `:root` copy would bake the dark base into a light figure on the kit. */
+  --bg-control-brass:color-mix(in oklab,var(--color-action) 20%,var(--bg-control));
+  --border-hairline-brass:color-mix(in oklab,var(--color-action) 30%,var(--border-hairline));
   --bg-control:var(--graphite-780);     /* from: 58 declarations, background only: every quiet
                                            button, chip, toggle track and hover fill */
   --bg-control-hover:var(--graphite-800); /* from: 8 hover fills on those same controls */
@@ -1059,7 +1130,15 @@
                                            and a different one on chalk, which is the whole reason
                                            it is its own role */
   --icon-brass:var(--brass-400);        /* from: the saved bookmark. Brass as a mark, not as a word */
-  --text-icon-strong:var(--bone-200);   /* from: the notification bell */
+  /* `--text-icon-strong` STOOD HERE UNTIL 2026-08-13 AND IS GONE, backlog 131. It was drawn for the
+     notification bell, which was the one FILLED mark in a row of stroked ones and was lifted a step
+     so it did not read as heavier than its neighbours. The row is filled now, so the exception went
+     with its reason and the role stayed: `header.css` still NAMED it in a `Reads:` header, and a
+     header naming a role is a reader as far as a grep is concerned, which is exactly why a sweep
+     that measured 0 dead tokens an hour earlier could not see it. **Zero readers in `components/`,
+     in `ui-visual/` and in `wireframes/`**, and the only thing left drawing it was its own swatch
+     on `colour.html`, which is a page showing a role that nothing wears. Deleted in both themes,
+     with the swatch and its `.tk-c-*` class. */
   --text-chip-hover:var(--bone-100);    /* same value as --text-primary for now: a chip label reaching full ink .       From: the chip family on hover */
   --text-brass:var(--brass-400);        /* from: 37 colour + 8 stroke declarations: links, active
                                            nav, saved bookmark, the logo tick. Also the focus ring
@@ -1427,6 +1506,8 @@
 
   /* ---- and here the reflection stops. See the note under it ---- */
   --bg-surface:var(--chalk-910);
+  --bg-control-brass:color-mix(in oklab,var(--color-action) 20%,var(--bg-control));
+  --border-hairline-brass:color-mix(in oklab,var(--color-action) 30%,var(--border-hairline));
   --bg-control:var(--chalk-930);
   --bg-control-hover:var(--chalk-920);
   --bg-chip:var(--chalk-900);
@@ -1467,7 +1548,6 @@
   --icon-quiet:var(--ink-300);          /* 4.1:1 worst case, and a filled glyph is neither a line nor
                                            a word: the bar it answers to is 3:1 */
   --icon-brass:var(--brass-600);        /* 3.2:1 */
-  --text-icon-strong:var(--ink-700);    /* 10.3:1 */
   --text-chip-hover:var(--ink-900);     /* 13.9:1 */
   --text-brass:var(--brass-700);        /* 5.3:1 over the deepest brass tint, 6.5:1 on bare stone */
   --focus-ring:var(--brass-700);        /* 5.71:1 to 7.46:1 across every ground it reaches, on the same

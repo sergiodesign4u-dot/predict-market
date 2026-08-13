@@ -14,7 +14,7 @@
     inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),
     0 24px 48px -30px var(--shadow-ink-85),0 10px 22px -16px var(--shadow-ink-72)}
 .hero-trust,.hero-feature{transition:transform var(--dur-slow) var(--ease-out),box-shadow var(--dur-slow) var(--ease-out)}
-.hero-trust:hover{transform:translateY(-2px)}
+.hero-trust:hover{transform:translateY(calc(-2px * var(--motion)))}
 /* The tile is a claim, not a control: there is no link and no button inside it,
    so no ground may change under a finger, and the only thing a press can
    honestly say is that the lift above is not stuck. It moves the tile back to
@@ -113,7 +113,7 @@
 .hero-trust{display:flex;align-items:center;gap:var(--space-12);padding:var(--space-16) var(--space-20);min-height:82px}
 .ht-art{position:absolute;top:0;bottom:0;right:0;height:100%;width:48%;object-fit:cover;object-position:center right;opacity:.6;z-index:var(--z-under);pointer-events:none;-webkit-mask-image:linear-gradient(to left,var(--mask-solid) 62%,transparent 99%);mask-image:linear-gradient(to left,var(--mask-solid) 62%,transparent 99%)}
 .hero-trust .ht-badge,.hero-trust .ht-body{position:relative;z-index:var(--z-content)}
-.ht-badge{width:var(--size-40);height:var(--size-40);flex:0 0 var(--size-40);border-radius:var(--radius-10);display:grid;place-items:center;color:var(--text-brass-lit);background:linear-gradient(140deg,color-mix(in oklab,var(--color-action) 22%,var(--bg-control)),var(--bg-control) 74%);border:var(--hairline) solid color-mix(in oklab,var(--color-action) 30%,var(--border-hairline))}
+.ht-badge{width:var(--size-40);height:var(--size-40);flex:0 0 var(--size-40);border-radius:var(--radius-10);display:grid;place-items:center;color:var(--text-brass-lit);background:linear-gradient(140deg,var(--bg-control-brass),var(--bg-control) 74%);border:var(--hairline) solid var(--border-hairline-brass)}
 .ht-badge svg{width:var(--size-20);height:var(--size-20)}
 .ht-body{display:flex;flex-direction:column;gap:var(--space-4);min-width:0}
 .ht-body b{font-family:var(--font-body);font-size:var(--text-14);font-weight:var(--weight-semibold);color:var(--text-primary)}
@@ -213,6 +213,11 @@
    `transform:none` for its own -3px lift, and it is the same three words here.
    The `:active` rule above is the rest position restated, so it needs nothing: it is already
    `translateY(0)`. */
-@media(prefers-reduced-motion:reduce){
-  .hero-trust:hover{transform:none}
-}
+/* THE REDUCED-MOTION BLOCK THAT STOOD HERE WENT ON 2026-08-13, backlog 132, and so did the four
+   copies of it in the other files that lift something. The distance above is multiplied by
+   `--motion`, which `base.css` sets to 0 under `prefers-reduced-motion`, so the floor is one
+   value in one place instead of five rules in five files. **A blanket `*:hover{transform:none}`
+   was the obvious fix and was refused by a census**: 5 of the system's 20 transforms are
+   movement, and one of the other 15 is `.market-chevron` turning over when its market opens,
+   which is an element and would have been flattened for as long as a pointer rested on it.
+   The argument and the count are in `tokens.css` beside `--motion`. */

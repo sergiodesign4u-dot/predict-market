@@ -504,7 +504,6 @@
 .tk-c-text-icon{--tk-sw:var(--text-icon)}
 .tk-c-icon-quiet{--tk-sw:var(--icon-quiet)}
 .tk-c-icon-brass{--tk-sw:var(--icon-brass)}
-.tk-c-text-icon-strong{--tk-sw:var(--text-icon-strong)}
 .tk-c-text-chip-hover{--tk-sw:var(--text-chip-hover)}
 .tk-c-text-brass{--tk-sw:var(--text-brass)}
 .tk-c-text-brass-lit{--tk-sw:var(--text-brass-lit)}
@@ -792,7 +791,9 @@
 .tk-ic-12{width:var(--icon-12);height:var(--icon-12)}
 .tk-ic-16{width:var(--icon-16);height:var(--icon-16)}
 .tk-ic-18{width:var(--icon-18);height:var(--icon-18)}
+.tk-ic-20{width:var(--icon-20);height:var(--icon-20)}
 .tk-ic-22{width:var(--icon-22);height:var(--icon-22)}
+.tk-ic-28{width:var(--icon-28);height:var(--icon-28)}
 /* The icon ladder is drawn twice on that section, once as the BOX and once as a
    real mark inside it, because a mark is not the size of its box: the sprite half
    is filled and the stroked half paints half of `--stroke-mark` outside its

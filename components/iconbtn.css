@@ -335,7 +335,7 @@
    docs/backlog.md 64. */
 .icon-btn.icon-btn-lift{width:var(--size-28);height:var(--size-28);padding:0;line-height:inherit;transition:background var(--dur-base) ease,border-color var(--dur-base) ease,transform var(--dur-base) ease}
 .icon-btn.icon-btn-lift .ic{width:var(--icon-18);height:var(--icon-18)}
-.icon-btn.icon-btn-lift:hover{background:color-mix(in oklab,var(--color-action) 20%,var(--bg-control));border-color:var(--text-brass);transform:translateY(-2px)}
+.icon-btn.icon-btn-lift:hover{background:var(--bg-control-brass);border-color:var(--text-brass);transform:translateY(calc(-2px * var(--motion)))}
 .icon-btn.icon-btn-lift:hover .ic{stroke:var(--text-primary);color:var(--text-primary)}
 .icon-btn.icon-btn-lift:active{background:var(--bg-pressed);transform:translateY(0)}
 .icon-btn.icon-btn-lift:active .ic{stroke:var(--text-primary);color:var(--text-primary)}
@@ -346,9 +346,14 @@
    reduced motion the affordance has to become the colour change that is already here, which
    is why only the transform is dropped. Same three words in button.css, card.css and
    hero.css. */
-@media(prefers-reduced-motion:reduce){
-  .icon-btn.icon-btn-lift:hover{transform:none}
-}
+/* THE REDUCED-MOTION BLOCK THAT STOOD HERE WENT ON 2026-08-13, backlog 132, and so did the four
+   copies of it in the other files that lift something. The distance above is multiplied by
+   `--motion`, which `base.css` sets to 0 under `prefers-reduced-motion`, so the floor is one
+   value in one place instead of five rules in five files. **A blanket `*:hover{transform:none}`
+   was the obvious fix and was refused by a census**: 5 of the system's 20 transforms are
+   movement, and one of the other 15 is `.market-chevron` turning over when its market opens,
+   which is an element and would have been flattened for as long as a pointer rested on it.
+   The argument and the count are in `tokens.css` beside `--motion`. */
 
 /* The X is drawn rather than fetched: two bars in currentColor, so the mark
    moves with the ink and the two cannot drift apart. The bar is --size-8 and

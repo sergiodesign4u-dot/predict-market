@@ -1,6 +1,6 @@
 # components/ - the system itself
 
-This folder IS the design system. **53 stylesheets, 8,587 lines**: 47 here and 6 in `patterns/`,
+This folder IS the design system. **53 stylesheets, 8,734 lines**: 47 here and 6 in `patterns/`,
 re-counted 2026-08-13 by `cat components/*.css components/patterns/*.css | wc -l` after `print.css`
 was written (`docs/backlog.md` 125). It was 52 and 7,767 on 2026-08-12. The file count was
 re-counted 2026-08-11 by listing them, after `platehead.css` was written the same day, and was
@@ -45,6 +45,16 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   component separately. The touch floor stood in six files as six LISTS until 2026-08-08, and what a
   list leaves out nothing says: two of five chips had it and `.market-head` had none. A component
   speaks up only to be excluded, and an exclusion carries its reason.
+  **THE THIRD FLOOR IS MOTION AND IT IS A VALUE RATHER THAN A RULE, which is the shape to reach for
+  when the family is not a selector.** `base.css` has always shortened every duration under
+  `prefers-reduced-motion`, and shortening a transition never removes a `transform`, so five files
+  each carried their own `:hover{transform:none}` until 2026-08-13. A blanket
+  `*:hover{transform:none}` was refused by a census: **5 of the system's 20 transforms are movement**
+  and one of the other 15 is `.market-chevron`, an element that turns over when its market opens and
+  would have been flattened for as long as a pointer rested on it. So the distance is multiplied by
+  `--motion`, 1 normally and 0 under the query, and each file keeps its own distance beside the rule
+  that moves. **When a family cannot be selected, put the switch in the value the declaration already
+  reads.** `docs/backlog.md` 132.
 - **Green and red are outcome semantics (YES / NO), brass is the brand.** An accent never borrows
   the win/lose colour, and a candidate in a multi-outcome chart is not an outcome. `DESIGN.md`
   decides this twice, which is why it is the one rule that overrules a local preference.

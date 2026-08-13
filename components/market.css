@@ -21,7 +21,7 @@
 .market-head:hover{background:var(--bg-control)}
 .market-head:active{background:var(--bg-pressed)}
 .market-title{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-bold);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-brass-lit)}
-.market-title .ic{width:13px;height:13px;stroke:var(--text-muted);color:var(--text-muted);fill:none;stroke-width:1.7}
+.market-title .ic{width:var(--icon-12);height:var(--icon-12);stroke:var(--text-muted);color:var(--text-muted);fill:none;stroke-width:1.7}
 /* THE CHEVRON IS A STROKED MARK WITHOUT THE FAMILY'S CLASS, so it declares the family's
    weight itself rather than a number of its own. It said 1.8, which rendered 1.2 at this
    box: the second lightest mark in the product and 0.45 under the 1.65 everything else

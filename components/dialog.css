@@ -42,6 +42,25 @@ dialog.app-dialog .fine{font-size:var(--text-11);line-height:var(--leading-base)
 
 .sheet-head{display:flex;align-items:center;justify-content:space-between;padding:var(--space-8) var(--space-8);border-bottom:var(--hairline) solid var(--border-hairline)}
 .sheet-head :is(h1,h2){font-size:var(--text-14);margin:0}
+/* THE FOUR SHEET-BODY GAPS ARE THREE, AND THE THING THAT SETS THEM IS WHAT THEY STACK. Backlog
+   114, answered 2026-08-13 by reading the bodies rather than the rules. Row 110 left all four alone
+   because an edge is shared with another element and has to agree while a gap is between siblings
+   of one body, so four values might be four densities; the row that stayed open asked whether they
+   were, and nothing in the system said. They are, and the ladder is legible once the children are
+   counted in the product:
+
+     8   a stack of PARTS     - the deposit body: a field group, a widget, two paragraphs and two
+                                buttons, six children of four different kinds
+     12  a stack of CONTROLS  - the sign-in body, three provider buttons and a fine line; and the
+                                outcome body, a figure block and its two actions
+     16  a stack of SECTIONS  - the how-it-works body, three `.hiw-sec` each carrying an icon, a
+                                label and a paragraph, plus the full-page link
+
+   **The gap grows with the size of the thing on either side of it**, which is the only rule a gap
+   can honestly follow, and it is written here rather than turned into three tokens because a token
+   would say these are rungs of one ladder that any body may pick from. They are not: a body has one
+   of three shapes and the shape decides. The day a fourth body stacks something else, this comment
+   is what it has to argue with. */
 .sheet-body{padding:var(--space-20);display:flex;flex-direction:column;gap:var(--space-8)}
 /* Fine print is muted wherever it stands, not only inside the containers named
    further down. Without the colour here it inherits body text and reads as
@@ -485,7 +504,7 @@ dialog.app-dialog.hiw-dialog:modal .hiw-body{overflow:auto;min-height:0}
 .app-dialog.hiw-dialog .hiw-body{padding:var(--space-20) var(--space-24);display:flex;flex-direction:column;gap:var(--space-16)}
 .app-dialog.hiw-dialog .hiw-full{display:flex;align-items:center;justify-content:center;gap:var(--space-8);font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:var(--space-12);margin-top:var(--space-2)}
 .app-dialog.hiw-dialog .hiw-arrow{width:var(--icon-18);height:var(--icon-18);stroke:var(--text-on-brass);transition:transform var(--dur-base) ease}
-.app-dialog.hiw-dialog .hiw-full:hover .hiw-arrow{transform:translateX(3px)}
+.app-dialog.hiw-dialog .hiw-full:hover .hiw-arrow{transform:translateX(calc(3px * var(--motion)))}
 /* AND THE NUDGE IS REMOVED BY NAME UNDER REDUCED MOTION, 2026-08-12. This is the only
    TRANSLATION IN THE SYSTEM THAT IS NOT A LIFT: a 3px sideways slide reads as travel, which
    is the one motion a person who asked for less of it is most likely to have asked about.
@@ -493,9 +512,14 @@ dialog.app-dialog.hiw-dialog:modal .hiw-body{overflow:auto;min-height:0}
    `transform`, so the arrow was jumping 3px with the easing stripped off. The brass face
    that arrives with it, on the rule below, is the affordance that stays: this control still
    answers a pointer, it just stops moving. */
-@media(prefers-reduced-motion:reduce){
-  .app-dialog.hiw-dialog .hiw-full:hover .hiw-arrow{transform:none}
-}
+/* THE REDUCED-MOTION BLOCK THAT STOOD HERE WENT ON 2026-08-13, backlog 132, and so did the four
+   copies of it in the other files that lift something. The distance above is multiplied by
+   `--motion`, which `base.css` sets to 0 under `prefers-reduced-motion`, so the floor is one
+   value in one place instead of five rules in five files. **A blanket `*:hover{transform:none}`
+   was the obvious fix and was refused by a census**: 5 of the system's 20 transforms are
+   movement, and one of the other 15 is `.market-chevron` turning over when its market opens,
+   which is an element and would have been flattened for as long as a pointer rested on it.
+   The argument and the count are in `tokens.css` beside `--motion`. */
 /* The one brass action in the system with no hover of its own: only the arrow
    moved, so a person on a device with a pointer got a nudge and nothing under it.
    Same lit face every other brass plate takes, and the same two roles. */

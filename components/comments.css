@@ -86,7 +86,7 @@
    that is depth and not colour, and the press drops it: a plate pushed in does not throw light. */
 .cmt-controls{color:var(--text-muted);font-size:var(--text-12);justify-content:space-between}
 .cmt-compose{border:0;background:transparent;padding:0;align-items:center}
-.cmt-av{border:var(--hairline) solid var(--border-brass);color:var(--text-brass);font-size:var(--text-10);background:linear-gradient(140deg,color-mix(in oklab,var(--color-action) 20%,var(--bg-control)),var(--bg-control))}
+.cmt-av{border:var(--hairline) solid var(--border-brass);color:var(--text-brass);font-size:var(--text-10);background:linear-gradient(140deg,var(--bg-control-brass),var(--bg-control))}
 .cmt-input{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-well);color:var(--text-muted)}
 /* THE SIGNED-OUT PROMPT ADOPTED THE FAMILY ON 2026-08-07 and this file keeps one
    declaration of it: the gap under it. Everything else it was - a full-width box

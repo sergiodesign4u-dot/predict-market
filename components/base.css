@@ -116,6 +116,16 @@ button,select,summary{font:inherit}
    at four times its size wants its stroke at four times too. It carries no `.ic`, so this
    rule never reaches it, and the exclusion costs nothing to keep.
    The account is in ../docs/decisions.md and the inventory is ui-kit/icons.html. */
+/* THESE TWO CLASSES ARE DEFAULTS AND NOT SIZES, which is backlog 133's answer and is the opposite
+   of what that row asked for. It wanted a class for each of the other two icon rungs so a document
+   could reach them; a class in the markup would put a SIZE in a document, and the size of a mark is
+   a fact about WHERE IT STANDS, which is the same rule that says `container-type` is declared by
+   whoever places a component. So a document writes `.ic` or `.ic-sm` and the PLACEMENT names the
+   size: counted 2026-08-13, 13 rules in `components/` resize a mark and 8 of them read the two
+   rungs the row called unreachable. **The class does not promise its size either**: `.ic-sm` renders
+   at 12 on 354 of 358 placements and at 18 and 22 on the other four, because `toast.css` resizes it,
+   and that is the mechanism working rather than failing. The ladder itself was two rungs short and
+   is six now; `tokens.css` carries the count and the instrument fault that came with it. */
 .ic{width:var(--icon-22);height:var(--icon-22);fill:none;stroke-width:var(--stroke-mark);stroke-linecap:round;stroke-linejoin:round;vertical-align:middle;display:block}
 .ic-sm{width:var(--icon-12);height:var(--icon-12);fill:none;stroke-width:var(--stroke-mark);stroke-linecap:round;stroke-linejoin:round}
 /* vector-effect is a presentation attribute on the SHAPE and it does not inherit, so it
@@ -529,4 +539,14 @@ body.app-case{background:var(--bg-page)}
     animation-iteration-count:1 !important;
     transition-duration:.01ms !important;
     scroll-behavior:auto !important}
+  /* AND THE DISTANCE, WHICH THE BLOCK ABOVE COULD NEVER REACH. Shortening a transition makes a
+     movement instant; it does not remove it, so a hover lift still JUMPS the element 3px and puts
+     it back. Five components each carried their own `transform:none` for that until 2026-08-13,
+     which is five copies of one promise, the shape this file has already paid for twice with the
+     44px floor and the focus ring. **The third time it is not a rule at all, it is a value**: every
+     transform that moves something multiplies its distance by `--motion`, so setting it to 0 here
+     turns all five off at once and reaches the sixth the day somebody writes it. The census that
+     says why this is not `*:hover{transform:none}` is in `tokens.css` beside the token. Backlog
+     132. */
+  :root{--motion:0}
 }
