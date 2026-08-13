@@ -1,7 +1,8 @@
 # components/ - the system itself
 
-This folder IS the design system. **52 stylesheets, 7,767 lines**: 46 here and 6 in `patterns/`,
-counted 2026-08-12 by `cat components/*.css components/patterns/*.css | wc -l`. The file count was
+This folder IS the design system. **53 stylesheets, 8,556 lines**: 47 here and 6 in `patterns/`,
+re-counted 2026-08-13 by `cat components/*.css components/patterns/*.css | wc -l` after `print.css`
+was written (`docs/backlog.md` 125). It was 52 and 7,767 on 2026-08-12. The file count was
 re-counted 2026-08-11 by listing them, after `platehead.css` was written the same day, and was
 right; **the line count published beside it was 7,440 and was 327 short**, which is what a number
 kept in prose costs even on the day it is re-taken. It said 50 and 7,034 the day before and 51 and 5,651 the day

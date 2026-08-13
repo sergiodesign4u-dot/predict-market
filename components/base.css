@@ -53,7 +53,41 @@
 ::-webkit-scrollbar{width:var(--size-8);height:var(--size-8)}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--scroll-thumb);border-radius:var(--radius-pill)}
-body{margin:0;line-height:var(--leading-base);color:var(--text-primary);font-family:var(--font-body-root);background:var(--bg-page)}
+/* A TOKEN LONGER THAN ITS BOX, 2026-08-13, docs/backlog.md 125(e). `overflow-wrap`,
+   `word-break` and `hyphens` were 0 in this folder, and the reason nobody had noticed is
+   that the longest unbroken string the painted tree ships is 23 characters and every one of
+   them fits. **A wallet address is 42.** Injected as a display name, a handle, a comment
+   body, a card question and a wallet row at 320 and 390, with `overflow-wrap:normal`: the
+   wallet row grew the document by **107px at 320 and 37 at 390**, which is horizontal
+   scroll on a phone from one string a person is entitled to type.
+
+   `break-word` AND NOT `anywhere`, AND THE CONTROL IS WHAT DECIDED IT. The two differ on a
+   thing that is invisible in the word: `anywhere` takes min-content down with the line, so a
+   flex or grid track sized to its content gives way, and `break-word` leaves min-content the
+   width of the whole token. `anywhere` is the stronger fix and it was written first.
+   Screenshotted over **269 full pages, 106 painted screens at both widths and 57 kit pages**:
+   **all 212 product readings identical, and 23 kit pages differing with four changing
+   height.** Exempting `<code>` took that to 12 and two, and the pages still moving printed
+   **no long token at all**, which is the tell: `anywhere` was not breaking their words, it
+   was resizing their tracks. **A rule that changes intrinsic sizing changes layout in places
+   that have nothing long in them.** `break-word` re-measured: **57 of 57 kit pages identical,
+   0 differing pixels**, and every user-supplied field holds.
+
+   WHAT IT DOES NOT COVER, MEASURED RATHER THAN CLAIMED. Nine of ten injection points hold at
+   320 and ten of ten at 390. The one that does not is `.pos-figures` at 320, a numeric column
+   carrying an amount, which grows the document by 23px. **A 42-character address in a money
+   column is a data defect and not a wrapping one**, so it is left alone rather than answered
+   with a rule that would let a figure break across lines.
+
+   The `<code>` exception below stays, because it is right on its own terms and not only as a
+   repair to `anywhere`: the kit documents this system by PRINTING it, so
+   `<code>components/index.css</code>` is exactly the long unbroken token the product does not
+   have, and breaking it mid-name is the one place a break makes text harder to read. **A token
+   in prose may break; a token in code may not.** Counted rather than assumed: **1,709 of them
+   stand in `ui-kit/`, 0 in `wireframes/`, and exactly 1 in `ui-visual/`**, in the prose of
+   `overview.html`, which is the index of the tree rather than a screen in it. */
+body{margin:0;line-height:var(--leading-base);color:var(--text-primary);font-family:var(--font-body-root);background:var(--bg-page);overflow-wrap:break-word}
+code,pre,kbd,samp{overflow-wrap:normal}
 button,select,summary{font:inherit}
 /* TWO KINDS OF MARK, ONE WEIGHT, 2026-08-09. The set is Solar Bold, filled, carried
    in each page's sprite and drawn through <use>. It does not cover everything, and

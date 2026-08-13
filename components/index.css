@@ -157,3 +157,8 @@
 @import url("patterns/detail-shell.css");
 @import url("patterns/list-head.css");
 @import url("patterns/position-list.css");
+
+/* LAST, and the order is the rule: print.css re-states selectors that every file above
+   has already drawn, so a print rule any of them could override would be a print rule that
+   does nothing. It declares no component and has no page in the kit. docs/backlog.md 125. */
+@import url("print.css");

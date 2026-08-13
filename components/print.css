@@ -1,0 +1,98 @@
+/* components/print.css
+   The product on paper. Declares NO component and owns no class of its own: every selector
+   here names something another file already draws, and says what it does when the medium is
+   not a screen. That is why it has no page in `ui-kit/` and no row in the inventory, and why
+   it is the LAST import in `index.css` - a print rule that a component can override is a
+   print rule that does nothing.
+
+   WHY IT EXISTS. `docs/backlog.md` 125(a): **`@media print` was 0 in all four corpora**, and a
+   zero is never a finding because nothing measures what is not there. Measured at A4, 794 x
+   1123, with the medium emulated as print, on the three documents this product is actually
+   printed from - `terms.html`, `how-it-works.html` and the wallet history:
+
+     the review chrome sidebar   220 x 1123, a full page of harness on every sheet
+     its hamburger               44 x 44, fixed
+     the sticky header           794 x 59, still `position:sticky`
+     the footer trust strip      714 x 183 of decorative photography
+     four elements still sticky or fixed
+
+   **The row named the header, the bottom nav and the trust strip. The bottom nav does not
+   print** - it is off above the desk rung and A4 is 794px wide - **and the biggest thing on
+   the page is the review chrome, which the row did not name at all.** A sweep for `@media
+   print` finds a stylesheet that is missing; only a render finds what that costs.
+
+   PAPER IS NOT A THEME. It would be tidy to print the daylight palette, and it would mean
+   copying that palette into a second place, which is the one thing this repository has
+   decided over and over not to do. **Paper has one ground and one ink**, so this file sets
+   those two and lets every other role keep the value it already has: a browser does not
+   print a background colour unless it is asked to, so the ONLY thing that would otherwise
+   reach the sheet is graphite text on white, which is the dark theme's ink on the light
+   theme's paper and is the reason a print stylesheet is not optional here.
+
+   No em dash. */
+
+@media print {
+
+  /* 1. The harness is not the product. */
+  #rmSidebar,#rmToggle,#rmOverlay,.skip-link,.cc-banner{display:none!important}
+
+  /* 2. Nothing floats on paper. A sticky box either repeats or lands in the middle of a
+     column, and both are the same defect: a position resolved against a viewport that a
+     sheet of paper does not have. */
+  .app-header,.bottom-nav,.bet-dock,.cta-bar,.action-bar{position:static!important}
+  .bottom-nav,.bet-dock,.cta-bar{display:none!important}
+
+  /* 3. The header keeps its lockup and loses every control, because a bell, an avatar, a
+     balance swap and a category strip are all things to press. */
+  .app-header .utility,.app-header .cat-condensed,.app-header .hiw-btn,
+  .notif-menu,.avatar-menu,.bal-toggle,.auth-btns{display:none!important}
+
+  /* 4. The trust strip is 183px of photograph per document and the language picker and the
+     social row are controls. The legal line stays: on a printed legal page it is the part a
+     reader may actually need. */
+  .footer-trust,.social-row,.lang-menu,.footer-popular{display:none!important}
+
+  /* 5. ONE GROUND AND ONE INK, AND THE FIRST VERSION OF THIS BLOCK ENUMERATED AND WAS WRONG.
+     It re-pointed `--bg-canvas`, `--bg-surface`, `--bg-control` and `--bg-chip` at white and
+     the printed sheet came out graphite anyway, because the plates are GRADIENTS on
+     `--bg-plate-from`, `--bg-plate-to`, `--bg-slab-from` and `--bg-slab-to`, and a list is
+     only ever as complete as the person writing it. **A list of grounds is a list; `*` is a
+     rule.** So every ground is taken off at once and the body puts one back, which is also
+     what a browser does by default with `print-color-adjust` left alone: this file follows
+     that default rather than fighting it. */
+  *{background-image:none!important;background-color:transparent!important;
+    box-shadow:none!important;text-shadow:none!important;filter:none!important}
+  body{background-color:#fff!important}
+  :root{--text-primary:#111;--text-muted:#444;--text-icon:#444;
+        --border-hairline:#bbb;--border-field:#666;--line-grid:#ccc;
+        /* Brass is the brand and on a screen it sits on graphite. On white it measures
+           1.9:1 and disappears: 7 leaf elements, including the page title and the footer's
+           column heads, printed as pale gold on paper. It goes DARK rather than black, so
+           the mark the brand makes is still the mark it makes, and the value is the same
+           hue an octave down rather than a new colour invented for the sheet. */
+        /* the ROLES are not enough and the measurement is why: setting `--text-brass` took
+           `terms.html` and the wallet to 0 brass-on-white leaves and left 2 on
+           `how-it-works.html`, at `#e6c877`, because a hero writes its lit brass straight
+           from the PRIMITIVE. A role list is a list; the primitives are where the colour
+           actually lives, and there are seven of them. Overriding those costs nothing
+           because every brass GROUND is already transparent three lines above. */
+        --brass-200:#6b5312;--brass-220:#6b5312;--brass-250:#6b5312;--brass-300:#6b5312;
+        --brass-400:#6b5312;--brass-500:#6b5312;--brass-600:#5a4510;--brass-700:#4e3c0c;
+        --text-brass:#6b5312;--color-action:#6b5312}
+  /* A block that was a plate on screen is a shape with no edges once its ground is gone, so
+     the four that carry meaning by being SEPARATE get a hairline back. */
+  .card,.notice,.pos,.trust-item,.seo-plate,dialog{border:1px solid #bbb!important}
+
+  /* 6. A scroller shows what fits and paper has no thumb, so anything that scrolls sideways
+     on screen has to lay its content out instead. */
+  .cat-nav ul,.subcat,.opt-list,.bets-table,.ed-chart-area{overflow:visible!important}
+
+  /* 7. A link that goes nowhere should not underline like one that does, and a URL printed
+     after every internal link is noise. Nothing is added; the decoration is just removed. */
+  a[href="#"]{text-decoration:none!important}
+
+  /* 8. Page breaks. A card, a position row and a plate are single objects and reading half of
+     one across a fold is worse than a short page. */
+  .card,.pos,.notice,.trust-item,.opt-row,.plate-head{break-inside:avoid}
+  h1,h2,h3{break-after:avoid}
+}
