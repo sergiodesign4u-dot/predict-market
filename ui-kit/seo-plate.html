@@ -190,8 +190,14 @@
 
   <section class="tk-sec" id="photo">
     <h2 data-n="5">A photograph at 18 per cent, behind a mask, under the words</h2>
-    <p class="tk-note">The brand column carries an image on a pseudo-element at <b>0.18 opacity</b>,
-    behind a left-fading mask, on the layer below the content, with every child of the column lifted
+    <p class="tk-note"><b>The drawing is a MASK and not an image, since 2026-08-13</b>, the same
+    change as the trust bar's and for the same reason: the pseudo-element is painted with a
+    left-fading gradient of <code>--color-trust</code> and the column arrives as a
+    <code>mask-image</code> in <code>mask-mode:luminance</code>, carried as a <code>data:</code> URI
+    in <code>components/trust-art.css</code> because a mask image is a CORS-enabled fetch and these
+    pages are read from disk. <code>ui-kit/trustbar.html</code> holds the full account.</p>
+    <p class="tk-note">The brand column carries that drawing on a pseudo-element at <b>0.18
+    opacity</b>, on the layer below the content, with every child of the column lifted
     onto the layer above it. Same construction as the trust plate, at a third of the opacity.</p>
     <p class="tk-why"><b>The number is low because the text on top of it is the largest type in the
     product.</b> A tagline in display bold uppercase over a photograph is where contrast goes wrong

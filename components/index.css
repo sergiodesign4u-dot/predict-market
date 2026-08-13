@@ -46,6 +46,10 @@
    for why they are served from this repo. */
 @import url("fonts.css");
 @import url("tokens.css");
+/* The four trust drawings are values too, and they are here rather than in the
+   three files that draw them because a mask image is a CORS-enabled fetch and
+   these pages are read from disk. trust-art.css says the rest. */
+@import url("trust-art.css");
 @import url("base.css");
 @import url("course-chrome.css");
 

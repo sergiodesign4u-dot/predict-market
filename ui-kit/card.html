@@ -205,6 +205,15 @@
     semibold text sitting on the floor of the box, the texture off and <b>the trust-column
     mark replaced by a brass arrow</b> in the corner. It stands in <code>.gallery</code>, a row
     that scrolls sideways, which is why the width is fixed and the tile does not grow.</p>
+    <p class="tk-why"><b>"Replaced" was not true until 2026-08-13, and the half that was missing is
+    the mask.</b> The rule resets <code>background</code> and the glyph then wore the decoration's
+    <code>mask-image</code> anyway, so the arrow was being faded by a gradient meant for a picture
+    that is no longer there. Nobody read it as a defect while the mask was a gradient; the day the
+    mask became the column drawing the arrow went pale, <b>63 pixels of it losing up to 181 of
+    255</b>, and the full-tree sweep found it on this page and on <code>profile.html</code> and on
+    no product screen at all. It takes <code>mask-image:none</code> now. <b>A pseudo-element reused
+    for a second purpose has to reset every channel the first purpose wrote, and the mask is a
+    channel.</b></p>
     <div class="tk-pairv">
       <div class="tk-th">Vault, dark</div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">

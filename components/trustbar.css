@@ -1,7 +1,7 @@
 /* components/trustbar.css
    Component: trustbar. Classes: .footer-trust, .tr-ic, .tr-txt, .trust-head, .trust-item, .trust-items.
 
-   Reads: --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --border-hairline, --color-trust, --edge-groove-dark, --edge-groove-light, --mask-solid, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass-lit, --text-muted, --text-primary
+   Reads: --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --border-hairline, --color-trust, --edge-groove-dark, --edge-groove-light, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass-lit, --text-muted, --text-primary, --trust-art-column, --trust-art-globe, --trust-art-source
    Stand:  ui-kit/trustbar.html, and ui-kit/molecules.html#trustbar for the level and its reason
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
 
@@ -46,10 +46,51 @@
 .footer-trust .tr-txt{position:relative;z-index:var(--z-content)}
 .footer-trust .tr-txt b{color:var(--text-primary)}
 .footer-trust .tr-txt i{color:var(--text-muted)}
-.footer-trust .trust-item::after{content:'';position:absolute;top:0;bottom:0;right:0;width:46%;z-index:var(--z-under);pointer-events:none;opacity:.5;background-repeat:no-repeat;background-position:center right;background-size:cover;-webkit-mask-image:linear-gradient(to left,var(--mask-solid) 60%,transparent 99%);mask-image:linear-gradient(to left,var(--mask-solid) 60%,transparent 99%)}
-.footer-trust .trust-item:nth-child(1)::after{background-image:url("../assets/trust-column.webp")}
-.footer-trust .trust-item:nth-child(2)::after{background-image:url("../assets/trust-source.webp")}
-.footer-trust .trust-item:nth-child(3)::after{background-image:url("../assets/trust-globe.webp")}
+/* THE DRAWING IS A MASK NOW, not a picture, since 2026-08-13. It used to be a full-colour
+   WebP whose drawing lived in its ALPHA plane, and alpha is coded losslessly, so 88 KB of
+   the tile was a channel no encoder could reach. The masters say why: all five
+   visuals/masters/trust-*.png are 100 per cent opaque, brass line art on black, which is a
+   LUMINANCE drawing, and the alpha plane had been MANUFACTURED from it on the way to the
+   shipped file. Put back into the plane it was drawn in and read as a luminance mask over
+   --color-trust, the three tiles here go from 346,492 bytes to 87,558, and the fourth drawing
+   joins them for 26,184 because all four ship together in trust-art.css now.
+   AND A MASK CAN BE ENCODED FAR MORE BRUTALLY THAN A PICTURE, which is why they are q20. The
+   composite was measured against the shipped tree at q20, q35, q50 and q82 on two engines at
+   two widths, and the mean error moves from 1.06 to 1.01 of 255 across that whole range: the
+   difference between the mask and the shipped picture is the colour variation a flat brass
+   cannot carry, and the codec is nowhere near it. Paying four times the bytes for 0.05 of 255
+   would have been paying for the wrong thing.
+   THE PICTURE IS NOT LOST: the drawing was one brass on black all along, so multiplying a
+   flat brass by it is the same composite, measured against the shipped tree on two engines
+   at two widths.
+   The first attempt at this shipped and was rolled back the same hour with the wrong reason
+   written on it. It was blamed on mask-mode:luminance parsing without being honoured, and
+   that is FALSE: Chromium 151 and WebKit 26.5 both honour it, and both honour the per-layer
+   list and mask-composite:intersect. What actually failed is that mask-image is a
+   CORS-enabled fetch, so from a file:// page the .webp was BLOCKED in both engines while the
+   same file loaded as a background-image in the same document, and with two mask layers
+   under intersect the surviving gradient painted a flat brass rectangle over 46 per cent of
+   every tile. The drawings are inlined in trust-art.css for exactly that reason: a data: URI
+   is not a fetch. docs/backlog.md 140. */
+/* AND THE FADE IS IN THE PAINT, NOT IN THE MASK, WHICH IS THE SECOND FINDING OF THE DAY AND THE
+   ONE THAT DECIDES THE SHAPE OF ALL THREE PLACEMENTS. The obvious way to keep the existing
+   left-to-right fade is a second mask layer under mask-composite:intersect, and it renders
+   correctly in Chromium and paints NOTHING AT ALL in WebKit: the bottom layer of a mask list has
+   nothing beneath it, and intersecting anything with the transparent black underneath empties the
+   whole mask. Both engines are defensible readings of the spec, so the answer is not to pick one.
+   A drawing needs ONE mask layer, so the fade moved into the thing being masked: the paint is a
+   gradient of --color-trust now instead of a flat fill, which is the same composite and has no
+   compositing operator in it. Measured identical on both engines.
+   IT WAS CAUGHT ONLY BY VARYING THE INPUT: the first reading against the shipped tree looked
+   plausible on both engines, 13 to 55 per cent of pixels differing at a mean under 6 of 255, and
+   the WebKit half of it was the decoration being ABSENT rather than approximated. What exposed it
+   was rendering the mask at q20 and at q82 and diffing those two against each other: Chromium
+   moved 10.57 per cent of its pixels and WebKit moved 0.00, and a reading that does not move when
+   the input moves is not a reading of the page. */
+.footer-trust .trust-item::after{content:'';position:absolute;top:0;bottom:0;right:0;width:46%;z-index:var(--z-under);pointer-events:none;opacity:.5;background-image:linear-gradient(to left,var(--color-trust) 60%,transparent 99%);mask-repeat:no-repeat;mask-position:center right;mask-size:cover;mask-mode:luminance}
+.footer-trust .trust-item:nth-child(1)::after{mask-image:var(--trust-art-column)}
+.footer-trust .trust-item:nth-child(2)::after{mask-image:var(--trust-art-source)}
+.footer-trust .trust-item:nth-child(3)::after{mask-image:var(--trust-art-globe)}
 /* rung: DETAIL 47.5rem, 760px at the default root, the detail's second column, and this is BELOW it. 759.98 rather
    than 760, because the rung belongs to the wide side: tokens.css, page frame. */
 @media(max-width:47.49875rem){

@@ -1,8 +1,12 @@
 # components/ - the system itself
 
-This folder IS the design system. **53 stylesheets, 8,734 lines**: 47 here and 6 in `patterns/`,
-re-counted 2026-08-13 by `cat components/*.css components/patterns/*.css | wc -l` after `print.css`
-was written (`docs/backlog.md` 125). It was 52 and 7,767 on 2026-08-12. The file count was
+This folder IS the design system. **54 stylesheets, 9,011 lines**: 48 here and 6 in `patterns/`,
+re-counted 2026-08-13 by `cat components/*.css components/patterns/*.css | wc -l` after `trust-art.css`
+was written (`docs/backlog.md` 140). It was 53 and 8,734 earlier the same day, after `print.css`
+(`docs/backlog.md` 125). **`trust-art.css` is the first file here that is not a component and not a
+level**: it holds four `--trust-art-*` custom properties, each a `data:` URI carrying one of the
+trust drawings, and it has no selector, no page in the kit and no row in the inventory. It exists
+because a mask image is a CORS-enabled fetch, and the trap it pays for is at the end of this file. It was 52 and 7,767 on 2026-08-12. The file count was
 re-counted 2026-08-11 by listing them, after `platehead.css` was written the same day, and was
 right; **the line count published beside it was 7,440 and was 327 short**, which is what a number
 kept in prose costs even on the day it is re-taken. It said 50 and 7,034 the day before and 51 and 5,651 the day
@@ -249,6 +253,29 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   filter the walk by focusing the element and asking where focus landed, because a census of
   everything invisible sweeps in every `display:none` control the rungs turn off and reports 1,063
   where there are 440.
+- **A `url()` IN THIS FOLDER IS NOT ONE KIND OF THING, AND WHICH KIND DECIDES WHETHER IT LOADS AT
+  ALL.** A `background-image` is fetched no-cors. A `mask-image`, a `@font-face` source and an
+  external `<use>` are fetched in CORS mode, **even from their own origin**, and `file://` gives every
+  file its own opaque origin, so on a page opened off the disk the CORS ones have nothing to match
+  and are blocked. The same `.webp` in the same folder in the same document therefore loads as a
+  background and fails as a mask, in Chromium and in WebKit alike, measured 2026-08-13. **The failure
+  reads as a property misbehaving and it is a rule applying**, which is why it was diagnosed wrong
+  the first time and blamed on `mask-mode:luminance` not being honoured, a thing both engines do
+  honour. It has been paid for three times: `assets/icons.js` had to become a script because an
+  external sprite drew 0 of 34 glyphs; the trust drawings became `data:` URIs in `trust-art.css`
+  after painting a brass rectangle over every tile; and the two preloaded faces still fail this way
+  in WebKit, so a disk page in Safari is set in a fallback (`../docs/backlog.md` 147). **If a
+  declaration in this folder points outside the file, ask which fetch it is before you ask anything
+  else.**
+- **A MASK IS NOT A PICTURE AND MAY NOT BE ENCODED LIKE ONE, and a mask LIST is a third thing again.**
+  The trust drawings are multiplied by a flat `--color-trust` and held at `opacity` .18 to .5, so the
+  composite error is dominated by the colour variation a flat fill cannot carry and not by the codec:
+  measured against the shipped tree at q20, q35, q50 and q82, the mean moves **1.06 to 1.01 of 255**,
+  and q20 is a quarter of the bytes. **But do not reach for a second mask layer to keep a fade.** The
+  bottom layer of a mask list has nothing beneath it, and WebKit intersects it with the transparent
+  black there, which empties the whole mask: `mask-composite:intersect` over two layers draws
+  correctly in Chromium and draws NOTHING in WebKit. Put the fade in the paint instead, as a gradient
+  of the colour being masked, and the drawing keeps one mask layer and no compositing operator.
 - **A pointer is a claim, and nothing checks a comment.** Every file here carries a `Stand:` line, and
   from 2026-08-07 to 2026-08-08 **all 42 of them pointed at a file that did not exist**: they named
   the generated per-component pages, which were deleted with the vitrine, and no reader noticed

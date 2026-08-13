@@ -103,6 +103,24 @@ because it is a stance rather than a principle, and it is written once, here.
   while 992 links rendered in the browser's blue, and "the chart is ported" was true while it drew as
   a black rectangle, because an SVG with no `fill` is black. **A missing value is a value.** Measure
   the computed result, in a browser, at both widths and in both themes.
+- **ONE ENGINE IS ONE READING, AND THE PROTOCOL IS PART OF THE READING TOO.** Every sweep here until
+  2026-08-13 was Chromium, and Chromium agreed with a page that was visibly broken. **These pages are
+  read from DISK**, and `file://` gives every file its own opaque origin, so anything fetched in CORS
+  mode has no origin to match: a `mask-image`, a `@font-face` source, an external `<use>`. A
+  `background-image` is not fetched that way and loads from the same folder in the same document,
+  which is why the failure looks like one property misbehaving instead of one rule applying. It has
+  cost this repository three times now: 0 of 34 glyphs from an external sprite, a brass rectangle
+  over every trust tile, and **WebKit rendering all 163 documents in a fallback face because DM Sans
+  and Space Grotesk never arrive**. Measure over `file://` as well as `http://`, and in more than one
+  engine. WebKit is installed: `playwright@1.62.0` is global, and `webkit` in the harness is the same
+  build as the Safari on this machine.
+- **A reading that does not move when the input moves is not a reading of the page**, and it is the
+  twin of the rule above about a number that moves when nothing moved. A two-layer mask measured
+  against the shipped tree gave 13 to 55 per cent of pixels differing at a mean under 6 of 255 on
+  both engines, which looked like an approximation and was WebKit drawing nothing at all. What
+  exposed it was rendering the same mask at two qualities and diffing THOSE: Chromium moved 10.57 per
+  cent of its pixels and WebKit moved 0.00. **Vary the input by something you know must show, and
+  check the instrument saw it, before you believe what it says about the page.**
 - **"Both widths" is not a measurement of a responsive system: measure AT the rungs and one pixel
   either side of each.** A defect can live entirely between the two widths everybody reads. The
   system breaks at 40rem, 47.5rem and 56.25rem and the review chrome docked at 860, and every audit here read

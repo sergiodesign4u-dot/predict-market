@@ -9,7 +9,8 @@ in `assets/`. The look is set by root `DESIGN.md`, not reinvented here.
 that costs bytes**: their five 1254x1254 masters, 8,322,176 of them, sat in `assets/`, the folder
 the screens load, referenced by nothing, while the photographs' masters sat here as the README
 says. `masters/` holds all eleven now, and `assets/` holds only what a screen asks for:
-**9,690,253 bytes to 1,339,606.** Two things here are the master of nothing shipped and are named so
+**9,690,253 bytes to 1,339,606**, and to **1,193,741 in 25 tracked files** on 2026-08-13 when the
+trust drawings became masks and two more of them stopped being asked for. Two things here are the master of nothing shipped and are named so
 that nobody takes them for one: `trust-source-alt.png` is the unpicked second variant of the source
 drawing, kept because the note above says every subject was generated in two; and
 `trust-column.svg` with `trust-globe.svg` are a SIMPLER schematic of the same subjects, dated an
@@ -51,17 +52,30 @@ directly answers Alex's documented fear, "this looks like crypto, so it is a sca
   destroys it at every ratio. They are re-encoded in place with
   `cwebp -q 92 -alpha_q 10 -alpha_filter best -sharp_yuv`, which touches no dimension.
   `docs/backlog.md` 140 is what is left of their weight.
-- **AND ON 2026-08-13 A LUMINANCE-MASK VERSION OF THEM SHIPPED AND WAS ROLLED BACK THE SAME HOUR,
-  which is worth keeping because the finding under it survives the rollback.** All five
-  `masters/trust-*.png` are 1254x1254 and **100 per cent opaque**: brass line art on black, a
-  LUMINANCE drawing, and the mean of a master's luminance and the mean of the alpha made from it
+- **AND SINCE 2026-08-13 THREE OF THE FOUR ARE NOT FILES AT ALL. They are `data:` URIs in
+  `components/trust-art.css`, and the paragraph that used to stand here blamed the wrong thing.**
+  All five `masters/trust-*.png` are 1254x1254 and **100 per cent opaque**: brass line art on black,
+  a LUMINANCE drawing, and the mean of a master's luminance and the mean of the alpha made from it
   agree, 23.8 against 22.3. **The alpha plane was manufactured from a luminance drawing on the way
-  to the shipped file**, which is exactly why no encoder reaches it. Put back into luminance and
-  read as `mask-image` with `mask-mode:luminance` over a flat `--color-trust`, the four files come
-  to 256,422 bytes from 488,842, and the composite was measured and accepted. **It renders as a
-  brass rectangle in a browser that parses `mask-mode` and does not honour it**, and `@supports`
-  cannot tell those two apart, so it was reverted whole. The measurement stands and the mechanism
-  does not: `docs/backlog.md` 140.
+  to the shipped file**, which is exactly why no encoder reaches it. Read as a luminance
+  `mask-image` over `--color-trust` at q20 the whole set is **113,742 bytes against 488,842**, and
+  the composite was measured against the shipped tree on two engines at two widths with a control of
+  0.00 per cent: mean error 1.06 of 255, and it is still 1.01 at q82, because what a mask cannot
+  carry is colour variation and not detail. **The first attempt at this shipped and was rolled back
+  the same hour with `mask-mode:luminance` blamed for parsing without being honoured, and that was
+  false**: Chromium 151 and WebKit 26.5 both honour it. What failed was that **a mask image is a
+  CORS-enabled fetch and a background image is not**, so from a page opened off the disk the `.webp`
+  was blocked in both engines while the same file loaded as a background beside it. A `data:` URI is
+  not a fetch. `docs/decisions.md` and `docs/backlog.md` 140.
+- **What is left in `assets/` of these four, and why.** `trust-column.webp` and `trust-globe.webp`
+  stay, because `.ht-art` on `event-feed.html` and `ui-kit/feed.html` draws them as `<img>` at
+  `opacity:.6` and that placement was deliberately not converted: 208,464 bytes on one product
+  screen where they used to stand on 105. `docs/backlog.md` 148. `trust-source.webp` and
+  `trust-column-full.webp` are asked for by nothing and sit here as `*-shipped.webp`, kept rather
+  than deleted because **the masks were derived from their alpha planes** and the crop that made
+  those frames cannot be recovered from the square masters: searched by correlation across every
+  horizontal crop at the shipped aspect, the best offset scores 30.02 of 255 and the worst 32.23,
+  which is a flat curve and therefore no alignment. `docs/backlog.md` 139.
 
 ## The set
 

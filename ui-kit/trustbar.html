@@ -121,9 +121,23 @@
 
   <section class="tk-sec" id="plate">
     <h2 data-n="4">A photograph under the words, and it is under them on purpose</h2>
-    <p class="tk-note">Each of the three carries a <code>::after</code> holding a different image,
-    46 per cent of the width, right aligned, at <b>0.5 opacity behind a left-fading mask</b> and on
-    the layer below the content. The text sits on its own layer above it.</p>
+    <p class="tk-note">Each of the three carries a <code>::after</code> 46 per cent of the width,
+    right aligned, at <b>0.5 opacity</b> and on the layer below the content. The text sits on its own
+    layer above it.</p>
+    <p class="tk-note"><b>The drawing is the MASK and not the picture, since 2026-08-13.</b> The
+    <code>::after</code> is painted with a left-fading gradient of <code>--color-trust</code> and the
+    drawing arrives as <code>mask-image</code> in <code>mask-mode:luminance</code>, so what you see is
+    the trust colour cut to the shape of the column, the book or the globe. It was a full-colour WebP
+    whose drawing lived in its <b>alpha</b> plane, which WebP codes losslessly, and the three tiles
+    cost <b>346,492 bytes on 105 screens</b>. They cost <b>87,558</b> now, and no request at all:
+    the masks are <code>data:</code> URIs in <code>components/trust-art.css</code>, because
+    <b>a mask image is a CORS-enabled fetch and a background image is not</b>, and these pages are
+    read from disk. Two things follow for anyone editing this. <b>The fade may not be a second mask
+    layer</b>: the bottom layer of a mask list is intersected with the transparent black beneath it
+    in WebKit, so <code>mask-composite:intersect</code> over two layers draws correctly in Chromium
+    and draws nothing at all in Safari. And <b>a mask is not a picture</b>: at q20 the composite is
+    within 1.06 of 255 of the shipped tree, and q82 only reaches 1.01, because what a flat colour
+    cannot carry is variation and not detail.</p>
     <p class="tk-why"><b>A picture behind a claim is the exact place a trust component can lose the
     argument it exists to win.</b> The mask and the opacity are not styling flourishes: they are what
     keeps the sentence at full contrast while the plate still reads as a made object rather than a

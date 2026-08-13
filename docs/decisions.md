@@ -12,6 +12,113 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-13, last - A mask image is fetched with CORS and a background image is not, so the thing that broke the trust strip was reading the page from disk
+
+**The rollback four hours ago named the wrong cause, and the entry that recorded it is the one this
+entry supersedes.** It said `mask-mode:luminance` parses without being honoured and that `@supports`
+is blind to exactly that. **Both halves are false.** A second rendering engine went into the harness
+today, WebKit 26.5, which is the same WebKit as the Safari on this machine, and the mechanism was
+put to it directly: **Chromium 151 and WebKit 26.5 both honour `mask-mode:luminance`, both honour a
+per-layer `luminance, alpha` list, and both honour `mask-composite:intersect`.** The `@supports`
+guard was not blind. It was guarding a door that was never the one being forced.
+
+**What actually failed is a fetch.** The reverted commit was checked out into its own tree and
+opened for real, both engines, both protocols. Over `http://` all four mask files load and the
+strip draws. Over `file://` **all four requests fail, in Chromium and in WebKit alike**, and the
+screenshot of WebKit reading it from disk is the product owner's screenshot pixel for pixel. A
+mask image is a CORS-enabled fetch and a background image is not, so on a page opened from disk,
+where every file is its own opaque origin, the mask is blocked. Proven on a stand where the SAME
+FILE stands twice in one document: as `mask-image` the request fails and nothing paints, as
+`background-image` it loads and draws. **And the reason the failure looked like a rectangle rather
+than like nothing is the two-layer mask**: the drawing died and the gradient beneath it survived, so
+`intersect` had one opaque layer left to intersect with and it painted a flat brass fade over 46 per
+cent of every tile.
+
+**This is the trap that made `assets/icons.js` a script instead of an `.svg`, four days ago, in this
+repository, written down in `STRUCTURE.md`.** An external `<use>` is a cross-document reference and a
+disk page drew 0 of 34 glyphs. Same origin rule, second victim, and it was not recognised because
+the first one was filed under icons. **It has a third victim standing today and the second engine is
+what found it**: over `file://` WebKit loads neither DM Sans nor Space Grotesk, only the mono face,
+which resolves through the one `local()` in `fonts.css`. Chromium loads all of them from disk and
+WebKit does not, so the whole product read from disk in Safari is set in a fallback face.
+`docs/backlog.md` 147.
+
+**So the drawings are inlined.** `components/trust-art.css` holds four `--trust-art-*` custom
+properties, each a `data:` URI, and `trustbar.css`, `card.css` and `seo-plate.css` reach the drawing
+through them. A `data:` URI is not a fetch, so it cannot be blocked, cannot 404 and cannot arrive
+late: the mechanism cannot degrade to a rectangle because there is nothing left to fail. It is not a
+component and it has no page in the kit; it is the drawings themselves, kept out of the three
+stylesheets so that a stylesheet a person reads stays one.
+
+**THE SECOND FINDING IS THE ONE THAT WOULD HAVE SHIPPED, AND IT WAS CAUGHT BY VARYING THE INPUT
+RATHER THAN BY LOOKING AT THE PAGE.** The first build kept the fade as a second mask layer under
+`mask-composite:intersect`. Measured against the shipped tree it looked plausible on both engines,
+13 to 55 per cent of pixels differing at a mean under 6 of 255, which is inside the band this repo
+had already accepted. It was wrong. **The bottom layer of a mask list has nothing beneath it, and
+WebKit intersects it with the transparent black underneath, which empties the entire mask**: the
+decorations were ABSENT on WebKit, and the reading that looked like an approximation was the
+difference between the shipped decoration and no decoration at all. What exposed it was rendering
+the mask at q20 and at q82 and diffing those two against each other: **Chromium moved 10.57 per cent
+of its pixels and WebKit moved 0.00**, four times the data through the same pipe with a bit-identical
+result. **A reading that does not move when the input moves is not a reading of the page**, which is
+the same rule as the one about a number that moves when nothing moved, standing on its other foot.
+Both engines are defensible here, so the answer was not to pick one: a drawing needs ONE mask layer,
+and the fade moved out of the mask and into the paint, which is a gradient of `--color-trust` now
+instead of a flat fill. No compositing operator anywhere. Both engines identical after.
+
+**The quality was chosen by measurement and the measurement said the knob does not matter.** The
+composite was compared against the shipped tree at q20, q35, q50 and q82, two engines, two widths,
+three placements, control 0.00 per cent on all twelve readings each time. **The mean error moves from
+1.06 to 1.01 of 255 across that entire range.** The difference between a mask and the picture it
+replaces is the colour variation a flat brass cannot carry, and the codec is nowhere near it, so
+paying four times the bytes for 0.05 of 255 would have been paying for the wrong thing. q20 it is:
+worst single channel delta 11 to 68 of 255, and over `file://` on both engines the same numbers with
+a control of 0.00.
+
+**What it costs and what it saves.** The three footer tiles go from **346,492 bytes to 87,558**, and
+the fourth drawing, which used to load on 23 screens, joins them for 26,184 because all four now
+ship together. As base64 in the stylesheet that is **153,439 bytes on every screen**, against 346,492
+on 105 screens and 488,842 on the feed: **a 55.7 per cent cut on the median screen and 68.6 on the
+heaviest**. `assets/` goes from 1,474,119 bytes to **1,193,741**, because `trust-source.webp` and
+`trust-column-full.webp` are asked for by nothing now and moved to `visuals/masters/` beside the
+originals they came from.
+
+**Two placements of these drawings are deliberately left as pictures**, and they are the reason
+`trust-column.webp` and `trust-globe.webp` stay in `assets/`: `.ht-art` on `event-feed.html` and on
+`ui-kit/feed.html` is an `<img>` in the markup at `opacity:.6`, the largest and most visible of the
+four placements, and converting it means editing two documents rather than one stylesheet. It is a
+row, not an oversight. **208,464 bytes on one product screen instead of on 105 is already the whole
+shape of the win.**
+
+**AND THE FULL SWEEP FOUND A DEFECT THAT HAD BEEN STANDING SINCE BEFORE ANY OF THIS, ON THE TWO
+PAGES NOBODY WOULD HAVE LOOKED AT.** All 163 documents were re-rendered on both engines at 390 and
+1280 against the pre-change tree, control 0.00 on every reading, **0 size mismatches outside the
+three kit pages whose prose this change rewrote**. Over the 106 painted documents the worst single
+channel delta is **41 of 255 in Chromium and 85 in WebKit**, the most any page moves is 6.24 per cent
+of its pixels, and every mean is under 0.32. The outlier is 181, and it is on `ui-kit/card.html`
+and `ui-kit/profile.html`: the gallery card's little brass arrow, which is `.gallery .card::after`
+reusing the decoration's pseudo-element and resetting `background` but not `mask-image`. **It has
+been wearing the decoration's mask ever since the decoration had one.** While that mask was a
+left-to-right gradient the glyph was merely faded on one side and nobody read it as anything; the
+moment the mask carried a drawing it went pale, 63 pixels of it. `mask-image:none` fixes both, and
+the pixels that still differ afterwards are the arrow no longer being partially erased. **A
+pseudo-element reused for a second purpose has to reset every channel the first purpose wrote, and
+the mask is a channel.** Two kit pages caught it and 106 product screens did not.
+
+**And the weight, which is what the question that started all this was about.** Every response body
+on all 106 documents in `ui-visual/`, at 1280, before and after: the **median screen goes from
+1,211,758 bytes to 1,020,959**, the mean from 1,256,081 to 1,041,480, and the heaviest, the feed,
+from 1,589,778 to 1,466,943. **The image payload of the mean screen goes from 387,427 bytes to
+15,283**, a 96 per cent cut, and most screens now load no image at all. The stylesheet grows by
+157,543 on every screen, which is the honest half of the trade and is why the median moves by 15.7
+per cent rather than by the 55.7 the images alone would suggest.
+
+**The instrument, since it is now part of the record.** `playwright@1.62.0` is installed globally and
+resolves at `/opt/homebrew/lib/node_modules/playwright`; the browsers were always global, in
+`~/Library/Caches/ms-playwright/`, which is why adding WebKit added nothing to any project. **One
+engine is one reading**, and every sweep in this repository until today was one engine reading a
+product that is delivered from disk.
+
 ## 2026-08-13, later still - There was no bolder plus in the design system, there was a catalogue drawing the same plus at 3.18 times life size
 
 The product owner pointed at `ui-kit/icons.html`, where the plus is a fat confident mark, and asked
