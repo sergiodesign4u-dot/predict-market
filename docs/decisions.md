@@ -12,6 +12,22 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-13 - A name is as long as the thing it names, and 130 controls were called YES
+
+Backlog 103. **130 bare "YES" and "NO" accessible names are 0, and 232 of 232 controls in the `.yesno` family now carry the outcome they act on.** No new copy was written, no route changed and no control moved.
+
+**THE ROW ASKED FOR A VOICE AND IA DECISION AND THE REPOSITORY HAD ALREADY TAKEN IT.** Row 96 settled the multi-outcome rows by pointing `aria-labelledby` at the outcome span and then at the control, and `voice/docs/microcopy.md` wrote down why: **the wording stays in the one place that file owns it and is not typed into the markup a second time.** That rule decides this row too. The binary card's outcome is not a word, it is the card's question, so the name is the question: **"Will Bitcoin close above $150,000 before October 1, 2026? YES"**, 61 characters against row 96's 11. The row treated that length as the reason a different answer was needed. It is not a defect, it is the measurement: **a name is as long as the thing it names**, and the alternative is inventing a short title for every market, which is a second string per event that then has to be kept true.
+
+**WHAT THE COUNT ACTUALLY WAS.** 116 pairs and 232 controls over 14 screens, in four placements: **126 on binary cards, 84 on multi rows, 20 on the event detail, 2 in the feed hero.** The row said 126 per tree and that is exactly right for the binary card. What it did not name is that **12 documents had two or more controls sharing one accessible name**, five "YES" and five "NO" on a single category feed, which is the reading that turns "unhelpful" into "indistinguishable". It is 0 now.
+
+**AND THE MEASUREMENT FOUND A STRAGGLER OF ROW 96 THAT ROW 96 COULD NOT SEE.** Four controls stayed bare after the card fix, on `event-detail-multi.html` and `event-detail-logged-out-multi.html` in both trees: **the SELECTED outcome row**, whose `.opt-name` holds a nested `<span class="opt-sel-tag">selected</span>` and so did not match the pattern that named its four siblings. It is the row a person is most likely to act on and it was the one the sweep skipped. **A pattern written against the ordinary case leaves the special case bare, and the special case is usually the important one.** Named `opt-jd-vance-sel` rather than a number, because the four numbers beside it are positional and this row is not, and renumbering four ids in four documents to make room would be churn for nothing.
+
+**THE HERO PAIR WAS THE FOURTH PLACEMENT AND ITS NAMES ONLY LOOKED FINE.** `.hf-cta.yesno` reads "Back YES" and "Back NO", which is a verb and an answer with no event attached, and it is the largest, first control on the feed. It takes the same treatment from `a.hf-title`.
+
+**WHAT THIS FOUND AND DID NOT ACT ON.** Every pair's two controls point at the same href: **116 of 116, 0 differing**, including the multi rows row 96 already named. So the accessible name now promises a distinction the link does not make. That is a property of a static prototype with no query parameters rather than a naming defect, and it was true before this edit for the 100 controls row 96 had named. It is `docs/backlog.md` 143.
+
+Verified over 420 readings across both trees at both widths: **0 console errors, 0 horizontal scroll, 0 duplicate ids in any document, 0 aria-labelledby pointing at an id that does not exist.**
+
 ## 2026-08-13 - The row had the two halves of its own population the wrong way round, and the marking it defended was redundant where it was needed and harmful where it was not
 
 Backlog 118. **285 focus stops that a screen reader was told did not exist, at 390 and at 1280, are 0.** The condensed category strip is `<nav aria-label="Categories (sticky header)">` in all 105 painted and 87 grey documents, and it carries no `aria-hidden` anywhere.
