@@ -12,6 +12,47 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-14, last thing - The rule was not redundant, it was over-broad by 400px, and the width it is really about is not on the ladder
+
+Supersedes the entry below on backlog 149, which it filed as open. It closed the same hour, and the
+measurement that closed it is the one nobody had taken.
+
+**THE QUESTION LOOKED BINARY AND WAS NOT.** `header.css` hides `.hiw-btn` below DETAIL 760, cut on a
+measurement that is still in the file: at 641 the signed-in desk row asked 694px against a 641px
+window and 73 of 106 painted screens took horizontal scroll from 641 to 652. **36 of that 694 was the
+hamburger and 8 was its gap**, and the hamburger was deleted an hour earlier, so the row was filed as
+"the justification expired, flip it or leave it". Both of those answers are wrong. **The rule is
+still doing real work; it is simply cut about 400px too high.**
+
+**Walking it found the width, and three snapshots would not have.** Forced visible at 641, 652, 660,
+700 and 759 the label is free: 0 pages scrolling sideways, 0 header rows overflowing, worst intrinsic
+row demand 535.8 at 641 against the 694 above. Walked DOWN at 4px steps from 320 instead: **32 of the
+105 screens overflow their header row, by 38px at 320 falling exactly 4px per 4px of width to 2px at
+356, and 0 of 105 from 358 up.** A linear ramp to zero is what a single unshrinkable row looks like,
+and the bisection lands on 358.
+
+**The 32 are the mirror of the original 73.** They are exactly the logged-out screens, every one
+carrying `.auth-btns`, and the file's own paragraph says the 73 were the signed-in ones because "the
+other 33 carry `.auth-btns` where the balance figure stands and are narrower". The narrower pair is
+now the wider of the two, because what left the row was 44px shared by both and what remains differs.
+**A population that was the safe half of a measurement can become the failing half without anything
+changing about it.**
+
+**358 DOES NOT BECOME A RUNG, AND THAT IS THE DECISION RATHER THAN THE NUMBER.** The system holds
+three widths, 40rem, 47.5rem and 56.25rem, and the registry exists so that a fourth cannot be
+introduced quietly. **A number bought for one control is the exact purchase it was written to stop**,
+and 358 would also be a rung with 2px of slack at 356, which is an edge rather than a margin. The
+rule moves to DESK 640, a rung the system already declares, and the band from 641 to 759 comes back:
+119px where the label was hidden for a reason that had stopped being true. Below the desk it stays
+hidden and nothing is unreachable, because every feed carries a second trigger for the same dialog
+and `how-it-works.html` is a page of its own.
+
+**As shipped, both engines, all 105 screens:** hidden 0 of 105 below 640, shown 105 of 105 from 640
+up, and 0 pages scrolling sideways at 320, 390, 639, 640, 641, 759, 760 and 1280. The width-query
+registry is unmoved at 34; `47.49875rem` goes 3 to 2 and `39.99875rem` 8 to 9.
+
+---
+
 ## 2026-08-14, end of the day - A button whose accessible name was a destination and whose element had none, and a control reserved for a future that had not arrived on 105 screens
 
 Two asks, both of them turning out to be defects with a paper trail.

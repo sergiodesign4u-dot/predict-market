@@ -205,21 +205,35 @@
    chrome nothing, and that is the point of the entry.
    THE SECOND, kept: the three targets that used to be sized here are in the pointer:coarse block
    below, with the other four. One rule, one trigger. */
-/* THE ONE LABELLED BUTTON IN THIS ROW WAITS FOR THE DETAIL RUNG, and the width it
-   waits for was measured rather than argued. At 641 the desk row asks for 694px:
+/* THE ONE LABELLED BUTTON IN THIS ROW WAITS FOR THE DESK RUNG, and it waited for
+   the DETAIL one until 2026-08-14. The original measurement is worth keeping because
+   it is what made the rule right at the time: at 641 the desk row asked for 694px,
    40 of gutter, then 36 + 8 + 149 + 8 + 88 down the left, then 8, then a 317px
-   utility, then 40 of gutter again. The window is 641. So the header did not fit
-   the page it stood on, and 73 of the 106 painted screens took horizontal scroll
-   from 641 to 652 and kept a right gutter under its 40 until 693. The 73 are exactly
-   the signed-in screens: the other 33 carry `.auth-btns` where the balance figure
-   stands and are narrower, which is why the number is 73 and not 106.
-   `.hiw-btn` is 88px of that, the only control in the row that carries a word rather
-   than a mark, and it is the one the row can wait for: without it the row asks 598
-   and fits from 641 on, and at 760 it asks 694 with 66 to spare. Nothing is lost in
-   the band, because How it works is not only here: every feed carries a second
-   trigger for the same dialog and `how-it-works.html` is a page of its own.
-   rung: DETAIL 47.5rem, 760px at the default root, and this is BELOW it. tokens.css, page frame. */
-@media(max-width:47.49875rem){
+   utility, then 40 of gutter again, against a 641px window, so the header did not fit
+   the page it stood on and 73 of the 106 painted screens took horizontal scroll from
+   641 to 652. `.hiw-btn` is 88 of that and is the only control in the row carrying a
+   word rather than a mark, so it is the one the row can wait for.
+   **36 of that 694 was the hamburger and 8 was its gap**, and the hamburger was
+   deleted on 2026-08-14. So the rung was re-measured rather than re-derived, with
+   `.hiw-btn` forced visible across all 105 painted screens in Chromium and WebKit:
+   **0 pages scroll sideways at 360, 639, 640, 641, 759 and 760**, and the worst
+   intrinsic row demand at 641 is 535.8 against the 694 above.
+   **THE RULE IS STILL DOING REAL WORK, AND THE WIDTH IT DOES IT AT IS 358, NOT 760.**
+   Walked at 4px steps from 320: 32 of the 105 screens overflow their header row with
+   the label visible, by 38px at 320 falling 4px per 4px of width to 2px at 356, and
+   **0 of 105 from 358 up**. The 32 are exactly the logged-out screens, all of them
+   carrying `.auth-btns`, which is the mirror of the 73 in the paragraph above: the
+   pair that used to be narrower than the balance figure is now the wider of the two.
+   **358 is not on the ladder and does not become a rung for this.** The system holds
+   three, 40rem, 47.5rem and 56.25rem, and a fourth number bought for one control is
+   the exact thing the registry exists to stop. The rule moves to the rung the system
+   already declares and the band from 641 to 759 comes back, 119px where the label
+   was hidden for a reason that stopped being true. Below the desk it stays hidden,
+   and nothing is lost there: How it works is not only in this row, every feed carries
+   a second trigger for the same dialog and `how-it-works.html` is a page of its own.
+   docs/backlog.md 149.
+   rung: DESK 40rem, 640px at the default root, and this is BELOW it. tokens.css, page frame. */
+@media(max-width:39.99875rem){
   .hiw-btn{display:none}
 }
 /* Three rules stood here and all three are components/logo.css now. The box and the
