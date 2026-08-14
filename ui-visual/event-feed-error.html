@@ -358,10 +358,16 @@ document.addEventListener('click', function (e) {
                no second copy of the radios: a radio group is keyed by name, so two copies
                in one document are one group with two sources of checked. -->
           <input type="checkbox" id="filtersOpen" class="filters-toggle" aria-label="Show filters">
-          <label class="filters-btn" for="filtersOpen">Filters<svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-chevron-down"/></svg></label>
+          <label class="icon-btn filters-btn" for="filtersOpen"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-sort-b"/></svg></label>
           <label class="filters-scrim" for="filtersOpen" aria-hidden="true"></label>
 
           <div class="feed-controls">
+            <!-- The sheet's own head. Hidden above DESK 640, where .feed-controls is a
+                 toolbar row and a toolbar does not carry a title. -->
+            <div class="filters-head">
+              <h2>Filters</h2>
+              <label class="icon-btn filters-close" for="filtersOpen" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg></label>
+            </div>
             <details class="filter-menu" id="sortMenu">
               <summary aria-label="Sort by">
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-sort-b"/></svg>
@@ -370,7 +376,7 @@ document.addEventListener('click', function (e) {
               </summary>
               <div class="filter-panel">
                 <ul role="radiogroup" aria-label="Sort by">
-                  <li><label><input type="radio" name="sort" value="Trending" checked> Trending</label></li>
+                  <li><label><input type="radio" name="sort" value="Trending" data-default checked> Trending</label></li>
                   <li><label><input type="radio" name="sort" value="New"> New</label></li>
                   <li><label><input type="radio" name="sort" value="Closing soon"> Closing soon</label></li>
                   <li><label><input type="radio" name="sort" value="Volume"> Volume</label></li>
@@ -386,7 +392,7 @@ document.addEventListener('click', function (e) {
               </summary>
               <div class="filter-panel">
                 <ul role="radiogroup" aria-label="Frequency">
-                  <li><label><input type="radio" name="freq" value="All" checked> All</label></li>
+                  <li><label><input type="radio" name="freq" value="All" data-default checked> All</label></li>
                   <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
                   <li><label><input type="radio" name="freq" value="Hourly"> Hourly</label></li>
                   <li><label><input type="radio" name="freq" value="Daily"> Daily</label></li>

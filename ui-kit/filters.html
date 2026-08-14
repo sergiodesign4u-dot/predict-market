@@ -211,7 +211,7 @@
 
 
   <section class="tk-sec" id="sheet">
-    <h2 data-n="7">The phone form: one button and a sheet</h2>
+    <h2 data-n="7">The phone form: one mark and a sheet</h2>
     <p class="tk-note">The two menus carry their own value, so they measure <b>152 and 154</b>. At 360
     the feed column offers <b>298</b> and the pair needs <b>314</b>, so until 2026-08-14 they stood one
     above the other and the list head cost <b>114.4px</b>. At 390 the same pair fits on one course and
@@ -227,21 +227,39 @@
       <div class="tk-th">Vault, dark</div>
       <div class="tk-theme-fig tk-stack tk-show-filters" data-theme="dark">
         <input type="checkbox" id="filtersOpen-kd" class="filters-toggle" aria-label="Show filters">
-        <label class="filters-btn" for="filtersOpen-kd">Filters<svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-chevron-down"/></svg></label>
+        <label class="icon-btn filters-btn" for="filtersOpen-kd"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-sort-b"/></svg></label>
       </div>
       <div class="tk-th">Daylight, light</div>
       <div class="tk-theme-fig tk-stack tk-show-filters" data-theme="light">
         <input type="checkbox" id="filtersOpen-kl" class="filters-toggle" aria-label="Show filters">
-        <label class="filters-btn" for="filtersOpen-kl">Filters<svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-chevron-down"/></svg></label>
+        <label class="icon-btn filters-btn" for="filtersOpen-kl"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-sort-b"/></svg></label>
       </div>
     </div>
     <p class="tk-note">The button is pinned visible by <code>.tk-show-filters</code>, one declaration,
-    and every other thing about it here is <code>filters.css</code>: it joins the summary's face rather
-    than owning a second copy of it, so the ground, the edge, the corner, the padding, the hover, the
-    press and the 44px floor all arrive from the system. <b>The sheet itself is not drawn on this
-    stand</b> and the cell below says so: its box is <code>position:fixed</code> with a bottom inset, a
-    max-height in <code>svh</code>, a top-corner radius and a lift, and a cell that restated those
-    would be a hand-kept copy of six declarations drifting from the file that owns them.</p>
+    and every other thing about it here is the system's: it is an <code>icon-btn</code>, the same
+    circle the header's bell and avatar wear, so the ground, the edge, the corner, the 36px box, the
+    hover, the press and the 44px floor all arrive from <code>iconbtn.css</code> and
+    <code>base.css</code>. <b>The sheet itself is not drawn on this stand</b> and the cell below says
+    so: its box is <code>position:fixed</code> with a bottom inset, a max-height in <code>svh</code>, a
+    top-corner radius and a lift, and a cell that restated those would be a hand-kept copy drifting
+    from the file that owns them.</p>
+    <p class="tk-note"><b>It read <code>Filters</code> with a chevron for one build and that was the
+    wrong weight.</b> 93px of chrome standing beside a display-face heading, and the heaviest thing in
+    a row whose subject is the heading. <b>And the first icon-only cut had no drawing at all</b>: the
+    class was still carrying the summary's chip face, so <code>iconbtn.css</code> set a 36 x 36 box and
+    <code>filters.css</code>, imported later as a molecule over an atom, set <code>padding:8px
+    20px</code> inside it. 40px of padding in a 36px box leaves a negative content box and the mark
+    rendered as a two-pixel dot in a circle that still looked like a button. <b>A chip face is a
+    padding and an icon button is a box</b>, and putting both on one element runs it past every
+    selector written for either.</p>
+    <p class="tk-note"><b>The dot is what an icon alone gives up, bought back.</b> The two pills were
+    good at exactly one thing, saying what the filter was set to without being opened, and a mark says
+    nothing. <code>:has()</code> reads the radios that are already in the document and
+    <code>[data-default]</code> marks the two the feed ships with, so the dot appears the moment either
+    group leaves its default. It answers the half that matters: <b>whether the list a person is looking
+    at is the default one.</b> The ring around it is <code>--bg-plate</code>, the surface the head
+    stands on, so the brass reads as a separate object rather than as a bite out of the button's
+    edge.</p>
     <p class="tk-gone tk-above-640">The sheet is a below-640 face. Not rendered at this width.</p>
     <p class="tk-note"><b>Why a checkbox and not a <code>&lt;dialog&gt;</code>.</b> The two radio
     groups have to exist once. A dialog would need its own copy of them, and a radio group is keyed by

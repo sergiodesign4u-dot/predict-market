@@ -12,6 +12,61 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-14, later still - A chip face is a padding and an icon button is a box, and a sheet row is not a pill on a panel
+
+**BOTH HALVES OF THE FIRST BUILD WERE THE RIGHT MECHANISM WEARING THE WRONG FACE, and neither was
+visible in a stylesheet.**
+
+**THE CONTROL.** It shipped as a pill reading `Filters` with a chevron: 93px wide, standing beside a
+display-face heading, and the heaviest object in a row whose subject is the heading. It is an
+`icon-btn` now, the same circle the header's bell and avatar wear, so the phone's three round
+controls are one control. **The first icon-only cut had no drawing at all**: the class was still in
+the summary's chip face, so `iconbtn.css` set a 36 x 36 box and `filters.css`, imported later as a
+molecule over an atom, set `padding:8px 20px` inside it. **40px of padding in a 36px box leaves a
+negative content box**, and the mark rendered as a two-pixel dot in a circle that still looked like
+a button. Nothing errored and the control was there; it just had nothing in it. **A chip face is a
+PADDING and an icon button is a BOX**, and putting both on one element runs it past every selector
+written for either.
+
+**AND AN ICON GIVES UP THE ONE THING THE TWO PILLS WERE GOOD AT**, which is saying what the filter
+is set to without being opened. The dot buys back the half that matters: `:has()` reads the radios
+already in the document, `[data-default]` marks the two the feed ships with, and the dot appears the
+moment either group leaves its default, so a feed sorted by Volume says so on the closed control.
+The ring around it is `--bg-plate`, the surface the head stands on, so the brass reads as a separate
+object rather than as a bite out of the button's own edge.
+
+**THE SHEET.** It was two full-width pills floating in a padded box with nothing to say what the box
+was: no title, no close, 11px rows, and a second tap needed before a single option was visible. **A
+control's face is a decision about the SURFACE it stands on**, and a pill that is right in a toolbar
+is wrong as a row of a sheet. The sheet has a head now, `Filters` and a close, and its rows are
+full-bleed with the hairline they share as their only edge. **The value moved to the far side with no
+markup change at all**: `<span>Sort: <span id="sortCurrent">Trending</span></span>` is a text node and
+an element, and turning the outer span into a flex row makes the text node an ANONYMOUS FLEX ITEM, so
+`space-between` puts the label left and the value right. It reads as a settings list because it now
+is one. Type went from 11 to 14 on the rows and on the options under them: eleven is right for a chip
+in a toolbar and small for the only two lines on a surface a person came to read.
+
+**KEPT DELIBERATELY: THE TRAILING COLON.** `Sort:` with its value pushed to the far side is slightly
+odd punctuation, and the fix is to drop the colon from the markup and put it back at the desk with
+`content:':'`. **That moves a character a person reads into a stylesheet**, where `voice/docs/microcopy.md`
+cannot own it and no inventory of the product's strings can see it. The dangling colon is the smaller
+cost and it is a choice rather than an oversight.
+
+**WHAT WAS ASKED AND NOT ANSWERED: `Frequency`.** It is a real, decided product attribute, not stray
+jargon: markets are one-time or recurring at an Hourly / Daily / Weekly / Monthly cadence, every
+cadence instance is its own Event, and the filter filters by the series attribute. `PRODUCT.md`,
+`ia/docs/sitemap.md` and `backlog.md` 11 all carry it, decided 2026-08-10. **The word is the
+question, not the feature.** `Frequency` is the vocabulary of whoever built the market, and this
+product's first principle is that a new user is never lost. Renaming it is a voice change across
+`microcopy.md`, `sitemap.md`, `PRODUCT.md` and 88 documents in two trees, so it is a decision to take
+rather than a tidy-up to slip in, and it is not taken here.
+
+**Verified** on all 267 documents in both engines at 16 widths: 0 horizontal scroll, 0 duplicate ids,
+0 page errors. Desk unchanged: every rectangle at 640, 760, 900 and 1280 identical to the pass before
+this one.
+
+---
+
 ## 2026-08-14, later - The band above the first card was 253px on a phone and the width this project designs from was the only one paying for all of it
 
 **THE COMPLAINT WAS THAT THE HEADING, THE TWO FILTERS AND THE CHIPS EAT THE SCREEN AT 360. Measured

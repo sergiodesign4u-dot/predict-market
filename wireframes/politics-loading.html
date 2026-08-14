@@ -196,16 +196,19 @@
     .filter-panel ul { list-style: none; margin: 0; padding: 4px 0; }
     .filter-panel li label { display: flex; align-items: center; gap: 8px; padding: 6px 10px; font-size: 11px; cursor: pointer; }
     .filters-toggle { position: absolute; width: 1px; height: 1px; opacity: 0; margin: 0; pointer-events: none; }
-    .filters-btn, .filters-scrim { display: none; }
+    .filters-btn, .filters-scrim, .filters-head { display: none; }
     @media(max-width:639.98px) {
-      .filters-btn { display: inline-flex; align-items: center; gap: 5px; border: 1px solid #888; background: #d6d6d6; padding: 5px 8px; font-size: 11px; cursor: pointer; }
+      .filters-btn { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid #888; background: #d6d6d6; cursor: pointer; }
       .feed-head > .feed-controls { display: none; }
       .filters-toggle:checked ~ .filters-scrim { display: block; position: fixed; inset: 0; z-index: 40; background: rgba(0,0,0,.45); cursor: pointer; }
-      .filters-toggle:checked ~ .feed-controls { display: flex; flex-direction: column; flex-wrap: nowrap; gap: 6px; position: fixed; inset: auto 0 0 0; z-index: 40; padding: 12px 12px 20px; max-height: 80svh; overflow: auto; background: #e6e6e6; border-top: 1px solid #888; }
+      .filters-toggle:checked ~ .feed-controls { display: flex; flex-direction: column; flex-wrap: nowrap; gap: 0; position: fixed; inset: auto 0 0 0; z-index: 40; padding: 0 0 20px; max-height: 80svh; overflow: auto; background: #e6e6e6; border-top: 1px solid #888; }
+      .filters-toggle:checked ~ .feed-controls .filters-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 12px; border-bottom: 1px solid #888; }
+      .filters-head h2 { margin: 0; font-size: 14px; }
       .filters-toggle:checked ~ .feed-controls .filter-menu { width: 100%; }
-      .filters-toggle:checked ~ .feed-controls .filter-menu summary { width: 100%; }
-      .filters-toggle:checked ~ .feed-controls .filter-menu summary > span { margin-inline-end: auto; }
-      .filters-toggle:checked ~ .feed-controls .filter-panel { position: static; min-width: 0; border: 0; background: transparent; }
+      .filters-toggle:checked ~ .feed-controls .filter-menu + .filter-menu { border-top: 1px solid #888; }
+      .filters-toggle:checked ~ .feed-controls .filter-menu summary { width: 100%; gap: 10px; padding: 10px 12px; font-size: 13px; background: transparent; border: 0; }
+      .filters-toggle:checked ~ .feed-controls .filter-menu summary > span { display: flex; flex: 1 1 auto; justify-content: space-between; align-items: baseline; gap: 16px; }
+      .filters-toggle:checked ~ .feed-controls .filter-panel { position: static; min-width: 0; border: 0; background: transparent; padding: 0 12px 6px; }
       :root:has(.filters-toggle:checked) { overflow: hidden; }
     }
     .reverse-row { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #ccc; padding: 7px 10px; font-size: 11px; }
@@ -998,10 +1001,15 @@
                the same two menus, moved into a sheet. No second copy of the radios: a
                radio group is keyed by name. -->
           <input type="checkbox" id="filtersOpen" class="filters-toggle" aria-label="Show filters">
-          <label class="filters-btn" for="filtersOpen">Filters<svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></label>
+          <label class="icon-btn filters-btn" for="filtersOpen"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12M4 12h8M4 17h4"/></svg></label>
           <label class="filters-scrim" for="filtersOpen" aria-hidden="true"></label>
 
           <div class="feed-controls">
+            <!-- The sheet's own head. Hidden above DESK 640. -->
+            <div class="filters-head">
+              <h2>Filters</h2>
+              <label class="icon-btn filters-close" for="filtersOpen" aria-hidden="true"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></label>
+            </div>
             <details class="filter-menu" id="sortMenu">
               <summary aria-label="Sort by">
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12M4 12h8M4 17h4"/></svg>
@@ -1010,7 +1018,7 @@
               </summary>
               <div class="filter-panel">
                 <ul role="radiogroup" aria-label="Sort by">
-                  <li><label><input type="radio" name="sort" value="Trending" checked> Trending</label></li>
+                  <li><label><input type="radio" name="sort" value="Trending" data-default checked> Trending</label></li>
                   <li><label><input type="radio" name="sort" value="New"> New</label></li>
                   <li><label><input type="radio" name="sort" value="Closing soon"> Closing soon</label></li>
                   <li><label><input type="radio" name="sort" value="Volume"> Volume</label></li>
@@ -1026,7 +1034,7 @@
               </summary>
               <div class="filter-panel">
                 <ul role="radiogroup" aria-label="Frequency">
-                  <li><label><input type="radio" name="freq" value="All" checked> All</label></li>
+                  <li><label><input type="radio" name="freq" value="All" data-default checked> All</label></li>
                   <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
                   <li><label><input type="radio" name="freq" value="Hourly"> Hourly</label></li>
                   <li><label><input type="radio" name="freq" value="Daily"> Daily</label></li>

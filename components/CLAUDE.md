@@ -1,8 +1,8 @@
 # components/ - the system itself
 
-This folder IS the design system. **54 stylesheets, 9,574 lines**: 48 here and 6 in `patterns/`,
+This folder IS the design system. **54 stylesheets, 9,613 lines**: 48 here and 6 in `patterns/`,
 re-counted 2026-08-14 by `cat components/*.css components/patterns/*.css | wc -l` after the filters
-sheet and the scroll-driven edge fade. It was 9,224 on 2026-08-13 after `trust-art.css`
+sheet, its second pass and the scroll-driven edge fade. It was 9,224 on 2026-08-13 after `trust-art.css`
 was written (`docs/backlog.md` 140). It was 53 and 8,734 earlier the same day, after `print.css`
 (`docs/backlog.md` 125). **`trust-art.css` is the first file here that is not a component and not a
 level**: it holds four `--trust-art-*` custom properties, each a `data:` URI carrying one of the
@@ -373,6 +373,24 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   nothing: the page behind the sheet was visibly undimmed and the surface did not read as modal. The
   product answers this once already, in `dialog.app-dialog::backdrop`, at `--shadow-ink-45`. **Before
   taking a role by its name, find where the product already answers the same question.**
+- **A CHIP FACE IS A PADDING AND AN ICON BUTTON IS A BOX, SO AN ELEMENT MAY NOT WEAR BOTH.** The
+  phone's filter control was given `.filters-btn` in the summary's chip face and then `.icon-btn` as
+  well: `iconbtn.css` sets 36 x 36, and `filters.css`, imported later as a molecule over an atom, set
+  `padding:8px 20px` inside it. **40px of padding in a 36px box leaves a negative content box**, and
+  the mark rendered as a two-pixel dot in a circle that still looked like a button. Nothing errored,
+  nothing was empty, and no stylesheet reading finds it. This is the twin of the note below about a
+  class running past every selector written for its element: **two faces on one element run it past
+  both, and the one that loses is whichever the import order says.**
+- **A CONTROL'S FACE IS A DECISION ABOUT THE SURFACE IT STANDS ON.** The same two `<summary>` chips
+  that are right in a toolbar row read as two large empty buttons floating on a panel the moment they
+  are put in a sheet. A sheet row is full-bleed, its edge is the hairline it shares with its
+  neighbour, the whole row is the target, and its type is not the toolbar's 11px, because a sheet is
+  the surface a person came to READ. Reusing the markup was correct; reusing the face was not.
+- **A TEXT NODE BESIDE AN ELEMENT BECOMES AN ANONYMOUS FLEX ITEM, WHICH IS A FREE LAYOUT WITH NO
+  MARKUP CHANGE.** `<span>Sort: <span id="sortCurrent">Trending</span></span>` is a text node and an
+  element; `display:flex` on the outer span makes the text an item, so `space-between` puts the label
+  left and the value right on 88 documents without touching one of them. **Before adding a wrapper,
+  ask whether the box you want already has two children.**
 - **A PLACEMENT FILE NARROWS ITS OWN RULE; IT DOES NOT OVERRIDE SOMEBODY ELSE'S FACE.** The moment
   the lockup became an anchor, four selectors in `footer.css` reached it, all (0,1,1) or better
   against `.logo`'s (0,1,0): muted ink at rest, brass on hover, an underline, a pressed ground. The

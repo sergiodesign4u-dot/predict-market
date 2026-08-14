@@ -1,5 +1,5 @@
 /* components/filters.css
-   Component: filters. Classes: .filter-menu, .filter-panel, .filters-btn, .filters-scrim, .filters-toggle, .reverse-row.
+   Component: filters. Classes: .filter-menu, .filter-panel, .filters-btn, .filters-close, .filters-head, .filters-scrim, .filters-toggle, .reverse-row.
 
    Reads: --bg-control, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --focus-ring, --shadow-ink, --shadow-ink-45, --text-brass, --text-muted, --text-primary, --text-strong, --tint-brass-16
    Stand:  ui-kit/filters.html, and ui-kit/molecules.html#filters-lt for the level and its reason (the -lt is the shelf's own id suffix and not a variant of this component: ui-kit/CLAUDE.md)
@@ -49,20 +49,27 @@
    152x35 and nobody had looked, because the two are two screens apart and one of them is at the
    bottom of the page. A control that has to be found by scrolling is a control a scope defect can
    hide in. */
-/* `.filters-btn` JOINS THE FACE RATHER THAN COPYING IT, 2026-08-14. The phone's
-   Filters control is the same chip as the two summaries it stands in for, and this
-   folder's CLAUDE.md already carries what the alternative costs: a doubled selector
-   is a face kept in two places and the second place is the one that gets forgotten,
-   which is how a chosen amount chip shipped with an edge and no ground. Four rules
-   name it, the rest, the hover, the press and the touch floor in base.css, and the
-   only thing filters.css says about it separately is WHERE it stands and WHEN. */
-.filter-menu summary,.filters-btn{background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-pill)}
-.filter-menu summary,.filters-btn{display:inline-flex;align-items:center;gap:var(--space-8);padding:var(--space-8) var(--space-20);font-size:var(--text-11);cursor:pointer;transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
-.filter-menu summary:hover,.filters-btn:hover{border-color:var(--border-brass-hover);background:var(--bg-control);color:var(--text-strong)}
+/* `.filters-btn` TAKES THE `icon-btn` FACE WHOLE AND THIS FILE ADDS NOTHING TO IT,
+   2026-08-14. It joined the summary's chip face for one build and that was the wrong
+   component to borrow from: **the chip face is a padding and the icon button is a
+   BOX**, so with both on one element `iconbtn.css` set 36 x 36 and this file, imported
+   later as a molecule over an atom, set `padding:8px 20px` on top of it. 40px of
+   padding inside a 36px box leaves a negative content box, and the mark rendered as a
+   two-pixel dot in the middle of a circle that still looked like a button. Nothing
+   errored and the control was there; it just had no drawing.
+   **Adding a class to an element runs it past every selector in the system written
+   for that element**, and adding TWO faces to one element runs it past both. The
+   control is an `icon-btn` now, the same circle the header's bell and avatar wear, and
+   the only thing filters.css says about it is WHERE it stands, WHEN, and what the dot
+   on it means. The 44px floor is `base.css`'s and already names `.icon-btn` in both
+   the height and the width family, so this class is not in that list either. */
+.filter-menu summary{background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-pill)}
+.filter-menu summary{display:inline-flex;align-items:center;gap:var(--space-8);padding:var(--space-8) var(--space-20);font-size:var(--text-11);cursor:pointer;transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
+.filter-menu summary:hover{border-color:var(--border-brass-hover);background:var(--bg-control);color:var(--text-strong)}
 /* Press is the axis a disclosure needs most: the panel opens on the same click, so without a
    held-down ground the chip looks like it did nothing until the panel arrives. Equal specificity
    to the hover above, so it has to sit after it. The summary is flat at rest, nothing to unlift. */
-.filter-menu summary:active,.filters-btn:active{background:var(--bg-pressed)}
+.filter-menu summary:active{background:var(--bg-pressed)}
 /* HIDDEN, NOT REMOVED, and the difference is the whole control. `display:none` generates no box, so
    the browser takes the element out of the tab order AND out of the accessibility tree: the sort
    radiogroup and the category radios could be operated by a mouse and by nothing else, on 104
@@ -162,12 +169,31 @@
    `display:none` takes the control out of the tab order and out of the
    accessibility tree at once. */
 .filters-toggle{position:absolute;width:var(--hairline);height:var(--hairline);opacity:0;margin:0;pointer-events:none}
-.filters-btn,.filters-scrim{display:none}
+.filters-btn,.filters-scrim,.filters-head{display:none}
 /* rung: DESK 40rem, 640px at the default root, the one divide, and this is BELOW it. 39.99875rem rather than 40rem, which is 639.98 against 640 at the default root,
    because the rung belongs to the desk: tokens.css, page frame. */
 @media(max-width:39.99875rem){
-  .filters-btn{display:inline-flex}
+  .filters-btn{display:inline-flex;position:relative}
   .feed-head>.feed-controls{display:none}
+  /* THE MARK CARRIES THE STATE NOW THAT THE WORD IS GONE, 2026-08-14. The first cut
+     was a pill reading `Filters` with a chevron: 93px of chrome standing beside a
+     display-face heading, and the heaviest thing in a row whose subject is the
+     heading. It is the `icon-btn` face the header already uses for the bell and the
+     avatar, so the phone's three round controls are one control.
+     AND AN ICON ALONE LOSES THE ONE THING THE TWO PILLS WERE GOOD AT, which is
+     saying what the filter is set to without being opened. The dot answers half of
+     that and answers the half that matters: **whether the list a person is looking
+     at is the default one.** `:has()` reads the radios that are already in the
+     document, `[data-default]` marks the two the feed ships with, and the dot
+     appears the moment either group is off it. So a sorted-by-Volume feed says so
+     on the closed control, and the values themselves are one tap away in a sheet
+     that names them.
+     THE RING AROUND THE DOT IS NOT DECORATION. It is `--bg-plate`, the surface the
+     head stands on, so the brass reads as a separate object rather than as a bite
+     out of the button's own edge, which is what it looked like without one. */
+  .filters-btn::after{content:'';display:none;position:absolute;top:calc(var(--space-2) * -1);right:calc(var(--space-2) * -1);width:var(--size-8);height:var(--size-8);border-radius:var(--radius-pill);background:var(--color-action);border:var(--hairline) solid var(--bg-plate)}
+  .feed-head:has(.filter-panel input[name=sort]:checked:not([data-default]))>.filters-btn::after,
+  .feed-head:has(.filter-panel input[name=freq]:checked:not([data-default]))>.filters-btn::after{display:block}
   /* The ring is drawn on the thing a person can see, because base.css draws it on
      the element that HAS focus and that element is a 1px transparent box. Same
      shape as the panel's labelled radios twenty lines up, and the offset turns
@@ -188,22 +214,35 @@
      there, and picking the nearest-sounding token is how a product grows two answers
      to one question. */
   .filters-toggle:checked~.filters-scrim{display:block;position:fixed;inset:0;z-index:var(--z-menu);background:var(--shadow-ink-45);cursor:pointer}
-  .filters-toggle:checked~.feed-controls{display:flex;flex-direction:column;flex-wrap:nowrap;gap:var(--space-8);position:fixed;inset:auto 0 0 0;z-index:var(--z-menu);padding:var(--space-20) var(--gutter) var(--space-32);max-height:80svh;overflow:auto;overscroll-behavior:contain;background:var(--bg-surface);border-top:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10) var(--radius-10) 0 0;box-shadow:0 -20px 50px -24px var(--shadow-ink)}
-  /* Inside the sheet the panel is not a dropdown any more: it has a whole surface
-     under it, so it stops being absolute, drops the ground, the edge and the lift
-     it needed to float over the page, and becomes a section of the sheet. The
-     summary spans the row and pushes its chevron to the far side, which is what a
-     row in a sheet looks like everywhere else in this product. */
+  .filters-toggle:checked~.feed-controls{display:flex;flex-direction:column;flex-wrap:nowrap;gap:0;position:fixed;inset:auto 0 0 0;z-index:var(--z-menu);padding:0 0 var(--space-32);max-height:80svh;overflow:auto;overscroll-behavior:contain;background:var(--bg-surface);border-top:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10) var(--radius-10) 0 0;box-shadow:0 -20px 50px -24px var(--shadow-ink)}
+  /* THE SHEET IS A LIST AND NOT TWO PILLS ON A PANEL, 2026-08-14. The first cut kept
+     the two summaries in their own chip face and stood them in a padded box, and it
+     read as two large empty buttons floating on a surface with nothing to say what
+     the surface was. **A control's face is a decision about the surface it stands
+     on**, and a pill that is right in a heading row is wrong as a row of a sheet: a
+     sheet row is full-bleed, its edge is the hairline it shares with its neighbour,
+     and the whole row is the target. So inside the sheet the summary drops the
+     ground, the edge and the corner and takes the sheet's own gutter, and the sheet
+     drops its padding and its gap so the rows reach both sides.
+     THE VALUE MOVES TO THE FAR SIDE and it is the one thing the sheet has to say at
+     a glance. `<span>Sort: <span id="sortCurrent">Trending</span></span>` is a text
+     node and an element, and turning the outer span into a flex row makes the text
+     node an ANONYMOUS FLEX ITEM, so `space-between` puts `Sort:` on the left and
+     `Trending` on the right with no markup change at all. It reads as a settings
+     list because it is one.
+     `--text-14` AND NOT THE ROW'S OWN 11. Eleven is right for a chip in a toolbar
+     and small for the only two lines on a sheet, and the same goes for the options
+     under them: a sheet is the surface a person came to read. */
+  .filters-toggle:checked~.feed-controls .filters-head{display:flex;align-items:center;justify-content:space-between;gap:var(--space-16);padding:var(--space-12) var(--gutter);border-bottom:var(--hairline) solid var(--border-hairline)}
+  .filters-head h2{margin:0;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-16);letter-spacing:var(--track-head);color:var(--text-primary)}
   .filters-toggle:checked~.feed-controls .filter-menu{width:100%}
-  /* The label is pushed off the mark by an auto margin and NOT by
-     `justify-content:space-between`, which was the first cut and put the word in the
-     middle of the row: a summary has three children, so space-between spreads mark,
-     label and chevron evenly and centres the one thing a person reads. An auto
-     margin after the label keeps the mark and the word together on the left, which
-     is where they sit at the desk. */
-  .filters-toggle:checked~.feed-controls .filter-menu summary{width:100%}
-  .filters-toggle:checked~.feed-controls .filter-menu summary>span{margin-inline-end:auto}
-  .filters-toggle:checked~.feed-controls .filter-panel{position:static;min-width:0;background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible}
+  .filters-toggle:checked~.feed-controls .filter-menu+.filter-menu{border-top:var(--hairline) solid var(--border-hairline)}
+  .filters-toggle:checked~.feed-controls .filter-menu summary{width:100%;gap:var(--space-12);padding:var(--space-12) var(--gutter);font-size:var(--text-14);background:transparent;border:0;border-radius:0}
+  .filters-toggle:checked~.feed-controls .filter-menu summary:hover{background:var(--bg-control);border-color:transparent}
+  .filters-toggle:checked~.feed-controls .filter-menu summary>span{display:flex;flex:1 1 auto;justify-content:space-between;align-items:baseline;gap:var(--space-16);color:var(--text-muted)}
+  .filters-toggle:checked~.feed-controls .filter-menu summary>span>span{color:var(--text-primary);font-weight:var(--weight-semibold)}
+  .filters-toggle:checked~.feed-controls .filter-panel{position:static;min-width:0;background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible;padding:0 var(--gutter) var(--space-8)}
+  .filters-toggle:checked~.feed-controls .filter-panel li label{font-size:var(--text-14);margin-inline:0}
   /* The page behind a modal surface does not scroll, and `overflow` on the ROOT is
      what the viewport reads: on `body` it would leave the document element free and
      the page would still move under the sheet. It is written here rather than in
