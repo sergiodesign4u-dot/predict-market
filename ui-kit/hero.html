@@ -76,13 +76,28 @@
     <p class="tk-note"><b>1,267 to 505 is the sharpest reflow in the product</b>, and the side column
     is the reason: at 1280 it stands beside the feature at its natural 350, and at 390 it goes
     underneath at full width and the two heights add up.</p>
+    <p class="tk-why"><b>The tile is a poster, so it is centred in its own frame, and it was not
+    until 2026-08-14.</b> It was <code>display:block</code>, so the stack sat on the top padding and
+    every pixel the tile was given beyond its content fell out of the bottom. Measured on both tiles
+    at 390, 900 and 1280 before the rule: <b>25.0px above the mark against 53.8 under the signature
+    here, and 25.0 against 101.5 on how-it-works</b>, where the side column asks for a 250px
+    minimum and nothing was using it. Four to one, inside a brass frame that is inset 12 on all four
+    sides and does not move, which is exactly what made it visible. After: the two gaps are equal to
+    the tenth of a pixel at every width in both engines. <b>The left inset is the one asymmetry</b>,
+    32 against 24, so the type starts 20px inside the frame on the left and 12 on the right, for the
+    same reason a book has a wider gutter than a fore-edge.</p>
+    <p class="tk-why"><b>The signature is the logo now, not a word set to look like one.</b>
+    <code>.bt-by</code> declared the body face at 13px in brass and spelled "Yonder" by hand, which
+    is the wordmark drawn a second time with the mark left out, on the one plate whose whole job is
+    to say the brand's name. It is <code>class="logo bt-by"</code>, and this file keeps only the
+    rule about where the lockup stands. See <a href="logo.html">logo</a>, third placement.</p>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
-        <div class="brand-tile"><span class="bt-tick"></span><p class="bt-quote">The market decides.<br>Opinions have <em>value.</em></p><p class="bt-by">PREDICT</p></div>
+        <div class="hero-promo brand-tile"><img class="bt-photo" src="../assets/brand-columns.webp" alt="" aria-hidden="true" width="1200" height="900" decoding="async" loading="lazy"><span class="bt-veil" aria-hidden="true"></span><svg class="bt-tick" viewBox="0 0 26 18" aria-hidden="true"><path d="M2 15 L9 7 L13 10 L24 2" fill="none" stroke="var(--text-brass)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><p class="bt-quote">The market decides.<br>Opinions have <em>value.</em></p><a class="logo bt-by" href="../ui-visual/event-feed.html">Yonder</a></div>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
-        <div class="brand-tile"><span class="bt-tick"></span><p class="bt-quote">The market decides.<br>Opinions have <em>value.</em></p><p class="bt-by">PREDICT</p></div>
+        <div class="hero-promo brand-tile"><img class="bt-photo" src="../assets/brand-columns.webp" alt="" aria-hidden="true" width="1200" height="900" decoding="async" loading="lazy"><span class="bt-veil" aria-hidden="true"></span><svg class="bt-tick" viewBox="0 0 26 18" aria-hidden="true"><path d="M2 15 L9 7 L13 10 L24 2" fill="none" stroke="var(--text-brass)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><p class="bt-quote">The market decides.<br>Opinions have <em>value.</em></p><a class="logo bt-by" href="../ui-visual/event-feed.html">Yonder</a></div>
       </div>
     </div>
     <p class="tk-note"><b>The tile is a claim, not a control</b>: there is no link and no button
@@ -131,6 +146,10 @@
     else.</i></p>
     <p class="tk-lab tk-bad"><b>Never let a claim behave like a control.</b> <i>The brand tile has no
     link inside it, so nothing may change under a finger except the lift coming back down.</i></p>
+    <p class="tk-lab tk-bad"><b>Never spell a wordmark by hand in a component that is not the
+    logo.</b> <i>Two files did it, this one and <code>seo-plate.css</code>, and they are the two
+    plates in the product that exist to name the brand. A brand mark keeps its own drawing, and a
+    word set in the body face is a generic glyph standing in for one.</i></p>
   </section>
 
   <section class="tk-sec" id="closing">

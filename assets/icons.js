@@ -112,9 +112,17 @@
        than the 1.65 the system declares. Everything else, the fill, the stroke, the width
        and the caps, IS inherited and comes from `.ic` exactly as it did when these were
        written out by hand. */
+    /* `l-menu` was the sixth of this family and left on 2026-08-14 with the control it
+       was drawn for. The header's hamburger was a `<button>` labelled "Menu (reserved for
+       future scaling)" with no handler and no drawer behind it, `display:none` below the
+       desk on top of that, and it went from 105 painted screens, 87 grey ones and 10 kit
+       specimens in one pass. **A symbol whose only remaining reader is the page that
+       documents the sprite is a glyph with no placement**, which is what this repository
+       deleted `account` over. `ui-kit/icons.html` draws the shape from its own inline
+       path rather than through `<use>`, so the retirement costs that page nothing but a
+       corrected caption. 34 symbols now, 30 filled and 4 line. */
     '<symbol id="l-close" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M6 6l12 12M18 6L6 18"/></symbol>',
     '<symbol id="l-chevron-down" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M6 9l6 6 6-6"/></symbol>',
-    '<symbol id="l-menu" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M3 6h18M3 12h18M3 18h18"/></symbol>',
     '<symbol id="l-arrow-right" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M5 12h14M13 6l6 6-6 6"/></symbol>',
     '<symbol id="l-check" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M4 13l4 4L20 5"/></symbol>'
 

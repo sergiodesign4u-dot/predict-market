@@ -3,11 +3,22 @@
 
    Reads: --font-display, --mark-logo, --space-8, --text-16, --text-primary, --track-head, --weight-bold
    Stand:  ui-kit/logo.html, and ui-kit/vitrine.html#logo for the level and its reason
-   Stands on: 210 placements, the header and the footer of all 105 ui-visual screens
+   Stands on: 221 placements, the header and the footer of all 105 ui-visual screens,
+              plus the SIGNATURE on the two plates that exist to name the brand: the
+              brand tile (2, event-feed and how-it-works) and the SEO plate (9, the
+              feed and its four category pages in both auth states). Those eleven
+              spelled the wordmark by hand in the body face until 2026-08-14, which
+              is the one thing this file exists to stop.
+   Two sizes:  the default 16px in the HEADER, where it is a control in a 44px row,
+              and 20px in the 116 places where it SIGNS a block, which is the footer
+              of all 105 screens and the eleven above. A slot writes `--logo-size`
+              and the mark, the gap and the tracking follow it. Measured: 86.1 wide
+              in the header at all thirteen widths, 95.6 in every signature slot
    Colour goes through a role, geometry straight from a primitive. No em dash.
 
    WHAT IT IS. The brand lockup: the mark, an 8px gap, the wordmark. One face, worn
-   twice per screen, and the only component in the system whose drawing is not made
+   twice on every screen and a third time on the two plates that name the brand,
+   and the only component in the system whose drawing is not made
    of system ink. `CLAUDE.md` in this folder states that rule from the other end: a
    brand mark is not in the system, it keeps its own drawing, and no generic glyph
    may stand in for it, because a paper plane is not Telegram. So the shape lives in
@@ -30,29 +41,65 @@
    restyle every header.
 
    WHAT THIS FILE OWNS AND WHAT IT DOES NOT. It owns the FACE: the mark, the gap,
-   the face, the size, the tracking, the ink, and the reset that makes the two
-   placements identical. It owns nothing about WHERE the lockup stands. The press
-   ground and the padding that carries the header's touch target are `header.css`,
-   and the centring under a phone footer is `footer.css`, for the same reason the
-   five marks left that file for `iconbtn.css` on 2026-08-06: a row describes where
-   a control sits, and this describes what it is.
+   the face, the RATIO between the type and the mark, the tracking, the ink, and the
+   reset that makes every placement identical. It owns nothing about WHERE the lockup
+   stands, and nothing about WHICH SIZE any one slot asks for. The press ground and
+   the padding that carries the header's touch target are `header.css`, and the
+   footer's lockup being flush with its own column is `footer.css`, for the same
+   reason the five marks left that file for `iconbtn.css` on 2026-08-06: a row
+   describes where a control sits, and this describes what it is. **That sentence
+   said "the centring under a phone footer" until 2026-08-14 and it was describing a
+   defect**: the centring applied at every width, so the lockup sat in the middle of
+   a 240px brand column while the tagline and the language menu under it were flush
+   left, and `footer.css` thirty lines further down promised the opposite in prose.
 
-   THE RESET IS PART OF THE FACE, not of either place. The lockup is a `<button>` in
-   the header, because it goes to the Events home, and a `<span>` in the footer,
-   because it goes nowhere. Those two elements do not start from the same place: a
-   button arrives with the User Agent's ground, border, padding, font and centring,
-   and a span arrives with none of them. If the reset stood in `header.css` the two
-   would be one face only for as long as nobody looked, so it stands here and both
-   elements start from nothing.
+   THE RESET IS PART OF THE FACE, and until 2026-08-14 it was resetting three
+   different elements into one. The lockup was a `<button>` in the header, a `<span>`
+   in the footer and a `<span>` on the two plates, and those do not start from the
+   same place: a button arrives with the User Agent's ground, border, padding, font
+   and centring, and a span arrives with none of them. If the reset stood in
+   `header.css` the two would be one face only for as long as nobody looked, so it
+   stands here and every element starts from nothing.
+
+   IT IS ONE ELEMENT NOW, AND THAT WAS A DEFECT AND NOT A TIDY-UP. **The header's
+   lockup was a `<button type="button">` whose accessible name said "go to Events
+   home" and which had no `href`, no `form` and no handler anywhere in the tree**: it
+   announced a destination on all 105 screens and went nowhere when pressed. The
+   footer's and the plates' went nowhere and did not claim to, which is the quieter
+   half of the same thing. All 221 are `<a href>` to the Events home. The reset gained
+   `text-decoration:none` for it, which is the one property an anchor brings that a
+   button and a span do not, and the `background`, `border` and `padding` resets stay
+   because a face that only resets what the CURRENT element type brings is a face
+   waiting for the next element type.
 
    THE 44px TOUCH FLOOR IS NOT HERE. It is one rule in `base.css` keyed to the
    family, and `.logo-btn` is named in it. That is why the button keeps that class
    rather than being renamed: the floor names places, and this file is a face. */
 
-/* One face. The mark box is 18px and the drawing inside it is about 12 wide under
-   `contain`, which is the display face's ascender at 16px: a mark taller than the
-   letters beside it reads as an icon that has been put next to a word, and a mark
-   shorter than them reads as a bullet. `white-space:nowrap` because a wordmark that
-   wraps is two words. */
-.logo{display:inline-flex;align-items:center;gap:var(--space-8);margin:0;padding:0;background:none;border:0;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-16);letter-spacing:var(--track-head);color:var(--text-primary);white-space:nowrap}
-.logo::before{content:'';flex:0 0 auto;width:18px;height:18px;background:var(--mark-logo) no-repeat center/contain}
+/* One face, and ONE size until 2026-08-14, when the signature slot asked for a
+   second and the stand's own anti-rule said what that costs: never give the mark a
+   size variant it does not wear. This one is worn. It is a RATIO rather than a
+   second face: `--logo-size` is the type and the mark box is 1.125 of it, which at
+   the default 16px is the 18px box this file has always drawn. So a placement asks
+   for a size and the whole lockup goes with it, the mark, the gap and the tracking
+   together, and there is still exactly one drawing and one proportion. Change the
+   ratio here and it changes in all 221 places, which is the point.
+   THE MARK BOX IS 18px AT 16px TYPE because that is the display face's ascender:
+   a mark taller than the letters beside it reads as an icon that has been put next
+   to a word, and a mark shorter than them reads as a bullet. `white-space:nowrap`
+   because a wordmark that wraps is two words.
+
+   `--logo-bleed` IS A FACT ABOUT THE DRAWING AND NOT AN OPINION ABOUT ANY PLACEMENT.
+   The mark is a 24x24 SVG and the ink does not reach its edges: painted at 480px on
+   a canvas and read for the leftmost and rightmost pixel above 8 alpha, the ink runs
+   82 to 397 of 480, so it sits **17.08 per cent of the box in from each side**, and
+   14.58 per cent from the top and bottom. That is correct where the lockup is
+   centred in a row of its own, which is the header and nothing else, and it is wrong
+   wherever the lockup has to line up with a COLUMN OF TYPE, because the reader sees
+   ink and the layout sees the box: at the 18px box the mark's ink starts 3.08px to
+   the right of everything above it, and 3.84 at the 22.5px box the signature wears.
+   This file states the distance and refuses to spend it; the three placements that
+   need the ink on the margin, the footer and the two plate signatures, write
+   `margin-left:var(--logo-bleed)` and say why. */
+.logo{--logo-size:var(--text-16);--logo-mark:calc(var(--logo-size) * 1.125);--logo-bleed:calc(var(--logo-mark) * -0.1708);display:inline-flex;align-items:center;gap:var(--space-8);margin:0;padding:0;background:none;border:0;text-decoration:none;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--logo-size);letter-spacing:var(--track-head);color:var(--text-primary);white-space:nowrap}
+.logo::before{content:'';flex:0 0 auto;width:var(--logo-mark);height:var(--logo-mark);background:var(--mark-logo) no-repeat center/contain}

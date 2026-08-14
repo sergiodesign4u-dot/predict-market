@@ -200,7 +200,7 @@
 
   <!-- ================================================================== width --><section class="tk-sec" id="width">
     <h2>What it does with width</h2>
-    <p class="tk-note"><b>Its own width query: 900 RAIL, 640 DESK.</b> Two different components live in this file and only one of them is a rail. At RAIL 900 <code>.subcat</code> becomes a <code>flex:0 0 214px</code> sticky column beside the content with its own scroll, which is the second of the three arrivals the ladder is named for. Below DESK the horizontal <code>.cat-nav</code> takes a bottom margin instead.</p>
+    <p class="tk-note"><b>Its own width query: 900 RAIL, and nothing else since 2026-08-14.</b> Two different components live in this file and only one of them is a rail. At RAIL 900 <code>.subcat</code> becomes a <code>flex:0 0 214px</code> sticky column beside the content with its own scroll, which is the second of the three arrivals the ladder is named for. <b>The DESK 640 block is gone and the band it was written for is 24px shorter without it.</b> All it did was give <code>.cat-nav</code> a <code>margin-bottom</code> below the desk, and <code>.feed .feed-inner</code> is a flex column with a 16px <code>gap</code>: a margin under a flex child is ADDED to the gap and never merged with it, so a phone got 32px under the strip and a desk got 16. Measured at 360 and 390 before it went, and at 640, 900 and 1280 to see what it was being compared against. The rung is still cut for this strip, in <code>base.css</code>, where the plate that wraps it drops its vertical padding from 12 to 8 below the desk: the whole band from the header to the first plate was <b>126px on a phone to show a 48px chip, and is 102 now</b>.</p>
   </section>
 
   <section class="tk-sec" id="rule">

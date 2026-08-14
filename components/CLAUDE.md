@@ -1,6 +1,6 @@
 # components/ - the system itself
 
-This folder IS the design system. **54 stylesheets, 9,011 lines**: 48 here and 6 in `patterns/`,
+This folder IS the design system. **54 stylesheets, 9,224 lines**: 48 here and 6 in `patterns/`,
 re-counted 2026-08-13 by `cat components/*.css components/patterns/*.css | wc -l` after `trust-art.css`
 was written (`docs/backlog.md` 140). It was 53 and 8,734 earlier the same day, after `print.css`
 (`docs/backlog.md` 125). **`trust-art.css` is the first file here that is not a component and not a
@@ -287,6 +287,56 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   the generated per-component pages, which were deleted with the vitrine, and no reader noticed
   because a comment has none. They point at the level page and its anchor now, verified by opening
   all 44 in a browser rather than by grepping for the id. If a line here names a path, open it.
+
+- **A MARGIN ON A FLEX CHILD IS ADDED TO THE CONTAINER'S GAP AND NEVER MERGED WITH IT.** This is the
+  one place the intuition everybody has from adjacent-margin collapse gives the wrong answer, and it
+  cost the narrowest screen double. `.feed .feed-inner` is a flex column with `gap:var(--space-16)`,
+  so every child already has 16px under it at every width; `catnav.css` carried a mobile-only block
+  putting `margin-bottom:var(--space-16)` on the category strip as well. Measured before it went:
+  **32px under the strip at 360 and 390 against 16 at 640, 900 and 1280**, which is the phone paying
+  twice for the rhythm the desk pays for once. Nothing replaced it. **Before writing a margin, ask
+  what holds the element**: in a flex or grid container the answer is already declared, once, by the
+  container.
+- **A MEDIA QUERY ADDS NO SPECIFICITY, so an override at a rung has to stand AFTER the declaration it
+  overrides and not merely inside a block cut at that rung.** `base.css` opens its page-frame section
+  with a `max-width:39.99875rem` block, and the plate's mobile padding put there would have rendered
+  nothing at all: `.feed-inner>.cat-nav` is (0,2,0) in both places and the later one wins at every
+  width. The cost of getting it right is two blocks at one rung in one file; the cost of getting it
+  wrong is a rule that never applies and never says so, which is this folder's most expensive shape
+  of defect and the reason `@supports`, `@media` and `:is()` all get read for what they do to weight
+  before they get read for what they do to the page.
+- **NEVER SPELL A WORDMARK BY HAND, and the two files that did it are the two whose whole job is the
+  brand.** `hero.css` and `seo-plate.css` each declared a signature as the body face at 13px in brass
+  with the letters typed into the markup and **no mark at all**: 11 placements, the brand tile and the
+  SEO plate. `logo.css` states the rule from the other end and had stated it since the day it was
+  written, that a brand mark keeps its own drawing and no generic glyph may stand in for it, and the
+  places that broke it were not the ones anybody would check. **A component that exists is not a
+  component that is reached**: the test is to walk the things the system NAMES and ask which files
+  redraw them, rather than to walk the files and ask what they read.
+
+- **AN ACCESSIBLE NAME IS A CLAIM AND NOTHING CHECKS IT AGAINST THE ELEMENT.** The header's brand
+  lockup was `<button type="button" aria-label="Yonder - go to Events home">` on all 105 painted
+  screens, with no `href`, no `form` and no handler in the tree: it announced a destination and had
+  none, and below 640 it is the only target on the left of the row. `header.css` even opened its
+  state comment with "the wordmark is a button that goes home". **A name that describes behaviour is
+  a test nobody wrote**, and the audits here checked that names EXIST and never that they are true.
+  All 221 are `<a href>` now. Where a name says what a control does, read the element.
+- **A CONTROL RESERVED FOR A FUTURE COSTS MORE THAN ITSELF, AND THE COST IS IN OTHER FILES.** The
+  hamburger was a `<button>` labelled "Menu (reserved for future scaling)" with no handler and no
+  drawer, `display:none` below the desk on top of that, so on a phone it did not exist and on a desk
+  it did nothing. Deleting it took with it a `display:none` rule, the whole `max-width:39.99875rem`
+  block in `header.css` that held nothing else, a symbol out of the one sprite every document loads,
+  105 of `.icon-btn`'s 242 placements, the kit specimen that led with it, and a re-measurement of the
+  DETAIL rung, which had been cut to buy back the 44px this control was eating. **A placeholder is
+  not inert: every file that has to have an opinion about it is paying rent on a decision nobody
+  took.**
+- **A PLACEMENT FILE NARROWS ITS OWN RULE; IT DOES NOT OVERRIDE SOMEBODY ELSE'S FACE.** The moment
+  the lockup became an anchor, four selectors in `footer.css` reached it, all (0,1,1) or better
+  against `.logo`'s (0,1,0): muted ink at rest, brass on hover, an underline, a pressed ground. The
+  fix is `:not(.logo)` on the footer's four, not a repaint in the footer's voice, and it is the same
+  shape `.bt-by` and `.seo-by` take by declaring no ink at all. **Adding a class to an element runs
+  it past every selector in the system that was written for that element type**, which is the half of
+  a markup change that a diff of the markup does not show.
 
 ## Where the record is
 

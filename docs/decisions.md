@@ -12,6 +12,237 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-14, end of the day - A button whose accessible name was a destination and whose element had none, and a control reserved for a future that had not arrived on 105 screens
+
+Two asks, both of them turning out to be defects with a paper trail.
+
+**THE HEADER'S LOCKUP ANNOUNCED A DESTINATION AND DID NOT HAVE ONE.** It was
+`<button type="button" class="logo logo-btn" aria-label="Yonder - go to Events home">` on all 105
+painted screens, with **no `href`, no `form` and no handler anywhere in the tree**. Below 640 it is
+the only target on the left of the row, and `header.css` says so in a comment that opens "the
+wordmark is a button that goes home". Nothing did. The footer's lockup and the two plate signatures
+were `<span>`, which is the quieter half of the same thing: they went nowhere and did not claim to.
+**All 221 product placements are `<a href="event-feed.html">` now**, plus 36 in the kit pointing one
+folder over, and the face gained the one property an anchor brings that a button and a span do not,
+`text-decoration:none`. The `background`, `border` and `padding` resets stay, because a face that
+only resets what the CURRENT element brings is a face waiting for the next element.
+
+**`footer.css` had to be narrowed rather than overridden, and that is the general rule for this.**
+Four selectors there paint links: rest `--text-muted`, hover brass, an underline, and a pressed
+ground. Every one is (0,1,1) or better against `.logo`'s (0,1,0), so the footer would have repainted
+a face it does not own the moment the lockup became an anchor. They carry `:not(.logo)` now. **A
+placement file narrows its own rule; it does not override somebody else's face**, which is the same
+move `.bt-by` and `.seo-by` already make by declaring no ink at all. The lockup does take the press
+ground the header gives it, so the two read as one control on two ends of the page.
+
+**THE HAMBURGER WAS RESERVED FOR A FUTURE THAT NEVER ARRIVED AND IT COST MORE THAN ITSELF.** A
+`<button>` labelled "Menu (reserved for future scaling)" with no handler and no drawer behind it,
+`display:none` below the desk on top of that, so on a phone it was a control that did not exist and
+on a desk it was a control that did nothing. Deleted from **105 painted screens, 87 grey ones and 10
+kit specimens**. What went with it is the interesting part:
+
+- **`.app-header .left > .icon-btn{display:none}`**, and then the whole `max-width:39.99875rem`
+  block in `header.css`, which held nothing else but two headstones. **A rule that hides a control
+  below the desk is a rule whose entire content is an opinion about that control**; with the control
+  gone it is a selector matching nothing, and an `@media` block with no declaration is the same
+  thing one level up. The width-query registry goes 35 to 34.
+- **`l-menu` out of `assets/icons.js`.** Its only remaining reader was `ui-kit/icons.html`, which
+  draws the shape from its own inline path rather than through `<use>`, so the symbol had zero
+  readers at all. **A symbol whose only reader is the page that documents the sprite is a glyph with
+  no placement**, which is what `account` was deleted over. 35 symbols to 34, 30 filled and 4 line,
+  and the page's "34 glyphs" badge had been one short against 35 for as long as it had stood,
+  disagreeing with the two badges beside it.
+- **The icon-button atom is down to two marks.** The plain circle goes from 242 placements to 137,
+  all of them in the header's utility group, and `iconbtn.html`'s specimen led with the hamburger
+  until today, which was already filed here as the case where a count is right and the picture under
+  it is one third of the thing. Now it would have been a picture of nothing.
+
+**AND THE 1,361 IN THE INVENTORY DOES NOT REPRODUCE.** Re-measured by the column's own stated
+method, every element wearing one of `iconbtn.css`'s eight declared classes read from the rendered
+DOM of all 105 screens: **731**, at 390 and at 1280 alike, of which `#l-close` takes 333 and
+`#i-bookmark-b` 198. The old figure is left named beside the new one rather than quietly replaced,
+because **a number measured by an unrecorded method cannot be corrected, only re-taken.**
+
+**WHAT THE DELETION GAVE BACK, AND WHY IT IS A ROW RATHER THAN AN EDIT.** `header.css` cuts the
+DETAIL rung to hide "How it works" below 760, and it states the measurement it was cut on: at 641
+the signed-in desk row asked 694px against a 641px window and 73 of 106 screens took horizontal
+scroll from 641 to 652. **36 of that 694 was the hamburger and 8 was its gap.** Re-measured, not
+re-derived: with `.hiw-btn` forced visible across all 105 screens at 641, 652, 660, 700 and 759,
+**0 pages scroll sideways and 0 header rows overflow**, and the worst intrinsic row demand at 641 is
+**535.8px**. The rule now hides a control for a reason that expired. It is left standing and filed as
+backlog 149, because **a rule whose SUBJECT is gone is a defect and a rule whose JUSTIFICATION
+expired is a decision**, and whether that label belongs in the header at 700px is a decision about
+the band.
+
+**Checked, both engines, from disk.** 163 documents: **257 lockups, every one an `<a>` with an
+`href`, no underline, its mark painting and a real box; 0 burgers left; 0 dangling `<use>`; 0 page
+errors.** Fourteen widths at the rungs and one pixel either side: 0 pages scrolling sideways, 0
+overflows.
+
+---
+
+## 2026-08-14, after that - The footer's stylesheet promised in prose what one of its own declarations was breaking, and the lockup now has two faces divided by what it is DOING
+
+Supersedes the two entries below on the counts: the signature size is worn by **116 placements** and
+not 11, and `logo` in the footer is **FIXED 95.6** and no longer FILLS.
+
+**THE FOOTER LOOKED UNCHANGED BECAUSE IT WAS, AND LOOKING AT IT FOUND A DEFECT OLDER THAN TODAY.**
+`footer.css` carries this comment thirty lines under the brand block, and it has since the file was
+written: *the same inset as every other band, so the first footer column starts on the same x as the
+logo above it*. It did not. `.footer-logo` read `justify-content:center`, so the lockup was centred
+inside a 240px brand column while the tagline and the language menu under it were flush left, at 14
+on a phone and 260 at 1280. **The file promised the alignment in prose and broke it in a
+declaration**, which is the shape this repository keeps meeting: a comment has no reader, so a rule
+that contradicts one costs nothing until somebody looks at the page.
+
+**It was the only text-bearing thing in the footer that was centred.** Walked over every element of
+the footer at 390 and at 1280 reading `text-align`, `justify-content` and `align-items`: two boxes
+came back centred, this lockup and `.footer-trust`, which is a row of three tiles and a different
+kind of centring. **A centring with no majority is a leftover**, and this one was left over from a
+phone footer that centred everything and has not for two stages. `logo.css` had even written the
+leftover down as a fact about the system, "the centring under a phone footer is `footer.css`", which
+made a defect read as a division of responsibility.
+
+**The stretch went with it, and that is why the published FILLS was never about this component.**
+`.footer-logo` was a flex child taking its column's full width, 292 at 320 and 611 at 639 and 240
+from 640 up, and the width was doing exactly one thing: giving `justify-content:center` something to
+centre inside. With the centring gone the width does nothing, so the lockup shrink-wraps and reads
+**FIXED 95.6 at all thirteen widths**. `ui-kit/docs/inventory.md` had this filed as the second of two
+answers on width; it was a fact about a slot wearing the component's name, which is the verdict rule
+this repository already wrote for `navitem` and `chip`.
+
+**TWO FACES NOW, AND THE LINE BETWEEN THEM IS WHAT THE LOCKUP IS DOING.** In the header it is a
+control in a 44px row: default 16px, 86.1 wide, untouched. In the **116** places where it SIGNS a
+block, the footer of all 105 screens plus the eleven plate signatures, it runs `--logo-size:
+var(--text-20)` and measures 95.6. It is still one drawing and one proportion; a slot asks for a size
+and the mark, the gap and the tracking follow. **The rule is not "the footer is bigger", it is "a
+signature is bigger than a control"**, which is a sentence somebody can apply to the next slot.
+
+**And the footer aligns by INK like the two plates do.** `margin-left:var(--logo-bleed)`, measured
+after: the mark's ink lands on 14.0 at 390, 40.0 at 900 and 260.0 at 1280, against a tagline at 14.0,
+40.0 and 260.0. Exact at every width. The box now hangs 3.84px into the footer's own gutter, which is
+14px at 390 and 20 above the desk, so nothing is clipped and nothing overflows: re-checked across
+163 documents on two engines, **0 pages scrolling sideways, 0 signatures failing to paint, 0 page
+errors**, and across fourteen widths at the rungs and one pixel either side, 0 overflows.
+
+---
+
+## 2026-08-14, last - The mark's ink is 17.08 per cent of its box in from each side, so a lockup that is aligned by its box is aligned 3px wrong, and the size that had no placement now has one
+
+Supersedes the entry below on two numbers: the signature is **FIXED 95.6** and not 78.1, because it
+runs at 20px type and not at 16.
+
+**THE LOCKUP LOOKED MISPLACED AND WAS PLACED EXACTLY WHERE IT WAS PUT.** Its box sat on the same left
+edge as the quote above it, to the pixel, and it still read as indented. The mark is a 24x24 SVG whose
+ink does not reach its own edges: painted at 480px on a canvas and read for the leftmost and rightmost
+pixel above 8 alpha, the ink runs **82 to 397 of 480**, so it stands **17.08 per cent of the box in
+from each side** and 14.58 from the top and the bottom. **The reader sees ink and the layout sees the
+box.** Centred in a row of its own, which is what the header and the footer do with it, the symmetric
+bearing is correct and invisible. Aligned against a COLUMN OF TYPE it is neither: at the 22.5px box
+the mark's ink began 3.84px right of the headline standing over it.
+
+**The distance is a fact about the drawing, so `logo.css` states it and spends none of it.**
+`--logo-bleed` is `calc(var(--logo-mark) * -0.1708)`, and the two signature slots are the only things
+that write `margin-left:var(--logo-bleed)`, because they are the only two placements that have to
+line up with type. Measured after, on both plates, at 390 and 1280, in Chromium and WebKit: the ink
+lands **0.01px** from the headline's left edge, eight readings out of eight. This is the same shape as
+the `getBBox` finding on the icon set, one folder over: **a mask is invisible to a box measurement,
+and so is a side bearing.**
+
+**THE SIZE VARIANT THE ANTI-RULE RESERVED NOW HAS A PLACEMENT.** `ui-kit/logo.html` has carried
+"never give the mark a size variant it does not wear" since the file was written, and the rule was
+never "one size", it was "no size with no placement". The signature is the placement. What it got is
+a **RATIO and not a second face**: `--logo-size` is the type, the mark box is `calc(var(--logo-size) *
+1.125)`, and at the default 16px that is the 18px box this component has always drawn, so **the
+header and the footer are byte-for-byte where they were** - re-measured across all thirteen widths,
+86.1 in the header and 292 / 332 / 362 / 611 / 240 in the footer, identical to the reading taken an
+hour earlier. The signature asks for `--text-20` and the mark, the gap and the tracking all follow it.
+There is still one drawing and one proportion, and changing the proportion changes all 221 placements
+at once, which is the argument for a ratio over a variant.
+
+**Why 20 and not 24.** The tile's quote is `--display-quote`, a clamp that computes 20px at 390 and
+23.68 at 1280, and the SEO tagline is larger again. A signature at 24 would have met the quote at its
+own size on a phone, and a signature is subordinate to the statement it signs or it is a second
+headline. 20 is the largest step that stays under the quote at every width.
+
+---
+
+## 2026-08-14, later - A margin below a flex child is added to the gap and never merged with it, and the two plates that exist to name the brand were the only two naming it without its mark
+
+Three findings from one reading of the phone, all of them raised by looking at a screenshot rather
+than at a file.
+
+**THE CATEGORY STRIP CHARGED A PHONE 126px TO SHOW A 48px CHIP, AND HALF OF THAT WAS BOOKED TWICE.**
+Measured at 360 and 390 before anything moved: 16px of `.feed-inner` margin, a 78px plate around the
+strip, and **32px under it against 16 at 640, 900 and 1280**. The 32 is the finding. `.feed .feed-inner`
+is `display:flex;flex-direction:column;gap:var(--space-16)`, so every child of that column already
+has 16px under it at every width; `catnav.css` carried a mobile-only block adding
+`margin-bottom:var(--space-16)` on top of it. **A margin on a flex child is ADDED to the container's
+gap, never merged with it** - that is the difference between flex and the adjacent-margin collapse
+everybody has the intuition for - so the narrow screen paid double for the same rhythm and the wide
+one paid once. The block is deleted and nothing replaces it, because the column already says the
+number. The plate's own vertical padding goes 12 to 8 below the desk in `base.css`, which is the
+other 8: the plate is the page frame's business and `catnav.css` has said so since it was written.
+**126 to 102 on a phone, the desk unmoved at 78 + 16.**
+
+**AND THE OVERRIDE HAD TO STAND AFTER THE DECLARATION, NOT INSIDE THE BLOCK ALREADY CUT AT THAT RUNG.**
+`base.css` opens the section with a `max-width:39.99875rem` block for the page frame, and putting the
+plate's padding there would have rendered nothing at all: **a media query adds no specificity**, and
+`.feed-inner>.cat-nav` is (0,2,0) in both places, so the later one wins whatever the width is. Two
+blocks at one rung in one file is the cost of that, and the alternative is a rule that silently never
+applies. The registry is unmoved at **35 width queries**, because `catnav.css` lost one and `base.css`
+gained one.
+
+**THE BRAND TILE WAS A POSTER PINNED TO THE TOP OF ITS OWN FRAME.** `.hero-promo.brand-tile` was
+`display:block`, so the stack sat on the top padding and every pixel the tile had beyond its content
+fell out of the bottom. Measured on both tiles at 390, 900 and 1280: **25.0px above the mark against
+53.8 under the signature on the feed, and 25.0 against 101.5 on how-it-works**, where the side column
+asks for a 250px minimum and nothing was using it. Four to one. What made it visible rather than
+merely true is the brass frame `::before` draws at `inset:var(--space-12)`: the frame does not move,
+so the emptiness has an edge to be measured against by eye. It is a flex column centred on its cross
+axis now, `align-items:flex-start` because a two-line poster centred against itself reads as ragged,
+and the two gaps are equal to the tenth of a pixel at every width in both engines. **The left inset
+is 32 against 24 on the other three sides**, so the type starts 20px inside the frame on the left and
+12 on the right, which is a book's gutter and fore-edge and not an accident.
+
+**ELEVEN PLACEMENTS SPELLED THE WORDMARK BY HAND, AND THEY WERE THE ELEVEN WHOSE WHOLE JOB IS THE
+BRAND.** `hero.css` declared `.bt-by` and `seo-plate.css` declared `.seo-by` as the body face at 13px
+in brass, each with the letters "Yonder" written into the markup and **no mark at all**. `logo.css`
+is the file that already refuses this from the other end: a brand mark is not in the system, it keeps
+its own drawing, and no generic glyph may stand in for it. The two plates carrying those classes are
+the brand tile (2 placements) and the SEO plate (9) - the only two things in the product that exist
+to name the brand, and therefore the only two places where naming it wrong costs anything. They carry
+`class="logo bt-by"` and `class="logo seo-by"` now, and the two placement files were cut back to what
+they own, which is WHERE the lockup stands: a `margin-top` in one, a `margin-top` and an `align-self`
+in the other. **Neither declares a font, an ink or a letterspacing, so the files cannot fight over the
+face whichever order they are imported in.** `logo` goes from 210 placements to 221.
+
+**The third placement is a third answer on width, and it corrects the published number for the first
+one.** The signature measures **FIXED 78.1 at all thirteen widths** in both slots. The header's
+published 86.1 is the same lockup plus 4px of press padding on each side: 78.1 is the component and
+86.1 was always the component plus its slot. `ui-kit/docs/inventory.md`, behaviour on width.
+
+**The ink went UP and that is worth saying because it looks like a colour change.** The signature was
+`--text-brass-lit` and is `--text-primary`, which is the same ink as the tagline standing directly
+above it on the same ground in both themes, so nothing new had to be measured for contrast: the
+signature is now exactly as safe as the line it signs.
+
+**What was checked, and the instrument first.** All 163 documents in `ui-visual/` and `ui-kit/`, at
+390 and 1280, in Chromium 151 and WebKit 26.5, from disk: **46 signature placements per engine, 0
+failing to paint their mark, 0 pages scrolling sideways, 0 page errors.** Side-scroll was read as
+`document.scrollingElement.scrollLeft = 9999` and then read back, never as `scrollWidth >
+clientWidth`, which is the rule this repository wrote for itself the day before. The two changed
+plates were then read at the rungs and one pixel either side - 320, 360, 390, 639, 640, 641, 759,
+760, 761, 899, 900, 901, 1280, 1600 - for the quote overflowing its own tile, because the tile went
+from `display:block`, where the quote filled the width, to a flex column, where it shrinks to fit:
+**0 overflows, 0 tiles scrolling internally, in both engines.**
+
+**What was NOT done, and it is a look decision rather than a defect.** The generic zigzag above the
+quote stays on both plates. With a real mark now standing below it the tile carries two marks, and
+whether that is one too many is a question about the poster and not about the system.
+
+---
+
 ## 2026-08-14 - The same origin rule had a third victim and it was the type, and the sweep that opened the horizontal-scroll row could not tell a page that scrolls from a page that cannot
 
 Four open rows worked in one pass, and three of the four turned out to be about a premise rather than

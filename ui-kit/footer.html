@@ -66,7 +66,7 @@
                 <div class="footer-top">
                   <!-- Brand block: logo, tagline, social, language -->
                   <div class="footer-brand">
-                    <span class="logo footer-logo">Yonder</span>
+                    <a class="logo footer-logo" href="../ui-visual/event-feed.html">Yonder</a>
                     <p class="footer-tagline">Back the events you follow.</p>
                     <details class="filter-menu lang-menu" id="langMenu">
                       <summary aria-label="Language (placeholder)">
@@ -174,7 +174,7 @@
                 <div class="footer-top">
                   <!-- Brand block: logo, tagline, social, language -->
                   <div class="footer-brand">
-                    <span class="logo footer-logo">Yonder</span>
+                    <a class="logo footer-logo" href="../ui-visual/event-feed.html">Yonder</a>
                     <p class="footer-tagline">Back the events you follow.</p>
                     <details class="filter-menu lang-menu" id="langMenu-lt">
                       <summary aria-label="Language (placeholder)">
@@ -366,6 +366,26 @@
     <p class="tk-note"><b>Everything this footer links to has to exist on the map.</b> That is not a
     CSS rule and it is the biggest open thing about this component: 16 destinations are promised here
     that the sitemap does not carry, on all 105 screens. <code>docs/backlog.md</code> 27 and 28.</p>
+    <p class="tk-why"><b>This file promised in prose what one declaration was breaking, and both
+    lines had stood since the file was written.</b> Thirty lines under the brand block it says "the
+    same inset as every other band, so the first footer column starts on the same x as the logo
+    above it". It did not: <code>.footer-logo</code> read <code>justify-content:center</code>, so
+    the lockup sat in the middle of a 240px brand column while the tagline and the language menu
+    under it were flush left, at 14 on a phone and 260 at 1280. Measured over the whole footer at
+    390 and 1280, <b>the lockup was the only text-bearing thing in it that was centred</b>;
+    <code>.footer-trust</code> is the other centred box and it is a row of three tiles, a different
+    kind of centring. <b>A centring with no majority is a leftover</b>, from a phone footer that
+    centred everything and has not for two stages. Gone 2026-08-14, along with the stretch that only
+    existed to give the centring something to centre inside: the lockup shrink-wraps now and stops
+    FILLING a column it was never using. <code>ui-kit/docs/inventory.md</code>, behaviour on
+    width.</p>
+    <p class="tk-why"><b>And it is flush by its INK, not by its box.</b> The mark's drawing stands
+    17.08 per cent of its own box in from each side, so a lockup aligned by its box is aligned about
+    4px wrong against a column of type. <code>logo.css</code> states that distance as
+    <code>--logo-bleed</code>; this file spends it. Measured after: the mark's ink lands on 14.0 at
+    390, 40.0 at 900 and 260.0 at 1280, against a tagline at 14.0, 40.0 and 260.0. The lockup also
+    runs at 20px here rather than the header's 16, which is the line between the two faces: <b>a
+    control in a bar against a signature on a block</b>. <a href="logo.html">logo</a>.</p>
   </section>
 
   <section class="tk-sec" id="antirule">

@@ -19,14 +19,14 @@
   <div class="tk-hero">
     <h1>Logo</h1>
     <p>Level 1, and <b>the only component whose drawing is not made of system ink</b>. The mark, an
-    8px gap, the wordmark. <b>210 placements on 105 painted screens</b>, one face, worn twice per
-    screen: a <code>&lt;button&gt;</code> in the header and a <code>&lt;span&gt;</code> in the
-    footer. Written 2026-08-11 with the rename to Yonder, out of the two copies that were already
+    8px gap, the wordmark. <b>221 placements on 105 painted screens</b>, one face: a
+    <code>&lt;button&gt;</code> in the header and a <code>&lt;span&gt;</code> in the footer of every
+    screen, plus <b>eleven signatures</b> on the two plates that exist to name the brand. Written 2026-08-11 with the rename to Yonder, out of the two copies that were already
     standing in <code>header.css</code> and <code>footer.css</code>.</p>
     <div class="tk-badges">
-      <span class="tk-badge">210 placements</span>
+      <span class="tk-badge">221 placements</span>
       <span class="tk-badge">1 face</span>
-      <span class="tk-badge">2 rules</span>
+      <span class="tk-badge">3 slots</span>
       <span class="tk-badge">1 of the 2 old copies could not be themed</span>
     </div>
   </div>
@@ -73,30 +73,77 @@
 
   <!-- ========================================================= the placements -->
   <section class="tk-sec" id="faces">
-    <h2 data-n="3">One face, two placements</h2>
+    <h2 data-n="3">One face, three placements</h2>
 
     <p class="tk-subh">the header, 105 placements, a button that goes to the Events home</p>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
-        <button type="button" class="logo logo-btn" aria-label="Yonder - go to Events home">Yonder</button>
+        <a class="logo logo-btn" href="../ui-visual/event-feed.html">Yonder</a>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
-        <button type="button" class="logo logo-btn" aria-label="Yonder - go to Events home">Yonder</button>
+        <a class="logo logo-btn" href="../ui-visual/event-feed.html">Yonder</a>
       </div>
     </div>
 
-    <p class="tk-subh">the footer, 105 placements, a span that goes nowhere</p>
+    <p class="tk-subh">the footer, 105 placements, a span that goes nowhere and signs the block it opens</p>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
-        <span class="logo footer-logo">Yonder</span>
+        <a class="logo footer-logo" href="../ui-visual/event-feed.html">Yonder</a>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
-        <span class="logo footer-logo">Yonder</span>
+        <a class="logo footer-logo" href="../ui-visual/event-feed.html">Yonder</a>
       </div>
     </div>
 
+    <p class="tk-subh">the plate signature, 11 placements, the same face as the footer</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <a class="logo bt-by" href="../ui-visual/event-feed.html">Yonder</a>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <a class="logo bt-by" href="../ui-visual/event-feed.html">Yonder</a>
+      </div>
+    </div>
+
+    <p class="tk-why"><b>The third slot is the one that was here all along and was not wearing this
+    component.</b> The brand tile (2 placements) and the SEO plate (9) each spelled "Yonder" by hand
+    in the body face at 13px with no mark at all, which made them the only two things in the product
+    that name the brand and the only two naming it wrong. They carry
+    <code>class="logo bt-by"</code> and <code>class="logo seo-by"</code> since 2026-08-14, and the
+    placement files kept only the rules that say where the lockup stands.</p>
+    <p class="tk-why"><b>Three slots and TWO faces, and the line between them is what the lockup is
+    DOING.</b> In the header it is a control in a 44px row, so it stays at the default 16px and
+    measures 86.1. Everywhere it SIGNS a block it runs at 20 and measures <b>95.6, FIXED at all
+    thirteen widths</b>: the footer of every screen and the eleven plate signatures, 116 placements.
+    The size is a RATIO and not a second face - a slot writes
+    <code>--logo-size:var(--text-20)</code> and the mark box follows at 1.125 of the type, 18 to
+    22.5, with the gap and the tracking. At 16px the lockup measures 78.1, which is worth reading
+    against the header's published 86.1: <b>86.1 is that same lockup plus 4px of press padding on
+    each side</b>, so the number had been carrying the slot all along without saying so.</p>
+    <p class="tk-why"><b>The mark's ink is 17.08 per cent of its box in from each side, and that is
+    why this slot pulls left.</b> The drawing is a 24x24 SVG that does not reach its own edges;
+    painted at 480px on a canvas and read for the leftmost pixel above 8 alpha, the ink runs 82 to
+    397 of 480. Centred in a row of its own, which is the header and the footer, that is correct.
+    Aligned against a COLUMN OF TYPE it is not, because the reader sees ink and the layout sees the
+    box: at the 22.5px box the mark started 3.84px to the right of the headline above it.
+    <code>logo.css</code> states the distance as <code>--logo-bleed</code> and spends none of it;
+    the three slots that align against type write <code>margin-left:var(--logo-bleed)</code>.
+    Measured after, on both plates, at 390 and 1280, in Chromium and WebKit: the mark's ink lands
+    <b>0.01px</b> from the headline's left edge, eight readings out of eight. In the footer it lands
+    on the tagline's left edge exactly - 14.0 at 390, 40.0 at 900, 260.0 at 1280, against a tagline
+    at 14.0, 40.0 and 260.0.</p>
+    <p class="tk-why"><b>The footer had the same defect in the other direction, and its own
+    stylesheet had promised the opposite in prose.</b> <code>.footer-logo</code> read
+    <code>justify-content:center</code>, so the lockup sat in the middle of a 240px brand column
+    while the tagline and the language menu under it were flush left, and thirty lines further down
+    <code>footer.css</code> says "the same inset as every other band, so the first footer column
+    starts on the same x as the logo above it". It did not. Measured over the whole footer at 390
+    and 1280, <b>the lockup was the only text-bearing thing in it that was centred</b>. A centring
+    with no majority is a leftover, from a phone footer that centred everything and has not for two
+    stages.</p>
     <p class="tk-why"><b>The two elements do not start from the same place, so the reset is part of
     the face.</b> A button arrives carrying the User Agent's ground, border, padding, font and
     centring; a span arrives with none of them. If the reset stood in <code>header.css</code> the
@@ -171,9 +218,11 @@
     in two files for as long as this system has existed, and the copy that had its colour typed in
     is the copy that stopped following the theme. A face in two places is a face that is right in
     one of them.</i></p>
-    <p class="tk-lab tk-bad"><b>Never give the mark a size variant it does not wear.</b> <i>One face,
-    210 placements, and no large version until something in the product asks for one. The stand
-    already knows what a face with no placement looks like: four of the toggle's five.</i></p>
+    <p class="tk-lab tk-bad"><b>Never give the mark a size variant it does not wear</b>, and on
+    2026-08-14 something asked. <i>The rule was never "one size", it was "no size with no
+    placement", and the stand already knows what a face with no placement looks like: four of the
+    toggle's five. What the signature got is a RATIO and not a second face, so there is still one
+    drawing and one proportion, and changing the proportion changes all 221 places at once.</i></p>
     <p class="tk-lab tk-bad"><b>Never restate an inherited value as a state.</b> <i>Both old copies
     carried a <code>::first-letter</code> rule setting the ink to exactly what the element already
     had. It rendered nothing and read as a decision, which is worse than either.</i></p>

@@ -112,8 +112,13 @@
 .feed-inner .cat-nav>ul{max-width:none;margin:0;padding:var(--space-2);gap:var(--space-8);display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
 .feed-inner .cat-nav>ul::-webkit-scrollbar{display:none}
 .feed-inner .cat-nav li{flex:0 0 auto}
-/* rung: DESK 40rem, 640px at the default root, the one divide, and this is BELOW it. 39.99875rem rather than 40rem, which is 639.98 against 640 at the default root,
-   because the rung belongs to the desk: tokens.css, page frame. */
-@media(max-width:39.99875rem){
-  .feed-inner .cat-nav{margin-bottom:var(--space-16)}
-}
+/* A MARGIN BELOW A CHILD OF A FLEX COLUMN IS ADDED TO THE COLUMN'S GAP, NEVER
+   MERGED WITH IT, and a mobile-only block below the DESK rung put one here.
+   `.feed .feed-inner` is `display:flex;flex-direction:column;gap:var(--space-16)`
+   in base.css, so the strip already had 16px under it at every width; the extra
+   `margin-bottom:var(--space-16)` made the gap 32 on a phone and left it 16 on a
+   desk, which is the narrow screen paying double for the same rhythm. Measured
+   at 360 and 390 before it was deleted: 32.0 below the strip against 16.0 at
+   640, 900 and 1280. Nothing replaces it: the column already says the number.
+   The rung this block stood at is still cut in base.css, where the plate that
+   wraps this strip trims its vertical padding on the same side of it. */

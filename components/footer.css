@@ -9,10 +9,29 @@
 .app-footer{margin:0;font-size:var(--text-11)}
 .app-footer .footer-inner{display:flex;flex-direction:column;gap:var(--space-16)}
 .app-footer nav{border:none}
-.app-footer a:hover{text-decoration:underline}
+.app-footer a:not(.logo):hover{text-decoration:underline}
 .footer-top{display:flex;flex-direction:column;gap:var(--space-20)}
 .footer-brand{display:flex;flex-direction:column;gap:var(--space-12)}
-.footer-logo{justify-content:center}
+/* THIS FILE CONTRADICTED ITSELF FOR AS LONG AS BOTH LINES HAVE STOOD, and the other
+   one is 30 lines down: "the same inset as every other band, so the first footer
+   column starts on the same x as the logo above it". It did not. `.footer-logo` read
+   `justify-content:center`, so the lockup was centred inside a 240px brand column
+   while the tagline and the language menu under it were flush left, at 14 on a phone
+   and 260 at 1280. Measured over the whole footer at 390 and 1280: **the lockup was
+   the ONLY text-bearing thing in it that was centred**, and `.footer-trust` is the
+   other, which is a row of three tiles and a different kind of centring. A centring
+   with no majority is a leftover, and this one was left over from a phone footer that
+   centred everything and has not for two stages.
+   `align-self` because the box was only being stretched to have something to centre
+   inside: with the centring gone the width does nothing, so the lockup stops FILLING
+   its column and shrink-wraps. `--logo-bleed` because the promise the other comment
+   makes is about the same X, and the reader sees the mark's INK, which stands 17.08
+   per cent of its own box in from the left. logo.css states that distance.
+   THE SIZE IS THE SAME CALL THE TWO PLATE SIGNATURES MADE. The lockup runs at 20px
+   wherever it SIGNS a block, here and on the brand tile and the SEO plate, and stays
+   at the default 16 in the header, where it is a control in a 44px row and not a
+   signature. */
+.footer-logo{--logo-size:var(--text-20);align-self:flex-start;margin-left:var(--logo-bleed)}
 .footer-tagline{margin:0;max-width:280px}
 .lang-menu{width:max-content}
 .lang-menu summary .ic{width:var(--icon-16);height:var(--icon-16)}
@@ -38,7 +57,16 @@
 /* the same inset as every other band, so the first footer column starts on the
    same x as the logo above it and the first card between them */
 .app-footer .footer-inner{max-width:var(--container-max);margin:0 auto;box-sizing:border-box;padding:var(--space-20) var(--gutter)}
-.app-footer a{color:var(--text-muted);text-decoration:none}
+/* `:not(.logo)` ON ALL FOUR OF THIS FILE'S LINK RULES, and it is not a tidy-up. The
+   brand lockup became an `<a href>` on 2026-08-14 along with the other 220, and every
+   one of these selectors is (0,1,1) or better against `.logo`'s (0,1,0), so the footer
+   would have repainted the face it does not own: the wordmark muted grey at rest, brass
+   on hover, and a pressed ground under an element that carries no padding to hold one.
+   A placement file narrows its own rule rather than overriding somebody else's face,
+   which is the same move `.seo-by` and `.bt-by` make by declaring no ink at all. What
+   the lockup DOES get is the press ground the header already gives it, so the two read
+   as one control on two ends of the page. */
+.app-footer a:not(.logo){color:var(--text-muted);text-decoration:none}
 /* THE ONE PLACE IN THIS PRODUCT THAT FAILS WCAG 2.5.8 AA OUTRIGHT, AND IT FAILED BOTH HALVES.
    Measured at 390 with the pointer asserted coarse: `.footer-col a` is a **36.5 x 14** box, which
    misses the 24 x 24 minimum, and the criterion's escape hatch misses too, because a target under
@@ -89,7 +117,7 @@
    links directly under the footer trust strip. They come back the day the accounts exist, and until
    then the product does not claim them. It took `href="#"` in `ui-visual/` from 1,059 to 534. */
 .app-footer .footer-soon{color:var(--text-icon);cursor:default}
-.app-footer a:hover,.popular-links a:hover,.footer-col a:hover,.legal-links a:hover{color:var(--text-brass);text-decoration:none}
+.app-footer a:not(.logo):hover,.popular-links a:hover,.footer-col a:hover,.legal-links a:hover{color:var(--text-brass);text-decoration:none}
 /* Press, the axis this file was missing. Every one of these is a nav row, and the footer is
    read on a phone as often as on a desktop, where the hover above never fires. It mirrors that
    hover's selector list exactly, so the two sit at equal specificity and source order decides.
@@ -98,7 +126,8 @@
    and reads well across a 47px chip, but these links carry no padding, so the same step behind
    one line of 11px text is a value that renders as nothing. So the press also carries the brass
    the hover gives, and a thumb gets the answer a pointer already had. Both roles were here. */
-.app-footer a:active,.popular-links a:active,.footer-col a:active,.legal-links a:active{background:var(--bg-pressed);color:var(--text-brass)}
+.app-footer a:not(.logo):active,.popular-links a:active,.footer-col a:active,.legal-links a:active{background:var(--bg-pressed);color:var(--text-brass)}
+.footer-logo:active{background:var(--bg-pressed)}
 .footer-popular{border-top:var(--hairline) solid var(--border-hairline)}
 .footer-popular h2,.footer-col h2{color:var(--text-primary)}
 .footer-tagline{color:var(--text-muted)}

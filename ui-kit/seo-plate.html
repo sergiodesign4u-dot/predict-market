@@ -61,7 +61,7 @@
                 <aside class="seo-brand">
                   <svg class="seo-tick" viewBox="0 0 26 18" aria-hidden="true"><path d="M2 15 L9 7 L13 10 L24 2" fill="none" stroke="var(--text-brass)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   <p class="seo-tagline">Not just news.<br>Your <em>stake.</em></p>
-                  <span class="seo-by">Yonder</span>
+                  <a class="logo seo-by" href="../ui-visual/event-feed.html">Yonder</a>
                 </aside>
                 </div>
       </div>
@@ -92,7 +92,7 @@
                 <aside class="seo-brand">
                   <svg class="seo-tick" viewBox="0 0 26 18" aria-hidden="true"><path d="M2 15 L9 7 L13 10 L24 2" fill="none" stroke="var(--text-brass)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   <p class="seo-tagline">Not just news.<br>Your <em>stake.</em></p>
-                  <span class="seo-by">Yonder</span>
+                  <a class="logo seo-by" href="../ui-visual/event-feed.html">Yonder</a>
                 </aside>
                 </div>
       </div>
@@ -125,8 +125,9 @@
             </section>
           </div>
           <aside class="seo-brand">
-            <p class="seo-tagline">Odds you can <em>check</em></p>
-            <p class="seo-by">A prediction market with its working shown</p>
+            <svg class="seo-tick" viewBox="0 0 26 18" aria-hidden="true"><path d="M2 15 L9 7 L13 10 L24 2" fill="none" stroke="var(--text-brass)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <p class="seo-tagline">Not just news.<br>Your <em>stake.</em></p>
+            <a class="logo seo-by" href="../ui-visual/event-feed.html">Yonder</a>
           </aside>
         </div>
       </div>
@@ -144,8 +145,9 @@
             </section>
           </div>
           <aside class="seo-brand">
-            <p class="seo-tagline">Odds you can <em>check</em></p>
-            <p class="seo-by">A prediction market with its working shown</p>
+            <svg class="seo-tick" viewBox="0 0 26 18" aria-hidden="true"><path d="M2 15 L9 7 L13 10 L24 2" fill="none" stroke="var(--text-brass)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <p class="seo-tagline">Not just news.<br>Your <em>stake.</em></p>
+            <a class="logo seo-by" href="../ui-visual/event-feed.html">Yonder</a>
           </aside>
         </div>
       </div>
@@ -221,6 +223,17 @@
     survive both themes, every width and a missing file; a corner drawn as an image does not.</p>
     <p class="tk-note"><b>A picture under type is a contrast decision.</b> The opacity and the mask
     are the measurement, not the taste.</p>
+    <p class="tk-why"><b>The signature is the logo, and it was a word set to look like one until
+    2026-08-14.</b> <code>.seo-by</code> declared the body face at 13px in brass and spelled
+    "Yonder" by hand, mark omitted. This plate and the brand tile are the two things in the product
+    whose entire job is to name the brand, and they were the only two naming it without its mark.
+    Nine placements here, two there, all eleven now <code>class="logo seo-by"</code> or
+    <code>class="logo bt-by"</code>. This file keeps the two declarations that are about WHERE the
+    lockup stands and none about what it is, so the two files cannot disagree whichever order they
+    are imported in. <code>align-self</code> is one of the two: <code>.seo-brand</code> is a flex
+    column that stretches its items, and a lockup stretched to the column is a lockup with an
+    invisible box around it. See <a href="logo.html">logo</a>, third placement, FIXED 95.6 at all
+    thirteen widths, and the first slot in the system to run the lockup at a size other than 16px.</p>
   </section>
 
   <section class="tk-sec" id="antirule">
@@ -232,6 +245,9 @@
     the average and fails over the bright quarter, which is the part the eye goes to.</i></p>
     <p class="tk-lab tk-bad"><b>Never let one class stand on two element types by accident.</b> <i>22
     sections and 14 divs draw the same and outline differently.</i></p>
+    <p class="tk-lab tk-bad"><b>Never spell a wordmark by hand.</b> <i>The system has a logo
+    component and it owns the mark, the gap, the face and the tracking. A brand mark keeps its own
+    drawing, and a word in the body face is a generic glyph standing in for one.</i></p>
   </section>
 
   <section class="tk-sec" id="closing">

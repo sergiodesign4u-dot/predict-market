@@ -554,6 +554,16 @@ body.app-case{background:var(--bg-page)}
     inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),
     0 30px 58px -34px var(--shadow-ink-85),0 12px 26px -18px var(--shadow-ink-72)}
 .feed-inner>.cat-nav{padding:var(--space-12) var(--space-16)}
+/* rung: DESK 40rem, 639.98 at the default root, the same one the page frame is cut at
+   above, and this is BELOW it. THE PLATE'S VERTICAL PADDING IS THE ONE THING IN THIS
+   BAND THAT BUYS NOTHING ON A PHONE. It stands after the declaration above rather than
+   inside the block at the top of this section because a media query adds no specificity:
+   `.feed-inner>.cat-nav` is (0,2,0) in both places, and the later one wins whatever the
+   width is. Measured at 390: the strip cost 126px between the header and the first plate
+   to show a 48px chip, and 30 of those 126 were the plate breathing around it. */
+@media(max-width:39.99875rem){
+  .feed-inner>.cat-nav{padding:var(--space-8) var(--space-16)}
+}
 /* The SIDES read --plate-inset and the top and bottom do not, because only the sides
    are nested inside another gutter: --gutter is already spent before this padding
    starts, and vertical space has nothing above it competing for the same 360px. */

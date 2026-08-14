@@ -161,7 +161,23 @@
 .ht-body{display:flex;flex-direction:column;gap:var(--space-4);min-width:0}
 .ht-body b{font-family:var(--font-body);font-size:var(--text-14);font-weight:var(--weight-semibold);color:var(--text-primary)}
 .ht-body span{font-size:var(--text-13);color:var(--text-muted);line-height:var(--leading-base)}
-.hero-promo.brand-tile{display:block;padding:var(--space-24) var(--space-24) var(--space-24);min-height:210px}
+/* THE TILE IS A POSTER AND A POSTER IS CENTRED IN ITS OWN FRAME. It was
+   `display:block`, so the stack sat on the top padding and every pixel the tile
+   was given beyond its content fell out of the bottom. Measured on both tiles at
+   390, 900 and 1280 before this rule: 25.0px above the mark against 53.8 under the
+   signature on the feed, and 25.0 against 101.5 on how-it-works, where the side
+   column asks for min-height:250px and nothing was using it. Four to one. The
+   brass frame drawn by ::before is inset 12 on all four sides and does not move,
+   so the emptiness was visible as a frame with its contents pushed to the top.
+   After: the two gaps are equal to the tenth of a pixel at every width in both
+   engines, 42.5 / 42.5 on the feed and 62.5 / 62.5 on how-it-works at 390.
+   `justify-content:center` centres the stack between the paddings; the items keep
+   their own left edge with `align-items:flex-start`, because a poster this narrow
+   reads as ragged the moment its two lines are centred against each other.
+   THE LEFT INSET IS LARGER THAN THE OTHER THREE, and that is the one asymmetry
+   here: the type starts 20px inside the brass frame on the left and 12 on the
+   right, which is the same reason a book has a wider gutter than a fore-edge. */
+.hero-promo.brand-tile{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:var(--space-24) var(--space-24) var(--space-24) var(--space-32);min-height:210px}
 .bt-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center;opacity:.5;z-index:var(--z-under);-webkit-mask-image:linear-gradient(to left,var(--mask-solid) 26%,transparent 92%);mask-image:linear-gradient(to left,var(--mask-solid) 26%,transparent 92%)}
 .bt-veil{position:absolute;inset:0;z-index:var(--z-under);background:linear-gradient(90deg,transparent 52%,var(--veil-brand) 84%)}
 .brand-tile::before{content:'';position:absolute;inset:var(--space-12);z-index:var(--z-float);pointer-events:none;border:var(--hairline) solid var(--border-brass);border-radius:var(--radius-6);clip-path:polygon(0 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%)}
@@ -169,7 +185,20 @@
 .bt-tick{position:relative;z-index:var(--z-content);width:var(--size-32);height:23px;margin-bottom:var(--space-16);filter:drop-shadow(0 2px 3px var(--shadow-ink-60))}
 .bt-quote{position:relative;z-index:var(--z-content);margin:0;font-family:var(--font-display);font-weight:var(--weight-bold);text-transform:uppercase;font-size:var(--display-quote);line-height:var(--leading-flat);letter-spacing:var(--track-caps-lg);color:var(--text-primary);text-wrap:balance}
 .bt-quote em{font-style:normal;color:var(--text-brass-lit)}
-.bt-by{position:relative;z-index:var(--z-content);display:block;margin-top:var(--space-16);font-family:var(--font-body);font-size:var(--text-13);letter-spacing:var(--track-caps);color:var(--text-brass-lit)}
+/* THE SIGNATURE ON THE BRAND TILE IS THE BRAND, SO IT IS THE LOGO AND NOT A WORD
+   SET TO LOOK LIKE ONE. This declared the body face at 13px in brass and spelled
+   "Yonder" by hand, which is a wordmark drawn twice: once in `logo.css`, where the
+   mark and the display face and the tracking are decided, and once here, where
+   only the letters survived. The mark was missing entirely, and the ONE place in
+   the product whose whole job is to say the brand's name was the one place saying
+   it without its mark. `logo.css` is the file that already refuses this: a brand
+   mark is not in the system, it keeps its own drawing, and no generic glyph may
+   stand in for it. The markup now carries `class="logo bt-by"` and this rule keeps
+   only what is about WHERE the lockup stands, which is the same division the
+   header and the footer make: the face is logo.css's, the position is the
+   placement's. The two files cannot fight over it, because hero.css is imported
+   after logo.css and declares none of the face. */
+.bt-by{position:relative;z-index:var(--z-content);--logo-size:var(--text-20);margin-top:var(--space-20);margin-left:var(--logo-bleed)}
 .hero-hot{display:flex;flex-direction:column;padding:var(--space-16) var(--space-20) var(--space-16)}
 .hh-head{display:flex;align-items:center;gap:var(--space-8);margin-bottom:var(--space-8)}
 .hh-head svg{width:var(--icon-18);height:var(--icon-18);color:var(--text-brass-lit)}
