@@ -1,5 +1,5 @@
 /* components/filters.css
-   Component: filters. Classes: .filter-menu, .filter-panel, .filters-btn, .filters-close, .filters-head, .filters-scrim, .filters-toggle, .reverse-row.
+   Component: filters. Classes: .filter-menu, .filter-panel, .filters-btn, .filters-close, .filters-done, .filters-foot, .filters-head, .filters-reset, .filters-scrim, .filters-toggle, .reverse-row.
 
    Reads: --bg-control, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --focus-ring, --shadow-ink, --shadow-ink-45, --text-brass, --text-muted, --text-primary, --text-strong, --tint-brass-16
    Stand:  ui-kit/filters.html, and ui-kit/molecules.html#filters-lt for the level and its reason (the -lt is the shelf's own id suffix and not a variant of this component: ui-kit/CLAUDE.md)
@@ -169,7 +169,7 @@
    `display:none` takes the control out of the tab order and out of the
    accessibility tree at once. */
 .filters-toggle{position:absolute;width:var(--hairline);height:var(--hairline);opacity:0;margin:0;pointer-events:none}
-.filters-btn,.filters-scrim,.filters-head{display:none}
+.filters-btn,.filters-scrim,.filters-head,.filters-foot{display:none}
 /* rung: DESK 40rem, 640px at the default root, the one divide, and this is BELOW it. 39.99875rem rather than 40rem, which is 639.98 against 640 at the default root,
    because the rung belongs to the desk: tokens.css, page frame. */
 @media(max-width:39.99875rem){
@@ -243,6 +243,34 @@
   .filters-toggle:checked~.feed-controls .filter-menu summary>span>span{color:var(--text-primary);font-weight:var(--weight-semibold)}
   .filters-toggle:checked~.feed-controls .filter-panel{position:static;min-width:0;background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible;padding:0 var(--gutter) var(--space-8)}
   .filters-toggle:checked~.feed-controls .filter-panel li label{font-size:var(--text-14);margin-inline:0}
+  /* THE SHEET HAD THREE WAYS OUT AND A PERSON COULD SEE NONE OF THEM, 2026-08-14.
+     The scrim closes it, Escape closes it, and the cross in the head closes it, and
+     the first two are invisible by definition while the third is 44px in a corner and
+     is COVERED by the course chrome's own toggle in the review build. So the sheet
+     ended in a band of empty surface with nothing in it, which reads as an unfinished
+     screen rather than as a finished choice. **An exit that only exists in the
+     mechanism is not an exit**, which is the same sentence this system already
+     carries about a state that exists in one theme.
+     The primary is a `<label for>` and not a `<button>` on purpose: it does not
+     APPLY anything. Every radio in this sheet is live, so the list behind the scrim
+     has already changed by the time a person reads this row. `Apply` would name a
+     step that does not exist. It says `Show results`, which is what pressing it does.
+     RESET APPEARS ONLY WHEN THERE IS SOMETHING TO RESET, and it is the other half of
+     the dot on the closed control: the dot announces that the list is not the default
+     one, and until now the only way back was to open the sheet and find `Trending`
+     and `All` again in two separate lists.
+     **The condition is written twice and that is deliberate.** The dot and this
+     button need different `display` values, so one rule cannot serve both, and the
+     alternatives are a custom-property space toggle, which says the condition once
+     and hides what it does, or a class written by script, which puts a state the DOM
+     already holds into a second place. A duplicated CONDITION is cheaper than either;
+     a duplicated FACE would not be, and that is the distinction this folder's rule
+     about doubled selectors is actually making. */
+  .filters-toggle:checked~.feed-controls .filters-foot{display:flex;align-items:center;gap:var(--space-8);margin-top:var(--space-8);padding:var(--space-16) var(--gutter) 0;border-top:var(--hairline) solid var(--border-hairline)}
+  .filters-foot .filters-done{flex:1 1 auto}
+  .filters-foot .filters-reset{display:none;flex:0 0 auto}
+  .feed-head:has(.filter-panel input[name=sort]:checked:not([data-default])) .filters-reset,
+  .feed-head:has(.filter-panel input[name=freq]:checked:not([data-default])) .filters-reset{display:inline-flex}
   /* The page behind a modal surface does not scroll, and `overflow` on the ROOT is
      what the viewport reads: on `body` it would leave the document element free and
      the page would still move under the sheet. It is written here rather than in

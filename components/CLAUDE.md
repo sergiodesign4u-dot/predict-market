@@ -1,8 +1,8 @@
 # components/ - the system itself
 
-This folder IS the design system. **54 stylesheets, 9,613 lines**: 48 here and 6 in `patterns/`,
+This folder IS the design system. **54 stylesheets, 9,641 lines**: 48 here and 6 in `patterns/`,
 re-counted 2026-08-14 by `cat components/*.css components/patterns/*.css | wc -l` after the filters
-sheet, its second pass and the scroll-driven edge fade. It was 9,224 on 2026-08-13 after `trust-art.css`
+sheet, its two later passes and the scroll-driven edge fade. It was 9,224 on 2026-08-13 after `trust-art.css`
 was written (`docs/backlog.md` 140). It was 53 and 8,734 earlier the same day, after `print.css`
 (`docs/backlog.md` 125). **`trust-art.css` is the first file here that is not a component and not a
 level**: it holds four `--trust-art-*` custom properties, each a `data:` URI carrying one of the
@@ -381,6 +381,16 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   nothing was empty, and no stylesheet reading finds it. This is the twin of the note below about a
   class running past every selector written for its element: **two faces on one element run it past
   both, and the one that loses is whichever the import order says.**
+- **AN EXIT THAT ONLY EXISTS IN THE MECHANISM IS NOT AN EXIT.** The filters sheet closed on the
+  scrim, on Escape and on a cross in its head, and shipped with a band of empty surface under its two
+  rows: the first two are invisible by definition, and the third is 44px in a corner that the course
+  chrome's own toggle sits on top of. **An empty band under a control reads as a screen that has not
+  finished rather than as a choice that has been made.** And name the control for what pressing it
+  does: every radio in that sheet is live, so `Apply` would have named a step that does not exist,
+  which is the same defect as an accessible name promising a destination the element does not have.
+- **A SIGNAL WITH NO ROUTE OUT OF THE STATE IT SIGNALS IS HALF A CONTROL.** The dot that says a
+  filter is off its default shipped an hour before the `Reset` that clears it, and in between the
+  only way back was to open the sheet and find both defaults again in two separate lists.
 - **A CONTROL'S FACE IS A DECISION ABOUT THE SURFACE IT STANDS ON.** The same two `<summary>` chips
   that are right in a toolbar row read as two large empty buttons floating on a panel the moment they
   are put in a sheet. A sheet row is full-bleed, its edge is the hairline it shares with its

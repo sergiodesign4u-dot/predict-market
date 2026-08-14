@@ -12,6 +12,45 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-14, last - An exit that only exists in the mechanism is not an exit
+
+**THE SHEET HAD THREE WAYS OUT AND A PERSON COULD SEE NONE OF THEM.** The scrim closes it, Escape
+closes it, and the cross in the head closes it. The first two are invisible by definition. The third
+is 44px in a corner and, in the review build, it is **covered by the course chrome's own toggle**,
+which sits at `--z-chrome-top` above every product surface on purpose so the panel stays reachable
+while its drawer is open. So the sheet ended in a band of empty surface with nothing in it, and an
+empty band under two settings reads as a screen that has not finished loading rather than as a choice
+that has been made.
+
+**IT ENDS IN A ROW NOW.** `Show results` is a `<label for>` and not a `<button>`, and it says `Show
+results` rather than `Apply` for a reason that is about this product and not about wording: **every
+radio in the sheet is live**, so the list behind the scrim has already changed by the time a person
+reads the row. `Apply` would name a step that does not exist, which is the same defect as an
+accessible name that promises a destination the element does not have.
+
+**`Reset` IS THE OTHER HALF OF THE DOT, AND IT APPEARS ONLY WHEN THERE IS SOMETHING TO RESET.** The
+dot added an hour earlier announces that the list is not the default one, and until now the only way
+back was to open the sheet and find `Trending` and `All` again in two separate lists. **A signal with
+no route out of the state it signals is half a control.** It is the one thing on this component that
+has to be script: one `<label>` checks one radio, and a reset checks two. It dispatches `change`
+rather than only setting `checked`, because the word printed beside each row is written by the page's
+own change listener and **a property assignment fires nothing**; without the dispatch the sheet would
+reset the filter and go on showing the old word.
+
+**THE CONDITION IS WRITTEN TWICE AND THAT IS DELIBERATE.** The dot and the reset button need
+different `display` values, so one rule cannot serve both. The alternatives are a custom-property
+space toggle, which states the condition once and hides what it does, or a class written by script,
+which puts a state the DOM already holds into a second place that can disagree with it. **A
+duplicated CONDITION is cheaper than either; a duplicated FACE would not be**, and that is the
+distinction this folder's rule about doubled selectors is actually making.
+
+**Verified end to end**, both engines: with Sort at `New` and Frequency at `Hourly` the dot is
+`block` and `Reset` is `inline-flex`; pressing `Reset` returns the printed values to `Trending` and
+`All`, hides itself and clears the dot. 267 documents at 16 widths: 0 horizontal scroll, 0 duplicate
+ids, 0 page errors.
+
+---
+
 ## 2026-08-14, later still - A chip face is a padding and an icon button is a box, and a sheet row is not a pill on a panel
 
 **BOTH HALVES OF THE FIRST BUILD WERE THE RIGHT MECHANISM WEARING THE WRONG FACE, and neither was

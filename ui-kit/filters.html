@@ -267,6 +267,19 @@
     <code>checked</code> and two sets of ids: this kit pays for exactly that with its per-theme
     suffixes, and pays for it again two cells up. The checkbox leaves the panels where they are and
     moves the box they stand in, so the desk keeps its two pills out of the same markup.</p>
+    <p class="tk-note"><b>The sheet ends in a way out, because the three it had were invisible.</b> The
+    scrim closes it, Escape closes it, and the cross in the head closes it: the first two are invisible
+    by definition, and the third is 44px in a corner, <b>covered by the course chrome's own toggle in
+    the review build</b>. So the sheet ended in a band of empty surface, which reads as an unfinished
+    screen rather than a finished choice. <b>An exit that only exists in the mechanism is not an
+    exit.</b> The primary is a <code>&lt;label for&gt;</code> and says <code>Show results</code> rather
+    than <code>Apply</code>: every radio here is live, so there is no step to apply.
+    <code>Reset</code> appears only while a filter is off its default, which makes it the other half
+    of the dot on the closed control, and it is <b>the one thing on this component that has to be
+    script</b>, because one <code>&lt;label&gt;</code> checks one radio and a reset checks two. It
+    dispatches <code>change</code> rather than only setting <code>checked</code>, because the word
+    printed beside each row is written by the page's own change listener and a property assignment
+    fires nothing.</p>
     <p class="tk-note"><b>What it costs, stated rather than hidden.</b> A checkbox has no Escape and no
     focus trap. Escape is added back by a nine-line script on the 57 screens that carry the strip, and
     the trap is not: <code>docs/backlog.md</code> 150.</p>

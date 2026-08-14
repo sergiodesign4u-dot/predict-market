@@ -1342,6 +1342,23 @@ document.addEventListener('click', function (e) {
     var t = document.getElementById('filtersOpen');
     if (t && t.checked) { t.checked = false; }
   });
+  /* 3. RESET IS THE OTHER HALF OF THE DOT. The dot on the closed control says the list
+        is not the default one, and the only way back was to open the sheet and find
+        `Trending` and `All` again in two separate lists. One <label> checks one radio,
+        so two defaults in one tap is the one thing here that cannot be CSS.
+        The `change` event is DISPATCHED and not merely implied: the value printed beside
+        each label is written by this page's own change listener, and assigning `.checked`
+        fires nothing, so without it the sheet would reset the filter and go on showing the
+        old word. */
+  var reset = document.querySelector('.filters-reset');
+  if (reset) reset.addEventListener('click', function () {
+    var d = document.querySelectorAll('.filter-panel input[data-default]');
+    for (var i = 0; i < d.length; i++) {
+      if (d[i].checked) continue;
+      d[i].checked = true;
+      d[i].dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  });
 })();
 </script>
 </body>

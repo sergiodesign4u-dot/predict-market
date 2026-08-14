@@ -196,7 +196,7 @@
     .filter-panel ul { list-style: none; margin: 0; padding: 4px 0; }
     .filter-panel li label { display: flex; align-items: center; gap: 8px; padding: 6px 10px; font-size: 11px; cursor: pointer; }
     .filters-toggle { position: absolute; width: 1px; height: 1px; opacity: 0; margin: 0; pointer-events: none; }
-    .filters-btn, .filters-scrim, .filters-head { display: none; }
+    .filters-btn, .filters-scrim, .filters-head, .filters-foot { display: none; }
     @media(max-width:639.98px) {
       .filters-btn { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid #888; background: #d6d6d6; cursor: pointer; }
       .feed-head > .feed-controls { display: none; }
@@ -209,6 +209,11 @@
       .filters-toggle:checked ~ .feed-controls .filter-menu summary { width: 100%; gap: 10px; padding: 10px 12px; font-size: 13px; background: transparent; border: 0; }
       .filters-toggle:checked ~ .feed-controls .filter-menu summary > span { display: flex; flex: 1 1 auto; justify-content: space-between; align-items: baseline; gap: 16px; }
       .filters-toggle:checked ~ .feed-controls .filter-panel { position: static; min-width: 0; border: 0; background: transparent; padding: 0 12px 6px; }
+      .filters-toggle:checked ~ .feed-controls .filters-foot { display: flex; align-items: center; gap: 8px; margin-top: 8px; padding: 12px 12px 0; border-top: 1px solid #888; }
+      .filters-foot .filters-done { flex: 1 1 auto; justify-content: center; text-align: center; border: 1px solid #666; background: #cfcfcf; padding: 10px 12px; font-size: 13px; cursor: pointer; }
+      .filters-foot .filters-reset { display: none; flex: 0 0 auto; border: 1px solid #888; background: transparent; padding: 10px 12px; font-size: 13px; cursor: pointer; }
+      .feed-head:has(.filter-panel input[name=sort]:checked:not([data-default])) .filters-reset,
+      .feed-head:has(.filter-panel input[name=freq]:checked:not([data-default])) .filters-reset { display: inline-flex; }
       :root:has(.filters-toggle:checked) { overflow: hidden; }
     }
     .reverse-row { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #ccc; padding: 7px 10px; font-size: 11px; }
@@ -904,6 +909,15 @@
                 </ul>
               </div>
             </details>
+          
+            <!-- The way out. The scrim and Escape both close the sheet and neither is
+                 visible, and the cross in the head is 44px in a corner. The sheet says it
+                 once more at the bottom, where a thumb already is. `Show results` and not
+                 `Apply`: every radio here is live, so there is no step to apply. -->
+            <div class="filters-foot">
+              <button type="button" class="btn btn-ghost btn-md filters-reset">Reset</button>
+              <label class="btn btn-primary btn-md filters-done" for="filtersOpen">Show results</label>
+            </div>
           </div>
         </div>
         <div class="push-banner" role="region" aria-label="Notifications permission">
