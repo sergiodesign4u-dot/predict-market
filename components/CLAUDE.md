@@ -1,6 +1,6 @@
 # components/ - the system itself
 
-This folder IS the design system. **54 stylesheets, 9,641 lines**: 48 here and 6 in `patterns/`,
+This folder IS the design system. **54 stylesheets, 9,651 lines**: 48 here and 6 in `patterns/`,
 re-counted 2026-08-14 by `cat components/*.css components/patterns/*.css | wc -l` after the filters
 sheet, its two later passes and the scroll-driven edge fade. It was 9,224 on 2026-08-13 after `trust-art.css`
 was written (`docs/backlog.md` 140). It was 53 and 8,734 earlier the same day, after `print.css`
@@ -381,6 +381,16 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   nothing was empty, and no stylesheet reading finds it. This is the twin of the note below about a
   class running past every selector written for its element: **two faces on one element run it past
   both, and the one that loses is whichever the import order says.**
+- **THE QUESTION THAT FINDS OLD DEFECTS IS "IS THIS NEW RULE TAKING ITS VALUES FROM THE REGISTER".**
+  Auditing one new sheet against the system turned up two things older than it and invisible from
+  inside either file. **The `Reads:` line is incomplete in 44 files of 44**, measured by stripping
+  comments and diffing every `var()` in the body against the header, and the folder does not even
+  agree what the line is FOR: `seo-plate.css` lists 21 tokens and every one is a colour, while
+  `logo.css` lists `--space-8` and `--weight-bold` beside its inks. **And the product has four
+  answers to "a surface that must not exceed the viewport"**: `92vh`, `88dvh` and two rails at
+  `calc(100svh - 120px - var(--space-16))`, of which only the rails carry the `vh` then `svh` pair
+  that a phone needs. A new rule wrote a fifth, `80svh`, and gave it back. `../docs/backlog.md` 152
+  and 153.
 - **AN EXIT THAT ONLY EXISTS IN THE MECHANISM IS NOT AN EXIT.** The filters sheet closed on the
   scrim, on Escape and on a cross in its head, and shipped with a band of empty surface under its two
   rows: the first two are invisible by definition, and the third is 44px in a corner that the course

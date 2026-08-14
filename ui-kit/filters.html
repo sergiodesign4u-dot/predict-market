@@ -261,6 +261,37 @@
     stands on, so the brass reads as a separate object rather than as a bite out of the button's
     edge.</p>
     <p class="tk-gone tk-above-640">The sheet is a below-640 face. Not rendered at this width.</p>
+    <p class="tk-note"><b>Seven classes arrived with the phone form and this is all of them.</b> The
+    stand named one of the seven for a day, which is the same shape of gap as a <code>Reads:</code>
+    line that lists a third of what a file uses: the page said what the sheet DOES and never what it
+    is made of, so nothing here could be checked against the stylesheet.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>class</th><th>element</th><th>what it is</th><th>where the face comes from</th></tr></thead>
+        <tbody>
+          <tr><td><code>.filters-toggle</code></td><td><code>input</code></td><td>the checkbox the whole sheet hangs on, 1x1 and transparent so it stays focusable</td><td>this file, the same three declarations as every hidden input in it</td></tr>
+          <tr><td><code>.filters-btn</code></td><td><code>label</code></td><td>the mark that opens it, and the dot that says a filter is off its default</td><td><code>iconbtn.css</code> whole; this file adds the dot and nothing else</td></tr>
+          <tr><td><code>.filters-scrim</code></td><td><code>label</code></td><td>the backdrop, and one of the three ways out</td><td><code>--shadow-ink-45</code>, the same role as <code>dialog.app-dialog::backdrop</code></td></tr>
+          <tr><td><code>.filters-head</code></td><td><code>div</code></td><td>the sheet's title row</td><td>this file. <code>dialog.css</code>'s <code>.sheet-head</code> was not reused: it carries a dialog's photographic head</td></tr>
+          <tr><td><code>.filters-close</code></td><td><code>label</code></td><td>the cross in the head, covered by the course chrome in the review build</td><td><code>iconbtn.css</code> whole</td></tr>
+          <tr><td><code>.filters-foot</code></td><td><code>div</code></td><td>the row that ends the sheet</td><td>this file, one hairline and one padding</td></tr>
+          <tr><td><code>.filters-done</code></td><td><code>label</code></td><td><code>Show results</code>, the visible way out</td><td><code>button.css</code>, <code>.btn.btn-primary.btn-md</code></td></tr>
+          <tr><td><code>.filters-reset</code></td><td><code>button</code></td><td><code>Reset</code>, shown only while a filter is off its default</td><td><code>button.css</code>, <code>.btn.btn-ghost.btn-md</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>Five of the eight own no face at all</b>, which is the answer to whether this
+    was drawn or assembled: the mark and the cross are <code>iconbtn.css</code>, the two buttons are
+    <code>button.css</code>, the backdrop is the role the product's dialogs already stand behind, and
+    the 44px floor on all four is <code>base.css</code>. What <code>filters.css</code> adds is the
+    sheet's box, the head, the foot, the dot and the rung they all appear at.</p>
+    <p class="tk-note"><b>And the one number that was invented has been given back.</b> The sheet
+    capped itself at <code>80svh</code> for two hours, a fifth answer to a question the system already
+    answers four times: <code>92vh</code> on <code>.bet-sheet</code>, <code>88dvh</code> on a modal
+    dialog, and <code>calc(100svh - 120px - var(--space-16))</code> on the two rails. A bottom sheet is
+    a bottom sheet, so it takes <code>.bet-sheet</code>'s 92 and the <code>vh</code> then
+    <code>svh</code> pair the rails use and <code>.bet-sheet</code> does not.
+    <code>docs/backlog.md</code> 152 and 153.</p>
     <p class="tk-note"><b>Why a checkbox and not a <code>&lt;dialog&gt;</code>.</b> The two radio
     groups have to exist once. A dialog would need its own copy of them, and a radio group is keyed by
     <code>name</code>, so two copies in one document are one group with two sources of
