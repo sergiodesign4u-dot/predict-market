@@ -216,7 +216,7 @@
      there, and picking the nearest-sounding token is how a product grows two answers
      to one question. */
   .filters-toggle:checked~.filters-scrim{display:block;position:fixed;inset:0;z-index:var(--z-menu);background:var(--shadow-ink-45);cursor:pointer}
-  /* 92 AND NOT 80, AND THE PAIR IS NOT A TYPO. This was `max-height:80svh`, a number
+  /* THE CAP IS `--sheet-cap`. It was `max-height:80svh` for two hours, a number
      invented for one sheet while the system already had four answers to "a surface that
      must not exceed the viewport": 92vh on `.bet-sheet`, 88dvh on a modal dialog, and
      `calc(100svh - 120px - var(--space-16))` on the two rails. **A bottom sheet is a
@@ -226,7 +226,7 @@
      because on a phone `vh` is the LARGE viewport and a sheet capped in it is a sheet
      that can run under the browser's own bar. `docs/backlog.md` 152 carries the other
      half, which is that `.bet-sheet` still has no `svh` twin. */
-  .filters-toggle:checked~.feed-controls{display:flex;flex-direction:column;flex-wrap:nowrap;gap:0;position:fixed;inset:auto 0 0 0;z-index:var(--z-menu);padding:0 0 var(--space-32);max-height:92vh;max-height:92svh;overflow:auto;overscroll-behavior:contain;background:var(--bg-surface);border-top:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10) var(--radius-10) 0 0;box-shadow:0 -20px 50px -24px var(--shadow-ink)}
+  .filters-toggle:checked~.feed-controls{display:flex;flex-direction:column;flex-wrap:nowrap;gap:0;position:fixed;inset:auto 0 0 0;z-index:var(--z-menu);padding:0 0 var(--space-32);max-height:var(--sheet-cap);overflow:auto;overscroll-behavior:contain;background:var(--bg-surface);border-top:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10) var(--radius-10) 0 0;box-shadow:0 -20px 50px -24px var(--shadow-ink)}
   /* THE SHEET IS A LIST AND NOT TWO PILLS ON A PANEL, 2026-08-14. The first cut kept
      the two summaries in their own chip face and stood them in a padded box, and it
      read as two large empty buttons floating on a surface with nothing to say what

@@ -186,7 +186,7 @@
       justify-content: space-between; border-bottom: 1px solid #bbb; padding-bottom: 8px; margin-bottom: 10px;
     }
     .feed-head h2 { font-size: 13px; margin: 0; }
-    /* Feed filters: Kalshi-style dropdowns (Sort, Frequency, Category) */
+    /* Feed filters: dropdowns (Sort, How often, Category) */
     .feed-controls { display: flex; flex-wrap: wrap; gap: 6px; }
     .filter-menu { position: relative; }
     .filter-menu summary { list-style: none; border: 1px solid #888; background: #d6d6d6; padding: 5px 8px; font-size: 11px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; }
@@ -1145,7 +1145,7 @@
             <span>Volume<b>$84,200</b></span>
             <span>Open to bet<b>$31,500</b></span>
             <span>Closes<b>Mar 1, 2027</b></span>
-            <span>Frequency<b>One-time</b></span>
+            <span>How often<b>One-time</b></span>
           </div>
           <section class="ed-section">
             <details class="market-box" open>
@@ -1502,7 +1502,7 @@
       });
     })();
 
-    // Frequency.
+    // How often (the Frequency attribute; the label is the reader's word, the field is the model's).
     wireFilter('freqMenu', 'freqCurrent', 'freq');
 
     // Footer language selector (placeholder: updates label, English-only at MVP).

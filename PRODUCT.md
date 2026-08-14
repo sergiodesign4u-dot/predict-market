@@ -44,7 +44,7 @@ web (mobile-first, base 360-390px, then responsive desktop).
 ## Market types (MVP)
 - **Binary markets** - YES / NO on a single event
 - **Multi-outcome markets** - multiple options, each with YES / NO
-- **Frequency**, orthogonal to type (added in the wireframe pass) - markets are one-time or recurring (Hourly / Daily / Weekly / Monthly). Powers the Frequency filter on the Event Feed. See `ia/docs/sitemap.md`, Event entity.
+- **Frequency**, orthogonal to type (added in the wireframe pass) - markets are one-time or recurring (Hourly / Daily / Weekly / Monthly). Powers the feed's cadence filter, **labelled `How often` since 2026-08-14** while the attribute keeps the name Frequency: the model's word and the reader's word are allowed to differ, and `voice/docs/voice.md` principle 3 decides the reader's. See `ia/docs/sitemap.md`, Event entity.
 - **Recurring resolution: EVERY CADENCE INSTANCE IS ITS OWN EVENT** (decided 2026-08-10,
   `docs/backlog.md` #11). "BTC above $150k this week" is one event with one window, one price and
   one resolution; next week is a different event. The cadence is a **series** the instances belong

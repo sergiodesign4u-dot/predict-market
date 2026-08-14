@@ -440,7 +440,7 @@ dialog.app-dialog:modal .sheet-body{overflow:auto;min-height:0}
    because the rung belongs to the desk: tokens.css, page frame. */
 @media (max-width:39.99875rem){
   dialog.app-dialog:modal{width:100%;max-width:none;margin:auto auto 0;
-    max-height:88dvh;
+    max-height:var(--sheet-cap);
     border-radius:var(--radius-16) var(--radius-16) 0 0;border-bottom-width:0;
     animation:sheet-rise var(--dur-slow) var(--ease-out) both}
   @keyframes sheet-rise{from{translate:0 100%}to{translate:0 0}}

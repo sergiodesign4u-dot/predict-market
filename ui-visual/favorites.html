@@ -356,7 +356,7 @@ document.addEventListener('click', function (e) {
           <!-- Heading echoes the active category (here: Trending), not a generic "Live events". -->
           <h1 id="feedHeading">Favorites</h1>
 
-          <!-- Kalshi-style filter row: Sort, Frequency, Category. Each label shows the current value. -->
+          <!-- The filter row: Sort, How often, Category. Each label shows the current value. -->
           <!-- Below the DESK rung this is the whole filter row: one button, a scrim, and
                the same two menus, moved into a sheet by components/filters.css. There is
                no second copy of the radios: a radio group is keyed by name, so two copies
@@ -396,14 +396,14 @@ document.addEventListener('click', function (e) {
             </details>
 
             <details class="filter-menu" id="freqMenu">
-              <summary aria-label="Filter by frequency">
+              <summary aria-label="Filter by how often an event repeats">
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock-circle-b"/></svg>
-                <span>Frequency: <span id="freqCurrent">All</span></span>
+                <span>How often: <span id="freqCurrent">Any</span></span>
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-chevron-down"/></svg>
               </summary>
               <div class="filter-panel">
-                <ul role="radiogroup" aria-label="Frequency">
-                  <li><label><input type="radio" name="freq" value="All" data-default checked> All</label></li>
+                <ul role="radiogroup" aria-label="How often">
+                  <li><label><input type="radio" name="freq" value="Any" data-default checked> Any</label></li>
                   <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
                   <li><label><input type="radio" name="freq" value="Hourly"> Hourly</label></li>
                   <li><label><input type="radio" name="freq" value="Daily"> Daily</label></li>
@@ -770,7 +770,7 @@ document.addEventListener('click', function (e) {
       });
     })();
 
-    // Frequency.
+    // How often (the Frequency attribute; the label is the reader's word, the field is the model's).
     wireFilter('freqMenu', 'freqCurrent', 'freq');
 
     // Footer language selector (placeholder: updates label, English-only at MVP).

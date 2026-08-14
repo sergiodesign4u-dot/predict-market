@@ -186,7 +186,7 @@
       justify-content: space-between; border-bottom: 1px solid #bbb; padding-bottom: 8px; margin-bottom: 10px;
     }
     .feed-head h2 { font-size: 13px; margin: 0; }
-    /* Feed filters: Kalshi-style dropdowns (Sort, Frequency, Category) */
+    /* Feed filters: dropdowns (Sort, How often, Category) */
     .feed-controls { display: flex; flex-wrap: wrap; gap: 6px; }
     .filter-menu { position: relative; }
     .filter-menu summary { list-style: none; border: 1px solid #888; background: #d6d6d6; padding: 5px 8px; font-size: 11px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; }
@@ -201,7 +201,7 @@
       .filters-btn { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid #888; background: #d6d6d6; cursor: pointer; }
       .feed-head > .feed-controls { display: none; }
       .filters-toggle:checked ~ .filters-scrim { display: block; position: fixed; inset: 0; z-index: 40; background: rgba(0,0,0,.45); cursor: pointer; }
-      .filters-toggle:checked ~ .feed-controls { display: flex; flex-direction: column; flex-wrap: nowrap; gap: 0; position: fixed; inset: auto 0 0 0; z-index: 40; padding: 0 0 20px; max-height: 92vh; max-height: 92svh; overflow: auto; background: #e6e6e6; border-top: 1px solid #888; }
+      .filters-toggle:checked ~ .feed-controls { display: flex; flex-direction: column; flex-wrap: nowrap; gap: 0; position: fixed; inset: auto 0 0 0; z-index: 40; padding: 0 0 20px; max-height: 92svh; overflow: auto; background: #e6e6e6; border-top: 1px solid #888; }
       .filters-toggle:checked ~ .feed-controls .filters-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 12px; border-bottom: 1px solid #888; }
       .filters-head h2 { margin: 0; font-size: 14px; }
       .filters-toggle:checked ~ .feed-controls .filter-menu { width: 100%; }
@@ -853,7 +853,7 @@
         <div class="feed-head">
           <!-- Heading echoes the active category (here: Trending), not a generic "Live events". -->
           <h1 id="feedHeading">Trending</h1>
-          <!-- Kalshi-style filter row: Sort, Frequency, Category. Each label shows the current value. -->
+          <!-- The filter row: Sort, How often, Category. Each label shows the current value. -->
           <!-- Below the DESK rung this is the whole filter row: one button, a scrim, and
                the same two menus, moved into a sheet. No second copy of the radios: a
                radio group is keyed by name. -->
@@ -884,14 +884,14 @@
               </div>
             </details>
             <details class="filter-menu" id="freqMenu">
-              <summary aria-label="Filter by frequency">
+              <summary aria-label="Filter by how often an event repeats">
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-                <span>Frequency: <span id="freqCurrent">All</span></span>
+                <span>How often: <span id="freqCurrent">Any</span></span>
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
               </summary>
               <div class="filter-panel">
-                <ul role="radiogroup" aria-label="Frequency">
-                  <li><label><input type="radio" name="freq" value="All" data-default checked> All</label></li>
+                <ul role="radiogroup" aria-label="How often">
+                  <li><label><input type="radio" name="freq" value="Any" data-default checked> Any</label></li>
                   <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
                   <li><label><input type="radio" name="freq" value="Hourly"> Hourly</label></li>
                   <li><label><input type="radio" name="freq" value="Daily"> Daily</label></li>
@@ -1173,7 +1173,7 @@
       });
     })();
 
-    // Frequency.
+    // How often (the Frequency attribute; the label is the reader's word, the field is the model's).
     wireFilter('freqMenu', 'freqCurrent', 'freq');
 
     // Footer language selector (placeholder: updates label, English-only at MVP).

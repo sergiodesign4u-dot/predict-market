@@ -241,6 +241,7 @@ _9 state page(s): event-feed-empty.html, event-feed-error.html, event-feed-loadi
 | Zone | Type | Line | Flag |
 |---|---|---|---|
 | Main | Heading | Trending |  |
+| Main | Label | Show: | The label on the category sub-filter, added 2026-08-14. Its five chips say the SAME five words as the category navigation 100px above them, and the two do different things: that one ROUTES to a category page, this one NARROWS the list already on screen. `Show:` is what says which, and it is the shape the feed's other two filters have always had, `Sort:` and `How often:` |
 | Main | Heading | Filters | Below DESK 640 only, and it is the SHEET's title rather than the button's label: the control that opens it is a mark with no text. It is `Filters` and not `Filter` because the sheet holds more than one, and not `Sort` because sort is one of them |
 | Main | Label (hidden) | Show filters | The accessible name of the checkbox behind the mark. A `<label>` is not focusable and this one has no text, so the name has to sit on the control that is |
 | Main | Button | Show results | Below DESK 640 only, the sheet's way out. `Show results` and not `Apply`: every radio in the sheet is live, so the list behind the scrim has already changed and `Apply` would name a step that does not exist |
@@ -253,8 +254,8 @@ _9 state page(s): event-feed-empty.html, event-feed-error.html, event-feed-loadi
 | Main | Option | Volume |  |
 | Main | Option | 50-50 (most contested) |  |
 | Main | Label | Reverse sort |  |
-| Main | Label | Frequency: |  |
-| Main | Label | All |  |
+| Main | Label | How often: | **Renamed from `Frequency:` on 2026-08-14.** Voice principle 3: we use the words a news-follower already owns, and `frequency` is the vocabulary of whoever built the market. The Event attribute is still called Frequency in `PRODUCT.md` and `ia/docs/sitemap.md`: **the model keeps its word and the reader gets theirs** |
+| Main | Option | Any | The default of `How often`, renamed from `All` the same day: `How often: All` is not a sentence and `How often: Any` is |
 | Main | Option | One-time |  |
 | Main | Option | Hourly |  |
 | Main | Option | Daily |  |
@@ -450,7 +451,7 @@ _32 state page(s): crypto-empty.html, crypto-error.html, crypto-loading.html, cr
 | Main | Option | Volume |  |
 | Main | Option | 50-50 (most contested) |  |
 | Main | Label | Reverse sort |  |
-| Main | Label | Frequency: |  |
+| Main | Label | How often: | **Renamed from `Frequency:` on 2026-08-14.** Voice principle 3: we use the words a news-follower already owns, and `frequency` is the vocabulary of whoever built the market. The Event attribute is still called Frequency in `PRODUCT.md` and `ia/docs/sitemap.md`: **the model keeps its word and the reader gets theirs** |
 | Main | Option | One-time |  |
 | Main | Option | Hourly |  |
 | Main | Option | Daily |  |
@@ -613,8 +614,8 @@ _3 state page(s): favorites-empty.html, favorites-loading.html, favorites.html_
 | Main | Option | Volume |  |
 | Main | Option | 50-50 (most contested) |  |
 | Main | Label | Reverse sort |  |
-| Main | Label | Frequency: |  |
-| Main | Label | All |  |
+| Main | Label | How often: | **Renamed from `Frequency:` on 2026-08-14.** Voice principle 3: we use the words a news-follower already owns, and `frequency` is the vocabulary of whoever built the market. The Event attribute is still called Frequency in `PRODUCT.md` and `ia/docs/sitemap.md`: **the model keeps its word and the reader gets theirs** |
+| Main | Option | Any | The default of `How often`, renamed from `All` the same day: `How often: All` is not a sentence and `How often: Any` is |
 | Main | Option | One-time |  |
 | Main | Option | Hourly |  |
 | Main | Option | Daily |  |

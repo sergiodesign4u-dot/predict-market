@@ -1,6 +1,6 @@
 # components/ - the system itself
 
-This folder IS the design system. **54 stylesheets, 9,767 lines**: 48 here and 6 in `patterns/`,
+This folder IS the design system. **54 stylesheets, 9,802 lines**: 48 here and 6 in `patterns/`,
 re-counted 2026-08-14 by `cat components/*.css components/patterns/*.css | wc -l` after the filters
 sheet, its two later passes and the scroll-driven edge fade. It was 9,224 on 2026-08-13 after `trust-art.css`
 was written (`docs/backlog.md` 140). It was 53 and 8,734 earlier the same day, after `print.css`
@@ -413,6 +413,25 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   declare them**, 121 of 121. The published number was 44 and the true one was 43. Read the header
   block, not the file, and this is the same defect as a selector that matches nothing agreeing with
   every hypothesis, met from the other side.
+- **TWO CONTROLS THAT SAY THE SAME WORDS ARE ONE CONTROL TO A READER, WHATEVER THEIR FACES DO.** The
+  feed's category strip ROUTES and its category sub-filter NARROWS, and they carried the same five
+  words a hundred pixels apart. The faces already differed, a mark on a plate against a bare chip,
+  and it was never enough: **at that distance a person compares by reading.** The repair was the
+  label the row never had, `Show:`, and the argument for it is that the feed's other two filters have
+  been `Sort:` and `How often:` since the day they were written. **An unlabelled control announces
+  nothing about what it acts on, so it is read as whatever it looks like.** Renaming the chips was
+  refused: they are the product's four categories, and a second set of names for one taxonomy is the
+  more expensive mistake.
+- **BEFORE UNIFYING FOUR VALUES, CHECK THAT THEY ANSWER ONE QUESTION.** The product had four caps for
+  "a surface that must not exceed the viewport" and it was two questions: a modal SHEET caps at a
+  fraction of the viewport, a sticky RAIL caps at the viewport MINUS its own top offset. The three
+  rails were already one answer, `calc(100svh - X - var(--space-16))`, one formula with a parameter.
+  The three sheets were not: `92vh`, `88dvh`, `92svh`, two numbers and two units, of which one had an
+  argument beside it. They read `--sheet-cap:92svh` now, and **`svh` is the unit a fixed modal wants**
+  because it is the SMALL viewport and the surface then never resizes under a reader's thumb, where
+  `dvh` moves as the browser bar retracts and `vh` lets the tail sit behind it. **Unifying the sheets
+  with the rails would have been a fifth number, not fewer**, and the token says so where the next
+  tidy-up will look.
 - **A PROPERTY ASSIGNMENT FIRES NO EVENT, AND THIS FOLDER HAS NOW PAID FOR IT TWICE IN ONE DAY.**
   Setting `input.checked` from script updates the input and notifies nothing, so a `change` listener
   is not a listener for the script's own writes. The filters sheet reset a radio and went on printing

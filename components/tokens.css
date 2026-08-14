@@ -407,6 +407,24 @@
                                 prose and not here. */
   --container-dialog:464px;  /* how-it-works dialog */
   --container-sheet:420px;   /* outcome overlay */
+  /* HOW TALL A MODAL SURFACE MAY GET, and it is ONE number now, 2026-08-14, backlog 153.
+     Three surfaces in this system are fixed sheets over a page: `.bet-sheet`, the phone
+     face of `dialog.app-dialog:modal`, and the filters sheet. They carried 92vh, 88dvh
+     and 92svh: **two numbers, two units, and only one of the three had an argument
+     written beside it.** 92 because it was already two of the three; `svh` because it is
+     the SMALL viewport, the one measured with the browser's own bar shown, so a sheet
+     capped in it always fits and never resizes under a reader's thumb. `dvh` grows and
+     shrinks as that bar retracts, which for a fixed modal means the surface moves while
+     somebody is reading it; `vh` is the LARGE viewport and lets the tail sit behind the
+     bar. The `vh` fallback that stood beside two of them is gone: `CSS.supports` for
+     `svh` is true in Chromium 151 and WebKit 26.5, measured, so it protected nothing here
+     and cost one number written in two places.
+     THIS IS NOT THE RAILS' QUESTION AND THEY ARE DELIBERATELY NOT IN IT. A sticky rail
+     caps at the viewport MINUS its own top offset, `calc(100svh - X - var(--space-16))`,
+     which is one formula with a parameter in `catnav.css`, `betpanel.css` and `toc.css`,
+     and it is already one answer. A sheet is a fraction of the viewport; a rail is the
+     viewport less what is above it. Unifying the two would be a fifth number, not fewer. */
+  --sheet-cap:92svh;
   --container-sidebar:220px; /* course sidebar, and the body inset that clears it */
   /* THE TWO PAGE INSETS, AND THEY RAMP RATHER THAN STEP. --gutter is the inset OUTSIDE the
      two-stone plate and --plate-inset the one INSIDE it; the second is a token because it is

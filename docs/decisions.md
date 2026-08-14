@@ -12,6 +12,93 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-14, the last of the three - Two strips said the same five words, and the repair is the label the row never had
+
+**THE FEED CARRIES A CATEGORY STRIP AT THE TOP AND A CATEGORY SUB-FILTER UNDER ITS HEADING, AND THEY
+SAID THE SAME FIVE WORDS.** `Trending / Politics / Crypto / Culture / General` against
+`All / Politics / Crypto / Culture / General`. **The strip ROUTES to a category page; the sub-filter
+NARROWS the list already on screen.** Both are true, both are useful, and neither is visible from the
+words.
+
+**THE FACES ALREADY DIFFERED AND IT WAS NEVER ENOUGH.** A strip chip carries a mark and stands on a
+plate; a sub-filter chip is bare. The two rows are a hundred pixels apart, so a person compares them
+by READING and not by looking, and reading gives the same answer twice.
+
+**THE REPAIR IS `Show:` IN FRONT OF THE ROW, AND THE ARGUMENT FOR IT IS THAT IT IS NOT A NEW IDEA.**
+This feed has three filters. Two of them have carried a label since the day they were written,
+`Sort:` and `How often:`. **The third had none at all**, and that asymmetry is the whole defect: a
+labelled control announces what it acts on, and an unlabelled row of category words beside a category
+navigation announces that it is one.
+
+**WHAT WAS REFUSED: RENAMING THE CHIPS.** The words are the four categories the product has, and
+giving them a second set of names to say the same four things would make the product speak twice
+about one taxonomy. **The label costs one word and no vocabulary.**
+
+**THE LABEL STANDS OUTSIDE THE SCROLLER**, so `.feed-subfilter` is the flex row and the `<ul>` is the
+item that scrolls: **a label inside a scroller is a label that leaves.** `min-width:0` on the item,
+because a flex item's default `min-width:auto` refuses to shrink below its content and the row would
+have pushed the label off the edge instead of scrolling.
+
+**Measured at seven widths in both engines**: the label is 35px, pinned at x=31 at every phone width,
+the row is one course everywhere, and **the band from the heading to the first card is 112.0 at 320,
+360, 390 and 430, which is exactly what it was before the label.** The name of the group moved with
+the visible text, `Filter events by category` to `Show events by category`, so the accessible name
+still contains the word a person can see.
+
+**Verified**: 267 documents in both engines at 16 widths, 0 horizontal scroll, 0 duplicate ids, 0
+page errors.
+
+---
+
+## 2026-08-14, the reader's word - `Frequency` was the vocabulary of whoever built the market, and four viewport caps turned out to be two questions
+
+**TWO THINGS WERE WAITING ON A DECISION RATHER THAN ON WORK, AND BOTH ARE TAKEN.**
+
+**`Frequency` IS A REAL ATTRIBUTE AND WAS THE WRONG WORD FOR IT.** Markets are one-time or recurring
+at an Hourly / Daily / Weekly / Monthly cadence, every cadence instance is its own Event, and the
+filter filters by the series attribute: decided 2026-08-10 and carried by `PRODUCT.md`,
+`ia/docs/sitemap.md` and backlog 11. None of that is in question. **The label was.**
+`voice/docs/voice.md` principle 3 says it in one line: *we use the words a news-follower already
+owns*, and **`frequency` is the vocabulary of whoever built the market**, not of somebody who came
+to bet on a shutdown. It reads `How often` now, and the default value went `All` to `Any` with it,
+because `How often: All` is not a sentence and `How often: Any` is.
+
+**THE MODEL KEEPS ITS WORD AND THE READER GETS THEIRS.** The Event attribute is still `Frequency` in
+`PRODUCT.md` and in the sitemap's entity table, the radio group is still `name="freq"`, and the
+script comment says which is which. **A label and a field are allowed to differ, and pretending they
+must be the same is how a product ends up speaking its own database.** Both documents now carry the
+split explicitly rather than leaving the next reader to find two words for one thing and assume one
+of them is stale.
+
+Changed: **88 documents in both trees**, the summary label, the radiogroup name, the default value,
+the `aria-label`, and the `How often` row in the event detail's facts list on 9 screens per tree.
+Plus 3 kit pages and 3 groups in `microcopy.md`. `Frequency` survives in the two trees **209 times
+and every one is inside the same script comment**, which names the attribute on purpose.
+
+**AND THE FOUR VIEWPORT CAPS WERE TWO QUESTIONS.** The row asked whether the product wants one number
+instead of four. It wants one number for one of the two things it was asking about. **A sticky RAIL
+caps at the viewport minus its own top offset** and the three rails already share one formula with a
+parameter, `calc(100svh - X - var(--space-16))`. **A modal SHEET caps at a fraction of the viewport**
+and the three sheets did not: `92vh`, `88dvh`, `92svh`, two numbers and two units, and only one of
+the three had an argument written beside it. They read `--sheet-cap:92svh` now. **92** because it was
+already two of three and 88 was the one with nothing to defend it. **`svh`** because it is the SMALL
+viewport, the one measured with the browser's own bar shown, so a sheet capped in it always fits and
+never resizes under a reader's thumb: `dvh` grows and shrinks as that bar retracts, which for a fixed
+modal means the surface moves while somebody is reading it, and `vh` is the LARGE viewport and lets
+the tail sit behind the bar.
+
+**The `vh` fallback beside two of them is deleted rather than carried.** `CSS.supports` for `svh` is
+true in Chromium 151 and WebKit 26.5, measured before deleting, so it protected nothing here and cost
+one number written in two places. **Unifying the sheets with the rails would have been a fifth number
+and not fewer**, and the token's comment says so, because the next reader will see four `max-height`
+rules and reach for the same tidy-up.
+
+**Verified** in both engines: the cap computes 736px at a 800px viewport, the label reads
+`How often: Any`, choosing `Daily` prints `Daily` and lights the dot, and `Reset` returns `Any` and
+`Trending`.
+
+---
+
 ## 2026-08-14, paying up - A property assignment fires no event, a label is not a tab stop, and a boundary borrowed from another file has to be borrowed in that file's unit
 
 **EVERY ROW THIS SESSION OPENED IS CLOSED EXCEPT THE ONE IT CORRECTED.** 150, 151 and 153 are struck,

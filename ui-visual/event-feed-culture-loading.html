@@ -397,14 +397,14 @@ document.addEventListener('click', function (e) {
               </div>
             </details>
             <details class="filter-menu" id="freqMenu">
-              <summary aria-label="Filter by frequency">
+              <summary aria-label="Filter by how often an event repeats">
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock-circle-b"/></svg>
-                <span>Frequency: <span id="freqCurrent">All</span></span>
+                <span>How often: <span id="freqCurrent">Any</span></span>
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-chevron-down"/></svg>
               </summary>
               <div class="filter-panel">
-                <ul role="radiogroup" aria-label="Frequency">
-                  <li><label><input type="radio" name="freq" value="All" data-default checked> All</label></li>
+                <ul role="radiogroup" aria-label="How often">
+                  <li><label><input type="radio" name="freq" value="Any" data-default checked> Any</label></li>
                   <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
                   <li><label><input type="radio" name="freq" value="Hourly"> Hourly</label></li>
                   <li><label><input type="radio" name="freq" value="Daily"> Daily</label></li>
@@ -661,7 +661,7 @@ document.addEventListener('click', function (e) {
       });
     })();
 
-    // Frequency.
+    // How often (the Frequency attribute; the label is the reader's word, the field is the model's).
     wireFilter('freqMenu', 'freqCurrent', 'freq');
 
     // Footer language selector (placeholder: updates label, English-only at MVP).

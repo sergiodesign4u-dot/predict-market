@@ -221,6 +221,32 @@
     declares 2 and 16.</b></p>
   </section>
 
+  <section class="tk-sec" id="twowords">
+    <h2>Two strips, five words each, and only one of them navigates</h2>
+    <p class="tk-note">The Trending feed carries a category strip at the top and a category
+    sub-filter under its heading, and until 2026-08-14 they said the <b>same five words</b>:
+    <code>Trending / Politics / Crypto / Culture / General</code> against
+    <code>All / Politics / Crypto / Culture / General</code>. The strip <b>routes</b> to a category
+    page; the sub-filter <b>narrows the list already on screen</b>. Both are true and neither is
+    visible from the words.</p>
+    <p class="tk-note"><b>The faces already differed and it was never enough.</b> A strip chip carries
+    a mark and stands on a plate, a sub-filter chip is bare, and the two rows are a hundred pixels
+    apart, so a person compares them by reading, not by looking. <b>The repair is a label:</b>
+    <code>Show:</code> in front of the row. It is not a new idea in this feed and that is the argument
+    for it: the other two filters have been <code>Sort:</code> and <code>How often:</code> all along,
+    and this was the only one of the three with no label at all.</p>
+    <p class="tk-note"><b>What was refused: renaming the chips.</b> The words are the four categories,
+    and giving them a second set of names to say the same four things would have made the product
+    speak twice about one taxonomy. The label costs one word and no vocabulary.</p>
+    <p class="tk-note">The label stands <b>outside</b> the scroller, so <code>.feed-subfilter</code>
+    is the flex row and the <code>&lt;ul&gt;</code> is the item that scrolls: a label inside a
+    scroller is a label that leaves. <code>min-width:0</code> on the item, because a flex item's
+    default <code>min-width:auto</code> refuses to shrink below its content and the row would push the
+    label off the edge instead. <b>Measured at seven widths in both engines: the label is 35px, pinned
+    at x=31 on every phone width, the row is one course everywhere, and the band from the heading to
+    the first card is 112.0 at 320, 360, 390 and 430, which is what it was before the label.</b></p>
+  </section>
+
   <section class="tk-sec" id="fade">
     <h2>The fade is driven by the scroll, so it never says there is more where there is not</h2>
     <p class="tk-note">Three rows in this file are horizontal scrollers and not one of them told the
