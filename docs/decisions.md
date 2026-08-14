@@ -12,6 +12,61 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-14, paying up - A property assignment fires no event, a label is not a tab stop, and a boundary borrowed from another file has to be borrowed in that file's unit
+
+**EVERY ROW THIS SESSION OPENED IS CLOSED EXCEPT THE ONE IT CORRECTED.** 150, 151 and 153 are struck,
+and one defect nobody had filed was found on the way.
+
+**150, THE FOCUS TRAP, WAS WORTH THE MOST AND COST THE MOST, BECAUSE THE TAB WALK THAT CLOSED IT
+FOUND TWO DEFECTS THE ROW HAD NOT NAMED.** `inert` on every SIBLING along the path from the sheet up
+to `<body>` and nothing else, because inert INHERITS DOWN and setting it on an ancestor takes the
+sheet with it, which is the `aria-hidden`-over-an-operable-band shape again. Three elements are
+skipped on purpose and they are the ones that close it: the toggle, which Space still has to reach,
+and the two labels pointing at it. **Sealing the way out along with the room is how a trap becomes a
+cage.**
+
+Then the walk said two things the row never had. **The first build listened for `change`, and Escape
+sets `checked` from script: a property assignment fires no event**, so the sheet closed and left 26
+elements inert behind it, on every screen, silently. That is the same sentence this file wrote about
+Reset and the printed value four hours earlier, met again in a different costume, and it is the
+argument for **one function that every path in and out goes through**. **The second: `Show results`
+and the close were `<label>`s.** A label is exactly right for a pointer and is **not a tab stop**, so
+a 262px brass primary was a control a keyboard could not reach and no rule in the system could say
+so. Both are `<button>`s now, closed by the same function.
+
+**Verified by a 40-press Tab walk in both engines, which is the only instrument that reads this.**
+Every stop is inside the sheet or is the toggle itself. Focus moves in on open, inside a
+`requestAnimationFrame` because **activating a label moves focus to its input AFTER the handler
+runs**, so a `focus()` called directly is overwritten and the sheet opens with the caret outside it.
+Focus goes back where it came from on close, and `inert` reads 0 after Escape.
+
+**AND THE DEFECT NOBODY HAD FILED: A RUNG BORROWED IN THE WRONG UNIT.** `course-chrome.css` lifts the
+review toggle below `759.98px` and its own comment says why, that this is where `betpanel.css` docks
+the panel. **The dock is cut at `47.5rem`.** The two were written the same day to be one rung and
+they are equal only at a 16px root. Measured with `Page.setFontSizes`, the only thing that moves a
+rung because a length in a media query resolves against the INITIAL font size: at a **20px** default
+the toggle crosses the dock by **4px at 760, 860 and 900**; at **24** by **4px from 760 to 1000 and
+5px at 640**. It is `47.49875rem` now and the 132px lift is `8.25rem`, because the furniture it
+clears is sized by the type inside it. **0 overlap at all three defaults and seven widths after, and
+at the default nothing moved at all.** The 220px sidebar stays in px and that argument still holds:
+it is a WIDTH of chrome, not a rung of the product.
+
+**151** is deleted rather than guarded: the whole `uv-subfilter` block is gone from the 40 screens
+that carry no such markup and untouched on the one that does. **153** is the pair `92vh` then
+`92svh`, which the rails in three files have always had and this sheet never did. The broader
+question, whether the product wants one number instead of four, stays open in the row as a decision
+rather than a repair.
+
+**And the width-query registry is 32, not 33.** Re-counted from the comment-stripped source, as it is
+every time it is written down: 25 rungs, 2 harness, 4 one-offs each carrying its reason, and the
+course chrome's, which is the one this rule nearly missed.
+
+**Verified**: 267 documents in both engines at 16 widths, 0 horizontal scroll, 0 duplicate ids, 0
+page errors. Desk control at 640, 760, 900 and 1280 identical to every pass this session. The Reset
+cycle still returns `Trending` and `All`, hides itself and clears the dot.
+
+---
+
 ## 2026-08-14, closing - The `Reads:` line registers colour and nothing else, and the answer was already written under it in all 49 files
 
 **BACKLOG 152 OPENED AND CLOSED THE SAME DAY, WHICH IS UNUSUAL HERE AND IS THE POINT.** The cheap

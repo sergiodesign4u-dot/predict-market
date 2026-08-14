@@ -74,9 +74,25 @@
    inside the 52px strip the dock reserves under itself, at 44 it does not, so it crossed
    the dock's bottom edge by 4px in 16 readings of 960 the moment the floor was applied.
    Growing a control is a reason to re-read the clearance it was written against.
-   The ladder is in components/tokens.css, page frame; the 132 is argued above. */
-@media(max-width:759.98px){
-  .rm-toggle{bottom:132px}
+   The ladder is in components/tokens.css, page frame; the 132 is argued above.
+
+   THE RUNG AND THE LIFT WENT TO `rem` ON 2026-08-14, AND THE PX VERSION WAS A REAL
+   DEFECT AT EVERY BROWSER DEFAULT BUT THE ONE EVERYBODY TESTS. This block was cut at
+   `759.98px` while the thing it is cut FOR, `betpanel.css`'s dock, is cut at
+   `47.5rem`, and the two were written on the same day to be the same rung. They are
+   the same number only at a 16px root. **`Page.setFontSizes` on event-detail.html,
+   seven widths, three defaults: at 16 the toggle clears the dock everywhere; at 20 it
+   crosses it by 4px at 760, 860 and 900; at 24 by 4px from 760 to 1000 and by 5px at
+   640.** The chrome is 220 PHYSICAL pixels wide whatever the reader's font is and that
+   argument still holds for the sidebar, but it was never an argument about a rung that
+   exists to mirror a product rung: **a boundary borrowed from another file has to be
+   borrowed in that file's unit, or the two only agree at the default.**
+   The 132 became `8.25rem` for the second half of the same defect: it clears two
+   pieces of product furniture whose height is set by the type inside them, so at a
+   24px root the stack is taller and a fixed 132 is short. That is the 5px at 640.
+   Re-measured after, all three defaults, seven widths: 0 overlap everywhere. */
+@media(max-width:47.49875rem){
+  .rm-toggle{bottom:8.25rem}
 }
 .rm-toggle span{display:block;width:var(--icon-16);height:1.5px;background:var(--chrome-text);border-radius:var(--radius-2)}
 .rm-overlay{display:none;position:fixed;inset:0;background:var(--scrim);z-index:var(--z-chrome-scrim);backdrop-filter:blur(2px)}

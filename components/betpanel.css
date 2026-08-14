@@ -154,7 +154,18 @@
    unselected side is quiet and settles onto the ground, the selected side is a filled
    outcome control (--outcome-yes-fill-strong under --outcome-yes-text-lit, 5.3:1 in
    daylight) whose ink has nothing to spend, so it goes down by depth instead. */
-dialog.app-dialog.bet-sheet{position:fixed;left:0;right:0;bottom:0;top:auto;margin:0 auto;width:100%;max-width:560px;max-height:92vh;border:0;border-radius:var(--radius-16) var(--radius-16) 0 0;overflow-y:auto;overflow-x:hidden}
+/* 92svh BESIDE THE 92vh, 2026-08-14, backlog 153. `vh` is the LARGE viewport on a
+   phone, the one measured with the browser's own bar retracted, so a sheet capped in
+   it is a sheet whose tail sits behind that bar until the reader scrolls. The rails in
+   this file and in toc.css and catnav.css have carried the `vh` then `svh` pair since
+   the day they were written and this sheet never did, which is what a value copied
+   between files without its argument looks like. The pair and not a swap, because the
+   fallback is what an engine without `svh` reads. Found by taking the filters sheet's
+   cap FROM the system rather than inventing one, and discovering the system had four
+   answers: this 92vh, a modal at 88dvh, and two rails at
+   `calc(100svh - 120px - var(--space-16))`. The one number they should agree on is
+   still open; what is closed here is that this one was measured in the wrong viewport. */
+dialog.app-dialog.bet-sheet{position:fixed;left:0;right:0;bottom:0;top:auto;margin:0 auto;width:100%;max-width:560px;max-height:92vh;max-height:92svh;border:0;border-radius:var(--radius-16) var(--radius-16) 0 0;overflow-y:auto;overflow-x:hidden}
 dialog.app-dialog.bet-sheet::backdrop{background:var(--shadow-ink-60);backdrop-filter:blur(2px)}
 /* 2 UNDER THE BAR BECAME 8, and the bar itself did not move. The grab measured
    390x18 under a coarse pointer, and it is the one control in this product a

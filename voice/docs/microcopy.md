@@ -245,6 +245,7 @@ _9 state page(s): event-feed-empty.html, event-feed-error.html, event-feed-loadi
 | Main | Label (hidden) | Show filters | The accessible name of the checkbox behind the mark. A `<label>` is not focusable and this one has no text, so the name has to sit on the control that is |
 | Main | Button | Show results | Below DESK 640 only, the sheet's way out. `Show results` and not `Apply`: every radio in the sheet is live, so the list behind the scrim has already changed and `Apply` would name a step that does not exist |
 | Main | Button | Reset | Below DESK 640 only, and it appears ONLY while a filter is off its default. It is the other half of the dot on the closed control: the dot says the list is not the default one, this is the way back |
+| Main | Label (hidden) | Close filters | Below DESK 640 only. The accessible name of the cross in the sheet's head, which is a `<button>` and not a `<label>` since 2026-08-14: a label is correct for a pointer and is not a tab stop |
 | Main | Label | Sort: |  |
 | Main | Option | Volatile |  |
 | Main | Option | New |  |
@@ -440,6 +441,7 @@ _32 state page(s): crypto-empty.html, crypto-error.html, crypto-loading.html, cr
 | Main | Label (hidden) | Show filters | The accessible name of the checkbox behind the mark. A `<label>` is not focusable and this one has no text, so the name has to sit on the control that is |
 | Main | Button | Show results | Below DESK 640 only, the sheet's way out. `Show results` and not `Apply`: every radio in the sheet is live, so the list behind the scrim has already changed and `Apply` would name a step that does not exist |
 | Main | Button | Reset | Below DESK 640 only, and it appears ONLY while a filter is off its default. It is the other half of the dot on the closed control: the dot says the list is not the default one, this is the way back |
+| Main | Label (hidden) | Close filters | Below DESK 640 only. The accessible name of the cross in the sheet's head, which is a `<button>` and not a `<label>` since 2026-08-14: a label is correct for a pointer and is not a tab stop |
 | Main | Label | Sort: |  |
 | Main | Label | Trending |  |
 | Main | Option | Volatile |  |
@@ -602,6 +604,7 @@ _3 state page(s): favorites-empty.html, favorites-loading.html, favorites.html_
 | Main | Label (hidden) | Show filters | The accessible name of the checkbox behind the mark. A `<label>` is not focusable and this one has no text, so the name has to sit on the control that is |
 | Main | Button | Show results | Below DESK 640 only, the sheet's way out. `Show results` and not `Apply`: every radio in the sheet is live, so the list behind the scrim has already changed and `Apply` would name a step that does not exist |
 | Main | Button | Reset | Below DESK 640 only, and it appears ONLY while a filter is off its default. It is the other half of the dot on the closed control: the dot says the list is not the default one, this is the way back |
+| Main | Label (hidden) | Close filters | Below DESK 640 only. The accessible name of the cross in the sheet's head, which is a `<button>` and not a `<label>` since 2026-08-14: a label is correct for a pointer and is not a tab stop |
 | Main | Label | Sort: |  |
 | Main | Label | Trending |  |
 | Main | Option | Volatile |  |

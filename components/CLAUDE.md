@@ -1,6 +1,6 @@
 # components/ - the system itself
 
-This folder IS the design system. **54 stylesheets, 9,740 lines**: 48 here and 6 in `patterns/`,
+This folder IS the design system. **54 stylesheets, 9,767 lines**: 48 here and 6 in `patterns/`,
 re-counted 2026-08-14 by `cat components/*.css components/patterns/*.css | wc -l` after the filters
 sheet, its two later passes and the scroll-driven edge fade. It was 9,224 on 2026-08-13 after `trust-art.css`
 was written (`docs/backlog.md` 140). It was 53 and 8,734 earlier the same day, after `print.css`
@@ -74,7 +74,7 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
 - **A MEDIA QUERY MAY NOT STAND IN A SCREEN FILE, EVER**, and it is written here and in
   `ui-visual/CLAUDE.md` both, because a rule kept in one place is a rule half the hands never meet.
   Adaptation lives in a token, a component, a pattern or the shell. Measured at Responsive step 4:
-  **33 width queries in this folder, 0 in any of the 106 documents in `ui-visual/`.** It was 33, then
+  **32 width queries in this folder, 0 in any of the 106 documents in `ui-visual/`.** It was 33, then
   35 on 2026-08-12 when the outcome row and the outcome pair each took one at the desk rung, and 33
   again on 2026-08-13 when backlog 129 deleted the one in `tokens.css` and the one in `card.css`
   **and put nothing in either place**: the two page insets ramp with a `clamp()` now and the bookmark
@@ -101,12 +101,20 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   file needs a break that is not one of them it is a one-off and says so in a comment beside itself,
   or it is a fourth rung and gets named in the ladder in `tokens.css` FIRST. A breakpoint cannot be a
   token: a media query condition does not read a custom property and there is no build step here, so
-  the ladder is kept by being read. **There are 33 width rules, and this line has said 33, then 35,
-  then 33 again**, counted each time from the comment-stripped source and never from the sentence
+  the ladder is kept by being read. **There are 32 width rules, and this line has said 33, then 35,
+  then 33, then 32**, counted each time from the comment-stripped source and never from the sentence
   before it:
-  **27 name one of the three rungs, 2 name the 1140 harness, and the 4 that name no rung** (560 in
-  `event-detail.css` and `iconbtn.css`, 620 and 980 in `hero.css`) **each carry the one-off comment
-  beside itself that this rule asks for**, verified by reading all four. The alternative
+  **25 name one of the three rungs, 2 name the 1140 harness, 4 name no rung** (560 in
+  `event-detail.css` and `iconbtn.css`, 620 and 980 in `hero.css`) **and each of those four carries
+  the one-off comment beside itself that this rule asks for**, verified by reading all four. **The
+  32nd is the course chrome's and it is the one this rule nearly missed**: `course-chrome.css` cut
+  the review toggle's lift at `759.98px` while the dock it exists to clear is cut at `47.5rem`, two
+  numbers written the same day to be one rung and equal only at a 16px root. Measured with
+  `Page.setFontSizes` on event-detail.html at seven widths: **at a 20px default the toggle crosses
+  the dock by 4px at 760, 860 and 900; at 24 by 4px from 760 to 1000 and by 5px at 640.** It is
+  `47.49875rem` now and the lift is `8.25rem`, and at the default nothing moved. **A boundary
+  borrowed from another file has to be borrowed in that file's UNIT.** The 220px sidebar stays in px
+  and that argument still holds, because it is a width of chrome and not a rung of the product. The alternative
   has already been paid for twice: a stand label written at 900 standing beside a bar that goes at
   640, and `navitem.css` arguing about a control's shape "above 860" when the rule that changes it is
   at 900. **A rung is one pixel and it belongs to the wide side**: below it is `max-width:639.98px`,
@@ -405,6 +413,25 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   declare them**, 121 of 121. The published number was 44 and the true one was 43. Read the header
   block, not the file, and this is the same defect as a selector that matches nothing agreeing with
   every hypothesis, met from the other side.
+- **A PROPERTY ASSIGNMENT FIRES NO EVENT, AND THIS FOLDER HAS NOW PAID FOR IT TWICE IN ONE DAY.**
+  Setting `input.checked` from script updates the input and notifies nothing, so a `change` listener
+  is not a listener for the script's own writes. The filters sheet reset a radio and went on printing
+  the old word until the event was dispatched; the same sheet's focus trap closed on Escape and left
+  **26 elements inert behind it**, on every screen, because Escape sets `checked` and the seal was
+  lifted by a `change` handler. **Give every path in and out ONE function and call it, rather than
+  hoping the DOM will tell you about a change you made yourself.**
+- **A `<label>` IS NOT A TAB STOP.** It is exactly right for a pointer and invisible to a keyboard,
+  so a 262px brass primary reading `Show results` was a control Tab never reached and no rule in the
+  system could say so. Read it with a Tab walk; a stylesheet cannot see it and neither can a diff of
+  the markup. **An action is a `<button>`; a `<label for>` is a pointer path to a control that
+  already exists.**
+- **A BOUNDARY BORROWED FROM ANOTHER FILE HAS TO BE BORROWED IN THAT FILE'S UNIT.**
+  `course-chrome.css` lifts the review toggle below `759.98px` and says in its own comment that this
+  is where `betpanel.css` docks the panel, and the dock is cut at `47.5rem`. Two numbers written the
+  same day to be one rung, equal only at a 16px root: at a 20px default the toggle crosses the dock
+  by 4px at three widths, at 24 by 4px at four and 5px at a fifth, measured with `Page.setFontSizes`
+  because that is the only thing that moves a rung. **A shared boundary written twice in two units is
+  a boundary that agrees by coincidence.**
 - **AN EXIT THAT ONLY EXISTS IN THE MECHANISM IS NOT AN EXIT.** The filters sheet closed on the
   scrim, on Escape and on a cross in its head, and shipped with a band of empty surface under its two
   rows: the first two are invisible by definition, and the third is 44px in a corner that the course

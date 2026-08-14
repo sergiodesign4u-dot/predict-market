@@ -379,7 +379,7 @@ document.addEventListener('click', function (e) {
                  toolbar row and a toolbar does not carry a title. -->
             <div class="filters-head">
               <h2>Filters</h2>
-              <label class="icon-btn filters-close" for="filtersOpen" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg></label>
+              <button type="button" class="icon-btn filters-close" aria-label="Close filters"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg></button>
             </div>
             <details class="filter-menu" id="sortMenu">
               <summary aria-label="Sort by">
@@ -421,7 +421,7 @@ document.addEventListener('click', function (e) {
                  `Apply`: every radio here is live, so there is no step to apply. -->
             <div class="filters-foot">
               <button type="button" class="btn btn-ghost btn-md filters-reset">Reset</button>
-              <label class="btn btn-primary btn-md filters-done" for="filtersOpen">Show results</label>
+              <button type="button" class="btn btn-primary btn-md filters-done">Show results</button>
             </div>
           </div>
         </div>
@@ -962,50 +962,37 @@ document.addEventListener('click', function (e) {
   });
 })();
   </script>
-<script id="uv-subfilter">
-/* The Trending sub-filter filters Trending. Built by
-   wireframes/_generators/subfilter.py; see that file for why this is not the
-   category nav. A hidden card is hidden by the ATTRIBUTE, so it leaves the
-   accessibility tree with the layout. */
-(function () {
-  var group = document.querySelector('.feed-subfilter');
-  if (!group) return;
-  var grid = document.querySelector('.grid');
-  if (!grid) return;
-  group.addEventListener('click', function (e) {
-    var btn = e.target.closest('button[data-filter]');
-    if (!btn) return;
-    var want = btn.getAttribute('data-filter');
-    var all = group.querySelectorAll('button[data-filter]');
-    for (var i = 0; i < all.length; i++) {
-      var on = all[i] === btn;
-      all[i].setAttribute('aria-pressed', on ? 'true' : 'false');
-      all[i].parentNode.toggleAttribute('aria-current', false);
-      if (on) { all[i].parentNode.setAttribute('aria-current', 'page'); }
-      else { all[i].parentNode.removeAttribute('aria-current'); }
-    }
-    var cards = grid.querySelectorAll('.card');
-    for (var j = 0; j < cards.length; j++) {
-      var cat = cards[j].getAttribute('data-cat');
-      cards[j].toggleAttribute('hidden', want !== 'all' && cat !== want);
-    }
-  });
-})();
-</script>
 <script id="uv-filters-sheet">
-/* Two things a stylesheet cannot say, and nothing else.
+/* Four things a stylesheet cannot say, and nothing else.
    1. A SCROLLER DOES NOT START AT ITS ACTIVE ITEM. The category strip is a one-line
       scroller, and on 3 of the 5 category pages at 360 the chip carrying aria-current
       stood off the right edge: Crypto by 92px, Culture by 223, General by 356, which is
-      the whole chip. A person landed on a page whose navigation showed nothing chosen.
-      `scroll-start-target` is the CSS answer to exactly this and NEITHER Chromium 151
-      NOR WebKit 26.5 supports it, measured with CSS.supports before this was written.
-      scrollLeft is set directly rather than through scrollIntoView, because
+      the whole chip. `scroll-start-target` is the CSS answer to exactly this and NEITHER
+      Chromium 151 NOR WebKit 26.5 supports it, measured with CSS.supports before this was
+      written. scrollLeft is set directly rather than through scrollIntoView, because
       scrollIntoView also moves the page, and rectangles rather than offsetLeft, because
       offsetLeft is measured from the offsetParent and this list is not one.
-   2. A CHECKBOX HAS NO ESCAPE. The filters sheet is a checkbox, which buys one markup
-      and one set of radios and costs the single key a modal surface owes a keyboard. */
-(function(){
+   2. A CHECKBOX HAS NO ESCAPE, NO FOCUS TRAP AND NO FOCUS RESTORE. The sheet is a
+      checkbox, which buys ONE markup and ONE set of radios and does not buy the three
+      things a modal surface owes a keyboard. `inert` is the answer to the trap and it
+      takes a WALK: what has to become inert is every SIBLING along the path from the
+      sheet up to <body>, and nothing else, because inert INHERITS DOWN and setting it on
+      an ancestor would take the sheet with it. Three elements are skipped on purpose and
+      they are the ones that CLOSE it: the toggle, which Space still has to reach, and the
+      two labels pointing at it, one of which is the scrim. Sealing the way out along with
+      the room is how a trap becomes a cage.
+      EVERY PATH GOES THROUGH ONE FUNCTION, because the first build listened for `change`
+      and Escape sets `checked` in script: **a property assignment fires no event**, so the
+      sheet closed and left 26 elements inert behind it. That is the same sentence this
+      file already carries about Reset and the printed value, met a second time in one day.
+   3. A <label> IS NOT A TAB STOP. `Show results` and the close were labels, which is
+      correct for the pointer and invisible to a keyboard: a 262px brass button that Tab
+      never reaches. They are <button>s now and this closes them, so the CSS-only exits
+      that remain are the scrim and the mark, both of which are pointer paths anyway.
+   4. RESET IS THE OTHER HALF OF THE DOT. One <label> checks one radio and a reset checks
+      two. `change` is DISPATCHED and not merely implied, because the value printed beside
+      each row is written by this page's own change listener. */
+(function () {
   var ul = document.querySelector('.cat-nav > ul');
   var act = ul && ul.querySelector('[aria-current]');
   if (act) {
@@ -1013,19 +1000,51 @@ document.addEventListener('click', function (e) {
     var r = box.getBoundingClientRect(), b = ul.getBoundingClientRect();
     ul.scrollLeft += (r.left - b.left) - (b.width - r.width) / 2;
   }
-  document.addEventListener('keydown', function(e){
-    if (e.key !== 'Escape') return;
-    var t = document.getElementById('filtersOpen');
-    if (t && t.checked) { t.checked = false; }
-  });
-  /* 3. RESET IS THE OTHER HALF OF THE DOT. The dot on the closed control says the list
-        is not the default one, and the only way back was to open the sheet and find
-        `Trending` and `All` again in two separate lists. One <label> checks one radio,
-        so two defaults in one tap is the one thing here that cannot be CSS.
-        The `change` event is DISPATCHED and not merely implied: the value printed beside
-        each label is written by this page's own change listener, and assigning `.checked`
-        fires nothing, so without it the sheet would reset the filter and go on showing the
-        old word. */
+
+  var toggle = document.getElementById('filtersOpen');
+  var sheet = document.querySelector('.feed-head > .feed-controls');
+  var sealed = [], last = null;
+
+  function seal(on) {
+    while (sealed.length) sealed.pop().inert = false;
+    if (!on || !sheet) return;
+    var node = sheet;
+    while (node && node.parentNode && node !== document.body) {
+      var sib = node.parentNode.firstElementChild;
+      for (; sib; sib = sib.nextElementSibling) {
+        if (sib === node || sib.inert) continue;
+        if (sib === toggle || sib.getAttribute('for') === 'filtersOpen') continue;
+        sib.inert = true;
+        sealed.push(sib);
+      }
+      node = node.parentNode;
+    }
+  }
+
+  /* One function for every path in and out. The rAF is not a flourish: activating a
+     <label> moves focus to its input AFTER this runs, so a focus() called here is
+     overwritten and the sheet opens with the caret still outside it. */
+  function apply() {
+    if (!toggle || !sheet) return;
+    if (toggle.checked) {
+      if (!sealed.length) last = document.activeElement;
+      seal(true);
+      requestAnimationFrame(function () {
+        var first = sheet.querySelector('button, summary, [href], input:not([type=radio])');
+        if (first && first.focus) first.focus();
+      });
+    } else {
+      seal(false);
+      if (last && last.focus) { last.focus(); last = null; }
+    }
+  }
+  function close() { if (toggle && toggle.checked) { toggle.checked = false; apply(); } }
+
+  if (toggle) toggle.addEventListener('change', apply);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  var outs = document.querySelectorAll('.filters-done, .filters-close');
+  for (var k = 0; k < outs.length; k++) outs[k].addEventListener('click', close);
+
   var reset = document.querySelector('.filters-reset');
   if (reset) reset.addEventListener('click', function () {
     var d = document.querySelectorAll('.filter-panel input[data-default]');
