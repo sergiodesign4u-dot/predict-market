@@ -12,6 +12,76 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-14, after the push - The dialog and the page stopped being one markup, and the picture of a component is the component with every control replaced by an element that is not one
+
+**THE ROOT RULE THAT A DIALOG WITH A STANDALONE PAGE IS ONE MARKUP AND NOT TWO IS DELIBERATELY SPENT
+HERE.** It is a good rule and it was earned: the two copies drift, and this repository has the scars.
+It is spent because the two hosts stopped answering the same question. A person who taps How it works
+in a header wants to know what the thing IS in fifteen seconds and then to be let in; a person who
+opens the full guide already has a question and wants the answer. The dialog is three steps with a
+picture each and a way in at the end; `how-it-works.html` keeps the prose, the FAQ and the sentence
+about money being held 1:1, which is the only place that sentence is written out. `hiw.css` said "one
+block with two hosts" at its head since 2026-08-11 and now says two blocks with one host each, and
+the file keeps its name for the reason backlog 18 gave it: **a component is not named after one of
+its places**, even when only one of its two blocks now stands in a dialog.
+
+**THE STAGE IS THE PRODUCT AND NOT A DRAWING OF IT.** Each step stands on a still built from the
+classes the screens ship: `.card` with its `.thumb`, `.q`, `.why` and `.yesno`, then `.bet-panel`
+with `.bp-dir`, `.bp-side` and `.line.total`, then `.pos` with a won side. Nothing is redrawn, which
+is why `hiw.css` reads none of their tokens and why the inventory still counts none of their elements
+as this component's. **The alternative was three generated illustrations in the Vault grade, and it
+was refused on the same grounds the trust drawings were re-encoded on**: `assets/` went from
+9,690,253 bytes to 985,277 over two days, and a picture of a card that is not the card goes stale the
+first time the card changes.
+
+**NOT ONE ELEMENT IN A STILL IS FOCUSABLE, and that is what makes it a picture rather than a fake
+control.** An `<a>` with no `href` is not a link and not a tab stop, and it still matches every `a`
+in `card.css` and `yesno.css`, so **the face arrives and the behaviour does not**. `.btn` and
+`.yesno-pick` are class-keyed and take a `<span>`. The one control that could not be made inert, the
+card's bookmark button, is simply not in the still. The stage is `aria-hidden` on top of that, and
+that is safe to write ONLY because there is nothing focusable inside it: aria-hidden over a focusable
+element is a defect and not a decoration. Measured across all 107 steppers in both trees, at 390 and
+1280, in Chromium and WebKit: **0 focusable elements inside a stage.**
+
+**THE BET PANEL IS A WIDTH-ONLY FACE AND THE STILL TAKES THE BARGAIN**, which is the rule
+`ui-kit/CLAUDE.md` already states for `.tk-show-panel`: the test is whether the placement SAYS what
+it changed. Three declarations, and they are exactly the three about where the panel stands rather
+than what it is. `.bet-panel` is `display:none` below DETAIL 760 and `flex:0 0 322px` above it, so
+inside a 464px dialog the still would have drawn **nothing at all on a phone** and held a 322px
+column inside a 296px stage on a desk. The plate, the ground, the border and every rule `.bp-inner`,
+`.bp-dir` and `.line.total` take from being inside a panel are untouched.
+
+**THE STEP IS SWITCHED BY A RADIO, THE RULES ARE KEYED TO `:nth-of-type`, AND THE KIT SUFFIXES THE
+NAME AS WELL AS THE ID.** Same bargain `tabs.css` made on 2026-08-10 and for the same two reasons: an
+id in a selector is a promise that the component stands once in a document and this one stands twice
+on its own kit page, and **a radio group is keyed by `name`, so two cells sharing one are one group
+and the light cell's checked step unchecks the dark cell's**. There is no script: a `<label for>` is a
+real control with a real target, and this tree is read from disk where a script is one more thing
+that can fail to arrive.
+
+**THE SHEET DOES NOT RESIZE UNDER A THUMB, AND 39px OF IT STILL DOES.** Measured before the floors,
+at 390 and 1280: the three steps stood **552, 641 and 506** tall, so pressing Next moved the button
+89px down and then 135 up. With a 280px stage floor and a 172px text floor: **564, 564 and 603**. The
+280 is the tallest of the three stills plus its shadow, measured, so no still is clipped by its own
+floor, and the still is CENTRED in the stage rather than stretched to it, because three pictures of
+three different components are three different shapes and it is the frame that has to be constant.
+**The 39 that is left is step 3 carrying one more control**, the quiet way out under the primary one,
+and reserving that row on the first two steps would buy an identical height with 39px of empty sheet
+on two screens out of three.
+
+**Where it leads, and it is the product's own stance rather than the reference's.** Step 3 gives
+`Create account` to `sign-in.html`, whose own heading is "Sign in or create account", and under it
+`Browse events first` to the feed, because this product lets a person build a bet before connecting a
+wallet and a single funnel-shaped exit would contradict a sentence the same dialog just made.
+
+**Swept and checked.** 105 painted screens, 87 grey ones and 2 kit cells: **107 steppers, 0 with a
+wrong step count, 0 with a `<label for>` pointing at nothing, 0 focusable elements in a stage, 0
+duplicate ids, 0 pages scrolling sideways, 0 page errors**, at 390 and 1280 in Chromium and WebKit.
+One new token, `--display-step`, and the copy is in `voice/docs/microcopy.md` with the eight lines it
+replaces struck rather than moved.
+
+---
+
 ## 2026-08-14, last thing - The rule was not redundant, it was over-broad by 400px, and the width it is really about is not on the ladder
 
 Supersedes the entry below on backlog 149, which it filed as open. It closed the same hour, and the

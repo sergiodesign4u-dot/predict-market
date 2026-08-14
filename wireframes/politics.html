@@ -504,6 +504,28 @@
     /* Layout taken from components/, every colour replaced by the
        wireframe palette. See wireframes/_generators/port_chrome.py. */
     .app-dialog.hiw-dialog { max-width: 464px; overflow: clip; }
+    /* Stage 04 reconcile 2026-08-14: the how-it-works DIALOG is three steps now, and the page it links to stays prose. Grey-box rules for the stepper; the paint owns the stills. */
+    .hiw-steps { display: flex; flex-direction: column; }
+    .hiw-radio { position: absolute; width: 1px; height: 1px; margin: -1px; clip-path: inset(50%); overflow: hidden; }
+    .hiw-step { display: none; flex-direction: column; }
+    .hiw-steps > .hiw-radio:nth-of-type(1):checked ~ .hiw-step:nth-of-type(1),
+    .hiw-steps > .hiw-radio:nth-of-type(2):checked ~ .hiw-step:nth-of-type(2),
+    .hiw-steps > .hiw-radio:nth-of-type(3):checked ~ .hiw-step:nth-of-type(3) { display: flex; }
+    .hiw-stage { min-height: 180px; padding: 24px; display: flex; align-items: center; justify-content: center; background: #ededed; border-bottom: 1px solid #ccc; }
+    .hiw-still { width: 100%; max-width: 296px; min-height: 120px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 12px; border: 1px dashed #999; background: #e0e0e0; font-size: 12px; color: #555; }
+    .hiw-step-txt { padding: 20px 24px 16px; display: flex; flex-direction: column; gap: 8px; min-height: 150px; }
+    .hiw-step-n { margin: 0; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: #555; }
+    .hiw-step-t { margin: 0; font-size: 22px; font-weight: 700; line-height: 1.1; }
+    .hiw-step-b { margin: 0; font-size: 14px; line-height: 1.5; color: #333; }
+    .hiw-nav { padding: 0 24px 24px; display: flex; flex-direction: column; gap: 12px; }
+    .hiw-dots { display: flex; justify-content: center; gap: 8px; padding: 4px 0 2px; }
+    .hiw-dot { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 20px; cursor: pointer; }
+    .hiw-dot::before { content: ''; width: 24px; height: 4px; background: #bbb; }
+    .hiw-steps > .hiw-radio:nth-of-type(1):checked ~ .hiw-step .hiw-dot:nth-of-type(1)::before,
+    .hiw-steps > .hiw-radio:nth-of-type(2):checked ~ .hiw-step .hiw-dot:nth-of-type(2)::before,
+    .hiw-steps > .hiw-radio:nth-of-type(3):checked ~ .hiw-step .hiw-dot:nth-of-type(3)::before { background: #555; }
+    .hiw-next { cursor: pointer; }
+    .hiw-skip { display: block; text-align: center; font-size: 13px; color: #555; text-decoration: none; padding: 8px; }
     dialog.app-dialog.hiw-dialog:modal .hiw-body { overflow: auto; min-height: 0; }
     .hiw-hero { position: relative; overflow: clip; padding: 32px 24px 28px; }
     .hiw-hero-inner { position: relative; }
@@ -1448,41 +1470,64 @@
 
   <dialog id="howitworksDialog" class="app-dialog hiw-dialog" aria-label="How it works">
     <button type="button" class="icon-btn icon-btn-photo sheet-close" data-close-dialog aria-label="Close">
-      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      <svg class="ic" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
-    <div class="hiw-hero">
-      <div class="hiw-hero-inner">
-        <h2>How it works</h2>
-        <p class="hiw-tagline">Back the events you follow, in plain language.</p>
-      </div>
-    </div>
-    <div class="hiw-body">
-      <div class="hiw-sec">
-        <span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></span>
-        <div class="hiw-sec-txt">
-          <span class="hiw-label">How betting works here</span>
-          <p>Yonder turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
+    <div class="hiw-steps">
+      <input class="hiw-radio" type="radio" name="hiwstep" id="hiwstep-1" checked aria-label="Step 1 of 3, pick an event">
+      <input class="hiw-radio" type="radio" name="hiwstep" id="hiwstep-2" aria-label="Step 2 of 3, back YES or NO">
+      <input class="hiw-radio" type="radio" name="hiwstep" id="hiwstep-3" aria-label="Step 3 of 3, get paid when it resolves">
+
+      <div class="hiw-step">
+        <div class="hiw-stage" aria-hidden="true"><div class="hiw-still">still: an event card with its question, its one-line why and its YES / NO pair</div></div>
+        <div class="hiw-step-txt">
+          <p class="hiw-step-n">Step 1 of 3</p>
+          <h2 class="hiw-step-t">Pick an event you follow</h2>
+          <p class="hiw-step-b">Every event asks one question, with a date and a named source. You see the odds, the one-line why and how it resolves before you put in a cent.</p>
+        </div>
+        <div class="hiw-nav">
+          <label class="btn btn-primary btn-md btn-block hiw-next" for="hiwstep-2">Next</label>
+          <div class="hiw-dots">
+            <label class="hiw-dot" for="hiwstep-1" aria-label="Step 1"></label>
+            <label class="hiw-dot" for="hiwstep-2" aria-label="Step 2"></label>
+            <label class="hiw-dot" for="hiwstep-3" aria-label="Step 3"></label>
+          </div>
         </div>
       </div>
-      <div class="hiw-sec">
-        <span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M4 15l5-5 4 3 6-8"/><path d="M20 5h-4M20 5v4"/></svg></span>
-        <div class="hiw-sec-txt">
-          <span class="hiw-label">Why the odds move</span>
-          <p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less. Your payout depends on the odds at the moment you bet, not only on the outcome, so reading an event early and being right is worth more.</p>
+
+      <div class="hiw-step">
+        <div class="hiw-stage" aria-hidden="true"><div class="hiw-still">still: the bet panel with the YES / NO pick, the stake and the potential payout</div></div>
+        <div class="hiw-step-txt">
+          <p class="hiw-step-n">Step 2 of 3</p>
+          <h2 class="hiw-step-t">Back YES or NO</h2>
+          <p class="hiw-step-b">The odds are a live price set by what people bet. Your payout settles at the price you took, so being early and right is worth more. One dollar minimum.</p>
+        </div>
+        <div class="hiw-nav">
+          <label class="btn btn-primary btn-md btn-block hiw-next" for="hiwstep-3">Next</label>
+          <div class="hiw-dots">
+            <label class="hiw-dot" for="hiwstep-1" aria-label="Step 1"></label>
+            <label class="hiw-dot" for="hiwstep-2" aria-label="Step 2"></label>
+            <label class="hiw-dot" for="hiwstep-3" aria-label="Step 3"></label>
+          </div>
         </div>
       </div>
-      <div class="hiw-sec hiw-faq">
-        <span class="hiw-label">Common questions</span>
-        <dl>
-          <dt>Do I need crypto to start?</dt>
-          <dd>No. You can browse events and build a bet with no wallet. You add funds by card or crypto only when you confirm.</dd>
-          <dt>What is the smallest bet?</dt>
-          <dd>One dollar. The default is five.</dd>
-          <dt>How does an event resolve?</dt>
-          <dd>Each event states its resolution rule up front. The team resolves it against the real-world outcome, and you can see the record of resolved events.</dd>
-        </dl>
+
+      <div class="hiw-step">
+        <div class="hiw-stage" aria-hidden="true"><div class="hiw-still">still: a resolved position, won, with the stake and the amount paid out</div></div>
+        <div class="hiw-step-txt">
+          <p class="hiw-step-n">Step 3 of 3</p>
+          <h2 class="hiw-step-t">Get paid when it resolves</h2>
+          <p class="hiw-step-b">It resolves against the source it named and the result is written on-chain. Until then your money is held 1:1, never lent and never moved.</p>
+        </div>
+        <div class="hiw-nav">
+          <a class="btn btn-primary btn-md btn-block" href="sign-in.html">Create account</a>
+          <a class="hiw-skip" href="event-feed.html">Browse events first</a>
+          <div class="hiw-dots">
+            <label class="hiw-dot" for="hiwstep-1" aria-label="Step 1"></label>
+            <label class="hiw-dot" for="hiwstep-2" aria-label="Step 2"></label>
+            <label class="hiw-dot" for="hiwstep-3" aria-label="Step 3"></label>
+          </div>
+        </div>
       </div>
-      <a href="how-it-works.html" class="hiw-full">Read the full guide <svg class="ic hiw-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </dialog>
 

@@ -858,6 +858,38 @@ _5 state page(s): notifications-empty.html, notifications-error.html, notificati
 | Main | Label | Your bet resolved: ETF approval - NO. Tap to see what happened. |  |
 | Main | Label | 2d |  |
 
+### How It Works, the dialog
+
+_The stepper on all 105 painted screens. Rewritten 2026-08-14: it was two explainer sections plus a
+FAQ plus a "Read the full guide" button, and it is three steps with a picture each and a way in at
+the end. The dialog and the page stopped being one markup on purpose, and the sentence that says
+where that is written is in `docs/decisions.md`. Every line below is in the dialog and nowhere else._
+
+| Zone | Type | Line | Flag |
+|---|---|---|---|
+| Step 1 | Label | Step 1 of 3 |  |
+| Step 1 | Heading | Pick an event you follow |  |
+| Step 1 | Text | Every event asks one question, with a date and a named source. You see the odds, the one-line why and how it resolves before you put in a cent. |  |
+| Step 1 | Button | Next |  |
+| Step 2 | Label | Step 2 of 3 |  |
+| Step 2 | Heading | Back YES or NO |  |
+| Step 2 | Text | The odds are a live price set by what people bet. Your payout settles at the price you took, so being early and right is worth more. One dollar minimum. |  |
+| Step 2 | Button | Next |  |
+| Step 3 | Label | Step 3 of 3 |  |
+| Step 3 | Heading | Get paid when it resolves |  |
+| Step 3 | Text | It resolves against the source it named and the result is written on-chain. Until then your money is held 1:1, never lent and never moved. |  |
+| Step 3 | Button | Create account | goes to `sign-in.html`, whose own heading is "Sign in or create account" |
+| Step 3 | Link | Browse events first | the quiet way out, and it is the product's own stance: you can build a bet before you connect a wallet |
+| Stage | Label | Step 1 / Step 2 / Step 3 | the accessible names of the three dots |
+| Stage | Label | Step 1 of 3, pick an event | the radio's own name, one per step |
+
+**Struck on 2026-08-14, and struck rather than moved, because the page still says all of it**:
+"Back the events you follow, in plain language.", "How betting works here", "Why the odds move",
+"Common questions", "Do I need crypto to start?", "What is the smallest bet?", "How does an event
+resolve?" and "Read the full guide". The dialog's job is fifteen seconds and a way in; the page's is
+the answer to a question the reader already has, and it is the only place the 1:1 sentence is
+written out in full.
+
 ### How It Works
 
 _1 state page(s): how-it-works.html_

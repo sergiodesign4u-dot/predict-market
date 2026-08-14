@@ -85,6 +85,8 @@ flowchart TD
     DEP --> moreInfo{"wants to understand fund safety?"}
     moreInfo -->|"yes"| HIW["How It Works"]
     HIW --> DEP
+    HIW -->|"Create account (step 3 of the dialog, 2026-08-14)"| SI
+    HIW -->|"Browse events first (step 3 of the dialog)"| EF
     moreInfo -->|"no"| depProcessing["Loading: processing your payment"]
     depProcessing --> depOk{"deposit successful?"}
     depOk -->|"card declined"| T2(["T2 - card declined"])
@@ -121,6 +123,16 @@ flowchart TD
     class triggerFeed,mjDone success;
     class triggerLink,EF,feedLoad,found,T6,ED,ctxOk,T8,wantsBet,T7,BS1,confirmedIntent,personaType,SI,authOk,T5,DEP,moreInfo,HIW,depProcessing,depOk,T2,T1,S5,walletOk,T15,priceConfirm,T16,BS2,betProcessing,techOk,T3,WA,AB neutral;
 ```
+
+**The How It Works DIALOG became a way IN on 2026-08-14, and that is a change to this map rather than
+to a stylesheet.** It used to be a leaf: two explainer sections, a FAQ and a button back to its own
+page, so every path that reached it had to turn around. It is three steps now and the third carries
+`Create account`, to `sign-in.html`, with `Browse events first` under it, to the feed. **Both edges
+are drawn above** because a dialog that can start a signup is a node with outgoing edges, and a map
+that shows it as a leaf would be describing the version before. The quiet second edge is not
+politeness: this product lets a person build a bet before connecting a wallet, and a single
+funnel-shaped exit would contradict a sentence the same dialog has just made. `docs/decisions.md`,
+2026-08-14.
 
 **Loading states (async waits, neutral):** three inline loading nodes mark the real
 waits - `feedLoad` (fetching the live feed) before the feed decision, `depProcessing`

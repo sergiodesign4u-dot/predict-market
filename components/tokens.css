@@ -801,6 +801,10 @@
   --display-question:clamp(1.1875rem,2vw,1.5rem);    /* an event question as a page heading */
   --display-hero:clamp(1.1875rem,1.5vw,1.4375rem);   /* the same question on the featured card, one rank down */
   --display-quote:clamp(1.25rem,1.85vw,1.625rem);    /* the brand tile quote */
+  --display-step:clamp(1.25rem,3.4vw,1.5rem);        /* a step title in the how-it-works stepper. It is
+     a rank under --display-sheet on purpose: the sheet no longer carries a heading of its own there, so
+     this is the loudest thing in the dialog, and three of them in a row at sheet size would each read as
+     the title of the whole rather than of one step. */
   --display-tagline:clamp(1.4375rem,2.3vw,1.9375rem);/* the SEO brand tagline */
 
   /* 400 is the root default and the weight 192 of 260 text elements on the feed

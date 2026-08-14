@@ -1,7 +1,7 @@
 /* components/hiw.css
-   Component: hiw. Classes: .hiw-col-main, .hiw-col-side, .hiw-cols, .hiw-faq, .hiw-hero, .hiw-hero-inner, .hiw-ic, .hiw-label, .hiw-page, .hiw-sec, .hiw-sec-txt, .hiw-tagline.
+   Component: hiw. Classes: .hiw-col-main, .hiw-col-side, .hiw-cols, .hiw-dot, .hiw-dots, .hiw-faq, .hiw-hero, .hiw-hero-inner, .hiw-ic, .hiw-label, .hiw-nav, .hiw-next, .hiw-page, .hiw-radio, .hiw-sec, .hiw-sec-txt, .hiw-skip, .hiw-stage, .hiw-step, .hiw-step-b, .hiw-step-n, .hiw-step-t, .hiw-step-txt, .hiw-steps, .hiw-still, .hiw-tagline.
 
-   Reads: --bevel-lit, --bg-control, --border-hairline, --color-action, --edge-shade-strong, --text-brass, --text-muted, --text-primary
+   Reads: --bevel-lit, --bg-canvas, --bg-control, --bg-plate-from, --border-hairline, --color-action, --display-step, --edge-shade-strong, --focus-ring, --shadow-ink-45, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-primary, --tint-brass-16
           (the ground, the wave and the glow left for components/platehead.css on 2026-08-11, and six roles went with them: --bg-dialog-head-from, --bg-plate-to, --color-action-lit, --mask-solid, --text-strong, --tint-brass-30)
    Stand:  ui-kit/hiw.html, and ui-kit/organisms.html#hiw for the level and its reason
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
@@ -14,8 +14,13 @@
    where the reason for the cut is written out in full, and the NAME went with
    them, because a dialog is one of the places this block can stand and a
    component is not named after one of its places.
-   WHAT IS LEFT IS ONE BLOCK WITH TWO HOSTS, which is the sentence backlog 18 was
-   waiting for. Eighteen rules below are the block itself, none of them scoped,
+   WHAT WAS LEFT WAS ONE BLOCK WITH TWO HOSTS, which is the sentence backlog 18 was
+   waiting for, AND ON 2026-08-14 IT BECAME TWO BLOCKS WITH ONE HOST EACH. The
+   stepper further down is the dialog's and the prose is the page's, and the reason
+   is written at the stepper: the two hosts answer different questions. What did not
+   change is the thing backlog 18 was actually about, that a component is not named
+   after one of its places, so this file is still `hiw.css` and not `hiw-dialog.css`
+   even though only one of its two blocks now stands in a dialog. Eighteen rules below are the block itself, none of them scoped,
    and they draw the same explainer inside a sheet hanging off <body> at DOM depth
    3 and on the standalone page at depth 9. Sixteen more are the page, and they
    are why this component reads level 3 by arithmetic instead of by decree: the
@@ -118,6 +123,152 @@
    capped a family that measures INSIDE the band, and its comment stated a cause that was not
    the cause. A selector is not an identification. */
 .hiw-faq dd{font-size:var(--text-13);line-height:var(--leading-base);color:var(--text-muted);margin:0}
+
+/* ============================================================================
+   THE STEPPER, 2026-08-14. THIS COMPONENT IS TWO BLOCKS NOW AND NOT ONE, and the
+   paragraph at the head of this file that says "one block with two hosts" is the
+   record of what it was rather than of what it is. The dialog host and the page
+   host stopped being the same block on purpose: a person who taps How it works in
+   a header wants to know what the thing IS in fifteen seconds, and a person who
+   opens the full guide wants the answer to a question they already have. The
+   first is three steps with a picture each and a way in at the end; the second is
+   prose, a FAQ and the sentence about money being held 1:1, and it is the only
+   place that sentence is written. So the rule in the root CLAUDE.md that a dialog
+   with a standalone page is ONE markup and not two is deliberately spent here,
+   and this is the payment: the two hosts now answer different questions, and the
+   dialog no longer carries a "Read the full guide" button as an afterthought, it
+   carries a way to start.
+
+   THE STAGE IS THE PRODUCT AND NOT A DRAWING OF IT. Each step stands on a still
+   built from the classes the screens ship: `.card` with its `.thumb`, `.q`,
+   `.why` and `.yesno` on step 1, `.bp-dir`, `.bp-side` and `.line.total` on step
+   2, `.pos` with a won side on step 3. Nothing here redraws them, which is why
+   this file reads none of their tokens. **NOT ONE ELEMENT IN A STILL IS
+   FOCUSABLE**, and that is what makes it a picture rather than a fake control: an
+   `<a>` with no `href` is not a link and not a tab stop, and it still matches
+   every `a` in `card.css` and `yesno.css`, so the face arrives and the behaviour
+   does not. `.btn` and `.yesno-pick` are class-keyed and take a `<span>`. The one
+   control that could not be made inert, the bookmark button, is simply not in the
+   still. The stage is `aria-hidden` and `pointer-events:none` on top of that,
+   which is safe to write ONLY because there is nothing focusable inside it:
+   aria-hidden over a focusable element is a defect and not a decoration.
+
+   THE STEP IS SWITCHED BY A RADIO AND THE RULES ARE KEYED TO `:nth-of-type`, the
+   same bargain `tabs.css` made on 2026-08-10 and for the same reason: an id in a
+   selector is a promise that the component stands once in a document, and this
+   one stands twice on its own kit page. The ids stay in the markup for `<label
+   for>`, which needs them, and the kit suffixes the id AND the `name`, because two
+   cells sharing a radio name are one group and the second cell's checked radio
+   unchecks the first's.
+   ============================================================================ */
+.hiw-steps{display:flex;flex-direction:column;min-height:0}
+/* The radio is the state and the label is the control, so the radio is taken out
+   of the picture without being taken out of the tab order: `clip` rather than
+   `display:none`, which would remove it from the keyboard as well. */
+.hiw-radio{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+.hiw-step{display:none;flex-direction:column;min-height:0}
+.hiw-steps > .hiw-radio:nth-of-type(1):checked ~ .hiw-step:nth-of-type(1),
+.hiw-steps > .hiw-radio:nth-of-type(2):checked ~ .hiw-step:nth-of-type(2),
+.hiw-steps > .hiw-radio:nth-of-type(3):checked ~ .hiw-step:nth-of-type(3){display:flex}
+
+/* THE STAGE BLEEDS AND THE BODY DOES NOT, which is why the padding is on the text
+   and not on the step. A picture that stops 24px short of the sheet edge reads as
+   an illustration pasted into a document; one that reaches the edge reads as the
+   product seen through a window, and the window is the sheet's own clipped corner. */
+.hiw-stage{position:relative;overflow:clip;min-height:280px;padding:var(--space-24) var(--space-32);display:flex;align-items:center;justify-content:center;background-color:var(--bg-canvas);background-image:var(--surface-grain),radial-gradient(120% 90% at 50% 0%,var(--bg-plate-from),var(--bg-canvas) 72%);background-blend-mode:overlay,normal;border-bottom:var(--hairline) solid var(--shadow-ink-45)}
+/* The floor under the still, so the plate has something to sit on rather than
+   floating in a box. It is the same brass wash the plate heads use, at a sixth of
+   the opacity, and it is a pseudo because a floor is not content. */
+.hiw-stage::after{content:'';position:absolute;left:12%;right:12%;bottom:0;height:56px;z-index:var(--z-under);pointer-events:none;background:radial-gradient(60% 100% at 50% 100%,var(--tint-brass-16),transparent 70%)}
+/* THE TILT IS 2.2 DEGREES AND IT IS THE WHOLE ARGUMENT FOR A STILL OVER A LIVE
+   SPECIMEN. Square to the frame, a card inside a dialog reads as a card the reader
+   is expected to press. Turned two degrees off, with a shadow under it, it reads as
+   a photograph of one. The rotation is the smallest angle that still reads as
+   deliberate at 390px: under 2 it looks like a bug. */
+.hiw-still{position:relative;z-index:var(--z-content);width:100%;max-width:296px;pointer-events:none;transform:rotate(-2.2deg);filter:drop-shadow(0 18px 28px var(--shadow-ink-85)) drop-shadow(0 4px 10px var(--shadow-ink-72))}
+.hiw-still > *{margin:0}
+/* A still is a picture at ONE size, so the type inside it does not ride the
+   product's ramp: it rides the still's own, three steps down, and the three
+   components it borrows keep every other property they have. */
+.hiw-still .q{font-size:var(--text-13);line-height:var(--leading-tight)}
+.hiw-still .why{font-size:var(--text-11)}
+.hiw-still .meta{font-size:var(--text-10)}
+.hiw-still .pos-q{font-size:var(--text-12)}
+.hiw-still .bp-side{font-size:var(--text-14)}
+/* THE BET PANEL IS A WIDTH-ONLY FACE AND THE STILL TAKES THE BARGAIN RATHER THAN
+   AN ARGUMENT FOR LEAVING IT OUT, which is the rule `ui-kit/CLAUDE.md` already
+   states for `.tk-show-panel`: the test is whether the placement SAYS what it
+   changed. Three declarations, and they are exactly the three that are about
+   where the panel stands rather than what it is. `.bet-panel` is `display:none`
+   below DETAIL 760 and `flex:0 0 322px` above it, so inside a 464px dialog on a
+   phone the still would have drawn nothing at all and on a desk it would have
+   held a 322px column inside a 312px stage. The plate, the ground, the border,
+   the bevels and every rule `.bp-inner`, `.bp-dir` and `.line.total` take from
+   being inside a panel are untouched, which is the whole reason the still stands
+   in one instead of redrawing it. */
+.hiw-still .bet-panel{display:block;flex:none;width:auto;position:static;top:auto}
+
+/* THE STAGE HAS A FLOOR AND SO DOES THE TEXT, because a sheet that resizes under
+   a thumb moves the control the thumb is aimed at. Measured before them, at 390
+   and at 1280: the three steps stood 552, 641 and 506 tall, so pressing Next moved
+   the Next button 89px down and then 135 up. The still is CENTRED in the stage
+   rather than stretched to it, because three pictures of three different
+   components are three different shapes and it is the frame that has to be
+   constant, not the picture. 280 is the tallest of the three stills plus its
+   shadow, measured, so no still is ever clipped by its own floor.
+   WHAT IS LEFT IS 39px AND IT IS NOT A DEFECT: step 3 is 603 against 564 because
+   it carries one more control, the quiet way out under the primary one. Reserving
+   that row on the first two steps would buy an identical height with 39px of
+   empty sheet on two screens out of three, and the button that moves is not the
+   one a thumb is already aimed at: it is Next on one step and Create account on
+   the other, which is the moment the reader is meant to stop and read. */
+.hiw-step-txt{padding:var(--space-20) var(--space-24) var(--space-16);display:flex;flex-direction:column;gap:var(--space-8);min-height:172px;overflow:auto}
+.hiw-step-n{margin:0;font-family:var(--font-mono);font-size:var(--text-11);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-brass)}
+.hiw-step-t{margin:0;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-step);line-height:var(--leading-tight);letter-spacing:var(--track-question);color:var(--text-primary);text-wrap:balance}
+.hiw-step-b{margin:0;font-size:var(--text-14);line-height:var(--leading-base);color:var(--text-muted)}
+
+.hiw-nav{padding:0 var(--space-24) var(--space-24);display:flex;flex-direction:column;gap:var(--space-12)}
+.hiw-dots{display:flex;justify-content:center;gap:var(--space-8);padding:var(--space-4) 0 var(--space-2)}
+/* A DOT IS A TARGET AND THE TARGET IS NOT THE DOT. The mark is 6px and no floor in
+   this system would ever be met by it, so the label carries the 44px box and the
+   mark is drawn inside it by ::before. That is the same division `iconbtn.css`
+   makes between a circle and the glyph in it, and it is the reason this passes the
+   touch floor without the floor having to name a six-pixel element. */
+.hiw-dot{position:relative;display:inline-flex;align-items:center;justify-content:center;width:var(--control-44);height:var(--space-20);cursor:pointer;border-radius:var(--radius-pill)}
+/* THE DOT SAYS ITS STATE TWICE, IN WIDTH AND IN INK, and the first draft said it
+   once and said it in the wrong ink. `--bevel-notice` reads 18.45:1 against the
+   sheet in the Vault and **1.08:1 in daylight**, because it is `rgba(255,255,255,.06)`
+   there and `rgba(255,255,255,.7)` here: a bevel is a HIGHLIGHT role, so in the
+   light theme it is white on chalk and the two dots the reader has not reached
+   were invisible. A STATE THAT ONLY EXISTS IN ONE THEME DOES NOT EXIST, which is
+   the sentence hero.css already wrote about a hover.
+   Measured against the sheet ground in both themes: `--text-muted` 6.85 and 7.41,
+   `--text-brass` 8.71 and 7.14. Both clear 3:1 either way, which is what 1.4.11
+   asks of a non-text mark that carries state. **But in daylight they are 7.41
+   against 7.14, which is no difference at all**, so the width carries the state as
+   well: 16 to 28. Colour alone would have been 1.4.1 in the theme where the two
+   inks happen to meet. */
+.hiw-dot::before{content:'';width:var(--size-16);height:var(--size-4);border-radius:var(--radius-pill);background:var(--text-muted);transition:background var(--dur-quick) ease,width var(--dur-quick) ease}
+.hiw-steps > .hiw-radio:nth-of-type(1):checked ~ .hiw-step .hiw-dot:nth-of-type(1)::before,
+.hiw-steps > .hiw-radio:nth-of-type(2):checked ~ .hiw-step .hiw-dot:nth-of-type(2)::before,
+.hiw-steps > .hiw-radio:nth-of-type(3):checked ~ .hiw-step .hiw-dot:nth-of-type(3)::before{background:var(--text-brass);width:var(--size-28)}
+.hiw-dot:hover::before{background:var(--text-brass)}
+/* THE RING IS MOVED FROM THE RADIO TO THE LABEL, one mapping per step, because the
+   universal focus rule in base.css puts it on the element that actually has focus
+   and that element is 1px wide and clipped. Written out per step exactly the way
+   :checked is, for the reason tabs.css gives: a selector that says "any label after
+   a focused radio" would light all three. */
+.hiw-steps > .hiw-radio:nth-of-type(1):focus-visible ~ .hiw-step .hiw-dot:nth-of-type(1),
+.hiw-steps > .hiw-radio:nth-of-type(2):focus-visible ~ .hiw-step .hiw-dot:nth-of-type(2),
+.hiw-steps > .hiw-radio:nth-of-type(3):focus-visible ~ .hiw-step .hiw-dot:nth-of-type(3){outline:var(--ring) solid var(--focus-ring);outline-offset:0}
+/* The Next control is a LABEL wearing the button face, which is the one place in
+   this system where a `.btn` is not a button or an anchor. It is written down
+   rather than left to be discovered: a label with a `for` is a real control with a
+   real target, and the alternative is a script that this tree does not have and
+   that would not run from a file:// page in every engine anyway. */
+.hiw-next{cursor:pointer}
+.hiw-skip{display:block;text-align:center;font-size:var(--text-13);color:var(--text-muted);text-decoration:none;padding:var(--space-8)}
+.hiw-skip:hover{color:var(--text-brass)}
 
 /* THE PAGE. A page is not a bigger dialog: it has room, so the hero gets an edge
    of its own instead of the sheet's, the reading column takes the page text size

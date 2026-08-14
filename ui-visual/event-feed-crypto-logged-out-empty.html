@@ -680,39 +680,105 @@ document.addEventListener('click', function (e) {
     <button type="button" class="icon-btn icon-btn-photo sheet-close" data-close-dialog aria-label="Close">
       <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg>
     </button>
-    <div class="plate-head hiw-hero">
-      <div class="hiw-hero-inner">
-        <h2>How it works</h2>
-        <p class="hiw-tagline">Back the events you follow, in plain language.</p>
-      </div>
-    </div>
-    <div class="hiw-body">
-      <div class="hiw-sec">
-        <span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><use href="#i-check-circle-b"/></svg></span>
-        <div class="hiw-sec-txt">
-          <span class="hiw-label">How betting works here</span>
-          <p>Yonder turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p>
+    <div class="hiw-steps">
+      <input class="hiw-radio" type="radio" name="hiwstep" id="hiwstep-1" checked aria-label="Step 1 of 3, pick an event">
+      <input class="hiw-radio" type="radio" name="hiwstep" id="hiwstep-2" aria-label="Step 2 of 3, back YES or NO">
+      <input class="hiw-radio" type="radio" name="hiwstep" id="hiwstep-3" aria-label="Step 3 of 3, get paid when it resolves">
+
+      <div class="hiw-step">
+        <div class="hiw-stage" aria-hidden="true">
+          <div class="hiw-still">
+            <article class="card">
+              <div class="card-body">
+                <div class="top">
+                  <span class="thumb" style="background-image:url(../assets/event-politics.jpg)">thumbnail placeholder</span>
+                  <div class="top-txt"><a class="q">Will the US government shut down before March 1, 2027?</a><p class="why">Funding talks have stalled twice this quarter.</p></div>
+                </div>
+                <div class="yesno"><a class="yes">YES</a><a class="no">NO</a></div>
+                <p class="meta"><span class="meta-txt"><span>Volume: $84,200</span><span>Closes: Mar 1, 2027</span></span></p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="hiw-step-txt">
+          <p class="hiw-step-n">Step 1 of 3</p>
+          <h2 class="hiw-step-t">Pick an event you follow</h2>
+          <p class="hiw-step-b">Every event asks one question, with a date and a named source. You see the odds, the one-line why and how it resolves before you put in a cent.</p>
+        </div>
+        <div class="hiw-nav">
+          <label class="btn btn-primary btn-md btn-block hiw-next" for="hiwstep-2">Next</label>
+          <div class="hiw-dots">
+            <label class="hiw-dot" for="hiwstep-1" aria-label="Step 1"></label>
+            <label class="hiw-dot" for="hiwstep-2" aria-label="Step 2"></label>
+            <label class="hiw-dot" for="hiwstep-3" aria-label="Step 3"></label>
+          </div>
         </div>
       </div>
-      <div class="hiw-sec">
-        <span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><use href="#i-graph-up-b"/></svg></span>
-        <div class="hiw-sec-txt">
-          <span class="hiw-label">Why the odds move</span>
-          <p>The odds are a live price set by what people bet, not a fixed quote. When more money backs YES, YES costs more and NO costs less. Your payout depends on the odds at the moment you bet, not only on the outcome, so reading an event early and being right is worth more.</p>
+
+      <div class="hiw-step">
+        <div class="hiw-stage" aria-hidden="true">
+          <div class="hiw-still">
+            <aside class="bet-panel">
+              <div class="bp-inner">
+                <div class="bp-dir">
+                  <span class="yesno-pick bp-side sel yes">YES <span class="bp-pct">38%</span></span>
+                  <span class="yesno-pick bp-side no">NO <span class="bp-pct">62%</span></span>
+                </div>
+                <div>
+                  <div class="line"><span>Your bet</span><span>$5.00</span></div>
+                  <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
+                </div>
+                <span class="btn btn-primary btn-md btn-block">Confirm bet</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+        <div class="hiw-step-txt">
+          <p class="hiw-step-n">Step 2 of 3</p>
+          <h2 class="hiw-step-t">Back YES or NO</h2>
+          <p class="hiw-step-b">The odds are a live price set by what people bet. Your payout settles at the price you took, so being early and right is worth more. One dollar minimum.</p>
+        </div>
+        <div class="hiw-nav">
+          <label class="btn btn-primary btn-md btn-block hiw-next" for="hiwstep-3">Next</label>
+          <div class="hiw-dots">
+            <label class="hiw-dot" for="hiwstep-1" aria-label="Step 1"></label>
+            <label class="hiw-dot" for="hiwstep-2" aria-label="Step 2"></label>
+            <label class="hiw-dot" for="hiwstep-3" aria-label="Step 3"></label>
+          </div>
         </div>
       </div>
-      <div class="hiw-sec hiw-faq">
-        <span class="hiw-label">Common questions</span>
-        <dl>
-          <dt>Do I need crypto to start?</dt>
-          <dd>No. You can browse events and build a bet with no wallet. You add funds by card or crypto only when you confirm.</dd>
-          <dt>What is the smallest bet?</dt>
-          <dd>One dollar. The default is five.</dd>
-          <dt>How does an event resolve?</dt>
-          <dd>Each event states its resolution rule up front. The team resolves it against the real-world outcome, and you can see the record of resolved events.</dd>
-        </dl>
+
+      <div class="hiw-step">
+        <div class="hiw-stage" aria-hidden="true">
+          <div class="hiw-still">
+            <article class="pos">
+              <div class="pos-top">
+                <span class="pos-q">Will the US government shut down before March 1, 2027?</span>
+                <span class="pos-side pos-won">WON</span>
+              </div>
+              <div class="pos-figures">
+                <span class="pos-fig">Stake<b>$5.00</b></span>
+                <span class="pos-fig">Paid out<b>$13.20</b></span>
+              </div>
+              <span class="pos-status">Resolved against the source it named</span>
+            </article>
+          </div>
+        </div>
+        <div class="hiw-step-txt">
+          <p class="hiw-step-n">Step 3 of 3</p>
+          <h2 class="hiw-step-t">Get paid when it resolves</h2>
+          <p class="hiw-step-b">It resolves against the source it named and the result is written on-chain. Until then your money is held 1:1, never lent and never moved.</p>
+        </div>
+        <div class="hiw-nav">
+          <a class="btn btn-primary btn-md btn-block" href="sign-in.html">Create account</a>
+          <a class="hiw-skip" href="event-feed.html">Browse events first</a>
+          <div class="hiw-dots">
+            <label class="hiw-dot" for="hiwstep-1" aria-label="Step 1"></label>
+            <label class="hiw-dot" for="hiwstep-2" aria-label="Step 2"></label>
+            <label class="hiw-dot" for="hiwstep-3" aria-label="Step 3"></label>
+          </div>
+        </div>
       </div>
-      <a href="how-it-works.html" class="hiw-full">Read the full guide <svg class="ic hiw-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-arrow-right"/></svg></a>
     </div>
   </dialog>
 
