@@ -210,13 +210,68 @@
   </section>
 
 
+  <section class="tk-sec" id="sheet">
+    <h2 data-n="7">The phone form: one button and a sheet</h2>
+    <p class="tk-note">The two menus carry their own value, so they measure <b>152 and 154</b>. At 360
+    the feed column offers <b>298</b> and the pair needs <b>314</b>, so until 2026-08-14 they stood one
+    above the other and the list head cost <b>114.4px</b>. At 390 the same pair fits on one course and
+    the head costs 71.9. <b>The width this project designs from was the only one of the three paying
+    for a second course</b>, which is why it survived every audit: 390 and 1280 are the two widths
+    everybody reads and the defect lives between them.</p>
+    <p class="tk-note">Below DESK 640 the pair is replaced by one control. <b>The whole band, heading
+    to first card, measured on a coarse pointer: 253.4 at 320 and 360, 201.4 at 390, 149.4 at 430,
+    against 112.0 at all four after.</b> The band is now the same number at every phone width, which
+    is the second half of the change and not a side effect: the row of chips under it stopped wrapping
+    on the same day.</p>
+    <div class="tk-pairv">
+      <div class="tk-th">Vault, dark</div>
+      <div class="tk-theme-fig tk-stack tk-show-filters" data-theme="dark">
+        <input type="checkbox" id="filtersOpen-kd" class="filters-toggle" aria-label="Show filters">
+        <label class="filters-btn" for="filtersOpen-kd">Filters<svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-chevron-down"/></svg></label>
+      </div>
+      <div class="tk-th">Daylight, light</div>
+      <div class="tk-theme-fig tk-stack tk-show-filters" data-theme="light">
+        <input type="checkbox" id="filtersOpen-kl" class="filters-toggle" aria-label="Show filters">
+        <label class="filters-btn" for="filtersOpen-kl">Filters<svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-chevron-down"/></svg></label>
+      </div>
+    </div>
+    <p class="tk-note">The button is pinned visible by <code>.tk-show-filters</code>, one declaration,
+    and every other thing about it here is <code>filters.css</code>: it joins the summary's face rather
+    than owning a second copy of it, so the ground, the edge, the corner, the padding, the hover, the
+    press and the 44px floor all arrive from the system. <b>The sheet itself is not drawn on this
+    stand</b> and the cell below says so: its box is <code>position:fixed</code> with a bottom inset, a
+    max-height in <code>svh</code>, a top-corner radius and a lift, and a cell that restated those
+    would be a hand-kept copy of six declarations drifting from the file that owns them.</p>
+    <p class="tk-gone tk-above-640">The sheet is a below-640 face. Not rendered at this width.</p>
+    <p class="tk-note"><b>Why a checkbox and not a <code>&lt;dialog&gt;</code>.</b> The two radio
+    groups have to exist once. A dialog would need its own copy of them, and a radio group is keyed by
+    <code>name</code>, so two copies in one document are one group with two sources of
+    <code>checked</code> and two sets of ids: this kit pays for exactly that with its per-theme
+    suffixes, and pays for it again two cells up. The checkbox leaves the panels where they are and
+    moves the box they stand in, so the desk keeps its two pills out of the same markup.</p>
+    <p class="tk-note"><b>What it costs, stated rather than hidden.</b> A checkbox has no Escape and no
+    focus trap. Escape is added back by a nine-line script on the 57 screens that carry the strip, and
+    the trap is not: <code>docs/backlog.md</code> 150.</p>
+  </section>
+
   <!-- ================================================================== width --><section class="tk-sec" id="width">
     <h2>What it does with width</h2>
-    <p class="tk-note"><b>Its own width query: 640 DESK.</b> The menu is 152px at every width. The rung does not size it, it re-anchors it: below DESK the panel takes <code>position:relative</code> so it opens in the flow rather than over it. A menu that overlays on a phone is a menu that covers what it filters.</p>
+    <p class="tk-note"><b>Its own width query: 640 DESK, and what it does there changed on
+    2026-08-14.</b> The menu is 152px at every width and the rung has never sized it. It now REPLACES
+    it: below DESK the pair is <code>display:none</code> and one <code>.filters-btn</code> stands in
+    the head, and the pair comes back inside a fixed bottom sheet when the toggle is checked.</p>
+    <p class="tk-note"><b>The block that stood here before said something else and could not have
+    been true.</b> It read <code>@media(max-width:39.99875rem){.filter-menu{position:relative}}</code>,
+    which restates at a rung the exact value the first line of <code>filters.css</code> declares
+    unconditionally: it could not change a pixel at any width, and it read like a phone decision. This
+    page carried the prose version of it, <i>below DESK the panel takes position:relative so it opens
+    in the flow rather than over it</i>, for as long as the rule stood. <b>A dead rule with a live
+    sentence beside it is worse than a dead rule</b>, because the sentence is what the next reader
+    believes.</p>
   </section>
 
   <section class="tk-sec" id="rule">
-    <h2 data-n="7">The rule</h2>
+    <h2 data-n="8">The rule</h2>
     <p class="tk-note"><b>Hide an input by making it invisible, never by removing its box.</b> A
     control with no box is a control with no keyboard and no screen reader, and the styling that was
     supposed to answer for it cannot fire either.</p>
@@ -227,10 +282,13 @@
     <p class="tk-note"><b>A value typed as a colour function is invisible to the system.</b> The
     ladder has rungs so that a tint can be found, compared and moved; a <code>color-mix</code> in a
     rule is a decision nothing can audit.</p>
+    <p class="tk-note"><b>A second form of a control is a second PLACEMENT, never a second copy of the
+    controls.</b> The phone sheet holds the same two radio groups the desk pills hold, because a
+    duplicate is one group with two sources of <code>checked</code> and a face kept in two places.</p>
   </section>
 
   <section class="tk-sec" id="antirule">
-    <h2 data-n="8">The anti-rule</h2>
+    <h2 data-n="9">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never use <code>display:none</code> to hide a control you still want
     operable.</b> <i>Sixteen inputs, 104 screens, 400 Tab presses, 0 stops.</i></p>
     <p class="tk-lab tk-bad"><b>Never assume a scope covers the footer.</b> <i>It does not, and the
@@ -238,14 +296,22 @@
     screenshot.</i></p>
     <p class="tk-lab tk-bad"><b>Never draw a ring outside a clipped panel.</b> <i>Two of its four
     strokes disappear, and the one that is left reads as a border.</i></p>
+    <p class="tk-lab tk-bad"><b>Never leave a rule at a rung that restates a value declared
+    unconditionally.</b> <i>It cannot change a pixel and it reads like a decision, and the prose
+    written beside it goes on being believed after the rule is gone.</i></p>
+    <p class="tk-lab tk-bad"><b>Never reach for the nearest-sounding token for a backdrop.</b>
+    <i><code>--scrim</code> is the COURSE DRAWER's, at 30 per cent, and over graphite it darkens
+    nothing: the sheet did not read as modal. The product answers this once already, in
+    <code>dialog.app-dialog::backdrop</code>.</i></p>
   </section>
 
   <section class="tk-sec" id="closing">
-    <h2 data-n="9">Where the rest of it is</h2>
+    <h2 data-n="10">Where the rest of it is</h2>
     <p class="tk-note">The level and its reason: <a href="molecules.html#filters">the molecules
     page</a>. The stylesheet: <code>components/filters.css</code>. The switch that left:
-    <a href="toggle.html">toggle</a>. The floor: <code>components/base.css</code>. The open rows:
-    <code>docs/backlog.md</code> 54 and 58.</p>
+    <a href="toggle.html">toggle</a>. The floor: <code>components/base.css</code>. The row of chips that
+    changed on the same day: <a href="catnav.html">catnav</a>. The open rows:
+    <code>docs/backlog.md</code> 54, 58 and 150.</p>
   </section>
 
 </div>

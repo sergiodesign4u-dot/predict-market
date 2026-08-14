@@ -1,7 +1,8 @@
 # components/ - the system itself
 
-This folder IS the design system. **54 stylesheets, 9,224 lines**: 48 here and 6 in `patterns/`,
-re-counted 2026-08-13 by `cat components/*.css components/patterns/*.css | wc -l` after `trust-art.css`
+This folder IS the design system. **54 stylesheets, 9,574 lines**: 48 here and 6 in `patterns/`,
+re-counted 2026-08-14 by `cat components/*.css components/patterns/*.css | wc -l` after the filters
+sheet and the scroll-driven edge fade. It was 9,224 on 2026-08-13 after `trust-art.css`
 was written (`docs/backlog.md` 140). It was 53 and 8,734 earlier the same day, after `print.css`
 (`docs/backlog.md` 125). **`trust-art.css` is the first file here that is not a component and not a
 level**: it holds four `--trust-art-*` custom properties, each a `data:` URI carrying one of the
@@ -330,6 +331,48 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   DETAIL rung, which had been cut to buy back the 44px this control was eating. **A placeholder is
   not inert: every file that has to have an opinion about it is paying rent on a decision nobody
   took.**
+- **A SECOND FORM OF A CONTROL IS A SECOND PLACEMENT, NEVER A SECOND COPY OF THE CONTROLS, AND THE
+  THING THAT DECIDES IT IS `name`.** The phone's filter sheet was going to be a `<dialog>` holding the
+  sort and frequency radios, which is one copy per form and therefore two: **a radio group is keyed by
+  `name`, so two copies in one document are ONE group with two sources of `checked` and two sets of
+  ids**, and the kit already pays for exactly that with its per-theme suffixes. A checkbox and three
+  sibling selectors move the BOX the existing panels stand in and leave the panels alone, so the desk
+  keeps its two pills and the phone gets a sheet out of one markup. **Ask which elements have to exist
+  once before asking what the second form should look like.** The price of the checkbox is a focus
+  trap and it is `../docs/backlog.md` 150, written at the moment it was paid rather than found later.
+- **A SCROLL CONTAINER CLIPS ON BOTH AXES, AND THE OBVIOUS REPAIR MOVES THE NEIGHBOURS.**
+  `overflow-y` computes `auto` the moment `overflow-x` stops being `visible`, so the first row turned
+  into a scroller here cut its chips' focus rings, 2px wide at 2px offset, top and bottom. Block
+  padding with an equal negative block margin looks like it hands the height back and does not: **the
+  negative margin COLLAPSES THROUGH the wrapper in a block container**, so it is handed to the
+  neighbours instead, and the row measured 4px from the head and 12 from the grid where the file
+  declares 2 and 16. Turn the ring inward, which is what `filters.css` already does for a clipped
+  panel. **This is the block-flow twin of the flex-gap trap above, and both are the same question:
+  before writing a margin, ask what holds the element.**
+- **A HINT ABOUT SCROLL THAT IS PAINTED ON IS A READING OF THE PAINT AND THE QUESTION WAS ABOUT THE
+  SCROLL.** A permanent edge fade is wrong twice: it fades the last chip once the row is scrolled to
+  its end, and it fades empty space on a row that fits. `animation-timeline:scroll(self inline)` binds
+  progress to the element's own inline scroll, **and when the element does not overflow the timeline
+  is INACTIVE and the element falls back to its base style**, so declaring the mask only inside the
+  keyframes makes "no overflow, no fade" free, with no query and no class. Both engines have it,
+  measured. The two colours in a gradient mask are ALPHA and not ink, which is the one place in this
+  folder a raw colour is not a colour, and a gradient is the one mask safe from disk because it is
+  generated rather than fetched. **And use the longhands**: the `animation` shorthand resets
+  `animation-duration`, and a scroll-driven animation wants it left at `auto`.
+- **A DEAD RULE WITH A LIVE SENTENCE BESIDE IT IS WORSE THAN A DEAD RULE.**
+  `@media(max-width:39.99875rem){.filter-menu{position:relative}}` restated, at a rung, the exact
+  value the first line of `filters.css` declares unconditionally: it could not change a pixel at any
+  width. `ui-kit/filters.html` carried the prose version of it, *below DESK the panel takes
+  position:relative so it opens in the flow rather than over it*, for as long as the rule stood. **The
+  rule is what gets deleted and the sentence is what the next reader believes**, which is the same
+  species as the `Stand:` lines that pointed at deleted files and the four-widths claim that had never
+  been measured at a rung.
+- **REACHING FOR THE NEAREST-SOUNDING TOKEN IS HOW A PRODUCT GROWS TWO ANSWERS TO ONE QUESTION.** The
+  filters sheet's backdrop was `--scrim`, whose own comment in `tokens.css` says what it is for, the
+  COURSE DRAWER, which is chrome. It is `--black-a30`, and 30 per cent of black over graphite darkened
+  nothing: the page behind the sheet was visibly undimmed and the surface did not read as modal. The
+  product answers this once already, in `dialog.app-dialog::backdrop`, at `--shadow-ink-45`. **Before
+  taking a role by its name, find where the product already answers the same question.**
 - **A PLACEMENT FILE NARROWS ITS OWN RULE; IT DOES NOT OVERRIDE SOMEBODY ELSE'S FACE.** The moment
   the lockup became an anchor, four selectors in `footer.css` reached it, all (0,1,1) or better
   against `.logo`'s (0,1,0): muted ink at rest, brass on hover, an underline, a pressed ground. The

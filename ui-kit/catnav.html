@@ -201,6 +201,57 @@
   <!-- ================================================================== width --><section class="tk-sec" id="width">
     <h2>What it does with width</h2>
     <p class="tk-note"><b>Its own width query: 900 RAIL, and nothing else since 2026-08-14.</b> Two different components live in this file and only one of them is a rail. At RAIL 900 <code>.subcat</code> becomes a <code>flex:0 0 214px</code> sticky column beside the content with its own scroll, which is the second of the three arrivals the ladder is named for. <b>The DESK 640 block is gone and the band it was written for is 24px shorter without it.</b> All it did was give <code>.cat-nav</code> a <code>margin-bottom</code> below the desk, and <code>.feed .feed-inner</code> is a flex column with a 16px <code>gap</code>: a margin under a flex child is ADDED to the gap and never merged with it, so a phone got 32px under the strip and a desk got 16. Measured at 360 and 390 before it went, and at 640, 900 and 1280 to see what it was being compared against. The rung is still cut for this strip, in <code>base.css</code>, where the plate that wraps it drops its vertical padding from 12 to 8 below the desk: the whole band from the header to the first plate was <b>126px on a phone to show a 48px chip, and is 102 now</b>.</p>
+    <p class="tk-note"><b>And the sub-filter stopped wrapping on 2026-08-14, with no query at all.</b>
+    Its five chips need <b>332px</b> of row and the feed column offers <b>298</b> at 360, so the row
+    stood in two courses and cost <b>83.0px</b> where one course costs 37.5. Measured at four widths
+    before the change: 83.0 at 320, 360 and 390, and 37.5 at 430. <b>The defect lived entirely below
+    430</b>, so an audit reading 390 and 1280 saw one of the two states and never the pair. It is
+    <code>flex-wrap:nowrap</code> with <code>overflow-x:auto</code> now, which is what
+    <code>.cat-nav</code> above it has always been. <b>This is not a padding tune and the difference
+    is what happens next</b>: a sixth category adds a whole course to a wrapping row and adds nothing
+    to a scrolling one.</p>
+    <p class="tk-note"><b>A scroll container clips on both axes</b>, because <code>overflow-y</code>
+    computes <code>auto</code> the moment <code>overflow-x</code> stops being <code>visible</code>.
+    The chip's focus ring is 2px wide at 2px offset, so 4px of it stood outside a chip with nothing
+    between it and the scrollport edge. The ring turns <b>inward</b>, which is the repair
+    <code>filters.css</code> already makes for the panel's rows. <b>Block padding with an equal
+    negative margin was tried first and it is the wrong shape</b>: the negative margin collapses
+    THROUGH the wrapper in a block container, so it does not hand the height back to the row, it hands
+    it to the neighbours. Measured with it in place: <b>4px above the row and 12 below, where the file
+    declares 2 and 16.</b></p>
+  </section>
+
+  <section class="tk-sec" id="fade">
+    <h2>The fade is driven by the scroll, so it never says there is more where there is not</h2>
+    <p class="tk-note">Three rows in this file are horizontal scrollers and not one of them told the
+    reader so. <code>.cat-nav&gt;ul</code> cut <b>Crypto</b> off mid-word at 360 and that hard edge was
+    the only hint the product gave; the sub-category rail gave none, because its last chip usually ends
+    before the edge.</p>
+    <p class="tk-note"><b>A fade painted on permanently is the usual answer and it is wrong twice.</b>
+    It fades the last chip once the row is scrolled to its end, so the thing a person has just reached
+    is the thing that goes pale, and it fades empty space on a row that fits, which is a hint pointing
+    at nothing. Both of those read the PAINT when the question is about the SCROLL.</p>
+    <p class="tk-note"><code>animation-timeline:scroll(self inline)</code> binds progress to the row's
+    own inline scroll: no left fade at 0, both between, no right fade at the end. <b>And when the row
+    does not overflow the timeline is inactive and the element falls back to its base style</b>, which
+    declares no mask at all, so a row that fits is a row with no fade and it costs neither a query nor
+    a class to say so.</p>
+    <p class="tk-note"><b>Measured in both engines before a line of it was written</b>, because this
+    system has been burned by a mask twice. <code>CSS.supports</code> is true in Chromium 151 and
+    WebKit 26.5, the computed <code>mask-image</code> MOVED when the row was scrolled in both, and the
+    row was then screenshot with the mask on and with <code>mask-image:none</code> forced: <b>the two
+    images differ in both engines, and the same shot taken twice unchanged is byte-identical</b>. That
+    last reading is the control, and without it the first two prove only that a property parses.
+    <b>One layer and no <code>mask-composite</code></b>: the two-layer mask that drew nothing in WebKit
+    is written up in <code>components/CLAUDE.md</code>. A gradient is also the one kind of mask safe
+    from disk, because it is generated rather than fetched.</p>
+    <p class="tk-note"><b>A scroller does not start at its active item, and that was a live defect on
+    3 of the 5 category pages.</b> At 360 the chip carrying <code>aria-current</code> stood off the
+    right edge: <b>Crypto by 92px, Culture by 223, General by 356</b>, which is the whole chip. A
+    person landed on a page whose navigation showed nothing chosen. <code>scroll-start-target</code> is
+    the CSS answer to exactly this and <b>neither Chromium 151 nor WebKit 26.5 supports it</b>,
+    measured, so it is nine lines of script on the 57 screens that carry the strip, and the script says
+    so in its own first comment. 0 of 106 screens now.</p>
   </section>
 
   <section class="tk-sec" id="rule">

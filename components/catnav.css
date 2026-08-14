@@ -89,7 +89,29 @@
    skin: it only applies under .feed-inner, so it is the page and not the
    component. */
 .cat-main .feed-subfilter{margin:var(--space-2) 0 var(--space-16)}
-.cat-main .feed-subfilter ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:var(--space-8)}
+/* THE ROW IS ONE COURSE AND IT SCROLLS, SINCE 2026-08-14. It was `flex-wrap:wrap`,
+   and the five chips need 332px of row: at 360 the feed column offers 298, so the
+   row stood in TWO courses and cost 83.0px where one course costs 37.5. Measured
+   at four widths before the change: 83.0 at 320, 360 and 390, and 37.5 at 430, so
+   the defect lived entirely below 430 and every audit that read 390 and 1280 saw
+   one of the two states and never the pair.
+   A WRAPPING ROW GROWS WITH THE CATALOGUE AND A SCROLLING ROW DOES NOT, which is
+   why this is not a padding tune: the sixth category adds a whole course to the
+   first and adds nothing at all to the second.
+   A SCROLL CONTAINER CLIPS ON BOTH AXES, and that is the second thing this row had
+   to pay for: `overflow-y` computes `auto` the moment `overflow-x` stops being
+   `visible`, so the chip's focus ring, 2px wide at 2px offset, stood 4px outside a
+   chip with nothing between it and the scrollport edge. The ring turns INWARD
+   instead, which is the repair filters.css already makes for the panel's rows and
+   for the same sentence. **Block padding with an equal negative margin was tried
+   first and it is the wrong shape**: the negative margin COLLAPSES THROUGH this
+   wrapper in a block container, so it does not hand the height back to the row, it
+   hands it to the neighbours. Measured with it in place: 4px above the row and 12
+   below, where this file's own two numbers are 2 and 16. An inward ring costs no
+   geometry at all. */
+.cat-main .feed-subfilter ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:nowrap;gap:var(--space-8);overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-inline:contain}
+.cat-main .feed-subfilter ul::-webkit-scrollbar{display:none}
+.cat-main .feed-subfilter .chip:focus-visible{outline-offset:calc(var(--ring) * -1)}
 .cat-main .feed-subfilter li{flex:0 0 auto}
 /* `.cat-main .feed-subfilter a` was here. The sub-filter has no links any more:
    it filters the page it is on instead of navigating away from it, so its chips
@@ -122,3 +144,62 @@
    640, 900 and 1280. Nothing replaces it: the column already says the number.
    The rung this block stood at is still cut in base.css, where the plate that
    wraps this strip trims its vertical padding on the same side of it. */
+
+/* ============================================================================
+   THE FADE IS DRIVEN BY THE SCROLL, SO IT NEVER SAYS THERE IS MORE WHERE THERE
+   IS NOT. 2026-08-14.
+
+   Three rows in this file are horizontal scrollers and not one of them told the
+   reader so. `.cat-nav>ul` cut `Crypto` off mid-word at 360 and that hard edge
+   was the only hint the product gave; the sub-category rail gave none at all
+   because its last chip usually ends before the edge.
+
+   A FADE PAINTED ON PERMANENTLY IS THE USUAL ANSWER AND IT IS WRONG TWICE: it
+   fades the last chip once the row is scrolled to its end, so the thing a person
+   has just reached is the thing that goes pale, and it fades empty space on a
+   row that fits, which is a hint pointing at nothing. Both readings are of the
+   PAINT and the question is about the SCROLL, so the answer has to read the
+   scroll.
+
+   `animation-timeline:scroll(self inline)` binds progress to this element's own
+   inline scroll: no left fade at 0, both fades between, no right fade at the end.
+   AND WHEN THE ROW DOES NOT OVERFLOW THE TIMELINE IS INACTIVE AND THE ELEMENT
+   FALLS BACK TO ITS BASE STYLE, which declares no mask at all. That is the whole
+   reason the mask is written only inside the keyframes and never outside them: a
+   row that fits is a row with no fade, and it costs no query and no class to say
+   so. It is also why `.subcat ul` is safe in this list, though above the RAIL
+   rung it turns into a column with `overflow:visible` and stops being a scroller.
+
+   THE TWO COLOURS HERE ARE ALPHA AND NOT INK. A gradient mask is read for its
+   alpha channel, so `#000` means keep and `transparent` means drop, and neither
+   is a decision a theme has an opinion about. This is the one place in this
+   folder where a raw colour is not a colour.
+
+   MEASURED IN BOTH ENGINES BEFORE A LINE OF IT WAS WRITTEN, because this folder
+   has been burned by a mask twice. `CSS.supports` returns true for the timeline
+   in Chromium 151 and WebKit 26.5, and the computed `mask-image` MOVED when the
+   row was scrolled, in both: that second reading is the one that separates a
+   property which parses from a property which applies, and it is the check the
+   two-layer mask failed the day it drew nothing in WebKit. ONE LAYER AND NO
+   `mask-composite`, for the same reason: a single gradient has nothing to
+   intersect with.
+   A gradient is also the one kind of mask that is safe from disk. `mask-image`
+   is a CORS-mode fetch, `file://` gives every document its own opaque origin, and
+   this folder's CLAUDE.md carries the three times that has cost. A gradient is
+   generated, not fetched, so there is no origin to match.
+
+   THE LONGHANDS ARE DELIBERATE. The `animation` shorthand resets every property
+   in the family, `animation-duration` among them, and a scroll-driven animation
+   wants that left at `auto` so it spans the whole scroll range. Writing the
+   shorthand here is how a fade ends up firing over 0s and never being seen.
+   ============================================================================ */
+@supports (animation-timeline:scroll(self inline)){
+  .cat-nav>ul,.cat-main .feed-subfilter ul,.subcat ul{
+    animation-name:edge-fade;animation-timing-function:linear;animation-fill-mode:both;
+    animation-timeline:scroll(self inline)}
+  @keyframes edge-fade{
+    0%{mask-image:linear-gradient(90deg,transparent 0,#000 0,#000 calc(100% - var(--space-32)),transparent 100%)}
+    8%,92%{mask-image:linear-gradient(90deg,transparent 0,#000 var(--space-32),#000 calc(100% - var(--space-32)),transparent 100%)}
+    100%{mask-image:linear-gradient(90deg,transparent 0,#000 var(--space-32),#000 100%,transparent 100%)}
+  }
+}

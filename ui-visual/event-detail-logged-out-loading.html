@@ -1022,5 +1022,33 @@ document.addEventListener('click', function (e) {
   });
 })();
   </script>
+<script id="uv-filters-sheet">
+/* Two things a stylesheet cannot say, and nothing else.
+   1. A SCROLLER DOES NOT START AT ITS ACTIVE ITEM. The category strip is a one-line
+      scroller, and on 3 of the 5 category pages at 360 the chip carrying aria-current
+      stood off the right edge: Crypto by 92px, Culture by 223, General by 356, which is
+      the whole chip. A person landed on a page whose navigation showed nothing chosen.
+      `scroll-start-target` is the CSS answer to exactly this and NEITHER Chromium 151
+      NOR WebKit 26.5 supports it, measured with CSS.supports before this was written.
+      scrollLeft is set directly rather than through scrollIntoView, because
+      scrollIntoView also moves the page, and rectangles rather than offsetLeft, because
+      offsetLeft is measured from the offsetParent and this list is not one.
+   2. A CHECKBOX HAS NO ESCAPE. The filters sheet is a checkbox, which buys one markup
+      and one set of radios and costs the single key a modal surface owes a keyboard. */
+(function(){
+  var ul = document.querySelector('.cat-nav > ul');
+  var act = ul && ul.querySelector('[aria-current]');
+  if (act) {
+    var box = act.closest('li') || act;
+    var r = box.getBoundingClientRect(), b = ul.getBoundingClientRect();
+    ul.scrollLeft += (r.left - b.left) - (b.width - r.width) / 2;
+  }
+  document.addEventListener('keydown', function(e){
+    if (e.key !== 'Escape') return;
+    var t = document.getElementById('filtersOpen');
+    if (t && t.checked) { t.checked = false; }
+  });
+})();
+</script>
 </body>
 </html>

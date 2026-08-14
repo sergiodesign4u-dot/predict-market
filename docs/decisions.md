@@ -12,6 +12,88 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-14, later - The band above the first card was 253px on a phone and the width this project designs from was the only one paying for all of it
+
+**THE COMPLAINT WAS THAT THE HEADING, THE TWO FILTERS AND THE CHIPS EAT THE SCREEN AT 360. Measured
+before anything was written, heading to first card, on a coarse pointer: 253.4 at 320 and 360, 201.4
+at 390, 149.4 at 430.** Three numbers for four phone widths, and 360 was the worst of them. The
+composition: the heading 34.5, the two menus **77** because they stack, the chip row **83** because
+it wraps, and the gaps.
+
+**BOTH HALVES BREAK BETWEEN THE WIDTHS EVERY AUDIT HERE READS.** The menus carry their own value, so
+they measure 152 and 154; at 360 the feed column offers 298 and the pair needs 314, so they stand one
+above the other, and at 390 they do not. The five chips need 332px of row, so the row wraps at every
+width below 430. **390 and 1280 are the two widths this repository has always read, and one of them
+is on the far side of both breaks.** That is the rung-adjacent shape `CLAUDE.md` already names, met
+twice in one band.
+
+**THE FILTERS BECAME ONE BUTTON AND A SHEET, AND THE CHIPS BECAME ONE SCROLLING COURSE.** After:
+**112.0 at all four widths.** The band is the same number at every phone width now, which is the part
+that matters more than the 141px: a wrapping row grows a whole course when the sixth category
+arrives, and a scrolling row grows nothing.
+
+**WHY A CHECKBOX AND NOT A `<dialog>`, AND THIS IS THE DECISION THE REST FOLLOWS FROM.** The two radio
+groups have to exist ONCE. A dialog would need its own copy of them, and **a radio group is keyed by
+`name`**, so two copies in one document are one group with two sources of `checked` and two sets of
+ids: the kit already pays for that with its per-theme suffixes. A checkbox leaves the panels exactly
+where they are and moves the BOX they stand in, so the desk keeps the two pills it has and the phone
+gets a sheet, out of one markup. **A second form of a control is a second PLACEMENT, never a second
+copy of the controls.**
+
+**WHAT THAT COSTS, STATED RATHER THAN HIDDEN.** A checkbox has no Escape and no focus trap. Escape is
+bought back by nine lines of script; the trap is not, and it is `backlog.md` 150. **Rejected: a grab
+handle.** A handle draws a gesture nobody implemented, which is the same shape as the accessible name
+that promised a destination the element did not have, closed here yesterday.
+
+**REJECTED: TWO SHORTER PILLS.** Dropping the words `Sort:` and `Frequency:` fits the pair on one
+course at 320 and saves 42px against the sheet's 78, and it costs the sentence: a pill reading
+`Trending` under a heading reading `Trending` is one word twice, and the second filter this feed grows
+will not fit either.
+
+**THE FADE READS THE SCROLL AND NOT THE PAINT.** A permanent edge fade is the usual answer and it is
+wrong twice: it fades the last chip once the row is scrolled to its end, and it fades empty space on a
+row that fits. `animation-timeline:scroll(self inline)` binds progress to the row's own scroll, and
+**when the row does not overflow the timeline is inactive and the element falls back to its base
+style**, which declares no mask at all. So a row that fits has no fade, and it costs neither a query
+nor a class to say so.
+
+**THE INSTRUMENT WAS READ BEFORE THE FINDING, BECAUSE A MASK HAS COST THIS SYSTEM TWICE.**
+`CSS.supports` is true for the timeline in Chromium 151 and WebKit 26.5; the computed `mask-image`
+MOVED when the row was scrolled, in both; and the row was screenshot with the mask live and with
+`mask-image:none` forced, **which differ in both engines, while the same shot taken twice unchanged is
+byte-identical**. That third reading is the control and the first two prove only that a property
+parses. One layer and no `mask-composite`, because the two-layer mask drew nothing in WebKit.
+
+**AND THE SCROLLER FOUND A LIVE DEFECT NOBODY HAD FILED.** `.cat-nav>ul` has been a one-line scroller
+all along, and **on 3 of the 5 category pages at 360 the chip carrying `aria-current` stood off the
+right edge**: Crypto by 92px, Culture by 223, General by 356, which is the whole chip. A person landed
+on a page whose navigation showed nothing selected. `scroll-start-target` is the CSS answer to exactly
+this and **neither engine supports it**, measured before reaching for a script, so it is nine lines on
+the 57 screens that carry the strip and the script's first comment says why it is not CSS. **0 of 106
+now.**
+
+**TWO SMALLER THINGS WERE MEASURED WRONG FIRST AND ARE WRITTEN DOWN BECAUSE OF IT.** The scroller's
+focus ring needed room, and block padding with an equal negative margin does not hand the height back
+in a block container, it hands it to the neighbours: **4px above the row and 12 below, where the file
+declares 2 and 16.** The ring turns inward instead and costs no geometry. And the sheet's backdrop was
+`--scrim`, whose own comment in `tokens.css` says it is the COURSE DRAWER's: 30 per cent of black over
+graphite darkened nothing and the surface did not read as modal. It is `--shadow-ink-45`, which is
+what `dialog.app-dialog::backdrop` already is. **Picking the nearest-sounding token is how a product
+grows two answers to one question.**
+
+**A DEAD RULE WITH A LIVE SENTENCE BESIDE IT IS WORSE THAN A DEAD RULE.** The block this replaced was
+`@media(max-width:39.99875rem){.filter-menu{position:relative}}`, restating at a rung the exact value
+the first line of `filters.css` declares unconditionally. It could not change a pixel at any width,
+and `ui-kit/filters.html` carried the prose version of it for as long as it stood. The rule is what
+gets deleted; the sentence is what the next reader believes.
+
+**Verified**, 106 painted screens, both engines, at 16 widths including every rung and one pixel
+either side: 0 horizontal scroll, 0 duplicate ids, 0 page errors, 0 screens with the active chip off
+screen. Touch floor asserted: the new button measures 44 on a coarse pointer and 34.5 on a fine one,
+the same pair as the summary it stands in for.
+
+---
+
 ## 2026-08-14, after the push - The dialog and the page stopped being one markup, and the picture of a component is the component with every control replaced by an element that is not one
 
 **THE ROOT RULE THAT A DIALOG WITH A STANDALONE PAGE IS ONE MARKUP AND NOT TWO IS DELIBERATELY SPENT

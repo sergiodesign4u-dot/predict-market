@@ -316,6 +316,23 @@
    the subject and its absence above 640 is the fact that page teaches: an
    unmodified selector would have quietly overwritten it. */
 .tk-theme-fig.tk-show-nav .bottom-nav{display:block;position:static}
+/* AND THE FIFTH BARGAIN, 2026-08-14, AND IT IS DELIBERATELY HALF A BARGAIN.
+   `.filters-btn` is `display:none` above DESK 640, so on a stand read at 1280 the
+   phone's whole filter control is an empty cell. One declaration brings it back and
+   **everything a reader then sees is `filters.css`'s own**: the ground, the edge, the
+   corner, the padding, the hover, the press and the 44px floor all arrive from the
+   system, because the button joins the summary's face rather than owning a second copy
+   of it. That is a specimen.
+   THE SHEET IS NOT PINNED AND THAT IS THE POINT. Its box is `position:fixed`, a bottom
+   inset, a max-height in `svh`, a top-corner radius and a lift, and none of that
+   survives being restated here: a cell that redrew it would be a hand-kept copy of six
+   declarations, drifting from the file the moment either is edited, and this kit's rule
+   is that it reads the system and never a copy of it. So the sheet is named with
+   `.tk-gone.tk-above-640`, which is the idiom this stand already has for a face that
+   exists at a width the page is not being read at.
+   **Draw what the system can draw, name what it cannot, and say which is which.** The
+   alternative is not "show more", it is "show something that is no longer true". */
+.tk-theme-fig.tk-show-filters .filters-btn{display:inline-flex}
 .tk-photo{display:inline-flex;align-items:center;justify-content:center;
   width:72px;height:72px;background-size:cover;background-position:center;
   border-radius:10px}

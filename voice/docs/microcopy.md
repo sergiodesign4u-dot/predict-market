@@ -241,6 +241,8 @@ _9 state page(s): event-feed-empty.html, event-feed-error.html, event-feed-loadi
 | Zone | Type | Line | Flag |
 |---|---|---|---|
 | Main | Heading | Trending |  |
+| Main | Button | Filters | Below DESK 640 only. One control replaces the two menus under it, and their words are the sheet's from there on. It is `Filters` and not `Filter` because the sheet holds more than one, and not `Sort` because sort is one of them |
+| Main | Label (hidden) | Show filters | The accessible name of the checkbox behind the button. A `<label>` is not focusable, so the name has to sit on the control that is |
 | Main | Label | Sort: |  |
 | Main | Option | Volatile |  |
 | Main | Option | New |  |
@@ -432,6 +434,8 @@ _32 state page(s): crypto-empty.html, crypto-error.html, crypto-loading.html, cr
 | Main | Button | Layer 2s |  |
 | Main | Button | Fed & Macro |  |
 | Main | Heading | Crypto |  |
+| Main | Button | Filters | Below DESK 640 only. One control replaces the two menus under it, and their words are the sheet's from there on. It is `Filters` and not `Filter` because the sheet holds more than one, and not `Sort` because sort is one of them |
+| Main | Label (hidden) | Show filters | The accessible name of the checkbox behind the button. A `<label>` is not focusable, so the name has to sit on the control that is |
 | Main | Label | Sort: |  |
 | Main | Label | Trending |  |
 | Main | Option | Volatile |  |
@@ -590,6 +594,8 @@ _3 state page(s): favorites-empty.html, favorites-loading.html, favorites.html_
 | Zone | Type | Line | Flag |
 |---|---|---|---|
 | Main | Heading | Favorites | **same-thing / Bookmark vs save vs Favorites** |
+| Main | Button | Filters | Below DESK 640 only. One control replaces the two menus under it, and their words are the sheet's from there on. It is `Filters` and not `Filter` because the sheet holds more than one, and not `Sort` because sort is one of them |
+| Main | Label (hidden) | Show filters | The accessible name of the checkbox behind the button. A `<label>` is not focusable, so the name has to sit on the control that is |
 | Main | Label | Sort: |  |
 | Main | Label | Trending |  |
 | Main | Option | Volatile |  |

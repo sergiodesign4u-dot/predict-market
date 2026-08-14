@@ -1,7 +1,7 @@
 /* components/filters.css
-   Component: filters. Classes: .filter-menu, .filter-panel, .reverse-row.
+   Component: filters. Classes: .filter-menu, .filter-panel, .filters-btn, .filters-scrim, .filters-toggle, .reverse-row.
 
-   Reads: --bg-control, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --focus-ring, --shadow-ink, --text-brass, --text-muted, --text-primary, --text-strong, --tint-brass-16
+   Reads: --bg-control, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --focus-ring, --shadow-ink, --shadow-ink-45, --text-brass, --text-muted, --text-primary, --text-strong, --tint-brass-16
    Stand:  ui-kit/filters.html, and ui-kit/molecules.html#filters-lt for the level and its reason (the -lt is the shelf's own id suffix and not a variant of this component: ui-kit/CLAUDE.md)
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -49,13 +49,20 @@
    152x35 and nobody had looked, because the two are two screens apart and one of them is at the
    bottom of the page. A control that has to be found by scrolling is a control a scope defect can
    hide in. */
-.filter-menu summary{background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-pill)}
-.filter-menu summary{display:inline-flex;align-items:center;gap:var(--space-8);padding:var(--space-8) var(--space-20);transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
-.filter-menu summary:hover{border-color:var(--border-brass-hover);background:var(--bg-control);color:var(--text-strong)}
+/* `.filters-btn` JOINS THE FACE RATHER THAN COPYING IT, 2026-08-14. The phone's
+   Filters control is the same chip as the two summaries it stands in for, and this
+   folder's CLAUDE.md already carries what the alternative costs: a doubled selector
+   is a face kept in two places and the second place is the one that gets forgotten,
+   which is how a chosen amount chip shipped with an edge and no ground. Four rules
+   name it, the rest, the hover, the press and the touch floor in base.css, and the
+   only thing filters.css says about it separately is WHERE it stands and WHEN. */
+.filter-menu summary,.filters-btn{background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);color:var(--text-primary);border-radius:var(--radius-pill)}
+.filter-menu summary,.filters-btn{display:inline-flex;align-items:center;gap:var(--space-8);padding:var(--space-8) var(--space-20);font-size:var(--text-11);cursor:pointer;transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
+.filter-menu summary:hover,.filters-btn:hover{border-color:var(--border-brass-hover);background:var(--bg-control);color:var(--text-strong)}
 /* Press is the axis a disclosure needs most: the panel opens on the same click, so without a
    held-down ground the chip looks like it did nothing until the panel arrives. Equal specificity
    to the hover above, so it has to sit after it. The summary is flat at rest, nothing to unlift. */
-.filter-menu summary:active{background:var(--bg-pressed)}
+.filter-menu summary:active,.filters-btn:active{background:var(--bg-pressed)}
 /* HIDDEN, NOT REMOVED, and the difference is the whole control. `display:none` generates no box, so
    the browser takes the element out of the tab order AND out of the accessibility tree: the sort
    radiogroup and the category radios could be operated by a mouse and by nothing else, on 104
@@ -106,8 +113,101 @@
    and went to `components/base.css` on 2026-08-08 with the five other copies. The
    selector is carried over as written, because a `<summary>` is the one target in
    this system with no class of its own to be a family. */
+/* ============================================================================
+   THE PHONE FORM: ONE BUTTON AND A SHEET, 2026-08-14.
+
+   WHAT WAS WRONG. The two summaries carry their own value, so they are 152 and
+   154 wide; at 360 the feed column offers 298 and the pair needs 314, so they
+   stood one above the other and the head cost 114.4px. At 390 the same pair fits
+   on one course and the head costs 71.9. **The width this project designs from
+   was the only one of the three paying for the second course**, which is the
+   rung-adjacent shape this repository keeps finding: a defect that lives between
+   the two widths everybody reads. Measured with the whole band, heading to first
+   card: 221.4 at 320 and 360, 178.9 at 390, 133.4 at 430.
+
+   WHY A SHEET AND NOT TWO SHORTER PILLS. Shortening the labels to the value alone
+   fits them on one course and saves 42px, and it costs the sentence: a pill
+   reading `Trending` under a heading reading `Trending` is one word twice, and
+   the second filter this feed grows will not fit either. A sheet is 44px whatever
+   the filter count becomes, and it opens where a thumb already is rather than at
+   the top of an 800px phone.
+
+   WHY A CHECKBOX AND NOT A DIALOG. The two radio groups have to exist ONCE. A
+   `<dialog>` would need its own copy of them, and a radio group is keyed by
+   `name`, so two copies in one document are ONE group with two sources of
+   `checked` and two sets of ids: the kit already pays for that with its per-theme
+   suffixes. The checkbox leaves the panels exactly where they are and moves the
+   BOX they stand in, so the desk keeps the two pills it has and the phone gets a
+   sheet, out of one markup. It is the same mechanism as the how-it-works stepper,
+   which is verified in both engines.
+
+   NO GRAB HANDLE AND NO DRAG. A handle is the drawing of an affordance that is
+   not there, and this folder has just paid for the general case: an accessible
+   name that promised a destination the element did not have. The scrim closes it,
+   the button closes it, and neither draws a gesture nobody implemented.
+
+   THE ORDER OF THESE TWO BLOCKS IS THE RULE AND NOT THE FORMATTING. A media query
+   adds no specificity, so `.filters-btn{display:none}` above and
+   `.filters-btn{display:inline-flex}` here are both (0,1,0) and the later one
+   wins at every width the query allows. Put this block above and the button never
+   appears, and nothing anywhere says why.
+
+   THE BLOCK THIS REPLACED HELD ONE DECLARATION AND IT WAS DEAD.
+   `@media(max-width:39.99875rem){.filter-menu{position:relative}}` restated, at a
+   rung, the exact value the first line of this file declares unconditionally. It
+   could not change a pixel at any width, and it read like a phone decision.
+   ============================================================================ */
+/* The toggle is hidden the way every input in this file is hidden and for the
+   reason written 60 lines up: a 1x1 transparent box stays focusable and reachable,
+   `display:none` takes the control out of the tab order and out of the
+   accessibility tree at once. */
+.filters-toggle{position:absolute;width:var(--hairline);height:var(--hairline);opacity:0;margin:0;pointer-events:none}
+.filters-btn,.filters-scrim{display:none}
 /* rung: DESK 40rem, 640px at the default root, the one divide, and this is BELOW it. 39.99875rem rather than 40rem, which is 639.98 against 640 at the default root,
    because the rung belongs to the desk: tokens.css, page frame. */
 @media(max-width:39.99875rem){
-  .filter-menu{position:relative}
+  .filters-btn{display:inline-flex}
+  .feed-head>.feed-controls{display:none}
+  /* The ring is drawn on the thing a person can see, because base.css draws it on
+     the element that HAS focus and that element is a 1px transparent box. Same
+     shape as the panel's labelled radios twenty lines up, and the offset turns
+     outward here because nothing clips this control. */
+  .filters-toggle:focus-visible~.filters-btn{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
+  /* Scrim and sheet share `--z-menu` and DOM ORDER settles them: the scrim is
+     written before the controls, so the controls paint over it. A second z token
+     for a pair whose order is already fixed by the markup would be a number
+     invented to say what the document already says. Both stand above the sticky
+     header and the bottom nav, which is what a modal surface is for. */
+  /* --shadow-ink-45 AND NOT --scrim, because the product already answers this
+     question once: `dialog.app-dialog::backdrop` is --shadow-ink-45 and every sheet
+     in this product stands behind it. --scrim is --black-a30 and its own comment in
+     tokens.css says what it is for, the COURSE DRAWER's backdrop, which is chrome.
+     30 per cent of black over graphite reads as nothing at all: the first build of
+     this sheet used it and the page behind was visibly undimmed, so the surface did
+     not read as modal. A backdrop that does not darken is a backdrop that is not
+     there, and picking the nearest-sounding token is how a product grows two answers
+     to one question. */
+  .filters-toggle:checked~.filters-scrim{display:block;position:fixed;inset:0;z-index:var(--z-menu);background:var(--shadow-ink-45);cursor:pointer}
+  .filters-toggle:checked~.feed-controls{display:flex;flex-direction:column;flex-wrap:nowrap;gap:var(--space-8);position:fixed;inset:auto 0 0 0;z-index:var(--z-menu);padding:var(--space-20) var(--gutter) var(--space-32);max-height:80svh;overflow:auto;overscroll-behavior:contain;background:var(--bg-surface);border-top:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10) var(--radius-10) 0 0;box-shadow:0 -20px 50px -24px var(--shadow-ink)}
+  /* Inside the sheet the panel is not a dropdown any more: it has a whole surface
+     under it, so it stops being absolute, drops the ground, the edge and the lift
+     it needed to float over the page, and becomes a section of the sheet. The
+     summary spans the row and pushes its chevron to the far side, which is what a
+     row in a sheet looks like everywhere else in this product. */
+  .filters-toggle:checked~.feed-controls .filter-menu{width:100%}
+  /* The label is pushed off the mark by an auto margin and NOT by
+     `justify-content:space-between`, which was the first cut and put the word in the
+     middle of the row: a summary has three children, so space-between spreads mark,
+     label and chevron evenly and centres the one thing a person reads. An auto
+     margin after the label keeps the mark and the word together on the left, which
+     is where they sit at the desk. */
+  .filters-toggle:checked~.feed-controls .filter-menu summary{width:100%}
+  .filters-toggle:checked~.feed-controls .filter-menu summary>span{margin-inline-end:auto}
+  .filters-toggle:checked~.feed-controls .filter-panel{position:static;min-width:0;background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible}
+  /* The page behind a modal surface does not scroll, and `overflow` on the ROOT is
+     what the viewport reads: on `body` it would leave the document element free and
+     the page would still move under the sheet. It is written here rather than in
+     base.css because it is this sheet's own consequence and it exists only while
+     this sheet is open. */
+  :root:has(.filters-toggle:checked){overflow:hidden}
 }
