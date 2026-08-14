@@ -401,6 +401,9 @@
     /* rung: DETAIL 760. The paint steps this chart 160 -> 280 there: components/chart.css. */
     @media (min-width: 760px) { .chart-svg { height: 280px; } }
     .chart-svg polyline { fill: none; stroke: #777; stroke-width: 1.5; }
+    .chart-svg .ed-area { fill: #cfcfcf; stroke: none; }
+    .chart-svg .ed-even { stroke: #888; stroke-width: 1; stroke-dasharray: 2 4; }
+    .ed-now-dot { position: absolute; right: 1px; bottom: calc(1px + (100% - 2px) * var(--v) / 100); width: 8px; height: 8px; margin: 0; transform: translate(50%, 50%); border-radius: 50%; background: #444; box-shadow: 0 0 0 2px #e6e6e6; }
     .chart-svg .grid-l { stroke: #d2d2d2; stroke-width: 1; }
     .chart-svg .nowline { stroke: #999; stroke-width: 1; stroke-dasharray: 3 3; }
     .chart-svg text { fill: #777; font-size: 7px; }
@@ -1354,7 +1357,7 @@
       <div class="widget-box">Transak payment widget (card to USDC)</div></div>
       <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
       <p class="fine">Minimum $10. Card payments are converted to USDC via Transak. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
-      <button type="button" class="btn btn-secondary btn-md btn-block" data-open="howitworks">How it works (what happens to my money)</button>
+      <button type="button" class="btn btn-secondary btn-md btn-block" data-open="howitworks">How it works</button>
       <button type="button" class="btn btn-primary btn-md btn-block" data-close-dialog>Add funds</button>
     </div>
   </dialog>

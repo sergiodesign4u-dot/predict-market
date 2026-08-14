@@ -12,6 +12,154 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-14, the chart - The detail drew a bare polyline while the feed drew a filled chart, in the same product
+
+**THE SCREEN A PERSON COMES TO IN ORDER TO READ THE PRICE HAD THE WORSE CHART.** `hero.css` has drawn
+a filled chart since the day it was written: an area under the line with a gradient from the outcome
+colour to nothing, four quiet grid lines, a legend. The event **detail** drew a 1.6px polyline in an
+empty well with three grid lines at 25, 50 and 75, a dashed vertical sitting on the well's own border,
+and nothing else. **One product, two charts, and the better one was on the screen that is only passing
+through.**
+
+**REFERENCES WERE READ FIRST AND THE LESSON WAS SUBTRACTION.** Wealthsimple's dark price chart has no
+frame, no grid, and **one** dotted horizontal, the previous close, labelled at its right end. The
+takeaway is not a style, it is a rule: **label the line you want read, and draw no line you do not.**
+
+**THE AREA IS THE DATUM HERE AND NOT ORNAMENT.** Under a stock price a fill is decoration, because
+the zero it falls to is arbitrary. Under a **probability** the line runs 0 to 100 and the area is how
+much of the way to certain the market has come. It is the hero's own gradient, so the two charts in
+this product are now one idea drawn twice rather than two ideas.
+
+**ONE REFERENCE LINE INSTEAD OF THREE.** 25 and 75 are arithmetic; **50 is the only number on this
+axis that means anything**, because above it the market says yes. Three lines of equal weight said all
+three were equal. **And the label that line needs is the one the y-axis already carries**: a floating
+`Even` was built, screenshotted and deleted in the same pass, because it was the same fact written
+twice and it was written ON TOP OF THE LINE at the one place a reader is looking. The y-axis keeps all
+five numbers, because that is the SCALE and a scale is not a grid.
+
+**THE DOT IS A DOM ELEMENT AND NOT AN SVG CIRCLE, AND THE REASON IS THE viewBox.** The chart is
+`viewBox="0 0 300 100"` with `preserveAspectRatio="none"` drawn into about 900 x 160, so the
+horizontal and vertical scales differ by about six and a `<circle>` renders as an ellipse six times
+wider than it is tall. **The strokes survive that because they carry `vector-effect:non-scaling-stroke`,
+which is a property about STROKES and does nothing for a shape.** So the dot stands in `.ed-plot`,
+which was already positioned, and its height is a percentage, the same datum the odds bar writes as a
+width and one of the three things allowed on the element.
+
+**AND THE AREA'S `fill` IS A PRESENTATION ATTRIBUTE IN THE MARKUP, WHICH IS THE ONE PLACE THIS
+COMPONENT DISAGREES WITH `hero.css` ON PURPOSE.** That file writes `.hf-area{fill:url(#hfyes)}` and is
+safe only because the hero stands once in a document. **This chart stands twice on
+`ui-kit/chart.html`.** The kit suffixes every id a cell redefines together with every `url(#id)`
+pointing at it, and a `url()` in a stylesheet is not in the cell and cannot be suffixed, so a CSS rule
+would have left the second cell filling from the first cell's gradient. **That is exactly the defect
+the tab panels paid for**, ids suffixed and rules not, and a specimen that draws its bar and none of
+its panels. Two kit pages had their second gradient suffixed in the same pass.
+
+**The multi-outcome chart takes the reference line and nothing else**: five lines cannot share one
+area and have five endpoints. Measured after: 5 lines, 1 reference, 0 areas, 0 dots, 0 old grid.
+
+**AND THE DOT WAS OFF THE LINE, WHICH IS THE PART OF THIS WORTH KEEPING.** It looked right and it was
+not: measured against the polyline's last point transformed into page coordinates with
+`getScreenCTM`, the centre stood **3.76px above the line and 1.00px to the right of it**, identically
+in both engines at both widths. **Two mistakes of one species: an edge-anchored box pretending to be a
+point.**
+The vertical one was a margin that could not apply. The rule read
+`margin:calc(size / -2) ... 0 0`, a negative margin-TOP, and **a negative margin-top does nothing to a
+box positioned by `bottom`**: the box's bottom edge sat on the line and its centre was half a dot
+above it. `translate(50%,50%)` anchors the centre whatever the size becomes, and writes the halving
+nowhere.
+The horizontal one was the border. `right:0` is the PLOT's border box and the line's last point is at
+the SVG's CONTENT right edge, one hairline inside it.
+**And the datum stopped being a length.** It was `style="bottom:38%"`, which is 38 per cent of the
+border box while the line is drawn in the content box, an error of `hairline * (1 - 2v/100)`. The
+element carries `--v:38`, the probability itself, and the rule does the geometry. **A datum should be
+the number the product knows, not a length somebody has already done arithmetic on.**
+Re-measured, all four ranges, both engines: **0.00 on x and 0.02 on y**, and the y remainder is one
+`calc`'s rounding. It is written here as it was read rather than as 0.
+
+**Verified**: 267 documents in both engines, 0 horizontal scroll, 0 duplicate ids, 0 page errors, and
+the area path, the fill reference, the dot and the dash pattern read identically in Chromium 151 and
+WebKit 26.5.
+
+---
+
+## 2026-08-14, one label - A bracket that repeats the sentence above it is the same sentence at a smaller size
+
+**ONE BUTTON WRAPPED ONTO TWO LINES ON 105 SCREENS AND THE BRACKET WAS BOTH HALVES OF WHY.**
+`How it works (what happens to my money)` stands in the deposit dialog, and two lines above it the
+`.protect` sentence already says **"Your USDC is held 1:1 - we do not lend or invest your funds"**,
+which IS what happens to your money, in one plain sentence, which is voice principle 2. **The bracket
+promised an answer the screen had already given.**
+
+**AND IT MEANT ONE DESTINATION HAD TWO NAMES, 105 PLACEMENTS EACH.** The header's control has said
+plain `How it works` since the day it was written; the deposit dialog's said the long form. That is
+the `same-action / label varies` flag `microcopy.md` already carries for the go-to-events button, met
+on a second control, and neither label was wrong on its own.
+
+**THE MEASUREMENT THAT FOUND IT IS THE POINT.** Reading the tree for bracketed strings turns up 12
+and most are prose. Reading it for **buttons whose LABEL wraps** turns up one, and the difference
+between the two sweeps is that the second counts the rects of the button's TEXT NODES rather than of
+the button: an icon beside a label sits at its own top, so a whole-element read reports every provider
+button and every amount chip as two rows. **A count of rectangles is not a count of lines.**
+
+After, over all 106 screens in both engines at 320, 360 and 390: **not one button in the product wraps
+its label at 360 or 390.** Four do at 320 and they are `backlog.md` 154, because two of them are a
+narrow box rather than a long label and that is a layout decision, not a copy one.
+
+---
+
+## 2026-08-14, the 25th case - The window and the event head move in opposite directions, so the head stopped asking the window
+
+**THE EVENT HEAD ON A PHONE WAS THE WORST BLOCK IN THE PRODUCT AND THE MEASUREMENT SAYS WHY.** It is
+a row: a 72px thumbnail, a 12px gap, and 100px of padding reserved on the right for three absolutely
+positioned actions. **That is 184px of overhead in a column 291 wide at 320**, leaving the title
+127px to wrap in. Title lines by viewport before: **6 at 320, 5 at 360, 4 at 390 and 430**, the
+category broken across two lines at every one of them, `YES 38% NO 62%` wrapping so `62%` sat alone
+under `NO`, and the odds bar drawing 127px inside a 331px head.
+
+**AND IT WAS WORSE AT 760 THAN AT 430, WHICH IS THE WHOLE ARGUMENT.** `.ed-head` against the
+viewport: 611 at 640, 645 at 700, **341 at 760**, 381 at 800, 481 at 900, 681 at 1100, **501 at
+1140**. The two drops are the bet panel arriving and the review sidebar docking. **At each of them
+the window gets WIDER and the head gets NARROWER**, and the title goes from 2 lines to 6 across one
+rung.
+
+**SO THIS IS THE 25th CASE, AND `backlog.md` 129 IS THE REASON IT COUNTS.** That row refused
+container queries on a measurement rather than a preference: of the 25 selectors standing on both
+sides of their own rung, **24 would have resolved identically at every placement**, so a window query
+was doing the same work and a container query would have been ceremony. This is the one that would
+not. **A window query cannot say "the head is narrow" here without naming the bet panel's rung and
+the review chrome's dock**, which are facts about other components, and every one of those numbers
+would go stale the day either moved.
+
+`patterns/detail-shell.css` declares `container-type:inline-size` and `container-name:ed` on
+`.ed-main`, and `event-detail.css` asks it. **The declaration is the pattern's because place is not a
+property of the brick**: the pattern is what puts the content column beside the panel, so it is what
+knows the column is a context. `inline-size` and not `size`, because nothing here asks about height.
+**Measured in both engines before a line was written**: `CSS.supports` is true and a test rule
+actually changed a computed colour, which is the reading that separates a feature that parses from
+one that applies.
+
+**THE THRESHOLD IS THE CONTENT'S AND NOT A DEVICE'S.** Below 460px of column the row cannot hold a
+72px picture, 100px of gutter and a readable measure at once. After, title lines: **3 at 320, 2 at
+360, 390, 430 and 760**, category on one line everywhere, the odds bar 251 at 320 and 291 at 360, and
+the head 35px shorter at 360. **Unchanged at 560, 640 and every width from 900 up**, which is the
+control: the rule fires only where the column is narrow. The 3 lines that remain at 1140 are
+`text-wrap:balance` choosing evenness at a 279px measure, not a squeeze, and the same measure gives 2
+lines at 900.
+
+`order` rather than a markup change, and it is safe here for a reason worth stating: **the only
+focusable elements in this head are the three actions**, so visual order and focus order cannot
+disagree about anything a keyboard can reach.
+
+**A container threshold is not a token**, because it is local to one placement and no other component
+can be asked to honour it. It is registered in `ui-kit/docs/responsive.md` beside the transcript that
+said `@container` was 0 in the product, which is now 1 and 1 and says so.
+
+**Verified**: 267 documents in both engines at 16 widths, 0 horizontal scroll, 0 duplicate ids, 0
+page errors. The 30 `.ed-head-txt` placements were named across all three trees, including the four
+loading skeletons and the three kit pages that write the head in a different shape.
+
+---
+
 ## 2026-08-14, the last of the three - Two strips said the same five words, and the repair is the label the row never had
 
 **THE FEED CARRIES A CATEGORY STRIP AT THE TOP AND A CATEGORY SUB-FILTER UNDER ITS HEADING, AND THEY

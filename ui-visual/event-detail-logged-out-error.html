@@ -609,7 +609,7 @@ document.addEventListener('click', function (e) {
       <div class="widget-box">Transak payment widget (card to USDC)</div></div>
       <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
       <p class="fine">Minimum $10. Card payments are converted to USDC via Transak. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
-      <button type="button" class="btn btn-secondary btn-md btn-block" data-open="howitworks">How it works (what happens to my money)</button>
+      <button type="button" class="btn btn-secondary btn-md btn-block" data-open="howitworks">How it works</button>
       <button type="button" class="btn btn-primary btn-md btn-block" data-close-dialog>Add funds</button>
     </div>
   </dialog>
@@ -875,6 +875,8 @@ document.addEventListener('click', function (e) {
   /* price chart (single line): fill the polyline + X axis, switch on 1d/1w/1m/all */
   document.querySelectorAll('.ed-chart:not(.ed-chart-multi)').forEach(function(chart){
     var poly = chart.querySelector('.chart-svg polyline');
+    var area = chart.querySelector('.chart-svg .ed-area');
+    var dot = chart.querySelector('.ed-now-dot');
     var xaxis = chart.querySelector('.ed-xaxis');
     if(!poly) return;
     var DATA = {
@@ -885,7 +887,16 @@ document.addEventListener('click', function (e) {
     };
     function render(key){
       var d = DATA[key] || DATA.all, n = d.s.length;
-      poly.setAttribute('points', d.s.map(function(v,i){ return (i/(n-1)*300).toFixed(1)+','+(100-v).toFixed(1); }).join(' '));
+      var pts = d.s.map(function(v,i){ return (i/(n-1)*300).toFixed(1)+','+(100-v).toFixed(1); });
+      poly.setAttribute('points', pts.join(' '));
+      /* The area is the same points closed down to the floor. It is written here and
+         not in the markup for the reason the polyline is: this chart has four ranges
+         and the shape belongs to whichever one is chosen. */
+      if (area) { area.setAttribute('d', 'M' + pts.join('L') + 'L300,100L0,100Z'); }
+      /* The dot sits at the last value. Every range in this data ends at the same
+         number, so the markup carries it as a datum and this only keeps it true if a
+         range ever ends somewhere else. */
+      if (dot) { dot.style.setProperty('--v', d.s[n-1]); }
       if(xaxis){ xaxis.innerHTML = d.x.map(function(t){ return '<span>'+t+'</span>'; }).join(''); }
     }
     chart.querySelectorAll('.ed-range button').forEach(function(btn){

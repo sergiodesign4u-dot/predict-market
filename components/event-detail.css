@@ -1,5 +1,5 @@
 /* components/event-detail.css
-   Component: event-detail. Classes: .arg-col, .args, .ed-actions, .ed-cat, .ed-facts, .ed-head, .ed-prob-big, .ed-q, .ed-section, .ed-thumb, .resolution, .resolved-panel, .rules-note.
+   Component: event-detail. Classes: .arg-col, .args, .ed-actions, .ed-cat, .ed-facts, .ed-head, .ed-head-txt, .ed-prob-big, .ed-q, .ed-section, .ed-thumb, .resolution, .resolved-panel, .rules-note.
 
    Reads: --border-brass, --edge-groove-dark, --edge-groove-light, --outcome-no-figure,
           --outcome-yes-text, --text-brass-lit, --text-muted, --text-primary
@@ -97,3 +97,40 @@
 .args .arg-col:last-child h3{color:var(--outcome-no-figure)}
 .arg-col ul{font-size:var(--text-13);color:var(--text-muted);line-height:var(--leading-base)}
 .arg-col li{margin-bottom:var(--space-8)}
+
+/* ============================================================================
+   THE HEAD STACKS WHEN ITS OWN COLUMN IS NARROW, AND THAT IS A CONTAINER QUESTION
+   RATHER THAN A WINDOW ONE. 2026-08-14.
+
+   WHAT WAS WRONG. The head is a row: a 72px thumbnail, a 12px gap, and 100px of
+   padding reserved on the right for the three actions, which are absolutely
+   positioned. That is **184px of overhead in a column that is 291 wide at 320**, so
+   the title had 127px to wrap in. Measured before, title lines by viewport:
+   **6 at 320, 5 at 360, 4 at 390 and 430**, the category line broken across two at
+   every one of them, and `YES 38% NO 62%` wrapping so that `62%` sat on its own row
+   under `NO`. The odds bar drew 127px inside a 331px head.
+
+   AND IT IS WORSE AT 760 THAN AT 430, WHICH IS THE WHOLE ARGUMENT. `.ed-head` by
+   viewport: 611 at 640, 645 at 700, **341 at 760**, 381 at 800, 481 at 900, 681 at
+   1100, **501 at 1140**. The two drops are the bet panel arriving and the review
+   sidebar docking, and at each of them the window gets WIDER while the head gets
+   NARROWER. **The title is 2 lines at 700 and 6 at 760.** A window query would have
+   to name the panel's rung and the chrome's dock to say something about a column,
+   and every one of those numbers would go stale the day either moves.
+
+   THE THRESHOLD IS THE CONTENT'S, NOT A DEVICE'S. Below 460 the row cannot hold a
+   72px picture, 100px of gutter and a readable measure at once; above it, it can.
+   The stacked form gives the text the whole column: the thumbnail and the actions
+   share the first line, the text takes the second.
+   `order` AND NOT A MARKUP CHANGE, and it is safe here for a reason worth stating:
+   **the only focusable elements in this head are the three actions**, so visual
+   order and focus order cannot disagree about anything a keyboard can reach.
+   The registry of container thresholds is `ui-kit/docs/responsive.md`; a container
+   threshold is not a token, because it is local to one placement.
+   ============================================================================ */
+@container ed (max-width:460px){
+  .ed-head{flex-wrap:wrap;padding-right:var(--space-20)}
+  .ed-thumb{order:1}
+  .ed-actions{order:2;position:static;margin-left:auto;align-self:flex-start}
+  .ed-head-txt{order:3;flex:1 0 100%}
+}

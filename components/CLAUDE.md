@@ -1,6 +1,6 @@
 # components/ - the system itself
 
-This folder IS the design system. **54 stylesheets, 9,802 lines**: 48 here and 6 in `patterns/`,
+This folder IS the design system. **54 stylesheets, 9,919 lines**: 48 here and 6 in `patterns/`,
 re-counted 2026-08-14 by `cat components/*.css components/patterns/*.css | wc -l` after the filters
 sheet, its two later passes and the scroll-driven edge fade. It was 9,224 on 2026-08-13 after `trust-art.css`
 was written (`docs/backlog.md` 140). It was 53 and 8,734 earlier the same day, after `print.css`
@@ -71,6 +71,30 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   contains atoms, level 3 contains molecules or is a shell. A component built out of its own class
   names reads as containing nothing, and seven of seventeen such readings were once the whole atom
   shelf and not one of them was an atom.
+- **`vector-effect:non-scaling-stroke` IS ABOUT STROKES AND DOES NOTHING FOR A SHAPE.** The detail
+  chart is `viewBox="0 0 300 100"` with `preserveAspectRatio="none"` drawn into about 900 x 160, so
+  the two axes scale by different factors and a `<circle>` in that space renders as an ellipse six
+  times wider than it is tall. The polylines look right because they carry the property; the moment
+  the chart wanted a dot at the end of the line, it had to leave the SVG. It is a DOM element in the
+  positioned plot with its height as a percentage, which is a datum.
+- **A `url(#id)` IN A STYLESHEET CANNOT BE SUFFIXED AND ONE IN THE MARKUP CAN.** `hero.css` writes
+  `.hf-area{fill:url(#hfyes)}` and is safe only because the hero stands once in a document. The
+  detail chart stands twice on its kit page, and the kit's convention suffixes every id a cell
+  redefines TOGETHER WITH every `url(#id)` pointing at it, which reaches markup and not a rule. So
+  that one `fill` is a presentation attribute, and it is the one place a paint reference is allowed
+  out of this folder. **The alternative is the tab defect again**: ids suffixed, rules not, second
+  cell empty and nobody looking.
+- **A COMPONENT ASKS THE WINDOW UNLESS THE WINDOW AND ITS COLUMN MOVE IN OPPOSITE DIRECTIONS, AND
+  SINCE 2026-08-14 EXACTLY ONE DOES.** `backlog.md` 129 refused container queries on a measurement:
+  of the 25 selectors standing on both sides of their own rung, **24 would have resolved identically
+  at every placement.** This is the 25th. `.ed-head` measures 611 at a 640 viewport, 645 at 700 and
+  **341 at 760**, because that is where the bet panel arrives and takes 322 of the row, and again 681
+  at 1100 and 501 at 1140 where the review sidebar docks: **at both drops the window gets wider and
+  the head gets narrower**, and the title goes from 2 lines to 6 across one rung. A window query
+  could only say it by naming the panel's rung and the chrome's dock, which are facts about other
+  components. `patterns/detail-shell.css` declares the container and `event-detail.css` asks it,
+  because **place is not a property of the brick**: the pattern is what puts the column beside the
+  panel. A container threshold is not a token and is registered in `../ui-kit/docs/responsive.md`.
 - **A MEDIA QUERY MAY NOT STAND IN A SCREEN FILE, EVER**, and it is written here and in
   `ui-visual/CLAUDE.md` both, because a rule kept in one place is a rule half the hands never meet.
   Adaptation lives in a token, a component, a pattern or the shell. Measured at Responsive step 4:

@@ -51,7 +51,7 @@
           <div class="ed-chart-head"><h2>Price chart</h2><span class="ed-chart-now">JD Vance 41% now</span></div>
           <div class="ed-chart-area">
             <div class="ed-yaxis"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div>
-            <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><line class="grid-l" x1="0" y1="25" x2="300" y2="25"/><line class="grid-l" x1="0" y1="50" x2="300" y2="50"/><line class="grid-l" x1="0" y1="75" x2="300" y2="75"/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><line class="nowline" x1="300" y1="0" x2="300" y2="100"/></svg></div>
+            <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><line class="ed-even" x1="0" y1="50" x2="300" y2="50"/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/></svg></div>
           </div>
           <div class="ed-xaxis" aria-hidden="true"></div>
           <div class="ed-legend" aria-hidden="true"><span class="lg-item sel"><i class="tk-sw tk-c-series-1"></i>JD Vance</span><span class="lg-item"><i class="tk-sw tk-c-series-2"></i>Donald Trump</span><span class="lg-item"><i class="tk-sw tk-c-series-3"></i>Ron DeSantis</span><span class="lg-item"><i class="tk-sw tk-c-series-4"></i>Nikki Haley</span><span class="lg-item"><i class="tk-sw tk-c-series-5"></i>Other</span></div>
@@ -64,7 +64,7 @@
           <div class="ed-chart-head"><h2>Price chart</h2><span class="ed-chart-now">JD Vance 41% now</span></div>
           <div class="ed-chart-area">
             <div class="ed-yaxis"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div>
-            <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><line class="grid-l" x1="0" y1="25" x2="300" y2="25"/><line class="grid-l" x1="0" y1="50" x2="300" y2="50"/><line class="grid-l" x1="0" y1="75" x2="300" y2="75"/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><line class="nowline" x1="300" y1="0" x2="300" y2="100"/></svg></div>
+            <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><line class="ed-even" x1="0" y1="50" x2="300" y2="50"/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/></svg></div>
           </div>
           <div class="ed-xaxis" aria-hidden="true"></div>
           <div class="ed-legend" aria-hidden="true"><span class="lg-item sel"><i class="tk-sw tk-c-series-1"></i>JD Vance</span><span class="lg-item"><i class="tk-sw tk-c-series-2"></i>Donald Trump</span><span class="lg-item"><i class="tk-sw tk-c-series-3"></i>Ron DeSantis</span><span class="lg-item"><i class="tk-sw tk-c-series-4"></i>Nikki Haley</span><span class="lg-item"><i class="tk-sw tk-c-series-5"></i>Other</span></div>
@@ -161,7 +161,46 @@
   </section>
 
   <section class="tk-sec" id="grid">
-    <h2 data-n="4">The grid line, and the class map that sent it to the wrong file</h2>
+    <h2 data-n="4">Three grid lines became one, and the line grew a floor and an end</h2>
+    <p class="tk-note"><b>This chart was the poorer relative of the one on the feed.</b>
+    <code>hero.css</code> has drawn a filled chart since the day it was written: an area under the
+    line with a gradient from the outcome colour to nothing, four quiet grid lines, a legend. The
+    event <b>detail</b>, which is the screen a person came to in order to read the price, drew a
+    1.6px polyline in an empty well with three grid lines and nothing else. <b>One product, two
+    charts, and the better one was on the screen that is only passing through.</b></p>
+    <p class="tk-note"><b>The area is the datum here, not ornament.</b> Under a stock price the fill
+    is decoration, because the zero it falls to is arbitrary. Under a <b>probability</b> the line runs
+    0 to 100 and the area is how much of the way to certain the market has come. It is the hero's own
+    gradient, the outcome colour at .22 falling to 0, anchored to the path's own box so it is
+    brightest just under the line.</p>
+    <p class="tk-note"><b>One reference line instead of three.</b> 25 and 75 are arithmetic;
+    <b>50 is the only number on this axis that means something</b>, because above it the market says
+    yes. Three lines of equal weight said all three were equal. There is one now, dashed, and the
+    label it needs is the one the y-axis already carries at exactly that height. <b>A floating
+    <code>Even</code> beside it was built, screenshotted and deleted in the same pass</b>: it was the
+    same fact written twice, and it was written on top of the line at the one place a reader is
+    looking.</p>
+    <p class="tk-note"><b>The dot is a DOM element and not an SVG circle, and the reason is the
+    viewBox.</b> This chart is <code>viewBox="0 0 300 100"</code> with
+    <code>preserveAspectRatio="none"</code> drawn into about 900 x 160, so the horizontal and vertical
+    scales differ by about six: a <code>&lt;circle&gt;</code> renders as an ellipse six times wider
+    than it is tall. The strokes survive because they carry
+    <code>vector-effect:non-scaling-stroke</code>, <b>which is a property about strokes and does
+    nothing for a shape</b>. So the dot stands in <code>.ed-plot</code> and its height is a
+    percentage, the same datum the odds bar writes as a width.</p>
+    <p class="tk-note"><b>And the area's <code>fill</code> is a presentation attribute in the markup,
+    which is the one place this component disagrees with <code>hero.css</code>.</b> That file writes
+    <code>.hf-area{fill:url(#hfyes)}</code>, and it is safe only because the hero stands once in any
+    document. <b>This chart stands twice on this page.</b> The kit's convention suffixes every id a
+    cell redefines together with every <code>url(#id)</code> pointing at it, and a <code>url()</code>
+    in a stylesheet is not in the cell and cannot be suffixed: the second cell would have filled from
+    the first cell's gradient. <b>That is exactly the defect the tab panels paid for</b>, ids
+    suffixed and rules not.</p>
+    <p class="tk-note"><b>The multi-outcome chart takes the reference line and nothing else.</b> Five
+    lines cannot share one area and have five endpoints, so it keeps the dashed 50 and drops the three
+    grid lines with the rest. Measured: 5 lines, 1 reference, 0 areas, 0 dots, 0 old grid.</p>
+
+    <h2 data-n="5">The grid line, and the class map that sent it to the wrong file</h2>
     <p class="tk-note">The grid line used to be written in the feed's file, and <b>the class map
     hands a class to the file that writes it with the fewest ancestors</b>, so the arithmetic read
     the chart as CONTAINING the feed.</p>
@@ -172,7 +211,7 @@
   </section>
 
   <section class="tk-sec" id="grey">
-    <h2 data-n="5">Two grey-era classes, and how they were finally removed</h2>
+    <h2 data-n="6">Two grey-era classes, and how they were finally removed</h2>
     <p class="tk-note">A wrapper and a caption sat here, described in an earlier report as "the
     grey-era version of a block the paint replaced": what the wireframe drew before the chart was
     rebuilt as head, plot, axis and range. <b>They were kept because the grey tree still carried the
@@ -189,7 +228,7 @@
   </section>
 
   <section class="tk-sec" id="rule">
-    <h2 data-n="6">The rule</h2>
+    <h2 data-n="7">The rule</h2>
     <p class="tk-note"><b>Every SVG value is written, including the ones that are none.</b> A shape
     with no fill is black, and black is a decision nobody took.</p>
     <p class="tk-note"><b>A class belongs to the file whose selector it is the SUBJECT of.</b> Not to
@@ -197,7 +236,7 @@
   </section>
 
   <section class="tk-sec" id="antirule">
-    <h2 data-n="7">The anti-rule</h2>
+    <h2 data-n="8">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never call a chart ported without looking at it.</b> <i>Every class
     was present and it drew as a black rectangle.</i></p>
     <p class="tk-lab tk-bad"><b>Never write another component's class in this file.</b> <i>One line

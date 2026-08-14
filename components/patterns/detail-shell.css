@@ -12,7 +12,28 @@
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .ed-layout{display:flex;flex-direction:column;gap:var(--space-16);align-items:stretch}
-.ed-main{flex:1;min-width:0}
+/* THE SHELL DECLARES THE CONTAINER AND THE COMPONENT ASKS IT, 2026-08-14, and this is
+   the FIRST `container-type` in this system. It is here and not in `event-detail.css`
+   because **place is not a property of the brick**: this pattern is what puts the content
+   column beside the panel, so it is what knows the column is a context, and a component
+   that declared its own container would be declaring something about wherever it happens
+   to stand.
+   WHY IT WAS NEEDED HERE AND NOWHERE ELSE, MEASURED. `backlog.md` 129 refused container
+   queries on a measurement: of the 25 selectors standing on both sides of their own rung,
+   **24 would have resolved identically at every placement**, so a window query was doing
+   the same work. This is the 25th, and it is the one where **the window and the container
+   move in opposite directions, twice**. `.ed-head` against the viewport: 611 at 640, 645
+   at 700, and **341 at 760**, because that is where the bet panel arrives and takes 322 of
+   the row. The window gained 60px and the head lost 304. It happens again at 1140, 681 to
+   501, where the review sidebar docks. **A window query cannot say "the head is narrow"
+   here**: it would have to read `(max-width:639.98rem) or (47.5rem..55rem)` and then a
+   third band that only exists in the review build, and every one of those numbers would be
+   a fact about the panel rather than about the head.
+   `container-type:inline-size` and not `size`, because the column's height is its
+   content's and nothing here asks about it. Measured in both engines before it was
+   written: `CSS.supports` is true and a test rule actually changed a computed colour, which
+   is the reading that separates a feature that parses from one that applies. */
+.ed-main{flex:1;min-width:0;container-type:inline-size;container-name:ed}
 /* rung: DETAIL 47.5rem, 760px at the default root, the detail's second column. The ladder is in tokens.css, page frame. */
 @media(min-width:47.5rem){
   .ed-layout{flex-direction:row;align-items:flex-start}

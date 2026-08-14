@@ -685,7 +685,7 @@ _7 state page(s): deposit-error-card.html, deposit-error-kyc.html, deposit-loadi
 | Main | Field label | Pay with |  |
 | Main | Text | Transak payment widget (card to USDC) | **placeholder** |
 | Main | Text | Minimum deposit $10. Card payments are converted to USDC via Transak. KYC is required for card deposits; crypto-only users can connect a USDC wallet instead. |  |
-| Main | Button | How it works (what happens to my money) |  |
+| Main | Button | How it works | **The parenthetical `(what happens to my money)` was dropped on 2026-08-14**, for two reasons that agree. It broke the button onto two lines at 320 and 360, on 105 screens. And the header's own control has said plain `How it works` all along, so **one destination had two names**, 105 placements each, which is the `same-action / label varies` flag this file already carries for the go-to-events button. The promise it made is kept two lines above it by the `.protect` sentence, *Your USDC is held 1:1 - we do not lend or invest your funds*, which is voice principle 2 and is the answer to the question the bracket was asking |
 
 ### Sign In / Register
 
@@ -712,7 +712,7 @@ _4 state page(s): sign-in-error.html, sign-in-loading.html, sign-in-provider-con
 | Main | Text | This email is already registered with |  |
 | Main | Label | X |  |
 | Main | Text | . To keep one account, continue with X, or link Google to your existing account. |  |
-| Main | Button | Continue with X (your original provider) |  |
+| Main | Button | Continue with X | **The parenthetical `(your original provider)` was dropped on 2026-08-14.** It broke the button onto two lines at 360, and it said a second time what the error line directly above it already says: *This email is already registered with X.* A label that repeats the sentence over it is not context, it is the same sentence at a smaller size |
 | Main | Button | Link Google to this account |  |
 | Main | Text | You are about to place a bet. Sign in or create an account to continue. It takes a few seconds. |  |
 
@@ -1568,7 +1568,7 @@ here first, because the page they were written on was outside the last two audit
 | `Adding funds by card requires KYC; crypto-only accounts can connect a wallet instead.` | the sign-in `.fine` | principle 2: the ask names its own condition before it is made, not after |
 | `Pay with` | a `.field-label` over the payment widget | the field rule: a field says what it is. The widget had no label at all in the dialog |
 | `Card payments are converted to USDC via Transak.` | the deposit `.fine` | principle 1: explain the number, and here the mechanism. A card charge that arrives as USDC needs a sentence or it reads as a swap nobody agreed to |
-| `How it works (what happens to my money)` | a `.provider-btn` under the deposit fine print | principle 2 again, and it is the reason this merge went this way: the exit to How It Works is the trust affordance the deposit screen is there to earn, and the shared dialog had lost it |
+| `How it works` | a `.provider-btn` under the deposit fine print | principle 2 again, and it is the reason this merge went this way: the exit to How It Works is the trust affordance the deposit screen is there to earn, and the shared dialog had lost it  **`(what happens to my money)` dropped 2026-08-14: two lines at 320 and 360 on 105 screens, and the header's control already said plain `How it works`** |
 
 **Moved from the dialog to the page** (the page is the full version the dialog links to, so this is
 the same string on a second surface, not a rewrite): `How betting works here` and its paragraph, and

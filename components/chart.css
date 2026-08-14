@@ -1,5 +1,5 @@
 /* components/chart.css
-   Component: chart. Classes: .chart-svg, .ed-chart-area, .ed-chart-foot, .ed-chart-head, .ed-chart-now, .ed-legend, .ed-plot, .ed-xaxis, .ed-yaxis, .grid-l, .lg-item, .ml-line, .nowline.
+   Component: chart. Classes: .chart-svg, .ed-area, .ed-chart-area, .ed-chart-foot, .ed-chart-head, .ed-chart-now, .ed-even, .ed-legend, .ed-now-dot, .ed-plot, .ed-xaxis, .ed-yaxis, .grid-l, .lg-item, .ml-line, .nowline.
 
    Reads: --bg-chart-well, --border-brass-hover, --border-hairline, --chart-line,
           --chart-line-glow, --line-grid, --outcome-yes-text, --text-muted, --text-primary
@@ -66,3 +66,84 @@ div.chart-svg{display:flex;align-items:center;justify-content:center;color:var(-
    `.grid-l` was written in feed.css, which made the arithmetic read `chart` as containing
    `feed`. Nothing about the rule is a feed decision: the subject is `.chart-svg`. */
 .chart-svg .grid-l{stroke:var(--line-grid);stroke-width:1}
+
+/* ============================================================================
+   THE DETAIL CHART WAS THE POORER RELATIVE OF THE ONE ON THE FEED, 2026-08-14.
+
+   `hero.css` has drawn a filled chart since the day it was written: an area under
+   the line with a gradient from the outcome colour to nothing, four quiet grid
+   lines, and a legend. The event DETAIL, which is the screen a person came to in
+   order to read the price, drew a 1.6px polyline in an empty well with three grid
+   lines at 25, 50 and 75 and nothing else. **One product, two charts, and the
+   better one is on the screen that is only passing through.**
+
+   WHAT CHANGED AND WHY EACH ONE IS A DECISION AND NOT A DECORATION.
+
+   **The area.** For a stock price an area under the line is ornament, because the
+   zero it fills down to is arbitrary. **For a probability it is the datum**: the
+   line runs 0 to 100 and the area is how much of the way to certain the market has
+   come. It is the hero's own gradient, `--outcome-yes` at .22 falling to 0.
+
+   **One reference line instead of three.** 25 and 75 are arithmetic; **50 is the
+   only number on this axis that means something**, because above it the market says
+   yes and below it no. Three lines of equal weight said all three were equal. There
+   is one now, dashed, with `Even` written at its right end, which is the move the
+   references make with a previous close: **label the line you want read, and draw
+   no line you do not.** The y-axis keeps all five numbers, because that is the
+   scale and the scale is not the grid.
+
+   **A dot where the line ends.** The last vertex is the current price and it was
+   indistinguishable from every other vertex. The dashed vertical that used to stand
+   at x=300 is gone with it: it sat on the well's own border and drew a dashed line
+   on top of a solid one.
+
+   THE DOT IS A DOM ELEMENT AND NOT AN SVG CIRCLE, AND THE REASON IS THE viewBox.
+   This chart is `viewBox="0 0 300 100"` with `preserveAspectRatio="none"`, drawn
+   into a box that is about 900 x 160, so **the horizontal and vertical scales differ
+   by a factor of about six**: a `<circle>` in that space renders as an ellipse six
+   times wider than it is tall. The strokes survive because they carry
+   `vector-effect:non-scaling-stroke`, which is a property about strokes and does
+   nothing for a shape. So the dot stands in `.ed-plot`, which is already
+   `position:relative`, and its height is a PERCENTAGE, which is the same datum the
+   odds bar writes as a width and the one kind of value CLAUDE.md allows on the
+   element.
+
+   THE AREA'S `fill` IS A PRESENTATION ATTRIBUTE IN THE MARKUP AND NOT A RULE HERE,
+   WHICH IS THE ONE PLACE THIS FILE DISAGREES WITH `hero.css`. That file writes
+   `.hf-area{fill:url(#hfyes)}`, and it is safe only because the hero stands once in
+   any document. This chart stands twice on `ui-kit/chart.html`, and the kit's
+   convention is to suffix every id a cell redefines **together with every
+   `url(#id)` pointing at it**. A `url()` in a stylesheet is not in the cell and
+   cannot be suffixed, so a CSS rule would have left the second cell filling from
+   the first cell's gradient, or from none. **That is exactly the defect the tab
+   panels paid for**: ids suffixed, rules not, and a specimen that draws its bar and
+   none of its panels. In the markup the kit's existing rule reaches it.
+   ============================================================================ */
+.chart-svg .ed-area{stroke:none}
+.chart-svg .ed-even{stroke:var(--border-hairline);stroke-width:1;stroke-dasharray:2 4}
+/* The ring is the well's own colour, so the dot reads as an object sitting ON the
+   line rather than as a thickening of it, and the glow is the line's own halo token
+   rather than a second brightness invented here. */
+/* THE DOT IS ANCHORED BY ITS CENTRE, AND THE FIRST BUILD ANCHORED IT BY AN EDGE.
+   Measured against the polyline's last point, transformed into page coordinates with
+   `getScreenCTM`, in both engines and at both widths: the centre stood **3.76px above
+   the line and 1.00px to the right of it**. Two mistakes of the same species, an
+   edge-anchored box pretending to be a point.
+   THE VERTICAL ONE WAS A MARGIN THAT COULD NOT APPLY. It read
+   `margin:calc(size / -2) ... 0 0`, which is a negative margin-TOP, and **a negative
+   margin-top does nothing to a box positioned by `bottom`**: the box's bottom edge sat
+   on the line and its centre was half a dot above. `translate(50%,50%)` moves the box
+   by half its own size on both axes whatever that size becomes, so the anchor is the
+   centre and no arithmetic is written twice.
+   THE HORIZONTAL ONE WAS THE BORDER. `right:0` is the PLOT's border box and the
+   polyline's last point is at the SVG's CONTENT right edge, which is one hairline
+   inside it. The dot insets by exactly that.
+   AND THE DATUM IS A NUMBER NOW, NOT A LENGTH. It was `style="bottom:38%"`, and 38 per
+   cent of the plot is 38 per cent of the BORDER box while the line is drawn in the
+   content box, an error of `hairline * (1 - 2v/100)`, 0.24px at 38. The element carries
+   `--v:38`, the probability itself, and this rule does the geometry: the same split the
+   odds bar would make if its well had an edge. Re-measured after, against the same
+   transformed last point: **0.00 on x and 0.01 to 0.02 on y, in both engines at both
+   widths**, and the y remainder is the rounding of one `calc` and not a second defect.
+   The number is written as it was read rather than as 0. */
+.ed-now-dot{position:absolute;right:var(--hairline);bottom:calc(var(--hairline) + (100% - var(--hairline) * 2) * var(--v) / 100);width:var(--size-8);height:var(--size-8);margin:0;transform:translate(50%,50%);border-radius:var(--radius-pill);background:var(--chart-line);box-shadow:0 0 0 2px var(--bg-chart-well),0 0 10px 2px var(--chart-line-glow);pointer-events:none}

@@ -50,6 +50,37 @@ datum, and a datum is one of the three things `CLAUDE.md` allows on the element.
 product**, `components/`, `ui-visual/` and `wireframes/`. No component in this system measures its
 own place. Every adaptive rule here asks about the window.
 
+**THAT WAS TRUE UNTIL 2026-08-14 AND IT IS 1 AND 1 NOW, AND THE CASE IS THE ONE BACKLOG 129 SAID DID
+NOT EXIST YET.** 129 refused container queries on a measurement rather than a taste: of the 25
+selectors standing on both sides of their own rung, **24 would have resolved identically at every
+placement**, so a window query was doing the same work. **This is the 25th, and it is the one where
+the window and the container move in OPPOSITE directions, twice.** `.ed-head` against the viewport:
+611 at 640, 645 at 700, **341 at 760** where the bet panel arrives and takes 322 of the row, 481 at
+900, 681 at 1100, **501 at 1140** where the review sidebar docks. At both drops the window gets wider
+and the head gets narrower. The title was **2 lines at 700 and 6 at 760**.
+
+A window query cannot say *the head is narrow* here without naming the panel's rung and the chrome's
+dock, which are facts about other components, and every one of those numbers would go stale the day
+either moved. So `patterns/detail-shell.css` declares `container-type:inline-size` and
+`container-name:ed` on `.ed-main`, **because place is not a property of the brick and the pattern is
+what puts the column beside the panel**, and `event-detail.css` asks it.
+
+#### The registry of container thresholds
+
+A container threshold is **not a token**, because it is local to one placement and no other component
+can be asked to honour it. It is registered here instead, the way the width ladder is registered in
+`components/tokens.css`.
+
+| container | threshold | who declares | who asks | what arrives |
+|---|---|---|---|---|
+| `ed` on `.ed-main` | **460px** | `patterns/detail-shell.css` | `components/event-detail.css` | below it the event head stacks: the 72px thumbnail and the three actions share the first line and the text takes the whole column. Above it the head is a row with 100px of gutter reserved for the actions |
+
+**The threshold is the content's and not a device's**: below 460 the row cannot hold a 72px picture,
+100px of gutter and a readable measure at once. Measured, title lines by viewport, before and after:
+**6 to 3 at 320, 5 to 2 at 360, 4 to 2 at 390 and 430, and 6 to 2 at 760.** The odds bar went from
+127px inside a 331px head to 291. Unchanged at 560, 640 and every width from 900 up, which is the
+control: the container rule fires only where the column is narrow.
+
 **The fourth corpus is not 0, and this table said it was until 2026-08-12.** `ui-kit/_page.css`
 declares one `container-type` and one `@container`, both of them `.tk-cq` and the box it wraps on
 `responsive.html`, and **they were added by step 2 of this same stage, after this grep was taken and

@@ -425,6 +425,9 @@
     /* rung: DETAIL 760. The paint steps this chart 160 -> 280 there: components/chart.css. */
     @media (min-width: 760px) { .chart-svg { height: 280px; } }
     .chart-svg polyline { fill: none; stroke: #777; stroke-width: 1.5; }
+    .chart-svg .ed-area { fill: #cfcfcf; stroke: none; }
+    .chart-svg .ed-even { stroke: #888; stroke-width: 1; stroke-dasharray: 2 4; }
+    .ed-now-dot { position: absolute; right: 1px; bottom: calc(1px + (100% - 2px) * var(--v) / 100); width: 8px; height: 8px; margin: 0; transform: translate(50%, 50%); border-radius: 50%; background: #444; box-shadow: 0 0 0 2px #e6e6e6; }
     .chart-svg .grid-l { stroke: #d2d2d2; stroke-width: 1; }
     .chart-svg .nowline { stroke: #999; stroke-width: 1; stroke-dasharray: 3 3; }
     .chart-svg text { fill: #777; font-size: 7px; }
@@ -1124,7 +1127,7 @@
           <article class="card">
             <div class="ed-head"><div class="ed-actions"><button type="button" class="icon-btn icon-btn-tile" data-comments aria-label="Jump to comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12c0 1.6.376 3.112 1.043 4.453c.178.356.237.763.134 1.148l-.595 2.226a1.3 1.3 0 0 0 1.591 1.592l2.226-.596a1.63 1.63 0 0 1 1.149.133A9.96 9.96 0 0 0 12 22"/></svg></button><button type="button" class="icon-btn icon-btn-tile" aria-label="Share this event"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.803 5.333c0-1.84 1.507-3.333 3.365-3.333c1.86 0 3.366 1.492 3.366 3.333c0 1.841-1.507 3.334-3.366 3.334a3.38 3.38 0 0 1-2.037-.678l-4.67 3.204a3.3 3.3 0 0 1 0 1.62l4.67 3.204a3.38 3.38 0 0 1 2.037-.677c1.86 0 3.366 1.492 3.366 3.333S19.028 22 17.168 22c-1.858 0-3.365-1.492-3.365-3.333q0-.413.098-.804l-4.67-3.204a3.38 3.38 0 0 1-2.037.677C5.507 15.336 4 13.843 4 12.002s1.507-3.333 3.365-3.333c.762 0 1.474.252 2.037.677l4.67-3.204a3.3 3.3 0 0 1-.099-.809"/></svg></button><button type="button" class="icon-btn icon-btn-tile" data-fav aria-pressed="false" aria-label="Save into Favorites"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></svg></button></div>
               <span class="ed-thumb">thumbnail placeholder</span>
-              <div>
+              <div class="ed-head-txt">
                 <span class="ed-cat">Politics &middot; One-time event</span>
                 <h1 class="ed-q">Will the US government shut down before March 1, 2027?</h1>
                 <p class="ed-prob-big">YES <span class="prob">38%</span> &nbsp; NO <span class="prob">62%</span></p>
@@ -1136,7 +1139,7 @@
             <div class="ed-chart-head"><h2>Price chart</h2><span class="ed-chart-now">YES 38% now</span></div>
             <div class="ed-chart-area">
               <div class="ed-yaxis"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div>
-              <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><line class="grid-l" x1="0" y1="25" x2="300" y2="25"/><line class="grid-l" x1="0" y1="50" x2="300" y2="50"/><line class="grid-l" x1="0" y1="75" x2="300" y2="75"/><polyline points="0.0,59.0 25.0,56.0 50.0,60.0 75.0,64.0 100.0,53.0 125.0,57.0 150.0,50.0 175.0,55.0 200.0,51.0 225.0,56.0 250.0,47.0 275.0,43.0 300.0,62.0"/><line class="nowline" x1="300" y1="0" x2="300" y2="100"/></svg></div>
+              <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><line class="ed-even" x1="0" y1="50" x2="300" y2="50"/><path class="ed-area" d=""/><polyline points="0.0,59.0 25.0,56.0 50.0,60.0 75.0,64.0 100.0,53.0 125.0,57.0 150.0,50.0 175.0,55.0 200.0,51.0 225.0,56.0 250.0,47.0 275.0,43.0 300.0,62.0"/></svg><span class="ed-now-dot" aria-hidden="true" style="--v:38"></span></div>
             </div>
             <div class="ed-xaxis" aria-hidden="true"><span>Jul</span><span>Sep</span><span>Nov</span><span>Jan</span><span>now</span></div>
             <div class="ed-chart-foot"><div class="ed-range" role="group" aria-label="Time range"><button class="chip chip-rail" type="button">1d</button><button class="chip chip-rail" type="button">1w</button><button class="chip chip-rail" type="button">1m</button><button type="button" class="chip chip-rail sel">all</button></div></div>
@@ -1597,7 +1600,7 @@
       <div class="widget-box">Transak payment widget (card to USDC)</div></div>
       <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
       <p class="fine">Minimum $10. Card payments are converted to USDC via Transak. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
-      <button type="button" class="btn btn-secondary btn-md btn-block" data-open="howitworks">How it works (what happens to my money)</button>
+      <button type="button" class="btn btn-secondary btn-md btn-block" data-open="howitworks">How it works</button>
       <button type="button" class="btn btn-primary btn-md btn-block" data-close-dialog>Add funds</button>
     </div>
   </dialog>
