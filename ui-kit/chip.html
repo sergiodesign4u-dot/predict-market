@@ -263,6 +263,7 @@
   <!-- ================================================================== width --><section class="tk-sec" id="width">
     <h2>What it does with width</h2>
     <p class="tk-note"><b>Its own width query: 900 RAIL, 640 DESK.</b> The chip's box is fixed at every width, 81px on its widest specimen. What the rungs move is the LANE: at RAIL the <code>.chip-lane</code> goes full width, spreads its children apart and drops its border, which turns a row of chips into a rail. Below DESK the nav chip takes <code>position:relative</code> so its own count can hang off it.</p>
+    <p class="tk-note"><b>And since 2026-08-15 the nav chip changes SIZE below DESK: 48 tall to 44, on all 294 placements.</b> 44 is the touch floor's own number, declared once in <code>base.css</code> for the whole control family. <b>Setting the height alone would have done nothing</b>, which is the fact worth carrying off this page: the chip's content box is 47 before any floor is consulted, so <code>min-height:44px</code> on it is present, correct and consulted by nothing, exactly the inert declaration <code>loadmore.css</code> names in its own opening. The padding is what decides the box, and it comes down with the height, 12 to 8 and 20 to 12. The strip is a scroller, so the sides matter as much as the height: the two widest chips go 131.1 to 111.1 and 122.2 to 102.2 at 360, and the band around them 70 to 66. Above the rung nothing moved, 48 and 78.</p>
   </section>
 
   <section class="tk-sec" id="rule">

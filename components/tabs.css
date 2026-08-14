@@ -146,6 +146,28 @@
 .ptabs > .ptab-in:nth-of-type(2):focus-visible ~ .ptab-bar > .ptab-lbl:nth-of-type(2),
 .ptabs > .ptab-in:nth-of-type(3):focus-visible ~ .ptab-bar > .ptab-lbl:nth-of-type(3){outline:var(--ring) solid var(--focus-ring);outline-offset:calc(var(--ring) * -1)}
 .ed-range{display:inline-flex;gap:var(--space-4);padding:var(--space-4);background:var(--bg-well);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10)}
+/* THE FRAME COMES OFF BELOW THE DESK RUNG, 2026-08-15, AND THE BUTTONS DO NOT MOVE.
+   Measured on a coarse pointer at 320, 360, 390, 640 and 1280: each chip is **exactly
+   44 x 44**, which is this project's own touch floor and an invariant `base.css`
+   declares once for the whole family. **The row was 54 and the ten pixels were never
+   the buttons**: 4px of padding and a hairline on each side of this group, which is
+   `44 + 8 + 2`. The group is 198 wide for the same reason, `4 x 44 + 3 x 4 + 8 + 2`.
+   So on a phone the well, the edge and the corner go and the row is 44, which is what
+   was asked for and is the only ten pixels there were to give. **The four chips still
+   read as one control**, because the chosen one carries a brass ground and the other
+   three carry none: a segmented control is told apart by its selection, and the frame
+   around it is what a desk has room for.
+   ANYTHING BELOW 44 IS THE FLOOR'S DECISION AND NOT THIS FILE'S. `base.css` raises
+   every member of the control family to 44 under `pointer:coarse`, once, and this
+   folder's own rule is that a floor is the family's and is declared in one place. A
+   component that shrank under it would be the `.btn-md` defect again, the same control
+   at 48 under a mouse and 47 under a finger. If the switcher should be smaller than the
+   floor, the floor is the thing to argue with. */
+/* rung: DESK 40rem, 640px at the default root, the one divide, and this is BELOW it. 39.99875rem rather than 40rem, which is 639.98 against 640 at the default root,
+   because the rung belongs to the desk: tokens.css, page frame. */
+@media(max-width:39.99875rem){
+  .ed-range{padding:0;background:none;border:0;border-radius:0;gap:var(--space-2)}
+}
 /* THE RANGE RAIL AND THE COMMENT SORTER ARE ONE CHIP, and until now they were one
    chip written twice with two different answers. Measured 2026-08-04: `.ed-range` and
    `.seg` (components/comments.css) agree on padding, radius, size, height, ground and

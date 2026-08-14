@@ -499,6 +499,22 @@
     arrived, a tap on a tab said nothing until the panel underneath had already changed.</p>
   </section>
 
+  <!-- ================================================================== width --><section class="tk-sec" id="width">
+    <h2>What it does with width</h2>
+    <p class="tk-note"><b>One query, at DESK, and it takes the FRAME off the chart's range group and
+    not a pixel off its buttons.</b> Measured on a coarse pointer at 320, 360, 390, 640 and 1280,
+    every <code>.ed-range</code> chip is exactly 44 x 44, which is the touch floor <code>base.css</code>
+    declares once for the whole family. <b>The row was 54 and the ten pixels were never the buttons</b>:
+    4px of padding and a hairline a side, <code>44 + 8 + 2</code>, and the group is 198 wide for the
+    same arithmetic, <code>4 x 44 + 3 x 4 + 8 + 2</code>. Below the rung the well, the edge and the
+    corner go and the row is 44, the group 182.</p>
+    <p class="tk-note"><b>The four chips still read as one control with the frame gone</b>, because
+    the chosen one carries a brass ground and the other three carry none: a segmented control is told
+    apart by its selection, and the box around it is what a desk has room for. Anything below 44 is
+    the floor's decision and not this file's, and a component that shrank under it would be the
+    <code>.btn-md</code> defect again, the same control at 48 under a mouse and 47 under a finger.</p>
+  </section>
+
   <section class="tk-sec" id="rule">
     <h2 data-n="9">The rule</h2>
     <p class="tk-note"><b>A switcher needs no script.</b> A radio, a label and a sibling selector,

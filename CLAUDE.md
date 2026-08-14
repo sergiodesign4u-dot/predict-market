@@ -174,4 +174,14 @@ because it is a stance rather than a principle, and it is written once, here.
   for the first time, differs from every pass after it and cost another 165 rows of noise. Prove the
   control is 0 before believing the comparison. **A number that moves when nothing moved is a
   reading of the instrument, not of the page.**
+- **A RESIZE IS NOT A LAYOUT: give it a frame, or a sweep over widths reads the width it left
+  behind.** The same probe that had reported 0 reported **382 horizontally scrolling documents** on
+  2026-08-15, over screens whose markup had not been touched, and every one of them was a read taken
+  in the same turn as `setViewportSize`. Two `requestAnimationFrame`s later the identical run reads
+  **0 of 8,544 renders**, and the culprits it had named, an `svg` at 520 and the header's utility
+  group at 458, are the 1280 layout still standing while the window is already 320. **The tell was
+  the arithmetic**: 138 at 320 and 98 at 360 is one constant width of 458, and a defect that is the
+  same box at every width is usually not a defect. So a width sweep gets a settle AND a positive
+  control: inject a box wider than the window and prove the probe sees it, because 0 is also what a
+  blind probe reports.
 - **No em dash**, anywhere.

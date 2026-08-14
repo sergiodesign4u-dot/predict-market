@@ -220,6 +220,22 @@
     behind the control. The ground it has to survive is the card, which it already does.</p>
   </section>
 
+  <!-- ================================================================== width --><section class="tk-sec" id="width">
+    <h2>What it does with width</h2>
+    <p class="tk-note"><b>One query, at DESK, and it is the half of the wrap that says what the pair
+    does with the second line.</b> <code>options.css</code> decides the row wraps; below the rung this
+    file gives <code>.opt-row .yesno.compact</code> a whole line of its own and lets its two halves
+    share it, so the pair goes from 46 and 42.7px side by side with the name to 268 apiece under it.</p>
+    <p class="tk-note"><b>It stays on the WINDOW, and that was measured rather than assumed</b>,
+    backlog 145. Forced into the inline layout at every width from 320 to 1600: the two halves measure
+    46 and 42.7px at every container width from 251 to 628, because they are content-sized and the
+    name absorbs the rest. <b>So the container cannot answer the question this rule asks.</b> What the
+    container does decide is whether the NAME clips, which happens below about 260, and keying the
+    wrap there would put the cramped pair on every phone in the product, with one of the two halves
+    under the 44px floor this project set itself. A non-separable rule is what it looks like when the
+    window carries information the container does not have.</p>
+  </section>
+
   <!-- ================================================================== rule -->
   <section class="tk-sec" id="rule">
     <h2 data-n="8">The rule</h2>

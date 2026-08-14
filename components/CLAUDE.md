@@ -1,6 +1,6 @@
 # components/ - the system itself
 
-This folder IS the design system. **54 stylesheets, 9,919 lines**: 48 here and 6 in `patterns/`,
+This folder IS the design system. **54 stylesheets, 9,995 lines**: 48 here and 6 in `patterns/`,
 re-counted 2026-08-14 by `cat components/*.css components/patterns/*.css | wc -l` after the filters
 sheet, its two later passes and the scroll-driven edge fade. It was 9,224 on 2026-08-13 after `trust-art.css`
 was written (`docs/backlog.md` 140). It was 53 and 8,734 earlier the same day, after `print.css`
@@ -98,12 +98,16 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
 - **A MEDIA QUERY MAY NOT STAND IN A SCREEN FILE, EVER**, and it is written here and in
   `ui-visual/CLAUDE.md` both, because a rule kept in one place is a rule half the hands never meet.
   Adaptation lives in a token, a component, a pattern or the shell. Measured at Responsive step 4:
-  **32 width queries in this folder, 0 in any of the 106 documents in `ui-visual/`.** It was 33, then
+  **34 width queries in this folder, 0 in any of the 106 documents in `ui-visual/`.** It was 33, then
   35 on 2026-08-12 when the outcome row and the outcome pair each took one at the desk rung, and 33
   again on 2026-08-13 when backlog 129 deleted the one in `tokens.css` and the one in `card.css`
   **and put nothing in either place**: the two page insets ramp with a `clamp()` now and the bookmark
   pull is unconditional. **A query that leaves with no replacement was answering a question its
-  subject never asked.** The counterpart
+  subject never asked.** It went to 32 on 2026-08-14 when the strip's own 640 block turned out to be
+  paying a phone twice for the same rhythm, and to **34 on 2026-08-15**, both of them at the desk's
+  narrow side and both of them a control that a desk sizes one way and a thumb another: the chart's
+  range group drops its frame and the category chip drops from 48 to 44 with its padding. **Two
+  queries arriving on one day is the shape to watch**, and neither invented a number. The counterpart
   reading used to say "35 of 43 components have no width behaviour of their own at all", **and that
   number was three numbers wearing one sentence, taken from a table with one placement per
   component.** Re-measured 2026-08-12 over every placement of all 47 components on the 105 painted

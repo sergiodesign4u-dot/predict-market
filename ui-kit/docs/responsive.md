@@ -111,9 +111,12 @@ found.
 `ui-kit/` gained its `container-type` at step 2, recorded above; on **2026-08-12 `components/` went
 from 33 width queries to 35**, `options.css` and `yesno.css` each taking one at 639.98 so the
 outcome row could wrap below the desk; and on **2026-08-13 it went back to 33**, because backlog 129
-deleted two. Counted from the comment-stripped source of all 53 stylesheets: **33 width queries, of
-which 14 at the desk in 13 files, 7 at the detail in 7, 6 at the rail in 5, 2 at the 1140 harness
-and 4 one-offs**. The registry did not move and no rung was added or removed by any of the three,
+deleted two; on **2026-08-14 it went to 32**, `catnav.css` giving up a desk block that was paying a
+phone twice for the same rhythm; and on **2026-08-15 to 34**, `tabs.css` and `chip.css` each taking
+one at the desk's narrow side for a control a desk sizes one way and a thumb another. Re-counted
+2026-08-15 from the comment-stripped source of all 53 stylesheets: **34 width queries, of
+which 16 at the desk in 13 files, 6 at the detail in 6, 6 at the rail in 5, 2 at the 1140 harness
+and 4 one-offs in 3**. The registry did not move and no rung was added or removed by any of the three,
 which is the only thing the transcript was taken to protect. **The two that went are worth naming,
 because neither was replaced**: `tokens.css` held the page gutter and the plate inset at one pair of
 values below the desk and another above, and both are a `clamp()` now; `card.css` held the bookmark
@@ -391,16 +394,25 @@ Every `@media` in `components/` read and every number compared against the ladde
 
 | number | rules | verdict |
 |---|---|---|
-| 639.98 / 640 | 8 / 6 | DESK, both sides |
-| 759.98 / 760 | 4 / 3 | DETAIL, both sides |
+| 639.98 / 640 | 10 / 6 | DESK, both sides |
+| 759.98 / 760 | 3 / 3 | DETAIL, both sides |
 | 900 | 6 | RAIL |
 | 560, 620, 980 | 2, 1, 1 | **named one-offs**, and each carries its own measurement beside it, closed by backlog 72 |
 | 1140 | 2 | HARNESS, not the product |
 
-**33 width queries, every number on the registry, and 0 `@media` in any of the 106 screen files.**
+**34 width queries, every number on the registry, and 0 `@media` in any of the 106 screen files.**
 It read 33 when this table was drawn, 35 from 2026-08-12 when `options.css` and `yesno.css` each
 took one at the desk rung so the outcome row could wrap, and 33 again from 2026-08-13, when backlog
-129 deleted the one in `tokens.css` and the one in `card.css`. **The table above was not edited on
+129 deleted the one in `tokens.css` and the one in `card.css`.
+**Then 32 on 2026-08-14 and 34 on 2026-08-15, and the table above WAS edited this time.** It had
+been right by accident three times running and it was wrong on the fourth: `catnav.css` gave up its
+desk block on 2026-08-14, so the detail's narrow side read 3 while this row went on saying 4, and
+the paragraph beside it and the two other places in this file that repeat the total all carried the
+stale 33 for a day. `tabs.css` and `chip.css` each took one at the desk's narrow side on 2026-08-15,
+both for a control a desk sizes one way and a thumb another. **The lesson is the one this section
+already argued and then did not act on**: a count read out of a paragraph is a count of the
+paragraph, so it is re-taken from the comment-stripped source of all 53 stylesheets every time any
+of the four places here is touched. **The table above was not edited on
 either day and is right for the third time by accident**, which is the argument for reading a count
 out of the source and not out of a paragraph: the prose beside it said 16 at the desk for a day
 while the table said 14, and only one of them was ever recounted.
@@ -576,9 +588,17 @@ each component stands widest, with every dialog opened.
 
 **35 of 45 have nothing to say about width**, which is the system working: adaptation lives in the
 shell, the patterns and the page frame, and the bricks take what they are given. So the
-"What it does with width" section was written on the **21** pages whose component owns a width query,
-and on no others, because a section saying "nothing" on 24 pages is noise that the inventory column
-already carries once.
+"What it does with width" section was written on the pages whose component owns a width query,
+and on no others, because a section saying "nothing" on the rest is noise that the inventory column
+already carries once. It was **21** when the convention was set and it is **25** on 2026-08-15,
+counted by grep over `ui-kit/*.html` rather than by adding to the number in this sentence, and the
+recount is what found the holes. **`options` and `yesno` had owned a desk query since 2026-08-12 and
+neither page said so**, which is the same defect as the count itself: the two queries were added, the
+total in this file was updated, and the convention that hangs off the total was not. `tabs` took one
+the day `.ed-range` grew its first query. The remaining two of the 25 are deliberate: `card` keeps
+its section to record the query that LEFT on 2026-08-13 and what replaced it, and `responsive` is a
+foundation page whose whole subject is width. **A convention that names a count has to be re-counted,
+or the count quietly becomes the convention.**
 
 **The column reads the component against its PARENT'S CONTENT BOX, and that correction is the
 finding.** Measured against the window, **33 of 43 read as stepping at 640**, because the page gutter
@@ -645,8 +665,8 @@ one may belong to it more.
 
 **No `@media` in a screen file, ever.** It is in `components/CLAUDE.md` and in `ui-visual/CLAUDE.md`
 both, because a rule kept in one place is a rule half the hands never meet, and this tree is
-assembled by many hands at once. Measured: 33 width queries in the system, **0 in any of the 106
-painted screens**.
+assembled by many hands at once. Measured: 34 width queries in the system as of 2026-08-15, **0 in
+any of the 106 painted screens**.
 
 ### Backlog 43, and the answer is no
 

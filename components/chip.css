@@ -231,6 +231,38 @@
 @media(max-width:39.99875rem){
   .chip-nav{position:relative}
 }
+/* THE STRIP HANDED THE PHONE A DESK CONTROL, 2026-08-15. `--control-48` is the
+   product's most common control and it is the right height for a chip under a
+   mouse. On a phone it is 48 of the 70 the whole category band costs, and that
+   band is the first thing under the header on every feed screen.
+
+   THE HEIGHT ALONE WOULD HAVE CHANGED NOTHING, and that is why this rule moves
+   three declarations rather than one. This chip's content box is 47 before any
+   floor is consulted - 21 of line box at 14 on 1.5, 24 of vertical padding, 2 of
+   border - so `min-height:44px` written on it is exactly the inert declaration
+   components/loadmore.css measured and named in its own opening: a rule that is
+   present, correct and consulted by nothing. THE PADDING IS WHAT DECIDES THE BOX.
+   At --space-8 the content is 39, so the floor becomes the thing that sets the
+   height instead of a leftover, and 44 is the floor's own number, declared once
+   in base.css for the whole family.
+
+   THE SIDES AND THE GAP COME DOWN WITH IT, because this strip is a SCROLLER and
+   the complaint about it was horizontal. 20 a side and 12 between mark and word
+   put two chips and a sliver into the 298px this row gets at 360. Measured after:
+   131.1 -> 111.1 and 122.2 -> 102.2, and the third category is a word rather than
+   an edge.
+
+   ALL 294 PLACEMENTS MOVE, AND THAT IS THE POINT RATHER THAN A COST. 285 stand in
+   the category strip and 9 are `Load more events`, and components/loadmore.css
+   settled on 2026-08-07 that those nine ARE this chip - one control keeping what
+   the other 285 gave up is precisely the exception that file deleted. Its width
+   comes from a three-word label, so 16 fewer pixels of padding is the whole of
+   what it feels, and it stands on the same floor as everything else a thumb hits.
+   rung: DESK 40rem, 640px at the default root, the one divide, and this is BELOW it. 39.99875rem rather than 40rem, which is 639.98 against 640 at the default root,
+   because the rung belongs to the desk: tokens.css, page frame. */
+@media(max-width:39.99875rem){
+  .chip-nav{--control-h:var(--control-44);gap:var(--space-8);padding:var(--space-8) var(--space-12)}
+}
 /* THREE CHIPS DECLARE A RUNG, 2026-08-10 (docs/backlog.md 40). All three stood at a height
    nothing had chosen: `.chip-lane` 40.5, `.chip-nav` 47 and `.chip-rail` 26, each of them
    padding plus border plus whatever DM Sans returned for `line-height:normal` at that size.

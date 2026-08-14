@@ -12,6 +12,109 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-15 - The switcher that was meant was the other one, and setting its height alone would have changed nothing
+
+**THE PREVIOUS ENTRY ANSWERED THE WRONG CONTROL.** "Make the switching buttons smaller on a phone,
+say 44" was read as the chart's range rail and it meant the CATEGORY STRIP, the row of Trending,
+Politics and Crypto that is the first thing under the header on every feed screen. The reading that
+settled it was a screenshot: **the reply had been true, measured and about something else.** Both
+changes stand, because the range rail's frame was a real ten pixels; only the second one is the
+answer to what was asked.
+
+**`.chip-nav` WAS `--control-48`, THE PRODUCT'S MOST COMMON CONTROL, AND ON A PHONE IT WAS 48 OF THE
+70 THE WHOLE BAND COST.** 44 is the touch floor's own number, declared once in `base.css` for the
+family, so below the desk rung the chip stands exactly on it.
+
+**AND `--control-h:var(--control-44)` ON ITS OWN WOULD HAVE DRAWN NOTHING.** This chip's content box
+is **47** before any floor is consulted: 21 of line box at 14 on 1.5, 24 of vertical padding, 2 of
+border. `min-height:44px` against a 47px content box is present, correct and consulted by nothing,
+which is **exactly the inert declaration `components/loadmore.css` had already found and named** in
+the merge of 2026-08-07 - it listed `min-height:44px` first among the four differences that turned
+out to be nothing. **The padding is what decides the box.** At `--space-8` the content is 39 and the
+floor becomes the thing that sets the height instead of a leftover.
+
+**THE SIDES CAME DOWN WITH THE HEIGHT BECAUSE THE STRIP IS A SCROLLER AND THE COMPLAINT WAS
+HORIZONTAL.** 20 a side and 12 between mark and word put two chips and a sliver into the 298px this
+row gets at 360. Measured after, both engines: **131.1 to 111.1 and 122.2 to 102.2**, band **70 to
+66**, and the third category is a word instead of an edge. At 640 and above nothing moved: 48 and 78,
+before and after, at 640, 641 and 1280.
+
+**ALL 294 PLACEMENTS MOVED AND THAT IS THE POINT RATHER THAN THE COST.** A census over the 106
+painted screens puts 285 in the category strip and **9 on `Load more events`**, and
+`components/loadmore.css` settled on 2026-08-07 that those nine ARE this chip: one control keeping
+what the other 285 gave up is precisely the exception that file deleted, and re-opening it on a phone
+would have been the same mistake with a rung in front of it. Load more's width comes from a
+three-word label, so 16 fewer pixels of padding is the whole of what it feels, and it stands on the
+same floor as everything else a thumb hits. **The drop is 20 in the strip and 16 on load more, and
+the difference is arithmetic rather than inconsistency**: the padding loses 16 everywhere and the
+strip's chips lose 4 more because they carry a mark and a gap.
+
+**WHAT WAS NOT DONE: THE PLATE.** 22 of the 66 are chrome around one row - 16 of plate padding, 4 of
+list padding, 2 of hairline - and `base.css` already trims that padding from 12 to 8 below the rung.
+Taking more is a decision about the plate that wraps the strip, not about the chip, and it is not
+smuggled in under a request about the buttons.
+
+**THE COUNTS THIS MOVED, RE-TAKEN FROM THE COMMENT-STRIPPED SOURCE RATHER THAN INCREMENTED.** The
+system holds **34 width queries**, 16 at the desk in 13 files, 6 at the detail in 6, 6 at the rail in
+5, 2 at the 1140 harness and 4 one-offs in 3. It had been published as 32 in `README.md` and
+`components/CLAUDE.md` and as **33 in three places in `ui-kit/docs/responsive.md`**, whose registry
+table had gone stale on 2026-08-14 when `catnav.css` gave up its desk block: the table's DETAIL row
+said 4 and the source said 3. **That table's own paragraph had bragged about being "right for the
+third time by accident"**, and the fourth time it was not.
+
+**AND THE RECOUNT FOUND TWO HOLES IN A CONVENTION, WHICH IS WHY IT IS WORTH DOING BY GREP.** The
+"What it does with width" section is supposed to stand on every kit page whose component owns a width
+query. It was published as 21 pages and reads **25** now: `options` and `yesno` had each owned a desk
+query since 2026-08-12 **and neither page said so**, because the two queries were added, the total
+was updated, and the convention hanging off the total was not. `tabs` took one the day `.ed-range`
+grew its first query. The other two are deliberate: `card` keeps its section to record the query that
+LEFT, and `responsive` is a foundation page whose subject is width. **A convention that names a count
+has to be re-counted, or the count quietly becomes the convention.**
+
+**Verified**: 267 documents (106 painted, 57 kit, 104 grey) at 16 widths in Chromium 151 and WebKit
+26.5, **8,544 renders** - 0 horizontal scroll read by writing `scrollLeft` and reading it back, 0
+duplicate ids, 0 page errors, with a positive control first: a box wider than the window is seen at
+2,680 in both engines and the clean page reads 0.
+
+**AND THE FIRST RUN OF THAT SWEEP SAID 382 DOCUMENTS SCROLLED SIDEWAYS, ON SCREENS NOTHING HAD
+TOUCHED.** It read the page in the same turn as `setViewportSize`, so it measured the 1280 layout
+against a 320 window: **a resize is not a layout, and it needs a frame.** Two `requestAnimationFrame`s
+later the identical run reads 0. **The tell was the arithmetic rather than the size of the number**:
+138 at 320 and 98 at 360 is one constant of 458, and a defect that is the same box at every width is
+usually not a defect. The elements it named were the header's utility group at 458 and an `svg` at
+520, which are the wide layout still standing. Written into the root `CLAUDE.md` beside the rule it
+is an instance of.
+
+---
+
+## 2026-08-15 - The chart's range switcher was 54 tall and the ten pixels were never the buttons
+
+**ASKED: MAKE THE SWITCHER SMALLER ON A PHONE, DOWN TO 44. MEASURED FIRST: THE BUTTONS ARE ALREADY
+EXACTLY 44 x 44.** On a coarse pointer at 320, 360, 390, 640 and 1280, every one of the four chips is
+44 x 44, which is this project's own touch floor and an invariant `base.css` declares once for the
+whole control family.
+
+**THE ROW WAS 54 AND THE TEN PIXELS BELONGED TO THE GROUP'S FRAME**: 4px of padding and a hairline on
+each side, `44 + 8 + 2`. The width is the same arithmetic, `4 x 44 + 3 x 4 + 8 + 2 = 198`. So below
+the desk rung the well, the edge and the corner come off and the row is **44**, which is the number
+that was asked for and **the only ten pixels there were to give**.
+
+**THE FOUR CHIPS STILL READ AS ONE CONTROL**, because the chosen one carries a brass ground and the
+other three carry none: **a segmented control is told apart by its selection, and the frame around it
+is what a desk has room for.** Above 640 nothing moved, measured: 198 x 54 at 640 and 1280, before and
+after.
+
+**ANYTHING BELOW 44 WOULD BE THE FLOOR'S DECISION AND NOT THIS COMPONENT'S**, and it is not taken
+here. `base.css` raises every member of the family under `pointer:coarse`, once, and this folder's
+rule is that a floor is the family's and is declared in one place. A component that shrank under it
+would be the `.btn-md` defect again: the same control 48 under a mouse and 47 under a finger, because
+a floor out-specified the component and the content then held the box. **If the switcher should be
+smaller than the floor, the floor is the thing to argue with, and the argument is `backlog.md` 40.**
+
+**Verified**: 267 documents in both engines, 0 horizontal scroll, 0 duplicate ids, 0 page errors.
+
+---
+
 ## 2026-08-14, the chart - The detail drew a bare polyline while the feed drew a filled chart, in the same product
 
 **THE SCREEN A PERSON COMES TO IN ORDER TO READ THE PRICE HAD THE WORSE CHART.** `hero.css` has drawn

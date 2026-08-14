@@ -139,6 +139,22 @@
     attribute rather than a class alone. <code>docs/backlog.md</code> 61.</p>
   </section>
 
+  <!-- ================================================================== width --><section class="tk-sec" id="width">
+    <h2>What it does with width</h2>
+    <p class="tk-note"><b>One query, at DESK, and it decides that the row has a SECOND LINE.</b>
+    Below the rung <code>.opt-row</code> takes <code>flex-wrap:wrap</code> with an 8px row gap, the
+    card's rows go to a whole step of padding rather than a half one, and the outcome name takes
+    <code>flex:1 1 auto;min-width:0</code> so a long name shrinks instead of pushing the percentage
+    off the first line. Read across all nine feed screens at 320, 330, 340, 360 and 390: it truncates
+    nothing.</p>
+    <p class="tk-note"><b>The row decides that there is a second line and the pair decides what to do
+    with it</b>, which is why the other half of this rule lives in <code>yesno.css</code>. Two files,
+    two questions. <b>And it was a CLIP before it was a wrap</b>: at 320 it was 32 clipped elements
+    over 8 feed screens, worst 28.9px, with no document scrolling anywhere, which is the reading this
+    page exists to record. A clip is not the absence of overflow, it is overflow with the evidence
+    removed.</p>
+  </section>
+
   <section class="tk-sec" id="rule">
     <h2 data-n="5">The rule</h2>
     <p class="tk-note"><b>A row that is read and a row that is answered are two faces of one
