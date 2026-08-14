@@ -1,7 +1,13 @@
 /* components/position.css
    Component: position. Classes: .pos, .pos-fig, .pos-figures, .pos-lost, .pos-no, .pos-note, .pos-q, .pos-record, .pos-side, .pos-status, .pos-top, .pos-won, .pos-yes.
 
-   Reads: --bg-card-quiet, --bg-control, --bg-control-hover, --bg-pressed, --border-brass-hover, --border-hairline, --color-action, --color-action-lit, --edge-groove-light, --outcome-no-fill, --outcome-no-line, --outcome-no-text, --outcome-yes-fill, --outcome-yes-line, --outcome-yes-text, --result-lost-fill, --result-lost-line, --result-lost-text, --result-won-fill, --result-won-line, --result-won-text, --shadow-ink, --text-brass, --text-muted, --text-primary
+   Reads: --bg-card-quiet, --bg-control, --bg-control-brass, --bg-control-hover, --bg-pressed,
+          --border-brass-hover, --border-hairline, --border-hairline-brass, --color-action,
+          --color-action-lit, --edge-groove-light, --outcome-no-fill, --outcome-no-line,
+          --outcome-no-text, --outcome-yes-fill, --outcome-yes-line, --outcome-yes-text,
+          --result-lost-fill, --result-lost-line, --result-lost-text, --result-won-fill,
+          --result-won-line, --result-won-text, --shadow-ink, --text-brass, --text-muted,
+          --text-primary
    Stand:  ui-kit/position.html, and ui-kit/molecules.html#position-lt for the level and its reason (the -lt is the shelf's own id suffix and not a variant of this component: ui-kit/CLAUDE.md)
    Stands on: 23 ui-visual screens (active-bets-history.html, active-bets.html, event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */

@@ -1,7 +1,11 @@
 /* components/betpanel.css
    Component: betpanel. Classes: .bet-dock, .bet-panel, .bet-sheet, .bp-amount-lbl, .bp-amount-row, .bp-cash, .bp-change, .bp-dir, .bp-head, .bp-hint, .bp-inner, .bp-pct, .bp-sel-name, .bp-selected, .bp-side, .dock-meta, .line, .rp-inner, .sheet-grab, .total.
 
-   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-card-to, --bg-control, --bg-dock, --bg-dock-from, --bg-page, --bg-plate, --bg-plate-from, --bg-pressed, --border-brass, --border-hairline, --edge-groove-dark, --edge-groove-light, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-primary, --text-strong
+   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-card-to, --bg-control, --bg-dock,
+          --bg-dock-from, --bg-page, --bg-plate, --bg-plate-from, --bg-pressed, --border-brass,
+          --border-hairline, --edge-groove-dark, --edge-groove-light, --scrim, --shadow-ink-45,
+          --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass,
+          --text-muted, --text-primary, --text-strong
    Stand:  ui-kit/betpanel.html, and ui-kit/organisms.html#betpanel for the level and its reason
    Stands on: 11 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */

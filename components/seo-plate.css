@@ -1,7 +1,10 @@
 /* components/seo-plate.css
    Component: seo-plate. Classes: .feed-seo, .feed-seo-wrap, .seo-brand, .seo-by, .seo-h-ic, .seo-tagline, .seo-text, .seo-tick.
 
-   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-plate, --bg-plate-from, --bg-plate-to, --border-brass, --border-hairline, --color-trust, --edge-groove-dark, --edge-groove-light, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass-lit, --text-muted, --text-primary, --trust-art-full
+   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-plate, --bg-plate-from, --bg-plate-to,
+          --border-brass, --border-hairline, --color-trust, --edge-groove-dark,
+          --edge-groove-light, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72,
+          --shadow-ink-85, --surface-grain, --text-brass-lit, --text-muted, --text-primary
    Stand:  ui-kit/seo-plate.html, and ui-kit/molecules.html#seo-plate-lt for the level and its reason
      (the shelf suffixes every id it draws twice; ui-kit/CLAUDE.md owns the rule)
    Stands on: 9 ui-visual screens. The header counted .feed-seo, and that class is shared:

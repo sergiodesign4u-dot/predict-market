@@ -1,7 +1,7 @@
 /* components/loadmore.css
    Component: loadmore. Classes: .load-more-wrap.
 
-   Reads: x
+   Reads: none. This file reads no colour role: it is arrangement and scale only.
    Stand:  ui-kit/loadmore.html, and ui-kit/molecules.html#loadmore-lt for the level and its reason (the -lt is the shelf's own id suffix and not a variant of this component: ui-kit/CLAUDE.md)
    Stands on: 9 ui-visual screens (event-feed-crypto-logged-out.html, event-feed-crypto.html, event-feed-culture-logged-out.html, event-feed-culture.html, event-feed-general-logged-out.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */

@@ -1,7 +1,8 @@
 /* components/event-detail.css
    Component: event-detail. Classes: .arg-col, .args, .ed-actions, .ed-cat, .ed-facts, .ed-head, .ed-prob-big, .ed-q, .ed-section, .ed-thumb, .resolution, .resolved-panel, .rules-note.
 
-   Reads: --border-brass, --edge-groove-dark, --edge-groove-light, --outcome-no-figure, --outcome-yes-text, --text-brass-lit, --text-muted, --text-primary
+   Reads: --border-brass, --edge-groove-dark, --edge-groove-light, --outcome-no-figure,
+          --outcome-yes-text, --text-brass-lit, --text-muted, --text-primary
    Stand:  ui-kit/event-detail.html, and ui-kit/organisms.html#event-detail for the level and its reason
    Stands on: 11 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */

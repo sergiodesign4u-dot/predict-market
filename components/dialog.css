@@ -1,7 +1,12 @@
 /* components/dialog.css
    Component: dialog. Classes: .app-dialog, .fine, .hiw-arrow, .hiw-body, .hiw-dialog, .hiw-full, .loss-dialog, .outcome-dialog, .sheet-body, .sheet-close, .sheet-head, .sheet-sub, .signin-dialog, .win-dialog.
 
-   Reads: --bevel-hair, --bevel-lit, --bg-dialog-head-from, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-pressed, --bg-surface, --border-hairline, --color-action, --color-action-lit, --control-knob, --edge-shade-strong, --result-won, --result-won-stone, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-on-brass, --text-primary, --text-strong, --tint-brass-45
+   Reads: --bevel-hair, --bevel-lit, --bg-dialog-head-from, --bg-plate, --bg-plate-from,
+          --bg-plate-to, --bg-pressed, --bg-surface, --border-hairline, --color-action,
+          --color-action-lit, --control-knob, --edge-shade-strong, --result-won,
+          --result-won-stone, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72,
+          --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-on-brass,
+          --text-primary, --text-strong, --tint-brass-45
    Stand:  ui-kit/dialog.html, and ui-kit/organisms.html#dialog for the level and its reason
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    --mask-solid left this line on 2026-08-11 with backlog 109: the wave it masked

@@ -1,7 +1,8 @@
 /* components/navitem.css
    Component: navitem. Classes: .nav-item, .nav-row, .nav-row-stack, .nav-slot.
 
-   Reads: --bg-pressed, --text-brass, --text-muted, --text-primary, --tint-brass-09, --tint-hover
+   Reads: --bg-pressed, --text-brass, --text-muted, --text-primary, --tint-brass-09,
+          --tint-hover
    Stand:  ui-kit/navitem.html, and ui-kit/vitrine.html#navitem for the level and its reason
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */

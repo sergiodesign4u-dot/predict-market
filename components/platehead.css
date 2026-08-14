@@ -1,7 +1,8 @@
 /* components/platehead.css
    Component: plate-head. Classes: .plate-head.
 
-   Reads: --bg-dialog-head-from, --bg-plate-to, --color-action, --color-action-lit, --mask-solid, --text-strong, --tint-brass-30
+   Reads: --bg-dialog-head-from, --bg-plate-to, --color-action, --color-action-lit,
+          --mask-solid, --text-strong, --tint-brass-30
    Stand:  ui-kit/platehead.html, and ui-kit/vitrine.html#platehead for the level and its reason
      BOTH POINTERS WERE WRONG FOR A DAY. They said `plate-head.html` and
      `#plate-head`, and neither exists: the file is `platehead.html` and the

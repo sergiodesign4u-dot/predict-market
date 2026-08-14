@@ -1,7 +1,9 @@
 /* components/filters.css
    Component: filters. Classes: .filter-menu, .filter-panel, .filters-btn, .filters-close, .filters-done, .filters-foot, .filters-head, .filters-reset, .filters-scrim, .filters-toggle, .reverse-row.
 
-   Reads: --bg-control, --bg-pressed, --bg-surface, --border-brass-hover, --border-hairline, --focus-ring, --shadow-ink, --shadow-ink-45, --text-brass, --text-muted, --text-primary, --text-strong, --tint-brass-16
+   Reads: --bg-control, --bg-plate, --bg-pressed, --bg-surface, --border-brass-hover,
+          --border-hairline, --color-action, --focus-ring, --shadow-ink, --shadow-ink-45,
+          --text-brass, --text-muted, --text-primary, --text-strong, --tint-brass-16
    Stand:  ui-kit/filters.html, and ui-kit/molecules.html#filters-lt for the level and its reason (the -lt is the shelf's own id suffix and not a variant of this component: ui-kit/CLAUDE.md)
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */

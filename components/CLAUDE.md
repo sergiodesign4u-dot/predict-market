@@ -1,6 +1,6 @@
 # components/ - the system itself
 
-This folder IS the design system. **54 stylesheets, 9,651 lines**: 48 here and 6 in `patterns/`,
+This folder IS the design system. **54 stylesheets, 9,740 lines**: 48 here and 6 in `patterns/`,
 re-counted 2026-08-14 by `cat components/*.css components/patterns/*.css | wc -l` after the filters
 sheet, its two later passes and the scroll-driven edge fade. It was 9,224 on 2026-08-13 after `trust-art.css`
 was written (`docs/backlog.md` 140). It was 53 and 8,734 earlier the same day, after `print.css`
@@ -383,14 +383,28 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   both, and the one that loses is whichever the import order says.**
 - **THE QUESTION THAT FINDS OLD DEFECTS IS "IS THIS NEW RULE TAKING ITS VALUES FROM THE REGISTER".**
   Auditing one new sheet against the system turned up two things older than it and invisible from
-  inside either file. **The `Reads:` line is incomplete in 44 files of 44**, measured by stripping
-  comments and diffing every `var()` in the body against the header, and the folder does not even
-  agree what the line is FOR: `seo-plate.css` lists 21 tokens and every one is a colour, while
-  `logo.css` lists `--space-8` and `--weight-bold` beside its inks. **And the product has four
+  inside either file. **The `Reads:` line was incomplete in 43 files of 43**, measured by stripping
+  comments and diffing every `var()` in the body against the header, and the folder did not even
+  agree what the line was FOR: `seo-plate.css` listed 21 tokens and every one a colour, while
+  `logo.css` listed `--space-8` and `--weight-bold` beside its inks. **And the product has four
   answers to "a surface that must not exceed the viewport"**: `92vh`, `88dvh` and two rails at
   `calc(100svh - 120px - var(--space-16))`, of which only the rails carry the `vh` then `svh` pair
-  that a phone needs. A new rule wrote a fifth, `80svh`, and gave it back. `../docs/backlog.md` 152
-  and 153.
+  that a phone needs. A new rule wrote a fifth, `80svh`, and gave it back. `../docs/backlog.md` 152,
+  closed the same day, and 153.
+- **`Reads:` IS THE COLOUR REGISTER AND NOTHING ELSE, AND THE ANSWER WAS ALREADY WRITTEN UNDER IT.**
+  Every header in this folder closes with `Colour goes through a role, geometry straight from a
+  primitive`, so the line above it lists the semantic roles the file reads and does not list
+  `--space-*`, `--radius-*`, `--text-*` or `--z-*`: a radius has nothing for a theme to override, so
+  there is nothing about it to register. **43 of 43 complete, 0 stale**, and **11 files carry no such
+  line at all and every one is right to**: `tokens.css` defines the roles, and the other ten read 0
+  roles between them. Six of the ten are the whole of `patterns/`, so **the rung's invariant that a
+  pattern carries no colour is now visible as the ABSENCE of a line** rather than as a claim in prose.
+- **A COUNT TAKEN BY MATCHING A STRING IS A COUNT OF THE STRING.** The sweep that opened the row above
+  matched `Reads:` anywhere in a file, and `tokens.css` carries those six characters in a comment on
+  line 1184, so **the file that DEFINES the roles was filed as the worst offender at failing to
+  declare them**, 121 of 121. The published number was 44 and the true one was 43. Read the header
+  block, not the file, and this is the same defect as a selector that matches nothing agreeing with
+  every hypothesis, met from the other side.
 - **AN EXIT THAT ONLY EXISTS IN THE MECHANISM IS NOT AN EXIT.** The filters sheet closed on the
   scrim, on Escape and on a cross in its head, and shipped with a band of empty surface under its two
   rows: the first two are invisible by definition, and the third is 44px in a corner that the course

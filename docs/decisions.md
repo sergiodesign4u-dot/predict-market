@@ -12,6 +12,49 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-14, closing - The `Reads:` line registers colour and nothing else, and the answer was already written under it in all 49 files
+
+**BACKLOG 152 OPENED AND CLOSED THE SAME DAY, WHICH IS UNUSUAL HERE AND IS THE POINT.** The cheap
+half was one script. The expensive half was deciding what the line is FOR, and the row was filed
+rather than swept because of it. The decision turned out to be already written: **every header in
+this folder closes with `Colour goes through a role, geometry straight from a primitive`**, and the
+`Reads:` line sits directly above that sentence. It registers the semantic roles. Geometry is not
+registered because a radius or a gap has nothing for a theme to override, which is the same argument
+`tokens.css` gives for why there is no semantic level for either.
+
+**43 OF 43 COMPLETE, 0 STALE**, rewritten from each file's own body with comments stripped, sorted,
+and wrapped at 96 characters. Before: 0 complete, `hero.css` missing 48 of 84, `hiw.css` 42 of 57,
+`course-chrome.css` 35 of 46. **The folder had also disagreed with itself about what the line meant**:
+`seo-plate.css` listed 21 tokens and every one was a colour, while `logo.css` listed `--space-8` and
+`--weight-bold` beside its inks, so half the folder read it one way and half the other and neither
+reading made any file correct.
+
+**THE PUBLISHED NUMBER WAS 44 AND THE TRUE ONE IS 43.** The sweep that opened the row matched the
+STRING `Reads:` anywhere in a file, and `tokens.css` carries those six characters in a comment on
+line 1184, so **the file that DEFINES the roles was filed as the worst offender at failing to declare
+them**, 121 of 121. It has no `Reads:` header at all and never should. **A count taken by matching a
+string is a count of the string**, which is this repository's own lesson about a selector agreeing
+with every hypothesis, met from the other side, and it is corrected here rather than left standing.
+
+**ELEVEN FILES CARRY NO SUCH LINE AND EVERY ONE IS RIGHT TO.** `tokens.css` defines the roles; the
+other ten read **0 roles between them**, measured rather than assumed. Six of the ten are the whole
+of `patterns/`. **So the rung's invariant that a pattern carries no colour is now visible as the
+ABSENCE of a line** rather than as a claim in prose that nothing checks, which is a better shape than
+the one this rule had before.
+
+**AND THE INVARIANT UNDER ALL OF IT WAS MEASURED ONCE, AS AN ACT.** A component may read a colour
+only through a role, never a colour primitive: `tokens.css` section 1 holds **113 colour primitives**
+and **0 of the 49 component files reads one of them**. That is the check the two-line `Reads roles:` /
+`Reads scale:` shape was proposed to make permanent, and it is not built, because a measurement is an
+act and not a machine.
+
+**THE CONTROL IS THE WHOLE PROOF FOR THIS ONE.** A comment-only change across 40 files must render
+exactly nothing, so it is the cleanest instrument this repository has had: three documents,
+`event-feed`, `event-detail` and the kit's `filters` page, full-page, animations finished, at 360 and
+1280, in a fresh browser per pass. **Six hashes before, six hashes after, identical to the byte.**
+
+---
+
 ## 2026-08-14, last - An exit that only exists in the mechanism is not an exit
 
 **THE SHEET HAD THREE WAYS OUT AND A PERSON COULD SEE NONE OF THEM.** The scrim closes it, Escape

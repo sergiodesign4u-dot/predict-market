@@ -1,7 +1,10 @@
 /* components/hiw.css
    Component: hiw. Classes: .hiw-col-main, .hiw-col-side, .hiw-cols, .hiw-dot, .hiw-dots, .hiw-faq, .hiw-hero, .hiw-hero-inner, .hiw-ic, .hiw-label, .hiw-nav, .hiw-next, .hiw-page, .hiw-radio, .hiw-sec, .hiw-sec-txt, .hiw-skip, .hiw-stage, .hiw-step, .hiw-step-b, .hiw-step-n, .hiw-step-t, .hiw-step-txt, .hiw-steps, .hiw-still, .hiw-tagline.
 
-   Reads: --bevel-lit, --bg-canvas, --bg-control, --bg-plate-from, --border-hairline, --color-action, --display-step, --edge-shade-strong, --focus-ring, --shadow-ink-45, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted, --text-primary, --tint-brass-16
+   Reads: --bevel-lit, --bg-canvas, --bg-control-brass, --bg-plate-from, --border-hairline,
+          --border-hairline-brass, --edge-shade-strong, --focus-ring, --shadow-ink-45,
+          --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-muted,
+          --text-primary, --tint-brass-16
           (the ground, the wave and the glow left for components/platehead.css on 2026-08-11, and six roles went with them: --bg-dialog-head-from, --bg-plate-to, --color-action-lit, --mask-solid, --text-strong, --tint-brass-30)
    Stand:  ui-kit/hiw.html, and ui-kit/organisms.html#hiw for the level and its reason
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)

@@ -1,7 +1,8 @@
 /* components/profile.css
    Component: profile. Classes: .av, .edit, .gallery, .handle, .idrow, .name, .who.
 
-   Reads: --bg-canvas, --bg-control, --border-hairline, --text-muted, --text-primary, --tint-brass-60
+   Reads: --bg-canvas, --bg-control, --border-hairline, --text-muted, --text-primary,
+          --tint-brass-60
    Stand:  ui-kit/profile.html, and ui-kit/organisms.html#profile for the level and its reason. WALKED 2026-08-08: HOLDS button and card, level 3, so the word UNMEASURED came off
    Stands on: 2 ui-visual screens (my-profile.html, public-profile.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */

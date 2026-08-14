@@ -1,7 +1,8 @@
 /* components/course-chrome.css
    the course roadmap sidebar every page of this repo carries. Not product.
 
-   Reads: --bevel-hair, --chrome-accent, --chrome-bg, --chrome-border, --chrome-muted, --chrome-pressed, --chrome-text, --focus-ring, --scrim, --swatch-dark, --swatch-light
+   Reads: --bevel-hair, --chrome-accent, --chrome-bg, --chrome-border, --chrome-muted,
+          --chrome-pressed, --chrome-text, --focus-ring, --scrim, --swatch-dark, --swatch-light
    Stand:  every page of the kit, because this is the panel they are read through and not a specimen on one of them
    Stands on: 106 ui-visual screens, which is ALL of them, and it is the only file here that
      does. Every product component stops at 105 and the one it misses is the same each time,

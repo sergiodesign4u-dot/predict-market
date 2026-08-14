@@ -1,7 +1,8 @@
 /* components/oddsbar.css
    Component: oddsbar. Classes: .ed-oddsbar, .fill, .l-no, .l-yes, .lbls, .oddsbar, .track.
 
-   Reads: --edge-shade-strong, --outcome-no, --outcome-no-text, --outcome-yes, --outcome-yes-text
+   Reads: --edge-shade-strong, --outcome-no, --outcome-no-text, --outcome-yes,
+          --outcome-yes-text
    Stand:  ui-kit/oddsbar.html, and ui-kit/vitrine.html#oddsbar for the level and its reason
    Stands on: 21 ui-visual screens. Two blocks, and the header counted one:
      .ed-oddsbar on the 9 event-detail states, .oddsbar on 12 more (the feed and its four

@@ -1,7 +1,10 @@
 /* components/trustbar.css
    Component: trustbar. Classes: .footer-trust, .tr-ic, .tr-txt, .trust-head, .trust-item, .trust-items.
 
-   Reads: --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control, --border-hairline, --color-trust, --edge-groove-dark, --edge-groove-light, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass-lit, --text-muted, --text-primary, --trust-art-column, --trust-art-globe, --trust-art-source
+   Reads: --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control,
+          --border-hairline, --color-trust, --edge-groove-dark, --edge-groove-light, --scrim,
+          --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain,
+          --text-brass-lit, --text-muted, --text-primary
    Stand:  ui-kit/trustbar.html, and ui-kit/molecules.html#trustbar for the level and its reason
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
 

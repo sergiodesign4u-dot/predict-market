@@ -1,7 +1,9 @@
 /* components/tabs.css
    Component: tabs. Classes: .ed-panel-activity, .ed-panel-comments, .ed-panel-holders, .ed-panel-positions, .ed-range, .ed-rules, .ed-tab-count, .ed-tabbar, .ed-tablabel, .ed-tabpanel, .ed-tabradio, .ed-tabs, .ed-tabwrap, .ptab-bar, .ptab-in, .ptab-lbl, .ptab-panel, .ptabs, .rules-tab, .rules-tabs, .sel, .tabs.
 
-   Reads: --bg-chip, --bg-pressed, --bg-well, --border-hairline, --color-action, --edge-groove-dark, --edge-groove-light, --focus-ring, --text-brass, --text-muted, --text-primary, --tint-brass-16
+   Reads: --bg-chip, --bg-pressed, --bg-well, --border-hairline, --color-action,
+          --edge-groove-dark, --edge-groove-light, --focus-ring, --text-brass, --text-muted,
+          --text-primary, --tint-brass-16
    Script hooks: .rules-panel. It carries no rule and is not meant to: the rules-tab script collects
      the panels and toggles `hidden` on them. Declared here for the same reason the chart
      declares its own, so that a class with no rule can be told from dead markup.

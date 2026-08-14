@@ -1,7 +1,11 @@
 /* components/related.css
    Component: related. Classes: .rel-odds, .rel-q, .rel-thumb, .related-events, .related-list, .related-more.
 
-   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bevel-notice, --bg-chip, --bg-control-hover, --bg-page, --bg-plate, --bg-plate-from, --bg-pressed, --border-brass-hover, --border-hairline, --edge-groove-dark, --edge-groove-light, --scrim, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass, --text-chip-hover, --text-muted, --text-primary, --text-strong
+   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bevel-notice, --bg-chip, --bg-control-hover,
+          --bg-page, --bg-plate, --bg-plate-from, --bg-pressed, --border-brass-hover,
+          --border-hairline, --edge-groove-dark, --edge-groove-light, --scrim, --shadow-ink-45,
+          --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass,
+          --text-chip-hover, --text-muted, --text-primary, --text-strong
    Stand:  ui-kit/related.html, and ui-kit/molecules.html#related-lt for the level and its reason (the -lt is the shelf's own id suffix and not a variant of this component: ui-kit/CLAUDE.md)
    Stands on: 10 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
    THE THUMBNAIL IS OPTIONAL AND THE LIST DECIDES, 2026-08-08. .rel-thumb is a

@@ -32,7 +32,11 @@
    the terminator, and a terminator inside a comment closes it. It is spelled out in words here
    for that reason. If a note has to name the marker, it names it in words.
 
-   Reads: --bg-control, --bg-control-hover, --bg-pressed, --border-brass-hover, --border-hairline, --edge-shade-strong, --outcome-no, --outcome-no-fill, --outcome-no-fill-soft, --outcome-no-line, --outcome-no-text, --outcome-yes, --outcome-yes-fill, --outcome-yes-fill-soft, --outcome-yes-line, --outcome-yes-text, --text-muted, --text-on-no, --text-on-yes, --text-primary, --text-strong
+   Reads: --bg-control, --bg-control-hover, --bg-pressed, --border-brass-hover,
+          --border-hairline, --edge-shade-strong, --outcome-no, --outcome-no-fill,
+          --outcome-no-fill-soft, --outcome-no-line, --outcome-no-text, --outcome-yes,
+          --outcome-yes-fill, --outcome-yes-fill-soft, --outcome-yes-line, --outcome-yes-text,
+          --text-muted, --text-on-no, --text-on-yes, --text-primary, --text-strong
    Stand:  ui-kit/yesno.html, and ui-kit/vitrine.html#yesno for the level and its reason
    Stands on: 22 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */

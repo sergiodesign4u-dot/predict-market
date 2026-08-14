@@ -1,7 +1,8 @@
 /* components/state-block.css
    Component: state-block. Classes: .state-actions, .state-block, .state-msg, .state-problem, .state-title, .sys-link-list, .sys-links, .sys-note.
 
-   Reads: --bevel-notice, --bg-control, --bg-pressed, --bg-surface, --border-notice, --border-hairline, --glow-brass, --text-brass, --text-muted, --text-primary
+   Reads: --bevel-notice, --bg-control, --bg-pressed, --bg-surface, --border-hairline,
+          --border-notice, --glow-brass, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/state-block.html, and ui-kit/molecules.html#state-block-lt for the level and its reason (the -lt is the shelf's own id suffix and not a variant of this component: ui-kit/CLAUDE.md)
    Stands on: 40 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */

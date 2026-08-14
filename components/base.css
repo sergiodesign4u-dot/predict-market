@@ -1,7 +1,11 @@
 /* components/base.css
    the page frame itself: reset, body type, the device shell and the shared utility classes.
 
-   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-page, --bg-plate, --bg-plate-from, --bg-plate-to, --bg-slab, --bg-slab-from, --bg-slab-to, --bg-surface, --border-brass, --edge-groove-dark, --edge-groove-light, --focus-ring, --scrim, --scroll-thumb, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --surface-grain-coarse, --text-brass, --text-icon, --text-primary
+   Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-page, --bg-plate, --bg-plate-from,
+          --bg-plate-to, --bg-slab, --bg-slab-from, --bg-slab-to, --bg-surface, --border-brass,
+          --edge-groove-dark, --edge-groove-light, --focus-ring, --scrim, --scroll-thumb,
+          --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain,
+          --surface-grain-coarse, --text-brass, --text-icon, --text-primary
    Stand:  every page of the kit, because this is the frame they stand in and not a specimen on one of them
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 

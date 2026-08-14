@@ -27,8 +27,8 @@
    forced open through ::details-content, which is the only way an author can
    override the closed state a UA owns.
 
-   Reads: --bg-control-hover, --bg-pressed, --border-hairline, --color-action, --text-brass, --text-muted, --text-primary
-     --text-brass, --text-muted, --text-primary
+   Reads: --bg-control-hover, --bg-pressed, --border-hairline, --color-action, --text-brass,
+          --text-muted, --text-primary
    Stand:  ui-kit/toc.html, and ui-kit/molecules.html#toc for the level and its reason. WALKED 2026-08-08: HOLDS its own rows, and they are anchors, level 2, so the word UNMEASURED came off
    Stands on: 1 ui-visual screens (terms.html)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
