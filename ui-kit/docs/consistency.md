@@ -95,6 +95,9 @@ has a chosen-YES face everywhere and its chosen-NO twin has never been rendered.
 obviously a defect in the stylesheet: it may be a defect in the SCREENS, which have never shown a
 person who backed NO. It is the one finding here that is a product question rather than a cleanup.
 
+**Answered the same day and it was the screens. Section 10.** Four of the five draw now; the fifth,
+`.yesno > a.sel:active`, is deleted, and that deletion is a statement about the component.
+
 ### 2d. `base.css` resets seven things that are not there
 
 ```
@@ -263,8 +266,8 @@ neither report leads with its own numbers.
 
 ## 8. What was acted on, 2026-08-15
 
-Only the clean deletions, in the same session. **The three questions that need a product decision
-are untouched**: the chosen-NO face, the how-it-works sheet, and `.icon-btn-lift`.
+The clean deletions first, then the how-it-works sheet, then the last two rows. **Nothing from this
+report is left open**: the chosen-NO face and `.icon-btn-lift` are section 10.
 
 | where | what |
 |---|---|
@@ -291,3 +294,104 @@ hairline, and the two tab bars from `auto` to `visible`, with the screen unchang
 
 **Left open and named:** `.hold-name` prints truncated with an ellipsis, which is a real paper defect
 and a decision about what a printed table is for rather than a repair.
+
+---
+
+## 9. The how-it-works sheet, and the dead rules were the evidence
+
+**The finding in 3a was not a stand that invented markup. It was a rebuild whose stylesheet was not
+cleaned up, and it had left a live defect behind.** `git log -S` puts the change at `d214184`,
+2026-08-14: the sheet went from two explainer sections plus a FAQ plus a way back to its own page,
+into three steps with a picture each where the third one is a way IN. A dated, argued product
+decision. `.hiw-body`, `.hiw-full`, `.hiw-arrow` and `.hiw-hero` went out of the markup with it and
+their rules stayed.
+
+**One of those rules was doing the sheet's most important job.** `.hiw-body` was the SCROLL
+CONTAINER, and the new sheet had none. Measured with the sheet open, the entrance animation finished
+and reduced motion asserted:
+
+| viewport | sheet | content | outside the clip | `scrollTop` reads back | step navigation |
+|---|---|---|---|---|---|
+| 320 x 480 | 441 | 562 | **121px** | **0** | **unreachable** |
+| 360 x 568 | 522 | 562 | **40px** | **0** | **unreachable** |
+| 360 x 640 | 566 | 566 | 0 | 0 | reachable |
+| 390 x 844 | 562 | 562 | 0 | 0 | reachable |
+
+**A frame that clips cannot also be the scroll container**, which is the rule `dialog.css` already
+writes for `.sheet-body` twenty lines above the one that broke. The rule names `.hiw-steps` now, and
+after it the two short viewports scroll their 121 and 40 pixels and the navigation is reachable at
+every size, with 0 at 640 and above where nothing was wrong.
+
+**READ THE ENTRANCE ANIMATION FIRST OR THE NUMBER IS ABOUT NOTHING.** The same probe run without
+`getAnimations().forEach(a => a.finish())` put the dialog's top at **428 in a 480px viewport**, which
+is the sheet caught mid-slide and reads exactly like a modal rendering below the fold. That would
+have been a second defect report about a page that does not have one.
+
+**Deleted with it:** eight rules in `dialog.css` (the body wrapper, the brass link out, its arrow,
+its hover, its press and the 3px nudge) and two in `hiw.css` (`.hiw-hero` and its heading size),
+plus the four class names off two `Classes:` lines. `.hiw-hero-inner` STAYS with its one placement,
+because its one job is to sit above the two absolute layers `platehead.css` paints behind it.
+
+**And the stand was three pages, not one.** `ui-kit/hiw.html` had already been updated on 2026-08-14;
+`dialog.html` and `organisms.html` still drew the old sheet and now carry the shipped markup, ids and
+radio names suffixed per cell. `vitrine.html` and `platehead.html` showed `.plate-head.hiw-hero` as
+one of the face's hosts, and it is the page hero there now. **`platehead.css` was written because
+FOUR components wore one face and it is three today**, which costs that file a count and not a rule:
+the list is kept at four with the one struck rather than renumbered, because the fourth-host argument
+is what decided the shape of the file and it was true when it was made.
+
+---
+
+## 10. The chosen NO, and `.icon-btn-lift`
+
+The two rows left open by section 8, both answered on 2026-08-15.
+
+### 10a. The chosen NO was the SCREENS, and the grey tree is what proves it
+
+**`.sel` and `.no` had never once stood on the same element**: 127 chosen sides in the paint, 24 in
+the grey and 39 on the stand, and every one of them YES. Five rules in `yesno.css` drew the other
+half of a symmetric control and not one of them could fire.
+
+**A colour layer that had lost a state would show the state in grey and not in colour. Both trees
+showed only YES**, so this was not a paint that dropped something, it was a tree that depicted one
+path. And the route already existed: backlog 143 gave every card `?side=yes` and `?side=no`, 212
+anchors each, so the product had been promising an arrival the screens never drew.
+
+**One screen, in both trees:** `event-detail-bet-processing.html`. It was chosen for a measured
+reason rather than a taste one, **its panel is mid-submit and carries no payout figure**, so the
+pick moves and nothing has to be kept in arithmetic step with it except the sticky dock, which goes
+from `$5 to win $13.20` to **`$5 to win $8.06`**, because five dollars at 62 per cent pays that. The
+YES pick inside the how-it-works sheet on the same screen **stays YES**: it is a picture in an
+explainer that ships identically on 105 screens, not this person's bet.
+
+**And rendering it for the first time is what let it be measured.** The chosen NO is
+`--text-on-no` on `--outcome-no` at **4.64:1**, against the chosen YES at **6.42:1**. Both clear AA
+for body text and the NO side is the tighter of the two, which is now a number instead of a guess.
+
+**The stand carries it too**, because a face the product places once is a face a reader should be
+able to compare: `ui-kit/yesno.html` gains a NO-taken chooser and a NO-taken row in the outcome list,
+in both themes.
+
+**The fifth selector is deleted and the deletion is a statement about the component.**
+`.yesno > a.sel:active` still matches nothing, and it should: **a chosen side is a `<button>` and
+never an `<a>`**, 16 chosen buttons and 0 chosen anchors across all three trees. The anchor half is
+the SPECTATOR's pair on a card, which states a market and records no choice. That is the file's own
+sentence about a side being a POSITION IN THE PAIR, read one level further out.
+
+### 10b. `.icon-btn-lift` was decided two days before this report asked
+
+**This row should not have been opened.** The face had 525 placements until 2026-08-13, when backlog
+144 took the footer's five social marks out of every screen: five anchors at `href="#"` for accounts
+that do not exist, standing directly under the trust strip. **A social account can never become an
+internal route, so it was not a link waiting for a screen**, which is what separated it from the two
+kinds of placeholder the footer's rules already covered.
+
+**The keep-or-delete question was answered in the same commit, by the product owner, and the
+distinction it drew is the right one.** `account.css` was deleted for having no FACE left, its two
+rules being another component's stone. This is a face with no PLACEMENTS, and its placements return
+on a date somebody chooses. **A component with no face is a name; a face with no placement is a
+face.**
+
+What was actually wrong was a number: `ui-kit/iconbtn.html` still published **525** in its touch
+table. It reads 0 now, with the reason beside it, so the one row in that table worn by nothing says
+so rather than reading as a face nobody measured.

@@ -22,7 +22,14 @@
    a display-face heading standing above all three. It is worn by
      - the plain sheet head, `.sheet-head` inside a `dialog.app-dialog` that is
        not an outcome overlay, 229 elements, at 418px;
-     - the how-it-works sheet head, `.hiw-hero`, 115 elements, at 462px;
+     - the how-it-works sheet head, `.hiw-hero`, 115 elements, at 462px, AND IT
+       IS GONE SINCE 2026-08-15. The sheet was rebuilt on 2026-08-14 into three
+       steps with a picture each, and a step has no head; the class is worn by 0
+       elements in all three trees and its two rules are deleted from hiw.css.
+       **The list is kept at four with this one struck rather than renumbered**,
+       because the fourth-host argument below is what decided the SHAPE of this
+       file and it was true when it was made. What the loss changes is only the
+       count: three heads now, 228 plain, 1 page hero, 10 outcome;
      - the how-it-works page hero, `.hiw-page`, 5 elements, at 922px;
      - the outcome head, `.sheet-head` inside `.outcome-dialog`, 10 elements,
        added 2026-08-11 by backlog 109, and it is the one that proves the shape

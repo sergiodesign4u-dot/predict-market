@@ -1,5 +1,7 @@
 /* components/dialog.css
-   Component: dialog. Classes: .app-dialog, .fine, .hiw-arrow, .hiw-body, .hiw-dialog, .hiw-full, .loss-dialog, .outcome-dialog, .sheet-body, .sheet-close, .sheet-head, .sheet-sub, .signin-dialog, .win-dialog.
+   Component: dialog. Classes: .app-dialog, .fine, .hiw-dialog, .loss-dialog, .outcome-dialog, .sheet-body, .sheet-close, .sheet-head, .sheet-sub, .signin-dialog, .win-dialog.
+   (`.hiw-arrow`, `.hiw-body` and `.hiw-full` came off on 2026-08-15 with the eight rules that drew
+   them: the sheet was rebuilt on 2026-08-14 and none of the three has stood on a screen since.)
 
    Reads: --bevel-hair, --bevel-lit, --bg-dialog-head-from, --bg-plate, --bg-plate-from,
           --bg-plate-to, --bg-pressed, --bg-surface, --border-hairline, --color-action,
@@ -416,7 +418,9 @@ dialog.app-dialog:modal{position:fixed}
    and its own close button off the screen with it. min-height:0 because a flex
    item will not shrink below its content without it.
 
-   The how-it-works sheet fills with .hiw-body rather than .sheet-body, and its
+   The how-it-works sheet fills with .hiw-steps rather than .sheet-body (it was
+   .hiw-body until the sheet was rebuilt on 2026-08-14, and the rule was pointed
+   at the new name on 2026-08-15, having drawn nothing for a day), and its
    copy of this rule is at the FOOT OF THIS FILE since 2026-08-11, not in one of
    its own. It stood elsewhere under an objection that has expired: writing it
    here, the note said, would move .hiw-body onto this file's Classes line and
@@ -496,45 +500,32 @@ dialog.app-dialog.outcome-dialog{max-width:var(--container-sheet)}
    signin and outcome skins are at the foot of this file and not at its head.
    AND .hiw-body IS ON THIS FILE'S Classes LINE NOW, which is the objection at the
    sheet-scroll rule above, expired and struck. */
-.hiw-full{display:block;box-sizing:border-box;padding:var(--space-12);font-size:var(--text-14);font-weight:var(--weight-bold);text-align:center;text-decoration:none}
-.hiw-full{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border:0;color:var(--text-on-brass);border-radius:var(--radius-10)}
+/* EIGHT OF THOSE TEN RULES WENT ON 2026-08-15, AND THE ONE THAT STAYED WAS RETARGETED. The sheet
+   was rebuilt on 2026-08-14 from two explainer sections plus a FAQ plus a way back to its own page
+   into three steps with a picture each, and the rules for the old shape were left standing.
+   `.hiw-body`, `.hiw-full` and `.hiw-arrow` are **0 elements in the product** since that day, over
+   all 106 painted screens, read in the DOM: the body wrapper, the brass link out to the full guide,
+   its arrow, its hover, its press and its 3px nudge all draw nothing. The paragraph above still says
+   "107 elements, every one inside a sheet", and that was true when it was written; it is the
+   sentence a component leaves behind when its host is redrawn and its stylesheet is not.
+
+   THE ONE THAT STAYED IS A REPAIR AND NOT A CLEANUP, WHICH IS THE FINDING. `.hiw-body` was the
+   SCROLL CONTAINER, and the new sheet has none: the rule below now names `.hiw-steps`, which is
+   what this sheet's body is called today. Measured before the change, with the sheet open, the
+   entrance animation finished and reduced motion asserted: at **320 x 480 the sheet is capped at
+   441 and its content is 562, so 121px stood outside the clip with `scrollTop` reading back 0**,
+   and the whole step navigation, the dots and Next, was below the cut and unreachable. At
+   360 x 568 it was 40px and the same navigation. At 360 x 640 and above, nothing. **A frame that
+   clips cannot also be the scroll container**, which is the rule this file already writes for
+   `.sheet-body` twenty lines up, and the sheet lost its half of it for a day.
+   READ THE ENTRANCE ANIMATION FIRST OR THE NUMBER IS ABOUT NOTHING: the same probe run without
+   `getAnimations().forEach(a => a.finish())` put the dialog's top at 428 in a 480px viewport, which
+   is the sheet caught mid-slide and reads exactly like a modal rendering below the fold.
+
+   WHAT THE DELETED RULES ARE WORTH KEEPING A LINE OF: the arrow was **the only translation in this
+   system that is not a lift**, a 3px sideways slide that reads as travel, and it was multiplied by
+   `--motion` rather than removed by a block of its own, `tokens.css` beside that token carrying the
+   census that refused a blanket `*:hover{transform:none}`. The day a sheet gets a way out to a page
+   again, that is the mechanism to reach for, and the brass plate's 135deg-to-315deg press with it. */
 .app-dialog.hiw-dialog{max-width:var(--container-dialog);overflow:clip}
-/* The sheet is bounded by the viewport and its BODY scrolls, the same rule this
-   file writes for .sheet-body twenty lines up and for the same reason: the frame
-   goes on clipping its own corners, so it cannot also be the scroll container.
-   Its close disc is positioned against the dialog, not against the head, so it
-   stays put while the body moves. */
-dialog.app-dialog.hiw-dialog:modal .hiw-body{overflow:auto;min-height:0}
-/* Backlog 110: 20 horizontal under a hero that pads 24. It is 24 now. */
-.app-dialog.hiw-dialog .hiw-body{padding:var(--space-20) var(--space-24);display:flex;flex-direction:column;gap:var(--space-16)}
-.app-dialog.hiw-dialog .hiw-full{display:flex;align-items:center;justify-content:center;gap:var(--space-8);font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:var(--space-12);margin-top:var(--space-2)}
-.app-dialog.hiw-dialog .hiw-arrow{width:var(--icon-18);height:var(--icon-18);stroke:var(--text-on-brass);transition:transform var(--dur-base) ease}
-.app-dialog.hiw-dialog .hiw-full:hover .hiw-arrow{transform:translateX(calc(3px * var(--motion)))}
-/* AND THE NUDGE IS REMOVED BY NAME UNDER REDUCED MOTION, 2026-08-12. This is the only
-   TRANSLATION IN THE SYSTEM THAT IS NOT A LIFT: a 3px sideways slide reads as travel, which
-   is the one motion a person who asked for less of it is most likely to have asked about.
-   The global block in base.css shortens `transition-duration` to .01ms and never touches
-   `transform`, so the arrow was jumping 3px with the easing stripped off. The brass face
-   that arrives with it, on the rule below, is the affordance that stays: this control still
-   answers a pointer, it just stops moving. */
-/* THE REDUCED-MOTION BLOCK THAT STOOD HERE WENT ON 2026-08-13, backlog 132, and so did the four
-   copies of it in the other files that lift something. The distance above is multiplied by
-   `--motion`, which `base.css` sets to 0 under `prefers-reduced-motion`, so the floor is one
-   value in one place instead of five rules in five files. **A blanket `*:hover{transform:none}`
-   was the obvious fix and was refused by a census**: 5 of the system's 20 transforms are
-   movement, and one of the other 15 is `.market-chevron` turning over when its market opens,
-   which is an element and would have been flattened for as long as a pointer rested on it.
-   The argument and the count are in `tokens.css` beside `--motion`. */
-/* The one brass action in the system with no hover of its own: only the arrow
-   moved, so a person on a device with a pointer got a nudge and nothing under it.
-   Same lit face every other brass plate takes, and the same two roles. */
-.app-dialog.hiw-dialog .hiw-full:hover{background:linear-gradient(135deg,var(--color-action-lit),var(--color-action-lit))}
-/* The brass action's press, the same reversal every brass plate in the system
-   makes and with the same two roles the rest state reads: 135deg lights the
-   plate from the top left, 315deg drops the light to the bottom right, which is
-   what a plate pushed IN looks like. No glow to drop, because this one is not
-   lifted at rest, and no darker ground either: it is already lit, so swapping it
-   down would read as disabled.
-   The arrow keeps its nudge. That is the mark moving inside the control, not the
-   control moving, and a press is about the plate. */
-.app-dialog.hiw-dialog .hiw-full:active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit))}
+dialog.app-dialog.hiw-dialog:modal .hiw-steps{overflow:auto;min-height:0}

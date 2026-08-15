@@ -1,5 +1,7 @@
 /* components/hiw.css
-   Component: hiw. Classes: .hiw-col-main, .hiw-col-side, .hiw-cols, .hiw-dot, .hiw-dots, .hiw-faq, .hiw-hero, .hiw-hero-inner, .hiw-ic, .hiw-label, .hiw-nav, .hiw-next, .hiw-page, .hiw-radio, .hiw-sec, .hiw-sec-txt, .hiw-skip, .hiw-stage, .hiw-step, .hiw-step-b, .hiw-step-n, .hiw-step-t, .hiw-step-txt, .hiw-steps, .hiw-still, .hiw-tagline.
+   Component: hiw. Classes: .hiw-col-main, .hiw-col-side, .hiw-cols, .hiw-dot, .hiw-dots, .hiw-faq, .hiw-hero-inner, .hiw-ic, .hiw-label, .hiw-nav, .hiw-next, .hiw-page, .hiw-radio, .hiw-sec, .hiw-sec-txt, .hiw-skip, .hiw-stage, .hiw-step, .hiw-step-b, .hiw-step-n, .hiw-step-t, .hiw-step-txt, .hiw-steps, .hiw-still, .hiw-tagline.
+   (`.hiw-hero` came off on 2026-08-15: superseded by `.hiw-page` on 2026-08-11 and by the sheet's
+   rebuild on 2026-08-14, and worn by 0 elements in all three trees since.)
 
    Reads: --bevel-lit, --bg-canvas, --bg-control-brass, --bg-plate-from, --border-hairline,
           --border-hairline-brass, --edge-shade-strong, --focus-ring, --shadow-ink-45,
@@ -97,15 +99,18 @@
    one that is not in the markup. The span is deleted in all three trees.
    What is left of the block's head is its padding and how loud its heading is,
    which is exactly what the row asked each host to keep. */
-.hiw-hero{padding:var(--space-32) var(--space-24) var(--space-28)}
+/* `.hiw-hero` AND ITS HEADING RULE STOOD HERE AND BOTH ARE GONE, 2026-08-15, and they were
+   superseded TWICE before anybody read them again. Backlog 105 split the page hero out as
+   `.hiw-page` on 2026-08-11, which took the padding, the edge, the corner and the heading size with
+   it, and the 2026-08-14 rebuild took the sheet's copy of the class out of the dialog. **0 elements
+   wear `.hiw-hero` in any of the three trees.** Nothing is lost and it was checked rather than
+   assumed: `how-it-works.html` renders its h1 at 30px on a phone and 38px on a desk, from
+   `--display-hiw` through `.hiw-page`, which is what this rule used to say.
+   `.hiw-hero-inner` STAYS AND IT IS NOT AN OVERSIGHT. It has one placement, and its one job is to
+   sit above the two absolute layers `platehead.css` paints behind it, the wave in `::before` and
+   the glow in `::after`, neither of which carries a z-index of its own. A wrapper that exists only
+   to hold a stacking position is still doing the work; the class it used to be named after is not. */
 .hiw-hero-inner{position:relative;z-index:var(--z-content)}
-/* h1 on the page, h2 in the dialog: a page has exactly one h1 and a dialog is
-   opened over a page that already spent it. Same heading, two levels.
-   The FACE of it is components/platehead.css since 2026-08-11: family, weight,
-   leading, tracking, ink, margin and balance, written out three times before
-   that. What is left here is how LOUD it is, which is the one declaration a
-   38px hero and a 30px sheet title disagree about. */
-.hiw-hero :is(h1,h2){font-size:var(--display-hiw)}
 .hiw-tagline{margin:var(--space-8) 0 0;font-size:var(--text-14);line-height:var(--leading-base);color:var(--text-primary);max-width:32ch}
 .hiw-sec{display:flex;gap:var(--space-12);align-items:flex-start}
 .hiw-ic{flex:0 0 var(--size-32);width:var(--size-32);height:var(--size-32);display:flex;align-items:center;justify-content:center;border-radius:var(--radius-10);background:var(--bg-control-brass);border:var(--hairline) solid var(--border-hairline-brass)}

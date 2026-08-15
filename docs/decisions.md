@@ -12,6 +12,137 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-15 - The tree had never drawn a person who backed NO, and a face with no placement is not a component with no face
+
+**TWO ROWS WERE LEFT OPEN BY THE CONSISTENCY REPORT AND THEY HAD OPPOSITE ANSWERS.** One was a real
+gap in the product that a stylesheet had been carrying the evidence of for months. The other should
+never have been opened, because the product owner had answered it two days earlier.
+
+### The chosen NO
+
+**`.sel` AND `.no` HAD NEVER ONCE STOOD ON THE SAME ELEMENT.** Read in the DOM across all three
+trees: 127 chosen sides in the paint, 24 in the grey and 39 on the stand, and every one of them YES.
+Five rules in `yesno.css` drew the other half of a symmetric control and not one of them could fire,
+so half of this control had never been rendered and therefore had never been measured, **which is
+this repository's whole method switched off for one component.**
+
+**IT WAS THE SCREENS, AND THE GREY TREE IS WHAT PROVES IT.** A colour layer that had lost a state
+would show that state in grey and not in colour. Both trees showed only YES, so this was not paint
+dropping something, it was a tree depicting one path. **And the route already existed**: backlog 143
+gave every card `?side=yes` and `?side=no`, 212 anchors each, so the product had been promising an
+arrival that no screen drew.
+
+**ONE SCREEN, IN BOTH TREES, AND THE CHOICE OF SCREEN IS MEASURED RATHER THAN TASTE.**
+`event-detail-bet-processing.html`, because **its panel is mid-submit and carries no payout figure**,
+so nothing has to be kept in arithmetic step with the pick except the sticky dock, which goes from
+`$5 to win $13.20` to **`$5 to win $8.06`**: five dollars at 62 per cent pays that. The YES pick
+inside the how-it-works sheet on the same screen **stays YES**, because it is a picture in an
+explainer that ships identically on 105 screens and not this person's bet.
+
+**AND DRAWING IT FOR THE FIRST TIME IS WHAT LET IT BE MEASURED.** The chosen NO is `--text-on-no` on
+`--outcome-no` at **4.64:1**, against the chosen YES at **6.42:1**. Both clear AA for body text, the
+NO side is the tighter of the two, and that is a number now instead of an assumption. **A rule that
+cannot be rendered cannot be checked, and it will be wrong the day it first draws** rather than the
+day it was written.
+
+**THE FIFTH SELECTOR IS DELETED AND THE DELETION IS A STATEMENT ABOUT THE COMPONENT.**
+`.yesno > a.sel:active` still matches nothing after the placement, and it should: **a chosen side is
+a `<button>` and never an `<a>`**, 16 chosen buttons and 0 chosen anchors over all three trees. The
+anchor half is the SPECTATOR's pair on a card, which states a market and records no choice; the
+button half is the chooser. That is `yesno.css`'s own sentence about a side being a POSITION IN THE
+PAIR, read one level further out.
+
+**The stand carries it too**, in both themes: a NO-taken chooser and a NO-taken row in the outcome
+list on `ui-kit/yesno.html`, because a face the product places once is a face a reader has to be able
+to compare against its twin.
+
+### `.icon-btn-lift`
+
+**THIS ROW SHOULD NOT HAVE BEEN OPENED.** The face had 525 placements until 2026-08-13, when backlog
+144 took the footer's five social marks out of every screen: five anchors a screen at `href="#"` for
+accounts that do not exist, standing directly under the trust strip. **A social account can never
+become an internal route, so it was not a link waiting for a screen**, which is what separated it
+from the two kinds of placeholder the footer's rules already covered.
+
+**AND THE KEEP-OR-DELETE QUESTION WAS ANSWERED IN THAT SAME COMMIT, WITH THE RIGHT DISTINCTION.**
+`account.css` was deleted for having no FACE left, its two rules being another component's stone.
+This is a face with no PLACEMENTS, and its placements return on a date somebody chooses. **A
+component with no face is a name; a face with no placement is a face.** The audit read the second as
+the first because both compute to zero, and zero is where two different things look alike.
+
+**What was actually wrong was one number.** `ui-kit/iconbtn.html` still published 525 in its touch
+table. It reads 0 now with the reason beside it, so the one row in that table worn by nothing says so
+rather than reading as a face nobody measured.
+
+**Verified**: 267 documents at 16 widths in Chromium 151 and WebKit 26.5, 8,544 renders, 0 horizontal
+scroll, 0 duplicate ids, 0 page errors, positive control seen at 2,680. The chosen NO measured in the
+panel and in the dock at 390 and 1280 in both themes: `--outcome-no` solid with `--text-on-no`, and
+the explainer's picture still YES.
+
+---
+
+## 2026-08-15 - The dead rules were the evidence, and one of them had been the sheet's scroll container
+
+**THE AUDIT FILED THE HOW-IT-WORKS SHEET AS A PRODUCT QUESTION AND IT WAS NOT ONE.** `.hiw-body`,
+`.hiw-full`, `.hiw-arrow` and `.hiw-hero` stood at 0 placements in the product and 43 on the stand,
+which reads as a stand that invented markup. `git log -S` answered it in one line: **`d214184`,
+2026-08-14**, the day the sheet was rebuilt from two explainer sections plus a FAQ plus a way back to
+its own page into three steps with a picture each, where the third one is a way IN. A dated, argued
+decision, and the markup went out of all three trees with it. **What stayed was its stylesheet.**
+
+**AND ONE OF THOSE EIGHT ORPHANED RULES HAD BEEN DOING THE SHEET'S MOST IMPORTANT JOB.** `.hiw-body`
+was the SCROLL CONTAINER, and the new sheet had none. Measured with the sheet open, the entrance
+animation finished and reduced motion asserted, in both engines:
+
+- **320 x 480: the sheet caps at 441 against 562 of content, 121px outside the clip, `scrollTop`
+  reads back 0, and the whole step navigation, Next and the dots, is below the cut and unreachable.**
+- **360 x 568: 40px, same navigation, same 0.**
+- 360 x 640 and above: nothing.
+
+**A FRAME THAT CLIPS CANNOT ALSO BE THE SCROLL CONTAINER**, which is the rule `dialog.css` already
+writes for `.sheet-body` twenty lines above the one that broke, and this sheet had lost its half of
+the pair for a day. The rule names `.hiw-steps` now, which is what this sheet's body is called.
+After it: 121 and 40 pixels of scroll where there were none, the navigation reachable at every size
+in Chromium 151 and WebKit 26.5, and **0 at 640 and above, where nothing was wrong.**
+
+**READ THE ENTRANCE ANIMATION FIRST OR THE NUMBER IS ABOUT NOTHING.** The same probe run without
+`getAnimations().forEach(a => a.finish())` put the dialog's top at **428 in a 480px viewport**, which
+is the sheet caught mid-slide and reads exactly like a modal rendering below the fold. That is a
+second defect report about a page that does not have one, and this folder's rule caught it: finish
+the animations before reading a box.
+
+**WHAT WENT.** Eight rules in `dialog.css` - the body wrapper's padding and column, the brass link
+out to the full guide, its arrow, its hover, its press and the 3px nudge - and two in `hiw.css`,
+`.hiw-hero` and its heading size. Four class names off two `Classes:` lines. **`.hiw-hero` had been
+superseded TWICE before anybody read it again**: backlog 105 split the page hero out as `.hiw-page`
+on 2026-08-11, taking the padding, the edge, the corner and the heading size with it, and the
+2026-08-14 rebuild took the sheet's copy. Checked rather than assumed: `how-it-works.html` renders
+its h1 at 30px on a phone and 38px on a desk, from `--display-hiw` through `.hiw-page`.
+
+**`.hiw-hero-inner` STAYS WITH ITS ONE PLACEMENT AND THAT IS NOT AN OVERSIGHT.** Its one job is to
+sit above the two absolute layers `platehead.css` paints behind it, the wave in `::before` and the
+glow in `::after`, neither of which carries a z-index. **A wrapper that exists only to hold a
+stacking position is still doing the work**; the class it used to be named after is not.
+
+**THE STAND WAS THREE PAGES, NOT ONE.** `ui-kit/hiw.html` had been updated on the day of the rebuild;
+`dialog.html` and `organisms.html` still drew the old sheet and carry the shipped markup now, with
+ids and radio names suffixed per cell, because a radio group is keyed by `name` and two cells sharing
+one are one group. `vitrine.html` and `platehead.html` showed `.plate-head.hiw-hero` as one of the
+face's hosts and show the page hero there instead.
+
+**`platehead.css` WAS WRITTEN BECAUSE FOUR COMPONENTS WORE ONE FACE AND IT IS THREE TODAY, AND THAT
+COSTS A COUNT AND NOT A RULE.** 228 plain sheet heads, 1 page hero, 10 outcome heads. The list in
+that file is kept at four with the one struck rather than renumbered, because the fourth-host
+argument is what decided the SHAPE of the file, an anatomy plus a default skin, and it was true when
+it was made. **Losing a wearer is the test that argument was built to pass.**
+
+**Verified**: 106 painted screens with the sheet shut, **78,245 elements**, 26 computed properties
+each, base tree against live, **0 differing rows**, control 0 first. 267 documents at 16 widths in
+both engines: 0 horizontal scroll, 0 duplicate ids, 0 page errors, positive control seen at 2,680.
+The sheet open at four viewports in both engines, scroll and reachability as above.
+
+---
+
 ## 2026-08-15 - Seventeen rules that drew nothing, and the print sheet was partly aimed at nothing
 
 **THE SYSTEM WAS READ AGAINST THE PRODUCT FOR THE FIRST TIME**, rather than the product being read

@@ -149,7 +149,14 @@
    filled colour goes down by depth. --edge-shade-strong is the role for that edge in both themes,
    and it is the same one every lifted stone in this system uses.
    0,4,2 and 0,3,2: above the rest rules they follow, so the shade lands over the fill. */
-.opt-list .yesno.compact button.sel.yes:active,.opt-list .yesno.compact button.sel.no:active,.yesno > a.sel:active,.yesno > button.sel:active{box-shadow:inset 0 2px 5px var(--edge-shade-strong)}
+/* `.yesno > a.sel:active` STOOD IN THIS LIST AND CAME OFF ON 2026-08-15, and its absence is a
+   statement about the component rather than a tidy-up. **A chosen side is a `<button>` and never an
+   `<a>`**, in all three trees, at every placement: 16 chosen buttons and 0 chosen anchors. The
+   anchor half is the SPECTATOR's pair on a card, which states a market and records no choice; the
+   button half is the chooser. That is the same sentence this file already writes about a side being
+   a POSITION IN THE PAIR, read one level further out. The other three names in this list are alive
+   and two of them only became alive the same day, when the chosen-NO face was placed. */
+.opt-list .yesno.compact button.sel.yes:active,.opt-list .yesno.compact button.sel.no:active,.yesno > button.sel:active{box-shadow:inset 0 2px 5px var(--edge-shade-strong)}
 /* No :disabled, [disabled] or [aria-disabled] rule: 241 yesno blocks across ui-visual, ui-kit and
    wireframes and not one of them is disabled. There is no closed-market state that greys the pair,
    so a rule for it would be a guess about a screen that does not exist.

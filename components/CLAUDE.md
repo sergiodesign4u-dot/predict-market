@@ -1,6 +1,6 @@
 # components/ - the system itself
 
-This folder IS the design system. **54 stylesheets, 10,057 lines**: 48 here and 6 in `patterns/`,
+This folder IS the design system. **54 stylesheets, 10,067 lines**: 48 here and 6 in `patterns/`,
 re-counted 2026-08-14 by `cat components/*.css components/patterns/*.css | wc -l` after the filters
 sheet, its two later passes and the scroll-driven edge fade. It was 9,224 on 2026-08-13 after `trust-art.css`
 was written (`docs/backlog.md` 140). It was 53 and 8,734 earlier the same day, after `print.css`

@@ -241,7 +241,7 @@
           <tr><td><code>.bal-swap</code> / <code>.bal-add</code></td><td>73 / 73</td><td colspan="2">desk only, and 0 of the 146 render at 390</td><td>clears at 1280</td></tr>
           <tr><td><code>.icon-btn-photo</code></td><td>228</td><td>32x32</td><td>32x32</td><td>clears</td></tr>
           <tr><td><code>.icon-btn-photo</code> on a sheet head</td><td>333</td><td>32x32</td><td>32x32</td><td>clears</td></tr>
-          <tr><td><code>.icon-btn-lift</code></td><td>525</td><td>28x28</td><td>28x28</td><td>clears</td></tr>
+          <tr><td><code>.icon-btn-lift</code></td><td><b>0</b>, was 525</td><td>28x28</td><td>28x28</td><td>clears</td></tr>
           <tr><td><code>.icon-btn-bare</code></td><td>84</td><td><b>44x44</b></td><td><b>44x44</b></td><td>clears</td></tr>
           <tr><td><code>.icon-btn-tile</code></td><td>27</td><td>28x28</td><td>28x28</td><td>clears</td></tr>
           <tr><td><code>.icon-btn-small</code></td><td>4</td><td>24x24</td><td>24x24</td><td>clears, exactly</td></tr>
@@ -258,6 +258,16 @@
     2.5.8's 24x24 and four of the eight do not clear this project's own 44</b>, which is backlog 39
     and is open on purpose: whether a dismiss on an overlay, a corner toolbar or a footer mark should
     be 44 is a design question, and a migration is not the place to answer it quietly.</p>
+    <p class="tk-note"><b>The 525 in that row is 0 since 2026-08-13, and the face is kept on purpose.</b>
+    <code>.icon-btn-lift</code> was the footer's row of five social marks on 105 screens, and backlog
+    144 took them out: five anchors a screen at <code>href="#"</code> for accounts that do not exist,
+    standing directly under the trust strip. <b>A social account can never become an internal route,
+    so it was not a link waiting for a screen</b>, which is what separated it from the two kinds of
+    placeholder the footer's own rules already covered. <b>The face survives its placements and
+    <code>account.css</code> did not, and the difference is the right one</b>: that file was deleted
+    for having no FACE left, its two rules being another component's stone; this is a face with no
+    placements, and its placements return on a date somebody chooses. It is the only entry in this
+    table worn by nothing, and the row says so rather than reading as a face nobody measured.</p>
   </section>
 
   <!-- =============================================================== ground -->

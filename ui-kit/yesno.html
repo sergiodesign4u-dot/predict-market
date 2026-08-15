@@ -80,12 +80,14 @@
         <div class="opt-list">
           <div class="opt-row sel" aria-current="true"><span class="opt-name">JD Vance</span><span class="opt-prob">41%</span><span class="yesno compact"><button type="button" class="sel yes">YES</button><button type="button" class="no">NO</button></span></div>
           <div class="opt-row"><span class="opt-name" id="opt-donald-trump-1">Donald Trump</span><span class="opt-prob">22%</span><span class="yesno compact"><button type="button" class="yes" id="opt-donald-trump-1-yes" aria-labelledby="opt-donald-trump-1 opt-donald-trump-1-yes">YES</button><button type="button" class="no" id="opt-donald-trump-1-no" aria-labelledby="opt-donald-trump-1 opt-donald-trump-1-no">NO</button></span></div>
+          <div class="opt-row"><span class="opt-name">Nikki Haley</span><span class="opt-prob">9%</span><span class="yesno compact"><button type="button" class="yes">YES</button><button type="button" class="sel no">NO</button></span></div>
         </div>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
         <div class="opt-list">
           <div class="opt-row sel" aria-current="true"><span class="opt-name">JD Vance</span><span class="opt-prob">41%</span><span class="yesno compact"><button type="button" class="sel yes">YES</button><button type="button" class="no">NO</button></span></div>
           <div class="opt-row"><span class="opt-name" id="opt-donald-trump-2">Donald Trump</span><span class="opt-prob">22%</span><span class="yesno compact"><button type="button" class="yes" id="opt-donald-trump-2-yes" aria-labelledby="opt-donald-trump-2 opt-donald-trump-2-yes">YES</button><button type="button" class="no" id="opt-donald-trump-2-no" aria-labelledby="opt-donald-trump-2 opt-donald-trump-2-no">NO</button></span></div>
+          <div class="opt-row"><span class="opt-name">Nikki Haley</span><span class="opt-prob">9%</span><span class="yesno compact"><button type="button" class="yes">YES</button><button type="button" class="sel no">NO</button></span></div>
         </div>
       </div>
     </div>
@@ -126,6 +128,36 @@
         <div class="bp-dir"><button type="button" class="yesno-pick bp-side sel yes">YES <span class="bp-pct">64%</span></button><button type="button" class="yesno-pick bp-side no">NO <span class="bp-pct">36%</span></button></div>
       </div>
     </div>
+    <p class="tk-subh">the same chooser with NO taken, and until 2026-08-15 no screen in this repository had ever drawn it</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="bp-dir"><button type="button" class="yesno-pick bp-side yes">YES <span class="bp-pct">38%</span></button><button type="button" class="yesno-pick bp-side sel no">NO <span class="bp-pct">62%</span></button></div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="bp-dir"><button type="button" class="yesno-pick bp-side yes">YES <span class="bp-pct">38%</span></button><button type="button" class="yesno-pick bp-side sel no">NO <span class="bp-pct">62%</span></button></div>
+      </div>
+    </div>
+    <p class="tk-note"><b>Five rules in <code>yesno.css</code> draw a chosen NO and not one of them
+    could fire.</b> Read in the DOM across all three trees on 2026-08-15, <code>.sel</code> and
+    <code>.no</code> had <b>never once stood on the same element</b>: 127 chosen sides in the paint,
+    24 in the grey and 39 on this stand, and every one of them YES. The pair is symmetric and half of
+    it had never been rendered, so half of it had never been measured either, which is this
+    repository's whole method turned off for one control.</p>
+    <p class="tk-why"><b>It was the SCREENS and not the stylesheet, and the proof is that the grey
+    tree agreed with the paint.</b> A colour layer that had lost a state would show the state in grey
+    and not in colour; both trees showed only YES, so the tree depicted one path. The fix was one
+    screen in both trees, <code>event-detail-bet-processing.html</code>, chosen because its panel is
+    mid-submit and carries no payout to keep in step: the pick moves in the panel and in the sticky
+    dock, the dock's figure goes from <b>$13.20 to $8.06</b> because $5 at 62 per cent pays that, and
+    the YES picture inside the how-it-works sheet stays YES because it is a picture and not this
+    person's bet. <b>The route already existed</b>: backlog 143 gave every card
+    <code>?side=yes</code> and <code>?side=no</code>, 212 anchors each, so the product had been
+    promising an arrival the tree never drew.</p>
+    <p class="tk-note"><b>And rendering it for the first time is what let it be measured.</b> The
+    chosen NO is <code>--text-on-no</code> on <code>--outcome-no</code> at <b>4.64:1</b>, against the
+    chosen YES at <b>6.42:1</b>. Both clear AA for body text; the NO side is the tighter of the two
+    and now has a number.</p>
     <p class="tk-note"><b>It rests on the system's quiet ground and not in green and red</b>, and
     <code>components/tokens.css</code> wrote the reason beside the token it is not using: the tinted
     fill is "the tinted YES button (spectator, not trader)". A side pressed in green would be
