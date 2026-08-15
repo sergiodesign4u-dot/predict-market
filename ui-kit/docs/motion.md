@@ -406,13 +406,21 @@ invisible reads as content flashing in and out rather than as a wait.
 | moving elements, 105 screens | 4,904 | **9,084** |
 | distinct durations | 5 | **2**: `.16s` 19,349 slots, `.25s` 171 |
 | duration literals in the system | 0 | **0** |
-| bare easing keywords | 54 | **0** |
+| bare easing keywords | 54 | **1**, declared |
 | `transition: all` | 0 | **0** |
 | animations rendering on load | `edge-fade` 90 | `edge-fade` 90, **`sk-pulse` 482** |
 | components with movement | 20 of 47 | **26 of 47** |
 
 Chromium 151 and WebKit 26.5 agree element for element on every line. 163 documents, 231,872
 readings, 0 page errors and 0 HTTP errors.
+
+**The 1 was published as 0 and the closing audit corrected it.** `catnav.css` writes
+`animation-timing-function:linear` on the scroll-driven edge fade, and the check that produced the
+zero read `transition:` and `animation:` and never looked at a longhand. The keyword stays, because
+a scroll timeline maps progress from distance and the identity is the only correct function there,
+and a `--ease-linear` read once would be a name for a constant. What changed is that the reason now
+stands beside the rule and the number is right. **A check that reads the shorthand and calls the
+answer a property of the family is the same defect as a count taken by matching a string.**
 
 ## 7. Patterns, screen states, and the crossing between documents
 

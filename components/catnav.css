@@ -207,6 +207,20 @@
    in the family, `animation-duration` among them, and a scroll-driven animation
    wants that left at `auto` so it spans the whole scroll range. Writing the
    shorthand here is how a fade ends up firing over 0s and never being seen.
+
+   AND `linear` IS THE ONE BARE EASING KEYWORD LEFT IN THIS FOLDER, ON PURPOSE, 2026-08-15.
+   Every other curve here reads `--ease-standard` or `--ease-enter`, and a literal is a defect by
+   the rule the Animation stage wrote. This is not one: a scroll timeline maps progress from
+   DISTANCE, so the timing function is what stands between how far the reader has scrolled and
+   where the mask sits. Anything but the identity puts a curve there and the fade runs ahead of or
+   behind the thumb it belongs to. **A token would be worse than the keyword**: a `--ease-linear`
+   read once, whose value can never be anything else, is a name for a constant.
+
+   AND IT WAS FOUND BY THE SECOND INSTRUMENT, NOT THE FIRST. The Animation stage's own check read
+   `transition:` and `animation:` and published **0 bare keywords in 54 stylesheets**; this one is
+   on the LONGHAND `animation-timing-function`, which that check never looked at. The published
+   number was 0 and the true number is 1. A check that reads the shorthand and calls the answer a
+   property of the family is the same defect as a count taken by matching a string.
    ============================================================================ */
 @supports (animation-timeline:scroll(self inline)){
   .cat-nav>ul,.cat-main .feed-subfilter ul,.subcat ul{

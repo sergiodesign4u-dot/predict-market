@@ -387,7 +387,10 @@ movement, and "it livens up the interface" is not a job.
 **Two durations carry all of it**, `--dur-fast` at .16s and `--dur-slow` at .25s, with
 `--pulse-period` at 1.4s beside them as a PERIOD rather than a rung. Two curves,
 `--ease-standard` and `--ease-enter`. There are no literals: measured from the comment-stripped
-source, **0 duration literals and 0 bare easing keywords in 54 stylesheets**.
+source, **0 duration literals and ONE bare easing keyword in 54 stylesheets**: `linear` on
+`animation-timing-function` in `catnav.css`, deliberate and declared, where a scroll timeline needs
+the identity. **It was published as 0 and the closing audit corrected it**, because the check that
+produced the zero read the shorthand and never looked at the longhand.
 
 ### 26 of 47 move, and the other 21 are not an oversight
 

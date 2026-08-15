@@ -71,8 +71,13 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   for a control answering a finger and `--dur-slow` for an element arriving, plus `--pulse-period`
   beside them, which is a PERIOD and not a third rung of the ladder. Two curves. A literal duration
   or a bare `ease` in a component file is a defect, not a shorthand: measured 2026-08-15 from the
-  comment-stripped source, **0 literals and 0 bare keywords in 54 stylesheets**, against 54 bare
-  keywords the day the stage opened. `transition: all` is 0 and stays 0, because it animates
+  comment-stripped source, **0 duration literals and ONE bare easing keyword in 54 stylesheets**,
+  against 54 bare keywords the day the stage opened. **The one is `linear` on
+  `animation-timing-function` in `catnav.css`, it is deliberate, and the published number was 0
+  until the second instrument found it**: the stage's own check read `transition:` and `animation:`
+  and never looked at a longhand. A scroll timeline maps progress from distance, so the identity is
+  the only correct function there and a `--ease-linear` read once would be a name for a constant.
+  The reason stands beside the rule. `transition: all` is 0 and stays 0, because it animates
   whatever a later rule adds, including the expensive. **A movement gets one of three jobs named
   before it is written**, a response, an arrival, or a process still running, and a movement with no
   job is deleted rather than kept because it already exists. The register is

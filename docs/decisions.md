@@ -12,6 +12,64 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-15 - The closing audit of Stage 11, and the second instrument corrected a number the first one published
+
+The entry below closed Animation with `/impeccable audit` named as not run and Codex named as
+having produced two mechanical scans and no verdict. **Both were then run properly, and the shortfall
+was not a tooling problem: the audit had simply been skipped and the gap named instead of closed.**
+That is written here because a stage that reports its own hole and then leaves it is a stage that
+taught the next reader the hole is acceptable.
+
+**CODEX PRODUCED ITS TABLE ON THE THIRD ATTEMPT, AND WHAT CHANGED WAS THE PROMPT AND NOT THE TOOL.**
+The first run hung on stdin, the second and third spent their budget composing a Ruby one-liner that
+raised before printing. The one that worked bounded the work in the prompt itself, at most six shell
+commands and the table as the deliverable, with "an unfinished exploration is a failure" said out
+loud. **A read-only auditor with no budget named in its instructions will spend the budget on
+exploring**, which is the same failure shape as an instrument that cannot come back red: both look
+like diligence and neither produces an answer.
+
+**THE FINDING: THE STAGE PUBLISHED "0 BARE EASING KEYWORDS IN 54 STYLESHEETS" AND THE TRUE NUMBER IS
+1.** `catnav.css` writes `animation-timing-function:linear` on the scroll-driven edge fade. The check
+that produced the zero read `transition:` and `animation:` and **never looked at a longhand**, which
+is the same defect as a count taken by matching a string: the instrument answered about the shape it
+searched for and the number was printed as a property of the family. Corrected in
+`components/CLAUDE.md`, `DESIGN.md`, `ui-kit/docs/motion.md`, `ui-kit/docs/inventory.md`,
+`ui-kit/motion.html` and `README.md`, all of which had copied it.
+
+**THE KEYWORD STAYS AND THE REASON IS NOW BESIDE IT.** A scroll timeline maps progress from DISTANCE,
+so the timing function stands between how far the reader has scrolled and where the mask sits, and
+anything but the identity runs the fade ahead of or behind the thumb. **A `--ease-linear` read once,
+whose value can never be anything else, is a name for a constant**, and would be worse than the
+keyword. The stand carries the second and last one, the `linear` control lane on `motion.html`,
+which exists so that two token curves shown alone cannot be mistaken for two broken lanes.
+
+**THE IMPECCABLE DETECTOR FOUND 41 ADVISORY FINDINGS, ALL ONE CLASS, ALL IN THE STAND, AND FOUR OF
+THEM WERE THIS STAGE'S OWN.** `design-system-font-size`: a literal `10px` or `11px` off the ramp,
+0 in `components/` and 0 in `ui-visual/`. Four were written by the motion block added this stage,
+next to declarations of my own that already read `--text-12` and `--text-13`, so the block was
+inconsistent with itself. Moved onto `--text-11` and `--text-10`, which are inert at the default root
+and move with a reader's font setting, and that is the whole reason the ramp exists. **The other 37
+are the stand's older habit and are left alone**: widening the scope of a closing audit into a
+neighbour's file is how a stage stops being reviewable.
+
+**THE FIVE AUDIT DIMENSIONS, MEASURED.** Accessibility: the playbook asks specifically for a flag on
+"a global `0.01ms` kill that destroys useful feedback", and that rule was deleted the day before this
+audit for its own reasons; reduced motion preserves every state, 0 of 163 documents read above 1ms,
+and the pulse runs at **0.714 Hz against a photosensitive threshold of 3**. Performance: with the
+loading feed open, **43 animations run at once and every one of them animates `maskImage` or
+`opacity`**, with 0 layout properties among them, in both engines at both widths. Theming: **0 motion
+tokens are declared inside a theme block**, which is the rule said out loud rather than assumed.
+Responsive: 0 horizontally scrolling documents at 360 and 1280 with the positive control seen, and
+**0 of the controls this stage added measure under 44px with a coarse pointer asserted**, which this
+repository has already once forgotten to assert. Implementation integrity: 41 advisory findings of a
+single class, none of them motion.
+
+**WHAT THE AUDIT DID NOT CHANGE.** No defect of the motion system itself was found by either
+instrument. The one correction is to a NUMBER the stage published about itself, which is the second
+time in two days that the thing needing repair was the reading rather than the page.
+
+---
+
 ## 2026-08-15 - Stage 11, Animation: the drift was in the curve, the status job was performed nowhere, and the check for less motion could not fail
 
 **TWO DURATIONS AND NOT THREE, AND THE COUNT IS THE FINDING.** The stage asks for three, named by the job a movement does: a RESPONSE, a change inside a component already on screen, and an ARRIVAL. The inventory of moments, taken over all 105 grey screens plus `ia/docs/flows.md` plus every state selector in `components/`, found **two jobs with movement in them**. The middle rung had exactly one member, `.market-chevron` turning over when its market opens, which is feedback for a click and therefore a response. A third would have sat 20ms from the one above it and been indistinguishable from it. `--dur-fast:.16s`, `--dur-slow:.25s`, and `--pulse-period:1.4s` beside them carrying a different prefix because a PERIOD is not a rung: the durations answer how long a change takes and a period answers how often it comes round. Two curves, `--ease-standard` and `--ease-enter`. **`--ease-exit` refused**, because nothing in this product animates a departure and a token with no reader fails the idle control. **`--move-sm` and `--move-md` refused**, because that question was answered on 2026-08-13 with a census: of the system's 20 transforms only 5 are movement, and 3px on a card, 2 on a badge and 1 on a provider button are three decisions rather than a ladder.

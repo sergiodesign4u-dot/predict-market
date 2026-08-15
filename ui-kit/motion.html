@@ -23,7 +23,7 @@
     <b>The product had five durations before this stage and not one of them was a literal</b>, so
     the work was never tidying loose numbers. It was finding one job wearing four of them.</p>
     <div class="tk-badges">
-      <span class="tk-badge">2 durations, 2 curves, 0 literals</span>
+      <span class="tk-badge">2 durations, 2 curves, 1 declared linear</span>
       <span class="tk-badge">0 motion in a screen file, of 106</span>
       <span class="tk-badge">34 moments, 29 answered, 4 left</span>
       <span class="tk-badge">status job: 482 marks, was 0</span>
@@ -121,6 +121,13 @@
     <p class="tk-note">Same comparison, one duration, three shapes. The third lane is
     <code>linear</code> and it is here as the control: if the two above it looked alike you would
     have no way to know whether the page was working.</p>
+    <p class="tk-note"><b>And <code>linear</code> is the one bare keyword the system keeps, in one
+    place, with its reason beside it.</b> The scroll edge fade binds a mask to distance rather than
+    to time, so the identity is the only correct function there and anything else runs the fade
+    ahead of or behind the thumb. A <code>--ease-linear</code> read once, whose value can never be
+    anything else, is a name for a constant. <b>The stage published "0 bare keywords" and the true
+    number is 1</b>: its own check read <code>transition:</code> and <code>animation:</code> and
+    never looked at the longhand. The second instrument is what found it.</p>
 
     <input type="checkbox" id="moRunEase" class="tk-mo-run">
     <label for="moRunEase" class="tk-mo-btn">Run the curves</label>

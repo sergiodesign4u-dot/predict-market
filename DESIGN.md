@@ -676,7 +676,7 @@ person least wants to be asked a question. Measured: 0 curves in the system over
 |---|---|---|
 | distinct durations rendered on 105 screens | 5 | **2** |
 | duration literals | 0 | **0** |
-| easing slots reading a token | 585 of 13,406, **4.4 per cent** | **all of them** |
+| easing slots reading a token | 585 of 13,406, **4.4 per cent** | **all but one declaration**: `linear` on `animation-timing-function` in `catnav.css`, where a scroll timeline needs the identity and a token read once would be a name for a constant |
 | `transition: all` | 0 | **0** |
 | moving elements | 4,904 | **9,084** |
 | the status job | performed **0** times | `sk-pulse` on **482** marks over 19 loading screens |
