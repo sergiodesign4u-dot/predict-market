@@ -174,7 +174,7 @@ dialog.app-dialog.bet-sheet::backdrop{background:var(--shadow-ink-60);backdrop-f
    visible handle is at the same place on the same 4px track: what grew is the
    distance to the first row of the sheet, by six pixels, on four screens. */
 .bet-sheet .sheet-grab{display:block;width:100%;border:0;background:transparent;padding:var(--space-12) 0 var(--space-8);cursor:pointer}
-.bet-sheet .sheet-grab::before{content:'';display:block;width:var(--size-40);height:var(--size-4);border-radius:var(--radius-pill);background:var(--bg-control);margin:0 auto;transition:background var(--dur-quick) ease}
+.bet-sheet .sheet-grab::before{content:'';display:block;width:var(--size-40);height:var(--size-4);border-radius:var(--radius-pill);background:var(--bg-control);margin:0 auto;transition:background var(--dur-fast) var(--ease-standard)}
 .bet-sheet .sheet-grab:hover::before{background:var(--border-hairline)}
 /* The button is a full-width strip and the pill is the only part of it a person can see or
    aim at, so the pill is what answers. Rest --bg-control, hover one step toward the edge,
@@ -199,7 +199,7 @@ dialog.app-dialog.bet-sheet::backdrop{background:var(--shadow-ink-60);backdrop-f
 .bet-sheet .bp-dir{gap:var(--space-8)}
 .bet-sheet .bp-amount-row{margin:0 0 var(--space-12)}
 .bet-sheet .line{padding:var(--space-8) 0}
-dialog.app-dialog.bet-sheet[open]{animation:betSheetUp var(--dur-slower) var(--ease-out)}
+dialog.app-dialog.bet-sheet[open]{animation:betSheetUp var(--dur-slow) var(--ease-enter)}
 @media(prefers-reduced-motion:reduce){
   dialog.app-dialog.bet-sheet[open]{animation:none}
 }

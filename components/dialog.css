@@ -400,7 +400,20 @@ dialog.app-dialog .sheet-body>a{text-decoration:none}
    a closed dialog: the UA closes one with dialog:not([open]){display:none} and
    an author declaration beats a UA one whatever the specificity, so a bare
    display:flex here would open every dialog on 76 screens at once. */
-dialog.app-dialog:modal{position:fixed}
+/* THE DESK MODAL ARRIVED WITH NO MOVEMENT AT ALL UNTIL 2026-08-15, AND THE TWO-VIEWPORT WALK IS
+   WHAT FOUND IT. The rise below is inside a `max-width:39.99875rem` block, so `sheet-rise` is the
+   PHONE's answer and above the desk rung 337 dialogs on 105 screens simply appeared, backdrop and
+   all, on one frame. The stage's own inventory had the row marked done, and it was done at one
+   width of the two: **direction and amplitude depend on width and duration does not**, which is the
+   whole reason the closing sweep walks 360 and the desk rather than one of them.
+   OPACITY ONLY, AND NO TRAVEL, BECAUSE A CENTRED MODAL HAS NO EDGE TO COME FROM. A phone sheet is
+   anchored to the bottom of the screen and can say where it came from by rising from it. This one
+   is in the middle of the page, so a direction would have to be invented, and an invented direction
+   points at nothing. The arrival is stated by presence instead. The backdrop takes the same rule so
+   the scrim does not land a frame before the surface it belongs to. */
+@keyframes sheet-appear{from{opacity:0}}
+dialog.app-dialog:modal{position:fixed;animation:sheet-appear var(--dur-slow) var(--ease-enter) both}
+dialog.app-dialog:modal::backdrop{animation:sheet-appear var(--dur-slow) var(--ease-enter) both}
 
 /* A SHEET TALLER THAN THE SCREEN SCROLLS, AT EVERY WIDTH. The user agent bounds
    a modal (max-height:calc(100% - 38px)) AND lets it scroll (overflow:auto).
@@ -446,7 +459,7 @@ dialog.app-dialog:modal .sheet-body{overflow:auto;min-height:0}
   dialog.app-dialog:modal{width:100%;max-width:none;margin:auto auto 0;
     max-height:var(--sheet-cap);
     border-radius:var(--radius-16) var(--radius-16) 0 0;border-bottom-width:0;
-    animation:sheet-rise var(--dur-slow) var(--ease-out) both}
+    animation:sheet-rise var(--dur-slow) var(--ease-enter) both}
   @keyframes sheet-rise{from{translate:0 100%}to{translate:0 0}}
 }
 

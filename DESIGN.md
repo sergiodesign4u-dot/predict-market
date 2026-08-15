@@ -631,3 +631,81 @@ takes a colour it did not have on a phone. A rail, a second column and a docked 
 arrangements; the ground under them is the same two-stone plate. The one thing a wide width brings
 that a phone never showed is a surface with its own edge beside the content, and that surface is
 checked in the dark theme as well, because it is the one place a hole in a theme could hide.
+
+---
+
+## 10. Motion
+
+Written 2026-08-15 at the Animation stage. The argument, both halves of the transcript and every
+number below are in [`ui-kit/docs/motion.md`](./ui-kit/docs/motion.md), and the page you can operate
+is [`ui-kit/motion.html`](./ui-kit/motion.html), which is the one foundation the kit cannot print.
+
+### Three jobs, and there is no fourth
+
+A movement names its job **before** it is written. **RESPONSE**: a control answering a finger.
+**ARRIVAL**: an element saying where it came from. **STATUS**: a process still running. A moment for
+which none of the three can be named does not enter the register, and so it never gets a movement.
+"It livens up the interface" is not a job, and this is the same rule that throws an orphan feature
+out of a To-Be map.
+
+### Two durations, and the count is a finding rather than a shortfall
+
+| token | value | job |
+|---|---|---|
+| `--dur-fast` | `.16s` | a control answers a finger: hover, press, focus, select |
+| `--dur-slow` | `.25s` | an element arrives: a sheet, the condensed category band |
+| `--pulse-period` | `1.4s` | a **period**, not a rung of the ladder: how often a pulse comes round |
+| `--ease-standard` | `ease` | most transitions |
+| `--ease-enter` | `cubic-bezier(.2,.7,.2,1)` | an arrival: sharp start, long settle |
+
+The stage asks for three durations. The inventory found two jobs with movement in them: the middle
+one, a change inside a component already on screen, had exactly one member, and it was a response.
+A third rung would have sat 20ms from the one above it. **It arrives the day a row asks for it.**
+
+There is no `--ease-exit`, because nothing in this product animates a departure and a token with no
+reader fails the idle control. There is no `--move-sm` or `--move-md`, because the five real
+distances are 3px on a card, 2 on a badge and 1 on a provider button, which are three decisions and
+not a ladder, and each is multiplied by `--motion`, the switch that reduced motion sets to 0.
+
+**No springs and no overshoot.** They read as "something went wrong" in precisely the states where a
+person least wants to be asked a question. Measured: 0 curves in the system overshoot.
+
+### What the product had before, and what it has now
+
+| | before | after |
+|---|---|---|
+| distinct durations rendered on 105 screens | 5 | **2** |
+| duration literals | 0 | **0** |
+| easing slots reading a token | 585 of 13,406, **4.4 per cent** | **all of them** |
+| `transition: all` | 0 | **0** |
+| moving elements | 4,904 | **9,084** |
+| the status job | performed **0** times | `sk-pulse` on **482** marks over 19 loading screens |
+| motion in a screen file | 0 of 106 | **0 of 106**, and the rule that keeps it there is now written |
+
+**The drift was in the curve, not the duration.** Every duration was already a token; 95.6 per cent
+of easing slots were the bare keyword `ease`. And one ROLE wore four numbers: a hover was 160ms on a
+button, 180 on a photo tile, 250 on a trust plate and 300 on a card, which only shows when the
+readings are grouped by job.
+
+### The cost of a frame
+
+`transform` and `opacity` only. Everything else makes the browser lay the page out again on every
+frame. Two conversions (the toggle knob off `left`, the how-it-works dot off `width`), one refusal
+with its reason (the condensed band collapses by `max-height`, and no transform removes a box from
+the flow), and five `box-shadow` kept because all five sit on the element's own hover or focus, so
+**at most one element in the document is animating a shadow at a time**.
+
+### Less motion is an obligation, and it has one mechanism
+
+One block in `tokens.css` redeclares the tokens at 1ms. Every component reading a `var()` obeys
+without knowing the block exists, and so does the component nobody has written yet. `1ms` and not
+`0s`, because zero removes the transition rather than shortening it and `transitionend` then never
+fires.
+
+**Reduction removes the movement and never the state.** An element that appears appears under the
+setting too, measured on three sheets in two engines. **A cycle is replaced, never shortened**: 1ms
+per period is a flicker, worse than the still box it replaces.
+
+**There is no blanket net on `*`, deliberately.** One stood in `base.css` and was deleted on
+2026-08-15, because `!important` on `*` makes a component that reads no token indistinguishable from
+one that reads every token, and the check for the second cannot then see the first.

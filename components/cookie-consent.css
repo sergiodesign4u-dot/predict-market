@@ -19,7 +19,16 @@
 .cc-inner{padding:var(--space-16);display:flex;flex-direction:column;gap:var(--space-12)}
 .cc-text{color:var(--text-primary);font-size:var(--text-14);line-height:var(--leading-base);margin:0}
 .cc-policy{margin:0;font-size:var(--text-13);display:flex;flex-wrap:wrap;gap:var(--space-12)}
-.cc-policy a{color:var(--text-brass);text-decoration:none;border-bottom:var(--hairline) solid var(--glow-brass);padding-bottom:var(--space-2)}
+/* RESPONSE, ADDED 2026-08-15 AT THE ANIMATION STAGE. The state was already here and the
+   movement was not: this component was one of seven with a hover and a press declared and no
+   transition between them, so the change happened on the frame the pointer arrived and the
+   control never answered, it just WAS different. The properties are named one at a time
+   because `transition: all` animates whatever a later rule adds, including the expensive.
+   33 placements on 2 screens. The checkbox beside it is deliberately NOT given one:
+   its states move `accent-color`, which is not an animatable property, and writing a
+   transition for it would be a rule that never fires. */
+.cc-policy a{color:var(--text-brass);text-decoration:none;border-bottom:var(--hairline) solid var(--glow-brass);padding-bottom:var(--space-2);
+  transition:border-bottom-color var(--dur-fast) var(--ease-standard)}
 .cc-policy a:hover{border-bottom-color:var(--text-brass)}
 .cc-actions{display:flex;flex-wrap:wrap;gap:var(--space-8)}
 /* THE THREE CONSENT BUTTONS LEFT THIS FILE ON 2026-08-06 for components/button.css, where

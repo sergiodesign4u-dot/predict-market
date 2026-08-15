@@ -60,10 +60,19 @@
    `opacity` and `cursor` stayed on the button, because a disabled control is disabled as a
    whole and a cursor belongs to the thing the pointer is over. */
 .toggle[role=switch]{position:relative;width:var(--control-44);height:var(--control-44);border:0;background:none;border-radius:var(--radius-pill);padding:0;font-size:0;flex:0 0 auto;cursor:pointer}
-.toggle[role=switch]::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);box-sizing:border-box;width:var(--size-40);height:var(--size-24);border-radius:var(--radius-pill);background:var(--bg-control);border:var(--hairline) solid var(--border-hairline);transition:background var(--dur-quick)}
-.toggle[role=switch]::after{content:'';position:absolute;top:14px;left:6px;width:var(--icon-16);height:var(--icon-16);border-radius:50%;background:var(--text-muted);transition:left var(--dur-quick) var(--ease-out),background var(--dur-quick)}
+.toggle[role=switch]::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);box-sizing:border-box;width:var(--size-40);height:var(--size-24);border-radius:var(--radius-pill);background:var(--bg-control);border:var(--hairline) solid var(--border-hairline);transition:background var(--dur-fast)}
+/* THE KNOB TRAVELS BY `transform` AND NOT BY `left`, 2026-08-15. `left` is a layout property: the
+   browser lays the page out again on every frame of the slide, and the switch is the one control in
+   this system whose whole feedback IS the travel. 22 minus 6 is 16, so the offset is the same
+   distance written where it costs nothing.
+   AND IT DOES NOT MULTIPLY BY `--motion`. That multiplier turns a DECORATIVE distance to zero under
+   reduced motion, a card lifting 3px and a badge 2. This distance is the STATE: a knob at 6px is a
+   switch that is off, so multiplying it out would leave a switch that says the wrong thing to
+   exactly the person who asked for less movement. Reduction removes the movement, never the
+   state, and the duration token already removes the movement here. */
+.toggle[role=switch]::after{content:'';position:absolute;top:14px;left:6px;width:var(--icon-16);height:var(--icon-16);border-radius:50%;background:var(--text-muted);transform:translateX(0);transition:transform var(--dur-fast) var(--ease-standard),background var(--dur-fast) var(--ease-standard)}
 .toggle[role=switch][aria-checked=true]::before{background:var(--color-action);border-color:var(--color-action)}
-.toggle[role=switch][aria-checked=true]::after{left:22px;background:var(--control-knob)}
+.toggle[role=switch][aria-checked=true]::after{transform:translateX(var(--size-16));background:var(--control-knob)}
 /* The switch had no pointer state at all: its only feedback was the knob sliding, which is the
    RESULT of the click and not a sign the control is live. Both states exclude [aria-disabled=true]
    so the dead switch below cannot light up, and exclude [aria-checked=true] so neither swaps the

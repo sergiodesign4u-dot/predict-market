@@ -54,7 +54,7 @@ div.chart-svg{display:flex;align-items:center;justify-content:center;color:var(-
 @media(min-width:47.5rem){
   .chart-svg{height:280px}
 }
-.chart-svg .ml-line{filter:none;fill:none;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;transition:opacity var(--dur-base) ease,stroke-width var(--dur-base) ease}
+.chart-svg .ml-line{filter:none;fill:none;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;transition:opacity var(--dur-fast) var(--ease-standard),stroke-width var(--dur-fast) var(--ease-standard)}
 .ed-legend{display:flex;flex-wrap:wrap;gap:var(--space-8) var(--space-16);margin-top:var(--space-12);padding-left:var(--space-2)}
 /* THE LEGEND'S ITEM, back from bets-table.css on 2026-08-10 (docs/backlog.md 84). The
    split of 2026-07-26 filed it with the biggest-bets list; the flat kit it was split

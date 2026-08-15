@@ -123,7 +123,7 @@
    the pair turned out to be unwritable for a token at all, so the system could only be made to
    say one thing by dropping it everywhere. Five sites, one sentence. The argument and the cost
    are in `base.css` beside `.device`. */
-.sidebar{font-family:var(--font-body);position:fixed;top:0;left:0;width:220px;height:100svh;background:var(--chrome-bg);border-right:var(--hairline) solid var(--chrome-border);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:var(--z-chrome);transform:translateX(-100%);transition:transform var(--dur-slow) var(--ease-inout)}
+.sidebar{font-family:var(--font-body);position:fixed;top:0;left:0;width:220px;height:100svh;background:var(--chrome-bg);border-right:var(--hairline) solid var(--chrome-border);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:var(--z-chrome);transform:translateX(-100%);transition:transform var(--dur-slow) var(--ease-enter)}
 .sidebar.open{transform:translateX(0)}
 .sidebar::-webkit-scrollbar{display:none}
 .sidebar-brand{padding:var(--space-20) var(--space-16) var(--space-16);border-bottom:var(--hairline) solid var(--chrome-border)}

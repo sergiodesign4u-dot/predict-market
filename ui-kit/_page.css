@@ -103,7 +103,14 @@
 .tk-jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 .tk-jump a{font-family:var(--font-mono);font-size:11px;
   color:var(--text-muted);border:1px solid var(--border-hairline);border-radius:100px;
-  padding:5px 12px;text-decoration:none;transition:color .15s,border-color .15s}
+  /* THE STAND READS THE SYSTEM'S TOKENS TOO, 2026-08-15. This was `.15s` twice, a number on no
+     ladder, and it survived every count because a stand is not a product. It stopped being
+     harmless the moment the reduced-motion check was run without the blanket net: 690 elements
+     per engine over 10 kit pages, and `ui-visual/overview.html`, kept moving when a reader had
+     asked for less, because a literal reads no token and there was nothing else left to catch it.
+     A stand is not a product and IS read by a person. */
+  padding:5px 12px;text-decoration:none;
+  transition:color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
 .tk-jump a:hover{color:var(--text-brass);border-color:var(--border-brass,rgba(199,162,78,.3))}
 /* A ROW THAT HAS NO PAGE YET IS STILL IN THE ROW, dashed and unclickable, for
    the same reason the side panel keeps it: a jump row that lists only what is
@@ -1049,3 +1056,97 @@
 .tk-rung span{font-size:var(--text-13);color:var(--text-primary)}
 .tk-rung i{font-style:normal;font-family:var(--font-mono);font-size:10px;color:var(--text-muted);
   display:block;margin-top:2px}
+
+/* ==========================================================================
+   motion.html, and the stand's own demonstrations
+   MOTION CANNOT BE SHOWN IN TEXT AND IT CANNOT BE SHOWN IN A SCREENSHOT, so this
+   page is the one place in the kit where the specimen has to be operated rather
+   than looked at. Everything below is the STAND moving; none of it is a product
+   rule, and none of it is counted in the product's transcript. The mechanism is a
+   checkbox and a sibling selector, which is what the product's own filter sheet
+   uses, so there is no script on this page either.
+   THE ONE SPECIMEN HERE THAT THE PRODUCT DOES NOT SHIP IS LABELLED AS SUCH. The
+   pulse is the status job, the inventory has it open, and a stand drawing more
+   than the product ships is a defect this kit has already been caught at once.
+   ========================================================================== */
+.tk-mo{margin-top:var(--space-16)}
+.tk-mo-run,.tk-mo-less{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.tk-mo-btn{display:inline-flex;align-items:center;gap:var(--space-8);cursor:pointer;
+  font-family:var(--font-mono);font-size:11px;letter-spacing:var(--track-label);
+  text-transform:uppercase;color:var(--text-brass);
+  border:var(--hairline) solid var(--border-brass);border-radius:var(--radius-10);
+  padding:0 var(--space-12);min-height:var(--control-44);background:var(--bg-control);
+  transition:background var(--dur-fast) var(--ease-standard),
+             border-color var(--dur-fast) var(--ease-standard)}
+.tk-mo-btn:hover{background:var(--bg-control-hover);border-color:var(--border-brass-hover)}
+.tk-mo-run:focus-visible+.tk-mo-btn,.tk-mo-less:focus-visible+.tk-mo-btn{
+  outline:2px solid var(--focus-ring);outline-offset:2px}
+.tk-mo-lanes{display:grid;gap:var(--space-12);margin-top:var(--space-16)}
+.tk-mo-lane{display:grid;grid-template-columns:118px 1fr;gap:var(--space-12);align-items:center}
+.tk-mo-lane>b{font-family:var(--font-mono);font-size:11px;color:var(--text-brass);
+  line-height:var(--leading-snug)}
+.tk-mo-lane>b i{font-style:normal;display:block;color:var(--text-muted);font-size:10px}
+.tk-mo-track{position:relative;height:44px;border-radius:var(--radius-10);
+  background:var(--bg-control);border:var(--hairline) solid var(--border-hairline);
+  overflow:clip}
+.tk-mo-slide{position:absolute;inset:6px;transform:translateX(0)}
+.tk-mo-dot{width:32px;height:32px;border-radius:var(--radius-10);background:var(--color-action)}
+.tk-mo-run:checked~.tk-mo .tk-mo-slide,.tk-mo-run:checked~.tk-mo-lanes .tk-mo-slide{
+  transform:translateX(calc(100% - 32px))}
+.tk-mo-slide.d-fast{transition:transform var(--dur-fast) var(--ease-standard)}
+.tk-mo-slide.d-slow{transition:transform var(--dur-slow) var(--ease-standard)}
+.tk-mo-slide.e-standard{transition:transform var(--dur-slow) var(--ease-standard)}
+.tk-mo-slide.e-enter{transition:transform var(--dur-slow) var(--ease-enter)}
+.tk-mo-slide.e-linear{transition:transform var(--dur-slow) linear}
+
+/* CONNECTION, and it is the product's own sheet rule rebuilt at stand scale: a
+   surface that arrives from the edge it will leave by. */
+.tk-mo-stage{position:relative;height:180px;border-radius:var(--radius-10);
+  background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);
+  overflow:clip;display:flex;align-items:flex-start;justify-content:center;
+  padding:var(--space-12)}
+.tk-mo-stage>p{margin:0;font-size:var(--text-12);color:var(--text-muted);max-width:26ch;
+  text-align:center}
+.tk-mo-sheet{position:absolute;left:0;right:0;bottom:0;padding:var(--space-16);
+  background:var(--bg-plate);border-top:var(--hairline) solid var(--border-hairline);
+  border-radius:var(--radius-16) var(--radius-16) 0 0;
+  font-size:var(--text-13);color:var(--text-primary);
+  translate:0 100%;
+  transition:translate var(--dur-slow) var(--ease-enter)}
+.tk-mo-run:checked~.tk-mo .tk-mo-sheet{translate:0 0}
+
+/* STATUS, THE ONE JOB THIS PRODUCT DOES NOT PERFORM ANYWHERE. 482 skeleton
+   placements on 19 screens and not one of them pulses. This is what the row asks
+   for, drawn on the stand so the decision can be looked at rather than described.
+   It is the stand's keyframe and it is not in `components/`. */
+@keyframes tk-mo-pulse{50%{opacity:.42}}
+.tk-mo-pulse{display:grid;gap:var(--space-8)}
+.tk-mo-pulse span{display:block;height:var(--size-8);border-radius:var(--radius-2);
+  background:var(--bg-control);animation:tk-mo-pulse var(--pulse-period) var(--ease-standard) infinite}
+.tk-mo-pulse span:nth-child(2){width:70%}
+.tk-mo-pulse span:nth-child(3){width:40%}
+.tk-mo-still span{animation:none}
+/* AND THE DEMONSTRATION PULSE OBEYS THE REAL SETTING, not only the switch on the page. A cycle is
+   replaced and never shortened, exactly as `skeleton.css` does it for the product's own marks:
+   without this the page that explains reduced motion was the page still moving under it. */
+@media(prefers-reduced-motion:reduce){
+  .tk-mo-pulse span{animation:none;opacity:1}
+}
+
+/* THE PAGE'S OWN LESS-MOTION SWITCH, AND IT IS A DEMONSTRATION RATHER THAN A
+   CHECK. It redeclares the same two tokens the real block redeclares, on a scope
+   instead of on :root, so what a reader sees here is the mechanism and not the
+   result: the real reading is taken with the browser emulating the setting, and
+   this switch cannot tell you about a rule that reads no token. */
+.tk-mo-less:checked~.tk-mo,.tk-mo-less:checked~.tk-mo-lanes{
+  --dur-fast:1ms;--dur-slow:1ms;--motion:0}
+.tk-mo-less:checked~.tk-mo .tk-mo-pulse span{animation:none;opacity:1}
+.tk-mo-flag{display:none;font-family:var(--font-mono);font-size:11px;color:var(--text-brass)}
+.tk-mo-less:checked~.tk-mo-flag{display:block}
+@media (max-width:39.99875rem){
+  .tk-mo-lane{grid-template-columns:1fr;gap:var(--space-4)}
+}
+/* The one spacing this page needs and the section rhythm does not give it: a note
+   that lands under a lane group rather than under prose. A `style=` attribute would
+   have been a rule in the one place the system cannot see it. */
+.tk-mo-after{margin-top:var(--space-16)}

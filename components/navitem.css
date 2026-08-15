@@ -74,7 +74,14 @@
    The two faces that had already become anchors each declared a display of their
    own - `.nav-slot` flex, `.nav-row-stack` block - which is exactly why the gap
    stayed invisible until a face that declared none crossed over. */
-.nav-item{display:block;width:100%;background:transparent;border:0;border-radius:0;cursor:pointer;text-decoration:none}
+/* RESPONSE, ADDED 2026-08-15 AT THE ANIMATION STAGE. The state was already here and the
+   movement was not: this component was one of seven with a hover and a press declared and no
+   transition between them, so the change happened on the frame the pointer arrived and the
+   control never answered, it just WAS different. The properties are named one at a time
+   because `transition: all` animates whatever a later rule adds, including the expensive.
+   1,068 placements on 105 screens, the largest silent surface in the product. */
+.nav-item{display:block;width:100%;background:transparent;border:0;border-radius:0;cursor:pointer;text-decoration:none;
+  transition:background var(--dur-fast) var(--ease-standard)}
 
 /* --------------------------------------------------------- the slot face ---
    A mark over a label, in a bar that is the only navigation a phone has. Its

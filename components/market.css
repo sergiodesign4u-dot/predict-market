@@ -9,7 +9,7 @@
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .market-box{border:0;padding:0}
-.market-head{display:flex;align-items:center;justify-content:space-between;cursor:pointer;list-style:none;transition:background var(--dur-quick) ease}
+.market-head{display:flex;align-items:center;justify-content:space-between;cursor:pointer;list-style:none;transition:background var(--dur-fast) var(--ease-standard)}
 .market-head::-webkit-details-marker{display:none}
 /* The disclosure had no pointer state at all, on nine screens. Its only feedback was the chevron
    rotating, and that is the RESULT of the click: until the body opens, nothing tells a person the
@@ -29,7 +29,7 @@
    box: the second lightest mark in the product and 0.45 under the 1.65 everything else
    drew at. The token and the non-scaling pair are base.css's, the application is this
    file's, because a component owns its own marks. docs/backlog.md 29. */
-.market-chevron{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-muted);fill:none;stroke-width:var(--stroke-mark);transition:transform var(--dur-base) ease}
+.market-chevron{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-muted);fill:none;stroke-width:var(--stroke-mark);transition:transform var(--dur-fast) var(--ease-standard)}
 .market-chevron *{vector-effect:non-scaling-stroke}
 .market-box[open] .market-chevron{transform:rotate(180deg)}
 .market-body{margin-top:var(--space-16)}

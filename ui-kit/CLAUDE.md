@@ -1,9 +1,14 @@
 # ui-kit/ - the vitrine, rebuilt by hand 2026-08-07 to 2026-08-08
 
 **All five steps are done and the plan below is the record of how, not a to-do list.** What is on the
-stand today: **57 pages**, `_page.css`, `_nav.js`, and **six** reports in `docs/`, the sixth being
-`consistency.md` of 2026-08-15, which is the first one that read the system against the product
-instead of reading the product. It was 54 until
+stand today: **58 pages** since 2026-08-15, when the Animation stage added `motion.html` as the SIXTH
+foundation, after `responsive`. It is the one page here that cannot be printed: every specimen on it
+has to be operated, because a screenshot shows a frame and never a movement, and it is built on
+checkboxes and sibling selectors so there is no script on it either. It was **57 pages**, `_page.css`, `_nav.js`, and **seven** reports in `docs/`, the seventh being
+`motion.md` of 2026-08-15. The sixth is `consistency.md` of the same day, the first that read the
+system against the product instead of reading the product. **`consistency.md` was in the folder and
+in no group of `_nav.js` until 2026-08-15**, which is the defect that file's own comment describes,
+a report added to nothing. It was 54 until
 2026-08-11, when three landed the same day: `logo` with the rename to Yonder, `platehead` by backlog
 108 (a face that three components wear, found by asking what `dialog.css` and `hiw.css` had in
 common rather than by walking a screen), and **`responsive.html`, the FIFTH foundation**.

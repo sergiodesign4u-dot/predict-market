@@ -372,3 +372,75 @@ a phone fact: the bare icon button pulls its 44px target back by 14px, a card ha
 edge to clip edge, and **one pixel of that target was being cut off 84 cards at every width from 640
 to 1600** while the query hid it below the rung. It is unconditional now. The account is in
 `responsive.md`, container thresholds.
+
+## Motion
+
+Added 2026-08-15 by Animation step 3. **The column is the list the Rollout stage checks against**:
+a new screen inherits movement from `components/index.css` and reads the row of its component
+rather than inventing a transition.
+
+**A movement does one of three jobs and there is no fourth.** RESPONSE, a control answering a
+finger. CONNECTION, an element arriving and saying where from. STATUS, a process still running. A
+moment for which none of the three can be named does not enter the register, so it never gets
+movement, and "it livens up the interface" is not a job.
+
+**Two durations carry all of it**, `--dur-fast` at .16s and `--dur-slow` at .25s, with
+`--pulse-period` at 1.4s beside them as a PERIOD rather than a rung. Two curves,
+`--ease-standard` and `--ease-enter`. There are no literals: measured from the comment-stripped
+source, **0 duration literals and 0 bare easing keywords in 54 stylesheets**.
+
+### 26 of 47 move, and the other 21 are not an oversight
+
+| component | job | what moves |
+|---|---|---|
+| `betpanel` | response + connection | the grab handle answers; the sheet rises from the bottom edge, `betSheetUp` |
+| `button` | response | border, ground, ink and shadow on hover and press; the provider face also lifts |
+| `card` | response | the hover lift and its shadow. **It was `.3s` until 2026-08-15**, the slowest hover in the product against the button's .16, which is the textbook drift this stage exists to find |
+| `chart` | response | a market line brightens and thickens under the pointer |
+| `chip` | response | ground and ink across the whole chip family |
+| `cookie-consent` | response | the policy link's underline. **The checkbox beside it is deliberately not given one**: its state moves `accent-color`, which is not animatable, so a transition there would be a rule that never fires |
+| `course-chrome` | connection | the review drawer slides in. Harness, not product |
+| `dialog` | connection | `sheet-rise`, and on the phone it is 337 dialogs across 105 screens |
+| `filters` | response | the summary chips and every row of the sheet |
+| `footer` | response | link ink and ground. **`text-decoration` is not in the list on purpose**: an underline fading in from nothing reads as a rendering fault rather than as an answer |
+| `header` | connection | the condensed category band opening under the header |
+| `hero` | response | the trust and feature tiles lift. **Also `.25s` until 2026-08-15**, a second hover on a third number |
+| `hiw` | response | the step dot |
+| `iconbtn` | response | five of its eight faces, 14 declarations, the largest single reader of `--dur-fast` |
+| `input` | response | the amount field's edge, glow and quiet |
+| `market` | response | the head's ground and the chevron turning over |
+| `navitem` | response | the row's ground. **1,068 placements on 105 screens and it had no transition at all until 2026-08-15**, the largest silent surface in the product |
+| `options` | response | the "more" link's ink |
+| `position` | response | the plate and its question. **996 placements, silent until 2026-08-15** |
+| `related` | response | the "more" control |
+| `skeleton` | **status** | `sk-pulse`, 482 marks on 19 loading screens. **The only place this product performs the status job, and it performed it zero times until 2026-08-15** |
+| `state-block` | response | the recovery link. 152 placements, silent until 2026-08-15, and every one of them is the way out of a state a person did not want |
+| `tabs` | response | both tab families |
+| `toc` | response | the contents rail and its head. Silent until 2026-08-15 |
+| `toggle` | response | the knob and its track |
+| `yesno` | response | both sides of the outcome control and the pick |
+
+`catnav` is the twenty-seventh and it is held apart: it carries `edge-fade`, a mask bound to the
+element's own scroll position rather than to time. **None of the three jobs describes it**, because
+it is an affordance and not a moment, and the ruling on whether it stays is Animation step 4.
+
+**The 20 with no motion, and the reason is the same for all of them: nothing about them changes.**
+`action-bar`, `bets-table`, `bottomnav`, `browse-shell`, `card-grid`, `comments`, `detail-shell`,
+`event-detail`, `feed`, `list-head`, `loadmore`, `logo`, `notice`, `oddsbar`, `platehead`,
+`position-list`, `profile`, `quick`, `seo-plate`, `trustbar`. Six of them are the whole of
+`patterns/`, which carry arrangement only, and a rung whose invariant is that it holds no colour
+and no face holds no movement either. **A blank here is a component with no state to move between,
+not a component nobody measured**, which is the distinction this repository has already paid for
+once at a zero.
+
+**`toast` is the one blank that is an order rather than an answer.** A toast arriving and leaving
+is the clearest connection moment in the inventory and the component has no state for it: nothing
+in the system says "entering" or "leaving", and drawing one here would be a class the product never
+wears. It is a component order, not work for this stage, and it sits in `backlog.md` with
+Load more, which has the same shape.
+
+**No per-page motion subsection was written, on the same ground the width one was refused.** The
+systematic answer is one table read in one place; 26 fragments scattered over 26 pages is 26 things
+to keep in step and one place for them to disagree. The exception is `skeleton.html`, which gained
+a section because the component itself changed on 2026-08-15 and its page would otherwise describe
+a still box that no longer exists.

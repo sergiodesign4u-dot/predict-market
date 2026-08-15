@@ -40,7 +40,18 @@
 .pos-side.pos-won{color:var(--result-won-text);border-color:var(--result-won-line);background:var(--result-won-fill)}
 .pos-side.pos-lost{color:var(--result-lost-text);border-color:var(--result-lost-line);background:var(--result-lost-fill)}
 .pos-note{color:var(--text-muted)}
-.pos{background:var(--bg-card-quiet);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);padding:var(--space-12) var(--space-16);gap:var(--space-8);box-shadow:inset 0 1px 0 var(--edge-groove-light),0 12px 26px -22px var(--shadow-ink)}
+/* RESPONSE, ADDED 2026-08-15 AT THE ANIMATION STAGE. The state was already here and the
+   movement was not: this component was one of seven with a hover and a press declared and no
+   transition between them, so the change happened on the frame the pointer arrived and the
+   control never answered, it just WAS different. The properties are named one at a time
+   because `transition: all` animates whatever a later rule adds, including the expensive.
+   996 placements on 105 screens. The transition stands on the PLATE and on the
+   question separately, because the hover is written on the anchor above them and a
+   transition on the anchor would reach neither: the properties that move belong to the
+   two children. */
+.pos{background:var(--bg-card-quiet);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);padding:var(--space-12) var(--space-16);gap:var(--space-8);box-shadow:inset 0 1px 0 var(--edge-groove-light),0 12px 26px -22px var(--shadow-ink);
+  transition:background var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
+.pos-q{transition:color var(--dur-fast) var(--ease-standard)}
 .pos-q{font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-14);letter-spacing:var(--track-question);color:var(--text-primary);line-height:var(--leading-snug)}
 .pos-figures{gap:var(--space-20);color:var(--text-muted);font-size:var(--text-10);text-transform:uppercase;letter-spacing:var(--track-caps)}
 .pos-fig b{font-family:var(--font-mono);font-size:var(--text-13);color:var(--text-primary);font-weight:var(--weight-semibold);letter-spacing:var(--track-none);text-transform:none;margin-top:var(--space-4)}

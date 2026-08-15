@@ -256,10 +256,19 @@
    against 7.14, which is no difference at all**, so the width carries the state as
    well: 16 to 28. Colour alone would have been 1.4.1 in the theme where the two
    inks happen to meet. */
-.hiw-dot::before{content:'';width:var(--size-16);height:var(--size-4);border-radius:var(--radius-pill);background:var(--text-muted);transition:background var(--dur-quick) ease,width var(--dur-quick) ease}
+/* THE DOT GROWS BY `transform` AND NOT BY `width`, 2026-08-15. `width` is a layout property and a
+   layout property in a transition is a full layout pass per frame. 28 over 16 is exactly 1.75, so
+   the selected state is a scale rather than a second measurement, and the resting state, which is
+   two dots of every three, is drawn undistorted.
+   THE COST IS NAMED: scaling a pill horizontally scales its end caps too, so the selected dot's
+   caps go from a 2px radius to 3.5px on a bar 4px tall. The box it occupies is identical, measured,
+   and this is the one place in the file where the geometry is a scale of the drawing rather than
+   the drawing itself. The alternative was a layout pass on a control that changes twice per press,
+   the dot leaving and the dot arriving. */
+.hiw-dot::before{content:'';width:var(--size-16);height:var(--size-4);border-radius:var(--radius-pill);background:var(--text-muted);transform:scaleX(1);transition:background var(--dur-fast) var(--ease-standard),transform var(--dur-fast) var(--ease-standard)}
 .hiw-steps > .hiw-radio:nth-of-type(1):checked ~ .hiw-step .hiw-dot:nth-of-type(1)::before,
 .hiw-steps > .hiw-radio:nth-of-type(2):checked ~ .hiw-step .hiw-dot:nth-of-type(2)::before,
-.hiw-steps > .hiw-radio:nth-of-type(3):checked ~ .hiw-step .hiw-dot:nth-of-type(3)::before{background:var(--text-brass);width:var(--size-28)}
+.hiw-steps > .hiw-radio:nth-of-type(3):checked ~ .hiw-step .hiw-dot:nth-of-type(3)::before{background:var(--text-brass);transform:scaleX(1.75)}
 .hiw-dot:hover::before{background:var(--text-brass)}
 /* THE RING IS MOVED FROM THE RADIO TO THE LABEL, one mapping per step, because the
    universal focus rule in base.css puts it on the element that actually has focus

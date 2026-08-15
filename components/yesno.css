@@ -50,7 +50,7 @@
 .yesno :is(a,button){flex:1;padding:var(--space-8);font-size:var(--text-12);cursor:pointer}
 .yesno.compact > a{flex:0 0 auto}
 .yesno.compact :is(a,button){flex:0 0 auto}
-.yesno :is(a,button){border:var(--hairline) solid;font-weight:var(--weight-bold);font-family:var(--font-body);text-decoration:none;text-align:center;min-height:var(--control-44);background:var(--bg-control);transition:background var(--dur-quick) ease,border-color var(--dur-quick) ease}
+.yesno :is(a,button){border:var(--hairline) solid;font-weight:var(--weight-bold);font-family:var(--font-body);text-decoration:none;text-align:center;min-height:var(--control-44);background:var(--bg-control);transition:background var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
 .yesno a,.yesno a:hover{text-decoration:none}
 /* A side is a POSITION IN THE PAIR, not a fact about being wrapped in a link.
    Every colour below hung off `> a`, so a .yesno whose buttons are not inside an
@@ -198,7 +198,7 @@
    panel's DATUM rather than the control's face, the way an event photograph is
    the card's content: whoever owns the odds owns how they are set. */
 .yesno-pick,.yesno-pick-bar{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-bold);cursor:pointer}
-.yesno-pick{font-size:var(--text-16);padding:var(--space-12) var(--space-8);transition:background var(--dur-quick) ease,color var(--dur-quick) ease,border-color var(--dur-quick) ease}
+.yesno-pick{font-size:var(--text-16);padding:var(--space-12) var(--space-8);transition:background var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
 .yesno-pick-bar{font-size:var(--text-12);padding:var(--space-8) var(--space-8);position:relative}
 /* THE PANEL MOVES THE EDGE AND THE INK, THE BAR ALSO MOVES THE GROUND, and that
    difference is left exactly as it stands because S49 did not ask about it. The

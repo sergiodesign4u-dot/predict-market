@@ -102,8 +102,8 @@
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-12);
   box-sizing:border-box;border:var(--hairline) solid transparent;border-radius:var(--radius-10);text-align:center;text-decoration:none;
   font-family:var(--font-body);cursor:pointer;min-height:var(--control-h);
-  transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,
-    color var(--dur-quick) ease,box-shadow var(--dur-quick) ease}
+  transition:border-color var(--dur-fast) var(--ease-standard),background var(--dur-fast) var(--ease-standard),
+    color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard)}
 .btn .ic{width:var(--icon-18);height:var(--icon-18)}
 
 /* THE TWO EMPHASES. Quiet is every action that is not the point of its zone;
@@ -360,8 +360,8 @@
    stayed lifted for as long as a finger was on it. The press is the rest
    position restated, which is the same answer the other three give and costs no
    new value. */
-.btn.btn-provider{transition:border-color var(--dur-quick) ease,
-  background var(--dur-quick) ease,transform var(--dur-fast) ease}
+.btn.btn-provider{transition:border-color var(--dur-fast) var(--ease-standard),
+  background var(--dur-fast) var(--ease-standard),transform var(--dur-fast) var(--ease-standard)}
 .btn.btn-provider:hover{transform:translateY(calc(-1px * var(--motion)))}
 .btn.btn-provider:active{transform:translateY(0)}
 /* AND THE LIFT IS REMOVED BY NAME UNDER REDUCED MOTION, 2026-08-12. The global block in

@@ -205,4 +205,23 @@ because it is a stance rather than a principle, and it is written once, here.
   same box at every width is usually not a defect. So a width sweep gets a settle AND a positive
   control: inject a box wider than the window and prove the probe sees it, because 0 is also what a
   blind probe reports.
+- **A MOVEMENT NAMES ITS JOB BEFORE IT IS WRITTEN, AND THERE ARE THREE JOBS.** A response, a control
+  answering a finger. An arrival, an element saying it is here. A status, a process still running.
+  A moment for which none of the three can be named does not enter the register and never gets a
+  movement, which is the same rule that throws an orphan feature out of a To-Be map. Motion lives in
+  a token, a component or a pattern; `transition`, `animation` and `@keyframes` may not stand in a
+  screen file, exactly as `@media` may not. **The stage that wrote this found its own most expensive
+  trap already shut and unwritten: 0 of the 106 documents in `ui-visual/` carried a movement of their
+  own**, because the rollout it was meant to protect had already happened.
+- **AN INSTRUMENT THAT CANNOT FAIL IS NOT AN INSTRUMENT, AND THE ONE THIS REPOSITORY HAD FOR REDUCED
+  MOTION COULD NOT.** `base.css` carried `*,*::before,*::after{transition-duration:.01ms!important}`
+  under `prefers-reduced-motion`, and under `!important` on `*` a component that reads no token is
+  indistinguishable from one that reads every token. With it in place the sweep counted 6,555 moving
+  elements normally and **115,028** under the setting, the whole DOM taking a duration from one rule,
+  and reported 0 defects out of 230,056 rows. Taken off, with a positive control proving the probe
+  could see a rule that does not obey, the same 163 documents gave 1,392 offending elements, **0 of
+  them in the system and every one of them in the stand**. The net is deleted rather than restored:
+  its only argument left was code that does not exist yet, and this repository already refuses to pay
+  rent on a decision nobody has taken. **The twin of "a reading that does not move when the input
+  moves": a reading that cannot come back red is a reading of the guard, not of the thing.**
 - **No em dash**, anywhere.

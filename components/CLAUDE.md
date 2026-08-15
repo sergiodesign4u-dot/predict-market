@@ -1,7 +1,11 @@
 # components/ - the system itself
 
-This folder IS the design system. **54 stylesheets, 10,140 lines**: 48 here and 6 in `patterns/`,
-re-counted 2026-08-15 after the `vh` fallbacks went. It was 10,130 earlier the same day, after the
+This folder IS the design system. **54 stylesheets, 10,381 lines**: 48 here and 6 in `patterns/`,
+re-counted 2026-08-15 after the Animation stage's frame-cost pass took the knob and the step dot off
+`left` and `width` and deleted the blanket reduced-motion net. It was 10,332 earlier the same day,
+after the same stage rewrote 69 motion declarations, gave six silent
+components a response and gave the skeleton the only status animation in the product. It was 10,140
+earlier the same day, after the `vh` fallbacks went. It was 10,130 earlier the same day, after the
 action bar took its floor. It was 10,101 earlier the same day, after
 the viewport-unit census below. It was 10,067 on 2026-08-14 by `cat components/*.css components/patterns/*.css | wc -l` after the filters
 sheet, its two later passes and the scroll-driven edge fade. It was 9,224 on 2026-08-13 after `trust-art.css`
@@ -62,6 +66,24 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   `--motion`, 1 normally and 0 under the query, and each file keeps its own distance beside the rule
   that moves. **When a family cannot be selected, put the switch in the value the declaration already
   reads.** `docs/backlog.md` 132.
+- **MOTION LIVES IN A TOKEN, A COMPONENT OR A PATTERN, AND `transition`, `animation` AND
+  `@keyframes` ARE FORBIDDEN IN A SCREEN FILE, EXACTLY AS `@media` IS.** Two durations, `--dur-fast`
+  for a control answering a finger and `--dur-slow` for an element arriving, plus `--pulse-period`
+  beside them, which is a PERIOD and not a third rung of the ladder. Two curves. A literal duration
+  or a bare `ease` in a component file is a defect, not a shorthand: measured 2026-08-15 from the
+  comment-stripped source, **0 literals and 0 bare keywords in 54 stylesheets**, against 54 bare
+  keywords the day the stage opened. `transition: all` is 0 and stays 0, because it animates
+  whatever a later rule adds, including the expensive. **A movement gets one of three jobs named
+  before it is written**, a response, an arrival, or a process still running, and a movement with no
+  job is deleted rather than kept because it already exists. The register is
+  `../ui-kit/docs/inventory.md`, motion, and the argument is `../ui-kit/docs/motion.md`.
+  **Less movement is the token override in `tokens.css` and nothing else.** The blanket net on `*`
+  was deleted on 2026-08-15 after the check was run without it, with a positive control first: an
+  injected `transition:opacity 999ms linear` read back 999ms in both engines, and then 163 documents
+  gave **0 elements above 1ms**. Under `!important` on `*` a component that reads no token is
+  indistinguishable from one that reads every token, so the net had been making the sweep unable to
+  fail. **A cycle is REPLACED under the setting and never shortened**: 1ms per period is a flicker,
+  which is worse than the still box it replaces.
 - **Green and red are outcome semantics (YES / NO), brass is the brand.** An accent never borrows
   the win/lose colour, and a candidate in a multi-outcome chart is not an outcome. `DESIGN.md`
   decides this twice, which is why it is the one rule that overrules a local preference.

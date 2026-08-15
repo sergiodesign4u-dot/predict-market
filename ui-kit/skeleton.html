@@ -155,14 +155,36 @@
 
   <!-- ============================================================== no states -->
   <section class="tk-sec" id="states">
-    <h2 data-n="5">No states, no movement, and one thing that is missing on purpose</h2>
+    <h2 data-n="5">No states, one movement, and it was argued on 2026-08-15</h2>
     <p class="tk-note"><b>No hover, no press, no focus, no disabled</b>, and this is the only atom in
     the system of which all four are true. Nothing can point at a mark, so there is nothing for it to
     answer.</p>
-    <p class="tk-note"><b>And nothing shimmers.</b> A great many loading states in other products
-    animate a sweep across the mark. There is no such rule here, and it is worth saying out loud that
-    this is an absence rather than a decision: nobody has argued it either way, and adding it would
-    be a motion decision with <code>prefers-reduced-motion</code> attached to it.</p>
+    <p class="tk-note"><b>This section said "nothing shimmers" and said it was an absence rather
+    than a decision, because nobody had argued it either way.</b> The Animation stage argued it. The
+    inventory of moments names three jobs a movement can do, and one of them is to say a process is
+    still running: <b>the product had 482 marks on 19 loading screens and performed that job zero
+    times</b>, so nineteen screens about waiting were drawing a still box. A plate that does not move
+    is not distinguishable from an empty block, which is the reading a person takes from a screen
+    that has stalled.</p>
+    <p class="tk-note"><b>What it did NOT become is a sweep.</b> A shimmer travelling across the mark
+    is a gradient moving under a mask, and it draws attention to itself rather than to the wait. This
+    is <code>opacity</code>, one of the two properties a browser animates without laying the page out
+    again, which matters here more than anywhere: a feed skeleton is forty-two marks pulsing at once.
+    The amplitude is <b>.55 of full</b> and shallow on purpose, because a plate that goes nearly
+    invisible reads as content flashing in and out rather than as a wait.</p>
+    <p class="tk-why"><b>MOTION.</b> Job: <b>status</b>. <code>sk-pulse</code>, an
+    <code>opacity</code> cycle at <code>--pulse-period</code>, 1.4s, <code>--ease-standard</code>,
+    infinite, on <code>.sk-line</code>, <code>.sk-thumb</code> and <code>.sk-btn</code>. <b>482
+    marks on 19 screens.</b> The period is deliberately NOT one of the two duration tokens: those
+    answer how long a change takes and this answers how often it comes round, so it carries its own
+    name and cannot be mistaken for a third rung.</p>
+    <p class="tk-why"><b>And under <code>prefers-reduced-motion</code> the cycle is REPLACED, never
+    shortened.</b> The system's mechanism is to redeclare the durations at 1ms, and 1ms per period at
+    infinite repeats is a <b>flicker</b>, which is worse than the still box this component shipped
+    before. So <code>skeleton.css</code> carries its own block: the animation stops and the mark
+    keeps a flat, fully opaque tone. Measured on three loading screens in both engines: 60 marks
+    running in the normal pass, <b>0 running and every mark back at full opacity under the
+    setting</b>. The state stays and only the movement goes.</p>
     <p class="tk-why"><b>What DOES say "loading", to somebody who cannot see a grey box:</b> the
     region is marked busy and the shapes declare themselves decoration. Measured: <b>19 of 19</b>
     screens that carry a skeleton carry <code>aria-busy</code>, and the two lists are the same 19

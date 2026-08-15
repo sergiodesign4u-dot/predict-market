@@ -61,7 +61,7 @@
    What the wrapper WAS for is measured in docs/decisions.md: across 106 painted
    screens it changed the outcome for 13 of 375 selector tails, and it matched
    ZERO elements of the course chrome it was put there to protect. */
-.chip-rail{--control-h:var(--control-28);min-height:var(--control-h);display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12);cursor:pointer;transition:background var(--dur-quick) ease,color var(--dur-quick) ease}
+.chip-rail{--control-h:var(--control-28);min-height:var(--control-h);display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12);cursor:pointer;transition:background var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard)}
 .chip-rail:hover{color:var(--text-primary)}
 .chip-rail:active{background:var(--bg-pressed)}
 /* A SELECTED CHIP IS A TINT, NOT A FILL, which is the rule DESIGN.md states
@@ -137,7 +137,7 @@
    this file, so a chip is a chip wherever it stands and there is nowhere left
    for the next state to be forgotten. Backlog 42 closed. */
 .chip-amount{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary);padding:var(--space-8) var(--space-8);font-size:var(--text-12)}
-.chip-amount{transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
+.chip-amount{transition:border-color var(--dur-fast) var(--ease-standard),background var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard)}
 /* The amount answers a pointer, and both places it stands do now. The deposit
    sheet had this hover and the bet panel had none - the same face on the same
    control, one scope answering and the other silent, which is not a decision

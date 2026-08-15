@@ -895,14 +895,82 @@
   --leading-base:1.5;       /* body, and every long line */
   --leading-loose:1.6;      /* a reading column */
 
-  /* ---- motion (collected now, systematised in the Animation stage) ---- */
-  --dur-fast:.12s;
-  --dur-quick:.16s;
-  --dur-base:.18s;
-  --dur-slow:.25s;
-  --dur-slower:.3s;
-  --ease-out:cubic-bezier(.2,.7,.2,1);
-  --ease-inout:cubic-bezier(.4,0,.2,1);
+  /* ======================== MOTION, SYSTEMATISED 2026-08-15 ========================
+     TWO DURATIONS, NOT THREE, AND THE COUNT IS THE FINDING. The Animation stage asks for
+     three, named by the job the movement does: a RESPONSE (a control answers a finger), a
+     change INSIDE a component already on screen, and an element ARRIVING. The inventory of
+     moments was taken over all 105 grey screens, `ia/docs/flows.md` and every state selector
+     in this folder, and the middle job has exactly one member, `.market-chevron` turning over
+     when its market opens, which is feedback for a click and therefore a response. **So the
+     product has two jobs with movement in it and the third rung would have been a number with
+     nobody to spend it**, 20ms from the rung above and indistinguishable from it. A third
+     arrives the day the inventory hands it a row, and that is a decision taken out loud, not a
+     ladder written in advance. The same branch the rung ladder took at Responsive: three
+     because three things arrive, never because three is the shape of a scale.
+
+     THE PRODUCT HAD FIVE AND NONE OF THEM WAS A LITERAL. Measured 2026-08-15 by computed
+     style over 163 documents in Chromium 151 and WebKit 26.5, 4,904 moving elements on the
+     105 painted screens, both engines identical to the element: `.16s` 9,528 slots, `.12s`
+     2,346, `.18s` 743, `.3s` 636, `.25s` 63. Every one of the five was already a token and
+     `ui-visual/` holds 0 transitions of its own, so this stage did not find eight loose
+     numbers to tidy. **What it found was one ROLE wearing four of them**: a hover is 160ms on
+     a button, 180 on a photo tile, 250 on a trust plate and 300 on a card, which is the drift
+     that only shows when the readings are grouped by job rather than read file by file.
+
+     --dur-fast IS .16s AND THAT IS 10ms OVER THE GUIDELINE, KNOWINGLY. A response slower than
+     roughly 150ms stops reading as an answer and starts reading as lag, and the argument for
+     taking .16 anyway is what the response IS here: 18 of the 20 response declarations
+     cross-fade a colour, a border or a ground, and two move something. A colour fade at 160ms
+     is a fade; the ceiling is about a control that MOVES under the finger. Taking .12 instead
+     would have been one line here and 9,528 slots following it, which is exactly why the
+     number lives in this file and not in twenty. */
+  --dur-fast:.16s;   /* RESPONSE: hover, press, focus, select. 20 declarations, 71 per cent of
+                        every slot the product renders. It was .12s until 2026-08-15 with 3
+                        readers, against .16s with 41, so the name kept its job and took the
+                        value the product had already chosen. */
+  --dur-slow:.25s;   /* AN ELEMENT ARRIVING: a modal sheet rising, the condensed category band
+                        opening under the header, the harness drawer. Two numbers did this
+                        until 2026-08-15, .25s on `sheet-rise` across 337 dialogs and .3s on
+                        `betSheetUp` across 4 bet sheets, one job with two answers and two
+                        spellings of the same 100 per cent translate. 337 decided it. */
+
+  /* A PERIOD IS NOT A RUNG OF THE LADDER, AND IT CARRIES A DIFFERENT NAME SO THAT NOBODY
+     RECONCILES IT WITH ONE. The two durations above answer "how long does this change take". A
+     pulse answers "how often does it come round", and putting 1.4s beside .16s and .25s under a
+     `--dur-` prefix would invite the next tidy-up to notice a ladder with a rung six times the
+     one below it. One reader: the skeleton, which is the only place this product performs the
+     status job. 1.4s is slow enough that the eye reads a breath rather than a blink, and the
+     amplitude is deliberately shallow, .55 of full, because a plate that goes almost invisible
+     reads as content flashing in and out rather than as a wait. */
+  --pulse-period:1.4s;
+
+  /* TWO CURVES, AND THE THIRD IS REFUSED WITH ITS REASON. The stage asks for standard, enter
+     and exit. Nothing in this product animates a DEPARTURE: a dialog closes at once, the
+     condensed band collapses through the rule that opened it, and no state has a leaving face
+     anywhere in `ui-visual/`. An `--ease-exit` would be a token with no reader, which fails
+     the idle control as loudly as an undeclared case. It arrives with its first exit. */
+  --ease-standard:ease;                  /* 12,821 of 13,406 rendered easing slots, 95.6 per
+                                            cent, and until today not one of them read a token:
+                                            the keyword was typed out 54 times and defaulted the
+                                            rest. The VALUE is unchanged on purpose. Renaming a
+                                            curve is free and re-drawing one is a change to how
+                                            every hover in the product feels, and no row of the
+                                            inventory asked for that. */
+  --ease-enter:cubic-bezier(.2,.7,.2,1); /* A sharp start and a long settle, which is what an
+                                            arrival wants. 585 slots, 8 declarations. It was
+                                            `--ease-out`, a name for the SHAPE; this one names
+                                            the job, because the job is what decides which
+                                            curve a new rule should take. */
+
+  /* FIVE OLD NAMES STOOD HERE AS ALIASES FOR THE LENGTH OF ONE STEP AND ARE GONE, 2026-08-15.
+     `--dur-quick` had 41 declarations, `--dur-base` 14, `--dur-slower` 5, `--ease-out` 8 and
+     `--ease-inout` 1, and every one of the 69 was read, given a job and rewritten before the
+     names were removed. **A token that survives a stage with an alias for a name is a token
+     that was never merged**, which is why the alias had a deadline written beside it on the day
+     it was created. `--ease-inout` was cubic-bezier(.4,0,.2,1) with one reader, the review
+     harness drawer, which is an arrival: the harness curve changed and the product's did not.
+     The rewrite skipped every comment on purpose, so the six historical quotes in `card.css`,
+     `chip.css` and `docs/decisions.md` still say what was true when they were written. */
   /* THE MOVEMENT SWITCH, AND IT IS A MULTIPLIER RATHER THAN A RULE. 1 normally, 0 under
      `prefers-reduced-motion`, and every transform that MOVES something multiplies its distance by
      it: `translateY(calc(-3px * var(--motion)))`. Backlog 132, 2026-08-13.
@@ -1076,6 +1144,46 @@
      edited together: the mark is the one place in this system where a shape is
      written down twice on purpose */
   --logo-y-dark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath d='M11.6 12.2 5.8 6' stroke='%23684f18' stroke-opacity='.3' stroke-width='4.6'/%3E%3Cpath d='M11.6 20.5V12.2L18.2 5.1' stroke='%23684f18' stroke-width='4.6'/%3E%3C/svg%3E");
+}
+
+/* ===================== LESS MOTION, AND IT IS ONE MECHANISM =====================
+   THE OVERRIDE IS THE TOKENS, AND EVERY COMPONENT THAT READS A `var()` OBEYS WITHOUT KNOWING
+   IT EXISTS. That includes the component nobody has written yet, which is the whole reason the
+   switch belongs to the value rather than to a list of selectors: this folder has already paid
+   twice for a promise kept as a list, the 44px touch floor that stood in six files as six
+   lists, and the `transform:none` that stood in five.
+
+   AND @media WORKS HERE WHILE IT COULD NOT AT RESPONSIVE, WHICH IS NOT A CONTRADICTION.
+   A width query cannot READ a custom property, which is why the rung ladder above is a
+   registry rather than a token. This query does not read one, it REDECLARES one inside itself.
+   Asking a media query for the value of a variable and redefining a variable within a media
+   query are opposite operations, and the ladder comment fifty lines up is about the first.
+
+   1ms RATHER THAN 0s, AND THE DIFFERENCE IS THE INSTRUMENT. A duration of 0 removes the
+   transition rather than shortening it, so `transitionend` never fires and any script waiting
+   on it stalls. 1ms keeps the event and removes the movement, and it is also the value the
+   check at step 5 looks for: anything ABOVE 1ms is a rule that is not reading these tokens.
+
+   `--motion:0` MOVED HERE FROM `base.css` ON 2026-08-15, unchanged. It is a token override and
+   it belongs with the tokens it overrides; it sat in the `*` net's block only because that
+   block was written first. The census that says why the distance is a multiplier rather than
+   `*:hover{transform:none}` is beside `--motion` above.
+
+   WHAT IS NOT HERE: the blanket net on `*`. `base.css` still carries one, from before this
+   stage, and it forces `.01ms` onto every element in the document whether or not that element
+   reads a token. Measured 2026-08-15 over 163 documents: 6,555 moving elements per engine in
+   the normal pass against **115,028** under `reduce`, which is the net counting the whole DOM,
+   and 0 rows above 1ms out of 230,056. **That green says the net is present and nothing else**,
+   because under a rule with `!important` a component that reads no token is indistinguishable
+   from one that reads all of them. Step 5 takes the net off, measures without it, repairs each
+   element that moves, and only then decides whether the net returns as a last line. An
+   instrument may not hide the defect it is looking for. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast:1ms;
+    --dur-slow:1ms;
+    --motion:0;
+  }
 }
 
 /* THE ONLY WIDTH QUERY THIS FILE EVER HELD WAS HERE AND IT IS GONE, 2026-08-13. It set

@@ -56,7 +56,15 @@
 .sys-links{margin-top:var(--space-20);border-top:var(--hairline) solid var(--border-hairline);padding-top:var(--space-16)}
 .sys-links h2{font-family:var(--font-display);font-size:var(--text-13);font-weight:var(--weight-semibold);text-transform:uppercase;letter-spacing:var(--track-caps);color:var(--text-muted);margin:0 0 var(--space-12)}
 .sys-link-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:var(--space-8) var(--space-20)}
-.sys-link-list a{color:var(--text-brass);text-decoration:none;font-weight:var(--weight-semibold);font-size:var(--text-14);border-bottom:var(--hairline) solid var(--glow-brass);padding-bottom:var(--space-2)}
+/* RESPONSE, ADDED 2026-08-15 AT THE ANIMATION STAGE. The state was already here and the
+   movement was not: this component was one of seven with a hover and a press declared and no
+   transition between them, so the change happened on the frame the pointer arrived and the
+   control never answered, it just WAS different. The properties are named one at a time
+   because `transition: all` animates whatever a later rule adds, including the expensive.
+   152 placements on 38 screens, and every one of them is the way out of a state a
+   person did not want to be in, which is the worst place for a control to feel dead. */
+.sys-link-list a{color:var(--text-brass);text-decoration:none;font-weight:var(--weight-semibold);font-size:var(--text-14);border-bottom:var(--hairline) solid var(--glow-brass);padding-bottom:var(--space-2);
+  transition:background var(--dur-fast) var(--ease-standard),border-bottom-color var(--dur-fast) var(--ease-standard)}
 .sys-link-list a:hover{border-bottom-color:var(--text-brass)}
 /* Press. These links are the one control in this file, and they are the way out of 404 and 500,
    which is a screen a person reaches on a phone as readily as on a desktop, where the hover

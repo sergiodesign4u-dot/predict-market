@@ -59,6 +59,10 @@ window.KIT_NAV = [
       { label: 'Typography', page: 'typography.html', done: true, note: '3 families' },
       { label: 'Geometry',   page: 'geometry.html',   done: true, note: '4px grid' },
       { label: 'Responsive', page: 'responsive.html', done: true, note: '3 rungs' },
+      /* MOTION STANDS AFTER RESPONSIVE BECAUSE IT IS DECIDED AFTER IT, not because it
+         is smaller. A rung firing is a candidate moment and the ruling about whether a
+         layout rebuild animates is taken with that page open beside this one. */
+      { label: 'Motion',     page: 'motion.html',     done: true, note: '2 durations' },
       { label: 'Icons',      page: 'icons.html',      done: true, note: '52 glyphs' }
     ]
   },
@@ -201,7 +205,9 @@ window.KIT_NAV = [
       { label: 'Inventory',     page: 'docs/inventory.md',     done: true },
       { label: 'Consolidation', page: 'docs/consolidation.md', done: true },
       { label: 'Audit',         page: 'docs/audit.md',         done: true },
-      { label: 'Responsive',    page: 'docs/responsive.md',    done: true }
+      { label: 'Responsive',    page: 'docs/responsive.md',    done: true },
+      { label: 'Consistency',   page: 'docs/consistency.md',   done: true },
+      { label: 'Motion',        page: 'docs/motion.md',        done: true }
     ]
   }
 ];

@@ -26,6 +26,36 @@
    same element with more classes, so a card mark and a position mark keep the
    treatment they already had. What changes is only where nothing applied. */
 .sk-line,.sk-thumb,.sk-btn{display:block;background:var(--bg-control)}
+
+/* ============================ THE STATUS JOB, 2026-08-15 ============================
+   THIS COMPONENT WAS THE ONLY PLACE THE PRODUCT PERFORMED THE STATUS JOB AND IT WAS NOT
+   PERFORMING IT. The Animation stage names three jobs a movement can do, and one of them is to
+   say a process is still running. The inventory of moments found two candidates for it and both
+   were at zero: 482 marks on 19 loading screens, every one a flat box. **A plate that does not
+   move is not distinguishable from an empty block**, which is exactly the reading a person takes
+   from a loading screen that has stalled, so the screen said the wrong thing for as long as it
+   stood.
+
+   IT IS `opacity` AND NOTHING ELSE. Opacity and transform are the two properties a browser can
+   animate without laying the page out again, and a list of twenty cards is precisely where the
+   difference between a cheap property and an expensive one stops being theoretical.
+
+   THE PERIOD IS NOT A RUNG OF THE LADDER AND IT MAY NOT BE READ AS ONE. `--dur-fast` and
+   `--dur-slow` answer "how long does this change take"; a pulse answers "how often does it come
+   round", and 1.4s next to .16s and .25s is not a third rung, it is a different quantity. It is
+   `--pulse-period` for that reason, so the next reader reconciling the ladder does not find a
+   number on it that was never on it.
+
+   AND AT `prefers-reduced-motion` A CYCLE IS REPLACED, NEVER SHORTENED. This is the first case
+   the token override cannot reach and it is the reason the stage asks for the list at all: a
+   duration of 1ms does not calm a pulse, it turns it into a FLICKER, which is worse than the
+   still box this component shipped before today. So the cycle stops and the mark keeps a flat,
+   fully opaque tone: the state stays, only the movement goes. */
+@keyframes sk-pulse{50%{opacity:.55}}
+.sk-line,.sk-thumb,.sk-btn{animation:sk-pulse var(--pulse-period) var(--ease-standard) infinite}
+@media(prefers-reduced-motion:reduce){
+  .sk-line,.sk-thumb,.sk-btn{animation:none;opacity:1}
+}
 .sk-line{height:var(--size-8);margin:var(--space-8) 0}
 .sk-line.w80{width:80%}
 .sk-line.w70{width:70%}

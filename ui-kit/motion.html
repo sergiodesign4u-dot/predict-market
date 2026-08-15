@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Foundations: motion</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+  <script src="../assets/icons.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Motion</h1>
+    <p><b>Every specimen on this page has to be operated.</b> A screenshot shows a frame and never
+    a movement, so this is the one foundation the kit cannot print. Movement here does exactly
+    three jobs, and a moment that cannot be given one of the three does not get a moment.
+    <b>The product had five durations before this stage and not one of them was a literal</b>, so
+    the work was never tidying loose numbers. It was finding one job wearing four of them.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">2 durations, 2 curves, 0 literals</span>
+      <span class="tk-badge">0 motion in a screen file, of 106</span>
+      <span class="tk-badge">34 moments, 29 answered, 4 left</span>
+      <span class="tk-badge">status job: 482 marks, was 0</span>
+      <span class="tk-badge">0 above 1ms of 163, net off</span>
+      <span class="tk-badge">20 roles, 20 single numbers</span>
+    </div>
+  </div>
+
+  <!-- ============================================================= three jobs --><section class="tk-sec" id="jobs">
+    <h2 data-n="01">Three jobs, and there is no fourth</h2>
+    <p class="tk-note">The job is named <b>before</b> the animation is chosen. A moment for which
+    none of the three can be named does not enter the inventory, and so it never gets movement.
+    "It livens up the interface" is not a job. This is the same rule that throws an orphan feature
+    out of a To-Be map and an orphan block out of the IA bank.</p>
+
+    <input type="checkbox" id="moRunJob" class="tk-mo-run">
+    <label for="moRunJob" class="tk-mo-btn">Play the three jobs</label>
+    <div class="tk-mo">
+
+      <p class="tk-subh">Connection: where did that come from</p>
+      <p class="tk-note">The surface arrives from the edge it will leave by, so the direction is
+      the answer to the question. This is <code>sheet-rise</code> at stand scale, and in the
+      product it carries <b>337 dialogs on 105 screens</b>.</p>
+      <div class="tk-mo-stage">
+        <p>the page the sheet is over</p>
+        <div class="tk-mo-sheet">A sheet, arriving from the bottom edge</div>
+      </div>
+
+      <p class="tk-subh">Response: I was heard</p>
+      <p class="tk-note">A real control, taking its transition from the system rather than from
+      this page. Hover it and hold it down. <b>18 of the product's 20 response declarations
+      cross-fade a colour, a border or a ground</b>, and two move something.</p>
+      <p><button type="button" class="btn btn-primary btn-md">Place bet</button>
+         <button type="button" class="btn btn-quiet btn-md">Cancel</button></p>
+
+      <p class="tk-subh">Status: it is still working</p>
+      <p class="tk-note"><b>It was not in the product until 2026-08-15, and this section said so
+      for one step.</b> The skeleton stood 482 times on 19 screens and every one was a flat box, so
+      the only job about waiting was performed nowhere while nineteen screens were about waiting. It
+      is <code>sk-pulse</code> now, an <code>opacity</code> cycle in <code>skeleton.css</code>, and
+      the specimen below is the product's own rule rather than the stand's. <b>A pulse is also the
+      one thing a shorter duration makes worse</b>: 1ms per period at infinite repeats is a flicker,
+      so less motion REPLACES the cycle with a still tone instead of speeding it up. That is the
+      first case the token override cannot reach, and it was found by writing the rule rather than
+      by auditing for it.</p>
+      <div class="tk-mo-pulse"><span></span><span></span><span></span></div>
+    </div>
+  </section>
+
+  <!-- ============================================================== durations --><section class="tk-sec" id="durations">
+    <h2 data-n="02">Two durations, and the count is the finding</h2>
+    <p class="tk-note">The stage asks for three, named by job. <b>The inventory found two jobs with
+    movement in them.</b> The middle one, a change inside a component already on screen, has
+    exactly one member: a chevron turning over when its market opens, which is feedback for a click
+    and therefore a response. A third rung would have sat 20ms from the one above it. It arrives the
+    day a row asks for it, said out loud, and not before.</p>
+    <p class="tk-note"><b>Run them together.</b> Separately they read the same; the difference only
+    exists in the comparison, which is why they are on one button.</p>
+
+    <input type="checkbox" id="moRunDur" class="tk-mo-run">
+    <label for="moRunDur" class="tk-mo-btn">Run both durations</label>
+    <div class="tk-mo-lanes">
+      <div class="tk-mo-lane">
+        <b>--dur-fast<i>.16s, response</i></b>
+        <div class="tk-mo-track"><div class="tk-mo-slide d-fast"><div class="tk-mo-dot"></div></div></div>
+      </div>
+      <div class="tk-mo-lane">
+        <b>--dur-slow<i>.25s, arrival</i></b>
+        <div class="tk-mo-track"><div class="tk-mo-slide d-slow"><div class="tk-mo-dot"></div></div></div>
+      </div>
+    </div>
+
+    <p class="tk-note tk-mo-after"><b>.16s is 10ms over the guideline and it was taken
+    knowingly.</b> A response slower than roughly 150ms stops reading as an answer and starts
+    reading as lag, but that ceiling is about a control that MOVES under a finger, and 18 of the 20
+    here are a colour fade. The other direction was one line in <code>tokens.css</code> and
+    <b>9,528 slots</b> following it, which is the whole argument for the number living in one file.</p>
+
+    <p class="tk-subh">What the product rendered before this stage</p>
+    <div class="tk-rungs">
+      <div class="tk-rung"><b>.16s</b><span>9,528 slots<i>the response, and 71 per cent of everything</i></span></div>
+      <div class="tk-rung"><b>.12s</b><span>2,346 slots<i>a second response duration, 3 readers</i></span></div>
+      <div class="tk-rung"><b>.18s</b><span>743 slots<i>a third, mostly hovers</i></span></div>
+      <div class="tk-rung"><b>.3s</b><span>636 slots<i>a card hover and a bet sheet, one number for two jobs</i></span></div>
+      <div class="tk-rung"><b>.25s</b><span>63 slots<i>the dialog sheet</i></span></div>
+    </div>
+    <p class="tk-note"><b>One role wore four of them.</b> A hover is 160ms on a button, 180 on a
+    photo tile, 250 on a trust plate and 300 on a card. Nobody decided that, and reading the files
+    one at a time never shows it: the readings have to be grouped by job before the drift has a
+    shape.</p>
+  </section>
+
+  <!-- ================================================================= curves --><section class="tk-sec" id="curves">
+    <h2 data-n="03">Two curves, and the third is refused with its reason</h2>
+    <p class="tk-note">Same comparison, one duration, three shapes. The third lane is
+    <code>linear</code> and it is here as the control: if the two above it looked alike you would
+    have no way to know whether the page was working.</p>
+
+    <input type="checkbox" id="moRunEase" class="tk-mo-run">
+    <label for="moRunEase" class="tk-mo-btn">Run the curves</label>
+    <div class="tk-mo-lanes">
+      <div class="tk-mo-lane">
+        <b>--ease-standard<i>ease, 12,821 slots</i></b>
+        <div class="tk-mo-track"><div class="tk-mo-slide e-standard"><div class="tk-mo-dot"></div></div></div>
+      </div>
+      <div class="tk-mo-lane">
+        <b>--ease-enter<i>sharp start, long settle</i></b>
+        <div class="tk-mo-track"><div class="tk-mo-slide e-enter"><div class="tk-mo-dot"></div></div></div>
+      </div>
+      <div class="tk-mo-lane">
+        <b>linear<i>the control, not a token</i></b>
+        <div class="tk-mo-track"><div class="tk-mo-slide e-linear"><div class="tk-mo-dot"></div></div></div>
+      </div>
+    </div>
+
+    <p class="tk-note tk-mo-after"><b>95.6 per cent of the product's easing read no
+    token at all.</b> 12,821 of 13,406 rendered slots are the bare keyword <code>ease</code>, typed
+    out 54 times in the source and defaulted the rest. That is where this stage found its drift,
+    and not in the durations. <code>--ease-standard</code> keeps the same value on purpose: renaming
+    a curve is free, redrawing one changes how every hover in the product feels, and no row of the
+    inventory asked for that.</p>
+    <p class="tk-note"><b>There is no <code>--ease-exit</code>.</b> Nothing in this product animates
+    a departure: a dialog closes at once, the condensed category band collapses through the rule
+    that opened it, and no state anywhere in the painted tree has a leaving face. A token with no
+    reader fails the idle control as loudly as an undeclared case. It arrives with its first exit.</p>
+    <p class="tk-note">No springs and no overshoot, and that is a default rather than a taste: they
+    read as "something went wrong" in precisely the states where a person least wants to be asked a
+    question. One arrives with a row of the inventory that asks for it.</p>
+  </section>
+
+  <!-- =============================================================== distance --><section class="tk-sec" id="distance">
+    <h2 data-n="04">Distance, and why it is not a token here</h2>
+    <p class="tk-note">The stage asks for <code>--move-sm</code> and <code>--move-md</code>. This
+    system answered that question on 2026-08-13 with a census and a different shape, and adding the
+    pair now would be a fourth answer to a settled question.</p>
+    <p class="tk-note"><b>Of the system's 20 <code>transform</code> declarations, only 5 are
+    movement.</b> Nine are resting geometry, a chevron drawn by rotating a square and a knob centred
+    on itself; two are a state that carries meaning rather than motion; the rest are the harness
+    drawer and two keyframes. So <code>*:hover{transform:none}</code> under reduced motion would
+    have flattened <code>.market-chevron</code> for exactly as long as a pointer rested on it, and
+    an open market would have pointed the wrong way.</p>
+    <p class="tk-note"><b>When a family cannot be selected, put the switch in the value the
+    declaration already reads.</b> The five distances are 3px on a card, 2 on a badge and 1 on a
+    provider button, which are three decisions and not a ladder, and each stays in the file that
+    makes it. Every one multiplies itself by <code>--motion</code>, which is 1 normally and 0 under
+    reduced motion, so a distance that no selector could reach is turned off by a number.</p>
+  </section>
+
+  <!-- ================================================== states, patterns, crossing --><section class="tk-sec" id="states">
+    <h2 data-n="04b">Screen states, patterns, and the crossing between documents</h2>
+    <p class="tk-note"><b>A state is a PAGE here, so state transitions do not exist.</b> Both trees
+    hold one document per state, 105 each, by a convention five stages older than this one. Loading,
+    empty, error and success are not conditions a screen moves into, so there is no before and after
+    inside one document to move between. The one state family that does live inside a document is
+    the dialog, which makes the tone check a check of five surfaces rather than of twenty.</p>
+
+    <p class="tk-subh">The tone check: four quantities against the line the screen says</p>
+    <p class="tk-note">The tone is set by <a href="../voice/docs/voice.md">voice.md</a> and this
+    stage does not get to choose it. Duration, curve, amplitude, direction, each named separately
+    and put beside the microcopy of the same state.</p>
+    <div class="tk-rungs">
+      <div class="tk-rung"><b>loading</b><span>1.4s period, standard curve, .55 opacity, no travel<i>the rule is stay silent or name the thing, never hype. A shallow even breath with no movement is the visual form of staying silent</i></span></div>
+      <div class="tk-rung"><b>the win</b><span>.25s, enter curve, one axis, up from the bottom edge<i>principle 4 is "mark the win without lighting a fuse" and the anti-example is confetti. The win arrives on the same rule as every other sheet</i></span></div>
+      <div class="tk-rung"><b>the loss</b><span>identical to the win, and that IS the verdict<i>two different arrivals would be the product having an opinion about your result before you had finished reading it</i></span></div>
+      <div class="tk-rung"><b>error</b><span>no movement at all<i>the rule asks for short, no spring, small amplitude. Every error surface is a page, so the amplitude is zero, and nothing is calmer than nothing</i></span></div>
+      <div class="tk-rung"><b>empty</b><span>no movement at all<i>the case against a shift from below is that it implies something is loading, and a page that simply IS cannot imply it</i></span></div>
+    </div>
+    <p class="tk-note"><b>0 disagreements, and the microcopy was not edited.</b> The row that could
+    have gone wrong is the win, and it did not, because the rule that would have broken it was
+    written five stages ago and the outcome dialog never had a face of its own.</p>
+
+    <p class="tk-subh">Patterns: 0 of 6, and the zero is what the rung IS</p>
+    <p class="tk-note">Read from the comment-stripped source of all six files: <b>not one declares a
+    selector that toggles at run time.</b> Five have no state selector at all, and the sixth has a
+    structural presence check rather than a state that changes while a person looks at it. The
+    composition never recomposes, so <b>an arrangement that never changes has nothing to move
+    between</b>. This is the invariant that keeps colour out of the rung, seen from the other side.</p>
+
+    <p class="tk-subh">The crossing between documents: A, and it was measured before it was chosen</p>
+    <p class="tk-note">Every screen is a separate document, so the move from a feed card to its
+    detail is a navigation and an ordinary <code>transition</code> cannot see it. Two test documents
+    carrying <code>@view-transition { navigation: auto }</code>, navigated for real, asking whether
+    <code>pagereveal</code> arrived with a transition attached:</p>
+    <div class="tk-rungs">
+      <div class="tk-rung"><b>Chromium</b><span>fires over http, fires from disk</span></div>
+      <div class="tk-rung"><b>WebKit</b><span>fires over http, <b>does not fire from disk</b><i>the same origin rule that has already cost this repository a sprite, a mask and two fonts</i></span></div>
+    </div>
+    <p class="tk-note"><b>The answer is A, do not animate the crossing.</b> Four reasons, in order.
+    <b>A cross-fade points at no source</b>, and the connection job is defined as showing what came
+    from what, so it would be movement with no inventory row behind it, which is the one thing this
+    stage cuts. <b>Doing it properly is a markup change in two trees</b>: a shared name on the card
+    and on the detail head, unique per document, on a feed that ships up to nine cards, so the name
+    has to be written at click time. <b>It would add an obligation the tokens cannot reach</b>, since
+    a view transition reads no duration token. And <b>on the path this repository actually reads
+    from, one engine of two would not show it</b>, so half the reviews would be of a feature the
+    reviewer cannot see. The line is one line, the measurement is banked, and the decision does not
+    have to start from zero if the named pair is ever built.</p>
+
+    <p class="tk-subh">Two more rulings, both no</p>
+    <p class="tk-note"><b>A rung does not animate its own rebuild.</b> Two surfaces qualify for the
+    exception, the bet panel arriving at DETAIL and the sub-category rail at RAIL, and both are
+    refused on the same ground: they arrive only while somebody drags a window edge. A person on a
+    desk never sees the arrival and a person on a phone never has it. <b>An entrance nobody can be
+    present for is not a connection, it is a frame that happens to differ.</b></p>
+    <p class="tk-note"><b>The scroll edge fade stays, and stays out of the register.</b> It binds a
+    mask to the element's own scroll rather than to time, reads no duration token, and is driven by
+    the reader's own hand: it changes only while they scroll and by exactly as much. Measured at
+    three scroll positions in both engines and both settings, the left edge closes from 0 to 32px and
+    the right opens to 100 per cent, <b>including under reduced motion where the blanket net forces
+    the duration to 1e-05s</b>, because a scroll timeline takes its progress from distance and not
+    from that duration. Movement a person makes themselves is not movement done to them, so it needs
+    no reduced-motion treatment and gets none.</p>
+    <p class="tk-note"><b>And the first reading of it was wrong in this stage's signature way.</b>
+    The probe set <code>scrollLeft</code> and read the mask in the same task, and reported it
+    identical at every position in both engines, which reads exactly like a feature that does not
+    work. Two frames later the same probe reports it moving in all four combinations. <b>A scroll is
+    not a paint, any more than a resize is a layout.</b></p>
+  </section>
+
+  <!-- ============================================================= frame cost --><section class="tk-sec" id="cost">
+    <h2 data-n="05">The cost of a frame</h2>
+    <p class="tk-note"><code>transform</code> and <code>opacity</code> are the two properties a
+    browser animates without laying the page out again. Everything else makes it do the work on every
+    frame, and the device that can least afford it is the one most people are holding.
+    <code>transition: all</code> is <b>0</b> and <code>will-change</code> is <b>0</b>, and both were
+    0 before this stage as well. Eight expensive properties were found: <b>two converted, one refused
+    with its reason, five kept with a count</b>.</p>
+    <div class="tk-rungs">
+      <div class="tk-rung"><b>converted</b><span>the toggle knob travelled by <code>left</code><i>now translateX(16px). 22 minus 6 is 16, and the geometry is identical to the pixel: the knob's left edge reads 6 off and 22 on, in both engines</i></span></div>
+      <div class="tk-rung"><b>converted</b><span>the how-it-works dot grew by <code>width</code><i>now scaleX(1.75), because 28 over 16 is exactly 1.75, so two dots of every three are drawn undistorted. The cost is named: the selected dot's end caps go from a 2px radius to 3.5 on a bar 4px tall</i></span></div>
+      <div class="tk-rung"><b>refused</b><span>the condensed band collapses by <code>max-height</code><i>there is no transform that removes a box from the flow, and this band's whole job is to stop taking room. The cost is one element, once: one band per document, relaid for 250ms</i></span></div>
+      <div class="tk-rung"><b>kept x5</b><span><code>box-shadow</code> on button, card, hero, icon button, input<i>it loads painting rather than layout, and the case against it is twenty cards painting at once. All five sit on the element's own hover or focus, so at most ONE element in the document animates a shadow at a time. A pointer is in one place</i></span></div>
+    </div>
+    <p class="tk-note"><b>Both conversions were misread once before they were believed.</b> The
+    toggle read <code>translateX(0)</code> in both faces, then 0.56px in one engine and 3.82 in the
+    other, because the probe was reading a transition in flight; finished first, both read exactly
+    16. The dot read <code>transform: none</code> on all nine of its placements on the how-it-works
+    screen, which looks exactly like a rule that failed to apply, and those nine <b>render at no
+    width at all</b>: they live inside the shut dialog. Where six of them do render, the selected one
+    reads <code>matrix(1.75, 0, 0, 1, 0, 0)</code>. <b>A computed value on a box that was never laid
+    out is not a reading of the rule.</b></p>
+  </section>
+
+  <!-- ============================================================ less motion --><section class="tk-sec" id="reduced">
+    <h2 data-n="06">Less motion is an obligation, and it has one mechanism</h2>
+    <p class="tk-note">Not a product setting and not a preference: the operating system already
+    carries the answer, and for some people this is nausea and migraine rather than taste. The
+    mechanism is <b>one block that redeclares the tokens</b>. Every component reading a
+    <code>var()</code> obeys without knowing the block exists, and so does the component nobody has
+    written yet.</p>
+    <p class="tk-note"><b>Reducing motion never cancels a state.</b> What appears still appears; the
+    movement goes and the arrival stays. An element that stops appearing at all under the setting is
+    a worse defect than any amount of unnecessary animation.</p>
+
+    <input type="checkbox" id="moLess" class="tk-mo-less">
+    <label for="moLess" class="tk-mo-btn">Toggle less motion on this section</label>
+    <input type="checkbox" id="moRunLess" class="tk-mo-run">
+    <label for="moRunLess" class="tk-mo-btn">Play</label>
+    <p class="tk-mo-flag">less motion is on: the sheet still arrives, the pulse is a still tone</p>
+    <div class="tk-mo">
+      <div class="tk-mo-stage">
+        <p>the sheet arrives either way</p>
+        <div class="tk-mo-sheet">A sheet, arriving from the bottom edge</div>
+      </div>
+      <div class="tk-mo-pulse tk-mo-after"><span></span><span></span><span></span></div>
+    </div>
+
+    <p class="tk-note tk-mo-after"><b>This switch is a demonstration and not the
+    check.</b> It redeclares the two tokens on a scope instead of on the root, so what you see is
+    the mechanism working. It cannot tell you about a rule that reads no token, and a rule that
+    reads no token is the entire thing the real reading is looking for. That reading is taken with
+    the browser emulating the system setting, on every element of every document.</p>
+    <p class="tk-note"><b>1ms and not 0s</b>, because a duration of zero removes the transition
+    rather than shortening it, so <code>transitionend</code> never fires and a script waiting on it
+    stalls. 1ms keeps the event and removes the movement, and it is the value the check looks for:
+    anything above 1ms is a rule that is not reading these tokens.</p>
+    <p class="tk-note"><b><code>@media</code> works here and could not at Responsive, and that is
+    not a contradiction.</b> A width query cannot READ a custom property, which is why the rung
+    ladder is kept as a registry. This query does not read one, it redeclares one inside itself.
+    Asking a media query for a variable's value and redefining a variable within a media query are
+    opposite operations, and confusing them is expensive.</p>
+    <p class="tk-note"><b>The blanket net on <code>*</code> was hiding this check, and it is
+    gone.</b> <code>base.css</code> carried one from before this stage. Measured with it in place
+    over 163 documents in two engines: <b>6,555 moving elements in the normal pass and 115,028 under
+    the setting</b>, the difference being every element in the document taking a duration from that
+    one rule, with 0 rows above 1ms of 230,056. Under <code>!important</code> on <code>*</code>, a
+    component that reads no token is indistinguishable from one that reads every token. <b>A sweep
+    that cannot fail is not a sweep.</b></p>
+    <p class="tk-note"><b>Taken off and re-measured, control first.</b> An injected element carrying
+    <code>transition: opacity 999ms linear</code>, which reads no token of ours, read back
+    <b>999ms in both engines</b>, so the probe can see a rule that does not obey. Then the same 163
+    documents with the setting emulated: <b>1,392 elements above 1ms, and 0 of them in the
+    system</b>. Every one was the STAND, a <code>.15s</code> literal in <code>_page.css</code>
+    reaching 690 elements per engine over ten kit pages, plus the demonstration pulse on this page.
+    Both were repaired at source rather than covered, and the second reading is <b>0</b>. <b>Every
+    rule in the system obeyed on its own</b>, which is the fact the net had been standing on top of
+    for as long as it existed. It is not put back: its only remaining argument was code that does not
+    exist yet.</p>
+    <p class="tk-note"><b>And the state survives, measured.</b> Three sheets opened at 390px, settled,
+    both engines, both settings: in the normal pass they are climbing at 21 and 25 per cent 60ms in;
+    under the setting they read <code>translate: 0 0%</code>, arrived, opacity 1. <b>0 states lost.</b>
+    The skeleton is the same answer from the other side: the marks stop moving and stay fully opaque
+    rather than disappearing.</p>
+    <p class="tk-note"><b>What the tokens cannot reach is three things and they are written down.</b>
+    A cycle, which needs REPLACING rather than shortening because 1ms per period is a flicker. The
+    grey tree, which links no stylesheet at all, so no token declared anywhere reaches it: measured
+    with the setting on, <b>105 elements above 1ms over 105 of 105 documents</b>, and the honest
+    answer there is a declared boundary difference rather than 105 copies of a media query. And a
+    cross-document view transition, which is one of the four reasons there is not one.</p>
+  </section>
+
+  <!-- ============================================================== inventory --><section class="tk-sec" id="inventory">
+    <h2 data-n="07">The inventory of moments</h2>
+    <p class="tk-note">Corpus: all 105 grey screens, the flows, and every state selector in the
+    system. Each moment carries exactly one job, and a second rule applies on top of the first:
+    <b>the state has to already exist</b>. Movement is laid on the states the Tokens and Components
+    stage built; it does not invent them. A moment whose state is missing is an order on that stage,
+    not a class drawn here that the product will never wear.</p>
+
+    <div class="tk-rungs">
+      <div class="tk-rung"><b>response</b><span>23 moments, 23 answered<i>6 were given movement on 2026-08-15: navitem 1,068 placements, position 996, state-block 152, footer, cookie-consent, toc. The seventh is the focus ring and it stays instant on purpose</i></span></div>
+      <div class="tk-rung"><b>connection</b><span>9 moments, 5 done, 4 left<i>349 details elements still expand with no transition; the toast and Load more have no state to move between and are an order on another stage</i></span></div>
+      <div class="tk-rung"><b>status</b><span>1 moment, 1 done<i>sk-pulse, 482 marks on 19 loading screens, and it was 0 until 2026-08-15</i></span></div>
+      <div class="tk-rung"><b>held apart</b><span>the scroll edge fade, ruled 2026-08-15<i>a mask bound to scroll position rather than to time, driven by the reader's own hand: none of the three jobs describes it, so it stays and stays out of the register</i></span></div>
+      <div class="tk-rung"><b>total</b><span>34 moments, 29 answered, 4 left<i>the first report said 35 and 21, and 35 counted the edge fade in two rows at once. The 4 are the expansion of 349 details elements, the contents rail, and the two that need a state before they can have a movement</i></span></div>
+    </div>
+
+    <p class="tk-note"><b>Two rows say the state is missing</b>, the toast arriving and Load more
+    appending, and both are orders on another stage rather than work for this one. 35 moments over
+    47 components is under one each, so nothing here is decoration wearing a job's name.</p>
+    <p class="tk-note">The full record, both halves of the transcript and the reasons behind every
+    number, is in <a href="docs/motion.md">docs/motion.md</a>. Width has its own foundation next
+    door: <a href="responsive.html">responsive</a>, and the ruling about whether a rung animates its
+    own rebuild is taken there and recorded here.</p>
+  </section>
+
+  <!-- ================================================================= what --><section class="tk-sec" id="found">
+    <h2 data-n="08">What this stage found, in order of what it cost</h2>
+    <ol class="tk-rungs">
+      <li class="tk-rung"><b>1</b><span><b>The check for less motion was already blind.</b> The
+      blanket net was in place before the stage opened, which is the one order the pack forbids, and
+      it makes the reading green on empty ground.</span></li>
+      <li class="tk-rung"><b>2</b><span><b>The status job was performed nowhere.</b> Nineteen
+      loading screens and 482 skeleton placements, all of them flat, and a plate that does not move
+      is not distinguishable from an empty block. Closed 2026-08-15, and its own reduced-motion rule
+      is the first thing the token mechanism could not reach.</span></li>
+      <li class="tk-rung"><b>3</b><span><b>The drift was in the curve, not the duration.</b> Five
+      durations and every one a token; 95.6 per cent of easing slots on a bare keyword.</span></li>
+      <li class="tk-rung"><b>4</b><span><b>Two animations returned zero and the zero was the
+      probe.</b> No screen ships an open dialog, so a static sweep never sees the two sheet
+      keyframes. Opened with a script they read .25s and .3s: one job, two numbers, two mechanisms
+      and two spellings of the same movement.</span></li>
+      <li class="tk-rung"><b>5</b><span><b>The most expensive trap was already shut and nothing said
+      so.</b> 0 of 106 painted documents carry a transition of their own. The rule that protects
+      that is written now, and what it protects is a tree that already stands.</span></li>
+      <li class="tk-rung"><b>6</b><span><b>The instrument was wrong four times before its numbers were
+      believed, and every one is the same shape.</b> 1,750 of 2,263 matches for "transform" in the grey
+      tree are <code>text-transform</code>, and 14 matches for "animation" there are 0 declarations. The
+      scroll fade read identical at every position until it was given two frames. The toggle knob read
+      0 in both faces, then 0.56 and 3.82, because the probe was reading a transition in flight. And the
+      step dot read <code>transform: none</code> on nine placements that render at no width at
+      all.</span></li>
+      <li class="tk-rung"><b>7</b><span><b>The two-viewport walk found a hole the one-width walk could
+      not.</b> The rise is inside a phone block, so above the desk rung 337 dialogs on 105 screens
+      appeared on one frame with the inventory row marked done. <b>Direction and amplitude depend on
+      width and duration does not</b>, which is the whole reason the closing sweep walks two.</span></li>
+    </ol>
+  </section>
+
+</div>
+</body>
+</html>

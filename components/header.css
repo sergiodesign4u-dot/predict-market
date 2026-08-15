@@ -283,7 +283,18 @@
    rather than another anchor for the observer: giving those 48 a category strip is a navigation
    decision and belongs to 03a, while taking away one that no eye and no keyboard could ever reach
    changes nothing a person can see. This rule now stands on 57 screens and not 105. */
-.app-header .cat-condensed{max-height:0;opacity:0;visibility:hidden;overflow:clip;transition:max-height var(--dur-slower) var(--ease-out),opacity var(--dur-slow) ease,visibility var(--dur-slower)}
+/* `max-height` IS A LAYOUT PROPERTY AND IT STAYS, WHICH IS THE ONE REFUSAL OF THE FRAME-COST PASS,
+   2026-08-15. The rule for a transition is transform and opacity only, because everything else
+   makes the browser lay the page out again on every frame. There is no transform that removes a box
+   from the flow, and this band's whole job is to COLLAPSE: it has to stop taking room, or the header
+   keeps a strip of empty space where the categories were. `scaleY` would leave the room behind,
+   taking the band out of flow would put it over the content it is supposed to push, and
+   `grid-template-rows` from 0fr is the same layout pass wearing a different name.
+   THE COST IS ONE ELEMENT, ONCE. It is a single band per document and it animates when the header
+   condenses, so what is being paid for is one subtree relaid for 250ms, not a list of twenty. That
+   is the whole of the argument, and it is written here rather than waved at, because the next reader
+   to meet this line will have been told the rule and needs the exception beside it. */
+.app-header .cat-condensed{max-height:0;opacity:0;visibility:hidden;overflow:clip;transition:max-height var(--dur-slow) var(--ease-enter),opacity var(--dur-slow) var(--ease-enter),visibility var(--dur-slow)}
 .app-header.scrolled .cat-condensed{max-height:54px;opacity:1;visibility:visible;border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 /* THE CONDENSED STRIP'S CHIPS LEFT THIS FILE ON 2026-08-06 for components/chip.css, where
    they are `.chip.chip-quiet`: transparent on a transparent 1px band inside a pill, which

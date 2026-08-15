@@ -758,8 +758,11 @@ The structure was ported back by `wireframes/_generators/port_structure.py`
 two trees have to agree, and **gate 18** in `ui-kit/_check_kit.py` fails the build
 when they do not.
 
-**Six differences are the boundary itself, not drift.** They are declared, and
-the gate is blind to exactly these and nothing else:
+**Seven differences are the boundary itself, not drift.** They are declared, and the check is
+blind to exactly these and nothing else. **It was six until 2026-08-15**, when the Animation stage
+added motion, and the sentence below about `ui-kit/_check_kit.py` names a gate that was deleted with
+the generated vitrine on 2026-08-07: what compares the trees now is a diff of two file lists and a
+reading taken by hand, which is this repository's rule about measurements rather than machines.
 
 | what | grey | colour | why it is not drift |
 |---|---|---|---|
@@ -769,6 +772,16 @@ the gate is blind to exactly these and nothing else:
 | chart data | typed into the markup | empty, filled by a script on load | a wireframe DRAWS its data, a product COMPUTES it. The series is read out of the painted script and written in statically, so the wireframe shows a chart without borrowing the product's JS |
 | the `TBD` chip | 14 `span.tbd` and one `p.placeholder-line` per footer | none | a wireframe is obliged to mark a destination nobody has built; a product that shows a user the word TBD is showing them the bookkeeping. Added in step 7e |
 | the page behind an invoked overlay | absent: the sheet on a plain backdrop | header, feed, bottom nav and footer behind the dialog | convention 5, below. A wireframe of an overlay draws the overlay; a scrim has to be a scrim over something. Added in step 7e, and it is the one boundary that is CHECKED rather than skipped: the gate asserts that grey has no chrome on those 17 screens and the paint has all of it, so neither side can drift into the other by accident |
+| motion | one declaration, `transition: transform .2s ease` on the drawer, written into all 105 inline blocks | two duration tokens, two curves, and a reduced-motion block that redeclares them | **Added 2026-08-15 by the Animation stage, and it is the SEVENTH.** Six were declared here and motion was not among them, so the day the paint took its durations from tokens the two trees began to disagree about something nobody had written down, which is drift by this document's own definition. It is a declared difference and not a port for a mechanical reason: **a grey file links no stylesheet, so it cannot hold a token**, and the numbers would have to be written 105 times, which is exactly what one width change already cost this folder in 312 edits. The drawer moves so the tree can be clicked through, and its `.2s` is scaffolding rather than a claim about the product |
+
+**And the seventh difference has a cost that the other six do not, so it is named rather than
+implied: the grey tree does not answer `prefers-reduced-motion` at all.** Measured 2026-08-15 with
+the setting emulated in Chromium 151 and WebKit 26.5: **105 elements above 1ms over 105 of 105
+documents**, every one of them that same drawer. The paint answers it on every element of every
+screen; this tree cannot, because the mechanism is a token and there is nowhere here to declare one.
+A person who has asked their operating system for less movement still gets a sliding drawer in the
+grey tree, and that is a known and accepted cost of the tree linking nothing, not an oversight. The
+record is `../ui-kit/docs/motion.md`, under what the token override does not reach.
 
 ## All four regions are compared (2026-07-28, Stage 09 step 7e)
 

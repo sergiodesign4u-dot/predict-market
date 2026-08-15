@@ -67,7 +67,16 @@
    which is the same move `.seo-by` and `.bt-by` make by declaring no ink at all. What
    the lockup DOES get is the press ground the header already gives it, so the two read
    as one control on two ends of the page. */
-.app-footer a:not(.logo){color:var(--text-muted);text-decoration:none}
+/* RESPONSE, ADDED 2026-08-15 AT THE ANIMATION STAGE. The state was already here and the
+   movement was not: this component was one of seven with a hover and a press declared and no
+   transition between them, so the change happened on the frame the pointer arrived and the
+   control never answered, it just WAS different. The properties are named one at a time
+   because `transition: all` animates whatever a later rule adds, including the expensive.
+   On every screen there is. `text-decoration` is NOT in the list: the hover adds an
+   underline and a line that fades in from nothing reads as a rendering fault rather than
+   as an answer, so it stays instant and the colour carries the response. */
+.app-footer a:not(.logo){color:var(--text-muted);text-decoration:none;
+  transition:color var(--dur-fast) var(--ease-standard),background var(--dur-fast) var(--ease-standard)}
 /* THE ONE PLACE IN THIS PRODUCT THAT FAILS WCAG 2.5.8 AA OUTRIGHT, AND IT FAILED BOTH HALVES.
    Measured at 390 with the pointer asserted coarse: `.footer-col a` is a **36.5 x 14** box, which
    misses the 24 x 24 minimum, and the criterion's escape hatch misses too, because a target under

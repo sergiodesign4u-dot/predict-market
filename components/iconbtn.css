@@ -90,7 +90,7 @@
 .icon-btn.bal-swap,.icon-btn.bal-add{width:var(--control-32);height:var(--control-32)}
 .icon-btn.bal-add{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border-color:var(--color-action)}
 .icon-btn.bal-add .ic{stroke:var(--text-on-brass);color:var(--text-on-brass)}
-.icon-btn.bal-add{transition:background var(--dur-quick) ease,box-shadow var(--dur-quick) ease,border-color var(--dur-quick) ease}
+.icon-btn.bal-add{transition:background var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
 .icon-btn.bal-add:hover{background:linear-gradient(135deg,var(--color-action-lit),var(--color-action-lit));box-shadow:0 6px 18px -8px var(--color-action)}
 .icon-btn.bal-add:active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit));box-shadow:none}
 /* A sprite mark is filled with the CURRENT colour, so the button has to hand it
@@ -131,7 +131,7 @@
    takes back what it inherited, which measured 24px in every one of the 333
    places it stands, and the migration stays at zero. A partition that changes a
    computed value is a partition that made a decision it did not declare. */
-.icon-btn.icon-btn-photo{width:var(--control-32);height:var(--control-32);padding:0;line-height:inherit;color:var(--text-on-photo);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:var(--hairline) solid var(--line-on-photo);transition:background var(--dur-base) ease,border-color var(--dur-base) ease}
+.icon-btn.icon-btn-photo{width:var(--control-32);height:var(--control-32);padding:0;line-height:inherit;color:var(--text-on-photo);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:var(--hairline) solid var(--line-on-photo);transition:background var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
 .icon-btn.icon-btn-photo .ic{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-on-photo);color:var(--text-on-photo)}
 .icon-btn.icon-btn-photo:hover{background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)}
 .icon-btn.icon-btn-photo:active{background:color-mix(in oklab,var(--scrim-photo) 72%,transparent);border-color:var(--line-on-photo-hover)}
@@ -227,7 +227,7 @@
    flex box holding one svg and no text node renders identically at 0 and at
    normal, and a computed value that moves for no drawn reason is a diff that
    buries the one drawn reason this pass has. */
-.icon-btn.icon-btn-tile{border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-muted);line-height:inherit;transition:color var(--dur-quick) ease,border-color var(--dur-quick) ease,background var(--dur-quick) ease}
+.icon-btn.icon-btn-tile{border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-muted);line-height:inherit;transition:color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard),background var(--dur-fast) var(--ease-standard)}
 .icon-btn.icon-btn-tile .ic{width:var(--icon-18);height:var(--icon-18);fill:currentColor;stroke:none}
 .icon-btn.icon-btn-tile .ic:has(use){color:inherit}
 /* The tile keeps its own hover and therefore has to say so twice: the atom's
@@ -348,7 +348,7 @@
    floor is not a control nobody measured**, and the measurement is written here so
    the next sweep that finds 525 of them reads this before filing a row.
    docs/backlog.md 64. */
-.icon-btn.icon-btn-lift{width:var(--size-28);height:var(--size-28);padding:0;line-height:inherit;transition:background var(--dur-base) ease,border-color var(--dur-base) ease,transform var(--dur-base) ease}
+.icon-btn.icon-btn-lift{width:var(--size-28);height:var(--size-28);padding:0;line-height:inherit;transition:background var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard),transform var(--dur-fast) var(--ease-standard)}
 .icon-btn.icon-btn-lift .ic{width:var(--icon-18);height:var(--icon-18)}
 .icon-btn.icon-btn-lift:hover{background:var(--bg-control-brass);border-color:var(--text-brass);transform:translateY(calc(-2px * var(--motion)))}
 .icon-btn.icon-btn-lift:hover .ic{stroke:var(--text-primary);color:var(--text-primary)}
@@ -391,7 +391,7 @@
    this button has no pseudo-element and an emptied one measures 16 x 8. Backlog 75
    and 88, closed 2026-08-10. What was actually wrong was in the kit, and it was
    markup: four specimens drew the mark twice and six drew it not at all. */
-.icon-btn.icon-btn-small{position:relative;width:var(--size-24);height:var(--size-24);font-size:0;color:var(--text-muted);transition:border-color var(--dur-quick) ease,background var(--dur-quick) ease,color var(--dur-quick) ease}
+.icon-btn.icon-btn-small{position:relative;width:var(--size-24);height:var(--size-24);font-size:0;color:var(--text-muted);transition:border-color var(--dur-fast) var(--ease-standard),background var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard)}
 .icon-btn.icon-btn-small::before,.icon-btn.icon-btn-small::after{content:'';position:absolute;top:calc(50% - 1px);left:calc(50% - 4px);width:var(--size-8);height:var(--size-2);background:currentColor;border-radius:var(--radius-2)}
 .icon-btn.icon-btn-small::before{transform:rotate(45deg)}
 .icon-btn.icon-btn-small::after{transform:rotate(-45deg)}

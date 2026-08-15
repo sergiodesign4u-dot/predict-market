@@ -608,21 +608,42 @@ body.app-case{background:var(--bg-page)}
 
 /* Reduced motion, declared once for the whole system. Three components carried their own block and
    twenty did not, which is the wrong shape for a promise that has to hold everywhere: a person who
-   asks the operating system for less motion is not asking twenty components individually. */
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{
-    animation-duration:.01ms !important;
-    animation-iteration-count:1 !important;
-    transition-duration:.01ms !important;
-    scroll-behavior:auto !important}
-  /* AND THE DISTANCE, WHICH THE BLOCK ABOVE COULD NEVER REACH. Shortening a transition makes a
-     movement instant; it does not remove it, so a hover lift still JUMPS the element 3px and puts
-     it back. Five components each carried their own `transform:none` for that until 2026-08-13,
-     which is five copies of one promise, the shape this file has already paid for twice with the
-     44px floor and the focus ring. **The third time it is not a rule at all, it is a value**: every
-     transform that moves something multiplies its distance by `--motion`, so setting it to 0 here
-     turns all five off at once and reaches the sixth the day somebody writes it. The census that
-     says why this is not `*:hover{transform:none}` is in `tokens.css` beside the token. Backlog
-     132. */
-  :root{--motion:0}
-}
+   asks the operating system for less motion is not asking twenty components individually.
+   THIS IS A NET AND NOT THE MECHANISM, AND FROM 2026-08-15 IT IS ON NOTICE. The mechanism is the
+   token override in `tokens.css`, which every component reading a `var()` obeys by itself. What is
+   left here is `!important` on `*`, and `!important` on `*` reaches a component that reads no token
+   exactly as well as one that reads every token, which means the check for the second cannot see the
+   first. Measured over 163 documents in two engines: 6,555 moving elements in the normal pass and
+   115,028 under `reduce`, the difference being every element in the DOM taking a duration from this
+   rule, with 0 of 230,056 rows above 1ms. **A sweep that cannot fail is not a sweep.** Step 5 of the
+   Animation stage removes these four lines, measures the system without them, repairs what moves,
+   and only then decides whether the net comes back as a last line for code that does not exist yet.
+   `--motion:0` left this block the same day for `tokens.css`, unchanged: it is a token override and
+   it was only ever here because this block was written first. */
+/* THE BLANKET NET STOOD HERE AND IT IS GONE, 2026-08-15, AND THE MEASUREMENT IS WHY.
+   `*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;
+   animation-iteration-count:1!important;scroll-behavior:auto!important}` was correct on the day it
+   was written, when three components carried their own block and twenty did not. The mechanism is
+   `tokens.css` now: every component that reads a `var()` obeys by itself, and so does the one nobody
+   has written yet.
+
+   WHAT THE NET WAS ACTUALLY DOING BY THE END WAS HIDING THE CHECK. `!important` on `*` reaches a
+   component that reads no token exactly as well as one that reads every token, so the two are
+   indistinguishable underneath it. Measured with it in place: 6,555 moving elements per engine in
+   the normal pass against **115,028** under the setting, which is the whole DOM taking a duration
+   from one rule, and 0 of 230,056 rows above 1ms. **A sweep that cannot fail is not a sweep.**
+
+   TAKEN OFF AND RE-MEASURED, WITH A POSITIVE CONTROL FIRST: an injected element carrying
+   `transition:opacity 999ms linear` read back 999ms in both engines, so the probe can see a rule
+   that does not obey. 163 documents, Chromium 151 and WebKit 26.5, emulating the setting:
+   **1,392 elements above 1ms, and 0 of them in `components/`.** Every one was the STAND, a `.15s`
+   literal in `ui-kit/_page.css` reaching 690 elements per engine over ten kit pages plus
+   `ui-visual/overview.html`, and the demonstration pulse on `motion.html`. Both were repaired at
+   their source rather than covered here, and the second pass reads **0**.
+
+   SO IT IS NOT PUT BACK. Its only remaining argument was code that does not exist yet, and this
+   folder already has a rule about paying rent on a decision nobody has taken. Two things it never
+   reached anyway: `wireframes/` links no stylesheet at all, and the four `@keyframes` cycles need
+   REPLACING rather than shortening, which no duration can express. Both are written down in
+   `../ui-kit/docs/motion.md` under what the override does not reach, and a list is worth more than
+   a rule that makes the list unreadable. */

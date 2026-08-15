@@ -158,7 +158,7 @@
   border:var(--hairline) solid var(--border-field);border-radius:var(--radius-10);
   background:var(--bg-well);color:var(--text-primary);
   font-family:var(--font-display);font-size:var(--text-18);
-  transition:border-color var(--dur-quick) ease,box-shadow var(--dur-quick) ease,opacity var(--dur-quick) ease}
+  transition:border-color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard),opacity var(--dur-fast) var(--ease-standard)}
 .amount-input:hover:not(:disabled){border-color:var(--line-brass-strong)}
 /* :focus and :focus-visible are two different questions and this control needs both.
    :focus says THE FIELD IS ACTIVE, which is true however you got there, and it is
