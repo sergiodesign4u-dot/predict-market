@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wireframe - Cookie consent banner</title>
+  <title>Wireframe - Terms of Service (static legal page)</title>
 <style>
     /* a link takes the ink around it, never the browser's blue. */
     a { color: inherit; }
@@ -486,7 +486,48 @@
   /* ---- ported from the painted twin by port_structure.py ---- */
     /* Layout taken from components/, every colour replaced by the
        wireframe palette. See wireframes/_generators/port_structure.py. */
-    .cc-page { margin-bottom: 16px; }
+    .hiw-sec p { font-size: 13px; line-height: 1.5; margin: 4px 0 0; }
+    .hiw-sec dl { margin: 0; }
+    .hiw-sec dt { font-size: 13px; font-weight: 700; margin: 8px 0 2px; }
+    .hiw-sec dd { font-size: 13px; line-height: 1.5; margin: 0; }
+    .hiw-hero { position: relative; overflow: clip; padding: 32px 24px 28px; }
+    .hiw-hero-inner { position: relative; }
+    .hiw-hero :is(h1,h2) { font-weight: 700; line-height: 1.05; letter-spacing: -.03em; margin: 0; }
+    .hiw-tagline { margin: 8px 0 0; font-size: 14px; line-height: 1.5; max-width: 32ch; }
+    .hiw-sec { display: flex; gap: 12px; align-items: flex-start; }
+    .hiw-ic { flex: 0 0 32px; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
+    .hiw-sec-txt { flex: 1; min-width: 0; }
+    .hiw-sec p { font-size: 13px; line-height: 1.5; margin: 0; }
+    .hiw-faq { flex-direction: column; gap: 0; padding-top: 16px; }
+    .hiw-faq dl { margin: 8px 0 0; }
+    .hiw-faq dt { font-size: 13px; font-weight: 600; margin: 12px 0 4px; }
+    .hiw-faq dt:first-of-type { margin-top: 2px; }
+    .hiw-faq dd { font-size: 13px; line-height: 1.5; margin: 0; }
+    .hiw-page { position: relative; overflow: clip; margin: 0 0 20px; }
+    .hiw-page { padding: 32px 24px; }
+    .hiw-page :is(h1,h2) { font-weight: 700; line-height: 1.05; letter-spacing: -.03em; margin: 0; }
+    .hiw-page .hiw-tagline { font-size: 16px; max-width: 44ch; }
+    .hiw-cols { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    .hiw-col-main { display: flex; flex-direction: column; gap: 20px; }
+    .hiw-col-side { display: flex; flex-direction: column; gap: 16px; }
+    .hiw-cols .hiw-sec p { font-size: 14px; }
+    .hiw-cols .hiw-sec+.hiw-sec { padding-top: 20px; }
+    .hiw-cols .hiw-faq dt { font-size: 14px; }
+    .hiw-cols .hiw-faq dd { font-size: 14px; }
+    .hiw-col-side .brand-tile { min-height: 250px; }
+    .hero-promo { position: relative; overflow: clip; }
+    .hero-promo.brand-tile { display: block; padding: 24px 24px 24px; min-height: 210px; }
+    .bt-veil { position: absolute; inset: 0; }
+    .bt-tick { position: relative; width: 32px; height: 23px; margin-bottom: 16px; }
+    .bt-quote { position: relative; margin: 0; font-weight: 700; text-transform: uppercase; line-height: 1.05; letter-spacing: .01em; }
+    .bt-quote em { font-style: normal; }
+    .bt-by { position: relative; display: block; margin-top: 16px; font-size: 13px; letter-spacing: .05em; }
+    .pos-note { font-size: 11px; margin: 8px 0 0; }
+    .ed-panel-activity .pos-note { margin: 0 0 8px; }
+    @media(min-width:900px) {
+      .hiw-cols { grid-template-columns: minmax(0,1.55fr) minmax(0,1fr); gap: 28px; align-items: start; }
+      .hiw-col-side { position: sticky; top: 20px; }
+    }
     .ed-oddsbar .track, .md-bar { background: #dcdcdc; }
     .ed-oddsbar .fill { background: #555; }
     .ed-act, .rules-tab, .ed-range button { border: 1px solid #999;
@@ -545,6 +586,12 @@
     .hiw-faq dt:first-of-type { margin-top: 2px; }
     .hiw-faq dd { font-size: 13px; line-height: 1.5; margin: 0; }
     .app-dialog.hiw-dialog .hiw-arrow { width: 18px; height: 18px; }
+    .hiw-page { position: relative; overflow: clip; margin: 0 0 20px; }
+    .hiw-page { padding: 32px 24px; }
+    .hiw-page :is(h1,h2) { font-weight: 700; line-height: 1.05; letter-spacing: -.03em; margin: 0; }
+    .hiw-page .hiw-tagline { font-size: 16px; max-width: 44ch; }
+    .hiw-cols .hiw-faq dt { font-size: 14px; }
+    .hiw-cols .hiw-faq dd { font-size: 14px; }
     .app-header .cat-condensed { max-height: 0; overflow: clip; visibility: hidden; }
     .app-header.scrolled .cat-condensed { max-height: 54px; visibility: visible; }
     .app-header .cat-condensed ul { list-style: none; margin: 0; display: flex; flex-wrap: nowrap; gap: 8px; padding: 8px 14px; overflow-x: auto; }
@@ -576,24 +623,58 @@
       background: #e2e2e2; color: #333; border: 1px solid #999; border-radius: 4px; }
 </style>
   <style>
-    .sys-note { font-size: 11px; color: #555; margin: 12px 0 0; line-height: 1.5; }
-    .cc-ph { border: 1px dashed #bbb; background: #efefef; padding: 12px; opacity: .55; }
-    .cc-ph-line { height: 10px; background: #d8d8d8; margin: 8px 0; }
-    .cc-ph-line.w90 { width: 90%; } .cc-ph-line.w80 { width: 80%; } .cc-ph-line.w60 { width: 60%; } .cc-ph-line.w40 { width: 40%; }
-    .cc-banner { background: #e6e6e6; margin: 10px 0 0; }
-    .cc-inner { padding: 12px; display: flex; flex-direction: column; gap: 10px; }
-    .cc-text { font-size: 13px; margin: 0; line-height: 1.5; }
-    .cc-policy { font-size: 12px; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; }
-    .cc-policy a { color: #222; }
-    .cc-actions { display: flex; flex-wrap: wrap; gap: 8px; }
-    .cc-btn { flex: 1 1 30%; min-width: 110px; border: 1px solid #888; background: #d6d6d6; padding: 10px 12px; font-size: 12px; font-weight: bold; cursor: pointer; }
-    .cc-note { font-size: 11px; color: #555; margin: 0; }
-    .cc-manage { border-top: 1px solid #ccc; padding-top: 10px; }
-    .cc-cats { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-    .cc-cat { border: 1px solid #bbb; background: #ededed; padding: 8px 10px; }
-    .cc-cat-main { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-    .cc-cat-name { font-size: 12px; font-weight: bold; }
-    .cc-cat-desc { font-size: 11px; color: #555; margin: 4px 0 0; line-height: 1.4; }
+    /* Terms is the one screen in this tree with a reading column and a table of contents.
+       Every value is written out: a grey file holds no token, so a number here is the number
+       the painted twin resolves its token to, and the two are kept in step by hand. */
+    /* The page inset. The painted twin gets it from `.feed-inner`, which is a plate and is one
+       of the six differences, so the grey page has to declare the inset itself or a legal
+       document 316px wide runs its text into both edges at 320. Measured before it was added:
+       first text at x=2 here against x=31 in the paint. */
+    main.feed > .cat-layout { padding: 0 12px; }
+    .read-col { display: flex; flex-direction: column; gap: 16px; max-width: 720px; margin-inline: auto; }
+    .read-col > * { margin-block: 0; }
+
+    /* The contents list is a disclosure on a phone and a sticky rail from 900px, which is the
+       RAIL rung and the same width the sub-category rail arrives at. */
+    .toc { margin: 0; }
+    .toc-d { margin: 0; }
+    .toc-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; cursor: pointer;
+      list-style: none; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: .05em;
+      color: #555; padding: 12px 8px; min-height: 44px; margin: 0; border-bottom: 1px solid #ccc; }
+    .toc-head::-webkit-details-marker { display: none; }
+    .toc-list { list-style: none; margin: 0; padding: 4px; display: flex; flex-direction: column; gap: 2px; }
+    .toc-link { display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      text-decoration: none; color: #222; font-size: 13px; padding: 8px; min-height: 36px;
+      border: 1px solid transparent; }
+    .toc-link:hover { background: #dedede; }
+    .toc-n { font-size: 11px; color: #555; flex: 0 0 auto; }
+
+    /* One numbered section per clause. The heading level is structure and is decided here:
+       one h1 on the page, every clause an h2, no h3 anywhere, so the contents list above is a
+       flat list and reads as one. */
+    .feed-seo { border-top: 1px solid #ccc; padding: 12px 4px; }
+    .feed-seo h2 { font-size: 14px; margin: 0 0 6px; }
+    .feed-seo p { font-size: 13px; color: #333; margin: 0 0 6px; line-height: 1.5; }
+    .feed-seo p:last-child { margin-bottom: 0; }
+    .protect-page { padding: 12px; font-size: 12px; line-height: 1.5; }
+
+    .related-events { border-top: 1px solid #ccc; margin: 14px 0 0; padding: 12px 0 4px; }
+    .related-events h2 { font-size: 14px; margin: 0 0 8px; }
+    .related-list { list-style: none; padding: 0; margin: 0; }
+    .related-list li { border-bottom: 1px solid #e2e2e2; display: flex; align-items: center; gap: 6px; }
+    .related-list a { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; color: #333; font-size: 13px; flex: 1; }
+    .rel-q { flex: 1; min-width: 0; font-weight: 600; font-size: 14px; line-height: 1.3; }
+    .rel-odds { color: #555; white-space: nowrap; }
+    .related-more { display: flex; align-items: center; justify-content: center; margin: 16px auto 2px;
+      width: 100%; max-width: 300px; min-height: 44px; padding: 12px; border: 1px solid #888;
+      background: #dcdcdc; font-size: 13px; text-decoration: none; color: #222; }
+
+    @media (min-width: 900px) {
+      .toc { flex: 0 0 214px; position: sticky; top: 66px; align-self: flex-start;
+        max-height: calc(100vh - 82px); overflow-y: auto; overscroll-behavior: contain; }
+      .toc-head { display: none; }
+      .toc-d::details-content { display: block; content-visibility: visible; }
+    }
   </style>
 </head>
 <body data-loggedin-target="event-feed.html">
@@ -824,9 +905,9 @@
       </li>
       <li class="wf-sec">Legal</li>
       <li class="wf-screen">
-        <a href="terms.html">Terms of Service</a>
+        <a href="terms.html" class="active" aria-current="page">Terms of Service</a>
         <ul class="wf-states">
-          <li><a href="terms.html">success (static legal page)</a></li>
+          <li class="cur"><a href="terms.html">success (static legal page) (this page)</a></li>
         </ul>
       </li>
       <li class="wf-sec">System and global</li>
@@ -849,9 +930,9 @@
         </ul>
       </li>
       <li class="wf-screen">
-        <a href="cookie-consent.html" class="active" aria-current="page">Cookie consent</a>
+        <a href="cookie-consent.html">Cookie consent</a>
         <ul class="wf-states">
-          <li class="cur"><a href="cookie-consent.html">consent banner (this page)</a></li>
+          <li><a href="cookie-consent.html">consent banner</a></li>
         </ul>
       </li>
       <li class="wf-screen">
@@ -899,67 +980,69 @@
       </div>
     </header>
     <main class="feed" id="main-content" tabindex="-1">
-      
-        
-        
-        <div class="cat-layout">
-        <div class="cat-main">
-        <div class="feed-head"><h1>Cookie consent banner</h1></div>
+              <div class="cat-layout">
+        <nav class="toc" aria-label="On this page">
+          <details class="toc-d">
+            <summary class="toc-head">On this page</summary>
+            <ul class="toc-list">
+              <li><a class="toc-link" href="#what">What this document is<span class="toc-n">01</span></a></li>
+              <li><a class="toc-link" href="#who">Who we are, and who this covers<span class="toc-n">02</span></a></li>
+              <li><a class="toc-link" href="#account">Your account<span class="toc-n">03</span></a></li>
+              <li><a class="toc-link" href="#betting">Backing an event<span class="toc-n">04</span></a></li>
+              <li><a class="toc-link" href="#resolution">How an event resolves<span class="toc-n">05</span></a></li>
+              <li><a class="toc-link" href="#money">Your money<span class="toc-n">06</span></a></li>
+              <li><a class="toc-link" href="#fees">Fees<span class="toc-n">07</span></a></li>
+              <li><a class="toc-link" href="#where">Where the service is available<span class="toc-n">08</span></a></li>
+              <li><a class="toc-link" href="#content">Content you post<span class="toc-n">09</span></a></li>
+              <li><a class="toc-link" href="#suspension">When an account can be suspended or closed<span class="toc-n">10</span></a></li>
+              <li><a class="toc-link" href="#wrong">If something goes wrong<span class="toc-n">11</span></a></li>
+              <li><a class="toc-link" href="#changes">Changes to this document<span class="toc-n">12</span></a></li>
+              <li><a class="toc-link" href="#law">Law and disputes<span class="toc-n">13</span></a></li>
+              <li><a class="toc-link" href="#reach">How to reach us about this document<span class="toc-n">14</span></a></li>
+            </ul>
+          </details>
+        </nav>
+        <div class="cat-main read-col">
+        <div class="feed-head"><h1>Terms of Service</h1></div>
 
-        <section class="cc-page" aria-hidden="true">
-          <div class="cc-ph">
-            <div class="cc-ph-line w90"></div>
-            <div class="cc-ph-line w80"></div>
-            <div class="cc-ph-line w60"></div>
-            <div class="cc-ph-line w40"></div>
-          </div>
+        <div class="spinner-box">Prototype page. The section headings, the structure and the dates are real; the body text describes what each section would decide and is not an operative legal term. Nothing on this page is in force.</div>
+
+        <div class="reconcile-box"><strong>Last updated 3 August 2026</strong><span>Effective immediately for accounts opened from this date. Effective 3 October 2026 for accounts opened before it.</span><span>What changed: the resolution section now names the fallback source, and the dispute window moved from 24 to 72 hours.</span><span>The previous version stays available.</span></div>
+
+        <div class="protect protect-page"><b>Your USDC is held 1:1 and we never lend it.</b> It sits in a segregated balance you can check on-chain at any time. It is not lent, staked, or used as working capital. Every event resolves against a named public source and the resolution is recorded where anyone can read it.</div>
+
+        <!-- The link stands outside the paragraph and not inside the sentence. Decided here:
+             a document this long needs one way out that is findable without reading, and a
+             destination buried mid-sentence is not one. -->
+        <a class="related-more" href="how-it-works.html">How resolution works</a>
+
+        <section class="feed-seo" id="what" aria-label="1. What this document is"><h2>1. What this document is</h2><p>This section sets out what the agreement covers and what it does not. It explains that using Yonder means accepting a set of rules about the account, the funds inside it, and the events a person backs, and that the rules are written to be readable before they are written to be exhaustive.</p><p>It would also name the other documents that sit beside this one and say which of them wins if two disagree. In the shipped version that ordering is the first thing a reader is told, because a person who does not know which document governs cannot know what they have agreed to.</p></section>
+        <section class="feed-seo" id="who" aria-label="2. Who we are, and who this covers"><h2>2. Who we are, and who this covers</h2><p>This section identifies the operator of the service, the jurisdiction it is registered in, and the contact address for a legal notice. It states the minimum age and says that an account is personal: one person, one account, no acting on behalf of anyone else.</p><p>It would also describe what happens to an account opened by someone the rules do not cover, and it would say so before the deposit section rather than after it, because the answer changes whether the deposit should have been made at all.</p></section>
+        <section class="feed-seo" id="account" aria-label="3. Your account"><h2>3. Your account</h2><p>This section describes registration, the information asked for at sign-up, and what a person is responsible for keeping safe. It explains that Yonder asks for an account only when a bet is confirmed and not when the site is opened, which is a product decision as much as a legal one and is written here so the two do not drift apart.</p><p>It would set out how identity is verified when a fiat deposit requires it, which is the only point at which more than an email is asked for, and it would say what an unverified account can and cannot do rather than leaving the reader to discover the limit at the moment it stops them.</p><p>It would also cover closing an account: how a person asks, how long it takes, and what happens to open positions and to a remaining balance.</p></section>
+        <section class="feed-seo" id="betting" aria-label="4. Backing an event"><h2>4. Backing an event</h2><p>This section describes what a bet is in this product. A person backs YES or NO on a stated question at the odds shown at the moment of confirmation, and the stake is taken from the account balance at that moment.</p><p>It explains that odds move because other people are backing the same event, so the price seen when an event is opened is not a promise about the price at confirmation. Where the two differ by more than a stated amount, the confirmation is shown again with the new number before anything is taken.</p><p>It would name the minimum and any maximum stake, say whether a bet can be cancelled and within what window, and state plainly that a bet placed on a mistaken reading of the question is still a bet.</p></section>
+        <section class="feed-seo" id="resolution" aria-label="5. How an event resolves"><h2>5. How an event resolves</h2><p>This section describes the resolution rule, which is the single most important thing this document decides. Every event names its source before it opens: the public record, feed or authority that will be read to settle it, and the moment at which that reading is taken.</p><p>It explains what happens when the named source is unavailable, contradicts itself, or has not reported by the stated time, and it would give the fallback in the same words on every event rather than case by case.</p><p>It would set out the dispute window: how long after settlement a person may challenge a resolution, what evidence is considered, who decides, and where the decision is recorded. The record is public, because a resolution nobody can check is a resolution nobody can trust.</p><p>It would describe the two cases that are not a simple reading of a source: an event whose question turns out to be ambiguous once the world has moved, and an event that becomes impossible to settle at all. For the first it would say who decides the reading and against what the decision is measured. For the second it would say that every stake is returned in full, and it would say it in the same sentence, because a rule about returning money is the one a person will look for under stress and should not have to assemble from two places.</p><p>It would also cover a recurring event, where each cadence instance settles on its own schedule against the same named source, and state that a later instance is a separate bet rather than a continuation of an earlier one.</p></section>
+        <section class="feed-seo" id="money" aria-label="6. Your money"><h2>6. Your money</h2><p>This section describes custody. Funds are held as USDC in a segregated balance, one to one, and are not lent, staked, invested or used as working capital at any point.</p><p>It explains the difference between an available balance and a balance held against an open position, and it says which of the two can be withdrawn at any moment.</p><p>It would describe deposits and withdrawals: the routes available, the confirmations required, the time each normally takes, and what happens when a transfer fails or arrives at the wrong address. It would also state what happens to funds if the service stops operating, which is the question a reader of this page most often arrives with and the one most commonly left unanswered.</p><p>It would name the chain the balance is held on, the address at which the pooled balance can be read, and how a person matches their own figure against it. A custody claim that cannot be checked is a marketing line, and the difference between the two is a paragraph of instructions.</p></section>
+        <section class="feed-seo" id="fees" aria-label="7. Fees"><h2>7. Fees</h2><p>This section states every charge the service makes and when it is applied. A fee is shown before a bet is confirmed and never after, which is a rule about the interface as much as about the pricing.</p><p>It would set out the commission on a settled position, any deposit or withdrawal cost passed through from a payment route, and whether a fee can change without notice. A fee schedule that can move silently is not a schedule, so the notice period would be named here rather than implied.</p></section>
+        <section class="feed-seo" id="where" aria-label="8. Where the service is available"><h2>8. Where the service is available</h2><p>This section lists the places the service is not offered and the reason each is excluded. A person opening an account from an excluded place is told at sign-up rather than at withdrawal.</p><p>It would describe what happens to an existing account when a person moves, and what happens to positions that are open at that moment. It would also state that using a proxy or a VPN to reach the service from an excluded place is a breach, and what the consequence is.</p></section>
+        <section class="feed-seo" id="content" aria-label="9. Content you post"><h2>9. Content you post</h2><p>This section covers comments, display names and anything else a person publishes on the service. It sets out what may not be posted and what happens to content that breaks the rule.</p><p>It would state who owns what a person writes, what licence the service needs in order to show it, and how long content survives the account that wrote it.</p></section>
+        <section class="feed-seo" id="suspension" aria-label="10. When an account can be suspended or closed"><h2>10. When an account can be suspended or closed</h2><p>This section lists the grounds on which the service may restrict, suspend or close an account, and it lists them exhaustively rather than ending with a general clause that swallows the list.</p><p>It would describe what a person is told and when, what happens to an open position and to a balance during a restriction, and how a decision is appealed. It would also say what the service may not do: a suspension is not a way to avoid settling a position that has already resolved.</p></section>
+        <section class="feed-seo" id="wrong" aria-label="11. If something goes wrong"><h2>11. If something goes wrong</h2><p>This section describes the limits of what the service is responsible for, including outages, delayed settlement, and errors in the odds shown. It explains what is corrected and what is not.</p><p>It would state how a pricing error is handled once bets have been placed against it, which is the case where the interests of the service and of a person are furthest apart and therefore the case that most needs to be written down in advance.</p></section>
+        <section class="feed-seo" id="changes" aria-label="12. Changes to this document"><h2>12. Changes to this document</h2><p>This section explains how the terms change and when a change takes effect. A change is effective immediately for a person opening an account after it is published, and after a stated notice period for a person who already has one. Both dates are shown at the top of this page, and the previous version stays available.</p><p>It would also say what a person may do if they do not accept a change, and confirm that closing an account and withdrawing a balance is always one of the options.</p></section>
+        <section class="feed-seo" id="law" aria-label="13. Law and disputes"><h2>13. Law and disputes</h2><p>This section names the law that governs the agreement and the forum in which a dispute is heard. It would say whether arbitration is required, whether a class action is waived, and what a person may do before either becomes necessary.</p><p>It would also give the informal route first: an address, a person, and a period in which a reply is due, because most disputes end there and a document that opens with arbitration reads as one that expects to be argued with.</p></section>
+        <section class="feed-seo" id="reach" aria-label="14. How to reach us about this document"><h2>14. How to reach us about this document</h2><p>This section gives the single address for a question about these terms, separate from product support, and states the period within which a reply is sent.</p><p>It would also give the postal address for a formal notice, because some notices are only valid on paper and a person should not have to look for that.</p></section>
+
+        <div class="protect protect-page"><b>A question about this document</b> goes to legal@yonder.example, which is not product support. A reply is sent within five working days.</div>
+
+        <section class="related-events" aria-labelledby="sib-h">
+          <h2 id="sib-h">The other documents</h2>
+          <ul class="related-list">
+            <li><a href="#"><span class="rel-q">Privacy Policy</span><span class="rel-odds">not built</span></a> <span class="tbd">TBD</span></li>
+            <li><a href="#"><span class="rel-q">Cookie Policy</span><span class="rel-odds">not built</span></a> <span class="tbd">TBD</span></li>
+            <li><a href="#"><span class="rel-q">Responsible betting</span><span class="rel-odds">not built</span></a> <span class="tbd">TBD</span></li>
+            <li><a href="#"><span class="rel-q">About Yonder</span><span class="rel-odds">not built</span></a> <span class="tbd">TBD</span></li>
+          </ul>
         </section>
-
-        <section class="cc-banner" role="region" aria-label="Cookie consent">
-          <div class="cc-inner">
-            <p class="cc-text">We use cookies to run the site and, only if you allow it, to measure and improve it.</p>
-            <p class="cc-policy">
-              <a href="#">Privacy Policy</a>
-              <a href="#">Cookie Policy</a>
-            </p>
-            <div class="cc-actions">
-              <button type="button" class="btn btn-secondary btn-md cc-btn">Accept all</button>
-              <button type="button" class="btn btn-secondary btn-md cc-btn">Reject all</button>
-              <button type="button" class="btn btn-secondary btn-md cc-btn">Manage</button>
-            </div>
-            <p class="cc-note">Reject is one tap, the same as Accept. Nothing here is pre-ticked.</p>
-
-            <div class="cc-manage">
-              <span class="field-label">Manage cookie categories, shown after tapping Manage</span>
-              <ul class="cc-cats">
-                <li class="cc-cat">
-                  <label class="cc-cat-main">
-                    <span class="cc-cat-name">Necessary (always on)</span>
-                    <input type="checkbox" checked disabled aria-label="Necessary cookies, always on">
-                  </label>
-                  <p class="cc-cat-desc">Needed to run the site and keep your session and funds secure. This one cannot be turned off.</p>
-                </li>
-                <li class="cc-cat">
-                  <label class="cc-cat-main">
-                    <span class="cc-cat-name">Analytics</span>
-                    <input type="checkbox" aria-label="Analytics cookies, off by default">
-                  </label>
-                  <p class="cc-cat-desc">Helps us measure and improve the site. Off unless you turn it on.</p>
-                </li>
-                <li class="cc-cat">
-                  <label class="cc-cat-main">
-                    <span class="cc-cat-name">Marketing</span>
-                    <input type="checkbox" aria-label="Marketing cookies, off by default">
-                  </label>
-                  <p class="cc-cat-desc">Used to show you relevant campaigns. Off unless you turn it on.</p>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <p class="sys-note">Re-entry: a Cookie preferences link in the footer reopens this banner, so the choice can be changed at any time.</p>
-        <!-- /cat-main --><!-- /cat-layout --><!-- /feed-inner -->
+        </div><!-- /cat-main --></div><!-- /cat-layout --></div>
     </main>
     <!-- Bottom navigation (mobile only, logged-out: slot 4 = Sign in) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">

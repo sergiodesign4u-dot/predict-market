@@ -239,6 +239,17 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
   `for`, `aria-controls`, `aria-labelledby`, `href="#id"` and `url(#id)` pointing at it, and touches
   nothing that points at a sprite symbol. Check DARK against DARK as well: `header.html` carries the
   band in three sections and its collision was between two dark cells.
+- **AND A SPECIMEN CARRIED SIDEWAYS BRINGS ITS HREFS WITH IT, WHICH IS THE SAME DEFECT AS THE IDS
+  AND WAS LEARNED SEPARATELY.** An id means something about a DOCUMENT and a document-relative href
+  means something about a FOLDER, so both are markup that is true where it was written and false
+  where it was copied. The how-it-works sheet arrived on `dialog.html` and `organisms.html` on
+  2026-08-14 with the product's markup verbatim, which is the rule, and its `href="sign-in.html"`
+  and `href="event-feed.html"` resolve from `ui-visual/` and resolve to nothing from here: **8 dead
+  links, written the day before the sweep that found them, on the two pages whose subject is a
+  dialog.** The convention was already on the stand to be copied, 59 anchors reading
+  `../ui-visual/event-feed.html` and 43 reading `../ui-visual/event-detail.html`. **Re-point every
+  document-relative href when a specimen crosses folders, and read the whole tree's links after any
+  page gains product markup**: 296 live documents, 34,396 references, 0 broken.
 - **A PAGE ABOUT AN ARRANGEMENT NEEDS THE ARRANGEMENT ON IT.** Counted 2026-08-09: `card-grid`,
   `browse-shell`, `detail-shell` and `position-list` had **0 `.tk-theme-fig` each**, four of the six
   pattern pages, prose with a rule and an anti-rule and nothing rendering underneath. This file's own

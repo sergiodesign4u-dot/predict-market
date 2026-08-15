@@ -17,7 +17,7 @@ nowhere else** - a second copy of a status is a copy that goes stale.
 | 02+ | CJM (As-Is + To-Be) - inside User Research, not a stage of its own | `user-research/` | `cjm-as-is.html`, `cjm-to-be.html` |
 | 03a | Information Architecture, Basic layer | `ia/` | `flows.html`, `concept-map.html` |
 | 03b | Information Architecture, Detailed layer | `ia/` | `ia.html`, `sitemap.html`, `seo.html`, `system.html` |
-| 04 | Wireframes | `wireframes/` | 104 grey pages |
+| 04 | Wireframes | `wireframes/` | 105 grey pages |
 | 05 | Voice | `voice/` | `voice/voice.html` |
 | 06 | Concept | `concept/` | `concept.html` (+ `directions.html`) |
 | 07 | UI + Visual | `ui-visual/` | 106 painted screens, every family and every state |

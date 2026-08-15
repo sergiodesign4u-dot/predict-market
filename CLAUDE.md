@@ -63,8 +63,9 @@ because it is a stance rather than a principle, and it is written once, here.
 - **One system.** `components/` holds `tokens.css` plus one file per component, reached through
   `components/index.css`. **Every PAINTED screen links that one file and nothing else, and the grey
   tree links no stylesheet at all**: 106 of 106 in `ui-visual/` and 57 of 57 in `ui-kit/` link it,
-  **0 of the 104 in `wireframes/` do**, and those 104 carry an inline `<style>` block each. Counted
-  2026-08-12. The sentence here said "every screen" until then, and the folder file it contradicted
+  **0 of the 105 in `wireframes/` do**, and those 105 carry an inline `<style>` block each. Counted
+  2026-08-12 at 104 and re-counted 2026-08-15, when `terms.html` was written and the grey tree
+  stopped being one screen short of the tree it decides. The sentence here said "every screen" until then, and the folder file it contradicted
   is the one that had it right. The visual language is
   **Vault**, specified in `DESIGN.md`, and its one rule that decides others: **green and red are
   outcome semantics (YES / NO), brass is the brand.**

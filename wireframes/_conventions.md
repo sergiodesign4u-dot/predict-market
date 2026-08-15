@@ -749,7 +749,7 @@ the gate is blind to exactly these and nothing else:
 |---|---|---|---|
 | plate wrappers | absent | `.cat-layout`, `.cat-main`, `.feed-inner` | a div whose only job is to draw a stone plate is paint. Porting it would put an empty box in the wireframe to record a shadow |
 | icons | raw `<path>` | `<use href="#id">` against an inline sprite | one mechanism per tree. The port resolves every `use` back into the paths it points at |
-| photography | the box, empty | `<img>` and `background-image` | a wireframe draws a box where a picture goes. 104 pages, zero image elements, and it stays that way |
+| photography | the box, empty | `<img>` and `background-image` | a wireframe draws a box where a picture goes. 105 pages, zero image elements, and it stays that way |
 | chart data | typed into the markup | empty, filled by a script on load | a wireframe DRAWS its data, a product COMPUTES it. The series is read out of the painted script and written in statically, so the wireframe shows a chart without borrowing the product's JS |
 | the `TBD` chip | 14 `span.tbd` and one `p.placeholder-line` per footer | none | a wireframe is obliged to mark a destination nobody has built; a product that shows a user the word TBD is showing them the bookkeeping. Added in step 7e |
 | the page behind an invoked overlay | absent: the sheet on a plain backdrop | header, feed, bottom nav and footer behind the dialog | convention 5, below. A wireframe of an overlay draws the overlay; a scrim has to be a scrim over something. Added in step 7e, and it is the one boundary that is CHECKED rather than skipped: the gate asserts that grey has no chrome on those 17 screens and the paint has all of it, so neither side can drift into the other by accident |

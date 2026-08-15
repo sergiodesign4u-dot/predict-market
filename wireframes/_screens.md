@@ -305,6 +305,19 @@ own HTTP contract. Never a dead-end (every one has a visible exit).
 
 Registered in the screen tree under "System and global" (`_shell.py` `nav_tree` + `resync.py`).
 
+## Legal (added 2026-08-15, backlog 157)
+
+| Screen | File | Route | Notes |
+|---|---|---|---|
+| Terms of Service | `terms.html` | `/legal/terms` | one `h1`, fourteen numbered clauses as `h2` and no `h3`, so the contents list is flat and reads as one. A `<details>` disclosure below 900px and a sticky 214px rail from it, which is the RAIL rung. Carries the prototype notice, the last-updated block, the money sentence at the top and again at the foot, and the four sibling documents, each with a `TBD` chip because none of them is built |
+
+**This page was written into the grey tree LAST and that is the defect it closes, not a feature of
+it.** The painted `terms.html` shipped first with 320 anchors reaching it while this tree had no file
+and pointed the same anchors at `#`, which is the one direction the layer rule forbids: a destination
+is structure and structure is decided here. The other four legal nodes named in
+`ia/docs/pages/seo.md` §6, Privacy, Cookie Policy, Responsible betting and About, are still unbuilt
+in BOTH trees and are marked as such rather than linked.
+
 ---
 
 ## Deferred to Step 08

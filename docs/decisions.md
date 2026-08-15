@@ -12,6 +12,123 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-15 - The grey tree was one screen short of the tree it decides, and the missing one was the document the product links to most
+
+**THE HOLE WAS CLOSED BY WRITING THE PAGE RATHER THAN BY DECLARING IT A BOUNDARY**, which was the
+other option and the cheaper one. `ui-visual/terms.html` had shipped with 882 lines, 25 sections and
+a route of its own, **320 anchors in the painted tree reached it**, and this tree had no file and
+pointed the same anchors at `#`. Backlog 157. **A destination is structure and structure is decided
+here**, so the grey tree owing the paint a page is the one direction the layer rule forbids, and the
+repair is the page and not an exemption written into the conventions.
+
+**IT IS BUILT FROM THE GREY `how-it-works.html` AND THAT CHOICE IS THE ARGUMENT.** That is this
+tree's own static-content screen: the same chrome, the same logged-out header down to the two
+affordances that route to sign-in, the same footer. Building from the painted twin would have ported
+the paint's shape into the grey tree, which is the direction the tree exists to prevent; building
+from a feed page would have brought a feed. **The base decides which tree the page belongs to.**
+
+**STRUCTURE WAS READ AGAINST THE PAINT RATHER THAN ASSUMED**, in Chromium 151 and WebKit 26.5, at
+320, 390, 640, 899, 900, 901 and 1280: **1 `h1`, 25 `h2`, 0 `h3`, 14 `section[id]`, and all 14
+contents links resolving to an id on the page**, both trees agreeing on every count. The rail
+arrives at **900 and not at 899**, sticky, 214px, with the disclosure head hidden above it, which is
+the RAIL rung read at the rung and one pixel either side rather than at two round numbers.
+
+**THE SIX DIFFERENCES WERE CHECKED ONE BY ONE AND ONE OF THEM IS NOT WHAT THE TABLE SAYS.**
+`.feed-inner` is dropped and `.cat-layout` is kept, because the table lists all three plate wrappers
+together and the 2026-08-13 restoration already ruled that `.cat-layout` and `.cat-main` are a flex
+parent rather than a stone: the grey tree lost them in a port and got them back in 76 files. 0
+`<img>` and 0 `background-image`; 23 raw `<path>` and 0 `<use>`; and the four sibling documents that
+are not built carry a **`TBD` chip**, which is the chip's whole job and the reason it is a declared
+difference. **0 non-neutral hex on the page**, and the instrument was proved against brass before the
+zero was believed, because a greyness test that cannot see `#c7a24e` reports grey for everything.
+
+**THE PAGE INSET HAD TO BE DECLARED, AND THAT IS THE PRICE OF THE PLATE BEING A DIFFERENCE.** The
+paint takes its gutter from `.feed-inner`, so removing the plate removes the inset with it: measured
+before, first text at **x=2 against the paint's x=31**, a 316px legal column running into both edges
+at 320. The grey page declares its own 12px and reads 14. **This is the shape of every one of the six
+differences**: dropping a paint-only wrapper is never only a deletion, because a wrapper that draws
+also spaces, and the tree that drops it inherits the second job.
+
+**AND THE TREE WAS WIRED, NOT ONLY GIVEN A FILE.** 196 dead `#` Terms anchors repointed across 105
+files, a `Legal` section added to all 105 screen trees mirroring the group the painted sidebar
+already had, and a row in `wireframes/_screens.md`. **The grey tree is 105 screens now**, and every
+current statement of 104 moved with it in `CLAUDE.md`, `README.md` three times, `STRUCTURE.md`,
+`wireframes/CLAUDE.md` and `_conventions.md`; the three that are dated measurements of 104 files were
+left alone, because a reading is true as of its own date.
+
+**Verified**: 3,752 renders over 268 documents in all three trees at seven widths in both engines, **0
+horizontal scroll, 0 duplicate ids, 0 page errors, 0 HTTP errors**, positive control seen 2 of 2;
+**0 broken of 34,950 links over 297 documents**; and the only painted screen with no grey twin is
+`overview.html`, which is the index of the tree rather than a screen in it. **12 documents do not
+carry exactly one `h1` and none of them is new**: 8 are kit pages, where a stand drawing a page hero
+in two themes has several by construction, and 4 are the event-detail loading states in BOTH trees,
+where nothing has loaded to be a heading yet and the two trees agree.
+
+---
+
+## 2026-08-15 - The kit had eight links that went nowhere and they were put there yesterday, and the two trees do not agree on the name of 32 screens
+
+**THE LINK CHECK WAS RUN BECAUSE A FILE HAD BEEN RENAMED THIS WEEK AND NOBODY HAD RE-READ THE
+LINKS.** 296 live documents, **34,396 internal references**, and 8 broken, all of them in
+`ui-kit/dialog.html` and `ui-kit/organisms.html`, all of them mine, all of them one day old.
+
+**THE HOW-IT-WORKS SHEET WAS PUT ON THE STAND ON 2026-08-14 WITH THE PRODUCT'S MARKUP COPIED
+VERBATIM, WHICH IS THE RULE, AND ITS TWO HREFS ARE RELATIVE TO A FOLDER THE STAND IS NOT IN.**
+`href="sign-in.html"` and `href="event-feed.html"` resolve from `ui-visual/` and resolve to nothing
+from `ui-kit/`. Checked against the commit before: `git show 1cc154b~1` has **0** occurrences of
+either in both files, so this was not an old defect the sweep finally reached, it was written the
+day before it was found. **The kit's own convention was already there to be copied**: 59 anchors on
+the stand read `../ui-visual/event-feed.html` and 43 read `../ui-visual/event-detail.html`. The
+eight now do too, and the live tree reads **0 broken of 34,396**.
+
+**AND IT NAMES THE COST OF THE RULE IT OBEYED.** "Markup goes to two places and only two" is what
+put correct product markup on a page where one of its attributes is wrong, the same way the id rule
+did: a document-unique id copied twice is a collision, and a document-relative href copied sideways
+is a dead link. **An id and an href are both markup that means something about WHERE it stands**, so
+both have to be re-pointed when the markup moves, and the kit had already learned the first half.
+
+### The 32 screens with two names
+
+**THE TWO TREES WERE ASKED FOR THEIR FILE LISTS AND THEY AGREE ON 72 SCREENS OF 104.** The paint
+calls them `event-feed-politics.html`, the grey tree calls the same screen `politics.html`, and that
+holds for all four categories in all eight states. **Filename is not one of the six declared
+differences in `wireframes/_conventions.md`**, so by that file's own definition this is drift, and
+every cross-tree comparison this repository runs needs a translation table for exactly those 32.
+
+**IT IS FILED RATHER THAN FIXED BECAUSE BOTH NAMES HAVE AN ARGUMENT.** The conventions file says
+logged-in pages keep the base names `event-feed*.html`, which the grey files do not, but that
+sentence stands in a section about logged-out variants and is a glob rather than a ruling. Against
+it, the IA gives the category its OWN route, `/c/{category}`, which makes it a screen rather than a
+state of the feed and makes `politics.html` the truer name. That is a naming decision with an owner,
+and the owner is not a stylesheet.
+
+**THE COST WAS MEASURED AND THE FIRST MEASUREMENT WAS THE INSTRUMENT.** A `\b` word boundary matches
+inside `event-feed-politics.html`, so the first sweep reported **9,866** references and 4,776 of them
+were the paint's own filenames being counted as references to the grey ones. Anchored so that a match
+cannot be preceded by a word character or a hyphen: **5,012**, of which 4,940 are inside
+`wireframes/` and self-contained. The control is one painted screen, **48 naive against 0 anchored**.
+
+### The one screen the grey tree never drew
+
+**320 ANCHORS IN THE PAINTED TREE REACH `terms.html` AND THE GREY TREE HAS NO FILE FOR IT**, while
+its copy of every one of those anchors reads `<a href="#">Terms</a>`. The painted screen is 882 lines
+and 25 sections and has an SEO section of its own at `/legal/terms`. **The mirror is clean**: every
+screen the grey tree links to exists in the paint, 0 exceptions, so this is one hole rather than a
+pattern, and `overview.html` is the other name the diff returns and is correctly paint-only, being
+the index of the tree rather than a screen in it.
+
+**It is the one direction the layer rule forbids.** A destination is structure, the grey tree owns
+structure, and here the paint decided a route the grey tree was never told about. **And the grey
+footer does not mark it TBD either**: its five chips are Tagline, Language, Help Center, FAQ and
+Contact, so Terms does not read as unbuilt, it reads as a link that goes nowhere. Backlog 157 carries
+the two ways out and they are different sizes.
+
+**Verified**: 296 live documents and 34,396 references, 8 broken before and 0 after, with the checker
+proved against a target that does not exist; both file sets read from disk; the reference count taken
+twice, once naive and once anchored, and the difference explained before either was used.
+
+---
+
 ## 2026-08-15 - A census of who wrote the argument is not a census of who uses the unit, and the tidy answer would have deleted a cap
 
 **THREE THINGS WERE LOOKED FOR AND THE ONE THAT WAS FOUND WAS NOT ON THE LIST.** The phone laid on

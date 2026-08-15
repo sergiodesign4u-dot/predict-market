@@ -1,6 +1,6 @@
 # wireframes/ - the grey tree
 
-104 screens. This tree owns **structure and copy**. It decides what is on a page, in what order, and
+105 screens. This tree owns **structure and copy**. It decides what is on a page, in what order, and
 what it says. The painted tree follows it.
 
 ## The invariants
