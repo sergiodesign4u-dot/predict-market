@@ -73,7 +73,6 @@
 /* rung: RAIL 56.25rem, 900px at the default root, a rail beside the content. The ladder is in tokens.css, page frame. */
 @media(min-width:56.25rem){
   .subcat{flex:0 0 var(--rail-width);position:sticky;top:120px;
-          max-height:calc(100vh - 120px - var(--space-16));
           max-height:calc(100svh - 120px - var(--space-16));
           overflow-y:auto;overscroll-behavior:contain}
   .subcat ul{flex-direction:column;overflow:visible;flex-wrap:nowrap;gap:var(--space-2);padding:var(--space-4)}

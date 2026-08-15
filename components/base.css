@@ -466,13 +466,22 @@ svg.ic:has(use[href^="#i-"]),svg.ic-sm:has(use[href^="#i-"]){fill:currentColor!i
    the cost is not a clipped page, it is a page that can always be scrolled by the height of the
    retracting chrome even when it has nothing more to show. On an iPhone that is about 60px of
    nothing under every short screen in the product.
-   **Two declarations and not one**, the same pair the other three files write: a browser that has
-   not learned `svh` takes the first and every browser that has takes the second, which is a
-   fallback rather than a second opinion. Headless Chromium has no retracting chrome, so `svh`,
+   **IT WAS TWO DECLARATIONS AND IT IS ONE SINCE 2026-08-15, backlog 155.** The pair was written
+   here and in three other files as a fallback: a browser that had not learned `svh` took the `vh`
+   first and every browser that had took the second. `tokens.css` deleted exactly that half beside
+   `--sheet-cap` on 2026-08-14 on the measured ground that `CSS.supports` for `svh` is true in both
+   engines here, and then the pair turned out to be **unwritable for a token at all**: a custom
+   property accepts any token sequence, so the unit is never rejected and `max-height:92vh` before
+   `max-height:var(--cap)` computes to `none` rather than to 92vh. So the system could not be made
+   to say one thing by ADDING the pair, only by dropping it, and five sites saying one thing beats
+   four saying the older one. **The cost is named rather than waved at**: on an engine older than
+   Safari 15.4 of March 2022 or Chrome 108 of November 2022 this box loses its minimum height, a
+   short page stops filling the window, and three rails lose a maximum they still scroll inside.
+   Cosmetic, bounded, and nothing becomes unreachable. Headless Chromium has no retracting chrome, so `svh`,
    `lvh` and `vh` are one number there and this edit measures as zero on every sweep in this
    repository: **the thing it fixes cannot be read by the instrument that guards it**, which is the
    reason the argument is written here rather than left as a value. */
-.device{width:100%;max-width:none;margin:0 auto;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;position:relative;border:0;background-color:var(--bg-slab);background-image:var(--surface-grain-coarse),linear-gradient(180deg,var(--bg-slab-from),var(--bg-slab-to));background-blend-mode:overlay,normal}
+.device{width:100%;max-width:none;margin:0 auto;min-height:100svh;display:flex;flex-direction:column;position:relative;border:0;background-color:var(--bg-slab);background-image:var(--surface-grain-coarse),linear-gradient(180deg,var(--bg-slab-from),var(--bg-slab-to));background-blend-mode:overlay,normal}
 .app-case{position:relative;background:transparent;border:0}
 /* HIDDEN IS A STATE, NOT A STYLE, so nothing may out-declare it. The user agent
    hides with display:none from ITS sheet and any author declaration beats that

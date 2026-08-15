@@ -429,8 +429,10 @@
      `max-height:var(--cap)` also computes to **`none`**, because `var()` is valid at parse
      time, wins the cascade, and only fails at computed-value time, where the fall is to the
      property's initial value and not to the declaration above it.
-     So a reader who meets `.device`'s pair and this token's single value and tidies the
-     difference away in the obvious direction does not add a fallback, **they delete the cap**:
+     THE OTHER FOUR SITES FOLLOWED ON 2026-08-15, backlog 155, so there is no pair left in this
+     folder to be read against this token and the trap below is now a trap only for somebody
+     putting one back. A reader who meets a pair somewhere and this token's single value and tidies
+     the difference away in the obvious direction does not add a fallback, **they delete the cap**:
      three sheets, `dialog.css`, `betpanel.css` and the filters sheet, go from 92 per cent of the
      small viewport to no maximum at all. The inconsistency is therefore load-bearing, and this
      is the paragraph that has to be read before it is removed.

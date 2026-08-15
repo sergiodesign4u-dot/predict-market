@@ -118,10 +118,12 @@
    **the last link in the roadmap, `ui-kit` in the closing note, sits 38px below the visible edge
    and there is no scroll left to reach it.** At 700 one link is cut and at 640 none is, in
    Chromium 151 and WebKit 26.5 alike, which is the reading moving when the input moved.
-   The pair rather than one declaration, so all five sites still say one thing: `tokens.css`
-   deleted the `vh` half beside `--sheet-cap` on 2026-08-14 on measured grounds, and whether the
-   other four follow is backlog 155 rather than a choice made here. */
-.sidebar{font-family:var(--font-body);position:fixed;top:0;left:0;width:220px;height:100vh;height:100svh;background:var(--chrome-bg);border-right:var(--hairline) solid var(--chrome-border);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:var(--z-chrome);transform:translateX(-100%);transition:transform var(--dur-slow) var(--ease-inout)}
+   ONE DECLARATION, NOT A PAIR, AND IT WAS A PAIR FOR ONE DAY. Backlog 155 was decided on
+   2026-08-15: `tokens.css` had dropped the `vh` fallback beside `--sheet-cap` on 2026-08-14 and
+   the pair turned out to be unwritable for a token at all, so the system could only be made to
+   say one thing by dropping it everywhere. Five sites, one sentence. The argument and the cost
+   are in `base.css` beside `.device`. */
+.sidebar{font-family:var(--font-body);position:fixed;top:0;left:0;width:220px;height:100svh;background:var(--chrome-bg);border-right:var(--hairline) solid var(--chrome-border);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:var(--z-chrome);transform:translateX(-100%);transition:transform var(--dur-slow) var(--ease-inout)}
 .sidebar.open{transform:translateX(0)}
 .sidebar::-webkit-scrollbar{display:none}
 .sidebar-brand{padding:var(--space-20) var(--space-16) var(--space-16);border-bottom:var(--hairline) solid var(--chrome-border)}

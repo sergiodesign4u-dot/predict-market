@@ -60,11 +60,15 @@ bottom nav, `<footer>` or the sheet body of an invoked overlay. It is gone, and 
 that ARE the layer boundary are still declared in `wireframes/_conventions.md`, which is now read
 before the edit rather than enforced after it.
 
-The two trees do not name every screen the same way: a category page is `politics.html` in grey and
-`event-feed-politics.html` in colour. That map lived in `_twins.py` and is now read by a person. It
-is worth knowing why it existed at all: pairing by filename cannot see an unpaired page, so 32 grey
-category screens stood against 4 painted ones for two stages, in silence, behind five hand-written
-copies of the map.
+**The two trees name every screen the same way since 2026-08-15**, backlog 156: the 32 grey
+category screens were `politics.html` and are `event-feed-politics.html`, which is what the paint
+had always called them and what `wireframes/_conventions.md` had always asked for. Before that a
+translation table stood between the trees, first as `_twins.py` and then as a paragraph read by a
+person, and **the table is what hid the hole**: pairing by filename cannot see an unpaired page, so
+32 grey category screens stood against 4 painted ones for two stages, in silence, behind five
+hand-written copies of the map. **105 grey against 106 painted now, one name each, and the single
+unpaired document is `ui-visual/overview.html`, which is the index of the tree rather than a screen
+in it.**
 
 The chrome is the exception that proves the one-way rule. Inside `<header>`, the bottom nav and
 `<footer>` the two trees answer different questions: the paint owns what the header IS, the grey tree

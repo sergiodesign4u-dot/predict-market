@@ -56,6 +56,22 @@ Pattern only (the actual list is produced in Step 03):
 
 Do not enumerate the file list here. That is Step 03's job.
 
+**A CATEGORY PAGE IS A STATE OF THE FEED IN ITS NAME, DECIDED 2026-08-15, backlog 156.** The 32
+category screens were `politics.html` here and `event-feed-politics.html` in the paint, and the two
+trees carried one screen under two names for two stages. **Filename is not one of the six
+differences below**, so that was drift by this document's own definition, and it cost every
+cross-tree reading a translation table. They are `event-feed-<category>[-state].html` in both trees
+now, which is what the naming line further down this file had always asked for.
+
+**The argument for the shorter name was read and refused rather than ignored.** `ia/docs/pages/seo.md`
+gives the category its own route, `/c/{category}`, which is a real argument that it is a screen
+rather than a state. Against it: the same file gives it the H1 "{Category} events" and a description
+that begins "Bet YES or NO on live {category} events", the screen ships the feed's shell, the feed's
+cards and the feed's eight states, and **a flat directory makes `politics.html` a name that says
+nothing about what the page is**. A route and a filename answer different questions. The rename cost
+**5,046 references** and was one sweep; `docs/decisions.md` carries the account and is not rewritten,
+because a claim there is true as of its own date.
+
 ### 5. States: every state is a separate page
 
 Each state is its own page, never a toggle or a variant inside one file. Same

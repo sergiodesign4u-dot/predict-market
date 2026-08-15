@@ -12,6 +12,102 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-15 - Everything the backlog held before the next stage, and three of the four rows were wrong about their own subject
+
+**FOUR ROWS WERE OPEN THAT DO NOT BELONG TO A STAGE, AND ONLY ONE OF THEM DESCRIBED THE THING IT WAS
+ABOUT.** 155, 156, 146 and 139 are closed. What is left is 3 and 12, which are Stage 11's and belong
+to a stage that has not run.
+
+### 155, and the direction that was proved impossible before the row was decided
+
+**THE ROW ASKED WHICH WAY TO MAKE FIVE SITES AGREE AND ONE OF THE TWO WAYS DOES NOT EXIST.** The
+`vh` / `svh` pair works between DECLARATIONS and cannot be written for a custom property, measured
+in both engines the day the row was opened: `max-height:92vh` before `max-height:var(--cap)`
+computes to **`none`**, not to 92vh. So the folder could be made to say one thing only by dropping
+the pair. It is dropped in `base.css`, `betpanel.css`, `catnav.css`, `toc.css` and
+`course-chrome.css`, whose pair had stood for one day.
+
+**THE COST IS NAMED RATHER THAN WAVED AT**, which is the whole of the decision, because the CSS
+question was already settled: on an engine older than **Safari 15.4 of March 2022 or Chrome 108 of
+November 2022**, `.device` loses a minimum height so a short page stops filling the window, and three
+rails lose a maximum they still scroll inside. Cosmetic, bounded, nothing unreachable. Verified after
+in both engines: `.device` 800 at an 800 viewport, `.toc` 718, `.bet-panel` and `.subcat` 664, the
+drawer 800, `--sheet-cap` still `92svh`, 53 stylesheets parsing, 0 page errors.
+
+### 156, and the table that hid the hole
+
+**THE 32 CATEGORY SCREENS ARE `event-feed-<category>[-state].html` IN BOTH TREES NOW.** The shorter
+name had a real argument and it was read: the IA gives the category its own route, `/c/{category}`.
+Against it, the same file gives it the H1 "{Category} events", the screen ships the feed's shell, the
+feed's cards and the feed's eight states, and **in a flat directory `politics.html` is a name that
+says nothing about what the page is.** A route and a filename answer different questions.
+
+**WHAT DECIDED IT WAS NOT THE NAME, IT WAS WHAT THE DIVERGENCE COST.** Two names meant a translation
+table between the trees, first as `_twins.py` and then as a paragraph in two folder files, and
+**pairing by filename cannot see an unpaired page**: that is how 32 grey category screens stood
+against 4 painted ones for two stages, in silence, behind five hand-written copies of the map. So the
+two sentences that DESCRIBED the divergence were rewritten rather than renamed, because they existed
+only to carry the table. **A diff of the two file lists is the pairing now**: 106 painted, 105 grey, 0
+names differing, and the one unpaired document is `ui-visual/overview.html`, the index of the tree
+rather than a screen in it.
+
+**5,046 references in 107 files plus 32 `git mv`**, anchored so a match cannot be preceded by a word
+character or a hyphen, because the naive pattern counts `event-feed-politics.html` as a reference to
+`politics.html` and reported 9,866 where the truth was 5,012. `docs/decisions.md` keeps its four,
+being append-only and true as of its own date.
+
+### 146, and a remainder that was eleven times what the row said
+
+**THE ROW SAID 15 PIXELS ON ONE DOCUMENT AT ONE WIDTH, IN THE `#benchmark` SECTION. IT IS 171, IN
+`#lean-ux-canvas`, AT THREE WIDTHS.** The Lean UX canvas stood in a `style=` attribute as
+`grid-template-columns:repeat(4,1fr)` with `overflow:hidden`, so on a phone each of four cells got
+about 78px and the words inside stood past it and were cut: **19 elements at 320 with the worst 171px
+outside the box, 17 at 360 with 131, 9 at 390 with 101**, identical in both engines.
+
+**THE ROW COULD NOT SEE ANY OF IT BECAUSE IT READ `scrollWidth`, AND A CLIP HIDES THE EVIDENCE OF THE
+THING IT CAUSES.** That is the same sentence this repository already wrote about content standing
+past an edge with no way to reach it being worse than a page that scrolls, and here it cost the row
+its own diagnosis: measured against the page, the document reads exact at 360 and 390; measured
+against the clipping box, it is 131 and 101 over.
+
+**It is a class with three rungs now**, four columns from the desk, two from 360, one below it, with
+the row track going to `auto` alongside. **A `style=` attribute is a rule in the one place a media
+query cannot reach**, so the declaration moved rather than being overridden.
+`repeat(auto-fit,minmax(...))` was measured and refused at three minimums: 150 and 170 give six and
+five columns at 1280, 200 gives two at 640, and a Lean UX Canvas is four columns by definition.
+
+**AND THE SWEEP THAT CONFIRMED IT WAS BLIND ON THE FIRST RUN.** The probe tested `scrollLeft`
+readback to decide whether a clipping box could be scrolled, which skips `overflow:hidden` entirely,
+because a `hidden` box IS scrollable from script and only a `clip` box is not. It reported 0 clipped
+elements on the document whose canvas was cutting 19. **That is the third time today a control has
+caught a probe**, and the pattern is the same each time: the instrument agreed with the answer
+already expected. Re-run without the readback test and with a control made of the defect's own
+material, `overflow:hidden`: control seen 2 of 2, and **13 course documents at eight widths in both
+engines, 208 renders, 0 page scroll and 0 clipped content.**
+
+### 139, refused with both numbers
+
+**THE CURE CHANGES MORE THAN THE DISEASE, AND BOTH WERE MEASURED RATHER THAN ONE.** The disease:
+below the RAIL rung the SEO plate's brand column is 171px tall and asks 209 of a 600px drawing, so
+nothing is upscaled at all; from 900 up it is 406 to 594 tall and asks 722 to 725, **an upscale of
+1.20 to 1.21** at ratio 1. The cure the row proposed, capping `mask-size` at the drawing's own
+height: screenshotting the brand column and diffing in a canvas gives **46.6 to 51.9 per cent of its
+pixels moving, worst channel 31 to 33 of 255, mean about 4**, in both engines at ratio 1 and ratio 2,
+with the control at **0 of 195,755 and 0 of 783,020**.
+
+**That is a composition change and not a repair**: the 122% is a deliberate bleed past the top and
+bottom of the plate, and capping it removes the bleed exactly where the plate is largest. A bigger
+export stays blocked on its own ground, the shipped 520x600 frames not being a crop of the 1254x1254
+masters. So it is refused, and it should return as a decision about how the plate looks rather than
+as a defect.
+
+**Verified across all four**: 3,216 renders over 268 documents in the three trees at six widths in
+Chromium 151 and WebKit 26.5, 0 horizontal scroll, 0 duplicate ids, 0 page errors, 0 HTTP errors,
+positive control 2 of 2; 0 broken of 34,950 links over 297 documents; 208 course renders at eight
+widths with 0 clipped content and its own control at 2 of 2.
+
+---
+
 ## 2026-08-15 - The stand was 62 pixels narrower than the product at every width, and the cure it had already been given was one it was already taking
 
 **BACKLOG 158 OPENED THE SAME DAY IT CLOSED AND ITS OWN CAUSE WAS WRONG.** The row read "a cell two

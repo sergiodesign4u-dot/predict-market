@@ -28,9 +28,12 @@ type, radius, photography, texture. It does not own what is on the page.
 - **A dialog that also has a standalone page is one markup, not two.** The canonical copy is the one
   in `event-feed.html`; only the head, the wiring and the state screens may differ. A screen can
   drift from its own second copy inside this tree, and only the twin was ever checked.
-- **A screen has a twin and the names differ**: `politics.html` in grey is `event-feed-politics.html`
-  here. Pairing by filename cannot see an unpaired page, which is how 32 grey category screens stood
-  against 4 painted ones for two stages, in silence.
+- **A screen has a twin and since 2026-08-15 it has the same NAME**, backlog 156: the 32 grey
+  category screens were `politics.html` and are `event-feed-politics.html`, so a diff of the two file
+  lists is now the pairing rather than a table beside it. **The table is what hid the hole**: pairing
+  by filename cannot see an unpaired page, which is how 32 grey category screens stood against 4
+  painted ones for two stages, in silence. The one document with no twin is `overview.html` here, and
+  it is the index of this tree rather than a screen in it.
 - **A shared image asset lives in `../assets/`**, owned by neither tree.
 
 ## What is here

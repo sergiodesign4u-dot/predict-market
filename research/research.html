@@ -571,7 +571,24 @@
     margin-bottom: 4px;
   }
   .aida-step p { font-size: 12px; color: #999; margin: 0; max-width: none; }
-</style>
+
+    /* THE LEAN UX CANVAS IS FOUR COLUMNS AND IT WAS FOUR COLUMNS AT 320 TOO, 2026-08-15,
+       docs/backlog.md 146. The grid stood in a `style=` attribute as `repeat(4,1fr)` with
+       `overflow:hidden`, so on a phone each cell got about 78px and the words inside stood
+       past the box and were CUT: 19 elements at 320 with the worst 171px outside, 17 at 360
+       with 131, and 9 at 390 with 101, in Chromium 151 and WebKit 26.5 alike. The row that
+       tracked this measured `scrollWidth` and read the page as exact at 360 and 390, which is
+       the repository's own rule met again: a clip hides the evidence of the thing it causes,
+       and content standing past an edge with no way to reach it is worse than a page that
+       scrolls. Four columns from the desk rung, two from 360, one below it, and the row track
+       goes to `auto` with them or the cells keep the two-row shape they no longer have.
+       It is a class rather than an attribute because a `style=` is a rule in the one place a
+       media query cannot reach. */
+    .luc-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto auto;gap:1px;
+      background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+    @media (max-width:639.98px){.luc-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:auto}}
+    @media (max-width:359.98px){.luc-grid{grid-template-columns:1fr}}
+  </style>
   <!-- course chrome: the panel is a component, so the page loads it. Built by _course_chrome.py. -->
   <link rel="stylesheet" href="../components/fonts.css">
   <link rel="stylesheet" href="../components/tokens.css">
@@ -671,7 +688,7 @@
     <p style="margin-bottom:4px">Single visual summary of the product strategy. Overlaps with Section 7 Conclusions by design: glance vs detail. Framework by Jeff Gothelf, Lean UX Canvas v2.</p>
     <p style="font-size:12px;color:#666;margin-bottom:24px">Populated from strategy.md, aarrr.md, competitive-analysis.md, master-research.md.</p>
 
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto auto;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
+    <div class="luc-grid">
 
       <!-- Row 1 -->
       <div style="background:var(--surface);padding:16px 18px">

@@ -1,7 +1,8 @@
 # components/ - the system itself
 
-This folder IS the design system. **54 stylesheets, 10,130 lines**: 48 here and 6 in `patterns/`,
-re-counted 2026-08-15 after the action bar took its floor. It was 10,101 earlier the same day, after
+This folder IS the design system. **54 stylesheets, 10,140 lines**: 48 here and 6 in `patterns/`,
+re-counted 2026-08-15 after the `vh` fallbacks went. It was 10,130 earlier the same day, after the
+action bar took its floor. It was 10,101 earlier the same day, after
 the viewport-unit census below. It was 10,067 on 2026-08-14 by `cat components/*.css components/patterns/*.css | wc -l` after the filters
 sheet, its two later passes and the scroll-driven edge fade. It was 9,224 on 2026-08-13 after `trust-art.css`
 was written (`docs/backlog.md` 140). It was 53 and 8,734 earlier the same day, after `print.css`
@@ -481,9 +482,12 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   parse time, wins the cascade, and fails only at computed-value time, where the fall is to the
   property's initial value and never to the declaration above it. So a reader who meets `.device`'s
   pair and `--sheet-cap`'s single value and makes them agree in the obvious direction takes the cap
-  off three sheets. **The inconsistency is load-bearing**, `tokens.css` carries the proof beside the
-  token, and whether the four declarations drop their halves is backlog 155 and a question about
-  audience rather than about CSS.
+  off three sheets. **So the folder could be made to say one thing only by DROPPING the pair, never
+  by adding it, and backlog 155 was closed that way on 2026-08-15**: five sites, one sentence, and
+  the cost named rather than waved at, an engine older than Safari 15.4 of March 2022 or Chrome 108
+  of November 2022 losing a minimum height on `.device` and a maximum on three rails that still
+  scroll. `tokens.css` keeps the proof beside the token, because the trap is now a trap only for
+  somebody putting a pair back.
 - **A PROPERTY ASSIGNMENT FIRES NO EVENT, AND THIS FOLDER HAS NOW PAID FOR IT TWICE IN ONE DAY.**
   Setting `input.checked` from script updates the input and notifies nothing, so a `change` listener
   is not a listener for the script's own writes. The filters sheet reset a radio and went on printing
