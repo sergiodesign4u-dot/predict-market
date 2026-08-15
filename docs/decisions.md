@@ -12,6 +12,89 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-15 - Seventeen rules that drew nothing, and the print sheet was partly aimed at nothing
+
+**THE SYSTEM WAS READ AGAINST THE PRODUCT FOR THE FIRST TIME**, rather than the product being read
+against itself. 1,282 style rules taken out of the browser's own CSSOM, 1,144 distinct selector
+parts, asked of 163 documents in two passes: once with the pseudo-classes a static page cannot
+satisfy stripped, and once with every state pseudo and attribute selector stripped as well, so that a
+rule waiting on a checked radio is not confused with a rule waiting on an element that does not
+exist. The report is `ui-kit/docs/consistency.md`.
+
+**THE CONTRACT HELD EVERYWHERE IT WAS CHECKED.** 53 imports against 53 files with no orphan and no
+duplicate. 47 components each with a stylesheet, a kit page, an inventory row and a route. 0 media
+queries in the 106 painted screens. 387 `style=` attributes carrying 435 declarations, **every one of
+them the photograph, the odds-bar datum or the chart's `--v`, and 0 of them styling**. 24
+`!important` and none in a component. 24 raw colours outside `tokens.css` and **0 of them a theme
+colour**. Six raw ladder-step px on a sizing property and, read in context, **0 of them drift**: a
+`right:18px` is not an icon size.
+
+**WHAT WAS DELETED, AND IT CHANGED NOTHING BY DESIGN.** `pre`, `kbd`, `samp` and `select` came off
+two reset lines in `base.css` at 0 elements each; `.tbd,.placeholder-line` and `.groove-sep` went
+whole. `strong` came off `.protect` and `b` off `.reconcile-box`, **each block naming both tags and
+shipping only one**. Both `.chart-svg text` rules went, and with them the last raw px `font-size` in
+the system, which was the exception a census had wanted to sweep up and turned out to be an exception
+about a node that is not there. `.theme-switch-inline` and its ring went on the `account.css`
+precedent. `.bottom-nav .badge-dot` went, and **a count of the class would have said it was alive**:
+`.badge-dot` has 86 placements and every one of them stands in `.bell-wrap`, so the pair has never
+met and the question a descendant selector asks is about the PAIR.
+
+**THE COMMENT THAT KEPT `.tbd` ALIVE HAD OUTLIVED ITS OWN SUBJECT.** It said the frozen kit still
+carries the wireframe's chips and must keep rendering the way it did. `docs/kit-archive/` holds **0
+HTML files**: what was kept of the deleted kit is prose. And a grep says the class is alive at 364
+occurrences while the DOM of all 106 screens says 0, because every one of them is in
+`ui-visual/old/`, which links no stylesheet. **A rule kept alive by a sentence about a folder is a
+rule nobody re-reads when the folder changes.**
+
+**PRINT WAS THE REAL FINDING AND IT WAS NOT A DELETION.** Four of `print.css`'s rules named
+`.action-bar`, `.notice`, `.seo-plate` and `.bets-table`, which are COMPONENT names, and **0 elements
+in any of the three trees wear any of them.** `.action-bar` was pure redundancy, with `.cta-bar` in
+the same list, and it was deleted. The other three were repaired, because the intent is legible and
+correct: `.notice` and `.seo-plate` became the seven classes the markup actually wears, so **250
+blocks that were printing with no grey edge now have one and no longer split across a fold**.
+
+**`.bets-table` IS THE ONE WORTH READING TWICE.** Renaming it to `.ptable` was tried first and
+MEASURED, and `.ptable` computes `overflow:visible` on paper with the rule and without it, **because
+that component declares no scroller at all**. A rule that applies and changes nothing is the same
+defect one step further along. What scrolls in that block is the two tab bars, `.ed-tabbar` and
+`.ptab-bar`, and they were still `auto` on paper. **The component name was wrong and so was the
+component**, which is what a name written from a folder listing buys.
+
+**THREE OF THE SEVEN FINDINGS WERE THE INSTRUMENT, AND TWO OF THEM ARE STRUCK RATHER THAN FIXED.**
+The pass first reported four tokens read by nobody, `--bone-200`, `--brass-220`, `--ink-700` and
+`--space-56`, and all four are read by `ui-kit/_page.css`, which draws the palette and the spacing
+ladder: **a value's reader can be the thing whose job is to show it**, and a sweep for dead values
+that does not read the vitrine deletes the swatches first. It also reported `hiw.css` naming six
+colour roles it never reads, and the six stand inside a parenthetical in that line saying they LEFT
+for `platehead.css` on 2026-08-11. **379 of 379 tokens are read and 52 of 53 contract lines are
+exact.** The one that was not is `bets-table.css` naming `.sel`, which it writes no rule for and
+which no element inside a `.ptable`, an `.act-list` or a `.hold-cols` wears.
+
+**And the reachability instrument lied twice before it was believed.** A stylesheet read from
+`file://` has no `cssRules`, because every document from disk has its own opaque origin, so the first
+run reported **0 style rules and then scanned 163 documents against nothing and printed 0 dead
+selectors**, which reads exactly like a pass. That is the fourth time the disk origin has cost this
+repository. Then the pseudo-stripper listed `focus` before `focus-visible` in an alternation, so
+`.chip-nav:focus-visible` became `.chip-nav-visible` and every focus rule in the system was filed as
+dead: **a selector that is not a selector any more still parses**, which is why the count came back
+plausible instead of zero.
+
+**WHAT WAS NOT TOUCHED, AND EACH IS A PRODUCT QUESTION RATHER THAN A CLEANUP.** `.sel` and `.no`
+never appear on the same element in any tree, so the outcome pair has a chosen-YES face everywhere
+and its chosen-NO twin has never been rendered: that may be a defect in the SCREENS. `.hiw-body`,
+`.hiw-full`, `.hiw-arrow` and `.hiw-hero` have 0 placements in the product and 43 on the stand, so
+eight rules in two files draw a how-it-works sheet that was designed and never shipped.
+`.icon-btn-lift` is a face with 0 placements and 9 specimens, which is `account.css` again.
+`.hold-name` prints truncated with an ellipsis and no way to see the rest.
+
+**Verified**: base tree against live tree over 163 documents and **114,754 elements**, 26 computed
+properties each, **0 differing rows**, with the control at 0 first and the absolute asset URL
+normalised because two servers cannot agree on a port. On paper: `.protect` from a brass edge to the
+grey hairline and gaining `break-inside:avoid`, `.feed-seo` from no border at all to the hairline,
+the two tab bars from `auto` to `visible`, and the screen unchanged at `auto`.
+
+---
+
 ## 2026-08-15 - The switcher that was meant was the other one, and setting its height alone would have changed nothing
 
 **THE PREVIOUS ENTRY ANSWERED THE WRONG CONTROL.** "Make the switching buttons smaller on a phone,

@@ -91,8 +91,17 @@
    stand in `ui-kit/`, 0 in `wireframes/`, and exactly 1 in `ui-visual/`**, in the prose of
    `overview.html`, which is the index of the tree rather than a screen in it. */
 body{margin:0;line-height:var(--leading-base);color:var(--text-primary);font-family:var(--font-body-root);background:var(--bg-page);overflow-wrap:break-word}
-code,pre,kbd,samp{overflow-wrap:normal}
-button,select,summary{font:inherit}
+/* FOUR NAMES CAME OFF THESE TWO LINES ON 2026-08-15, and they were `pre`, `kbd`, `samp` and
+   `select`. Counted in the DOM of all 106 painted screens and all 57 kit pages: **0 elements of
+   any of the four**, against 1,709 `code` and a `button` and a `summary` on every screen there is.
+   A reset for an element the product does not have is the same declaration as the four this
+   folder has already deleted for it: present, correct and consulted by nothing.
+   THE RISK IS NAMED RATHER THAN INSURED AGAINST. The day a `<select>` ships it will render in the
+   User Agent's font until somebody writes the rule, and that is the deal this repository already
+   made out loud: new goes into the SYSTEM first and onto a screen second. A control arrives with
+   its rule; it does not arrive into a rule that has been waiting years for it. */
+code{overflow-wrap:normal}
+button,summary{font:inherit}
 /* TWO KINDS OF MARK, ONE WEIGHT, 2026-08-09. The set is Solar Bold, filled, carried
    in each page's sprite and drawn through <use>. It does not cover everything, and
    that is a fact about marks rather than a gap in the library: A CROSS, A CHEVRON, A
@@ -504,11 +513,16 @@ body.app-case{background:var(--bg-page)}
 @media(min-width:1140px){
   body:has(#rmSidebar){padding-left:var(--container-sidebar)}
 }
-/* The frozen kit still carries the wireframe's [TBD] and [placeholder] chips, and
-   it must keep rendering the way it did, so the rule that hides them stays. The
-   painted screens no longer have the markup at all (ui-visual/_strip_wireframe.py):
-   an annotation about what is not built yet belongs in wireframes/, which owns it. */
-.tbd,.placeholder-line{display:none}
+/* `.tbd,.placeholder-line{display:none}` STOOD HERE AND IS GONE, 2026-08-15, AND THE COMMENT THAT
+   KEPT IT ALIVE HAD OUTLIVED ITS OWN SUBJECT. It read "the frozen kit still carries the wireframe's
+   [TBD] and [placeholder] chips, and it must keep rendering the way it did", and that was true when
+   it was written. `docs/kit-archive/` holds **0 HTML files** today: the kit was deleted on
+   2026-08-07 and what was kept of it is prose. There is nothing frozen left to render.
+   A GREP SAYS THE CLASS IS ALIVE AND THE DOM SAYS IT IS NOT. The two names have 364 and 28
+   occurrences in this repository and **every one of them is in `ui-visual/old/`**, the pre-Vault
+   archive, which links no stylesheet. Across the 106 painted screens and the 57 kit pages the DOM
+   count is 0 and 0. **A rule kept alive by a sentence about a folder is a rule nobody re-reads when
+   the folder changes**, which is the argument for reading the tree rather than the comment. */
 /* THE PAGE A CATALOGUE DEMONSTRATES ON, which is a frame thing and not a
    component's. .tc-page is the section of ui-visual/toasts.html that stands in
    for whatever a toast would be covering: one screen, one class, one margin.
@@ -517,7 +531,10 @@ body.app-case{background:var(--bg-page)}
    stands there. Backlog item 16c, and the fix was always the address rather
    than the rule. */
 .tc-page{margin-bottom:var(--space-16)}
-.groove-sep{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
+/* `.groove-sep` STOOD HERE AND IS GONE, 2026-08-15. A groove and a lit edge, the divider face this
+   system draws in five other places, on a class **0 elements wear** in either tree. Nothing replaces
+   it: where a divider is wanted the component that wants it declares one, which is what all five of
+   the others already do. */
 
 /* ============================================================================
    THE PAGE FRAME, which arrived here in the patterns step and is not a pattern.

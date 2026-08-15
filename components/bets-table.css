@@ -1,5 +1,11 @@
 /* components/bets-table.css
-   Component: bets-table. Classes: .act-list, .act-row, .act-time, .act-txt, .hold-amt, .hold-col, .hold-cols, .hold-name, .hold-out, .hold-rank, .hold-row, .ptable, .sel, .you.
+   Component: bets-table. Classes: .act-list, .act-row, .act-time, .act-txt, .hold-amt, .hold-col, .hold-cols, .hold-name, .hold-out, .hold-rank, .hold-row, .ptable, .you.
+   (`.sel` came off this line on 2026-08-15. This file writes no rule for it AND no element inside a
+   `.ptable`, an `.act-list` or a `.hold-cols` wears it, in either tree, measured in the DOM. `.sel`
+   is the shared chosen-state class and five components declare it; this was the sixth naming it
+   without owning it or wearing it. The Classes line is the component's markup vocabulary, so a
+   class with no rule may stand on it - `.prov-google` and `.filters-close` do - but a class with
+   neither a rule nor a placement is a claim about nothing.)
 
    Reads: --border-hairline, --edge-groove-dark, --outcome-no-figure, --outcome-yes-text,
           --text-brass, --text-muted, --text-primary, --tint-brass-09

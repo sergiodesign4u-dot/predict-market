@@ -207,20 +207,17 @@
    taken. */
 .sidebar :is(a,button,summary,[tabindex]):not(.theme-switch):focus-visible{outline:var(--ring) solid var(--chrome-accent);outline-offset:var(--ring)}
 .theme-switch:focus-visible{outline:var(--ring) solid var(--chrome-accent);outline-offset:calc(var(--ring) * -1)}
-/* the same control laid out in a row rather than as the last item of a panel */
-.theme-switch-inline{width:auto;flex:0 0 auto;border-bottom:0;padding-left:0;padding-right:var(--space-16)}
-/* AND THEREFORE IT ANSWERS TO A DIFFERENT GROUND, which is the whole rule and
-   the only one worth remembering here: A RING ANSWERS TO WHAT IT STANDS ON, NOT
-   TO THE COMPONENT IT BELONGS TO.
-   The panel above takes --chrome-accent because the panel does not flip with the
-   theme. This variant is the same control lifted OUT of the panel and set on a
-   vitrine page, which does flip, so the fixed brass that is right in the panel
-   lands on chalk at 2.03:1 against a 3:1 floor. It takes --focus-ring for the
-   same reason its sibling does not: that role flips with the ground under it.
-   Measured after: 8.98:1 in the Vault, 7.46:1 in daylight, where it was 8.98 and
-   2.03. Only outline-color moves; the inset offset above still applies, because
-   the switch still sits flush against whatever holds it. */
-.theme-switch-inline:focus-visible{outline-color:var(--focus-ring)}
+/* `.theme-switch-inline` AND ITS RING STOOD HERE AND BOTH ARE GONE, 2026-08-15. It was the theme
+   switch lifted out of the panel and laid in a row on a vitrine page, and **0 elements wear it**,
+   in either tree, in the DOM.
+   THE RULE IT CARRIED IS THE REASON THIS HEADSTONE IS LONG: **A RING ANSWERS TO WHAT IT STANDS ON,
+   NOT TO THE COMPONENT IT BELONGS TO.** The panel takes `--chrome-accent` because the panel does
+   not flip with the theme; this variant stood on a page that does, so the fixed brass that is right
+   in the panel landed on chalk at 2.03:1 against a 3:1 floor, and it took `--focus-ring` instead,
+   measured at 8.98:1 in the Vault and 7.46:1 in daylight. That sentence is the one thing worth
+   carrying forward, and the day the switch is put on a page again it is the rule to write with it.
+   The variant is deleted rather than kept for that day, on this folder's own account of
+   `account.css`: a face with no placement is a name, not a component. */
 
 /* PRESS, and it reads a chrome role for the same reason the ring above does.
    Every row of this panel already had a hover and none of them had a press, so a

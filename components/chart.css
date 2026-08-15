@@ -20,21 +20,26 @@
    so the non-neutral colour sweep called them the moment the port landed. That is the pair working as
    intended: a fossil is only visible once the thing it was a fossil OF is gone. */
 .chart-svg polyline{fill:none}
-/* THE ONE FONT-SIZE IN THIS SYSTEM THAT IS NOT A FONT SIZE, and it stayed px on 2026-08-12 when
-   the whole type ramp went to rem. The host is `viewBox="0 0 300 100"` with
+/* `.chart-svg text` STOOD HERE TWICE AND BOTH ARE GONE, 2026-08-15: `font-size:7px` here and
+   `fill:var(--text-muted)` below. **The chart svg carries no `<text>` node**, on any of the 106
+   painted screens or the 57 kit pages, and the reading was taken in the DOM rather than the source.
+   WHAT GOES WITH THEM IS THE BEST ARGUMENT IN THIS FILE, so it is kept here rather than lost. It
+   read: this is the one `font-size` in the system that is not a font size, and it stayed px on
+   2026-08-12 when the type ramp went to rem, because the host is `viewBox="0 0 300 100"` with
    `preserveAspectRatio="none"` drawn into `height:160px;width:100%`, so 7 is a USER UNIT in a
-   coordinate system that is stretched to fill the box, by a different factor on each axis. It is a
-   drawing dimension that happens to be spelled `font-size`. In rem it would follow the reader's
-   browser setting while the chart it labels went on following the viewBox, and the label would
-   grow out of the plot it belongs to. The census that found "229 font-size declarations, of which
-   exactly one is a raw px literal" counted this as the exception to sweep up; it is the exception
-   to leave. A UNIT IS ONLY A UNIT INSIDE THE COORDINATE SYSTEM THAT READS IT. */
-.chart-svg text{font-size:7px}
+   coordinate system stretched by a different factor on each axis. In rem it would have followed the
+   reader's browser setting while the chart went on following the viewBox, and the label would have
+   grown out of the plot it belongs to. **A UNIT IS ONLY A UNIT INSIDE THE COORDINATE SYSTEM THAT
+   READS IT**, and that is still true; it is now true of nothing here.
+   AND THE CENSUS NUMBER MOVES WITH IT. "229 font-size declarations, of which exactly one is a raw
+   px literal" was this rule, and the count is **0 raw px font-sizes** from today. The exception the
+   sweep wanted to clean up turned out to be an exception to a rule about a node that is not there.
+   The day the chart is labelled in SVG rather than in HTML, the argument above is the rule to write
+   again, in px, with this paragraph beside it. */
 .chart-svg{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-chart-well)}
 .chart-svg polyline,.chart-svg line{vector-effect:non-scaling-stroke}
 .chart-svg polyline{stroke:var(--chart-line);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;filter:drop-shadow(0 1px 4px var(--chart-line-glow))}
 .chart-svg .nowline{stroke:var(--border-brass-hover);stroke-width:1;stroke-dasharray:3 3}
-.chart-svg text{fill:var(--text-muted)}
 .ed-chart-head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-12) var(--space-16);flex-wrap:wrap;margin:0 0 var(--space-12)}
 .ed-chart-head :is(h2,h3){margin:0}
 .ed-chart-now{font-family:var(--font-mono);font-size:var(--text-13);font-weight:var(--weight-semibold);color:var(--outcome-yes-text)}

@@ -39,7 +39,11 @@
   /* 2. Nothing floats on paper. A sticky box either repeats or lands in the middle of a
      column, and both are the same defect: a position resolved against a viewport that a
      sheet of paper does not have. */
-  .app-header,.bottom-nav,.bet-dock,.cta-bar,.action-bar{position:static!important}
+  /* `.action-bar` stood at the end of this list and came off on 2026-08-15. It is the COMPONENT's
+     name and `.cta-bar` in the same list is the CLASS the markup wears; 0 elements have ever worn
+     the other. Nothing is lost by the deletion, which is what separates it from the three names
+     below that were repaired instead. */
+  .app-header,.bottom-nav,.bet-dock,.cta-bar{position:static!important}
   .bottom-nav,.bet-dock,.cta-bar{display:none!important}
 
   /* 3. The header keeps its lockup and loses every control, because a bell, an avatar, a
@@ -81,12 +85,34 @@
         --brass-400:#6b5312;--brass-500:#6b5312;--brass-600:#5a4510;--brass-700:#4e3c0c;
         --text-brass:#6b5312;--color-action:#6b5312}
   /* A block that was a plate on screen is a shape with no edges once its ground is gone, so
-     the four that carry meaning by being SEPARATE get a hairline back. */
-  .card,.notice,.pos,.trust-item,.seo-plate,dialog{border:1px solid #bbb!important}
+     everything that carries meaning by being SEPARATE gets a hairline back.
+     TWO OF THE NAMES HERE WERE COMPONENT NAMES AND REACHED NOTHING, 2026-08-15. `.notice` and
+     `.seo-plate` are the files; the markup wears `.protect`, `.push-banner`, `.widget-box`,
+     `.reconcile-box`, `.spinner-box`, `.inline-error` and `.feed-seo`, and the DOM count of the two
+     that were written here is **0 in all 106 painted screens**. So 250 blocks that this rule was
+     written for printed with no edge at all, and nobody could see it on a screen.
+     THEY ARE REPAIRED RATHER THAN DELETED, because the intent is legible and correct: a plate
+     without its ground needs its line back. The count was 6 names and the comment said four; it
+     says neither now. */
+  .card,.pos,.trust-item,dialog,
+  .protect,.push-banner,.widget-box,.reconcile-box,.spinner-box,.inline-error,
+  .feed-seo{border:1px solid #bbb!important}
 
   /* 6. A scroller shows what fits and paper has no thumb, so anything that scrolls sideways
-     on screen has to lay its content out instead. */
-  .cat-nav ul,.subcat,.opt-list,.bets-table,.ed-chart-area{overflow:visible!important}
+     on screen has to lay its content out instead.
+     `.bets-table` WAS THE THIRD COMPONENT NAME AND ITS REPAIR IS NOT THE OBVIOUS ONE, 2026-08-15.
+     Renaming it to `.ptable`, the table's own class, was tried and measured first: `.ptable` computes
+     `overflow:visible` in print with the rule and without it, because **that component declares no
+     scroller at all.** A rule that applies and changes nothing is the same defect as a rule that
+     never applies, one step further along.
+     The two things that DO scroll sideways in that block are the tab bars, `.ed-tabbar` on the event
+     and `.ptab-bar` on a profile, both `overflow-x:auto` and both still `auto` on paper until now.
+     They are what rule 6 was always about. **The component name was wrong AND the component was
+     wrong**, which is what a name written from a folder listing buys.
+     LEFT OPEN AND NAMED: `.hold-name` is `overflow:hidden` with `text-overflow:ellipsis`, so a long
+     holder's name prints truncated with a row of dots and no way to see the rest. That is a real
+     paper defect and it is a decision about what a printed table is for, not a repair. */
+  .cat-nav ul,.subcat,.opt-list,.ed-tabbar,.ptab-bar,.ed-chart-area{overflow:visible!important}
 
   /* 7. A link that goes nowhere should not underline like one that does, and a URL printed
      after every internal link is noise. Nothing is added; the decoration is just removed. */
@@ -94,6 +120,7 @@
 
   /* 8. Page breaks. A card, a position row and a plate are single objects and reading half of
      one across a fold is worse than a short page. */
-  .card,.pos,.notice,.trust-item,.opt-row,.plate-head{break-inside:avoid}
+  .card,.pos,.trust-item,.opt-row,.plate-head,
+  .protect,.push-banner,.widget-box,.reconcile-box,.spinner-box,.inline-error{break-inside:avoid}
   h1,h2,h3{break-after:avoid}
 }

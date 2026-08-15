@@ -1,7 +1,9 @@
 # ui-kit/ - the vitrine, rebuilt by hand 2026-08-07 to 2026-08-08
 
 **All five steps are done and the plan below is the record of how, not a to-do list.** What is on the
-stand today: **57 pages**, `_page.css`, `_nav.js`, and five reports in `docs/`. It was 54 until
+stand today: **57 pages**, `_page.css`, `_nav.js`, and **six** reports in `docs/`, the sixth being
+`consistency.md` of 2026-08-15, which is the first one that read the system against the product
+instead of reading the product. It was 54 until
 2026-08-11, when three landed the same day: `logo` with the rename to Yonder, `platehead` by backlog
 108 (a face that three components wear, found by asking what `dialog.css` and `hiw.css` had in
 common rather than by walking a screen), and **`responsive.html`, the FIFTH foundation**.

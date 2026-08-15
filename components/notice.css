@@ -57,11 +57,15 @@
    rule about wrapping. A notice narrower than its column is what a notice looks like.
    Responsive step 4, tokens.css page frame. */
 .protect.protect-page{border-color:var(--tint-brass-30);background:var(--tint-brass-06);color:var(--text-muted);max-width:var(--measure)}
-.protect b,.protect strong{color:var(--text-primary)}
+/* `strong` came off this line on 2026-08-15 and `b` came off the `.reconcile-box` line below, and
+   the pair is worth one sentence: **each block names both tags and each block only ever ships one
+   of them.** A protection note emphasises with `<b>`, a reconcile box with `<strong>`, 0 of the
+   other in either, over both trees. Writing both was insurance against markup that never arrived. */
+.protect b{color:var(--text-primary)}
 .push-banner{background:color-mix(in oklab,var(--color-trust) 8%,var(--bg-surface));border:var(--hairline) solid color-mix(in oklab,var(--color-trust) 22%,var(--border-hairline));border-radius:var(--radius-10);color:var(--text-primary)}
 .inline-error{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary);font-size:var(--text-12);line-height:var(--leading-base);padding:var(--space-8)}
 .reconcile-box{border:var(--hairline) solid var(--tint-brass-45);border-radius:var(--radius-10);background:var(--tint-brass-09);color:var(--text-primary);font-size:var(--text-12);line-height:var(--leading-base);padding:var(--space-8)}
-.reconcile-box b,.reconcile-box strong{color:var(--text-brass)}
+.reconcile-box strong{color:var(--text-brass)}
 .outcome-dialog .protect{color:var(--text-muted);font-size:var(--text-12);line-height:var(--leading-base);margin:0}
 /* THE OUTCOME IS A MODIFIER NOW, 2026-08-08, AND IT WAS THREE CONTAINERS.
    Until today this box took its whole face from the dialog around it:

@@ -26,7 +26,13 @@
 .avatar-menu ul{list-style:none;margin:0;padding:0}
 .avatar-menu li{border-top:var(--hairline) solid var(--border-hairline)}
 .avatar-menu li:first-child{border-top:none}
-.bottom-nav .badge-dot{position:static;margin-left:var(--space-2)}
+/* `.bottom-nav .badge-dot` STOOD HERE AND IS GONE, 2026-08-15, AND A COUNT OF THE CLASS WOULD HAVE
+   SAID IT WAS ALIVE. `.badge-dot` has 86 placements in the product and **every one of them stands
+   in `.bell-wrap`, in this header**; the bottom bar holds four `.nav-slot` links and no bell, so
+   the pair has never met. **The question a descendant selector asks is about the PAIR**, and a
+   census of either half answers it wrongly, which is the same reading error this folder wrote down
+   about a component's width: a verdict about a component is a statement about the set of its
+   placements. */
 /* `.delta .row` stood here and is gone, 2026-08-03. `.delta` is course-page
    vocabulary: it is carried by ia/seo.html, ia/system.html and
    user-research/cjm-to-be.html, and not one of the 28 course pages loads
