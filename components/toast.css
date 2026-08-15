@@ -13,6 +13,30 @@
    cookie banner. Backlog item 16c. */
 .toast-inner{display:flex;flex-direction:column;gap:var(--space-12)}
 .toast-group{display:flex;flex-direction:column;gap:var(--space-8)}
+/* A TOAST ARRIVES, AND IT NEEDED NO INVENTED CLASS, 2026-08-15. The inventory of moments had this
+   row marked NEEDS A STATE and it was going to be an order on another stage: a toast entering and
+   leaving is a behaviour, and the system carries no `.is-entering` for it. **Drawing one would have
+   been a class the product never wears**, which is the trap this repository has already paid for
+   with a face that had no placement.
+
+   `@starting-style` IS THE STATE, AND THE ELEMENT'S OWN FIRST PAINT IS WHAT ENTERS IT. A toast is
+   inserted into the document when it has something to say, so the moment it exists IS the moment it
+   arrives, and no class has to be added and then removed. Both engines have it, checked with
+   `CSSStyleSheet.replaceSync` before this was written rather than looked up.
+
+   THE DIRECTION IS DOWN FROM THE EDGE IT SITS AGAINST, so the movement says where it came from, and
+   it is multiplied by `--motion` like every distance here: reduced motion takes the travel to 0 and
+   leaves the toast appearing, because reduction removes the movement and never the state. `opacity`
+   and `translate` only, which is the cheap pair.
+
+   AND THE STATIC TREE STILL DRAWS IT CORRECTLY. `@starting-style` applies to the first style change
+   after an element is inserted; the four toasts that stand written into `toasts.html` are there at
+   parse time and are simply at rest, so the specimen page is unaffected and the rule waits for the
+   toast that a controller inserts. */
+@starting-style{
+  .toast{opacity:0;translate:0 calc(8px * var(--motion))}
+}
+.toast{transition:opacity var(--dur-slow) var(--ease-enter),translate var(--dur-slow) var(--ease-enter)}
 .toast{display:flex;align-items:center;gap:var(--space-12);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-card-quiet);padding:var(--space-12) var(--space-12);box-shadow:0 18px 40px -24px var(--shadow-ink),inset 0 1px 0 var(--edge-groove-light)}
 /* THE STROKE WIDTH LEFT THIS RULE ON 2026-08-10. It said 2.2, in user units, which is
    the family's old declaration copied onto a bigger box: 2.2 in a 24 viewBox drawn at 18

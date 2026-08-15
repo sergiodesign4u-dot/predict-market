@@ -12,6 +12,63 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-15 - Four open rows closed before Handoff, and three of them closed by finding out what was not there
+
+**349 `<details>` NOW ARRIVE, AND THE HEIGHT IS DELIBERATELY NOT ANIMATED.** The connection job had
+one row with a state, 349 placements on all 105 screens and no movement at all: the header's
+notification and avatar dropdowns, the feed's two menus, the footer's language chooser, the
+multi-outcome accordion and the terms contents. Three ways to animate the BOX were built on a
+scratch page and read at 120ms into a 600ms transition, in both engines: `opacity` on
+`::details-content` runs in **both**; `block-size:auto` with `interpolate-size:allow-keywords` runs
+in **Chromium only**, WebKit jumping straight to full height; and `grid-template-rows:0fr` to `1fr`
+animated in **neither**, reading the full track at 120ms in both. **There is no cross-engine way to
+animate a details expansion**, so the panel fades and the room for it appears at once. The fade is a
+floor in `base.css` because the family is four files rather than one component, and it works at all
+only because of `transition-behavior: allow-discrete`: a closed `::details-content` is
+`content-visibility:hidden`, so without it the rule would never fire. The 339 panels that are
+positioned OUT of flow also travel 4px from the control that opened them, multiplied by `--motion`;
+the 10 in the flow get the fade alone, because a box that is also growing must not be sliding.
+
+**THE TOAST NEEDED NO INVENTED CLASS.** The inventory had this marked NEEDS A STATE and it was going
+to be an order on another stage, because a toast entering is a behaviour and the system carries no
+`.is-entering`. **`@starting-style` makes the element's own first paint the entering state**: a toast
+is inserted when it has something to say, so the moment it exists is the moment it arrives, and no
+class is added and then removed. Both engines checked with `CSSStyleSheet.replaceSync` before the
+rule was written. The four toasts written into `toasts.html` are there at parse time and are simply
+at rest, so the specimen page is unaffected.
+
+**LOAD MORE CLOSES AS NEVER, AND THE PRODUCT SAID SO RATHER THAN THE ARGUMENT.** `#loadMore` has **0
+handlers anywhere in either tree**, and clicking it in a browser leaves the card count at 13 before
+and 13 after. There is no append, so there is no moment, which is the same verdict the live odds
+delta got the day before for the same reason: a movement needs a moment and a moment needs a change.
+
+**38 FONT-SIZE LITERALS IN THE STAND: 34 MOVED, 4 DECLARED, AND THE SWAP IS INERT.** Raised by the
+impeccable detector, all one class, 0 in `components/` and 0 in `ui-visual/`. The four that stayed
+have no ramp step: three 9px below `--text-10` and a 22px between two steps, and the stand's own
+title clamp went to `rem` rather than borrowing a product `--display-*`, because a kit page title is
+furniture around the specimens and not a specimen. Proved by capturing every computed `font-size` on
+five pages before and after: **0 of 3,724 readings differ**, and every one of them now moves with a
+reader's font setting, which is the whole reason the ramp exists.
+
+**BACKLOG ROW 3, THE PAGE SCRIPTS AS CODE, CLOSED, AND THE ROW'S OWN NUMBERS WERE STALE.** It said 15
+distinct bodies in 810 blocks; it is **21 distinct bodies in 1,137 blocks over 211 documents, 1,091
+distinct source lines**. Read three ways. **What they write**: three classes, `open`, `scrolled` and
+`sel`, and a stylesheet in `components/` reads every one, so 0 are orphans, which is the defect the
+row existed to look for. **What they reference**: a first pass reported 12 unguarded
+`getElementById` calls on ids the document does not carry, and **every one was the instrument**, the
+guard being `if (btn)` on a sibling variable while the reader looked 260 characters ahead for a guard
+naming the same variable. **What they do**: every document of both trees loaded in both engines,
+with a thrown error injected first to prove the listener catches one, gives **0 page errors over 106
+painted and 105 grey documents**. A null dereference cannot hide from that. The row asked for the
+code to be read once because nothing ever had; it has been, and what it found was a stale count and a
+bad detector rather than a defect.
+
+**THE BACKLOG IS NOW EMPTY OF UNBLOCKED ROWS.** The tally check re-ran clean after all four: 163
+documents and 232,166 readings with 0 page errors, 0 of 163 above 1ms under reduced motion with the
+999ms control seen, 297 documents and 34,958 references with 0 broken.
+
+---
+
 ## 2026-08-15 - The closing audit of Stage 11, and the second instrument corrected a number the first one published
 
 The entry below closed Animation with `/impeccable audit` named as not run and Codex named as

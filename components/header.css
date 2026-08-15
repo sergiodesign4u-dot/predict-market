@@ -77,6 +77,14 @@
    neighbours differ - a balance pill and an avatar on one side, two auth
    buttons on the other - and the same two circles read differently between
    them. */
+/* AND THE HEADER'S TWO PANELS TRAVEL, because both are `position:absolute` and a box out of flow
+   costs nothing to move. 4px down from the control that opened them, which is the direction that
+   says where they came from; the fade itself is the floor in `base.css`. Multiplied by `--motion`,
+   so reduced motion takes the travel to 0 and leaves the panel arriving. 146 placements. */
+.notif-menu .dropdown,.avatar-menu .dropdown{
+  translate:0 calc(-4px * var(--motion));
+  transition:translate var(--dur-fast) var(--ease-enter)}
+.notif-menu[open] .dropdown,.avatar-menu[open] .dropdown{translate:0 0}
 .notif-menu summary,.avatar-menu summary{background:transparent;border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill)}
 /* HOW IT WORKS LEFT THIS FILE ON 2026-08-06 for components/button.css, where it is
    `.btn.btn-ghost.btn-xs`: a labelled press with a transparent ground, which the family

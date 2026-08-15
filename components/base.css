@@ -620,6 +620,36 @@ body.app-case{background:var(--bg-page)}
    and only then decides whether the net comes back as a last line for code that does not exist yet.
    `--motion:0` left this block the same day for `tokens.css`, unchanged: it is a token override and
    it was only ever here because this block was written first. */
+/* A DETAILS PANEL ARRIVES, AND IT IS A FLOOR BECAUSE THE FAMILY IS NOT ONE COMPONENT, 2026-08-15.
+   The product opens **349 `<details>` across all 105 screens** and four different files own them: the
+   header's notification and avatar dropdowns, the feed's sort and frequency menus, the footer's
+   language chooser, the multi-outcome accordion and the terms contents. Every one of them is the
+   same moment, a panel appearing under the control that opened it, and the connection job was the
+   one row of the inventory that had a state, had 349 placements and had no movement at all.
+
+   OPACITY, AND THE HEIGHT IS DELIBERATELY NOT ANIMATED, MEASURED RATHER THAN ASSUMED. Three ways to
+   animate an expansion were built and read in both engines at 120ms into a 600ms transition:
+   `opacity` on `::details-content` runs in **both** (0.31 in Chromium, 0.33 in WebKit); a
+   `block-size:auto` transition with `interpolate-size:allow-keywords` runs in **Chromium only**,
+   WebKit jumping straight to the full height; and `grid-template-rows:0fr` to `1fr` **animated in
+   neither**, reading the full track at 120ms in both. So there is no cross-engine way to animate the
+   box opening, and the one that exists is a Chromium-only feature. **The panel fades in and the room
+   for it appears at once**, which is honest, cheap, and the same answer in both engines.
+
+   `transition-behavior: allow-discrete` IS WHAT MAKES IT POSSIBLE AT ALL. A closed
+   `::details-content` is `content-visibility:hidden`, so without the discrete transition the element
+   has nothing to fade from: it would appear at full opacity and the rule would be a rule that never
+   fires. Both engines have it, checked with `CSS.supports` before it was written.
+
+   THE DISTANCE IS THE COMPONENT'S AND NOT THIS FILE'S. Only a panel that is positioned out of flow
+   can also travel, so `header.css` and `filters.css` add their own 4px, multiplied by `--motion` as
+   every distance in this system is. An accordion in the flow gets the fade alone, because a box that
+   is also growing must not be sliding. */
+details::details-content{
+  opacity:0;
+  transition:opacity var(--dur-fast) var(--ease-enter),content-visibility var(--dur-fast) allow-discrete}
+details[open]::details-content{opacity:1}
+
 /* THE BLANKET NET STOOD HERE AND IT IS GONE, 2026-08-15, AND THE MEASUREMENT IS WHY.
    `*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;
    animation-iteration-count:1!important;scroll-behavior:auto!important}` was correct on the day it

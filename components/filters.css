@@ -26,6 +26,15 @@
 .filter-menu summary::-webkit-details-marker{display:none}
 .filter-panel{right:0}
 .filter-panel ul{list-style:none;margin:0;padding:var(--space-4) 0}
+/* THE FILTER PANEL TRAVELS FOR THE SAME REASON AND ONLY WHERE IT IS OUT OF FLOW. 193 placements,
+   the feed's two menus and the footer's language chooser. Below the desk rung the phone's sheet
+   turns this panel `position:static`, and the rule below is scoped away from that case: a box in the
+   flow that slides would drag its neighbours with it. The fade is the floor in `base.css`. */
+.filter-menu .filter-panel{
+  translate:0 calc(-4px * var(--motion));
+  transition:translate var(--dur-fast) var(--ease-enter)}
+.filter-menu[open] .filter-panel{translate:0 0}
+.filters-toggle:checked~.feed-controls .filter-panel{translate:0 0;transition:none}
 .filter-panel li label{display:flex;align-items:center;gap:var(--space-8);font-size:var(--text-11);cursor:pointer}
 .reverse-row{display:flex;align-items:center;justify-content:space-between;padding:var(--space-8) var(--space-8);font-size:var(--text-11)}
 /* SO THIS FILE IS ONE COMPONENT, AND BACKLOG 16d's "menu plus toggle" CLOSED
