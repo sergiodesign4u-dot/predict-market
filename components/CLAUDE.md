@@ -1,7 +1,8 @@
 # components/ - the system itself
 
-This folder IS the design system. **54 stylesheets, 10,101 lines**: 48 here and 6 in `patterns/`,
-re-counted 2026-08-15 after the viewport-unit census below. It was 10,067 on 2026-08-14 by `cat components/*.css components/patterns/*.css | wc -l` after the filters
+This folder IS the design system. **54 stylesheets, 10,130 lines**: 48 here and 6 in `patterns/`,
+re-counted 2026-08-15 after the action bar took its floor. It was 10,101 earlier the same day, after
+the viewport-unit census below. It was 10,067 on 2026-08-14 by `cat components/*.css components/patterns/*.css | wc -l` after the filters
 sheet, its two later passes and the scroll-driven edge fade. It was 9,224 on 2026-08-13 after `trust-art.css`
 was written (`docs/backlog.md` 140). It was 53 and 8,734 earlier the same day, after `print.css`
 (`docs/backlog.md` 125). **`trust-art.css` is the first file here that is not a component and not a

@@ -247,7 +247,7 @@ the 105 screens.
 
 | Component | Its own width query | Placements | What it does with width |
 |---|---|---|---|
-| `action-bar` | none | 3 on 3 | **FILLS** both its containers, 200 to 1,228. Three placements is the pattern threshold exactly, and one face |
+| `action-bar` | 0, and one floor | 3 on 3 | **FILLS** both its containers, 200 to 1,228. Three placements is the pattern threshold exactly, and one face. **Its two halves are equal whenever both fit and unequal only when one cannot**, since 2026-08-15: `min-width:fit-content` on the children plus `flex-wrap:wrap`, which is a floor rather than a query, so the bar has no width behaviour keyed to the window at all. Measured identical at 360, 390, 640 and 1280 and moving only at 320, where 125/125 becomes 126/124. Backlog 154 |
 | `betpanel` | 760 | 240 on 11 | **Two faces that never coexist.** `.bet-panel` is GONE below 760 and FILLS a 320px column above it; `.bet-dock` is GONE at 760 and above and is a CONSTANT 49 per cent of the dock below it. Inside: `.bp-inner` FILLS 280 to 520, `.bp-dir` a constant 49 per cent, `.bp-head` INTRINSIC 54.9-107.3 |
 | `bets-table` | 640 | 469 on 9 | **Measured only with the tab radios cycled**, which is why the first table had no row: all ten slots are `display:none` until their radio is checked. The panels and `.act-list` FILL, 285 at 760 to 925 at 1440; `.hold-col` FILLS its column; `.hold-row` and `.hold-name` are INTRINSIC (12-821.6, 36.8-74.8); `.act-row` CHANGES its share |
 | `bottomnav` | 640 | 178 on 105 | **FILLS the viewport below 640** (320, 360, 639) and is **GONE at 640 and above**, on all 105 screens. `.bn-bal` inside it is FIXED 36.3 |

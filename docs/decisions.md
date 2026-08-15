@@ -12,6 +12,64 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-15 - The bar was short by four fifths of a pixel, and the keyword that fixed it was one letter from the keyword that would have broken the page
+
+**BACKLOG 154 SAID "THE BAR SPLITS THE ROW AND NEITHER HALF IS WIDE ENOUGH FOR ITS OWN WORDS", AND
+MEASURING IT FIRST IS WHAT CHANGED THE FIX.** At 320 in both engines: `Browse events` needs
+**125.83** and has **125.00**; `Open Wallet` needs **108.61** and has **108.00**. **Each is short by
+less than one pixel while its neighbour has thirty and twelve to spare**, and both stop wrapping at
+**322**, two pixels above the narrowest width anybody reads. Neither half being wide enough was never
+the case. One half is, by a rounding error, because `flex-basis:0` divides the row before asking what
+is in it.
+
+**SO THE ROW'S TWO OPTIONS WERE BOTH ANSWERS TO A QUESTION NOBODY HAD.** It offered stack or shrink.
+Stacking three screens below 640 would change 360 and 390, which are the widths this project designs
+from and where nothing wraps today; shrinking the labels is the type scale paying for a layout. The
+third answer is a **floor**: line breaking in flex uses the hypothetical main size, which is the flex
+base size CLAMPED BY `min-width`, so a floor reaches a decision `flex:1` alone cannot, while growth
+still starts from 0 and **the halves stay exactly equal whenever both fit.** Measured identical to
+the old tree at 360, 390, 640 and 1280 on all three screens, 145/145, 160/160, 285/285, 457/457, and
+at 320 only the pair that could not fit moves, 125/125 to 126/124.
+
+**AND THE CHOICE BETWEEN TWO KEYWORDS IS THE WHOLE OF IT.** `min-width:max-content` and
+`min-width:fit-content` fix today's five buttons identically, to the pixel, on every screen and at
+every width. They differ only in a case the product does not have yet: **`max-content` sets a floor
+no container can refuse**, so a 40-character label in this bar puts the page into **12px of
+horizontal scroll and a 44-character one into 60px**, measured in both engines by writing the label
+in and reading `scrollLeft` back. That is trading a wrapped two-word label for the defect this
+repository has spent more days on than any other. `fit-content` is `max-content` capped by the space
+available, so the same label stacks the bar into two full-width rows at 258 and scrolls nothing.
+**Two candidates that agree on every reading of the current tree and disagree on the one that has not
+happened yet: the way to tell them apart was to write the input that has not happened.**
+
+**A THIRD CANDIDATE WAS MEASURED AND DID NOTHING, AND THAT IS WORTH THE LINE.**
+`min-width:min(100%,max-content)`, which reads as the safe form of `max-content`, left the tree
+byte-identical: 125/2 at 320, unchanged. A percentage inside `min()` resolves against a container
+whose size is not definite during intrinsic sizing, so the floor never engages. **A guard that
+computes to nothing looks exactly like a guard that works.**
+
+**THE CONTROL BROKE BECAUSE THE FIX WORKED, WHICH IS ITS OWN KIND OF READING.** The wrap probe was
+proved by squeezing a `.cta-bar` child to `flex:0 0 46px`, which forced two lines before the change
+and forces none after it: `min-width:fit-content` overrides the basis, which is the entire point. The
+control was re-made to squeeze the BAR instead, 80px, and reads 2 of 2 in both engines with 0
+unsqueezed. **When a fix lands, the control that proved the defect may stop being a control**, and a
+sweep that keeps running it will report success from an instrument that has gone blind.
+
+**WHAT WAS LEFT ALONE, NAMED.** Two labels in the product still wrap at 320 and neither is in a bar:
+`Notify me of new events in this category` is 40 characters in a 226px button on the two empty feeds,
+and a label that long is meant to wrap. That is a copy question and it stays one.
+
+**THE SWEEP FOUND A SECOND THING AND IT IS THE STAND, NOT THE PRODUCT.** `ui-kit/header.html` wraps
+`Sign in` and `Sign up` at 320 AND 360, and `ui-kit/betpanel.html` wraps `Confirm bet` at 320, in
+both engines, while the product wraps none of the three at any width. That is the kit's own rule
+about a cell narrower than any placement, met from the other side, and it is backlog 158.
+
+**Verified**: 4,288 renders over 268 documents in all three trees at eight widths in Chromium 151 and
+WebKit 26.5: **0 wrapped labels inside a `.cta-bar`**, 0 horizontal scroll, 0 duplicate ids, 0 page
+errors, with the control re-made and proved at 2 of 2 before the zero was believed.
+
+---
+
 ## 2026-08-15 - The grey tree was one screen short of the tree it decides, and the missing one was the document the product links to most
 
 **THE HOLE WAS CLOSED BY WRITING THE PAGE RATHER THAN BY DECLARING IT A BOUNDARY**, which was the
