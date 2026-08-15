@@ -166,6 +166,26 @@ because it is a stance rather than a principle, and it is written once, here.
   FIXED at 81px while standing at nine widths from 18 to 206 in one document. **Where placements
   disagree, say so; do not pick one.** The measurement is `ui-kit/docs/inventory.md`, behaviour on
   width.
+- **A RULE THAT CANNOT BE RENDERED CANNOT BE CHECKED, AND IT WILL BE WRONG THE DAY IT FIRST DRAWS.**
+  Every instrument in this file reads the COMPUTED page, so a face the product never places is
+  covered by none of them, and a clean sweep over a tree that omits a state is a clean sweep over
+  nothing. Five rules in `yesno.css` drew the chosen NO, and `.sel` and `.no` had never once stood on
+  the same element: **127 chosen sides in the paint, 24 in the grey and 39 on the stand, and every
+  one of them YES**. Half of a symmetric control had therefore never been measured, which is this
+  repository's whole method switched off for one component. Drawing it once, on
+  `event-detail-bet-processing.html` on 2026-08-15, is what produced the number: the chosen NO is
+  **4.64:1** against the chosen YES at 6.42:1, the tighter of the two and an assumption until that
+  day. So a state the system styles gets a placement, in both trees, or the styling is a claim nobody
+  can test.
+- **A COMPONENT WITH NO FACE IS A NAME; A FACE WITH NO PLACEMENT IS A FACE**, and before deleting on
+  a zero, ask WHICH zero it is: the CSS is gone, or the markup is. `account.css` was deleted on
+  2026-08-08 for having no face left, its two surviving rules being another component's stone.
+  `.icon-btn-lift` reads 0 placements since 2026-08-13, when backlog 144 took the footer's five
+  social marks off every screen because a social account can never become an internal route; its
+  rules are whole and its placements return on a date somebody chooses. **The consistency audit read
+  the second as the first and put a live face on a deletion list, because both compute to zero and
+  zero is where two different things look alike.** A zero that is worn by nothing says so, next to
+  the reason, rather than reading as a face nobody measured.
 - **Read the instrument before you read the finding: measure the same thing twice, unchanged, and
   the difference has to be zero.** A before-and-after over 19 screens reported 31 files changed by an
   edit that could not change anything; re-reading the unchanged tree gave **3,587 differing rows of
