@@ -12,6 +12,105 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-15 - A census of who wrote the argument is not a census of who uses the unit, and the tidy answer would have deleted a cap
+
+**THREE THINGS WERE LOOKED FOR AND THE ONE THAT WAS FOUND WAS NOT ON THE LIST.** The phone laid on
+its side was swept for the first time, the width-query registry was re-counted, and a viewport-unit
+census was taken because the first two needed one. The sweep found nothing, the count found two
+stale sentences, and the census found a defect two days old inside a backlog row that was marked
+closed.
+
+### The drawer that never joined the discussion
+
+**BACKLOG 124 CLOSED ON 2026-08-13 BY NAMING THE THREE FILES THAT HAD WRITTEN THE `svh` ARGUMENT AND
+THE ONE FULL-PAGE SHELL THAT HAD NOT**, and it was right about all four. `betpanel.css` writes it
+twice, `toc.css` three times, `catnav.css` twice, and `base.css` wrapped all 106 painted screens in
+`min-height:100vh` while mentioning `svh` zero times. **That is a census of who had SPOKEN, plus the
+shell**, and `course-chrome.css` is neither of those, so `.sidebar{height:100vh}` stood untouched.
+Re-taken from the comment-stripped source: **seven viewport-height sites in `components/`, six of
+them `svh` or a pair, and the seventh is the roadmap drawer.**
+
+**AND IT IS THE HARDER OF THE TWO CASES, WHICH IS WHY IT IS WORTH THE LINE.** The row it was missed
+by said so itself about the shell: `min-height` only ever ADDS room, so the cost there is a page that
+can be scrolled by the height of the retracting bar and nothing worse. **`height` on a fixed SCROLL
+CONTAINER puts the container's own bottom edge off screen**, and a fixed panel is not what scrolling
+the document moves. Measured in both engines at 390x640 with the drawer open, its transition killed
+and its height forced to 700 to stand in for a 60px browser bar, scrolled to its own maximum: **the
+last link in the roadmap, `ui-kit` in the closing note, sits 38px below the visible edge with no
+scroll left to reach it.** At 640 nothing is cut and at 700 one link is, in Chromium 151 and WebKit
+26.5 alike, **which is the reading moving when the input moved** and the only reason to believe a
+number the shipping instrument cannot produce: headless has no retracting bar, so `vh`, `lvh` and
+`svh` are one number and this edit measures as zero on every sweep in the repository.
+
+### The pair that cannot be written for a token
+
+**THE OBVIOUS NEXT MOVE WAS TO MAKE THE FIVE SITES AGREE, AND MEASURING IT FIRST IS WHAT STOPPED
+IT.** `tokens.css` deleted the `vh` half beside `--sheet-cap` on 2026-08-14 on the measured ground
+that `CSS.supports` for `svh` is true in both engines here; `base.css` still carries the paragraph
+arguing the opposite, that "a browser that has not learned `svh` takes the first". Both are argued
+and they disagree, and the tree has been one day out of step with its own newer decision in four
+places since.
+
+**THE PAIR WORKS BECAUSE BOTH HALVES ARE DECLARATIONS, AND A CUSTOM PROPERTY IS NOT PARSED THAT
+WAY.** A declaration whose unit the engine cannot read is thrown out at parse time and the one above
+it survives. A custom property accepts any token sequence, so the unit is never rejected. Measured in
+both engines: `max-height:92vh` computes to **588.8px** at 640; `--cap:92zzh` with
+`max-height:var(--cap)` computes to **`none`**; and `max-height:92vh` FOLLOWED by
+`max-height:var(--cap)` also computes to **`none`**, because `var()` is valid at parse time, wins the
+cascade, and fails only at computed-value time, where the fall is to the property's initial value and
+never to the declaration above it.
+
+**So "add the pair everywhere" does not add a fallback, it takes the cap off three sheets**,
+`dialog.css`, `betpanel.css` and the filters sheet, from 92 per cent of the small viewport to no
+maximum at all. **The inconsistency is load-bearing**, and it is written beside the token rather than
+removed, because the paragraph is the only thing standing between the next reader and the tidy
+version. What is left is a question about audience and not about CSS, `svh` having landed in Safari
+15.4 in March 2022 and Chrome 108 in November 2022, and it is backlog 155 rather than a call made in
+a stylesheet. The drawer takes the PAIR for now, so all five sites still say one thing and the
+decision moves them together.
+
+### The phone on its side, and two findings that were the instrument
+
+**THE SWEEP FOUND NOTHING, AND THAT IS THE RESULT.** 106 documents at 390x844 plus the four common
+landscapes, 667x375, 740x360, 844x390 and 932x430, in both engines: **1,060 renders, 0 sideways
+scroll, 0 content outside a clip that cannot be reached.** Docked chrome takes **13.6 to 16.4 per
+cent of viewport height** at every landscape width, worst case a 59px header, so the rungs reasoned
+from a wide window cost the short window nothing. Backlog 125(c) had closed orientation as a width
+fact and this is the shape half of the same question, taken and agreeing.
+
+**BUT IT REPORTED THREE FINDINGS FIRST AND TWO OF THEM WERE THE PROBE.** `.plate-head` was reported
+clipping 52px across and 69 down on 15 documents at every width, and it is `.plate-head::after`, a
+210px brass glow at `top:-72px;right:-52px` that the `overflow:clip` is FOR: **`scrollWidth` counts a
+pseudo-element, so decoration reads as a defect.** Then the outcome dialog was reported putting
+buttons up to 434px past its own cut on 13 screens, in both engines, with identical numbers, which is
+exactly what a real defect looks like. Every one of them was inside `.sheet-body`. **Scroll every
+scroller to its maximum and re-read: 86 hits become 0.** That is this repository's own sentence about
+culprits already standing inside a scrolling container, met again by a different road, and the road
+does not make it a new lesson.
+
+**AND THE CONTROL FAILED FIRST, FOR A REASON WORTH KEEPING.** The injected box was
+`overflow:hidden` and was correctly not seen, because **a `hidden` box is still scrollable from
+script and a `clip` box is not**, which is the whole distinction the probe is built on. A control has
+to be made of the thing being looked for, or its silence means nothing. With `clip` it reads 2 of 2
+in both engines.
+
+### The two stale counts
+
+`ui-kit/docs/inventory.md` and `ui-kit/docs/responsive.md` both stated in the present tense that
+`components/` holds **33** width queries, inside the classification of 52 selectors that backlog 129
+took on 2026-08-13. Re-counted from the comment-stripped source: **34**, 16 at the desk in 13 files,
+6 at the detail in 6, 6 at the rail in 5, 2 at the 1140 harness and 4 one-offs. The finding is
+date-stamped rather than renumbered, **because rewriting 33 to 34 would move a measurement onto a
+tree it was never taken on**, and the one query added since is a control's own narrow-side block
+inside a group the classification already counts.
+
+**Verified**: 1,060 renders over 106 documents at 5 viewports in Chromium 151 and WebKit 26.5, 0
+sideways scroll, 0 unreachable content, positive control 2 of 2; 53 stylesheets parsing with 0 page
+errors after both edits, `--sheet-cap` resolving to `92svh` and the outcome dialog capping at 588.8px
+of 640 exactly as before; the drawer measured at two heights in both engines with the cut link named.
+
+---
+
 ## 2026-08-15 - The tree had never drawn a person who backed NO, and a face with no placement is not a component with no face
 
 **TWO ROWS WERE LEFT OPEN BY THE CONSISTENCY REPORT AND THEY HAD OPPOSITE ANSWERS.** One was a real

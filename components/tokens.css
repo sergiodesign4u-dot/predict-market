@@ -419,6 +419,21 @@
      bar. The `vh` fallback that stood beside two of them is gone: `CSS.supports` for
      `svh` is true in Chromium 151 and WebKit 26.5, measured, so it protected nothing here
      and cost one number written in two places.
+     AND IT COULD NOT HAVE BEEN WRITTEN HERE ANYWAY, WHICH IS THE PART WORTH KEEPING. The
+     fallback pair the other four sites write works because both halves are DECLARATIONS: the
+     second is thrown out at parse time by an engine that cannot read its unit, so the first
+     survives. A custom property is not parsed that way. It accepts any token sequence, so the
+     unit is never rejected and the fallback never comes back. Measured in both engines on
+     2026-08-15: `max-height:92vh` computes to 588.8px at 640; `--cap:92zzh` with
+     `max-height:var(--cap)` computes to **`none`**; and `max-height:92vh` FOLLOWED by
+     `max-height:var(--cap)` also computes to **`none`**, because `var()` is valid at parse
+     time, wins the cascade, and only fails at computed-value time, where the fall is to the
+     property's initial value and not to the declaration above it.
+     So a reader who meets `.device`'s pair and this token's single value and tidies the
+     difference away in the obvious direction does not add a fallback, **they delete the cap**:
+     three sheets, `dialog.css`, `betpanel.css` and the filters sheet, go from 92 per cent of the
+     small viewport to no maximum at all. The inconsistency is therefore load-bearing, and this
+     is the paragraph that has to be read before it is removed.
      THIS IS NOT THE RAILS' QUESTION AND THEY ARE DELIBERATELY NOT IN IT. A sticky rail
      caps at the viewport MINUS its own top offset, `calc(100svh - X - var(--space-16))`,
      which is one formula with a parameter in `catnav.css`, `betpanel.css` and `toc.css`,

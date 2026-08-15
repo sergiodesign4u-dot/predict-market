@@ -356,8 +356,12 @@ has anything to say about width, and the table above this section says **35 of 4
 container with no width behaviour of their own at all**: a component with no rule has no branch that
 can fire wrongly, so thirty-five of the thirty-five are components that would not use a container
 query if they had one. The population that can misfire was taken from the queries instead - **52
-selectors inside the 33 width queries in `components/`, of which 14 are the page frame, the shell or
-the harness, 2 set a positioning context and 36 are a component in a slot** - and the 25 that stand
+selectors inside the 33 width queries `components/` held on 2026-08-13, of which 14 are the page
+frame, the shell or the harness, 2 set a positioning context and 36 are a component in a slot** - and
+the reading is stamped rather than restated because **the registry has moved three times since and
+stands at 34**, so a present-tense 33 here would date a finding to a tree that no longer exists. What
+the added query does not change is the verdict: it is one control's own narrow-side block, in the
+group already classified as a component in a slot - and the 25 that stand
 on both sides of their own rung were read against their PARENT'S CONTENT BOX on all 105 screens.
 **24 of 25 are separable**: some container width divides the placements exactly the way the rung
 does, so a container query would resolve identically everywhere. **Of the three components named

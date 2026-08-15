@@ -102,7 +102,26 @@
    which have their own stylesheet and their own --font, it would inherit Inter
    and be a different panel on every second page. A component that changes with
    the page it stands on is not a component. */
-.sidebar{font-family:var(--font-body);position:fixed;top:0;left:0;width:220px;height:100vh;background:var(--chrome-bg);border-right:var(--hairline) solid var(--chrome-border);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:var(--z-chrome);transform:translateX(-100%);transition:transform var(--dur-slow) var(--ease-inout)}
+/* THE FIFTH `vh`, AND THE CENSUS THAT CLOSED BACKLOG 124 COULD NOT SEE IT. That row named
+   `betpanel.css`, `toc.css` and `catnav.css` as the three files that had written the `svh`
+   argument, and `base.css` as the one full-page shell that never had; it counted WHO HAD
+   WRITTEN THE ARGUMENT and then the shell, and never counted WHO USES THE UNIT. This file is
+   neither of those, so it stayed at `height:100vh` for two days after the row was closed. Taken
+   from the comment-stripped source on 2026-08-15: seven viewport-height sites in `components/`,
+   six of them `svh` or a pair, and this one.
+   AND IT IS A HARDER CASE THAN THE SHELL WAS, because `min-height` only ever ADDS room while
+   `height` on a fixed SCROLL CONTAINER puts the container's own bottom edge off screen. `vh` is
+   the LARGE viewport, the one with the browser's bar retracted, so the panel is taller than the
+   window until the reader scrolls the document, and a fixed panel is not what scrolling the
+   document moves. Measured in both engines at 390x640 with the drawer open and its transition
+   killed, the panel forced to 700 to stand in for a 60px bar, scrolled to its own maximum:
+   **the last link in the roadmap, `ui-kit` in the closing note, sits 38px below the visible edge
+   and there is no scroll left to reach it.** At 700 one link is cut and at 640 none is, in
+   Chromium 151 and WebKit 26.5 alike, which is the reading moving when the input moved.
+   The pair rather than one declaration, so all five sites still say one thing: `tokens.css`
+   deleted the `vh` half beside `--sheet-cap` on 2026-08-14 on measured grounds, and whether the
+   other four follow is backlog 155 rather than a choice made here. */
+.sidebar{font-family:var(--font-body);position:fixed;top:0;left:0;width:220px;height:100vh;height:100svh;background:var(--chrome-bg);border-right:var(--hairline) solid var(--chrome-border);display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none;z-index:var(--z-chrome);transform:translateX(-100%);transition:transform var(--dur-slow) var(--ease-inout)}
 .sidebar.open{transform:translateX(0)}
 .sidebar::-webkit-scrollbar{display:none}
 .sidebar-brand{padding:var(--space-20) var(--space-16) var(--space-16);border-bottom:var(--hairline) solid var(--chrome-border)}

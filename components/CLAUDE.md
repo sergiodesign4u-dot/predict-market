@@ -1,7 +1,7 @@
 # components/ - the system itself
 
-This folder IS the design system. **54 stylesheets, 10,067 lines**: 48 here and 6 in `patterns/`,
-re-counted 2026-08-14 by `cat components/*.css components/patterns/*.css | wc -l` after the filters
+This folder IS the design system. **54 stylesheets, 10,101 lines**: 48 here and 6 in `patterns/`,
+re-counted 2026-08-15 after the viewport-unit census below. It was 10,067 on 2026-08-14 by `cat components/*.css components/patterns/*.css | wc -l` after the filters
 sheet, its two later passes and the scroll-driven edge fade. It was 9,224 on 2026-08-13 after `trust-art.css`
 was written (`docs/backlog.md` 140). It was 53 and 8,734 earlier the same day, after `print.css`
 (`docs/backlog.md` 125). **`trust-art.css` is the first file here that is not a component and not a
@@ -460,6 +460,29 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   `dvh` moves as the browser bar retracts and `vh` lets the tail sit behind it. **Unifying the sheets
   with the rails would have been a fifth number, not fewer**, and the token says so where the next
   tidy-up will look.
+- **CENSUS THE UNIT, NOT THE ARGUMENT, OR THE FILE THAT NEVER JOINED THE DISCUSSION IS THE ONE YOU
+  MISS.** Backlog 124 closed by naming the three files that HAD written the `svh` argument and the
+  one full-page shell that had not, and it was right about all four. It was a census of who had
+  spoken plus the shell, and `course-chrome.css` is neither, so `.sidebar{height:100vh}` stood for
+  two days after the row was marked closed. Taken from the comment-stripped source on 2026-08-15:
+  **seven viewport-height sites in this folder, six of them `svh` or a pair, and the seventh was the
+  drawer.** And it is the worse case of the two, because `min-height` only ADDS room while `height`
+  on a fixed SCROLL CONTAINER puts the container's own bottom off screen: measured in both engines
+  at 390x640 with the panel forced to 700 to stand in for a 60px browser bar, **the last link in the
+  roadmap sits 38px below the visible edge with no scroll left to reach it**, and 0 links are cut at
+  640, which is the reading moving when the input moved.
+- **THE `vh` FALLBACK PAIR CANNOT BE WRITTEN FOR A TOKEN, AND THE OBVIOUS TIDY-UP DELETES A CAP.**
+  Four sites write `vh` then `svh` as a pair and it works because both halves are DECLARATIONS: an
+  engine that cannot read the second unit throws that declaration out at parse time and the first
+  survives. **A custom property is not parsed that way.** It accepts any token sequence, so the unit
+  is never rejected, and `max-height:92vh` followed by `max-height:var(--cap)` where `--cap` holds an
+  unreadable unit computes to **`none`** in both engines, not to 92vh, because `var()` is valid at
+  parse time, wins the cascade, and fails only at computed-value time, where the fall is to the
+  property's initial value and never to the declaration above it. So a reader who meets `.device`'s
+  pair and `--sheet-cap`'s single value and makes them agree in the obvious direction takes the cap
+  off three sheets. **The inconsistency is load-bearing**, `tokens.css` carries the proof beside the
+  token, and whether the four declarations drop their halves is backlog 155 and a question about
+  audience rather than about CSS.
 - **A PROPERTY ASSIGNMENT FIRES NO EVENT, AND THIS FOLDER HAS NOW PAID FOR IT TWICE IN ONE DAY.**
   Setting `input.checked` from script updates the input and notifies nothing, so a `change` listener
   is not a listener for the script's own writes. The filters sheet reset a radio and went on printing

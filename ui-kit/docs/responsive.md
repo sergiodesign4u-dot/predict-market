@@ -419,6 +419,36 @@ while the table said 14, and only one of them was ever recounted.
 The three one-offs were not taken on trust either: each one says in a comment what collapsing it to
 the nearest rung would cost, in pixels, and 560 and 980 both cost a control or a card going backwards.
 
+### The phone laid on its side, read for the first time as a shape rather than as a width
+
+**Backlog 125(c) closed orientation on 2026-08-13 with two readings, 844x390 against 844x900, and it
+was the right test for the question it asked: 86 clipped boxes both times, so the clipping was a
+WIDTH fact.** What it did not read is the shape itself, and a landscape phone is not a narrow window,
+it is a SHORT one. Re-taken 2026-08-15 over all 106 documents in `ui-visual/` at five viewports,
+390x844 as the control and 667x375, 740x360, 844x390 and 932x430 as the four common landscapes, in
+Chromium 151 and WebKit 26.5: **1,060 renders, 0 pages that scroll sideways, 0 pieces of content
+outside a clip that cannot be reached.**
+
+**The reading that matters is the one that had never been taken at all: what a short window leaves
+for the product.** Docked chrome, counted only where a bar spans the window, runs **13.6 to 16.4 per
+cent of viewport height at every landscape width, worst case one 59px header on `404.html`**, and
+the bottom bar is not in it because it is not there above the desk rung. The rungs reasoned from a
+wide window therefore cost the short window nothing, which is the thing nobody had checked.
+
+**And the sweep is written up here because two of its three findings were the instrument, both times
+in a way this repository has already paid for once.** `.plate-head` was reported as clipping 52px
+horizontally and 69 vertically on 15 documents at every width, and it is `.plate-head::after`, a
+210px brass glow at `top:-72px;right:-52px` that the `overflow:clip` exists to contain: **`scrollWidth`
+counts a pseudo-element, so decoration reads as a defect.** The trap test walks DESCENDANT ELEMENT
+boxes now, which is what a person can reach. Then the outcome dialog was reported as putting buttons
+up to 434px past its own cut on 13 screens, in both engines, with identical numbers, and every one
+of them was inside `.sheet-body`, which is the scroll container: **scroll every scroller to its
+maximum and re-read, and 86 hits become 0.** That is the same sentence as "every element that sweep
+called a culprit was already inside a scrolling container", found again by a different route. The
+positive control was an injected clipped box, seen 2 of 2 in both engines, **and the first version of
+it was `overflow:hidden` and was correctly NOT seen**, because a `hidden` box is still scrollable
+from script while a `clip` box is not: the control has to be made of the thing being looked for.
+
 ### The measure, placed on three classes, and the audit's own number corrected
 
 | | before | after |
@@ -510,7 +540,7 @@ anything. **The population that CAN misfire is the 21 components that own a widt
 was measured directly instead: every selector standing inside a width query in `components/`, read
 against its PARENT'S CONTENT BOX on all 105 screens at each rung and one pixel either side.
 
-| the 52 selectors that stand inside the 33 width queries | n |
+| the 52 selectors that stood inside the 33 width queries of 2026-08-13 | n |
 |---|---|
 | the page frame, the shell and the harness, where the window IS the subject | 14 |
 | a positioning context, `position:relative` under a dropped panel, which has no width in it | 2 |
