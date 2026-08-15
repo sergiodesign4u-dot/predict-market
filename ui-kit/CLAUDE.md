@@ -270,6 +270,21 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
   "the circle, 242 placements" and drew one hamburger. The product's 242 are a hamburger on 105, a
   bell on 32 and a bookmark on 105, and the third wears `.desk-only` so it does not exist on a phone
   at all. The number was never wrong. **A stand is checked by what it draws, not by what it counts.**
+- **A COMPONENT AS WIDE AS THE WINDOW CANNOT BE SHOWN IN A CELL THAT HAS MARGINS, AND STACKING THE
+  THEMES DOES NOT REACH IT.** The rule below says a cell narrower than any placement is not the
+  component; this is the half of it that a rung cannot fix. `.tk-theme-fig` has 16px of padding
+  inside a `.tk-wrap` with 14 or 20 more, so the header specimen measured **258 / 298 / 328 against
+  the product's 320 / 360 / 390, short by 62 at every width**, on pages whose themes were ALREADY
+  stacked. **The cost was not cosmetic**: `.auth-btns` is intrinsic at **141 in the product from 320
+  upward** and was squeezed to 114 and 133, so `Sign in` and `Sign up` painted on two lines at 320
+  and at 360 on the page built to say what that header is, and `Confirm bet` did it in a 258px dock.
+  `.tk-bleed` zeroes the cell's side padding AND cancels the page inset, at both of the wrap's own
+  values. **Dropping only the cell's padding is the trap**: it gives 290 / 330 / 360, which cures 360
+  and leaves 320 wrapping, so a sweep at one width reports a fix that is half of one. The cells are
+  chosen by asking the DOM which figures contain a `.app-header` or a `.bet-dock`, never by matching
+  class text, which missed two and marked the wrong ones on the first pass, **and the sweep asserts
+  both directions**: 0 bled cells without a full-bleed component and 0 full-bleed components in an
+  unbled cell. 16 cells over 4 pages, backlog 158.
 - **A specimen measured in a cell narrower than any placement is not the component**, it is that
   label at that width. Two theme columns at 390 leave each specimen about **143px**, and the
   notification row stands at **258 on all 210 of its placements**: it read 65.5 tall in a 148px cell

@@ -205,6 +205,27 @@
    moved the WIDTH and left the height at 68. */
 .tk-theme-fig.tk-stack{flex-direction:column;align-items:stretch;flex-wrap:nowrap}
 .tk-theme-fig>*{max-width:100%}
+/* A COMPONENT THAT SPANS THE WINDOW CANNOT BE SHOWN IN A CELL THAT HAS MARGINS, AND THE
+   STAND WAS 62px SHORT OF THE PRODUCT AT EVERY WIDTH. Backlog 158, 2026-08-15. The header
+   and the bet dock are the two things here that are as wide as the window; this cell has
+   16px of padding inside a page with 14 or 20 more, so a header specimen measured
+   258 / 298 / 328 against the product's 320 / 360 / 390. **The cost was not cosmetic**:
+   `.auth-btns` is INTRINSIC at 141 in the product at every width from 320 up, and in the
+   cell it was squeezed to 114 and 133, so `Sign in` and `Sign up` painted on two lines at
+   320 and at 360 on a page whose whole job is to say what that header is. `Confirm bet`
+   did the same in a 258px dock against the product's 320. Measured in both engines.
+   DROPPING THE CELL'S OWN PADDING IS NOT ENOUGH AND THE HALF FIX IS THE INTERESTING PART:
+   it gives 290 / 330 / 360, which cures 360 and leaves 320 wrapping, so a sweep run only
+   at 360 would have called it fixed. The cell has to cancel the PAGE's inset too, which is
+   what the negative margin is, and it is written at both of the wrap's own values rather
+   than at one, because `.tk-wrap` is 14px below the desk and 20px above it. After: the row
+   reads 318 of 320, the two pixels being this cell's own border, `.auth-btns` is 141, the
+   product's number, and 0 labels wrap at any width.
+   This is the same sentence as the one about a cell narrower than any placement, and the
+   other half of it: the themes were ALREADY stacked here, so stacking was not the cure and
+   the row that asked for it was reading the symptom. */
+.tk-theme-fig.tk-bleed{padding-left:0;padding-right:0;margin-inline:-20px}
+@media(max-width:639.98px){.tk-theme-fig.tk-bleed{margin-inline:-14px}}
 
 /* A CELL SCROLLS, IT DOES NOT CLIP. `.chip-nav` is `white-space:nowrap` with 20px
    of side padding, and in the product it stands in a rail that scrolls sideways.

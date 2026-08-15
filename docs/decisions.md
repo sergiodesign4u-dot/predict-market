@@ -12,6 +12,55 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-15 - The stand was 62 pixels narrower than the product at every width, and the cure it had already been given was one it was already taking
+
+**BACKLOG 158 OPENED THE SAME DAY IT CLOSED AND ITS OWN CAUSE WAS WRONG.** The row read "a cell two
+themes wide is narrower than any placement" and pointed at the fix this kit had used before: stack
+the themes below 640. **Both cells were already stacked.** `header.html` and `betpanel.html` carry
+`.tk-stack` on every figure in question, so the remedy the row named was not available to be applied,
+which is the tell that the diagnosis was a symptom.
+
+**THE CAUSE IS THAT A COMPONENT AS WIDE AS THE WINDOW CANNOT BE SHOWN IN A CELL THAT HAS MARGINS.**
+`.tk-theme-fig` has 16px of padding and stands inside a `.tk-wrap` with 14 more below the desk and 20
+above it. Measured in both engines: the header specimen's `.row` is **258 / 298 / 328 where the
+product's is 320 / 360 / 390**, short by 62 at every width, and no rung reaches that because it is
+not a rung, it is an inset.
+
+**AND THE COST WAS NOT COSMETIC, WHICH IS WHY IT IS A DEFECT AND NOT A COMPROMISE.** `.auth-btns` is
+**INTRINSIC at 141 in the product at every width from 320 upward**; in the cell it was squeezed to
+114 and 133, so `Sign in` and `Sign up` painted on two lines at 320 and at 360. **A reader who had
+never opened the product would have learned a wrapping header from the one page built to teach it**,
+which is the same sentence this kit already wrote about a `.btn-md` measuring 68 instead of 47.
+`Confirm bet` did it in a 258px dock against the product's 320.
+
+**THE HALF FIX IS THE PART WORTH KEEPING.** Zeroing the cell's own 16px gives **290 / 330 / 360**:
+360 stops wrapping and 320 does not. A sweep run at one width, or at the two widths every audit in
+this repository used to read, would have called that finished. The cell has to cancel the PAGE's
+inset as well, and the negative margin is written at both of the wrap's values rather than one,
+because a single number would be right on one side of the desk and wrong on the other. After:
+`.row` reads the viewport less this cell's own 2px border at every width to 900, and `.auth-btns`
+reads **141**, the product's number, at every width.
+
+**THE CELLS ARE CHOSEN BY ASKING THE DOM, AND THE FIRST PASS PROVES WHY.** Matching `class="app-header"`
+as text marked 14 figures, missed 2, and marked ones that did not need it, because a class attribute
+is a LIST and a component is rarely alone in it. Asking the rendered tree which figures contain a
+`.app-header` or a `.bet-dock` gives 16 over 4 pages, and the sweep then asserts **both directions**:
+0 bled cells without a full-bleed component and 0 full-bleed components in an unbled cell. **A
+one-directional check would have passed the first pass too.**
+
+**THE CHANGE CANNOT REACH THE PRODUCT AND THAT WAS CHECKED RATHER THAN ASSUMED.** `_page.css` is
+linked by the 57 kit pages and by exactly one document in `ui-visual/`, `overview.html`, which is the
+index of the tree rather than a screen in it and borrows `.tk-hero`, `.tk-sec`, `.tk-jump`,
+`.tk-note` and `.tk-wrap` deliberately. It holds **0 `.tk-theme-fig` and 0 `.tk-bleed`**, and it
+renders identically at 320, 390, 640 and 1280 in both engines with 0 errors. The sentence in
+`CLAUDE.md` that every painted SCREEN links `index.css` and nothing else is still exact, because
+`overview.html` is not one of the 105.
+
+**Verified**: 912 kit renders at eight widths in Chromium 151 and WebKit 26.5, **0 wrapped labels, 0
+horizontal scroll, 0 duplicate ids, 0 page errors**, both directions of the bleed assertion at 0.
+
+---
+
 ## 2026-08-15 - The bar was short by four fifths of a pixel, and the keyword that fixed it was one letter from the keyword that would have broken the page
 
 **BACKLOG 154 SAID "THE BAR SPLITS THE ROW AND NEITHER HALF IS WIDE ENOUGH FOR ITS OWN WORDS", AND
