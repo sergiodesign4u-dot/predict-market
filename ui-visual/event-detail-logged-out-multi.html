@@ -788,15 +788,36 @@ document.addEventListener('click', function (e) {
       };
       function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
       function renderRail(name) {
-        if (!rail) return;
-        var rows = SUBCATS[name];
-        if (!rows) { rail.hidden = true; rail.innerHTML = ''; return; }   // Trending / unknown: no rail
-        var html = '<p class="subcat-head">' + esc(name) + ' sub-categories</p><ul>';
-        for (var i = 0; i < rows.length; i++) {
-          html += '<li' + (i === 0 ? ' aria-current="page"' : '') + '><button type="button" class="chip chip-lane">' + esc(rows[i][0]) + ' <span class="chip-cnt">' + esc(rows[i][1]) + '</span></button></li>';
-        }
-        rail.innerHTML = html + '</ul>';
-        rail.hidden = false;
+      /* THE RAIL IS BUILT FROM WHAT IS ON THE PAGE, 2026-08-16, docs/backlog.md 173.
+         It used to render SUBCATS whole, so a category page showed up to eleven chips
+         with Polymarket-scale counts against six events, and the handler below only
+         moved aria-current: 546 chips over 56 documents and none of them filtered.
+         The taxonomy stays the controlled vocabulary and decides the ORDER; the chips
+         and the counts come from the cards, so a chip exists only where an event does
+         and its number is the number of cards it reveals. */
+      if (!rail) return;
+      var rows = SUBCATS[name];
+      if (!rows) { rail.hidden = true; rail.innerHTML = ''; return; }
+      var cards = document.querySelectorAll('.cat-main .grid .card[data-subcat]');
+      if (!cards.length) { rail.hidden = true; rail.innerHTML = ''; return; }
+      var order = [], i;
+      for (i = 0; i < rows.length; i++) order.push(rows[i][0]);
+      var count = {}, seen = [];
+      for (i = 0; i < cards.length; i++) {
+        var sc = cards[i].getAttribute('data-subcat');
+        if (!count[sc]) { count[sc] = 0; seen.push(sc); }
+        count[sc]++;
+      }
+      seen.sort(function (a, b) {
+        var ia = order.indexOf(a), ib = order.indexOf(b);
+        return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+      });
+      var html = '<p class="subcat-head">' + esc(name) + ' sub-categories</p><ul>';
+      html += '<li aria-current="page"><button type="button" class="chip chip-lane" data-subcat="all">All <span class="chip-cnt">' + cards.length + '</span></button></li>';
+      for (i = 0; i < seen.length; i++)
+        html += '<li><button type="button" class="chip chip-lane" data-subcat="' + esc(seen[i]) + '">' + esc(seen[i]) + ' <span class="chip-cnt">' + count[seen[i]] + '</span></button></li>';
+      rail.innerHTML = html + '</ul>';
+      rail.hidden = false;
       }
       function activate(name) {
         if (heading) heading.textContent = name;
@@ -811,13 +832,23 @@ document.addEventListener('click', function (e) {
         if (radio) radio.checked = true;
         renderRail(name);
       }
-      // Picking a sub-category highlights it (visual selection; the feed filter is product scope).
+      // Picking a sub-category filters the grid. `ia/docs/sitemap.md` decided this when the
+      // attribute was invented ("the category page's left rail filters by sub-category, each
+      // with a count"); the comment that used to stand here said the filter was product scope,
+      // and the screen file won over the IA for as long as nobody clicked a chip.
       if (rail) {
         rail.addEventListener('click', function (e) {
           var b = e.target.closest('button'); if (!b) return;
           var li = b.closest('li'); if (!li) return;
           rail.querySelectorAll('li[aria-current]').forEach(function (x) { x.removeAttribute('aria-current'); });
           li.setAttribute('aria-current', 'page');
+          var want = b.getAttribute('data-subcat');
+          var cards = document.querySelectorAll('.cat-main .grid .card');
+          for (var i = 0; i < cards.length; i++) {
+            var has = cards[i].getAttribute('data-subcat');
+            if (!has) continue;   /* a skeleton has no sub-category and is not a result */
+            cards[i].toggleAttribute('hidden', want !== 'all' && has !== want);
+          }
         });
       }
       wireFilter('catMenu', 'catCurrent', 'catf', activate);
@@ -885,7 +916,7 @@ document.addEventListener('click', function (e) {
       <div class="hiw-step">
         <div class="hiw-stage" aria-hidden="true">
           <div class="hiw-still">
-            <article class="card">
+            <article class="card" data-subcat="Government Shutdown">
               <div class="card-body">
                 <div class="top">
                   <span class="thumb" style="background-image:url(../assets/event-politics.jpg)"></span>

@@ -27,8 +27,17 @@
    sub-category (Politics: Trump, Midterm Elections, Primaries, Congress, Courts,
    Epstein, Government Shutdown, ...; Crypto: Bitcoin, Ethereum, Solana, ETFs,
    Stablecoins, Memecoins, ...; etc.). The category page's left rail filters by
-   sub-category, each with a count. Taxonomy and counts are illustrative sample
-   data at wireframe stage (Polymarket / Kalshi-modelled), pending a real taxonomy.
+   sub-category, each with a count. **BUILT 2026-08-16, and the counts stopped being
+   illustrative on the day the rail started filtering**: an illustrative number beside
+   a working filter is a false one. The taxonomy is still the Polymarket / Kalshi
+   vocabulary and it still decides the ORDER, but the chips and their counts are read
+   from the cards on the page, so a chip exists only where an event does and its number
+   is the number of cards it reveals. `Europe` was added because one event of 24 fitted
+   no existing term. Until that day the rail rendered the taxonomy whole: 546 chips over
+   56 documents, 20 of the 35 leading to an empty grid, counts summing to 7,585 against
+   a catalog of 25, and **not one chip filtering anything**, because the screen file
+   carried a comment saying the filter was product scope and won over this line for as
+   long as nobody clicked. `docs/backlog.md` 173.
 
 3. **Betting is an inline panel on Event Detail, not a standalone Bet Screen.**
    The bet intent and all bet states live in a sticky bet panel on Event Detail

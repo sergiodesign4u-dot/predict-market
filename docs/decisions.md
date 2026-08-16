@@ -12,6 +12,58 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-16 - The IA had decided the rail filters, the screen file said it was product scope, and the screen file won
+
+**TWO THIRDS OF THE ROW WERE ALREADY DECIDED AND NOBODY HAD READ IT.** `ia/docs/sitemap.md`, written
+when the attribute was invented: "**Sub-category is a NEW Event attribute** ... The category page's
+left rail **filters by sub-category, each with a count**. Taxonomy and counts are illustrative sample
+data at wireframe stage, pending a real taxonomy." So the datum was declared, the behaviour was
+declared, and only the taxonomy was ever provisional.
+
+**AND THE SCREEN FILE HAD WRITTEN THE OPPOSITE, IN A COMMENT, IN 108 COPIES.** Above the handler:
+`// Picking a sub-category highlights it (visual selection; the feed filter is product scope).`
+**The two disagreed for as long as nobody clicked a chip**, and the screen file won by being the
+thing that runs. That is the same shape as the convention with no reader and the permission with an
+unmeasured condition: a rule loses to whatever is executable.
+
+**WHAT THE MEASUREMENT ADDED.** 546 chips over 56 documents, 0 that change the grid, and on 8 the
+`aria-current` marker moves so the chip lights up as chosen and delivers nothing. Then the taxonomy
+against the catalog: **35 chips of which only 15 had an event, 20 would have shown an empty grid**,
+the counts summing to **7,585** against 25 events, and **one event of 24 fitting no chip at all**.
+So the rail could not simply be switched on: at Yonder's scale a Polymarket taxonomy is mostly empty.
+
+**THE DECISION, TAKEN BY THE USER: the rail is built from what is on the page.** The taxonomy stays
+the controlled vocabulary and decides the ORDER; the chips and the counts come from the cards, so a
+chip exists only where an event does and its number is the number of cards it reveals. Politics goes
+from 11 chips at Polymarket scale to 5 that are true.
+
+**ONE TERM WAS ADDED TO THE TAXONOMY AND IT IS THE HONEST WAY A VOCABULARY GROWS.** "Will the EU
+formally admit a new member state before January 1, 2028?" fits none of Trump, Trump Daily, Midterm
+Elections, Global Elections, Primaries, Congress, Trump Cabinet, Courts, Epstein, Government
+Shutdown or LA Mayor. It is not an election, so `Global Elections` would have been the same defect
+one level down: a datum chosen to fill a slot. **`Europe` was added because an event existed with no
+home**, which is what "pending a real taxonomy" means in practice.
+
+**BUILT.** 24 events mapped to a sub-category on the merits, **356 cards given `data-subcat` across
+123 files in both trees**; `renderRail` rewritten in 108 painted files to build the rail from the
+page; the handler rewritten to filter; and **48 statically-typed rails rewritten in both trees**,
+because the empty, error and loading states carry their rail as markup rather than script, which is
+the same split as chart data.
+
+**A SKELETON IS NOT A RESULT, AND THAT COST A SECOND PASS.** The first handler hid every card without
+a matching sub-category, so clicking a chip on a loading page emptied the grid of its six skeletons.
+It skips untagged cards now. The first static rail was wrong in the same family: it counted every
+tagged card in the FILE, and the How It Works dialog carries a specimen card, so eight loading pages
+claimed "All 1" while showing six skeletons. It counts inside the grid.
+
+**VERIFIED BY CLICKING EVERY CHIP ON EVERY DOCUMENT, BOTH ENGINES: 280 chips, 280 behaving exactly as
+declared, 0 defects.** 8 rails stand on a page with results, where each chip's count equals the
+number of cards it reveals and it reveals only its own; 48 stand on a no-results state, where the
+rail carries no counts at all, because there is nothing on the page to count, and clicking changes
+nothing. **546 chips that did nothing became 280 that do what they say.**
+
+---
+
 ## 2026-08-16 - The tags were dealt rather than decided, and the control the row blamed had never worked at all
 
 **THE TAGS.** `data-cat` on the feed card against the category page that actually lists the same
