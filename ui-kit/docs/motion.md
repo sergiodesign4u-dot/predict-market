@@ -399,6 +399,44 @@ carries a different prefix so the next reader reconciling the ladder does not fi
 that was never on it. The amplitude is shallow on purpose, .55 of full: a plate that goes nearly
 invisible reads as content flashing in and out rather than as a wait.
 
+### The status job had a THIRD moment and this register could not see it, 2026-08-16
+
+The inventory above counts **2 status moments** and names them: the skeleton, and `edge-fade`. There
+were three. The third is `.spinner-box`, and it is the only moment in this product that is
+definitionally "a process is running with an unknown end": an OAuth redirect, a third-party KYC
+widget, a share card being generated, a resolution being fetched, a bet being registered on-chain.
+
+**It was invisible to the inventory because the inventory was built out of what already moved.**
+Step 1 swept the corpus for `transition`, `animation`, `@keyframes` and for declared STATES, and
+`.spinner-box` had none of the four: it is a dashed rectangle with a sentence in it. A moment with no
+existing movement and no state to hang one on cannot be found by a sweep that looks for movement or
+state. **This is the twin of "a rule that cannot be rendered cannot be checked": a moment that is
+already still is invisible to an instrument that measures stillness against motion.** What found it
+was reading the placements of a component whose NAME made a claim, and checking the claim.
+
+Closed the same day. `.spinner-box.sb-working` carries a 2px rule at `--size-2` sweeping across the
+top edge, on **`--pulse-period`, the same period as `sk-pulse`**, because a spinner and a skeleton are
+one job in two geometries and Stage 11's rule is that the same role takes the same duration. The
+curve is `--ease-standard` over `alternate`, which slows the sweep at each end: a rotation would have
+needed a fourth curve, since `ease` on a rotation reads as a stall and a stall is the one thing a
+status must never say.
+
+It is a COMPOUND selector, and the placement count is the reason. `.spinner-box` is worn by nine
+placements and only five of them are running: two are an out-of-band pending state where nothing is
+happening in this tab, and **two are a prototype disclaimer that will never finish**. A cycle on the
+bare class would have drawn a progress bar on a legal notice.
+
+Measured on both engines at 390: `translate` moves 0 to 77-82 per cent inside 350ms, the bar is 2px
+tall and 34 per cent wide, and the four quiet placements gained no `::before` at all. Under
+`prefers-reduced-motion` the animation reads `none` and the bar becomes the full 346px width, still:
+**the cycle is REPLACED, never shortened**, the same ruling `sk-pulse` took, because 1ms on a sweep is
+a flicker.
+
+And the four screens carrying it announced nothing before this: `deposit-loading`, `sign-in-loading`,
+`win-loading` and `loss-loading` had 0 `aria-busy` and 0 `role="status"`. The status-line pass of the
+same morning walked `[aria-busy="true"]` regions, which is why it reached 19 loading screens and not
+these four. The box is now the live region itself.
+
 ### What the product renders after step 3
 
 | | before the stage | after step 3 |
@@ -445,7 +483,7 @@ curve, amplitude, direction.
 | state | the line the product says | duration | curve | amplitude | direction | verdict |
 |---|---|---|---|---|---|---|
 | loading | silent, a skeleton grid; or "Registering your bet on-chain..." | 1.4s period | `--ease-standard` | .55 opacity, no movement | none | **agrees.** The rule says stay silent or name the thing, never hype. A shallow, even breath with no travel is the visual form of staying silent |
-| success, the win | "You were right. +$13.20." then "See next events" | `--dur-slow` .25s | `--ease-enter` | 100 per cent translate, one axis | up from the bottom edge | **agrees, and this is the row that mattered.** Principle 4 is "mark the win without lighting a fuse", and the anti-example is confetti. The win dialog arrives on exactly the same rule as every other sheet |
+| success, the win | "You were right. +$13.16." then "See next events" | `--dur-slow` .25s | `--ease-enter` | 100 per cent translate, one axis | up from the bottom edge | **agrees, and this is the row that mattered.** Principle 4 is "mark the win without lighting a fuse", and the anti-example is confetti. The win dialog arrives on exactly the same rule as every other sheet |
 | the loss | "Here's what happened: ... The market resolved NO; you held YES." | `--dur-slow` .25s | `--ease-enter` | same | same | **agrees, and it agrees BY BEING IDENTICAL to the win.** Two different arrivals would have been the product having an opinion about your result before you had read it |
 | error | "Couldn't load your wallet. Your funds are safe; this is a display issue." | none | none | none | none | **agrees.** The rule asks for short, no spring, small amplitude. Every error surface here is a page, so the amplitude is zero, and nothing is calmer than nothing |
 | empty | "No active bets yet. ... Find an event you have an opinion on." | none | none | none | none | **agrees.** The rule against a shift from below is about not implying that something is still loading, and a page that simply IS cannot imply it |

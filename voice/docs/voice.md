@@ -29,7 +29,7 @@ leave a bare figure to speak for itself.
 **Example.**
 - "YES 38%. Funding talks have stalled twice this quarter - that is what is holding the price down."
 - "Resolves YES if a shutdown begins before 00:00 ET on Mar 1. Source: official OMB notices."
-- "If YES wins, your $5 becomes $13.20."
+- "If YES wins, your $5 becomes $13.16."
 
 **Anti-example.**
 - "YES 38%" (and nothing else).
@@ -87,7 +87,7 @@ liquidity-as-hero, order book) out of the primary path. Clarity for the newcomer
 but never a tone that patronises the fluent user.
 
 **Example.**
-- "Bet YES - if it happens, $5 becomes $13.20."
+- "Bet YES - if it happens, $5 becomes $13.16."
 - Profile: "Your record: 12 calls, 9 right."
 - Marketing / identity layer may say "predict" and "forecast"; the button the finger presses says "Bet".
 
@@ -118,7 +118,7 @@ calm next step. We acknowledge being right without confetti, and we never nudge
 "bet again" after a loss.
 
 **Example.**
-- Win: "You were right. +$13.20. The market resolved YES, the side you held."
+- Win: "You were right. +$13.16. The market resolved YES, the side you held."
 - Loss: "Here's what happened: Congress passed a stopgap bill two days before the deadline, so no shutdown. The market resolved NO; you held YES." + one next step ("Back to your bets").
 
 **Anti-example.**
@@ -255,7 +255,7 @@ research rules out.
   - Was: "Welcome back! Great to see you again."
   - Better: "You're signed in." (or nothing - just show the feed)
   - Was: "Congratulations, you won!"
-  - Better: "You were right. +$13.20." (P4: mark the win without a fuse)
+  - Better: "You were right. +$13.16." (P4: mark the win without a fuse)
 - **Motivational / journey tone.** We state the concrete next step, we do not sell an experience.
   - Was: "Start your journey to being right - begin your winning streak today!"
   - Better: "No active bets yet. Find an event you have an opinion on and put a real stake on it." (real Active Bets empty copy)
@@ -293,7 +293,7 @@ rule points to the entry it draws from.
 ### Button
 **Rule.** An action verb whose object shows the result; never a bare "OK",
 "Next", "Submit" or a naked "Bet".
-- **Ours:** "Confirm bet" · "Add funds" · "Browse events" · "Try again". On the bet panel the payout line "$5 to win $13.20" sits beside the button so the result is visible before the press.
+- **Ours:** "Confirm bet" · "Add funds" · "Browse events" · "Try again". On the bet panel the payout line "$5 to win $13.16" sits beside the button so the result is visible before the press.
 - **Not:** "OK" · "Next" · "Submit" · bare "Buy" (trader word).
 - **From:** P3 (spectator verb, not "Buy") + P1 (the result is shown). `[lexicon: bet, Add funds, Browse events]`
 
@@ -334,14 +334,14 @@ hype line.
 
 ### Success
 **Rule.** Name the fact and the next step; mark being right, but do not celebrate.
-- **Ours (Win):** "You were right. +$13.20. The market resolved YES, the side you held." + "See next events".
+- **Ours (Win):** "You were right. +$13.16. The market resolved YES, the side you held." + "See next events".
 - **Not:** "Congratulations, you WON! Ride your streak - bet again!" · confetti.
 - **From:** P4 (mark the win without a fuse) + P5 (state the fact). `[lexicon: -]`
 
 ### Dangerous or irreversible action
 **Rule.** Before the press, say what will happen and what cannot be undone; state
 the change, do not hide it behind a bare "Confirm".
-- **Ours (Bet reconcile, real):** "The price moved while you signed in. Was 38%, now 41%. Payout $13.20 -> $12.20 for $5." then "Confirm at new price (41%)". For a Wallet withdrawal: "Sending USDC to a wallet address you control. On-chain transfers are final and cannot be reversed - check the address before you confirm." then "Confirm withdrawal".
+- **Ours (Bet reconcile, real):** "The price moved while you signed in. Was 38%, now 41%. Payout $13.16 -> $12.20 for $5." then "Confirm at new price (41%)". For a Wallet withdrawal: "Sending USDC to a wallet address you control. On-chain transfers are final and cannot be reversed - check the address before you confirm." then "Confirm withdrawal".
 - **Not:** a bare "Confirm" with the price change or the finality hidden · "Are you sure?".
 - **From:** P2 (transparency before the ask) + P1 (show the number that changed). `[lexicon: bet]`
 

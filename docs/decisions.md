@@ -12,6 +12,72 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-16 - The status job had a third moment, and a sweep that looks for movement cannot find a moment that is already still
+
+**THE REGISTER SAID TWO AND THERE WERE THREE.** `ui-kit/docs/motion.md` counts the status job at
+**2 moments, 0 done**, and names them: the skeleton, and `edge-fade`. The third is `.spinner-box`, and
+it is the only moment in this product that is definitionally a process running with an unknown end:
+an OAuth redirect, a third-party KYC widget, a share card being generated, a resolution being
+fetched, a bet being registered on-chain.
+
+**IT WAS INVISIBLE TO THE INVENTORY BECAUSE THE INVENTORY WAS BUILT OUT OF WHAT ALREADY MOVED.**
+Step 1 of Stage 11 swept the corpus for `transition`, `animation`, `@keyframes` and for declared
+STATES. `.spinner-box` has none of the four: it is a dashed rectangle with a sentence in it. **A
+moment that is already still is invisible to an instrument that measures stillness against motion**,
+which is the twin of "a rule that cannot be rendered cannot be checked". What found it was reading
+the PLACEMENTS of a component whose name makes a claim, and checking the claim.
+
+**AND THE CLAIM IS FALSE FOR FOUR OF NINE.** Counted over all three trees before anything was
+written: **five placements are running** (the redirect, the share card, the resolution, the on-chain
+register, and "Loading Transak", which was wearing `.widget-box` and is the longest wait in the
+product), **two are an out-of-band pending state** where nothing is happening in this tab and the
+answer arrives later by notification, and **two are a prototype disclaimer that will never finish**,
+on `terms.html` and `ui-kit/browse-shell.html`.
+
+**SO THE CYCLE IS ON A COMPOUND SELECTOR AND THAT IS THE WHOLE POINT.** A cycle on the bare class
+would have drawn a progress bar on a legal notice. `.reconcile-box.rec-won` is the pattern this file
+already uses and the reason it gives is the same one.
+
+**THE MOVEMENT.** `.spinner-box.sb-working::before` is a 2px rule at `--size-2`, 34 per cent wide,
+sweeping the top edge on **`--pulse-period`**, the same period as `sk-pulse`, because a spinner and a
+skeleton are one STATUS job in two geometries and Stage 11's rule is that the same role takes the
+same duration. The curve is `--ease-standard` over `alternate`, which slows the sweep at each end. **A
+rotation was rejected because it would have needed a fourth curve**: `ease` on a rotation reads as a
+stall, and a stall is the one thing a status must never say.
+
+Measured on Chromium and WebKit at 390: `translate` moves from 0 to **77 to 82 per cent inside
+350ms** on all five running placements, the bar is 2px by 117.6px, and the four quiet placements
+gained no `::before` at all. Under `prefers-reduced-motion` the animation reads `none` and the bar
+becomes the full **346px** width, still. **The cycle is REPLACED, never shortened**, the ruling
+`sk-pulse` already took: 1ms on a sweep is a flicker, which is worse than the still box this shipped
+as.
+
+**AND THE FOUR SCREENS CARRYING IT ANNOUNCED NOTHING.** `deposit-loading`, `sign-in-loading`,
+`win-loading` and `loss-loading` had **0 `aria-busy` and 0 `role="status"`**. The status-line pass of
+the same morning walked `[aria-busy="true"]` regions, which is exactly why it reached 19 loading
+screens and not these four. The box is the live region itself now, in both trees and on the kit
+specimens. `deposit-loading` needed two things rather than one, because it was wearing the payment
+widget's placeholder face: the longest wait in the product had neither the loading face nor the
+announcement.
+
+**A FOURTH STALE FIGURE, FOUND BY THE SAME HABIT THAT FOUND $8.20 THIS MORNING.** `$13.20` still
+stood in **six worked examples in `voice/docs/voice.md`** and in the tone table in
+`ui-kit/docs/motion.md`, quoting a payout the product stopped saying when the money pass unified it to
+`$13.16` across 108 files. The built page `voice/voice.html` was already correct, so the SOURCE was
+the stale half. **The pass that unifies a figure in the product has to walk the documents that quote
+the product**, and this is the second time in one day that a figure moved and its sentence did not.
+Corrected in 7 places. The occurrences left are records of the change itself, in `decisions.md`,
+`backlog.md`, `microcopy.md` and `consistency.md`, plus a contrast ratio in `colour.html` that happens
+to read 13.20.
+
+**NOT DONE, AND IT IS ROW 170.** The name. `.spinner-box` is a good face with a job's name on it, and
+`.widget-box` is very nearly the same declaration set with different padding and a `min-height`. The
+rename is a sweep rather than a stylesheet change, because the rule lives in the inline `<style>` of
+about ninety grey files, and the open question is bigger than the name: whether these are one
+component with two paddings or two components.
+
+---
+
 ## 2026-08-16 - The control boundary was authorised for repainting and the measurement said do not, and the system had already written why
 
 **THE ROW ASKED FOR A TOKEN AND THE ANSWER IS THAT THE TOKEN EXISTS.** `docs/backlog.md` 160 said a

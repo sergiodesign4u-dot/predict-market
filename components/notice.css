@@ -1,5 +1,5 @@
 /* components/notice.css
-   Component: notice. Classes: .inline-error, .protect, .protect-page, .push-actions, .push-banner, .push-msg, .rec-lost, .rec-won, .reconcile-box, .spinner-box, .widget-box.
+   Component: notice. Classes: .inline-error, .protect, .protect-page, .push-actions, .push-banner, .push-msg, .rec-lost, .rec-won, .reconcile-box, .sb-working, .spinner-box, .widget-box.
 
    Reads: --bg-control, --bg-surface, --border-hairline, --border-notice, --color-trust,
           --outcome-no-text,
@@ -133,4 +133,50 @@
 .reconcile-box.rec-won strong{color:var(--outcome-yes-text);font-size:var(--text-24)}
 .reconcile-box.rec-lost{border-color:var(--border-hairline);background:var(--bg-control)}
 .reconcile-box.rec-lost strong{color:var(--outcome-no-text);font-size:var(--text-20)}
+/* ============================================================================
+   THIS BOX IS WORN BY THREE JOBS AND ITS NAME NAMES ONE OF THEM, 2026-08-16,
+   docs/backlog.md 169 and 170.
+
+   Counted over all three trees before anything was written. FOUR placements are
+   a process running with an unknown end: "Redirecting to Google to sign in",
+   "Generating your Share Card", "Loading the resolution", "Registering your bet
+   on-chain", plus "Loading Transak" which was wearing `.widget-box` and is the
+   longest wait in the product. TWO are an out-of-band pending state where
+   nothing is running in this tab and the answer arrives later by notification:
+   "Payment under review", "Your payout is on the way". TWO are a DISCLAIMER that
+   will never finish: the prototype note on `terms.html` and on
+   `ui-kit/browse-shell.html`.
+
+   So the face is right and reusable, and the NAME is the thing that is wrong: a
+   dashed muted box that stands where content is not. The rename is a separate
+   row rather than this edit, because the rule lives in the inline `<style>` of
+   about ninety grey files and the swap is a sweep, not a stylesheet change. What
+   this edit does is the half that is a DEFECT rather than a misnomer: give the
+   running job a mark, so that the one state in this product that means "wait,
+   something is happening" stops being drawn as a still rectangle.
+
+   ONLY THE RUNNING FACE MOVES, and that is the whole reason it is a compound
+   selector. A cycle on the bare class would put a progress bar on a legal notice
+   that has nothing to progress, which is exactly the mistake the placement count
+   above exists to prevent. `.reconcile-box.rec-won` is the pattern.
+
+   THE PERIOD IS `--pulse-period` AND NOT A NEW RUNG. The skeleton pulse already
+   holds the STATUS job in this system, and Stage 11's rule is that the same role
+   takes the same duration; a spinner and a skeleton are the same role wearing
+   different geometry. `--ease-standard` over `alternate` gives a sweep that
+   slows at each end, which reads as deliberate. A rotation would have needed a
+   fourth curve, because `ease` on a rotation reads as a stall, and a stall is
+   the one thing a status must never say.
+
+   AND AT `prefers-reduced-motion` THE CYCLE IS REPLACED, NEVER SHORTENED, the
+   same as `sk-pulse`: the bar stops moving and becomes the full width of the
+   box, so the state stays and only the movement goes. A 1ms sweep would be a
+   flicker, which is worse than the still box this shipped as.
+   ============================================================================ */
 .spinner-box{border:var(--hairline) dashed var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-muted);padding:var(--space-20);text-align:center;font-size:var(--text-12);line-height:var(--leading-loose)}
+.spinner-box.sb-working{position:relative;overflow:hidden}
+.spinner-box.sb-working::before{content:"";position:absolute;top:0;left:0;width:34%;height:var(--size-2);background:var(--text-muted);animation:sb-sweep var(--pulse-period) var(--ease-standard) infinite alternate}
+@keyframes sb-sweep{to{translate:194%}}
+@media(prefers-reduced-motion:reduce){
+  .spinner-box.sb-working::before{animation:none;width:100%}
+}
