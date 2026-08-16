@@ -278,7 +278,7 @@ _9 state page(s): event-feed-empty.html, event-feed-error.html, event-feed-loadi
 | Main | Button | Try again |  |
 | Main | Label | thumbnail placeholder | **placeholder** |
 | Main | Link | +1 more outcome | *added 2026-08-10, backlog 81* |
-| Main | Link | +2 more outcomes | *added 2026-08-10, backlog 81. The multi-outcome card shows two rows of a longer field and said nothing about the rest. The count is the smallest the arithmetic forces: the remainder over the smallest percentage shown, rounded up. A card whose rows sum to 100 carries no such row.* |
+| Main | Link | +2 more outcomes | *added 2026-08-10, backlog 81. **Rewritten 2026-08-17 without a character changing.** It used to count what the DATA omitted, derived as the remainder over the smallest percentage shown, rounded up, which is a guess about a field nobody had written down. Every market carries its whole field now and sums to 100, so the row counts what the LAYOUT hides: two rows below the desk rung, none at it and above, where the link is `display:none`. **The numbers are the same** because each field was completed to exactly the size the card had already claimed, and the singular is written: `+1 more outcome` on three of the five.* |
 | Main | Label | Volume: $84,200 |  |
 | Main | Label | Closes: Mar 1, 2027 |  |
 | Main | Icon button | Bookmark | **same-thing / Bookmark vs save vs Favorites** |

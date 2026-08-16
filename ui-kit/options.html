@@ -164,19 +164,60 @@
     another way.</b> Otherwise it is a component switched off with no note.</p>
   </section>
 
+  <section class="tk-sec" id="wholefield">
+    <h2 data-n="6">The card carries its whole field, and the phone is the only place any of it is hidden</h2>
+    <p class="tk-note">Until 2026-08-17 a multi-outcome card held <b>two</b> rows and a link that
+    said how many more there were, <b>at every width</b>. On a desk that is a card two columns wide
+    asking a person to navigate for a fact that would have fitted underneath.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>market</th><th>rows in the markup</th><th>at 390</th><th>at 640 and up</th></tr></thead>
+        <tbody>
+          <tr><td>2027 Eurovision final</td><td>4, summing to 100</td><td>2 rows, <code>+2 more outcomes</code></td><td><b>4 rows, no link</b></td></tr>
+          <tr><td>next UK general election</td><td>4, summing to 100</td><td>2 rows, <code>+2 more outcomes</code></td><td><b>4 rows, no link</b></td></tr>
+          <tr><td>largest stablecoin supply</td><td>3, summing to 100</td><td>2 rows, <code>+1 more outcome</code></td><td><b>3 rows, no link</b></td></tr>
+          <tr><td>2026 summer box office</td><td>3, summing to 100</td><td>2 rows, <code>+1 more outcome</code></td><td><b>3 rows, no link</b></td></tr>
+          <tr><td>new energy capacity 2026</td><td>3, summing to 100</td><td>2 rows, <code>+1 more outcome</code></td><td><b>3 rows, no link</b></td></tr>
+          <tr><td>US Senate control</td><td>2, summing to 100</td><td colspan="2">2 rows and never a link: nothing is hidden at any width</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>Measured before and after, feed at 1280, animation and transition frozen:</b>
+    the affected grid row goes <b>317 to 407</b> and the whole feed <b>1,756 to 1,936</b>, plus 10.3
+    per cent, over the two rows of six that hold a four-outcome market. The column beside it was
+    already being stretched to match, so the cost is a row height rather than a card. <b>At 390 the
+    same card would have gone 386 to 546</b>, which is 65 per cent of an 844px viewport for ONE card
+    in a single-column scroll, and that is the whole reason the phone keeps its two rows.</p>
+    <p class="tk-why"><b>The rung is DESK, 40rem, and it is not the width where the grid gains a
+    second column.</b> That width is <b>744</b>, computed by <code>auto-fit</code> from
+    <code>--grid-col-min</code>, and it belongs to no rung: it is what a fluid answer is supposed to
+    look like, and exactly why a rule may not be hung off it. 40rem is the one divide this system
+    already names, where the header changes and the layout stops being a phone.</p>
+    <p class="tk-why"><b>And the link now counts what the LAYOUT hides rather than what the DATA
+    omits.</b> Every one of the six markets sums to 100 in the markup, so
+    <code>+1 more outcome</code> is a statement about this screen that can be checked by counting
+    rows against rendered rows: read at nine widths on both engines, <b>shown plus claimed equals
+    the markup at every one</b>. It used to be arithmetic on the percentages, the remainder over the
+    smallest already shown, rounded up, which is a guess about a field nobody had written down.
+    <b>The counts did not change</b>, because each field was completed to exactly the size that card
+    had already claimed: a count the product states beats a count anybody derives.</p>
+  </section>
+
   <section class="tk-sec" id="antirule">
-    <h2 data-n="6">The anti-rule</h2>
+    <h2 data-n="7">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never say "chosen" in colour alone.</b> <i>The word that carried it
     in the grey tree is hidden in the painted one, and nothing announces the tint.</i></p>
     <p class="tk-lab tk-bad"><b>Never give the card row a pointer.</b> <i>The card is the link; a row
     inside it that looks clickable is two targets where a person expects one.</i></p>
+    <p class="tk-lab tk-bad"><b>Never hide an outcome the width has room for.</b> <i>Two of four
+    behind a link on a card two columns wide is a navigation charged for a fact that fits.</i></p>
     <p class="tk-lab tk-bad"><b>Never draw the pair here.</b> <i>The YES and NO in every row belong
     to <a href="yesno.html">yes / no</a>, and this file's only claim on them is that the outcome list
     is the surface they answer.</i></p>
   </section>
 
   <section class="tk-sec" id="closing">
-    <h2 data-n="7">Where the rest of it is</h2>
+    <h2 data-n="8">Where the rest of it is</h2>
     <p class="tk-note">The level and its reason: <a href="molecules.html#options">the molecules
     page</a>. The stylesheet: <code>components/options.css</code>. The pair in every row:
     <a href="yesno.html">yes / no</a>. The card that holds 42 of the 52:

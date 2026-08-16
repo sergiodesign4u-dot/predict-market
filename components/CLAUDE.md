@@ -1,7 +1,8 @@
-This folder IS the design system. **56 stylesheets, 11,320 lines**: 50 here and 6 in `patterns/`,
+This folder IS the design system. **56 stylesheets, 11366 lines**: 50 here and 6 in `patterns/`,
 re-counted 2026-08-17 after search stopped being a page you go to and became a control you use: the field
 grew a sheet face and a header face on one rung, and the rung was chosen by measuring the free middle of the
-header row at **69px on 640, 137 on 760 and 277 on 900**, which is why it enters at RAIL and not at DESK.
+header row at **69px on 640, 137 on 760 and 277 on 900**, which is why it enters at RAIL and not at DESK; and after the
+multi-outcome card stopped truncating its field above the DESK rung, which is the other rung and the other measurement.
 
 **The line above read 55 and 10,948 and the tree held 56 and 11,134, which is one whole FILE missing from a
 count taken the day that file was written.** `crumb.css` landed on 2026-08-16 and the figure beside it was

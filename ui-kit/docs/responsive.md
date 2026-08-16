@@ -767,7 +767,7 @@ and only then was the 0 worth reporting.
 
 `docs/backlog.md` items 115 and 116, opened by this stage.
 
-## 2026-08-17 - the registry is 35, it was 33 and it said 34
+## 2026-08-17 - the registry is 37, it was 33 and it said 34
 
 Search stopped being a page and became a control, and the inline field enters at **56.25rem, the
 RAIL rung**, so `components/search.css` carries **two** new width queries: one that swaps the mark
@@ -779,21 +779,25 @@ enter at DESK. 640 is the tightest width in the whole product, because DESK turn
 pill, the heart and How it works at the same rung that first gives the row any width to spend.
 
 **And re-counting found the registry's own figure one over.** This file and `README.md` both said
-34; the comment-stripped source of `components/` held **33** before this pass and holds **35**
-after. The count is re-taken from the source every time it is written down and it drifted anyway,
+34; the comment-stripped source of `components/` held **33** before this pass and holds **37**
+after: two at 56.25rem for the search field, and two more the same day at the DESK rung, where the
+multi-outcome card stopped truncating its field. The count is re-taken from the source every time it is written down and it drifted anyway,
 which is the same defect the folder's stylesheet count had on the same day and the kit's `N lines`
 badges had the day before: **a number kept in prose is re-derived by whoever reads it and by nobody
 who edits the file.**
 
 ```
-  10  (max-width:39.99875rem)     8  (min-width:56.25rem)      6  (min-width:40rem)
+  11  (max-width:39.99875rem)     8  (min-width:56.25rem)      7  (min-width:40rem)
    3  (min-width:47.5rem)         2  (min-width:1140px)        2  (max-width:35rem)
    2  (max-width:47.49875rem)     1  (max-width:61.25rem)      1  (max-width:38.75rem)
 ```
 
-**28 name one of the three rungs**, 16 at the desk, 3 at the detail and 8 at the rail with the two
-that arrived here; 2 name the 1140 harness, which is the review panel and not the product; 5 are
-one-offs carrying their reason beside themselves. **0 in any of the 109 documents in `ui-visual/`
+**30 name one of the three rungs**, 18 at the desk, 3 at the detail and 8 at the rail; 2 name the
+1140 harness, which is the review panel and not the product; 5 are one-offs carrying their reason
+beside themselves. **The four that arrived on 2026-08-17 are one control each and they picked
+different rungs for reasons that are both measurements**: the search field takes RAIL because 69px
+of free header at DESK is not a field, and the outcome list takes DESK because a four-row card is 65
+per cent of a phone viewport and 10 per cent of a desk feed. **0 in any of the 109 documents in `ui-visual/`
 and 0 in any of the 108 in `wireframes/`** that is not the grey tree's own inline copy of this same
 rung, which is the one place a screen file is allowed a query because the grey tree links no
 stylesheet at all.

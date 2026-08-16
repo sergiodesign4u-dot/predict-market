@@ -58,8 +58,11 @@
     truthfully.</b> Until 2026-08-09 the specimen had no action row at all, so the one control a
     person actually presses on the feed was missing from the page about the card. What replaced it
     was written from the component rather than from a screen, and it invented a third outcome row:
-    <b>every multi-outcome card in the product carries exactly two, 21 of 21 painted and 21 of 21
-    grey</b>. Both specimens below are now the feed's own first cards of each kind, copied whole.
+    <b>every multi-outcome card in the product carried exactly two, 21 of 21 painted and 21 of 21
+    grey</b>. <b>That sentence stopped being true on 2026-08-17</b>, and the correction is the
+    opposite of the one it recorded: the card carries its WHOLE field now, three rows or four, and
+    two is what a phone SHOWS rather than what the markup holds. Both specimens below are the feed's
+    own first cards of each kind, copied whole.
     Counted on <code>event-feed.html</code>: <b>9 binary cards carrying <code>.yesno</code> and 3
     multi-outcome cards carrying <code>.options</code></b>.</p>
     <div class="tk-pair2">
@@ -98,6 +101,8 @@
             <div class="options">
               <div class="opt-row"><span class="opt-name" id="opt-sweden-1">Sweden</span><span class="opt-prob">34%</span><span class="yesno compact"><a href="#" class="yes" id="opt-sweden-1-yes" aria-labelledby="opt-sweden-1 opt-sweden-1-yes">YES</a><a href="#" class="no" id="opt-sweden-1-no" aria-labelledby="opt-sweden-1 opt-sweden-1-no">NO</a></span></div>
               <div class="opt-row"><span class="opt-name" id="opt-italy-2">Italy</span><span class="opt-prob">27%</span><span class="yesno compact"><a href="#" class="yes" id="opt-italy-2-yes" aria-labelledby="opt-italy-2 opt-italy-2-yes">YES</a><a href="#" class="no" id="opt-italy-2-no" aria-labelledby="opt-italy-2 opt-italy-2-no">NO</a></span></div>
+              <div class="opt-row"><span class="opt-name" id="opt-ukraine-5">Ukraine</span><span class="opt-prob">22%</span><span class="yesno compact"><a href="#" class="yes" id="opt-ukraine-5-yes" aria-labelledby="opt-ukraine-5 opt-ukraine-5-yes">YES</a><a href="#" class="no" id="opt-ukraine-5-no" aria-labelledby="opt-ukraine-5 opt-ukraine-5-no">NO</a></span></div>
+              <div class="opt-row"><span class="opt-name" id="opt-finland-6">Finland</span><span class="opt-prob">17%</span><span class="yesno compact"><a href="#" class="yes" id="opt-finland-6-yes" aria-labelledby="opt-finland-6 opt-finland-6-yes">YES</a><a href="#" class="no" id="opt-finland-6-no" aria-labelledby="opt-finland-6 opt-finland-6-no">NO</a></span></div>
               <a class="opt-more" href="#">+2 more outcomes</a>
             </div>
             <p class="meta"><span class="meta-txt"><span><span class="m-label">Volume: </span><span class="m-val">$61,500</span></span><span><span class="m-label">Closes: </span><span class="m-val">May 15, 2027</span></span></span><button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></p>
@@ -109,6 +114,8 @@
             <div class="options">
               <div class="opt-row"><span class="opt-name" id="opt-sweden-3">Sweden</span><span class="opt-prob">34%</span><span class="yesno compact"><a href="#" class="yes" id="opt-sweden-3-yes" aria-labelledby="opt-sweden-3 opt-sweden-3-yes">YES</a><a href="#" class="no" id="opt-sweden-3-no" aria-labelledby="opt-sweden-3 opt-sweden-3-no">NO</a></span></div>
               <div class="opt-row"><span class="opt-name" id="opt-italy-4">Italy</span><span class="opt-prob">27%</span><span class="yesno compact"><a href="#" class="yes" id="opt-italy-4-yes" aria-labelledby="opt-italy-4 opt-italy-4-yes">YES</a><a href="#" class="no" id="opt-italy-4-no" aria-labelledby="opt-italy-4 opt-italy-4-no">NO</a></span></div>
+              <div class="opt-row"><span class="opt-name" id="opt-ukraine-7">Ukraine</span><span class="opt-prob">22%</span><span class="yesno compact"><a href="#" class="yes" id="opt-ukraine-7-yes" aria-labelledby="opt-ukraine-7 opt-ukraine-7-yes">YES</a><a href="#" class="no" id="opt-ukraine-7-no" aria-labelledby="opt-ukraine-7 opt-ukraine-7-no">NO</a></span></div>
+              <div class="opt-row"><span class="opt-name" id="opt-finland-8">Finland</span><span class="opt-prob">17%</span><span class="yesno compact"><a href="#" class="yes" id="opt-finland-8-yes" aria-labelledby="opt-finland-8 opt-finland-8-yes">YES</a><a href="#" class="no" id="opt-finland-8-no" aria-labelledby="opt-finland-8 opt-finland-8-no">NO</a></span></div>
               <a class="opt-more" href="#">+2 more outcomes</a>
             </div>
             <p class="meta"><span class="meta-txt"><span><span class="m-label">Volume: </span><span class="m-val">$61,500</span></span><span><span class="m-label">Closes: </span><span class="m-val">May 15, 2027</span></span></span><button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"></use></svg></button></p>
@@ -120,14 +127,24 @@
     question and this card asks one per row. That is the whole structural difference between the
     two, and it is why the card is one component and not two.</p>
     <p class="tk-why"><b>Two rows is a shortlist, not the field, and until 2026-08-10 the card never
-    said so.</b> Sweden and Italy sum to 61%, Labour and the Conservatives to 77%, and the detail
-    page for the same market stands the same component as
-    <a href="options.html"><code>.opt-list</code></a> with five rows and a selected state. <b>One
-    card in the set is COMPLETE</b>, Republicans 52 and Democrats 48 making 100, and that is exactly
-    the pair a person had to be able to tell apart and could not.</p>
+    said so. Until 2026-08-17 it said so at every width, and that was the second half of the same
+    defect.</b> Sweden and Italy summed to 61%, Labour and the Conservatives to 77%, and on a desk
+    the card is two columns wide and was asking a person to navigate for a fact that would have
+    fitted underneath. <b>Measured with animation frozen: showing the whole field takes the affected
+    grid row from 317 to 407 and the feed from 1,756 to 1,936 at 1280, plus 10.3 per cent</b>, and
+    the column beside it was already being stretched to match. At 390 the same card would go 386 to
+    546, which is <b>65 per cent of an 844px viewport for ONE card</b> in a single-column scroll, and
+    that is the whole reason the phone keeps two. The rung is DESK, 40rem;
+    <a href="options.html#wholefield">the outcome list</a> carries the table and the reason it is not the
+    744 where the grid gains a column.</p>
+    <p class="tk-why"><b>One card in the set was COMPLETE and now all six are</b>, so the difference
+    a person had to be able to tell apart has moved: it used to be "does this market have more
+    outcomes than it shows", which nothing on the screen could answer, and it is now "does this
+    WIDTH show all of them", which the link answers and a sweep can check.</p>
     <p class="tk-note"><b>The last row names the remainder and links to the event.</b> The word is
     <code>outcome</code> because that is the product's own: the detail head prints <i>5 outcomes</i>
-    and the section is headed Outcomes. <b>The number is the smallest the arithmetic forces</b>, the
+    and the section is headed Outcomes. <b>The number counts what the LAYOUT hides, and that is new on 2026-08-17</b>: it used to be
+    the smallest the arithmetic forced, the
     remainder over the smallest percentage already shown, rounded up: Eurovision leaves 39 against
     Italy's 27, so two; the stablecoin market leaves 8, so one. <b>A card whose rows sum to 100 gets
     no row at all</b>, because nothing is hidden and a label saying so would be noise. 18 cards in

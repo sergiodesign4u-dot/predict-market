@@ -12,6 +12,54 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - The card was hiding two outcomes of four on a screen with room for all of them, and the row that said so was counting the wrong thing
+
+**Reported by the user, on a desktop screenshot**: a Eurovision card two columns
+wide showing Sweden and Italy and a `+2 more outcomes` link under them. The
+truncation was written for a phone and applied at every width.
+
+**MEASURED WITH ANIMATION AND TRANSITION FROZEN, feed at 1280**: showing the
+whole field takes the affected grid row from **317 to 407** and the feed from
+**1,756 to 1,936**, plus 10.3 per cent, over the two rows of six that hold a
+four-outcome market. The column beside it was already being stretched to match,
+so the cost is a row height rather than a card. **At 390 the same card goes 386
+to 546**, which is 65 per cent of an 844px viewport for ONE card in a
+single-column scroll, and that is the whole reason the phone keeps two rows.
+
+**THE RUNG IS DESK, 40rem, AND IT IS NOT WHERE THE GRID GAINS A COLUMN.** That
+width is **744**, computed by `auto-fit` from `--grid-col-min`, and it belongs to
+no rung: it is what a fluid answer is supposed to look like and exactly why a
+rule may not be hung off it. 40rem is the one divide this system already names,
+where the header changes and the layout stops being a phone.
+
+**AND THE ROW WAS COUNTING WHAT THE DATA OMITTED, WHICH NOTHING COULD CHECK.**
+The 2026-08-10 entry derived it as "the remainder over the smallest percentage
+already shown, rounded up", a guess about a field nobody had written down: five
+of the six markets summed to 61, 77, 83, 92 and 77 per cent. **Every market
+carries its whole field now and sums to 100**, so `+1 more outcome` is a
+statement about THIS SCREEN, checkable by counting rows against rendered rows.
+Read at nine widths on both engines in both trees: **shown plus claimed equals
+the markup at every one**, and the swap is clean at exactly 640.
+
+**THE COUNTS DID NOT CHANGE, AND THAT WAS THE CONSTRAINT RATHER THAN A
+COINCIDENCE.** Each field was completed to exactly the size that card had already
+claimed: the stablecoin market said one more and got Solana at 8, the box office
+said one and got Horror at 23, energy said one and got Nuclear at 17, Eurovision
+said two and got Ukraine 22 and Finland 17, the UK election said two and got
+Reform 14 and Liberal Democrats 9. **A count the product states beats a count
+anybody derives**, which is the rule that same 2026-08-10 entry wrote for this
+same row when the UK election overrode its own arithmetic.
+
+**AND THE FIRST SURVEY OF THIS FOUND A DEFECT THAT WAS NOT THERE.** A regex for
+`+(\d+) more outcomes` reported that three cards hid outcomes silently, and all
+three carried `+1 more outcome`, **singular**. The rule was being obeyed
+perfectly and the instrument could not see the obedience, which is the same
+shape as every other reading error in this file: the finding was about the
+plural, not about the product. It was caught by opening one of the three cards
+rather than by trusting the count.
+
+---
+
 ## 2026-08-17 - Search was built as a destination and it is a control, and 69px is what decided where the field goes
 
 **Reported by the user, not by a sweep**, which is the first thing worth writing down: every

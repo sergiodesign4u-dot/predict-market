@@ -89,3 +89,49 @@
   .card .opt-row,.card .opt-row:first-child{padding:var(--space-8)}
   .card .opt-row .opt-name{flex:1 1 auto;min-width:0}
 }
+
+/* ============================================================================
+   THE CARD CARRIES ITS WHOLE FIELD AND THE PHONE IS THE ONLY PLACE ANY OF IT
+   IS HIDDEN, 2026-08-17.
+
+   Until today a multi-outcome card held TWO rows and a link that said how many
+   more there were, at every width. On a desk that is a card two columns wide
+   asking a person to navigate for a fact that would have fitted underneath: the
+   whole field is four rows at most, and showing it costs 90px in a row of a
+   1,756px feed while the column beside it is stretched to match anyway.
+
+   MEASURED BEFORE AND AFTER, feed at 1280, animation and transition frozen:
+   the affected grid row goes 317 to 407 and the feed 1,756 to 1,936, +10.3 per
+   cent, over the two rows of six that hold a four-outcome market. At 390 the
+   same card would have gone 386 to 546, which is 65 per cent of an 844px
+   viewport for ONE card in a single-column scroll, and that is the whole reason
+   the phone keeps its two rows.
+
+   SO THE RUNG IS DESK, 40rem, and it is the one divide this system already
+   names: above it the header changes, the balance arrives and the layout stops
+   being a phone. It is NOT the width where the grid gains a second column -
+   that is 744, computed by `auto-fit` from `--grid-col-min` and belonging to no
+   rung, which is exactly what a fluid answer is supposed to look like and
+   exactly why a rule may not be hung off it.
+
+   AND THE LINK NOW COUNTS WHAT THE LAYOUT HIDES RATHER THAN WHAT THE DATA
+   OMITS. Every one of the six multi markets sums to 100 in the markup now, so
+   `+1 more outcome` is a statement about THIS SCREEN that can be checked by
+   counting rows against rendered rows. It used to be arithmetic on the
+   percentages, "the remainder over the smallest already shown, rounded up",
+   which is a guess about a field nobody had written down. The counts did not
+   change, because the field was completed to exactly the size each card had
+   already claimed: a count the product states beats a count anybody derives,
+   which is the rule the 2026-08-10 entry wrote for this same row.
+   ============================================================================ */
+/* rung: DESK 40rem, 640px at the default root, the one divide. Below it the third
+   row onwards is hidden and the link says how many; at it and above the field is
+   whole and the link has nothing left to say. `:nth-child` and not `:nth-of-type`
+   because the link is the last child and is not an `.opt-row`, so the compound
+   already excludes it and the count stays about rows. */
+@media(max-width:39.99875rem){
+  .card .options > .opt-row:nth-child(n+3){display:none}
+}
+@media(min-width:40rem){
+  .card .opt-more{display:none}
+}
