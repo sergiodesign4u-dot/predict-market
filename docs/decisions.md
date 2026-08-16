@@ -12,6 +12,39 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-16 - A component page that showed one of five blocks, and the id rule the stand already knew
+
+**THE NUMBER.** `hero.css` declares **53 classes across five blocks**: the band's layout, the featured
+event with its photograph plane and its chart, the two trust tiles, the brand tile and the hot list.
+`ui-kit/hero.html` showed **7 of them** and all seven were the brand tile. The other four blocks were
+described in prose, in a page whose job is to let a person take the component apart.
+
+**AND THE TIMING IS THE POINT.** The chart gained a scale on the morning of the same day: five mono
+numerals keyed to `y = 220 - 3p`, sitting on the grid lines to within 0.02px. **It had nowhere to be
+looked at**, because the only page in the repository whose job is to show this component did not draw
+it. A rule that cannot be rendered cannot be checked, and neither can a fix.
+
+**ONE SPECIMEN COVERS ALL 53.** The band is one block, so lifting `.feed-hero` out of
+`ui-visual/event-feed.html` and putting it on the page took the coverage from 7 to **53 of 53**,
+measured against the stylesheet with its comments stripped. That is the rule this repository already
+has, in its own words: markup goes to two places and only two, the component's page and the screens
+where it stands.
+
+**THE ID RULE COST TWO PASSES AND THE SECOND ONE WAS MY OWN TYPO.** A component shown twice, once per
+theme, duplicates every id it carries, and this hero carries six. The stand has a convention for it
+already, the `-lt` suffix that `ui-kit/molecules.html#notice-lt` is named for. The first attempt
+built the replacement string by concatenating `r'\1' + name + '-lt\2'`, where `'\2'` in a
+non-raw literal is the character `chr(2)` rather than a backreference, so an id came out as
+`hf-q-lt\x02>Will the US government shut down...` and the light copy lost its hot list. **The render
+said so before the diff did**: the two bands measured 1264 and 1080 tall where they had to match, and
+the hot list counted 5 where it had to count 10. The file was reverted and rebuilt.
+
+**Verified on both engines at 390 and 1280**: two bands at identical heights, the chart drawn, five
+axis labels per copy, the photograph loaded, ten hot-list rows, four trust tiles, **0 duplicate ids**,
+0 sideways scroll, 0 page errors, 0 responses at or above 400.
+
+---
+
 ## 2026-08-16 - Five declarations were the same and nine were not, which is the answer to whether they are one component
 
 **THE ROW ASKED A QUESTION AND THE DECLARATION SETS ANSWERED IT.** `docs/backlog.md` 170: one face,

@@ -105,7 +105,7 @@ re-measures this table should re-derive the sample first.
 | `bets-table` | 89 | **HOLDS** `comments`, `position` |
 | `chart` | 84 | **HOLDS** `chip`, `tabs` |
 | `card` | 58 | **HOLDS** `yesno`, `oddsbar`, `options`, `iconbtn`, `skeleton` |
-| `hero` | 55 | **HOLDS** `yesno` |
+| `hero` | 55 | **HOLDS** `yesno` **AND THE STAND SHOWED 7 OF ITS 53 CLASSES UNTIL 2026-08-16**, `docs/backlog.md` 162: `ui-kit/hero.html` carried the brand tile and described the other four blocks in prose, so the chart that gained a scale the same morning had nowhere to be looked at. The whole `.feed-hero` band is on the page now, the same markup the feed carries, in both themes. **Coverage measured against `hero.css` with its comments stripped: 53 of 53**, and the one specimen covers every class because the band is one block. Verified on both engines at 390 and 1280: two bands rendering at identical heights, the chart drawn, five mono axis labels per copy, the photograph loaded, **0 duplicate ids** after the light copy's six ids took the stand's `-lt` suffix, 0 sideways scroll. |
 | `feed` | 41 | **HOLDS** everything a browse screen stands on. A shell |
 | `profile` | 2 | **HOLDS** `button` and `card`: the identity row holds one, the gallery holds three. Walked 2026-08-08 on the two screens that carry it, tabs cycled. The sixth and last of the unmeasured |
 
