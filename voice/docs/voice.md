@@ -231,7 +231,18 @@ crypto vocabulary; the rule is spectator-legible, not trader-fluent (P3).
   explain the mechanism, where it is glossed in plain words. Same word, two
   places, two answers: *AMM* in the How It Works explanation is the mechanism
   being named; *AMM* trailing the fine print under Confirm is a word met while
-  deciding. **And the head of an exempt block is NOT inside the exemption**,
+  deciding. **AND THE EXEMPTION HAS A SECOND HALF THAT WENT UNREAD FOR A WEEK,
+  2026-08-16: "where it is GLOSSED IN PLAIN WORDS".** Measured across the whole
+  repository, `AMM` stood on 9 screens per tree, all of them `.md-sub` on the
+  event detail, and it was glossed on none of them and named on How It Works
+  **zero** times: the term lived only in the place the exemption did not reach,
+  and was absent from the one place this line offers it as the example. So the
+  half that permits was quoted and the half that conditions was not. The gloss
+  was never written and the sentence is gone; the mechanism is explained on How
+  It Works, in plain words, without the term: "Prices move as people bet. You buy
+  YES or NO at the price on screen, and that price is locked when you confirm."
+  **A permission with a condition is not a permission until the condition is
+  measured.** **And the head of an exempt block is NOT inside the exemption**,
   because a summary, a tab and a title are read by everyone who never opens
   them. The lexicon already carried this shape in two places without stating it
   - "we keep it only in mechanics docs, never in the UI", and "allowed once,

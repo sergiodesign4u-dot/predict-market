@@ -12,6 +12,69 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-16 - A permission with a condition is not a permission until the condition is measured
+
+**THE FIFTH TIME IN ONE DAY THAT A FINDING WAS A DECISION THE REPOSITORY HAD ALREADY TAKEN, AND THE
+FIRST TIME THE DECISION WAS WRONG.** Search was deferred rather than missing. The error tone existed
+on two of three surfaces. The way back was there and lying. The control boundary was already scoped
+correctly. This one had a rule, a written argument and a row in the inventory, and it still had to go.
+
+**THE SENTENCE.** "How the YES price moves as your bet grows. **This market runs on an AMM, not an
+order book.**" It stood in `.md-sub` under "Price by bet size", inside the `<details>` headed "How the
+odds are set", on **9 event-detail screens per tree, 20 occurrences across the three trees**.
+
+**THREE THINGS WERE MEASURED BEFORE A WORD WAS CHANGED, AND EACH ONE MOVED THE ANSWER.**
+
+**One: the lexicon did not forbid it, and the exemption has two halves.** `voice/docs/voice.md` bans
+trader terms by PLACE rather than by word: forbidden wherever a person meets one while ACTING,
+allowed "inside a block whose whole job is to explain the mechanism, **where it is glossed in plain
+words**". Every time this line came up, the first half was quoted. **The second half was never
+checked.** `AMM` was named on 9 screens per tree and glossed on none, here or anywhere else in the
+product. `ui-kit/market.html` states the rule on its own page, in its own words, including "glossed
+in plain words", and then says the term appears "in the line that says what this market is NOT" as if
+that satisfied it.
+
+**Two: the example the rule gives for the legitimate place does not exist.** `voice.md` illustrates
+the exemption with "*AMM* in the How It Works explanation is the mechanism being named", and
+`microcopy.md` step 24 recorded an `AMM` line on How It Works as kept. Measured today:
+`how-it-works.html` contains the string **zero** times, in either tree. **The term lived only in the
+place the exemption did not reach, and was absent from the one place the rule holds up as correct.**
+A rule that names an example has to be measured against the example.
+
+**Three: the reason the microcopy row itself gave names the wrong reader.** It read "says what it is
+NOT, because an order book is what a trader would assume". Principle 3 is "speak to a spectator with
+an opinion, **not to a trader**". `PRODUCT.md` spends a line of its own on it: "NOT a trader terminal:
+no order books". So the sentence was written to pre-empt an assumption made by the one persona the
+voice explicitly refuses, and the reader it IS for cannot parse either half. **To the spectator two
+unknown words, to the trader redundant: a sentence with no reader.**
+
+**AND THE EXPLANATION THE PRODUCT NEEDED WAS ALREADY WRITTEN, FOUR SECTIONS AWAY.** How It Works
+says: "Prices move as people bet. You buy YES or NO at the price on screen, and that price is locked
+when you confirm. A winning share pays one dollar, so a lower price buys more shares and a larger
+payout." Plain, complete, and it never needs the term. So the caption did not need to name a
+mechanism. **It needed to say what its own table proves**, and the table proves one thing: $10 buys at
+38 per cent, $100 at 39, $1,000 at 42, $5,000 at 49.
+
+**WAS:** `How the YES price moves as your bet grows. This market runs on an AMM, not an order book.`
+**IS:** `How the YES price moves as your bet grows. Your own bet moves it, so a bigger bet buys at a
+worse average price.`
+
+**The old second sentence was a footnote about the engine; the new one is the caption of the column
+underneath it.** No gloss was written for `AMM`, because writing one would have kept a term the
+product has no use for in order to satisfy a permission it did not need.
+
+20 occurrences replaced over 19 files in three trees. `AMM` and `order book` read **0 in
+`ui-visual/` and 0 in `wireframes/`**, and in `ui-kit/` only inside `market.html`'s prose about this
+decision. `ia/docs/` keeps its 9 and `wireframes/_conventions.md` its 2: those are specifications
+naming a mechanic to their own writers, which is what a mechanics document is for, and the lexicon
+has always said "we keep it only in mechanics docs, never in the UI".
+
+**THE RULE THAT COMES OUT OF IT** is in `voice.md` beside the invariant it corrects: **a permission
+with a condition is not a permission until the condition is measured.** The exemption's two halves
+had been read as one clause for a week, and the half that permits is the half that gets quoted.
+
+---
+
 ## 2026-08-16 - The way back was there and it was lying: three links in one document each claiming to be the page you are on
 
 **THE ROW SAID THERE WAS NO WAY BACK AND THAT HALF IS WRONG.** `docs/backlog.md` 167 was opened by

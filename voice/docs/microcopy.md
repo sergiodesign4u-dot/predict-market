@@ -1490,7 +1490,7 @@ against `voice.md` when it shipped, and the two lines that were not are marked.
 | `Market` | `.market-title`, the AMM panel head | lexicon: the concept is the market, the thing you back is an event |
 | `Yes price` / `No price` / `24h` / `Volume` / `Liquidity` | `.ms-label` | principle 1: name the number before showing it |
 | `Price by bet size` | `.md-title` | says what the table is, not what it is called internally (no "depth chart") |
-| `How the YES price moves as your bet grows. This market runs on an AMM, not an order book.` | `.md-sub` | principle 1 and principle 3: explains the mechanism in a spectator's words, and says what it is NOT, because an order book is what a trader would assume |
+| ~~`How the YES price moves as your bet grows. This market runs on an AMM, not an order book.`~~ **REWRITTEN 2026-08-16: `How the YES price moves as your bet grows. Your own bet moves it, so a bigger bet buys at a worse average price.`** | `.md-sub`, 9 screens per tree | The old row claimed principle 1 and principle 3 and it broke both. **The reason it gave, "an order book is what a trader would assume", names the one reader principle 3 says not to write for**, and the one `PRODUCT.md` excludes in a line of its own: "NOT a trader terminal: no order books". To the spectator both halves are unknown words; to the trader the sentence is redundant: **a sentence with no reader.** And the lexicon exemption that allowed the term has a second half, "where it is glossed in plain words", which was never met: `AMM` stood on 9 screens per tree and was glossed on none. The new line says what the table under it proves, in the voice How It Works already uses for the same mechanic |
 | `Bet` / `Avg YES price` / `You receive if YES` | `.md-row-head` | column heads in the lexicon: bet, not position; receive, not payout |
 | `Rules` / `Market Context` | `.rules-tab` | two tabs, because what decides the outcome and what explains the odds are different promises. See the note below |
 | `Background from the Yonder team to explain the odds. It plays no role in how this market resolves.` | `.rules-note` | the sharpest line of the redesign: it exists so the context tab can never be mistaken for the resolution rule |
@@ -1763,3 +1763,43 @@ that teaches a second vocabulary.
 **The count line and the trail now say the same thing in two places on `terms.html` and that is not a
 duplicate.** The crumb says where the page sits; the 14-item table of contents says what is inside
 it. A person who arrived from a search engine needs the first before the second.
+
+## 2026-08-16 - one string rewritten, and the exemption that protected it had a condition nobody had measured
+
+`AMM` and `order book` stood in one line, `.md-sub` under "Price by bet size", on **9 event-detail
+screens per tree, 20 occurrences across the three trees**. The critique of the same morning called it
+the only sentence in the product that assumes prior knowledge, standing on the screen where money is
+committed. Three things were measured before a word was changed, and each one moved the answer.
+
+**One: the lexicon did not forbid it, and the exemption has two halves.** `voice.md` bans trader
+terms by PLACE rather than by word, and allows them "inside a block whose whole job is to explain the
+mechanism, **where it is glossed in plain words**". The first half was quoted every time this line
+came up. **The second half was never checked.** `AMM` was named on 9 screens per tree and glossed on
+none, here or anywhere else in the product.
+
+**Two: the example the rule gives for the legitimate place does not exist.** `voice.md` illustrates
+the exemption with "*AMM* in the How It Works explanation is the mechanism being named". Measured:
+`how-it-works.html` contains the string `AMM` **zero** times, in either tree. The term lived only in
+the place the exemption did not reach and was absent from the one place the rule holds up as correct.
+
+**Three: the reason this row itself gave names the wrong reader.** It read "says what it is NOT,
+because an order book is what a trader would assume". Principle 3 is "speak to a spectator with an
+opinion, **not to a trader**", and `PRODUCT.md` spends a line of its own on it: "NOT a trader
+terminal: no order books". To the spectator the sentence is two unknown words; to the trader it is
+redundant. **A sentence with no reader.**
+
+**And the explanation the product needed was already written, four sections away.** How It Works
+says: "Prices move as people bet. You buy YES or NO at the price on screen, and that price is locked
+when you confirm. A winning share pays one dollar, so a lower price buys more shares and a larger
+payout." Plain, complete, no term. So the caption did not need to name a mechanism; it needed to say
+what its own table proves.
+
+| was | is |
+|---|---|
+| `How the YES price moves as your bet grows. This market runs on an AMM, not an order book.` | `How the YES price moves as your bet grows. Your own bet moves it, so a bigger bet buys at a worse average price.` |
+
+The table below it reads $10 at 38 per cent, $100 at 39, $1,000 at 42, $5,000 at 49. **The new second
+sentence is the caption of that column and the old one was a footnote about the engine.** `AMM` and
+`order book` now read **0 in `ui-visual/`, 0 in `wireframes/`**, and in `ui-kit/` only inside
+`market.html`'s prose about this decision. `ia/docs/` keeps its 9: those are the spec naming the
+mechanic to its own writers, which is what a mechanics document is for.
