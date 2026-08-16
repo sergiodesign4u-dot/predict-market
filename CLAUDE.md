@@ -234,6 +234,37 @@ because it is a stance rather than a principle, and it is written once, here.
   of "a missing value is a value": assert that the branch you are measuring is the branch that is
   on.** The same class covers `prefers-reduced-motion`, `prefers-color-scheme`, `forced-colors` and
   the theme attribute this file already warns about.
+- **CONTRAST IS A PROPERTY OF THE THING THAT IDENTIFIES THE CONTROL, NOT OF EVERY EDGE IT HAS, AND
+  MEASURING EVERY EDGE MANUFACTURES A DEFECT LIST.** A census of 46 interactive families on 18
+  screens, both themes, both engines, reported **43 of 46 under 3:1** on fill-or-border and read like
+  a system-wide accessibility failure. **24 of the 43 have no fill and no border at all**: they are
+  text links, and 1.4.11 asks 3:1 of the visual information *required* to identify a control, which
+  for a link is its words. For the rest the mark or the label does the identifying, and measured from
+  the render: bordered icon controls **8.44 Vault / 5.38 Daylight**, `summary` 9.43 / 17.97, the card
+  YES 8.01 / 7.69, the amount chip 12.01 / 15.78, the bare bookmark 6.73 / 4.32. **The quiet edge is
+  the Vault material and it was never the identification.** `components/tokens.css` had already drawn
+  this line beside `--border-field` and written the reason, and a field is in that role precisely
+  because it has neither a glyph nor a label. The change was authorised and is not made: it would
+  have repainted 108 screens in both themes to satisfy a criterion already satisfied. **Before
+  raising a contrast number, name the thing whose contrast is doing the work.**
+- **A SCREENSHOT CLIP IS IN PAGE COORDINATES AND `getBoundingClientRect()` IS IN VIEWPORT
+  COORDINATES, SO A CLIP TAKEN AFTER A SCROLL SAMPLES SOMEWHERE ELSE AND RETURNS PLAUSIBLE COLOURS
+  FROM IT.** This is how the pass above nearly published its own opposite: `.icon-btn-bare` read
+  **1.24 in the Vault and 2.23 in Daylight**, both under the criterion, and both were a capture that
+  contained no glyph at all. **An empty capture reads exactly like a mark identical to its ground**,
+  which is a contrast failure that cannot be told from a real one by looking at the number. Use the
+  element's own `screenshot()` rather than a page clip, and confirm the element is in view. **What
+  caught it was the positive control**: a brass Confirm button that did not come back brass. Sample
+  the same glyph from a second element of the same class and the true numbers appear, 6.73 and 4.32.
+  **Every paint-sampled contrast figure gets a control whose colour is known before any of the
+  figures are believed.** And a fourth reading in the same hour failed the other way: screenshotting
+  the GLYPH's own box and taking its median as the ground measures the glyph against **its own
+  antialiasing**, which returned 2.05 to 3.42 for marks that are 3.20 to 8.56 against the card they
+  stand on. **The right shape is narrower than it looks: sample only to prove the token renders as
+  declared, then do the arithmetic on computed values.** Here the painted colour equalled the
+  computed colour on every row, `[164,157,143]` for `--icon-quiet` and `[215,172,83]` for
+  `--icon-brass`, at which point sampling has done its whole job and any further pixel statistic is
+  a new way to be wrong.
 - **THE PRODUCT ON AN OVERLAY SCREEN IS THE DEVICE PLUS THE OPEN DIALOG, AND A CLOSED STATE IS NOT A
   MISSING STATE.** Two findings in one run, both of them would have shipped. Scoping a probe to
   `.device` reported **0 `<h1>` on five screens**, because `deposit`, `sign-in`, `win`, `loss` and

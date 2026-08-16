@@ -12,6 +12,85 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-16 - The control boundary was authorised for repainting and the measurement said do not, and the system had already written why
+
+**THE ROW ASKED FOR A TOKEN AND THE ANSWER IS THAT THE TOKEN EXISTS.** `docs/backlog.md` 160 said a
+control has no ground in Daylight, because `--bg-control` and `--bg-page` are both `#fcfaf4`. Restated
+this morning after a proper measurement, it said something larger: the boundary of a control reads
+under 3:1 in BOTH themes and the Vault is the worse one, with `.icon-btn` at 1.10 and `.bp-side` at
+1.38 against the ground each stands on. The candidate was a `--border-control` at 3:1 in both themes.
+**The change was authorised.** It is not made, and the reason is the whole entry.
+
+**THE CENSUS THAT LOOKED LIKE A SYSTEM-WIDE FAILURE.** 46 interactive families over 18 screens, two
+themes, two engines, each element's fill and border resolved against the first ancestor that actually
+paints a background: **43 of 46 read under 3:1**. On its face that is the entire quiet-control layer
+of the product failing WCAG 1.4.11.
+
+**AND THE FIRST CUT TOOK 24 OF THE 43 OUT.** They read 0 fill and 0 border because they have neither:
+`.q`, `.A`, `.nav-item`, `.toc-link`, `.hh-name`, `.logo`, 424 elements in the largest family. They
+are text links. 1.4.11 asks 3:1 of the visual information **required** to identify a component, and
+for a link that is its words. **A predicate that counts edges cannot tell a control with a quiet edge
+from a control with no edge by design**, which is the same silhouette as `scrollWidth > clientWidth`.
+
+**THE SECOND CUT TOOK THE REST.** Measured from the render with element screenshots at
+`deviceScaleFactor` 2, the mark or the label carries the identification everywhere:
+
+| control | Vault | Daylight |
+|---|---|---|
+| `.icon-btn`, bordered | 8.44 | 5.38 |
+| `.notif-menu summary` | 9.43 | 17.97 |
+| `.icon-btn-tile` | 5.49 | 7.67 |
+| the card YES | 8.01 | 7.69 |
+| the amount chip | 12.01 | 15.78 |
+| the bookmark, unsaved | 6.73 | 4.32 |
+| the bookmark, saved | 8.56 | **3.20** |
+
+Every one clears 3:1. The last is the only one worth watching: the saved bookmark in Daylight passes
+with almost no headroom.
+
+**AND THE SYSTEM HAD ALREADY DRAWN THIS LINE, IN WRITING, TWO YEARS OF ARGUMENT AGO.** Beside
+`--border-field` in `components/tokens.css`: "THE BOUNDARY THAT IS THE CONTROL, and it is a second
+role rather than a stronger hairline because the two answer different questions. A hairline SEPARATES
+two areas and 1.4.11 does not reach it; a field's edge is the only thing on the screen that says text
+may be typed here, so it is visual information required to identify a user interface component and
+owes 3:1." **A field has no glyph and no label. That is why it alone needed the role.** The role
+backlog 160 asked for exists, carries its argument, and is applied exactly where the criterion bites.
+The quiet edge everywhere else is the Vault material, correctly scoped, and the brief pins the
+material.
+
+**SO THE WORK OF THIS PASS WAS NOT MAKING THE CHANGE.** Repainting every icon button and the bet
+picker on 108 screens in both themes, to satisfy a criterion that was already satisfied, on a number
+that was measuring the wrong thing.
+
+**THREE INSTRUMENT FAILURES ON THE WAY, AND THE THIRD IS THE ONE THAT NEARLY PUBLISHED THE OPPOSITE.**
+
+- **A screenshot clip is in PAGE coordinates and `getBoundingClientRect()` is in VIEWPORT
+  coordinates.** Every clip taken after a `scrollIntoView` sampled somewhere else on the page and
+  came back with plausible colours from it. Plausible is the problem: nothing looked wrong.
+- **An element screenshot of an element scrolled out of view contains no glyph, and no glyph reads
+  exactly like a mark identical to its ground.** `.icon-btn-bare` was measured at **1.24 in the Vault
+  and 2.23 in Daylight**, filed as the one genuine 1.4.11 failure in the product, and written up as
+  such. It is 6.73 and 4.32. The capture was empty. **A contrast failure and an empty frame produce
+  the same number and cannot be told apart by looking at it.**
+- **What caught both was the positive control**: a `.btn-primary` labelled in the harness as "must be
+  brass" came back bone. Sampling a second element of the same class then gave the true glyph
+  numbers, twice, in both themes.
+
+**A FOURTH READING FAILED THE OTHER WAY AND IT NARROWS THE METHOD.** Screenshotting the GLYPH s own
+box and taking that crop s median as the ground measures the glyph against **its own antialiasing**:
+it returned 2.05 to 3.42 for marks that are 3.20 to 8.56 against the card they actually stand on, and
+it did it consistently on both engines, which is what a wrong method looks like from the inside. **The
+right shape is narrower than it looks.** On every row the painted colour equalled the computed colour
+exactly, `[164,157,143]` for `--icon-quiet` and `[215,172,83]` for `--icon-brass`. Once that holds,
+sampling has done its whole job, and the contrast is arithmetic on computed values with no sampling
+error in it at all. **Sample to prove the token renders as declared, then compute.**
+
+**Every paint-sampled contrast figure from here gets a control whose colour is known, read before any
+of the figures are believed.** Three rules added to the root file: contrast belongs to the thing that
+identifies the control, a clip is not a rect, and a crop of the mark is not a reading of the ground.
+
+---
+
 ## 2026-08-16 - The score moved 22 to 30, and three of the six things the run found were readings of the instrument
 
 **THE RE-SCORE.** Same target, same method family, so this one is comparable: **22/40 on 2026-08-16
