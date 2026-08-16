@@ -12,6 +12,52 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-16 - The metric was measuring the writing, and the ranking it produced was upside down
+
+**THE ROW ASKED WHETHER TO RE-TAKE THE NUMBERS AND THE ANSWER IS THAT THE NUMBER WAS THE WRONG ONE.**
+`docs/backlog.md` 161 opened when twelve of the kit's thirteen `N lines` figures turned out to have
+drifted by roughly a factor of two. Re-taking them would have been half a day's work and the same
+defect a month later.
+
+**82 PER CENT OF `components/` IS PROSE.** Measured with comments stripped: **11,190 lines, 2,055 of
+them code**, 4,884 declarations, 1,389 rules across 56 stylesheets. Per file it runs from 68 per cent
+(`card.css`) to **98 per cent** (`logo.css`, 106 lines of which 2 are code). `platehead.css` is 131
+lines and 4 of code. `chip.css` is 383 and 30.
+
+**AND THE RANKING IS UPSIDE DOWN, WHICH IS THE PROOF RATHER THAN THE COMPLAINT.** By lines,
+`dialog.css` at 559 is half again the size of `hero.css` at 365. By declarations, **hero is 339 and
+dialog is 116**, so the hero is nearly three times the component. A metric that reverses the order of
+the two largest organisms is not measuring the thing it is printed beside, which on these pages is
+"level 3, 291 uses" - facts about a component.
+
+**SO THE BADGE IS DECLARATIONS NOW.** 30 badges rewritten across 8 kit pages, plus the free-standing
+sentences: `overview.html` said "51 stylesheets, 5,651 lines" and says 56 and 4,884 declarations;
+`patterns.html` carried a lines badge beside a declarations badge on all six patterns, and the
+redundant half is gone.
+
+**TWO CONTRADICTIONS FELL OUT OF THE SAME SWEEP.** `detail-shell.html` said "the smallest file in the
+system at 17 lines" and `feed.html` said "the smallest file in the system: 11 lines". **Both cannot be
+true and neither was**: `feed.css` is 12 lines and `detail-shell.css` is 25. And `position.html` said
+`position.css` "spends 22 lines of comment"; it spends **132**.
+
+**THE COUNTER WAS WRONG BEFORE THE PAGES WERE, AND THE PAGES CAUGHT IT.** The first counter matched
+`prop: value;` with a trailing semicolon, which misses the last declaration in every block, so it
+under-counted by one per rule: it made `card-grid.css` 1 where the page already said 4. **Six badges
+the sweep had not touched disagreed with the new numbers, and they were right and the instrument was
+wrong.** Recounted by splitting each `{...}` block on `;`, the system is 4,884 declarations rather
+than 3,351, and all 33 badges were rewritten again. **A figure that disagrees with an existing figure
+is a reading of the instrument until the instrument is proved.**
+
+**Verified on both engines: every declarations badge on every kit page parsed back out of the HTML
+and compared with its stylesheet, 0 disagreements**, alongside 554 renders per engine over three
+trees with 0 page errors, 0 responses at or above 400, 0 sideways scroll, 0 duplicate ids.
+
+**WHAT IS NOT CLAIMED.** Declarations is a better number, not a true measure of a component: it counts
+a `box-shadow` the same as a `display`. It is here because it moves when the component moves and
+does not move when somebody writes a paragraph, which is the whole of what the badge is for.
+
+---
+
 ## 2026-08-16 - A component page that showed one of five blocks, and the id rule the stand already knew
 
 **THE NUMBER.** `hero.css` declares **53 classes across five blocks**: the band's layout, the featured
