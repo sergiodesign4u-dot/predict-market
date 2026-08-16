@@ -831,8 +831,8 @@ document.addEventListener('click', function (e) {
         io.observe(fullNav);
       })();
     })();
-  </script><dialog class="app-dialog" id="outcomeDialog" aria-label="Card declined"><div class="plate-head sheet-head"><h1>Card declined</h1><a href="event-detail.html" class="icon-btn icon-btn-photo sheet-close" aria-label="Back to the event"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg></a></div><div class="sheet-body">
-          <div class="inline-error" role="alert">Your card was declined. No funds were taken. Try another card, or connect a USDC wallet to skip cards entirely.</div>
+  </script><dialog class="app-dialog problem-dialog" id="outcomeDialog" aria-label="Card declined"><div class="plate-head sheet-head"><h1>Card declined</h1><a href="event-detail.html" class="icon-btn icon-btn-photo sheet-close" aria-label="Back to the event"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg></a></div><div class="sheet-body">
+          <div class="inline-error" role="alert"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-danger-triangle-b"/></svg>Your card was declined. No funds were taken. Try another card, or connect a USDC wallet to skip cards entirely.</div>
           <div>
             <span class="field-label">Amount to add</span>
             <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="10" value="20.00" aria-label="Amount to add"></div>

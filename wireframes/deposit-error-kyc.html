@@ -348,7 +348,8 @@
     .quick button.sel { background: #b8b8b8; font-weight: bold; }
     .line { display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0; border-top: 1px solid #ddd; }
     .line.total { font-weight: bold; border-top: 1px solid #999; }
-    .inline-error { border: 1px solid #999; background: #e0e0e0; padding: 8px; font-size: 12px; }
+    .inline-error { display: flex; align-items: flex-start; gap: 8px; border: 1px solid #666; background: #e0e0e0; padding: 8px; font-size: 12px; font-weight: 600; }
+    .inline-error .ic { width: 22px; height: 22px; flex: 0 0 22px; }
     .reconcile-box { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 12px; display: flex; flex-direction: column; gap: 4px; }
     .spinner-box { border: 1px dashed #999; background: #ededed; padding: 24px; text-align: center; font-size: 12px; color: #555; }
     .fine { font-size: 11px; color: #555; line-height: 1.5; }
@@ -746,8 +747,8 @@
           <a href="event-detail.html" class="icon-btn icon-btn-photo sheet-close" aria-label="Back to the event"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
         </div>
         <div class="sheet-body">
-          <div class="inline-error" role="alert">KYC verification was rejected, so adding funds by card is not available on this account. You can still bet with crypto by connecting a USDC wallet (no KYC), or contact support.</div>
-          <button type="button" class="btn btn-secondary btn-md btn-block">Connect a USDC wallet (no KYC)</button>
+          <div class="inline-error" role="alert"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg>KYC verification was rejected, so adding funds by card is not available on this account. You can still bet with crypto by connecting a USDC wallet (no KYC), or contact support.</div>
+          <button type="button" class="btn btn-primary btn-md btn-block">Connect a USDC wallet (no KYC)</button>
           <button type="button" class="btn btn-secondary btn-md btn-block">Contact support</button>
           <a href="event-feed.html" class="btn btn-secondary btn-md btn-block">Browse events</a>
         </div>
@@ -881,7 +882,7 @@
     </div>
   </dialog>
 
-  <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
+  <dialog id="depositDialog" class="app-dialog problem-dialog" aria-label="Add funds">
     <div class="sheet-head">
       <h2>Add funds</h2>
       <p class="sheet-sub">Card or crypto. Your USDC is held 1:1.</p>

@@ -393,7 +393,8 @@
     .quick button.sel { background: #b8b8b8; font-weight: bold; }
     .line { display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0; border-top: 1px solid #ddd; }
     .line.total { font-weight: bold; border-top: 1px solid #999; }
-    .inline-error { border: 1px solid #999; background: #e0e0e0; padding: 8px; font-size: 12px; }
+    .inline-error { display: flex; align-items: flex-start; gap: 8px; border: 1px solid #666; background: #e0e0e0; padding: 8px; font-size: 12px; font-weight: 600; }
+    .inline-error .ic { width: 22px; height: 22px; flex: 0 0 22px; }
     .reconcile-box { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 12px; display: flex; flex-direction: column; gap: 4px; }
     .spinner-box { border: 1px dashed #999; background: #ededed; padding: 24px; text-align: center; font-size: 12px; color: #555; }
     .fine { font-size: 11px; color: #555; line-height: 1.5; }
@@ -1304,7 +1305,7 @@
                 <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="1" value="5.00" aria-label="Bet amount"></div>
                 <div class="quick"><button type="button" class="chip chip-amount">$1</button><button class="chip chip-amount sel" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button></div>
               </div>
-              <div class="inline-error" role="alert">Your bet did not register on-chain. No funds were taken.</div>
+              <div class="inline-error" role="alert"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg>Your bet did not register on-chain. No funds were taken.</div>
               <a href="event-detail-bet-processing.html" class="btn btn-primary btn-md btn-block">Try again</a>
               <a href="wallet.html" class="btn btn-secondary btn-md btn-block">Check wallet</a>
             </div>
@@ -1340,7 +1341,7 @@
                 <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="1" value="5.00" aria-label="Bet amount"></div>
                 <div class="quick"><button type="button" class="chip chip-amount">$1</button><button class="chip chip-amount sel" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button></div>
               </div>
-              <div class="inline-error" role="alert">Your bet did not register on-chain. No funds were taken.</div>
+              <div class="inline-error" role="alert"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg>Your bet did not register on-chain. No funds were taken.</div>
               <a href="event-detail-bet-processing.html" class="btn btn-primary btn-md btn-block">Try again</a>
               <a href="wallet.html" class="btn btn-secondary btn-md btn-block">Check wallet</a>
             </div>

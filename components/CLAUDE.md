@@ -1,9 +1,10 @@
 # components/ - the system itself
 
-This folder IS the design system. **55 stylesheets, 10,896 lines**: 49 here and 6 in `patterns/`,
-re-counted 2026-08-16 after `search.css` was written, which is the first file added to this folder
-for a control the IA had DECIDED against rather than for one it had specified. It was 54 and 10,805
-earlier the same day, after the minor-observations pass gave the skeleton a hidden status line and
+This folder IS the design system. **55 stylesheets, 10,948 lines**: 49 here and 6 in `patterns/`,
+re-counted 2026-08-16 after the error tone was given to the one surface that had never worn it. It
+was 10,896 earlier the same day, after `search.css` was written, which is the first file added to
+this folder for a control the IA had DECIDED against rather than for one it had specified. It was 54
+and 10,805 earlier the same day, after the minor-observations pass gave the skeleton a hidden status line and
 moved the profile's lead figure off an ordinal. It was 10,764 earlier the same day, after the
 palette pass gave the hero chart a scale, took Volume off
 brass and took the tint off the spectator's YES/NO pair. It was 10,613 earlier the same day, after
@@ -715,6 +716,24 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   matching nothing. It failed silently and the browser said 16px where the rule said 13. **Anchor an
   insertion on a comment or a brace, never on the second half of a compound selector**, and read the
   computed value back before believing the edit landed.
+
+- **A TONE THAT TWO SURFACES OF THREE WEAR IS NOT A TONE THE SYSTEM LACKS, IT IS ONE SURFACE THAT
+  NEVER JOINED.** The critique read "there is no error tone" and the true half of that is only that
+  there is no error HUE, which is a settled consequence of green being YES and brass being the
+  brand. Measured before the edit: `.state-block.state-problem` and `.toast.toast-error` both took
+  `--border-notice`, one danger triangle and a 600 message, and `.inline-error` took the plain
+  hairline, **0 marks and 400**. Same ground on all three. **The quietest was the one that says a bet
+  did not register**, quieter than the `.reconcile-box` two lines above it in the same panel, which
+  frames a price CHANGE in brass. Before designing a tone, census the surfaces that should already
+  be wearing it: the answer was three declarations, not a new colour.
+- **A HEAD ANSWERS FOR THE MOMENT ITS DIALOG NAMES, NOT FOR THE WORST LINE INSIDE IT.** Two dialogs
+  wore the full brass plate head, radial corner and 210px glow, over "Card declined" and
+  "Verification rejected", and `platehead.css` had already argued the fix for a different moment:
+  the loss head has no glow "since inheriting the face now means inheriting a brass one". They are
+  one selector rather than two faces. **The other six dialogs carrying an error keep the brass and
+  each was read before it was left alone** - a sign-in sheet is still offering to sign you in, a
+  provider conflict is a guard, and `win-error` is a WIN whose share card failed. A grep for
+  `inline-error` would have repainted all eight.
 
 ## Where the record is
 

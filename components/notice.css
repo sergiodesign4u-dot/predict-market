@@ -1,7 +1,8 @@
 /* components/notice.css
    Component: notice. Classes: .inline-error, .protect, .protect-page, .push-actions, .push-banner, .push-msg, .rec-lost, .rec-won, .reconcile-box, .spinner-box, .widget-box.
 
-   Reads: --bg-control, --bg-surface, --border-hairline, --color-trust, --outcome-no-text,
+   Reads: --bg-control, --bg-surface, --border-hairline, --border-notice, --color-trust,
+          --outcome-no-text,
           --outcome-yes-text, --result-won, --text-brass, --text-muted, --text-primary,
           --tint-brass-06, --tint-brass-09, --tint-brass-30, --tint-brass-45
    Stand:  ui-kit/notice.html, and ui-kit/molecules.html#notice-lt for the level and its reason (the -lt is the shelf's own id suffix and not a variant of this component: ui-kit/CLAUDE.md)
@@ -63,7 +64,44 @@
    other in either, over both trees. Writing both was insurance against markup that never arrived. */
 .protect b{color:var(--text-primary)}
 .push-banner{background:color-mix(in oklab,var(--color-trust) 8%,var(--bg-surface));border:var(--hairline) solid color-mix(in oklab,var(--color-trust) 22%,var(--border-hairline));border-radius:var(--radius-10);color:var(--text-primary)}
-.inline-error{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary);font-size:var(--text-12);line-height:var(--leading-base);padding:var(--space-8)}
+/* ============================================================================
+   THE ERROR TONE WAS NEVER MISSING FROM THE SYSTEM. IT WAS MISSING FROM THE ONE
+   SURFACE WHERE MONEY FAILS. 2026-08-16.
+
+   Red is NO and brass is the brand, so this product has no hue left to spend on
+   a failure, and `tokens.css` decided that years of arguing ago: `--border-notice`
+   is `--bone-700` and its comment reads "the neutralised error toast, warm grey,
+   NEVER RED". What follows from that is the whole tone: **an error is drawn by a
+   MARK, an EDGE and a WEIGHT, and by no colour at all.** Three channels, none of
+   them hue, which is a stronger signal than a hue on its own and the only one
+   available here.
+
+   TWO OF THE THREE SURFACES ALREADY WORE IT AND THE THIRD DID NOT. Measured on
+   the live screens before this edit:
+
+     .state-block.state-problem   edge rgb(90,84,74)   1 mark   msg 600
+     .toast.toast-error           edge rgb(90,84,74)   1 mark   msg 600
+     .inline-error                edge rgb(43,47,56)   0 marks      400
+
+   Same ground on all three. The whole-screen error and the toast take the notice
+   edge, the danger triangle and semibold ink; the box that says "Your bet did not
+   register on-chain. No funds were taken." took the plain hairline, no mark and
+   regular weight. **So the quietest of the three was the one where a bet failed**,
+   and it was quieter than `.reconcile-box` two lines above it, which frames a
+   price CHANGE in brass at `--tint-brass-45`. The product was drawing more
+   attention to the odds moving than to the money not arriving.
+
+   IT IS THE FAMILY'S THIRD MEMBER NOW AND NOT A NEW FACE. Same edge, same mark,
+   same weight, and the mark scales with the surface exactly as the two others do:
+   28 for a whole screen, 22 for a toast and for this, which is the same species
+   as a toast - a compact box holding a mark and one sentence.
+
+   NO WRAPPER WAS ADDED FOR THE SENTENCE, and that is this folder's own rule
+   working: a text node beside an element becomes an anonymous flex item, so the
+   box that had one text child has two children the moment the mark arrives.
+   ============================================================================ */
+.inline-error{display:flex;align-items:flex-start;gap:var(--space-8);border:var(--hairline) solid var(--border-notice);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary);font-size:var(--text-12);line-height:var(--leading-base);font-weight:var(--weight-semibold);padding:var(--space-8)}
+.inline-error .ic{width:var(--icon-22);height:var(--icon-22);flex:0 0 var(--icon-22);stroke:var(--text-primary);color:var(--text-primary)}
 .reconcile-box{border:var(--hairline) solid var(--tint-brass-45);border-radius:var(--radius-10);background:var(--tint-brass-09);color:var(--text-primary);font-size:var(--text-12);line-height:var(--leading-base);padding:var(--space-8)}
 .reconcile-box strong{color:var(--text-brass)}
 .outcome-dialog .protect{color:var(--text-muted);font-size:var(--text-12);line-height:var(--leading-base);margin:0}

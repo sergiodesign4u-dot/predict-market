@@ -12,6 +12,76 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-16 - The error tone was never missing from the system, it was missing from the one surface where money fails
+
+**RED IS NO AND BRASS IS THE BRAND, SO THERE IS NO HUE LEFT FOR A FAILURE.** That is the true half
+of the critique's "there is no error tone", and it is not a gap that a new colour could fill:
+`DESIGN.md` reserves green, red and gold, and the categorical series holds the arc from cyan 187 to
+magenta 328 precisely so that no data line wears a reserved ink. Amber sits between red and brass
+and would be legible as either. **The palette has no room, and the system had already decided what
+to do about it**: `--border-notice` is `--bone-700` and its token comment has read "the neutralised
+error toast, warm grey, **never red**" since it was written.
+
+**SO THE TONE IS THREE CHANNELS AND NOT ONE OF THEM IS COLOUR**: a MARK (the danger triangle, the
+system's only one), an EDGE (`--border-notice`), and a WEIGHT (semibold at `--text-primary`). Three
+non-hue channels is a stronger signal than a hue on its own, and it is the only one this palette can
+afford. Written into `DESIGN.md` as the Error Tone Rule, beside the Reserved-Outcome Rule that makes
+it necessary.
+
+**TWO OF THE THREE ERROR SURFACES ALREADY WORE IT AND THE THIRD DID NOT.** Measured on the live
+screens before the edit:
+
+| face | edge | marks | message weight |
+|---|---|---|---|
+| `.state-block.state-problem` | rgb(90,84,74) | 1 | 600 |
+| `.toast.toast-error` | rgb(90,84,74) | 1 | 600 |
+| `.inline-error` | rgb(43,47,56) | **0** | **400** |
+
+Same ground on all three. The whole-screen error and the toast take the notice edge, the triangle
+and semibold ink; **the box that says "Your bet did not register on-chain. No funds were taken."
+took the plain hairline, no mark and regular weight.** So the quietest of the three was the one
+where a bet failed, and it was quieter than `.reconcile-box` two lines above it in the same panel,
+which frames a price CHANGE in brass at `--tint-brass-45`. **The product was drawing more attention
+to the odds moving than to the money not arriving.**
+
+**IT IS THE FAMILY'S THIRD MEMBER NOW AND NOT A NEW FACE.** Same edge, same mark, same weight, and
+the mark scales with the surface exactly as the other two do: 28 for a whole screen, 22 for a toast,
+22 for this, which is the same species as a toast - a compact box holding a mark and one sentence.
+20 placements in each screen tree and 8 in the kit. **No wrapper was added for the sentence**, which
+is this folder's own rule working: a text node beside an element becomes an anonymous flex item, so
+the box that had one text child has two children the moment the mark arrives.
+
+**THE BRAND WAS PUTTING ITS OWN GRADIENT BEHIND BAD NEWS.** `deposit-error-card.html` and
+`deposit-error-kyc.html` wore the full plate head, the radial brass corner and the 210px glow
+included, over the words "Card declined" and "Verification rejected". `platehead.css` had already
+argued the answer for a different moment: the loss head is the one plate head with no glow, "since
+inheriting the face now means inheriting a brass one". **A bet that lost and a deposit that was
+declined are the same moment**, so they are one selector rather than two faces:
+`dialog.app-dialog:is(.loss-dialog,.problem-dialog) .plate-head`.
+
+**THE OTHER SIX DIALOGS THAT CARRY AN ERROR KEEP THE BRASS, AND EACH WAS READ BEFORE IT WAS LEFT
+ALONE.** The sign-in sheet's head says "Sign in or create account" and the brand IS offering that;
+the provider conflict says "Account already exists" and is a guard rather than a failure; the
+minimum-not-met sheet is the Add funds sheet with a guard inside it; `win-error` is a WIN whose
+share card failed, and its head is the green one; the two bet sheets have no head at all. **The head
+answers for the moment the dialog names, not for the worst line inside it.**
+
+**AND ONE DIALOG OFFERED THREE EQUALLY WEIGHTED WAYS OUT.** `deposit-error-kyc.html` had three
+`btn-secondary btn-block` in a row, the only outcome dialog in the product with no primary: every
+other one has exactly one. "Connect a USDC wallet (no KYC)" is the action that actually solves the
+problem the dialog is about, so it is the primary; support and browse stay secondary.
+
+**Verified.** 1,104 renders over three trees at 390 and 1280 in Chromium and WebKit: 0 page errors,
+0 responses at 400 or above, 0 sideways scroll, 0 duplicate ids, **48 error boxes of which 0 without
+the tone**, and **0 problem heads still drawing a brass radial or a glow**. The tone probe was proved
+able to come back red first: with the mark removed it reports 1, with the weight forced to 400 it
+reports 2, and on the shipped page 0.
+
+**No copy changed in this pass and that is deliberate.** Every sentence in every error box was
+already on voice; what was wrong was that the product said them in a whisper.
+
+---
+
 ## 2026-08-16 - Search was not missing, it was decided against, and the condition on that decision had not been met
 
 **THE FIRST THING THIS PASS DID WAS FIND THE DECISION IT WAS ABOUT TO OVERTURN.**

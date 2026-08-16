@@ -81,7 +81,7 @@
           <tr><td><code>.protect</code></td><td><b>113</b></td><td>reassurance under a form: what happens to your money and who holds it</td><td>a TRUST tint inside a trust edge</td></tr>
           <tr><td><code>.protect.protect-page</code></td><td><b>3</b></td><td>the same sentence standing in a page rather than a sheet</td><td>a brass tint inside a brass edge</td></tr>
           <tr><td><code>.widget-box</code></td><td><b>110</b></td><td>the slot a third-party payment widget will load into</td><td>a DASHED hairline on the control ground at a 10 corner, 160 tall, centred</td></tr>
-          <tr><td><code>.inline-error</code></td><td>8</td><td>a failure said where it happened</td><td>a solid hairline on the control ground</td></tr>
+          <tr><td><code>.inline-error</code></td><td>8</td><td>a failure said where it happened</td><td>the NOTICE edge, the danger triangle and semibold ink on the control ground, since 2026-08-16</td></tr>
           <tr><td><code>.reconcile-box</code></td><td>7</td><td>the figure to check, in three faces</td><td>a stronger brass edge when it is plain</td></tr>
           <tr><td><code>.reconcile-box.rec-won</code></td><td>4</td><td>the payout on a win</td><td>a WON tint inside a won edge, centred, the figure at 24</td></tr>
           <tr><td><code>.reconcile-box.rec-lost</code></td><td>1</td><td>the figure on a loss</td><td>the control ground inside a hairline, centred, the figure at 20</td></tr>
@@ -90,6 +90,34 @@
         </tbody>
       </table>
     </div>
+    <p class="tk-why"><b>The error tone was never missing from the system. It was missing from the
+    one surface where money fails.</b> Red is NO and brass is the brand, so this product has no hue
+    left for a failure, and <code>tokens.css</code> settled that before any of these boxes existed:
+    <code>--border-notice</code> is <code>--bone-700</code> and its comment reads "the neutralised
+    error toast, warm grey, <b>never red</b>". What follows is the whole tone: <b>a MARK, an EDGE and
+    a WEIGHT, and no colour at all</b>.</p>
+    <p class="tk-note"><b>Two of the three surfaces already wore it and the third did not.</b>
+    Measured on the live screens before 2026-08-16:</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>face</th><th>edge</th><th>marks</th><th>message weight</th></tr></thead>
+        <tbody>
+          <tr><td><code>.state-block.state-problem</code></td><td>rgb(90,84,74)</td><td>1</td><td>600</td></tr>
+          <tr><td><code>.toast.toast-error</code></td><td>rgb(90,84,74)</td><td>1</td><td>600</td></tr>
+          <tr><td><code>.inline-error</code>, before</td><td>rgb(43,47,56)</td><td><b>0</b></td><td><b>400</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why">Same ground on all three. <b>So the quietest of the three was the one that says
+    "Your bet did not register on-chain"</b>, and it was quieter than <code>.reconcile-box</code> two
+    lines above it in the same panel, which frames a price CHANGE in brass at
+    <code>--tint-brass-45</code>. The product was drawing more attention to the odds moving than to
+    the money not arriving. It is the family's third member now, not a new face: same edge, same
+    mark, same weight, and the mark scales with the surface, <b>28 for a whole screen, 22 for a toast
+    and 22 for this</b>, which is the same species as a toast.</p>
+    <p class="tk-note"><b>No wrapper was added for the sentence</b>, and that is the system's own
+    rule working: a text node beside an element becomes an anonymous flex item, so a box with one
+    text child has two children the moment the mark arrives.</p>
 
     <p class="tk-subh">the three that stand on almost every screen</p>
     <div class="tk-pair2">
@@ -98,13 +126,13 @@
         <p class="protect">Funds are held with a regulated custodian. <b>We never hold your keys.</b></p>
         <p class="protect protect-page">The same sentence in a page rather than a sheet, on three placements.</p>
         <div class="widget-box">Payment widget loads here</div>
-        <div class="inline-error" role="alert">That card was declined. Nothing was charged.</div>
+        <div class="inline-error" role="alert"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-danger-triangle-b"/></svg>That card was declined. Nothing was charged.</div>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
         <p class="protect">Funds are held with a regulated custodian. <b>We never hold your keys.</b></p>
         <p class="protect protect-page">The same sentence in a page rather than a sheet, on three placements.</p>
         <div class="widget-box">Payment widget loads here</div>
-        <div class="inline-error" role="alert">That card was declined. Nothing was charged.</div>
+        <div class="inline-error" role="alert"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-danger-triangle-b"/></svg>That card was declined. Nothing was charged.</div>
       </div>
     </div>
 
