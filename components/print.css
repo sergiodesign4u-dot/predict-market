@@ -88,14 +88,14 @@
      everything that carries meaning by being SEPARATE gets a hairline back.
      TWO OF THE NAMES HERE WERE COMPONENT NAMES AND REACHED NOTHING, 2026-08-15. `.notice` and
      `.seo-plate` are the files; the markup wears `.protect`, `.push-banner`, `.widget-box`,
-     `.reconcile-box`, `.spinner-box`, `.inline-error` and `.feed-seo`, and the DOM count of the two
+     `.reconcile-box`, `.quiet-box`, `.inline-error` and `.feed-seo`, and the DOM count of the two
      that were written here is **0 in all 106 painted screens**. So 250 blocks that this rule was
      written for printed with no edge at all, and nobody could see it on a screen.
      THEY ARE REPAIRED RATHER THAN DELETED, because the intent is legible and correct: a plate
      without its ground needs its line back. The count was 6 names and the comment said four; it
      says neither now. */
   .card,.pos,.trust-item,dialog,
-  .protect,.push-banner,.widget-box,.reconcile-box,.spinner-box,.inline-error,
+  .protect,.push-banner,.widget-box,.reconcile-box,.quiet-box,.inline-error,
   .feed-seo{border:1px solid #bbb!important}
 
   /* 6. A scroller shows what fits and paper has no thumb, so anything that scrolls sideways
@@ -121,6 +121,6 @@
   /* 8. Page breaks. A card, a position row and a plate are single objects and reading half of
      one across a fold is worse than a short page. */
   .card,.pos,.trust-item,.opt-row,.plate-head,
-  .protect,.push-banner,.widget-box,.reconcile-box,.spinner-box,.inline-error{break-inside:avoid}
+  .protect,.push-banner,.widget-box,.reconcile-box,.quiet-box,.inline-error{break-inside:avoid}
   h1,h2,h3{break-after:avoid}
 }

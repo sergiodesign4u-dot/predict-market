@@ -1,5 +1,5 @@
 /* components/notice.css
-   Component: notice. Classes: .inline-error, .protect, .protect-page, .push-actions, .push-banner, .push-msg, .rec-lost, .rec-won, .reconcile-box, .sb-working, .spinner-box, .widget-box.
+   Component: notice. Classes: .inline-error, .protect, .protect-page, .push-actions, .push-banner, .push-msg, .rec-lost, .rec-won, .qb-working, .quiet-box, .reconcile-box, .widget-box.
 
    Reads: --bg-control, --bg-surface, --border-hairline, --border-notice, --color-trust,
           --outcome-no-text,
@@ -41,10 +41,7 @@
    face, and `ui-kit/notice.html` shows both of those rather than describing
    them.
    ============================================================================ */
-.widget-box{display:flex;align-items:center;justify-content:center;text-align:center;
-  min-height:160px;padding:var(--space-8);
-  border:var(--hairline) dashed var(--border-hairline);border-radius:var(--radius-10);
-  background:var(--bg-control);color:var(--text-muted);font-size:var(--text-11)}
+.widget-box{display:flex;align-items:center;justify-content:center;min-height:160px;padding:var(--space-8);font-size:var(--text-11)}
 .protect{padding:var(--space-8);font-size:var(--text-11);
   border:var(--hairline) solid color-mix(in oklab,var(--color-trust) 24%,var(--border-hairline));
   border-radius:var(--radius-10);
@@ -134,8 +131,11 @@
 .reconcile-box.rec-lost{border-color:var(--border-hairline);background:var(--bg-control)}
 .reconcile-box.rec-lost strong{color:var(--outcome-no-text);font-size:var(--text-20)}
 /* ============================================================================
-   THIS BOX IS WORN BY THREE JOBS AND ITS NAME NAMES ONE OF THEM, 2026-08-16,
-   docs/backlog.md 169 and 170.
+   THIS BOX IS WORN BY THREE JOBS AND ITS NAME USED TO NAME ONE OF THEM, 2026-08-16,
+   docs/backlog.md 169 and 170. It was `.quiet-box` until row 170 was closed the
+   same day: the face is a dashed muted box that stands where content is not, and a
+   legal notice on `terms.html` reading `class="quiet-box"` in the source was the
+   sharp end of a name that described one of its three wearers.
 
    Counted over all three trees before anything was written. FOUR placements are
    a process running with an unknown end: "Redirecting to Google to sign in",
@@ -173,10 +173,20 @@
    box, so the state stays and only the movement goes. A 1ms sweep would be a
    flicker, which is worse than the still box this shipped as.
    ============================================================================ */
-.spinner-box{border:var(--hairline) dashed var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-muted);padding:var(--space-20);text-align:center;font-size:var(--text-12);line-height:var(--leading-loose)}
-.spinner-box.sb-working{position:relative;overflow:hidden}
-.spinner-box.sb-working::before{content:"";position:absolute;top:0;left:0;width:34%;height:var(--size-2);background:var(--text-muted);animation:sb-sweep var(--pulse-period) var(--ease-standard) infinite alternate}
-@keyframes sb-sweep{to{translate:194%}}
+/* THE SKIN IS SHARED AND THE BOX IS NOT, 2026-08-16, docs/backlog.md 170. The row
+   asked whether these are one component with two paddings or two components, and the
+   declaration sets answer it: FIVE are the same and NINE are not. `.widget-box`
+   reserves a 160px rectangle and centres its content on both axes, because it holds
+   the SPACE a third-party payment widget will occupy; `.quiet-box` is a text block
+   with loose leading and no height, because it holds a SENTENCE. Folding them would
+   override four of the eight on one side, which is not a size, it is a different
+   thing wearing the same skin. So they stay two components and the skin stops being
+   two copies. */
+:is(.widget-box,.quiet-box){border:var(--hairline) dashed var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-muted);text-align:center}
+.quiet-box{padding:var(--space-20);font-size:var(--text-12);line-height:var(--leading-loose)}
+.quiet-box.qb-working{position:relative;overflow:hidden}
+.quiet-box.qb-working::before{content:"";position:absolute;top:0;left:0;width:34%;height:var(--size-2);background:var(--text-muted);animation:qb-sweep var(--pulse-period) var(--ease-standard) infinite alternate}
+@keyframes qb-sweep{to{translate:194%}}
 @media(prefers-reduced-motion:reduce){
-  .spinner-box.sb-working::before{animation:none;width:100%}
+  .quiet-box.qb-working::before{animation:none;width:100%}
 }

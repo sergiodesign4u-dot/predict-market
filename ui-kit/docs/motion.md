@@ -402,26 +402,26 @@ invisible reads as content flashing in and out rather than as a wait.
 ### The status job had a THIRD moment and this register could not see it, 2026-08-16
 
 The inventory above counts **2 status moments** and names them: the skeleton, and `edge-fade`. There
-were three. The third is `.spinner-box`, and it is the only moment in this product that is
+were three. The third is `.quiet-box`, and it is the only moment in this product that is
 definitionally "a process is running with an unknown end": an OAuth redirect, a third-party KYC
 widget, a share card being generated, a resolution being fetched, a bet being registered on-chain.
 
 **It was invisible to the inventory because the inventory was built out of what already moved.**
 Step 1 swept the corpus for `transition`, `animation`, `@keyframes` and for declared STATES, and
-`.spinner-box` had none of the four: it is a dashed rectangle with a sentence in it. A moment with no
+`.quiet-box` had none of the four: it is a dashed rectangle with a sentence in it. A moment with no
 existing movement and no state to hang one on cannot be found by a sweep that looks for movement or
 state. **This is the twin of "a rule that cannot be rendered cannot be checked": a moment that is
 already still is invisible to an instrument that measures stillness against motion.** What found it
 was reading the placements of a component whose NAME made a claim, and checking the claim.
 
-Closed the same day. `.spinner-box.sb-working` carries a 2px rule at `--size-2` sweeping across the
+Closed the same day. `.quiet-box.qb-working` carries a 2px rule at `--size-2` sweeping across the
 top edge, on **`--pulse-period`, the same period as `sk-pulse`**, because a spinner and a skeleton are
 one job in two geometries and Stage 11's rule is that the same role takes the same duration. The
 curve is `--ease-standard` over `alternate`, which slows the sweep at each end: a rotation would have
 needed a fourth curve, since `ease` on a rotation reads as a stall and a stall is the one thing a
 status must never say.
 
-It is a COMPOUND selector, and the placement count is the reason. `.spinner-box` is worn by nine
+It is a COMPOUND selector, and the placement count is the reason. `.quiet-box` is worn by nine
 placements and only five of them are running: two are an out-of-band pending state where nothing is
 happening in this tab, and **two are a prototype disclaimer that will never finish**. A cycle on the
 bare class would have drawn a progress bar on a legal notice.

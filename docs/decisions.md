@@ -12,6 +12,51 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-16 - Five declarations were the same and nine were not, which is the answer to whether they are one component
+
+**THE ROW ASKED A QUESTION AND THE DECLARATION SETS ANSWERED IT.** `docs/backlog.md` 170: one face,
+two names, and is `.widget-box` the same component with different padding? Counted:
+
+| | shared | its own |
+|---|---|---|
+| `.widget-box` | `border` dashed hairline, `--radius-10`, `--bg-control`, `--text-muted`, `text-align:center` | `display:flex`, `align-items`, `justify-content`, `min-height:160px`, `padding --space-8`, `--text-11` |
+| `.spinner-box` | the same five | `padding --space-20`, `--text-12`, `line-height --leading-loose` |
+
+**Five the same, nine not.** `.widget-box` reserves a 160px rectangle and centres its content on both
+axes, because it holds the SPACE a third-party payment widget will occupy, 112 placements, every one
+inside a dialog. The other holds a SENTENCE: no height, generous padding, loose leading. **Folding
+them would override four of the eight on one side, which is not a size, it is a different thing
+wearing the same skin.** So they stay two components.
+
+**AND THE SKIN STOPS BEING TWO COPIES.** The five shared declarations are one rule now,
+`:is(.widget-box,.quiet-box){...}`, and each component keeps only its box. Five declarations written
+twice is five chances to drift, and this repository has spent the week finding figures that drifted
+from their derivations.
+
+**THE NAME WENT, AND THE SHARP END WAS IN THE SOURCE RATHER THAN ON THE SCREEN.** `.spinner-box` is
+`.quiet-box`, `.sb-working` is `.qb-working`, `@keyframes sb-sweep` is `qb-sweep`. The face is a
+dashed muted box that stands where content is not, worn by three jobs: five placements where a
+process is running, two where something is pending out of band, and two where a prototype disclaimer
+says nothing on the page is in force. **A legal notice on `terms.html` reading
+`class="spinner-box"`** is what a name does when it describes one of its wearers.
+
+**156 occurrences over 110 files**: 9 markup in the paint, 9 in grey, 12 in the kit, 9 in
+`components/*.css`, and **93 inside the grey tree's inline `<style>` blocks**, because a grey file
+links no stylesheet and carries its own copy of the rule.
+
+**PROVED BY MEASURING THE FACE RATHER THAN READING THE DIFF.** Fourteen computed properties plus the
+box and the `::before` mark, captured on every visible placement before the rename and again after:
+**37 elements across 23 documents, 0 computed differences.** And the movement still works and still
+stops: `qb-sweep` renders, `translate` moves inside 320ms, and under `prefers-reduced-motion` the
+animation reads `none` and the bar becomes the full 346px width, on both engines.
+
+**WHAT STAYS OPEN AND IS NOT THIS ROW.** The prototype disclaimer is bookkeeping shown to a reviewer,
+which `wireframes/_conventions.md` files as the grey tree's job (the `TBD` chip: "a product that
+shows a user the word TBD is showing them the bookkeeping"), and it stands in the painted tree on
+`terms.html`. Renaming the box it wears does not answer whether it belongs there.
+
+---
+
 ## 2026-08-16 - The IA had decided the rail filters, the screen file said it was product scope, and the screen file won
 
 **TWO THIRDS OF THE ROW WERE ALREADY DECIDED AND NOBODY HAD READ IT.** `ia/docs/sitemap.md`, written
