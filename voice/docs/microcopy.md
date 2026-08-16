@@ -1743,3 +1743,23 @@ rows is the only thing about them that moved.
 visitor and at y=846 for a signed-in reader. It is at 846 for both now. "Your USDC is held 1:1" went
 from 3,885 to 748. **A sentence written to convince somebody who has not signed up was below three
 and a half thousand pixels of scroll for exactly that person.**
+
+## 2026-08-16 - six new strings, and five of them are one word the product already says
+
+The breadcrumb (`crumb`) landed on three page types. Every string in it is a name the product
+already uses somewhere, which is the point: a trail that renames the place it points at is a trail
+that teaches a second vocabulary.
+
+| string | where | note |
+|---|---|---|
+| `Home` | every crumb, the first item, the only link in the trail on all six screens | **Not "Events" and not "Yonder".** The bottom-nav slot is `Events` and the logo says `Yonder`, and both of those go to the same feed, so a third name for one destination would be the fee's three-products defect in miniature. `Home` is the word a breadcrumb has, and `ia/docs/pages/seo.md` writes the trail with it: `Home > {Category} > {Event}`. It is the IA's word, taken rather than invented |
+| `How it works` | the crumb on `how-it-works.html` | Sentence case, and the `<h1>` above it reads `How It Works` in title case. **That difference is deliberate and it is one this repository has ruled on before**: a crumb is a location in a sentence, a heading is a name. The IA writes the trail in sentence case at `seo.md` line 298 |
+| `Legal` | the crumb on `terms.html`, middle item | Text, not a link, because the product has no legal index screen: three of the four legal pages do not exist yet. The word is the IA's (`Home > Legal > {document}`, `seo.md` line 464) and it is the same word the footer's fourth nav column carries, so a reader who follows the footer arrives where the crumb says they are |
+| `Terms of Service` | the crumb on `terms.html`, last item | Identical to the `<h1>`, and this one IS title case because it is the document's NAME rather than a place |
+| `crypto_dan` | the crumb on `public-profile.html`, last item | The handle, per the IA's `Home > {handle}`. **A datum, not a string**: it changes with the profile and it is the same value the identity row already prints |
+| `Profile` | the crumb on the three public-profile states where the handle is not known yet | Loading, error and not-found. The trail still has to end somewhere, and ending it on the h1's word is the only answer that does not invent a placeholder |
+| `Breadcrumb` | the `aria-label` on the `<nav>`, all six screens | Never seen, and it is the landmark's name. The separator is drawn with `li + li::before` for the same reason a label is not typed: a `/` written as a text node reads as part of the next link and would need a row of its own here for a character nobody wrote |
+
+**The count line and the trail now say the same thing in two places on `terms.html` and that is not a
+duplicate.** The crumb says where the page sits; the 14-item table of contents says what is inside
+it. A person who arrived from a search engine needs the first before the second.

@@ -1,0 +1,73 @@
+/* components/crumb.css
+   Component: crumb. Classes: .crumb, .crumb-here, .crumb-sep.
+
+   Reads: --border-hairline, --control-44, --space-4, --space-8, --space-16,
+          --text-12, --text-brass, --text-muted, --text-primary
+   Stand:  ui-kit/crumb.html, and ui-kit/vitrine.html#crumb for the level and its reason
+   Stands on: 6 ui-visual screens (how-it-works.html, terms.html, public-profile.html and its
+     three states), 6 grey twins, and nowhere else. The reason it is not on the other 102 is
+     in the block below and it is a count rather than an omission.
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+/* ============================================================================
+   IT IS ON SIX SCREENS AND THE IA ASKED FOR IT ON SIX PAGE TYPES, 2026-08-16,
+   docs/backlog.md 167. The gap between those two numbers is the whole decision.
+
+   `ia/docs/pages/seo.md` specifies a trail on six page types: the event detail
+   (`Home > {Category} > {Event}`), the category page (`Home > {Category}`), How
+   It Works, the public profile, and the four legal documents; home is the root
+   and has none. `ia/docs/blocks.md` files the breadcrumb as block B2 and marks
+   it MVP. The product rendered zero of them.
+
+   BUT TWO OF THE SIX ALREADY HAVE THEIR TRAIL AND IT IS NOT CALLED A
+   BREADCRUMB. The event detail and the category page both carry the second-level
+   category nav, twice over: the rail on the plate and the condensed strip in the
+   header, five links each, with the reader's own category marked. Measured on
+   the event detail: the strip stands at y=77 on a phone and y=71 on the desk,
+   and the logo sits at y=8. **Adding a visible `Home > Politics > this event`
+   there would be a FOURTH control made of the same five words** on a screen
+   where the critique had already counted three. So the visible half of the IA's
+   decision is answered on those two page types by the nav that was already
+   there, and this component goes where nothing answers it.
+
+   WHERE NOTHING ANSWERS IT IS THREE SCREENS. How It Works, Terms and the public
+   profile carry no second-level nav at all: their only route up above the fold
+   is the logo, and their only other one is the footer, thousands of pixels down.
+   Terms is 14 sections deep and is the page a person arrives on from a search
+   engine or from a link in an email.
+
+   THE SCHEMA HALF IS NOT BUILT AND IS NOT PRETENDED. `BreadcrumbList` is part of
+   the IA's decision and this component emits none, because the product carries
+   **0 `application/ld+json` of any kind** on 108 screens: breadcrumb schema is
+   one row of a larger absence rather than a gap in this file. docs/backlog.md
+   171.
+
+   THE ANCESTOR WITH NO PAGE IS A `<span>`, NOT A DEAD LINK. The IA's trail for a
+   legal document is `Home > Legal > {document}` and this product has no legal
+   index screen: three of the four legal pages do not exist yet. A crumb that
+   points at nothing is a broken link, and this repository counts those. So the
+   level is rendered as text, which is what a breadcrumb ancestor without a page
+   is, and it becomes a link on the day the page exists.
+   ============================================================================ */
+
+.crumb{margin:0 0 var(--space-16)}
+.crumb ol{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-4);list-style:none;margin:0;padding:0}
+.crumb li{display:flex;align-items:center;gap:var(--space-4);font-size:var(--text-12);color:var(--text-muted);min-width:0}
+/* THE SEPARATOR IS DRAWN AND NOT TYPED, so it is never in the accessibility tree
+   and never in a copied line. A `/` between two links reads as part of the
+   second link to a screen reader when it is a text node, and `voice/` would
+   have to hold a row for a character nobody wrote. */
+.crumb li+li::before{content:"/";color:var(--border-hairline);padding-inline-end:var(--space-4)}
+/* `inline-flex` IS THE PRECONDITION AND NOT THE LOOK. `base.css` raises a named
+   list of controls to 44 under `@media(pointer:coarse)` and `min-height` does
+   not apply to a non-replaced INLINE box, so a bare `<a>` joining that list is
+   silently inert without a box of its own. That file paid for this once already
+   with `.sys-link-list a` at 39.6 x 21 while its computed style read 44. */
+.crumb a{display:inline-flex;align-items:center;color:var(--text-muted);text-decoration:none;border-radius:var(--radius-8)}
+.crumb a:hover{color:var(--text-brass);text-decoration:underline;text-underline-offset:2px}
+.crumb a:focus-visible{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
+/* The last item is the page you are on and it is not a link, because a link to
+   the page you are on is a control that does nothing. It takes the primary ink
+   so the trail ends somewhere rather than fading out, and it truncates on one
+   line: an event question runs 60 characters and a phone column is 358. */
+.crumb .crumb-here{color:var(--text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}

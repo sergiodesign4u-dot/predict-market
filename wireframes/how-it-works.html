@@ -176,11 +176,19 @@
       overflow-x: auto; flex-wrap: nowrap;
     }
     .cat-nav a { border: 1px solid #888; background: #d6d6d6; padding: 5px 10px; font-size: 11px; cursor: pointer; white-space: nowrap; }
-    .cat-nav li[aria-current="page"] a { background: #b8b8b8; border-width: 2px; font-weight: bold; }
+    .cat-nav li[aria-current="page"] a, .cat-nav li[aria-current="location"] a, .cat-condensed li[aria-current="page"] a, .cat-condensed li[aria-current="location"] a { background: #b8b8b8; border-width: 2px; font-weight: bold; }
 
     /* ---- Feed ---- */
     .feed { background: #f4f4f4; margin: 0; flex: 1; }
     .feed-inner { padding: 8px; }
+    /* Breadcrumb (crumb): grey structure only. The trail is decided here and the
+       colour copy follows; the paint carries the same markup in components/crumb.css. */
+    .crumb { margin: 0 0 16px; }
+    .crumb ol { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
+    .crumb li { display: flex; align-items: center; gap: 4px; font-size: 12px; color: #555; }
+    .crumb li + li::before { content: "/"; color: #999; padding-right: 4px; }
+    .crumb a { color: #555; }
+    .crumb .crumb-here { color: #222; }
     .feed-head {
       display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px;
       justify-content: space-between; border-bottom: 1px solid #bbb; padding-bottom: 8px; margin-bottom: 10px;
@@ -238,7 +246,7 @@
     .bottom-nav a, .bottom-nav button { width: 100%; border: none; background: transparent; padding: 8px 4px; font-size: 10px; cursor: pointer;
       display: flex; flex-direction: column; align-items: center; gap: 3px; }
     .bottom-nav .ic { width: 20px; height: 20px; }
-    .bottom-nav li[aria-current="page"] a, .bottom-nav li[aria-current="page"] button { background: #c4c4c4; font-weight: bold; }
+    .bottom-nav li[aria-current="page"] a, .bottom-nav li[aria-current="location"] a, .bottom-nav li[aria-current="page"] button, .bottom-nav li[aria-current="location"] button { background: #c4c4c4; font-weight: bold; }
     .bottom-nav .badge-dot { position: static; margin-left: 2px; }
     .bn-bal { font-weight: bold; font-size: 12px; border: 1px solid #999; background: #dcdcdc; padding: 0 5px; line-height: 1.4; }
 
@@ -942,6 +950,10 @@
         
         <div class="hiw-page"><div class="hiw-hero-inner"><div class="cat-layout">
 <div class="cat-main">
+            <nav class="crumb" aria-label="Breadcrumb"><ol>
+            <li><a href="event-feed.html">Home</a></li>
+            <li><span class="crumb-here" aria-current="page">How it works</span></li>
+            </ol></nav>
 <h1>How It Works</h1><p class="hiw-tagline">You always know what you are doing, why, and what happens to your money. This is a promise, not a FAQ.</p></div></div><div class="hiw-cols"><div class="hiw-col-main"><section class="hiw-sec"><span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></span><div class="hiw-sec-txt"><h2 class="hiw-label">How betting works here</h2><p>Yonder turns the events you follow into a real stake. Pick an event, read the odds in plain language, and back YES or NO. You see the current odds, a one-line why, and how the event resolves before you put in a cent. The minimum bet is one dollar, and you can browse and build your bet before you connect a wallet.</p></div></section><section class="hiw-sec"><span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M8.8 12l2.2 2.2L15.4 10"/></svg></span><div class="hiw-sec-txt"><h2 class="hiw-label">Your money is held 1:1</h2><p>Your USDC is held 1:1. We never lend it, invest it, or move it. It is yours until you place a bet or withdraw - added funds, payouts and withdrawals are all recorded in your Wallet.</p></div></section><section class="hiw-sec"><span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg></span><div class="hiw-sec-txt"><h2 class="hiw-label">How events resolve</h2><p>Each event has clear resolution conditions, written before betting opens. When the event happens, the platform team resolves it against public evidence (official sources, on-chain data, named references).</p><p>Every resolution is recorded on-chain, so the outcome and the payout are verifiable and cannot be changed after the fact.</p></div></section><section class="hiw-sec"><span class="hiw-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M4 15l5-5 4 3 6-8"/><path d="M20 5h-4M20 5v4"/></svg></span><div class="hiw-sec-txt"><h2 class="hiw-label">How pricing and payouts work</h2><p>Prices move as people bet. You buy YES or NO at the price on screen, and that price is locked when you confirm. A winning share pays one dollar, so a lower price buys more shares and a larger payout. The amount, the fee and the payout are all shown before you confirm.</p><p>There is no subscription. The fee is 1.5% of your bet, added when you confirm, and the panel shows it in cents before you commit. It is the same whether you win or lose.</p></div></section><section class="hiw-sec hiw-faq"><div class="hiw-sec-txt"><h2 class="hiw-label">Common questions</h2><dl><dt>Do I need crypto to start?</dt><dd>No. You can browse events and build a bet with no wallet. You add funds by card or crypto only when you confirm.</dd><dt>What is the smallest bet?</dt><dd>One dollar. The default is five.</dd><dt>How does an event resolve?</dt><dd>Each event states its resolution rule up front. The team resolves it against the real-world outcome, and you can see the record of resolved events.</dd></dl></div></section></div><aside class="hiw-col-side"><div class="hero-promo brand-tile"><span class="bt-veil" aria-hidden="true"></span><svg class="bt-tick" viewBox="0 0 26 18" aria-hidden="true"><path d="M2 15 L9 7 L13 10 L24 2" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><p class="bt-quote">The market decides.<br>Opinions have <em>value.</em></p><span class="bt-by">Yonder</span></div><article class="pos" aria-label="Resolved markets"><h2 class="hiw-label">Proven, not promised</h2><p class="pos-note">Every figure here is a count you can check, not a claim.</p><div class="pos-figures"><span class="pos-fig">Events resolved<b>1,284</b></span><span class="pos-fig">On-chain proofs<b>100%</b></span><span class="pos-fig">USDC held 1:1<b>always</b></span></div></article></aside></div><div class="cta-bar"><a href="event-feed.html" class="btn btn-primary btn-md">Browse events</a><button class="btn btn-secondary btn-md" type="button" data-open="deposit">Add funds</button></div><!-- /cat-main --><!-- /cat-layout --><!-- /feed-inner -->
     </main>
     <!-- Bottom navigation (mobile only, logged-out: slot 4 = Sign in) -->

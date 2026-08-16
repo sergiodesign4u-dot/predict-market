@@ -398,8 +398,12 @@ svg.ic:has(use[href^="#i-"]),svg.ic-sm:has(use[href^="#i-"]){fill:currentColor!i
      measured 286 x 43.5 on terms.html, HALF A PIXEL under, and half a pixel is the argument for
      naming a family rather than the instances a sweep happened to catch: the same class stands
      over 44 on every other screen it appears on, so this rule is silent there and would have
-     caught this one before it was written. */
-  :is(.btn,.chip,.icon-btn,.tabs :is(a,button),.ptab-lbl,.rules-tab,.market-head,.toc-link,.cc-cat-main,.filter-menu summary,.notif-menu summary,.avatar-menu summary,.logo-btn,.notif-all,.nav-item,.ed-tablabel,.opt-more,.yesno :is(a,button),a.q,.hf-title,.hh-name,.hh-all,.bp-change,.sys-link-list a,.related-list a):not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small):not(.icon-btn-lift){min-height:max(var(--control-44),var(--control-h))}
+     caught this one before it was written.
+     `.crumb a` JOINED ON 2026-08-16 AT BIRTH RATHER THAN AFTER A SWEEP, which is
+     what naming a family is for: it is a bare `<a>`, so `crumb.css` gives it
+     `display:inline-flex` in the same edit, because the precondition below is the
+     half that a new member forgets. */
+  :is(.btn,.chip,.icon-btn,.tabs :is(a,button),.ptab-lbl,.rules-tab,.market-head,.toc-link,.cc-cat-main,.filter-menu summary,.notif-menu summary,.avatar-menu summary,.logo-btn,.notif-all,.nav-item,.ed-tablabel,.opt-more,.yesno :is(a,button),a.q,.hf-title,.hh-name,.hh-all,.bp-change,.sys-link-list a,.related-list a,.crumb a):not(.icon-btn-photo):not(.icon-btn-tile):not(.icon-btn-small):not(.icon-btn-lift){min-height:max(var(--control-44),var(--control-h))}
   /* THE FLOOR HAS A PRECONDITION AND NOBODY HAD WRITTEN IT DOWN: `min-height` does not apply to a
      non-replaced INLINE box, so a name added to the list above is silently inert unless the control
      already has a box. Every member had one by accident of being a `.btn`, a `.chip` or an

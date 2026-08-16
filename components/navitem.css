@@ -107,10 +107,13 @@
    from an ancestor. It is written with the attribute alone rather than with the
    bar's class, because being the current item is the ATOM's state wherever the
    atom stands, and naming `.bottom-nav` here would be this file holding a
-   region's name. */
-[aria-current="page"] .nav-item.nav-slot{background:transparent;color:var(--text-brass);font-weight:var(--weight-bold)}
-[aria-current="page"] .nav-slot .ic{stroke:var(--text-brass);color:var(--text-brass)}
-[aria-current="page"] .nav-slot .ic:has(use){color:var(--text-brass)}
+   region's name. AND IT ANSWERS `location` TOO SINCE 2026-08-16: on an event
+   detail the Events slot is the SECTION you are in and not the page you are on,
+   and the paint is the same for both because the difference is one a screen
+   reader needs and an eye does not. chip.css carries the argument. */
+[aria-current="page"] .nav-item.nav-slot,[aria-current="location"] .nav-item.nav-slot{background:transparent;color:var(--text-brass);font-weight:var(--weight-bold)}
+[aria-current="page"] .nav-slot .ic,[aria-current="location"] .nav-slot .ic{stroke:var(--text-brass);color:var(--text-brass)}
+[aria-current="page"] .nav-slot .ic:has(use),[aria-current="location"] .nav-slot .ic:has(use){color:var(--text-brass)}
 
 /* ---------------------------------------------------------- the row face ---
    A line of a menu that drops out of the header. Full width, left aligned, the

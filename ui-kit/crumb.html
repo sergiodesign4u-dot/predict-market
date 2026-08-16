@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kit: crumb</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+  <script src="../assets/icons.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Crumb</h1>
+    <p>Level 1. The trail from the root to the page you are on. <b>Written 2026-08-16, and the
+    interesting number is the one it is NOT on</b>: the IA asks for a trail on six page types and
+    this component stands on three of them. The other three already have their trail and it is not
+    called a breadcrumb.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">3 classes</span>
+      <span class="tk-badge">6 screens</span>
+      <span class="tk-badge">3 of 6 page types</span>
+      <span class="tk-badge">0 schema</span>
+    </div>
+  </div>
+
+  <section class="tk-sec" id="where">
+    <h2 data-n="1">Six page types asked, three got it</h2>
+    <p class="tk-note"><code>ia/docs/pages/seo.md</code> specifies a trail on six page types and
+    <code>ia/docs/blocks.md</code> files it as block B2, marked MVP. The product rendered zero of
+    them. Three of the six got this component and three did not, and the split is a measurement
+    rather than a preference.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>page type</th><th>the IA's trail</th><th>what stands there</th></tr></thead>
+        <tbody>
+          <tr><td>home</td><td>none, it is the root</td><td>nothing, correctly</td></tr>
+          <tr><td>event detail</td><td><code>Home &gt; {Category} &gt; {Event}</code></td><td><b>the category nav, twice.</b> The rail on the plate and the condensed strip in the header, five links each, the reader's own category marked. Strip at <b>y=77</b> on a phone, <b>y=71</b> on the desk, logo at y=8</td></tr>
+          <tr><td>category page</td><td><code>Home &gt; {Category}</code></td><td>the same two navs</td></tr>
+          <tr><td>How It Works</td><td><code>Home &gt; How it works</code></td><td><b>this component.</b> No second-level nav on the page at all</td></tr>
+          <tr><td>public profile</td><td><code>Home &gt; {handle}</code></td><td><b>this component</b>, on all four states</td></tr>
+          <tr><td>legal document</td><td><code>Home &gt; Legal &gt; {document}</code></td><td><b>this component.</b> 14 sections deep, and the page a person arrives on from a search engine</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>Adding a visible trail to the event detail would have been a FOURTH control
+    made of the same five words.</b> The critique of the same morning had already counted three on
+    the desktop feed: the chip rail navigates, the condensed strip navigates, <code>Show:</code>
+    filters, and nothing distinguishes them. So the visible half of the IA's decision is answered on
+    those two page types by the nav that was already there, and this component goes where nothing
+    answers it.</p>
+  </section>
+
+  <section class="tk-sec" id="spec">
+    <h2 data-n="2">The three shapes, in both themes</h2>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <nav class="crumb" aria-label="Breadcrumb"><ol>
+          <li><a href="#">Home</a></li>
+          <li><span class="crumb-here" aria-current="page">How it works</span></li>
+        </ol></nav>
+        <nav class="crumb" aria-label="Breadcrumb"><ol>
+          <li><a href="#">Home</a></li>
+          <li><span>Legal</span></li>
+          <li><span class="crumb-here" aria-current="page">Terms of Service</span></li>
+        </ol></nav>
+        <nav class="crumb" aria-label="Breadcrumb"><ol>
+          <li><a href="#">Home</a></li>
+          <li><span class="crumb-here" aria-current="page">crypto_dan</span></li>
+        </ol></nav>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <nav class="crumb" aria-label="Breadcrumb"><ol>
+          <li><a href="#">Home</a></li>
+          <li><span class="crumb-here" aria-current="page">How it works</span></li>
+        </ol></nav>
+        <nav class="crumb" aria-label="Breadcrumb"><ol>
+          <li><a href="#">Home</a></li>
+          <li><span>Legal</span></li>
+          <li><span class="crumb-here" aria-current="page">Terms of Service</span></li>
+        </ol></nav>
+        <nav class="crumb" aria-label="Breadcrumb"><ol>
+          <li><a href="#">Home</a></li>
+          <li><span class="crumb-here" aria-current="page">crypto_dan</span></li>
+        </ol></nav>
+      </div>
+    </div>
+  </section>
+
+  <section class="tk-sec" id="anat">
+    <h2 data-n="3">Anatomy, and three decisions that are not taste</h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>part</th><th>what it is</th><th>why</th></tr></thead>
+        <tbody>
+          <tr><td><code>.crumb</code></td><td>a <code>&lt;nav aria-label="Breadcrumb"&gt;</code> holding an <code>&lt;ol&gt;</code></td><td>ordered, because the order IS the meaning. A landmark, because it is the answer to "where am I" and a reader should be able to jump to it</td></tr>
+          <tr><td><code>.crumb a</code></td><td><code>inline-flex</code>, and in <code>base.css</code>'s 44px list</td><td><b>the display is the precondition, not the look.</b> <code>min-height</code> does not apply to a non-replaced inline box, so a bare <code>&lt;a&gt;</code> joining that list is silently inert without a box. That file paid for this once already, with <code>.sys-link-list a</code> reading <code>min-height:44px</code> and measuring 39.6 x 21. Measured here: <b>33 x 44 at 390 with the pointer coarse, 33 x 18 at 1280</b></td></tr>
+          <tr><td>the separator</td><td><code>li + li::before</code>, a drawn <code>/</code></td><td>never in the accessibility tree and never in a copied line. A <code>/</code> written as a text node reads as part of the next link, and <code>voice/</code> would have to hold a row for a character nobody wrote</td></tr>
+          <tr><td><code>.crumb-here</code></td><td>a <code>&lt;span&gt;</code>, not a link, one line, ellipsis</td><td>a link to the page you are on is a control that does nothing. It takes the primary ink so the trail ends somewhere rather than fading out</td></tr>
+          <tr><td>an ancestor with no page</td><td>a plain <code>&lt;span&gt;</code></td><td><b><code>Legal</code> is text and not a link</b>, because this product has no legal index screen: three of the four legal pages do not exist yet. A crumb pointing at nothing is a broken link and this repository counts those. It becomes a link the day the page exists</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="tk-sec" id="schema">
+    <h2 data-n="4">The schema half is not built, and it is not pretended</h2>
+    <p class="tk-note"><code>BreadcrumbList</code> is part of the IA's decision on all six page
+    types and this component emits none. That is not a gap in this file: the product carries
+    <b>0 <code>application/ld+json</code> of any kind across 108 screens</b>, so breadcrumb schema is
+    one row of a larger absence. <code>docs/backlog.md</code> 171.</p>
+    <p class="tk-why">The markup is written so the trail survives the day the schema arrives: the
+    list is ordered, the ancestors are in it even when they have no page, and the current item
+    carries <code>aria-current="page"</code> rather than being dropped.</p>
+  </section>
+
+  <section class="tk-sec" id="sibling">
+    <h2 data-n="5">Its sibling is the category nav, and they say different things</h2>
+    <p class="tk-note">The same morning this was written, the category nav was corrected: on an event
+    detail it had marked <code>aria-current="page"</code> on <b>three different links at once</b>,
+    the sticky strip saying Trending, the rail saying Politics and the bottom nav saying Events, none
+    of which is the page the reader is on. <b>35 of 60 documents had the two category controls naming
+    different categories</b>, and the sticky one, the one on screen while you read, was the wrong
+    one on every event detail and on every logged-out category page.</p>
+    <p class="tk-why">The value is <code>location</code> now where the link points at an ancestor,
+    and the face does not split: a person reading an event in Politics should see Politics lit, and
+    the distinction between "the page you are on" and "the section you are in" is one an eye does not
+    need and a screen reader does. <code>chip.css</code> carries the argument. <b>This component is
+    the same statement in visible form</b>, on the three page types where no nav makes it.</p>
+  </section>
+
+</div>
+</body>
+</html>

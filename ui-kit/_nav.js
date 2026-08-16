@@ -103,6 +103,7 @@ window.KIT_NAV = [
       { label: 'Odds bar',    page: 'oddsbar.html', done: true, note: '72' },
       { label: 'Input',       page: 'input.html',   done: true, note: '122' },
       { label: 'Search',      page: 'search.html',  done: true, note: '17' },
+      { label: 'Crumb',       page: 'crumb.html',   done: true, note: '6' },
       { label: 'Yes / No',    page: 'yesno.html',   done: true, note: '116' },
       { label: 'Toast',       page: 'toast.html',   done: true, note: '4' },
       { label: 'Skeleton',    page: 'skeleton.html',done: true, note: '482' },

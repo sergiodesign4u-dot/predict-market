@@ -12,6 +12,82 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-16 - The way back was there and it was lying: three links in one document each claiming to be the page you are on
+
+**THE ROW SAID THERE WAS NO WAY BACK AND THAT HALF IS WRONG.** `docs/backlog.md` 167 was opened by
+the morning's critique on a selector search: nothing matches `.crumb`, a breadcrumb landmark, an
+`aria-label` containing "back", or a back link, so the conclusion was that the only route off an event
+detail is the bottom nav. **Measured on the rendered page instead: the logo stands at y=8 and the
+second-level category rail at y=77 on a phone and y=71 on the desk**, five links, the reader's own
+category among them. Two routes up, both above the fold. **The absence of a NAME is not the absence
+of a THING**, which is the same shape as the search row and the error-tone row before it.
+
+**WHAT THE MEASUREMENT FOUND INSTEAD IS WORSE AND IT IS ABOUT THE SAME CONTROL.** `event-detail.html`
+carried **three `aria-current="page"` marks at once**: the sticky strip said Trending, the rail said
+Politics, and the bottom nav said Events. Three links, three different destinations, each declaring
+itself the page the reader is on, and **not one of them is** - the reader is on an event.
+
+**AND THE TWO CATEGORY CONTROLS CONTRADICTED EACH OTHER ON 35 OF 60 DOCUMENTS.** The condensed strip
+and the rail are two renderings of ONE navigation, and they named different categories on every event
+detail (13) and on every logged-out category page (22), the strip saying Trending in all 35. **The
+strip is the one pinned to the top while you read**, so the control on screen was the wrong one.
+
+**THE LOGGED-OUT HALF IS THE AUTH CONVENTION BITING A SECOND TIME, ON A DIFFERENT AXIS.**
+`wireframes/_conventions.md` S5 licenses exactly one thing to differ between the two auth states: the
+header. **The condensed strip lives in the header**, so it inherited a difference it was never meant
+to have, and the logged-in category pages were right while their logged-out twins were wrong. This
+morning's pass found the same convention broken on the feed body; this is the same rule, one element
+in.
+
+**THE FIX IS A VALUE, NOT A FACE.** `aria-current` has `location` for "the current location within an
+environment", which is what a breadcrumb ancestor takes. On an event detail the strip, the rail and
+the bottom-nav slot are all `location` now; on a category page the strip and the rail agree and are
+`page`. On search and favorites, where nothing in the category set is current, the strip marks nothing
+(it had marked Trending on six documents). **The paint does not split**, and that is deliberate: a
+person reading an event in Politics should see Politics lit, and the difference between "the page you
+are on" and "the section you are in" is one an eye does not need and a screen reader does. So
+`chip.css` and `navitem.css` answer both values with the same declarations, and the grey tree's inline
+rule was widened the same way in all 108 files.
+
+Verified on both engines over both trees: **216 documents with a category nav, 0 contradictions**,
+where the paint alone had 35. On `event-detail.html`: 0 `page` marks, 3 `location` marks, and the lit
+chip measures identically to before (`rgba(199,162,78,0.09)` ground, `rgb(231,214,166)` ink, weight
+700).
+
+**THEN THE THING THE ROW ASKED FOR, WHERE IT IS ACTUALLY MISSING.** `ia/docs/pages/seo.md` specifies
+a trail on **six page types** and `ia/docs/blocks.md` files it as block B2, marked MVP. The product
+rendered **zero**. `crumb` is the fourteenth atom, and it went onto **three of the six**:
+
+- **How It Works, Terms, and the public profile with its four states.** These carry no second-level
+  nav at all. Their only route up above the fold is the logo; the next one is the footer, thousands of
+  pixels down. Terms is 14 sections deep and is the page a person arrives on from a search engine.
+- **NOT the event detail and NOT the category page.** Those two already carry the trail twice over as
+  the category nav, and a visible `Home > Politics > this event` there would have been **a FOURTH
+  control made of the same five words** on screens where the morning's critique had already counted
+  three and scored the recognition heuristic down for it.
+
+**THREE DECISIONS IN THE COMPONENT THAT ARE NOT TASTE.** `.crumb a` joined `base.css`'s 44px
+coarse-pointer list **at birth rather than after a sweep**, with `display:inline-flex` in the same
+edit, because that file has already paid once for the precondition a new member forgets: a bare `<a>`
+reading `min-height:44px` and measuring 39.6 x 21. Measured here: **33 x 44 at 390 with the pointer
+asserted coarse, 33 x 18 at 1280.** The separator is drawn with `li + li::before` so it is never in
+the accessibility tree and never in a copied line. And `Legal` is a `<span>` rather than a link,
+because this product has no legal index screen and three of the four legal pages do not exist: a crumb
+pointing at nothing is a broken link, and this repository counts those.
+
+**THE SCHEMA HALF IS NOT BUILT AND IS NOT PRETENDED.** `BreadcrumbList` is part of the IA's decision
+on all six page types and this component emits none, because the product carries **0
+`application/ld+json` of any kind across 108 screens**. Breadcrumb schema is one row of a larger
+absence rather than a gap in the component, and it is `docs/backlog.md` 171.
+
+**THE GREY TREE NEEDED ITS OWN RULE AND THE FIRST RENDER SAID SO.** The markup went into both trees,
+and the grey one drew the trail at 101px tall with each item on its own line, because grey links no
+stylesheet and an `<ol>` with no rule is a stacked list. Six grey files carry a grey `.crumb` block
+now and the trail measures 19px on one line in both engines. **Structure into both trees, the rule
+into the tree that owns rules.**
+
+---
+
 ## 2026-08-16 - The status job had a third moment, and a sweep that looks for movement cannot find a moment that is already still
 
 **THE REGISTER SAID TWO AND THERE WERE THREE.** `ui-kit/docs/motion.md` counts the status job at

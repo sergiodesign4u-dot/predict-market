@@ -176,7 +176,7 @@
       overflow-x: auto; flex-wrap: nowrap;
     }
     .cat-nav a { border: 1px solid #888; background: #d6d6d6; padding: 5px 10px; font-size: 11px; cursor: pointer; white-space: nowrap; }
-    .cat-nav li[aria-current="page"] a { background: #b8b8b8; border-width: 2px; font-weight: bold; }
+    .cat-nav li[aria-current="page"] a, .cat-nav li[aria-current="location"] a, .cat-condensed li[aria-current="page"] a, .cat-condensed li[aria-current="location"] a { background: #b8b8b8; border-width: 2px; font-weight: bold; }
 
     /* ---- Feed ---- */
     .feed { background: #f4f4f4; margin: 0; flex: 1; }
@@ -259,7 +259,7 @@
     .bottom-nav a, .bottom-nav button { width: 100%; border: none; background: transparent; padding: 8px 4px; font-size: 10px; cursor: pointer;
       display: flex; flex-direction: column; align-items: center; gap: 3px; }
     .bottom-nav .ic { width: 20px; height: 20px; }
-    .bottom-nav li[aria-current="page"] a, .bottom-nav li[aria-current="page"] button { background: #c4c4c4; font-weight: bold; }
+    .bottom-nav li[aria-current="page"] a, .bottom-nav li[aria-current="location"] a, .bottom-nav li[aria-current="page"] button, .bottom-nav li[aria-current="location"] button { background: #c4c4c4; font-weight: bold; }
     .bottom-nav .badge-dot { position: static; margin-left: 2px; }
     .bn-bal { font-weight: bold; font-size: 12px; border: 1px solid #999; background: #dcdcdc; padding: 0 5px; line-height: 1.4; }
 
@@ -827,7 +827,7 @@
            Small, icon-less chips (the full bar below keeps its icons). -->
       <nav class="cat-condensed" aria-label="Categories (sticky header)">
         <ul>
-          <li aria-current="page"><a class="chip chip-quiet" href="event-feed.html">Trending</a></li>
+          <li><a class="chip chip-quiet" href="event-feed.html">Trending</a></li>
           <li><a class="chip chip-quiet" href="event-feed-politics.html">Politics</a></li>
           <li><a class="chip chip-quiet" href="event-feed-crypto.html">Crypto</a></li>
           <li><a class="chip chip-quiet" href="event-feed-culture.html">Culture</a></li>

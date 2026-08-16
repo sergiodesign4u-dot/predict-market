@@ -33,7 +33,7 @@ once. `tokens.css` plus
 one file per component, all reached through `index.css`.
 
 **168 documents link `index.css` and nothing else, and they are not the ones this line used to
-name.** Re-counted 2026-08-16: **109 of 109** documents in `ui-visual/` and **59 of 59**
+name.** Re-counted 2026-08-16: **109 of 109** documents in `ui-visual/` and **60 of 60**
 pages in `ui-kit/`. **0 of the 108 in `wireframes/` link any stylesheet at all**, and they carry 108
 inline `<style>` blocks instead, which this file already says out loud further down and said the
 opposite of here for as long as both sentences stood. So **an edit here reaches every painted screen

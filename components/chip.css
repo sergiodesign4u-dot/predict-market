@@ -303,8 +303,27 @@
    on the day the other four were unified. Adopting the recipe is the whole
    point of adopting the atom: one tint, one edge, one weight, one halo, and the
    ink goes from --text-primary to --text-brass-chip. */
-.chip.sel,[aria-current="page"] .chip{background:var(--tint-brass-09);color:var(--text-brass-chip);font-weight:var(--weight-bold);box-shadow:0 0 10px -8px var(--glow-brass)}
-.chip-amount.sel,[aria-current="page"] .chip{border-color:var(--tint-brass-45)}
+/* ============================================================================
+   THE FACE ANSWERS TWO VALUES NOW, `page` AND `location`, 2026-08-16,
+   docs/backlog.md 167.
+
+   `aria-current="page"` means "this link points at the page you are on". A
+   reader on an EVENT is not on the Politics feed, so the category chip there was
+   claiming something false, and it was claiming it three times in one document:
+   the sticky strip said Trending, the rail said Politics and the bottom nav said
+   Events, all three as `page`. `location` is the value ARIA has for exactly this
+   ("the current location within an environment"), and it is what a breadcrumb
+   ancestor takes.
+
+   THE FACE DOES NOT SPLIT, AND THAT IS DELIBERATE. A person reading an event in
+   Politics should see Politics lit; the distinction between "the page you are
+   on" and "the section you are in" is one an eye does not need and a screen
+   reader does. So the difference lives in the attribute and the paint is
+   identical, which is what the attribute is for. Adding a quieter second face
+   would have been a state the product does not mean.
+   ============================================================================ */
+.chip.sel,[aria-current="page"] .chip,[aria-current="location"] .chip{background:var(--tint-brass-09);color:var(--text-brass-chip);font-weight:var(--weight-bold);box-shadow:0 0 10px -8px var(--glow-brass)}
+.chip-amount.sel,[aria-current="page"] .chip,[aria-current="location"] .chip{border-color:var(--tint-brass-45)}
 /* THE PRESS, AND IT IS ONE SELECTOR SINCE 2026-08-07: every chip, chosen or not,
    by a class or by navigation. Only the ground moves, so a chosen chip keeps its
    brass edge, its brass label and its halo, and what a person sees is the stone
@@ -347,7 +366,7 @@
    no contrast floor to clear, and the two steps are a weight rather than a
    quiet. */
 .chip-ic{width:var(--icon-18);height:var(--icon-18);flex:0 0 auto;fill:currentColor;stroke:none;opacity:.9}
-.chip-nav:hover .chip-ic,[aria-current="page"] .chip-nav .chip-ic{opacity:1}
+.chip-nav:hover .chip-ic,[aria-current="page"] .chip-nav .chip-ic,[aria-current="location"] .chip-nav .chip-ic{opacity:1}
 /* THE COUNT, and it is the sub-category rail's whole argument: a number tells a
    person which branch is worth opening before they open it. Mono, because it is
    a figure and figures line up; its own ground and hairline, because it has to
@@ -360,4 +379,4 @@
    to a sweep that matches token names. The 45 is a rung and only its
    spelling changed; the 14 is not one and it went to 16, the same rung and for the
    same reason as the header band's. S50. */
-[aria-current="page"] .chip-cnt{color:var(--text-brass);background:var(--tint-brass-16);border-color:var(--tint-brass-45)}
+[aria-current="page"] .chip-cnt,[aria-current="location"] .chip-cnt{color:var(--text-brass);background:var(--tint-brass-16);border-color:var(--tint-brass-45)}
