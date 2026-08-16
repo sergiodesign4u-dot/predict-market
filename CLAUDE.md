@@ -307,6 +307,23 @@ because it is a stance rather than a principle, and it is written once, here.
   visitor**. Nothing read the rule, so nothing could report the one screen that broke it, and the
   screen that broke it is the one a person who has never signed in arrives on. **When a rule is
   stated over a SET, measure the set: 19 of 20 looks like compliance from any single file.**
+- **A FACT THE PAGE RESTATES BELONGS BESIDE THE PAGE; A FACT THE PAGE NEVER DERIVES BELONGS IN ONE
+  PLACE.** `ia/docs/pages/seo.md` specifies a whole document head per page type and the trees carried
+  **0 of the five metadata classes on 217 documents**. The layer split on 2026-08-16 and the line is
+  DRIFT rather than ownership. Meta tags are written once and never computed from the page, so 109
+  copies would be 109 places to drift, and they stay in the IA; `{ROOT}` is `[?]` besides, so a
+  canonical needs a domain nobody has chosen. **Structured data restates the visible page**, which
+  makes it the one half that CAN disagree with what a reader sees, and disagreement is only
+  measurable where both halves stand together: 58 painted documents carry an `@graph` whose every
+  node is checked against the render, `name` against the `h1`, `ItemList` against the cards in order,
+  `FAQPage` against the `<dt>` / `<dd>` text, `dateModified` against the date the page prints. **And
+  a state may show less, never something different**: an empty feed carries no `ItemList` and a
+  loading detail carries no schema at all, so a state's node set is a SUBSET of the success state's.
+  The first check written asserted one URL, one shape, and flagged five families that were right:
+  **that check encoded uniformity where the rule is truth.** The tell that neither tree owned this
+  layer was in the one head element both of them do have: their `<title>` names the artefact, `UI
+  Visual - Event Feed` and `Wireframe - Event Detail`, because each is a drawing with a label rather
+  than a draft of a document.
 - **No em dash**, anywhere, and **"anywhere" is the repository rather than the folders somebody
   remembered.** It was measured over six on 2026-08-16, read 0, and was published as "the only file
   that carries any" while `concept/brand-toolkit/` carried 35 across four files. Those are gone;

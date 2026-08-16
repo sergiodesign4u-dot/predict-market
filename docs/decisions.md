@@ -12,6 +12,75 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-16 - The head layer belongs to neither tree, and both prove it in the same element
+
+**THE ROW ASKED WHICH TREE AND THE MEASUREMENT ANSWERED "NEITHER".** `docs/backlog.md` 171 opened on
+a count: 0 `application/ld+json` on 108 painted screens while `ia/docs/pages/seo.md` specifies
+structured data on every indexed page type. Measured wider before deciding: **both trees carry 0 of
+the five metadata classes** (description, canonical, og, twitter, ld+json) across 217 documents, and
+the only head element either of them has is `<title>`. **Which names the artefact, not the page**:
+`UI Visual - Event Feed` and `Wireframe - Event Detail (logged in - state: success / binary)`. A
+`<title>` is the single most consequential tag in the layer, and both trees spend it on a label
+saying which drawing you are looking at. **Neither tree models a document head; each labels a
+drawing.**
+
+**SO THE LAYER SPLITS, AND THE LINE IS DRIFT.** The A block, the meta tags, is a fact written once
+and never derived from the page: title, description, canonical, hreflang, robots, og, twitter. Copying
+it into 109 painted files makes 109 copies of a fact that lives in one place, and the root
+`CLAUDE.md` forbids exactly that by name with drift as the stated cost. **It stays in
+`ia/docs/pages/seo.md`.** And it could not be written honestly anyway: `{ROOT}` is still `[?]`, so a
+canonical or an `og:url` needs a domain nobody has chosen.
+
+**THE D BLOCK IS THE OPPOSITE AND IT IS BUILT.** Structured data RESTATES the page's own visible
+content, which makes it the only half that can drift from the page, and drift is measurable only
+where both halves stand together. This is `seo.md`'s own rule, written under the legal section before
+any of this: **"One date, two consumers: if the page shows a date the schema does not, the schema is
+wrong."**
+
+**58 of 108 painted documents, one `@graph` each, 12 distinct page `@id`s.** Home takes `WebSite`,
+`Organization`, `CollectionPage`, `ItemList`, `FAQPage`; the four categories take `CollectionPage`,
+`BreadcrumbList`, `ItemList`; the event detail `WebPage` + `BreadcrumbList`; How It Works adds
+`FAQPage`; the public profile `ProfilePage` + `Person`; Terms a `WebPage` with `dateModified`. The
+other 50 documents are the `noindex` families in the indexation table and carry none.
+
+**A STATE MAY SHOW LESS, NEVER SOMETHING DIFFERENT.** The empty, error and loading feeds carry no
+`ItemList`, because there is no list on them to describe, and `event-detail-loading` and its
+logged-out twin carry no schema at all, because the only thing that URL's schema is about is the
+question and a skeleton does not show it. **The first check written for this was the wrong one**: it
+asserted one `@id`, one node shape, and it flagged five families. The rule it encoded was uniformity,
+and the rule actually chosen was "every node is verified against the visible page". Replaced with the
+SUBSET rule, which is the honest form of the same instinct: a state's node set must be a subset of
+the success state's, so a state may show less and never something different. **0 violations.**
+
+**Verified on both engines: 58 of 58 parse, 0 structural defects, 0 nodes disagreeing with the
+visible page.** The drift checks are node by node: `WebPage.name` against the `h1`, `ItemList`
+against the visible card questions in order, `FAQPage` against the `<dt>` / `<dd>` pairs including
+the answer text, `BreadcrumbList` against the rendered crumb, `dateModified` against the "Last
+updated 3 August 2026" the page prints. And the three types `seo.md` rejects by name, `Event`,
+`QAPage` and `Product` / `Offer`, are checked for and read **0** on all 58.
+
+**URLs ARE RELATIVE AND THAT IS NOT A SHORTCUT.** `/`, `/c/politics`, `/event/{slug}`,
+`/how-it-works`, `/u/{handle}`, `/legal/terms` are the product's URL space as `seo.md` writes it. The
+prototype's file names are not that space: twelve cards all link to `event-detail.html`, and an
+`ItemList` of twelve items at one URL would be a schema defect, while twelve slugs describe the
+product truthfully. It is the same call the breadcrumb made when `Legal` became a `<span>`.
+
+**AND BUILDING IT FOUND SOMETHING ELSE, WHICH IS ROW 172.** The `ItemList` needs each event's
+category, and `data-cat` on the feed disagrees with the category page the same event stands on for
+**6 of 12 cards**: the Ethereum upgrade is tagged `general` and lives on Crypto, the Bond film is
+tagged `crypto` and lives on Culture, the EU member state is tagged `general` and lives on Politics,
+the US Senate is tagged `culture` and lives on Politics. **The feed's sub-filter filters by
+`data-cat`**, so filtering the feed by Crypto shows a Bond film and hides an Ethereum upgrade. The
+schema takes its categories from the category pages, which agree with each other, and the tags are
+left for their own pass.
+
+**WHAT IS SPECIFIED AND COULD NOT BE BUILT**: `Organization.logo` and `sameAs`, because there is no
+logo asset and backlog 144 took the social marks off every screen; and `WebSite.SearchAction`,
+because search shipped on 2026-08-16 and the deferral's scale condition has not arrived, which is row
+164.
+
+---
+
 ## 2026-08-16 - The largest family the touch floor has ever taken, and two of its three members would have taken the rule and stayed 16 pixels tall
 
 **THE CENSUS.** All 108 painted documents at 390, pointer asserted coarse and the assertion read back

@@ -1,7 +1,16 @@
 # ui-visual/ - the painted tree
 
-106 screens, the colour copies of `wireframes/`. This tree owns **the visual layer only**: colour,
-type, radius, photography, texture. It does not own what is on the page.
+109 documents, 108 of them screens, the colour copies of `wireframes/`. This tree owns **the visual
+layer**: colour, type, radius, photography, texture. It does not own what is on the page.
+
+**AND SINCE 2026-08-16 IT OWNS ONE THING THAT IS NOT VISUAL, WITH A REASON.** 58 of the 108 screens
+carry a `<script type="application/ld+json">`, the structured-data half of the head that
+`ia/docs/pages/seo.md` specifies. The meta-tag half stays in the IA, because it is a fact written
+once and never derived from the page, and 109 copies of it would be 109 places to drift. Structured
+data is the opposite: it RESTATES what a reader sees, so it can disagree with the page, and
+disagreement is measurable only here. Every node is checked against the render, and **a state may
+show less, never something different**: an empty feed carries no `ItemList` and a loading detail
+carries no schema at all. `docs/backlog.md` 171.
 
 ## The invariants
 

@@ -18,6 +18,50 @@ here), because a wireframe or a build carries it verbatim as real UI text. No em
 
 ---
 
+## What is built, and where each half lives, 2026-08-16
+
+**This file is the home of the head layer and it stays the home.** Measured before anything was
+written: both screen trees carried **0 of the five metadata classes** (description, canonical, og,
+twitter, ld+json) across 217 documents, and both prove why in the same element. Their `<title>` names
+the ARTEFACT rather than the page: `UI Visual - Event Feed` and
+`Wireframe - Event Detail (logged in - state: success / binary)`. **Neither tree models a document
+head; each labels a drawing.** Copying the A-block meta tags into 109 painted files would also make
+109 copies of facts that live here once, which the root `CLAUDE.md` forbids by name, with drift as
+the stated cost. And `{ROOT}` is still `[?]`: a canonical or an `og:url` cannot be written without
+inventing a domain nobody has chosen.
+
+**The D block is different and it is built.** Structured data is the only half that RESTATES the
+page's own visible content, so it is the only half that can drift from the page, and drift is
+measurable only where both halves stand together. `BreadcrumbList` must match the trail,
+`ItemList` must match the cards, `FAQPage` must match the `<dl>`, `dateModified` must match the date
+the page renders. That is this file's own rule, written under §6: "One date, two consumers: if the
+page shows a date the schema does not, the schema is wrong."
+
+**58 of 108 painted documents carry one `application/ld+json` block**, one `@graph` each, over **12
+distinct page `@id`s**: home (`WebSite`, `Organization`, `CollectionPage`, `ItemList`, `FAQPage`),
+the four categories (`CollectionPage`, `BreadcrumbList`, `ItemList`), the event detail (`WebPage`,
+`BreadcrumbList`), How It Works (`WebPage`, `BreadcrumbList`, `FAQPage`), the public profile
+(`ProfilePage`, `Person`, `BreadcrumbList`) and Terms (`WebPage` with `dateModified`,
+`BreadcrumbList`). The other 50 are the `noindex` families in the table below, and they carry none.
+
+**URLs are relative and that is not a shortcut.** `/`, `/c/politics`, `/event/{slug}`,
+`/how-it-works`, `/u/{handle}`, `/legal/terms` are the product's URL space as this file writes it.
+The prototype's file names are not that space, and the schema describes the product.
+
+**A STATE MAY SHOW LESS, NEVER SOMETHING DIFFERENT.** One URL carries one `@id`, and its states
+carry node sets that are subsets of the success state's: the empty, error and loading feeds have no
+`ItemList`, because there is no list on them to describe. Two documents carry no schema at all,
+`event-detail-loading` and its logged-out twin, because the only thing that URL's schema is about is
+the question, and a loading skeleton does not show it. Verified on both engines: **58 of 58 parse, 0
+banned types, 0 nodes disagreeing with the visible page, 0 subset violations.** The three types this
+file rejects by name, `Event`, `QAPage` and `Product` / `Offer`, are checked for and read 0.
+
+**What is specified here and could not be built**: `Organization.logo` and `sameAs` (no asset, and
+the social marks were removed by backlog 144), and `WebSite.SearchAction` (search shipped on
+2026-08-16 but the deferral's scale condition has not, `docs/backlog.md` 164).
+
+---
+
 ## Indexation policy
 
 One row per screen family. `index,follow` = crawled and eligible to rank; `noindex,follow` =
