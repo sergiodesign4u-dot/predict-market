@@ -240,4 +240,15 @@ because it is a stance rather than a principle, and it is written once, here.
   its only argument left was code that does not exist yet, and this repository already refuses to pay
   rent on a decision nobody has taken. **The twin of "a reading that does not move when the input
   moves": a reading that cannot come back red is a reading of the guard, not of the thing.**
+- **A CONVENTION WITH NO READER IS A CONVENTION THAT ONE SCREEN WILL NOT OBEY, AND IT WILL BE THE
+  BUSIEST ONE.** `wireframes/_conventions.md` has said since the auth axis was written that the two
+  auth states share a feed body and differ only in the header. Measured across the whole matrix on
+  2026-08-16: **19 pairs of 20 obeyed it and the twentieth was `event-feed` against
+  `event-feed-logged-out`**, which differed by the entire hero band, four cards, the sub-filter and
+  its twelve `data-cat` attributes, the load-more row, the SEO wrapper and the sub-category rail.
+  **The cost was measured in pixels and it lands on the reader the block was written for**: "1,284
+  events resolved on-chain" stood at y=846 on a phone for a signed-in reader and at **y=4,095 for a
+  visitor**. Nothing read the rule, so nothing could report the one screen that broke it, and the
+  screen that broke it is the one a person who has never signed in arrives on. **When a rule is
+  stated over a SET, measure the set: 19 of 20 looks like compliance from any single file.**
 - **No em dash**, anywhere.

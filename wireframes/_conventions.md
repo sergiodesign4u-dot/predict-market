@@ -534,6 +534,20 @@ one page, because the logged-out header is materially different (no account).
 - The logo (Events home), the second-level category nav, the feed body, and all
   cards are identical and browsable in both auth states; only the header (and the
   mobile slot 4) differ.
+  **THIS LINE WAS TRUE OF NINETEEN PAIRS OF TWENTY AND FALSE OF THE TWENTIETH UNTIL
+  2026-08-16, and the twentieth is the one a visitor lands on.** Measured across the
+  whole auth matrix: 19 pairs identical in the body, and `event-feed.html` against
+  `event-feed-logged-out.html` differing by the entire hero band (`feed-hero`,
+  `hero-feature`, two `hero-trust`, the brand tile, `hero-hot`), by four cards, by the
+  sub-filter and its twelve `data-cat` attributes, by the load-more row, by the SEO
+  wrapper and by the sub-category rail. **The trust proof is what it cost**: "1,284
+  events resolved on-chain" sat at y=846 on a phone for a signed-in reader and at
+  **y=4,095 for a visitor**, 4.8 times further down, and the visitor is the one it was
+  written for. The bodies are identical now, in both trees, and the one delta that
+  remains is correct: a signed-out visitor has no saved event, so the bookmarked card
+  resets to `aria-pressed="false"`. Verified by measuring `main.feed`: **the same
+  height to the pixel at 390 and at 1280 in both trees**, and the only box that moves
+  is the header, which is what this line says.
 - **Naming:** logged-in pages keep the base names (`event-feed*.html`);
   logged-out pages add a `-logged-out[-state]` suffix. `push-permission-missing`
   is logged-in only (account-bound), so it has no logged-out counterpart.

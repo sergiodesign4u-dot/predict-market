@@ -1729,3 +1729,17 @@ markup for as long as it has existed.
 results found" and no "we could not find anything": the count line already says `0 events for
 "tennis"` in the product's own arithmetic voice, and a second sentence saying the same thing in a
 softer one would be the apology this product's voice does not make.
+
+## 2026-08-16 - no new strings, and half the ones the visitor needed moved 3,249 pixels up
+
+The logged-out trending feed was missing the hero band that carries the product's own proof, so
+every string in it was written, inventoried and shown only to the reader who had already signed in.
+**No copy was written or changed in this pass**; the rows for `.hf-eyebrow`, `.hf-title`, `.hf-why`,
+`Back YES` / `Back NO`, `Hot right now`, `See all hot events`, the two `.hero-trust` claims and the
+three `.brand-tile` lines now stand on two screens instead of one, and the count in each of those
+rows is the only thing about them that moved.
+
+**What that is worth, measured**: "1,284 events resolved on-chain" sat at y=4,095 on a phone for a
+visitor and at y=846 for a signed-in reader. It is at 846 for both now. "Your USDC is held 1:1" went
+from 3,885 to 748. **A sentence written to convince somebody who has not signed up was below three
+and a half thousand pixels of scroll for exactly that person.**

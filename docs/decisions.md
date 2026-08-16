@@ -12,6 +12,61 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-16 - Nineteen auth pairs of twenty had the same feed body, and the twentieth is the one a visitor lands on
+
+**THE CONVENTION WAS WRITTEN AND ONE SCREEN DID NOT OBEY IT.** `wireframes/_conventions.md`, S5, the
+auth-state axis: "The logo (Events home), the second-level category nav, **the feed body, and all
+cards are identical and browsable in both auth states; only the header (and the mobile slot 4)
+differ.**" Measured across the whole matrix on 2026-08-16: **19 pairs identical in the body, 1 not**,
+and the one is `event-feed.html` against `event-feed-logged-out.html`, the trending base, which is
+the screen a person who has never signed in actually arrives on.
+
+**WHAT THE TWENTIETH WAS MISSING.** The entire hero band - `feed-hero`, `hero-feature`, two
+`hero-trust` tiles, the notched brand tile, `hero-hot` - plus four of the twelve cards, the
+sub-filter and its twelve `data-cat` attributes, the load-more row, the SEO wrapper and the
+sub-category rail. Not a header delta. Roughly half the screen.
+
+**AND THE TRUST PROOF IS WHAT IT COST.** Measured before the edit: "1,284 events resolved on-chain"
+stood at **y=846 on a phone for a signed-in reader and at y=4,095 for a visitor**, 4.8 times further
+down; at 1280 it was 568 against 2,427. "Your USDC is held 1:1" ran 748 against 3,885. **The two
+sentences this product wrote to convince somebody who has not signed up were three and a half
+thousand pixels below the fold for exactly that person**, and above the fold for the person who is
+already convinced. `PRODUCT.md` names platform betrayal as the number one churn driver and the whole
+Vault thesis is "credible before it reads as anything else"; the credibility was being shown to the
+wrong reader.
+
+**THE FIX IS THE CONVENTION, NOT A NEW DESIGN.** The logged-out feed body is the logged-in feed body
+now, in both trees, which is what the line already said it was. The grey tree's inline stylesheet
+had to come with it: its logged-out block was a strict SUBSET of its logged-in one, 308 selectors
+against 404, **0 unique to logged-out**, so replacing it loses nothing and gains the 96 rules the
+new body needs.
+
+**ONE DELTA REMAINS AND IT IS THE CORRECT ONE.** A signed-out visitor has no saved event, so the one
+bookmarked card resets to `aria-pressed="false"` and `aria-label="Save"`. That was read off the two
+files rather than assumed: `data-open="signin"` stands 7 times on the logged-out page and **every one
+of them is in the header or the bottom bar**, so the feed body carried no auth logic at all.
+
+**Verified.** `main.feed` measures **the same height to the pixel** on both pages, 6,106 at 390 and
+3,285 at 1280 in the paint, 5,051 and 2,386 in the grey. The hero now stands at y=157 and y=165 on
+both, the trust proof at 846 and 568 on both, 12 cards and 9 odds bars on both, 0 duplicate ids on
+either. **The only box that moves is the header**: 0.0px in the paint, where the system gives it a
+fixed height, and 0.4 to 3.2px in the grey tree, where the auth buttons are not the size of the
+balance figure. That is the S5 line, measured.
+
+**The sub-filter script went with the sub-filter it drives**, which is the half of this that a
+markup copy alone would have got wrong: 12 cards with `data-cat` and a filter row with nothing
+listening. Asserted one-directionally over all 276 documents: **6 sub-filters and 0 of them with no
+`data-cat` card to filter**, with a planted control proving the probe fires.
+
+**AND THE FIRST FORM OF THAT ASSERTION WAS A PROXY, WHICH IS THE THIRD TIME THIS WEEK.** It flagged
+either direction and reported 9 documents: the three search screens and three kit pages carry
+`data-cat` with no sub-filter on the page. **That is a datum, not an orphan mechanism.** The category
+is a fact about the event and it travels with the card; the defect the check exists for is a CONTROL
+that does nothing, and that count is zero. Same shape as `scrollWidth > clientWidth` and as a numeral
+wider than its gutter: the predicate has to be the defect and not something adjacent to it.
+
+---
+
 ## 2026-08-16 - The error tone was never missing from the system, it was missing from the one surface where money fails
 
 **RED IS NO AND BRASS IS THE BRAND, SO THERE IS NO HUE LEFT FOR A FAILURE.** That is the true half
