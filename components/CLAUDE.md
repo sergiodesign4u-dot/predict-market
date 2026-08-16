@@ -1,7 +1,9 @@
 # components/ - the system itself
 
-This folder IS the design system. **54 stylesheets, 10,764 lines**: 48 here and 6 in `patterns/`,
-re-counted 2026-08-16 after the same day's palette pass gave the hero chart a scale, took Volume off
+This folder IS the design system. **54 stylesheets, 10,805 lines**: 48 here and 6 in `patterns/`,
+re-counted 2026-08-16 after the minor-observations pass gave the skeleton a hidden status line and
+moved the profile's lead figure off an ordinal. It was 10,764 earlier the same day, after the
+palette pass gave the hero chart a scale, took Volume off
 brass and took the tint off the spectator's YES/NO pair. It was 10,613 earlier the same day, after
 the critique pass took the bottom nav and the bet dock off `sticky` and
 gave the sticky furniture three names. It was 10,381 on 2026-08-15 after the Animation stage's frame-cost pass took the knob and the step dot off
@@ -685,6 +687,32 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   **ground 54 -> 22, edge 32 -> 0, 220,689px2 of outcome colour down to 18,025**. This is the
   root file's "a reading that does not move when the input moves", met from the direction where the
   instrument is the thing that moved and the page is not.
+
+- **`aria-busy` IS A PROPERTY OF A REGION AND NOT A MESSAGE, so 19 loading screens said nothing at
+  all.** Every one of them marked the region busy and marked the shapes decorative, which is
+  correct and is not an announcement: a person who cannot see 42 pulsing rectangles was told
+  nothing. `.sk-status` is one hidden sentence per busy region, `role="status"` on its own `<p>`,
+  and **the `<p>` is the decision**. Putting the live region on `.grid` itself would make twelve
+  event cards the thing announced the moment the skeletons are replaced, which is the feed read
+  aloud to somebody who asked whether it had finished. **Hidden from the eye is not hidden from the
+  tree, and this file has now paid for both directions of that on one day**: `clip-path:inset(50%)`
+  keeps the status line in the tree at 1x1, while `color:transparent;font-size:0` on `.thumb` kept
+  the grey tree's "thumbnail placeholder" label in the tree on 105 screens, 24 `StaticText` nodes on
+  the feed alone.
+- **QUERY THE TREE, NOT THE ELEMENT: `uninteresting` on a wrapper does not prune its text.** The
+  first check of the thumbnail label read the `<span class="thumb">` nodes through CDP and came back
+  `ignored=true, reason=uninteresting` on all of them, which reads as clean. The full tree has the
+  StaticText child standing, not ignored, 24 of them. **And the same instrument cleared a finding
+  the other way in the same run**: 4 SVGs on `how-it-works.html` are written with no `aria-hidden`
+  and all four are ignored anyway, `reason=ariaHiddenSubtree`, because the span around them carries
+  it. A grep over the source cannot see either result.
+- **A COMMENT IS NOT A SELECTOR SEPARATOR, AND THIS REPOSITORY HAS NOW PAID FOR "A COMMENT IS NOT
+  INERT" TWICE.** `yesno.css` lost `display:flex` on 2026-08-10 to a comment terminator; this pass
+  inserted a rule into 19 grey files immediately before `.sk-thumb` and turned
+  `.card.skeleton .sk-thumb` into `.card.skeleton <comment> .sk-status`, a descendant selector
+  matching nothing. It failed silently and the browser said 16px where the rule said 13. **Anchor an
+  insertion on a comment or a brace, never on the second half of a compound selector**, and read the
+  computed value back before believing the edit landed.
 
 ## Where the record is
 

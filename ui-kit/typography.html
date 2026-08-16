@@ -250,13 +250,22 @@
     <p class="tk-note">Tracking is also the axis where <code>0</code> and <code>normal</code> both
     appear. They compute the same and they are two ways of saying it, which is how an axis with no
     token ends up with two spellings of nothing.</p>
-    <p class="tk-subh">And one size literal</p>
-    <p class="tk-note">Of 218 <code>font-size</code> declarations in the system, <b>217 read a
-    token</b>. The exception is <code>chart.css</code>: <code>.chart-svg text{font-size:7px}</code>,
-    three pixels under the declared floor. It is an axis label inside an SVG that is scaled by its
-    viewBox, so 7 user units is not 7 screen pixels, and the ramp has no unit for a thing measured
-    in a different coordinate space. <b>It is defensible and it is undocumented</b>, which is the
-    part to fix.</p>
+    <p class="tk-subh">And no size literal left</p>
+    <p class="tk-note">Of <b>238</b> <code>font-size</code> declarations in the system,
+    <b>238 read a token</b>: 222 through the <code>--text-*</code> ramp, 10 through
+    <code>--display-*</code>, 5 that are <code>font-size:0</code>, and one through
+    <code>--logo-size</code>, which is itself set from the ramp. <b>Re-counted 2026-08-16 from the
+    source with comments stripped.</b></p>
+    <p class="tk-note">This section said <i>217 of 218, and the exception is
+    <code>chart.css</code>: <code>.chart-svg text{font-size:7px}</code></i> until that count.
+    <b>The rule it named was deleted on 2026-08-15 and the page went on documenting it</b>, which
+    is the vitrine describing a system that had moved. The argument was worth keeping and
+    <code>chart.css</code> keeps it in the comment where the rule stood: 7 was a USER UNIT inside a
+    <code>viewBox="0 0 300 100"</code> drawn with <code>preserveAspectRatio="none"</code>, so it was
+    never 7 screen pixels and <code>rem</code> would have made it follow the reader's browser
+    setting while the plot went on following the viewBox. What retired it was not the argument but
+    a reading taken in the DOM instead of the source: <b>the chart SVG carries no
+    <code>&lt;text&gt;</code> node on any of the 106 painted screens or the 57 kit pages</b>.</p>
   </section>
 
   <!-- ============================= measure =========================== -->

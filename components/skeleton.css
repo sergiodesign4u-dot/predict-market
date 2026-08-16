@@ -1,5 +1,5 @@
 /* components/skeleton.css
-   Component: skeleton. Classes: .sk-btn, .sk-head, .sk-line, .sk-row, .sk-thumb, .w40, .w60, .w70, .w80.
+   Component: skeleton. Classes: .sk-btn, .sk-head, .sk-line, .sk-row, .sk-status, .sk-thumb, .w40, .w60, .w70, .w80.
 
    Reads: --bg-chip, --bg-control, --border-hairline
    Stand:  ui-kit/skeleton.html, and ui-kit/vitrine.html#skeleton for the level and its reason
@@ -83,3 +83,22 @@
    says now: (0,4,0), and it out-specifies rather than ties. */
 .card.skeleton .ed-head .sk-thumb{width:var(--size-72);height:var(--size-72);flex:0 0 var(--size-72)}
 .card.skeleton .ed-head>div{flex:1}
+/* THE SHAPES WERE THE ONLY SIGNAL, AND A SHAPE SAYS NOTHING TO A SCREEN READER. Every one
+   of the 19 loading screens set `aria-busy="true"` on the region being replaced and put no
+   words anywhere: 42 pulsing rectangles and nothing that names them. `aria-busy` alone
+   announces nothing on its own either, since it is a property of a region rather than a
+   message.
+   THE LINE IS SCOPED TO ONE SENTENCE ON PURPOSE, and that is the whole reason it is markup
+   rather than `role="status"` on the busy container itself. Putting the live region on
+   `.grid` would make twelve event cards the thing that gets announced the moment the
+   skeletons are replaced, which is the feed read aloud to somebody who asked whether it had
+   loaded. A `<p>` of its own is one sentence in, one sentence out.
+   IT IS HIDDEN FROM THE EYE AND NOT FROM THE TREE, which is the opposite of what the
+   `.thumb` label was doing on 105 screens: `color:transparent;font-size:0` leaves a
+   StaticText node standing, measured at 24 of them on the feed alone. `clip-path:inset(50%)`
+   is the idiom `base.css` and `hiw.css` already use, and the reason it replaced `clip:rect()`
+   is written once in `base.css`.
+   THE GREY TREE SHOWS THIS LINE, and that is correct rather than an oversight: a wireframe
+   whose region is loading should say so in words, and a grey file links no stylesheet to
+   hide it with. */
+.sk-status{position:absolute;width:1px;height:1px;margin:0;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}

@@ -80,7 +80,10 @@ appear. Nothing here is a rewrite; it is the punch-list for the editing pass.
     "TBD / post-MVP / dynamic" roadmap tags, the "[Regulatory / licensing line -
     placeholder, to be set...]" strip, "Copyright ... Sample wireframe content";
     Event Detail "thumbnail placeholder"; Deposit "Transak payment widget (card
-    to USDC)"; Win "Share Card ... (image placeholder)".
+    to USDC)"; Win "Share Card ... (image placeholder)". **All three were answered on
+    2026-08-16 and the answer was different for each**: the thumbnail label is the grey
+    tree's and left the paint entirely, the two widget slots are a declared component
+    and now say what they are in a sentence. See the dated section at the end.
 11. **Spec-notes / internal codes that leaked into visible text:** "underlying
     screen dimmed: ..." (Win / Loss / overlays); bet-panel rationale ("on-chain
     error (T3): ...", "insufficient-balance: inline guard...", "S5 reconcile:
@@ -227,7 +230,7 @@ version of it costs them the recognition without buying anything.
 |---|---|---|---|
 | Deposit dialog | Heading | Add funds | **same-thing / Deposit vs Add funds** |
 | Deposit dialog | Field label | Amount to add | **same-thing / Deposit vs Add funds** |
-| Deposit dialog | Text | Transak payment widget (card to USDC) | **placeholder** |
+| Deposit dialog | Text | The payment widget loads here (card to USDC) | the slot says what will stand in it, in the same words the loading and failure copy already use. Was `Transak payment widget (card to USDC)`, a noun phrase written for whoever was building the screen |
 | Deposit dialog | Text | Your USDC is held 1:1 - we do not lend or invest deposited funds. |  |
 | Deposit dialog | Text | Minimum deposit $10. KYC is required for card deposits; crypto-only users can connect a USDC wallet instead. |  |
 | Deposit dialog | Text | Opens over the current page after sign-in. States (card declined / KYC / widget fail / pending / minimum): see reference pages deposit-*.html. | **leftover spec-note (internal codes)** |
@@ -685,7 +688,7 @@ _7 state page(s): deposit-error-card.html, deposit-error-kyc.html, deposit-loadi
 | Main | Button | Open Transak directly |  |
 | Main | Text | Fallback per S3: route around the embedded widget when it cannot load. |  |
 | Main | Field label | Pay with |  |
-| Main | Text | Transak payment widget (card to USDC) | **placeholder** |
+| Main | Text | The payment widget loads here (card to USDC) | same slot, same sentence, on the page rather than in the dialog |
 | Main | Text | Minimum deposit $10. Card payments are converted to USDC via Transak. KYC is required for card deposits; crypto-only users can connect a USDC wallet instead. |  |
 | Main | Button | How it works | **The parenthetical `(what happens to my money)` was dropped on 2026-08-14**, for two reasons that agree. It broke the button onto two lines at 320 and 360, on 105 screens. And the header's own control has said plain `How it works` all along, so **one destination had two names**, 105 placements each, which is the `same-action / label varies` flag this file already carries for the go-to-events button. The promise it made is kept two lines above it by the `.protect` sentence, *Your USDC is held 1:1 - we do not lend or invest your funds*, which is voice principle 2 and is the answer to the question the bracket was asking |
 
@@ -1676,3 +1679,26 @@ scale.
 in the word, so the word is now carrying more than it was and rewriting it would have been the
 opposite move. And the `Vol` legend tag stayed three letters, because it labels a swatch beside two
 other three-to-seven character tags and the caption underneath is where the sentence goes.
+
+## 2026-08-16 - the minor observations, and two of the six were the source rather than the page
+
+The pass after the palette one, working the `/impeccable critique`'s Minor Observations and its
+accessibility red flags. **Seven strings changed and 48 are new**, and every one of them was read
+out of the accessibility tree rather than out of a file.
+
+| Was | Is | Why |
+|---|---|---|
+| `thumbnail placeholder` inside every `.thumb` and `.ed-thumb` in the paint | nothing | The photography boundary is declared in `wireframes/_conventions.md`: grey draws the empty box, the paint carries the picture. The grey tree's LABEL for that box had been copied into the paint with it, where `color:transparent;font-size:0` hides it from the eye and leaves it standing in the tree. Measured on `event-feed.html`: **24 `StaticText "thumbnail placeholder"` nodes, none of them ignored**, one beside every event question on 105 screens. It stays in the grey tree, where it is the label of a box that has no picture, on 21 files |
+| `aria-label="Language (placeholder)"` | `aria-label="Language"` | The label overrode the visible word `English` with the bookkeeping the wireframe uses to mark an unbuilt destination, and it reached only a screen-reader user, so it was not even doing the wireframe's job. The two menus beside it read `Sort by` and `Filter by how often an event repeats`, so this is the peer form, not a new one. 197 places in three trees |
+| `<nav class="footer-col" aria-label="Markets">` over `<h2>Events</h2>` | `aria-label="Events"` | The other two footer columns agree with their headings, `Product` over Product and `Support` over Support. This one disagreed, and the word it disagreed with is the one the lexicon forbids: a landmark named `Markets` sat over a column visibly headed Events, and the sighted user and the screen-reader user were told different things |
+| `Transak payment widget (card to USDC)` | `The payment widget loads here (card to USDC)` | Not a placeholder in the unfinished sense: `.widget-box` is a declared component and `ui-kit/notice.html` calls it "the slot a third-party payment widget will load into". What was wrong is that a slot was speaking in a noun phrase written for whoever was building it. It is a sentence now, and it uses `payment widget`, which is the term the loading line and the failure screen already settled on |
+| `Share Card: "Called it - ..." (image placeholder)` | `Share card image, generated here: "Called it - ..."` | Same slot, same fix, and the parenthesis was the whole defect: the line already said `Share Card:` and the field above it says `Share Card (auto-generated)`, so the bookkeeping word was the third time in one block |
+| (nothing) | `Loading events`, `Loading your open bets`, `Loading your settled bets`, `Loading this event`, `Loading the bet panel`, `Loading your profile`, `Loading this profile`, `Loading your track record`, `Loading this track record`, `Loading your wallet`, `Loading your transactions`, `Loading your notifications`, `Loading your saved events` | **48 new lines, one per busy region across the two screen trees.** 19 of 19 loading screens set `aria-busy` and said nothing: `aria-busy` is a property of a region, not a message, so 42 pulsing rectangles were the entire signal to anyone who could not see them. Each line names what is loading, and it is `role="status"` on its own `<p>` rather than on the region, so a screen reader gets one sentence instead of twelve event cards the moment the skeletons are replaced |
+
+**Two of the six observations were readings of the source and not of the page, and both are recorded
+rather than fixed.** The critique reported 4 of 22 SVGs on `how-it-works.html` with no `aria-hidden`
+and no label; read out of the accessibility tree, **all four are ignored**, with
+`ariaHiddenSubtree` as the reason, because their parent `<span class="hiw-ic" aria-hidden="true">`
+covers them. And the deposit slot is a documented component rather than unfinished work. The
+thumbnail label went the other way: the SPAN is ignored as uninteresting and its TEXT NODE is not,
+which is why querying the element said clean and querying the tree said 24.

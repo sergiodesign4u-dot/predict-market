@@ -1,5 +1,5 @@
 /* components/position.css
-   Component: position. Classes: .pos, .pos-fig, .pos-figures, .pos-lost, .pos-no, .pos-note, .pos-q, .pos-record, .pos-side, .pos-status, .pos-top, .pos-won, .pos-yes.
+   Component: position. Classes: .pos, .pos-fig, .pos-fig-lead, .pos-figures, .pos-lost, .pos-no, .pos-note, .pos-q, .pos-record, .pos-side, .pos-status, .pos-top, .pos-won, .pos-yes.
 
    Reads: --bg-card-quiet, --bg-control, --bg-control-brass, --bg-control-hover, --bg-pressed,
           --border-brass-hover, --border-hairline, --border-hairline-brass, --color-action,
@@ -70,8 +70,30 @@
 .pos-record .pos-figures{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-8);margin:0;font-size:var(--text-10);letter-spacing:var(--track-caps)}
 .pos-record .pos-fig{background:var(--bg-control);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);padding:var(--space-12) var(--space-12);gap:var(--space-4);color:var(--text-muted)}
 .pos-record .pos-fig b{font-family:var(--font-mono);font-size:var(--text-20);color:var(--text-primary);font-weight:var(--weight-semibold);margin-top:var(--space-2);letter-spacing:var(--track-none);text-transform:none}
-.pos-record .pos-fig:nth-child(2){border-color:var(--border-hairline-brass);background:linear-gradient(150deg,var(--bg-control-brass),var(--bg-control) 74%)}
-.pos-record .pos-fig:nth-child(2) b{color:var(--text-brass);font-size:var(--text-24)}
+/* WHICH STAT IS THE LEAD ONE IS A SCREEN'S QUESTION, AND IT WAS STORED IN THE ORDER OF FOUR
+   SIBLINGS. These two rules were `:nth-child(2)`, so the brass ground, the brass edge and the
+   24px figure belonged to whichever tile happened to stand second: reorder Total bets, Win
+   rate, Resolved and Member since and the emphasis follows the position rather than the
+   number. `trust-art.css` keys on `nth-of-type` deliberately and states the test that makes
+   that right - a decoration's question, which nobody editing a screen answers - and this is
+   the other side of it. A product deciding that the win rate is the number that matters is a
+   screen's decision, so it goes on the element, exactly the way `.yes` and `.no` went onto
+   the outcome pair when sixteen selectors here were binding meaning to DOM order.
+   THE LABEL TAKES THE FULL INK, AND THE NUMBER IS WHY. The caption is `--text-muted` on the
+   other three tiles, standing on flat `--bg-control` at 5.49:1. This tile washes brass across
+   the same box, and the wash is brightest exactly where an 11px caption sits: read off the
+   painted pixels in the Vault, the ground under "Win rate" runs rgb(60,59,55) at the brass
+   corner to rgb(36,40,47) at the far one, so the same six characters measure **4.16:1 at one
+   end and 5.49:1 at the other**. One caption, two verdicts, across its own 60px. Daylight was
+   never in doubt at 6.80 to 7.67.
+   THE ANSWER IS THE INK RATHER THAN THE WASH, because the wash is the family idiom: the trust
+   badge, the comment avatar and the gallery card all lay --bg-control-brass in from the top
+   left, and turning one tile's light around to fix a contrast number would leave one object in
+   the product lit from the other side. And the tile ALREADY re-inks its figure to
+   --text-brass, so re-inking its caption is the same move on the same element for the same
+   reason: this is the tile the design is pointing at, and its parts are emphasised. */
+.pos-record .pos-fig-lead{border-color:var(--border-hairline-brass);background:linear-gradient(150deg,var(--bg-control-brass),var(--bg-control) 74%);color:var(--text-primary)}
+.pos-record .pos-fig-lead b{color:var(--text-brass);font-size:var(--text-24)}
 /* THE FOUR COLUMNS ARRIVE AT THE DESK RUNG NOW, AND 520 WAS NEVER A DECISION: it was
    the width at which four columns first fit, not the width at which four columns first
    read. Measured 2026-08-10 on my-profile and public-profile, one width at a time:

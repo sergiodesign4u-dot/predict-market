@@ -185,10 +185,25 @@
     keeps a flat, fully opaque tone. Measured on three loading screens in both engines: 60 marks
     running in the normal pass, <b>0 running and every mark back at full opacity under the
     setting</b>. The state stays and only the movement goes.</p>
-    <p class="tk-why"><b>What DOES say "loading", to somebody who cannot see a grey box:</b> the
-    region is marked busy and the shapes declare themselves decoration. Measured: <b>19 of 19</b>
-    screens that carry a skeleton carry <code>aria-busy</code>, and the two lists are the same 19
-    files with no odd one in either direction. <b>Hosts: 88 of 90.</b></p>
+    <p class="tk-why"><b>What DOES say "loading", to somebody who cannot see a grey box:</b> a
+    sentence, since 2026-08-16, and until then nothing at all. The region is marked busy and the
+    shapes declare themselves decoration - measured, <b>19 of 19</b> screens that carry a skeleton
+    carry <code>aria-busy</code>, the two lists are the same 19 files with no odd one in either
+    direction, <b>hosts 88 of 90</b> - and <b>none of that is a message</b>.
+    <code>aria-busy</code> is a property of a region rather than something announced, so 42 pulsing
+    rectangles were the whole signal.</p>
+    <p class="tk-why"><b><code>.sk-status</code> is one sentence, visually hidden, first child of the
+    busy region</b>, and it names what is loading: <i>Loading events</i>, <i>Loading your open
+    bets</i>, <i>Loading the bet panel</i>, one per region, <b>48 across the two screen trees</b>.
+    <b>It is markup rather than <code>role="status"</code> on the busy container, and that is the
+    whole decision:</b> a live region on <code>.grid</code> would make twelve event cards the thing
+    announced the moment the skeletons are replaced, which is the feed read aloud to somebody who
+    asked whether it had finished. Hidden with <code>clip-path:inset(50%)</code>, the idiom
+    <code>base.css</code> already uses, so it is out of the eye and IN the tree: measured,
+    <code>StaticText "Loading events"</code> not ignored, painting 1x1. <b>The grey tree shows the
+    same line as visible text</b>, which is correct rather than an oversight - a wireframe whose
+    region is loading should say so in words, and a grey file links no stylesheet to hide it
+    with.</p>
     <p class="tk-note"><b>The two without <code>aria-hidden</code> are one each on
     <code>event-detail-loading</code> and <code>event-detail-logged-out-loading</code></b>, which are
     also the two screens in the section above. A host that does not declare itself decoration reaches

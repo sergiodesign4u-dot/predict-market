@@ -331,7 +331,7 @@
         <article class="pos pos-record" aria-label="Track record">
           <div class="pos-figures">
             <span class="pos-fig">Total bets<b>23</b></span>
-            <span class="pos-fig">Win rate<b>61%</b></span>
+            <span class="pos-fig pos-fig-lead">Win rate<b>61%</b></span>
             <span class="pos-fig">Resolved<b>18</b></span>
             <span class="pos-fig">Member since<b>2026</b></span>
           </div>
@@ -350,7 +350,7 @@
         <article class="pos pos-record" aria-label="Track record">
           <div class="pos-figures">
             <span class="pos-fig">Total bets<b>23</b></span>
-            <span class="pos-fig">Win rate<b>61%</b></span>
+            <span class="pos-fig pos-fig-lead">Win rate<b>61%</b></span>
             <span class="pos-fig">Resolved<b>18</b></span>
             <span class="pos-fig">Member since<b>2026</b></span>
           </div>
@@ -434,6 +434,20 @@
 
   <section class="tk-sec" id="rule">
     <h2 data-n="7">The rule</h2>
+    <p class="tk-note"><b>The lead figure is a class, and it was an ordinal until 2026-08-16.</b>
+    <code>.pos-record .pos-fig:nth-child(2)</code> gave the brass ground, the brass edge and the
+    24px figure to whichever tile stood second, so reordering the four stats would have moved the
+    emphasis without anyone editing a rule. Which number matters is a screen's decision, not a
+    decoration's, which is the same test <code>trust-art.css</code> passes from the other side when
+    it keys its two drawings on <code>nth-of-type</code> deliberately. It is
+    <code>.pos-fig-lead</code> now. <b>The caption took full ink with the same edit</b>, and the
+    reason is a measurement rather than a preference: read off the painted pixels in the Vault, the
+    brass wash runs <code>rgb(60,59,55)</code> under the top-left corner to <code>rgb(36,40,47)</code>
+    at the far one, so <code>--text-muted</code> on those six characters measured <b>4.16:1 at one
+    end and 5.49:1 at the other</b> - one caption, two verdicts, across its own 60px. The wash stays
+    where it is, because the trust badge, the comment avatar and the gallery card all take the same
+    brass in from the top left and turning one tile's light around would leave one object in the
+    product lit from the other side. 8.96:1 now, and 13.88:1 in daylight.</p>
     <p class="tk-note"><b>A role per sentence, even when two sentences share a value.</b> The live
     pair and the settled pair are four rules that draw two colours, and that is the system being able
     to change its mind later.</p>

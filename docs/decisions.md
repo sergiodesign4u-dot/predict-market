@@ -12,6 +12,100 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-16 - Nineteen screens that were loading said so to nobody, and two of the six things the critique called defects were readings of the source
+
+The Minor Observations pass. Every finding below was re-measured against the accessibility tree or
+the painted pixels before anything was edited, and **two of the six did not survive that.**
+
+**NINETEEN LOADING SCREENS ANNOUNCED NOTHING.** All of them set `aria-busy="true"` on the region
+being replaced and marked the skeleton shapes decorative, which is correct and is not a message:
+`aria-busy` is a property of a region, so a person who cannot see 42 pulsing rectangles was told
+nothing at all. `skeleton.css` gains `.sk-status`, one hidden sentence per busy region naming what
+is loading, and **the sentence is its own `<p>` rather than `role="status"` on the container, which
+is the whole decision**: a live region on `.grid` would make twelve event cards the thing announced
+the moment the skeletons are replaced, which is the feed read aloud to somebody who asked whether it
+had finished. 48 lines across the two screen trees, 24 regions each. Verified in the tree:
+`StaticText "Loading events"` not ignored, painting 1x1, on all 24 of 24.
+
+**THE GREY TREE SHOWS THE SAME LINE AS VISIBLE TEXT AND THAT IS CORRECT.** A wireframe whose region
+is loading should say so in words, and a grey file links no stylesheet to hide it with. It needed
+one rule in each of the 19 inline blocks so the line takes a row instead of a card slot.
+
+**THE THUMBNAIL LABEL WAS THE WIREFRAME'S AND HAD BEEN LIVING IN THE PAINT.**
+`wireframes/_conventions.md` declares the photography boundary: grey draws the empty box, the paint
+carries the picture. The paint had also inherited the grey tree's LABEL for that box, hidden from
+the eye by `color:transparent;font-size:0` and standing in the accessibility tree the whole time.
+Measured: **24 `StaticText "thumbnail placeholder"` nodes on `event-feed.html`, none of them
+ignored**, one beside every event question, 198 across the painted tree. Gone from 105 painted
+screens and 9 kit pages, kept on 21 grey files where it labels a box that has no picture.
+
+**QUERY THE TREE, NOT THE ELEMENT.** The first check of that label read the `<span class="thumb">`
+nodes and came back `ignored=true, reason=uninteresting` on every one, which reads as clean.
+Chromium collapses the wrapper and keeps the text child. The finding is in the full tree and not in
+the node you thought to ask about.
+
+**AND THE SAME INSTRUMENT CLEARED A FINDING IN THE SAME RUN.** The critique reported 4 of 22 SVGs on
+`how-it-works.html` with no `aria-hidden` and no label. All four are ignored, `ariaHiddenSubtree`,
+because `<span class="hiw-ic" aria-hidden="true">` around them carries it. **No edit was made and
+the reasoning is the record**: a grep over the source cannot see an inherited attribute, and this is
+the third time this repository has filed a source reading as a page reading.
+
+**TWO ARIA-LABELS WERE SAYING SOMETHING THE PAGE DID NOT.** `aria-label="Language (placeholder)"`
+overrode the visible word `English` with the wireframe's bookkeeping, and it reached only a
+screen-reader user, so it was not even doing the wireframe's job. `aria-label="Markets"` sat on a
+`<nav>` over a visible `<h2>Events</h2>`, while the two footer columns beside it agree with their
+own headings; the word it disagreed with is the one the lexicon forbids. 197 places each, three
+trees.
+
+**THE TWO "VISIBLE PLACEHOLDERS" ARE A DECLARED COMPONENT, AND WHAT WAS WRONG WAS THE VOICE.**
+`.widget-box` is the slot a third-party payment widget loads into, and `ui-kit/notice.html` has said
+so since it was written. `Transak payment widget (card to USDC)` is a noun phrase written for
+whoever was building the screen; it is a sentence now, `The payment widget loads here (card to
+USDC)`, using the term the loading line and the failure screen already settled on. The share card
+box loses `(image placeholder)`, which was the third bookkeeping marker in one block, the field
+label above it already reading `Share Card (auto-generated)`.
+
+**THE ONE CONTRAST FAILURE IN 1,920 TEXT NODES WAS A CAPTION STRADDLING ITS OWN TILE.** The critique
+put `span.pos-fig` "Win rate" at 4.43:1 and said the fix is the gradient. Read off the painted
+pixels in the Vault, the brass wash under that caption runs `rgb(60,59,55)` at the top-left corner
+to `rgb(36,40,47)` at the far one, so the same six characters measure **4.16:1 at one end and 5.49:1
+at the other: one caption, two verdicts, across its own 60px.** Daylight was never in doubt at 6.80
+to 7.67. **The wash stays and the ink moves**, because the trust badge, the comment avatar and the
+gallery card all take the same brass in from the top left, and turning one tile's light around to
+fix a number would leave one object in the product lit from the other side. The tile already re-inks
+its figure to `--text-brass`; re-inking its caption to `--text-primary` is the same move on the same
+element for the same reason. 8.96:1 now, 13.88:1 in daylight.
+
+**AND THE TILE WAS KEYED ON AN ORDINAL.** `.pos-record .pos-fig:nth-child(2)` gave the brass ground,
+the brass edge and the 24px figure to whichever tile stood second, so reordering Total bets, Win
+rate, Resolved and Member since would have moved the emphasis with no rule edited. Which number
+matters is a screen's decision, which is the test `trust-art.css` states from the other side when it
+keys its two drawings on `nth-of-type` deliberately. `.pos-fig-lead` now, on 8 record grids in three
+trees.
+
+**A COMMENT IS NOT A SELECTOR SEPARATOR, AND THIS PASS PAID FOR IT.** The grey rule was inserted
+immediately before `.sk-thumb` in 19 files, which turned `.card.skeleton .sk-thumb` into
+`.card.skeleton <comment> .sk-status`: a descendant selector matching nothing, failing silently,
+with the browser reporting 16px where the rule said 13. It is the twin of the comment terminator
+that cost `yesno.css` its first rule for a day. Anchor an insertion on a comment or a brace, never
+on the second half of a compound selector, and read the computed value back.
+
+**`ui-kit/typography.html` WAS DOCUMENTING A RULE THAT NO LONGER EXISTS.** It read "217 of 218
+`font-size` declarations read a token, the exception is `.chart-svg text{font-size:7px}`". That rule
+was deleted on 2026-08-15 when a DOM reading found the chart SVG carries no `<text>` node on any of
+the 163 documents. Re-counted from the comment-stripped source: **238 of 238 read a token**, 222
+through `--text-*`, 10 through `--display-*`, 5 that are `font-size:0`, and one through
+`--logo-size`, which is itself set from the ramp.
+
+**Verified.** 1,076 renders over three trees at 390 and 1280 in Chromium and WebKit: 0 page errors,
+0 responses at 400 or above, 0 documents scrolling sideways, 0 duplicate ids, **0 busy regions
+without a named status line**, **0 record grids without the lead class**, and 0 documents still
+carrying a retired string except the 21 grey files that keep the thumbnail label on purpose. A
+separate walk of the full accessibility tree of all 106 painted documents returns **0 not-ignored
+nodes** for `thumbnail placeholder`, `Language (placeholder)`, `Markets` and `image placeholder`.
+
+---
+
 ## 2026-08-16 - The chart ruled four lines that meant 68.05, 55.38, 42.72 and 30.05 per cent, and the one ink the spec reserves for the brand was drawing a data series
 
 **THE FLAGSHIP SCREEN DREW VOLUME IN THE BRAND.** `DESIGN.md` states the One-Accent Rule, states
