@@ -12,6 +12,72 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-16 - The largest family the touch floor has ever taken, and two of its three members would have taken the rule and stayed 16 pixels tall
+
+**THE CENSUS.** All 108 painted documents at 390, pointer asserted coarse and the assertion read back
+in the page before anything was counted: **6,218 targets, 2,566 under 44x44, 41.3 per cent.** The
+morning's critique had reported 190 of 496 over 8 screens; the full tree says the same thing at five
+times the size.
+
+**AND 2,375 OF THE 2,566 ARE THREE LISTS IN ONE COMPONENT.**
+
+| list | placements | box | display |
+|---|---|---|---|
+| `.footer-col a` | 1,187 | **36 x 25** | `inline-flex` |
+| `.popular-links a` | 756 | **80 x 16** | `inline` |
+| `.legal-links a` | 432 | **31 x 14** | `inline` |
+
+**Two of the three are under 24 as well as under 44**, so this is not only the 44x44 of WCAG 2.5.5
+that `tokens.css` cites: `.popular-links a` at 16 and `.legal-links a` at 14 are under the 24x24 of
+2.5.8, which is AA.
+
+**THE INLINE EXCEPTION DOES NOT REACH THEM AND ONE FAMILY PROVES IT DOES REACH SOMETHING.** 2.5.5
+exempts a target "in a sentence, or otherwise constrained by the line-height of non-target text".
+All three of these are `<ul><li><a>`, navigation lists, not sentences. The links that ARE in a
+sentence are `.fine a`, 6 of them at 31 x 15 inside fine print, and they stayed out: naming them would
+raise a line of prose to 44px and break the paragraph they live in. **An exception with no member is
+a rule stated twice; an exception with six is a boundary.**
+
+**TWO OF THE THREE WOULD HAVE TAKEN THE FLOOR AND DONE NOTHING**, which is the precondition this
+repository has now paid for three times. `min-height` does not apply to a non-replaced INLINE box.
+`.footer-col a` computed `inline-flex` and had simply never been named; `.popular-links a` and
+`.legal-links a` computed `inline`, so adding them to the list alone would have set
+`min-height:44px` on 1,188 elements that stayed 16 and 14 pixels tall, with the computed style
+reading correct on every one of them. They got `display:inline-flex` in the same edit, beside
+`.sys-link-list a` and `.bp-change`, which are there for exactly this reason.
+
+**THE WIDTH HALF IS HERE TOO**, because 864 of the 1,187 footer links are under 44 wide: "Politics"
+is 36 pixels of word. `base.css` already argues this one out for chips and buttons, and the sentence
+is the same: **a dimension arriving from the content is a dimension nobody chose.**
+
+**`.logo` JOINED IN THE SAME EDIT AND IT IS THE LAST FAMILY OVER A HUNDRED.** `.logo-btn` was named
+long ago and the header mark has been 86 x 44 ever since. `.footer-logo`, `.seo-by` and `.bt-by` wear
+`.logo` WITHOUT `.logo-btn`, 121 placements at 96 x 30. Naming the base class rather than the three
+suffixes is the same choice the block above makes.
+
+**AFTER: 64 under 44x44, 1.0 per cent, identical on Chromium and WebKit.** What remains is a list
+rather than a residue: 35 icon buttons in the three faces the floor excludes BY NAME
+(`.icon-btn-photo`, `.icon-btn-tile`, `.icon-btn-small`), the 6 inline links in prose, 4 sheet grabs
+at 390 x 24, 3 cookie-consent checkboxes whose label carries the target, 2 policy links and 1 crumb
+at 40 x 44 that misses on width alone.
+
+**THE COST IS 334 PIXELS OF FOOTER AND IT IS WORTH SAYING PLAINLY.** Measured before and after over
+all 108 documents at 390: the footer went **1,276 to 1,610** and the mean document **2,577 to 2,912**.
+The two numbers are the same 335 pixels, which is the check that matters: **the whole growth is in
+the footer and nothing above it moved.** A person who has scrolled that far is looking for a link.
+
+**AND THE TARGETS DO NOT COLLIDE**, which is the failure mode of a floor applied to a dense list.
+Measured across all three lists: boxes are 44 x 44 with a 4 pixel gap, **0 overlapping pairs**, 0
+documents scrolling sideways, both engines.
+
+**A DESKTOP MOUSE IS UNCHANGED AND THAT IS THE DESIGN.** The whole floor lives inside
+`@media(pointer:coarse)`, so at 1280 with a mouse the footer link is still 36 x 25 and the footer is
+still 1,266. The same probe reads 71.5 per cent under 44x44 at fine pointer, which is not a defect
+list: it is the media query being off, and the harness reading it as off is the control that this
+morning's rule asked for.
+
+---
+
 ## 2026-08-16 - A permission with a condition is not a permission until the condition is measured
 
 **THE FIFTH TIME IN ONE DAY THAT A FINDING WAS A DECISION THE REPOSITORY HAD ALREADY TAKEN, AND THE
