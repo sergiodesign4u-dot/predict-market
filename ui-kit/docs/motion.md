@@ -591,3 +591,29 @@ can be clicked through. Written at step 6.
 
 **Motion at a rung.** Ruled at step 4, section 7: no, including for the two surfaces that qualify
 for the exception, because both arrive only during a drag and nobody is present for them.
+
+## 9. One arrival added 2026-08-17, and it is the register's first `animation` that is not a cycle
+
+The search surface arrived on that date and it needed exactly one movement, of the three jobs an
+**arrival**: the desktop panel says where it came from by coming from there.
+
+| what | job | how | why not a transition |
+|---|---|---|---|
+| `.search-panel` | ARRIVAL | `search-panel-in`, `--dur-fast` `--ease-enter`, from `opacity:0` and `translate:0 calc(-4px * var(--motion))` | the panel is `hidden` when it is shut, and a `display` change has nothing to interpolate from. Every other one-shot in this system moves between two rendered states; this one moves between not-being and being |
+
+**The travel and the direction are borrowed rather than chosen.** 4px down, exactly what
+`header.css` gives the notification and account dropdowns, because the panel is the same gesture in
+the same band: a surface that came out of the control above it. A second number would have been a
+second answer to a question already answered.
+
+**Reduced motion keeps the panel and loses the movement**, through `--motion` on the travel, and the
+opacity stays. That is the stage's own rule that an element which appears still appears; the
+register's earlier note about cycles does not apply, because this is a one-shot and 1ms is a correct
+answer for a one-shot where it is a wrong one for a pulse.
+
+**The sheet takes no movement at all, and that is a decision rather than an omission.** A
+`<dialog>` opened with `showModal()` on a phone is the whole screen; a 150ms slide on a surface that
+covers everything is a delay between a tap and a keyboard, and the keyboard is what the person came
+for. The three jobs were read against it and none of them was namable: nothing is being connected
+that a full-bleed replacement does not already say, no process is running, and the response was the
+tap being accepted, which the sheet's own appearance is.

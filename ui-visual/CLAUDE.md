@@ -43,7 +43,18 @@ carries no schema at all. `docs/backlog.md` 171.
   by filename cannot see an unpaired page, which is how 32 grey category screens stood against 4
   painted ones for two stages, in silence. The one document with no twin is `overview.html` here, and
   it is the index of this tree rather than a screen in it.
-- **A shared image asset lives in `../assets/`**, owned by neither tree.
+- **A shared image asset lives in `../assets/`**, owned by neither tree, **and since 2026-08-17 one
+  shared SCRIPT does too.** `assets/icons.js` was the only one and the rule it set is the reason:
+  a `<script src>` resolves from disk and from a server alike, where anything fetched in CORS mode
+  over `file://` has no origin to match. `assets/search.js` is the second, and it is the one place
+  a script here may be shared rather than inline. **The test is whose question it answers.** Every
+  other script in this tree is about the screen it stands in: the sub-category rail reads the cards
+  on its own page, and a copy per screen is correct because each copy has a different page under it.
+  Search is the opposite - it answers from all 108 screens about events that are on none of them, so
+  the catalog cannot be read out of the document it is asked in, and 108 copies of it would be 108
+  places to drift. **The cost is named in the file rather than found later**: the catalog is
+  extracted from this tree by hand, so an event added here and not re-taken there is an event search
+  cannot find.
 
 ## What is here
 

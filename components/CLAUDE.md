@@ -1,9 +1,16 @@
-# components/ - the system itself
+This folder IS the design system. **56 stylesheets, 11,320 lines**: 50 here and 6 in `patterns/`,
+re-counted 2026-08-17 after search stopped being a page you go to and became a control you use: the field
+grew a sheet face and a header face on one rung, and the rung was chosen by measuring the free middle of the
+header row at **69px on 640, 137 on 760 and 277 on 900**, which is why it enters at RAIL and not at DESK.
 
-This folder IS the design system. **55 stylesheets, 10,948 lines**: 49 here and 6 in `patterns/`,
-re-counted 2026-08-16 after the error tone was given to the one surface that had never worn it. It
-was 10,896 earlier the same day, after `search.css` was written, which is the first file added to
-this folder for a control the IA had DECIDED against rather than for one it had specified. It was 54
+**The line above read 55 and 10,948 and the tree held 56 and 11,134, which is one whole FILE missing from a
+count taken the day that file was written.** `crumb.css` landed on 2026-08-16 and the figure beside it was
+re-taken the same day and typed rather than counted, so the fourteenth atom is the one the enumeration walked
+past. This is the same defect the kit's `N lines` badges were struck for the day before, one level up: **a
+number kept in prose is re-derived by whoever reads it and by nobody who edits the folder.** It was 55 and
+10,896 on 2026-08-16 after `search.css` was written,
+and the error tone was given to the one surface that had never worn it. `search.css` was the first file
+added to this folder for a control the IA had DECIDED against rather than for one it had specified. It was 54
 and 10,805 earlier the same day, after the minor-observations pass gave the skeleton a hidden status line and
 moved the profile's lead figure off an ordinal. It was 10,764 earlier the same day, after the
 palette pass gave the hero chart a scale, took Volume off

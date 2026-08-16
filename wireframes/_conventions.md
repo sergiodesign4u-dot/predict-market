@@ -860,3 +860,38 @@ every rule for the hero, the icon chips and the FAQ list began
 `.app-dialog.hiw-dialog`, so none of them could reach a page. A rule that
 describes a BLOCK is written unscoped; only what is about being a dialog (its
 width, its close disc, a sheet's body padding) keeps the ancestor.
+
+## Search is a surface, and grey draws the state rather than simulating it (2026-08-17)
+
+Search stopped being a destination on 2026-08-17. The mark in the header used to
+be a link to a page where the field stood **at y=221 on a phone**, unfocused,
+under a category rail and an h1; it is a **surface** now, and which surface is a
+question about width. Below the RAIL rung it is a full-bleed sheet; at 56.25rem
+and above the field stands in the header row itself and the mark is
+`display:none`. The rung is a measurement rather than a preference: the free
+middle of that row is **69px at 640, 137 at 760 and 277 at 900**, and 640 is the
+tightest width on the whole ladder because DESK turns on the balance pill, the
+heart and How it works at once.
+
+**In this tree the mark stays a LINK and no sheet is simulated.** All 91 grey
+screens that carry the mark get the inline header field, and exactly **one** of
+them carries the sheet: `event-feed-search.html`, with the `<dialog>` statically
+`open`, because a state is a page here. A closed `<dialog>` on the other 90 would
+be markup with no state, which is the thing this tree has spent two stages taking
+out of itself. The paint carries the sheet on all 108 screens because the paint
+has the script that opens it, and that is the difference between a tree that owns
+structure and a tree that owns behaviour.
+
+**The two result pages keep their own field and lose it at the rung.** A page is
+where a link lands, so `event-feed-search-results` and `-empty` still hold a field
+a person can retype into; above 56.25rem the header carries one and the in-plate
+copy is `display:none`, because two fields for one query on one screen is the same
+defect as a magnifier linking to the page it stands on.
+
+**What the grey sheet shows and why it is not the reference's shape.** Categories,
+five tiles, and Popular right now, four rows. The reference this was drawn against
+puts a row of sort modes above the topics; that product has thousands of markets
+and Yonder has 25, and two rows of five chips in one sheet would have been the
+fourth and fifth controls made of the same five words on a screen where three had
+already been counted. The four popular rows are the highest volume in the catalog,
+which is a fact the product already prints on every card.

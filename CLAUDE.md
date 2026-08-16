@@ -324,6 +324,22 @@ because it is a stance rather than a principle, and it is written once, here.
   layer was in the one head element both of them do have: their `<title>` names the artefact, `UI
   Visual - Event Feed` and `Wireframe - Event Detail`, because each is a drawing with a label rather
   than a draft of a document.
+- **EVERY INSTRUMENT HERE ASKS WHETHER A PAGE IS CORRECT AND NONE OF THEM ASKS WHETHER IT IS THE
+  RIGHT PAGE.** Search shipped on 2026-08-16 through every sweep this file describes: 0 page errors,
+  0 broken links, 0 sideways scroll, contrast clean in both themes on both engines, the touch floor
+  asserted with the pointer coarse. **The user reported it the next day and the report was right.** A
+  person tapped a magnifier and got a 5,661px document that was the feed they had just left, with the
+  box they asked for as the FOURTH block on it at **y=221**, unfocused, with no `autofocus` in the
+  file; the header of that page kept a 36px magnifier whose `href` was the page it stood on, on all
+  three search screens, so on the results page it was a control that discarded your query to take you
+  where you already were. **Not one of those is a rendering defect, and that is the whole point**: a
+  destination and a control are different shapes, and no computed value can tell you which one a
+  moment needed. The fix put the field where the hand is, on a rung that is itself a measurement -
+  the free middle of the header row is **69px at 640, 137 at 760, 277 at 900**, so it enters at RAIL
+  and the mark opens a sheet below it. **Ask what a control is FOR before measuring whether it
+  renders**, because the sweeps will pass either way. **And a number a surface prints about another
+  document is a claim that has to be read**: the seam counts from the catalog and said "See all 3
+  results" while the page it points at filtered a 12-card subset and printed 2.
 - **No em dash**, anywhere, and **"anywhere" is the repository rather than the folders somebody
   remembered.** It was measured over six on 2026-08-16, read 0, and was published as "the only file
   that carries any" while `concept/brand-toolkit/` carried 35 across four files. Those are gone;

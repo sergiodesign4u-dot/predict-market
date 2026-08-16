@@ -12,6 +12,81 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - Search was built as a destination and it is a control, and 69px is what decided where the field goes
+
+**Reported by the user, not by a sweep**, which is the first thing worth writing down: every
+instrument in this repository reads a rendered page, and a page that renders correctly can still be
+the wrong page. Three defects, measured before anything was touched, and they are one defect wearing
+three faces.
+
+**At 390 with the pointer coarse**, on `event-feed-search.html`: the header is 61 tall, the category
+rail runs 77 to 143, the h1 lands at 184 and **the field lands at 221**. A person taps a mark at the
+top right and gets a 5,661px document that is the feed they just left, with the box they asked for as
+the FOURTH block on it. **There is no `autofocus` anywhere in the file**, so the keyboard does not
+open either: the tap costs a navigation and buys a box you still have to tap.
+
+**At 1280, product 1060**: the field lies flat inside the plate at y=238, 922 wide, under an h1,
+while the header keeps a 36px magnifier at x=1092 whose `href` is `event-feed-search.html`. **On all
+three search pages.** On the results page that control is a link to the page you are on that throws
+your query away.
+
+**THE RUNG IS A MEASUREMENT AND NOT A PREFERENCE.** The free middle of the header row, between the
+end of `.left` and the start of `.utility`, signed in:
+
+```
+   640   69px   <- the TIGHTEST width on the whole ladder
+   760  137px
+   900  277px   <- the first width where a field exists
+  1060  437px
+  1380  757px
+```
+
+640 is the tightest width in the product because DESK turns on the balance pill, the heart and How it
+works at the same rung that first gives the row any width to spend. A field cannot live in 69px, so
+the inline face cannot enter at DESK; 900 is 56.25rem, the RAIL rung this ladder already has, and no
+fourth rung was introduced. **Between DESK and RAIL the mark stays and opens the sheet**, which is
+the honest answer for a width with no room rather than a compromise. Verified at 320, 360, 390, 639,
+640, 641, 759, 760, 761, 899, 900, 901, 1000, 1140, 1280 and 1600 on Chromium and WebKit: exactly one
+way in at every width, `scrollLeft` reads back 0 everywhere, and the field is fluid from 281 to 761
+with no second rung.
+
+**THE BODY IS WRITTEN ONCE AND CLONED.** The sheet and the desktop panel show the same groups, so
+the markup lives in the sheet and the panel takes a copy of it the first time it opens. Written twice
+it would be two lists of five categories and four popular events in one file, and the day one of them
+gains an event the other is wrong and nothing says so. Nothing inside a group carries an `id`,
+because a clone of an `id` is a duplicate `id` and this tree counts those.
+
+**WHAT THE REBUILD FOUND IN A PAGE THAT WAS ALREADY THERE.** The seam says "See all N results" and
+the count comes from the catalog, so it was checked against the page it points at:
+`event-feed-search-results.html` filtered a **12-card subset** and printed "2 events for election"
+while the catalog matches 3. Both result pages carry **all 24 cards** now, rebuilt from the distinct
+`<article class="card">` blocks of the whole painted tree with every `id` and `aria-labelledby`
+renumbered per card. **A seam is a claim about another document, and a claim about another document
+is the one kind this repository has to go and read.**
+
+**THE CATALOG IS A SECOND COPY AND IT SAYS SO.** Every other script here is inline and per-screen,
+which is right for a thing that is about that screen: the sub-category rail reads the cards standing
+on the page it is in. Search is the opposite - it answers from every screen about events that are on
+none of them - so `assets/search.js` holds the 25 events, extracted from the tree rather than
+written, loaded the way `assets/icons.js` is and for the same measured reason. **The cost is written
+into the file rather than discovered later**: if the tree grows an event and the catalog is not
+re-taken, search will not find it.
+
+**WHAT WAS REJECTED.** A row of sort chips above the categories, which is what the reference the user
+sent carries: their `BROWSE` row is New / Trending / Popular / Liquid / Ending Soon / Competitive
+because they have thousands of markets, and Yonder has 25. Two rows of five chips in one sheet would
+also have been the fourth and fifth controls made of the same five words on a product where the
+critique had already counted three. **Popular right now** is four rows of real events instead, by
+volume, and it doubles as the placement that teaches the result row a person is about to see.
+
+**AND THE MARK STAYS AN `<a href>`.** The sheet is script; the page is not. The link keeps working
+when the script does not, and it is the same three pages the IA specified, so nothing was thrown away
+to get here. `event-feed-search.html` is the surface OPEN with nothing typed - the sheet below the
+rung, the header field focused above it - which is this repository's own rule that a state is a page,
+answered at both widths by one file.
+
+---
+
 ## 2026-08-16 - The metric was measuring the writing, and the ranking it produced was upside down
 
 **THE ROW ASKED WHETHER TO RE-TAKE THE NUMBERS AND THE ANSWER IS THAT THE NUMBER WAS THE WRONG ONE.**

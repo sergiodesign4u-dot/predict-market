@@ -83,3 +83,163 @@
    before and after typing, has to be a figure both times. */
 .search-count{font-family:var(--font-mono);font-size:var(--text-12);letter-spacing:var(--track-label);color:var(--text-muted);margin:0}
 .search-count b{color:var(--text-primary);font-weight:var(--weight-semibold)}
+
+/* ============================================================================
+   THE SURFACE MOVED, 2026-08-17. SEARCH WAS BUILT AS A DESTINATION AND IT IS A
+   CONTROL, and the three defects the user reported are one defect wearing three
+   faces.
+
+   MEASURED BEFORE IT WAS TOUCHED, on `event-feed-search.html`:
+
+     390, pointer coarse   the header is 61 tall, the category rail runs 77 to
+                           143, the h1 lands at 184 and THE FIELD LANDS AT 221.
+                           A person taps a mark at the top right and gets a
+                           5,661px document that is the feed they just left,
+                           with the box they asked for as the FOURTH block on
+                           it, unfocused: no `autofocus` anywhere in the file,
+                           so the keyboard does not open either.
+     1280 (product 1060)   the field lies flat inside the plate at y=238, 922
+                           wide, under an h1, while the header keeps a 36px
+                           magnifier at x=1092 whose `href` is
+                           `event-feed-search.html`. ON ALL THREE SEARCH PAGES.
+                           On the results page that control is a link to the
+                           page you are on that throws your query away.
+
+   SO THE FIELD GOES WHERE THE HAND IS. Below the rail rung it is a sheet the
+   mark opens; at the rail rung and above it stands in the header itself and the
+   mark is gone. Same body in both.
+
+   THE RUNG IS A MEASUREMENT, NOT A PREFERENCE. The free middle of the header
+   row, between the end of `.left` and the start of `.utility`, signed in:
+
+     640   69px      <- the TIGHTEST width on the whole ladder, because DESK
+     760  137px         turns on the balance pill, the heart and How it works
+     900  277px         at the same rung that first gives the row any width
+    1060  437px
+    1380  757px
+
+   A field cannot live in 69px, so the inline face cannot enter at DESK. 900 is
+   the first width where one exists, and 900 is 56.25rem, the RAIL rung, which
+   this ladder already has: no fourth rung is introduced. Between DESK and RAIL
+   the mark stays and opens the sheet, which is the honest answer for a width
+   with no room rather than a compromise.
+
+   THE MARK IS STILL AN `<a href>`. The sheet is script; the page is not. The
+   link keeps working when the script does not, and it is the same three pages
+   the IA specified, so nothing was thrown away to get here.
+   ============================================================================ */
+
+/* ---- the way in, and there are two of them on one rung ---- */
+/* The magnifier below RAIL, the field at RAIL and above. Never both, and never
+   neither: the two rules are the two sides of one `@media`, so a width that
+   matched neither would have to be a width that is neither above nor below 900. */
+.search-inline{display:none}
+@media(min-width:56.25rem){
+  .search-open{display:none}
+  /* `flex:1 1 auto` with `min-width:0` is the whole adaptation: the field is
+     what is left after the lockup and the utility cluster, at every width, so
+     it is fluid rather than stepped and no second rung is needed to widen it.
+     `min-width:0` because a flex item's floor is its content and an `<input>`
+     reports a default size of 20 characters, which would push the utility
+     cluster off the right edge on the narrow half of this branch. */
+  .search-inline{display:flex;position:relative;flex:1 1 auto;min-width:0;margin-inline:var(--space-12)}
+  .search-inline .search{margin:0;flex:1;min-width:0}
+}
+
+/* ---- the sheet's own bar: the field, and the way out ---- */
+/* `Cancel` is a word rather than a cross because this sheet is the whole screen
+   and a cross at the top of a full-bleed surface is the one control people read
+   as "close the app". The sheet's field is the same `.search-field` as the
+   page's, which is why nothing below this line restyles it. */
+.search-bar{display:flex;align-items:center;gap:var(--space-8);padding:var(--space-12) var(--space-16);border-bottom:var(--hairline) solid var(--border-hairline)}
+.search-bar .search{flex:1;min-width:0;margin:0}
+.search-cancel{flex:0 0 auto}
+
+/* ---- the body, and it is ONE body in two containers ---- */
+/* The sheet and the panel show the same markup: the groups below are written
+   once and placed twice. That is the reason the panel is not a second component
+   with a second vocabulary, and it is the same argument the header's two
+   dropdowns lost when their rows turned out to be one control with two contents. */
+.search-body{display:flex;flex-direction:column;gap:var(--space-20);min-height:0}
+.search-sheet .search-body{padding:var(--space-16);overflow:auto;flex:1}
+.search-group{display:flex;flex-direction:column;gap:var(--space-8)}
+/* The group label is mono and small for the reason `.search-count` is: it is
+   scaffolding around a list that changes under it, not a heading a reader
+   navigates by, and it never becomes an `<h*>` because the surface it stands in
+   already has one accessible name of its own. */
+.search-group-label{margin:0;font-family:var(--font-mono);font-size:var(--text-10);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-muted)}
+
+/* ---- categories: the five that already exist, in two columns ---- */
+/* `.chip-nav` is `inline-flex` and `white-space:nowrap`, sized by its content,
+   which is right in the rail it was written for and wrong in a grid cell. THE
+   CELL IS FIXED HERE AND THE CHIP IS NOT TOUCHED: this file names its own `li`
+   and that li's child, never `.chip-nav`, because a component's face belongs to
+   its own file and the container is only allowed to decide the SIZE of the box
+   it hands out. Backlog S11 is the rule; the reason is that a `.chip-nav`
+   restyled from here would be a second face nobody could find from chip.css. */
+.search-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-8);list-style:none;margin:0;padding:0}
+.search-tiles li{display:flex;min-width:0}
+.search-tiles li>*{flex:1;min-width:0;justify-content:flex-start;white-space:normal;text-align:left}
+
+/* ---- rows: a result, and a popular event, are the same row ---- */
+/* The row is `.nav-item.nav-row.nav-row-stack`, the two-line row the
+   notification dropdown already ships, rather than a third row face. What this
+   file sets is the same half `header.css` sets for `.notif-drop`: the type,
+   because a notification's second line is a sentence at 10 and a search
+   result's is a category and a figure at 11, and the title has to be readable
+   at a glance where the notification's is a label. */
+/* THE ROWS HANG OUT OF THE BODY BY THEIR OWN INSET, so the first letter of a
+   result sits on the same vertical line as the group label above it while the
+   hover ground still runs wider than the text. Without the pull the row reads
+   as indented under its own heading, which is the one thing a list of answers
+   must not look like: 12 out on each side is exactly the padding the row takes
+   back below. */
+.search-rows{list-style:none;margin:0 calc(var(--space-12) * -1);padding:0;display:flex;flex-direction:column;gap:var(--space-2)}
+.search-rows .nav-row-stack{padding:var(--space-8) var(--space-12);border-radius:var(--radius-10);text-decoration:none}
+.search-rows .nav-row-stack strong{display:block;font-size:var(--text-13);font-weight:var(--weight-semibold);color:var(--text-primary);line-height:var(--leading-snug)}
+.search-rows .nav-row-stack span{display:block;margin-top:var(--space-2);font-size:var(--text-11);color:var(--text-muted)}
+/* THE MATCH IS MARKED AND THE MARK IS NOT A HIGHLIGHTER. `<mark>` arrives with
+   a UA background that is a raw yellow in both themes and belongs to no role
+   here, so the ground comes off and the brass does the marking: it is the one
+   ink in this system whose whole job is "this is the thing you asked for". */
+.search-rows mark{background:transparent;color:var(--text-brass);font-weight:var(--weight-bold)}
+
+/* ---- the way to the full grid ---- */
+/* The surface answers, and the PAGE is still there: this row is the seam. It
+   carries the count because the count is what decides whether a person needs
+   the page at all, and it is the last thing in the body so the seam is where a
+   reader runs out of rows rather than above them. */
+.search-seeall{margin:0 calc(var(--space-12) * -1);display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);min-height:var(--control-44);padding:var(--space-8) var(--space-12);border-top:var(--hairline) solid var(--border-hairline);color:var(--text-brass);font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-semibold);text-decoration:none}
+.search-seeall:hover{background:var(--tint-brass-09)}
+.search-seeall:active{background:var(--bg-pressed)}
+.search-none{margin:0;padding:var(--space-16) var(--space-12);font-size:var(--text-12);line-height:var(--leading-base);color:var(--text-muted);text-align:center}
+
+/* ---- the desktop panel ---- */
+/* It hangs from the field and spans it, which is the one geometry that cannot
+   repeat the defect `header.css` recorded for its two dropdowns: those are
+   pinned to the RIGHT edge of a control at the right end of the band, and a
+   left offset written later took 55 per cent of one of them off a 390px screen.
+   This panel has both edges set from the same box it belongs to, so it is the
+   field's width whatever the field's width is. */
+.search-panel{position:absolute;left:0;right:0;top:calc(100% + var(--space-4));z-index:var(--z-menu);
+  padding:var(--space-12);
+  background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);
+  box-shadow:0 20px 50px -24px var(--shadow-ink);
+  max-height:min(70vh,560px);overflow:auto;
+  animation:search-panel-in var(--dur-fast) var(--ease-enter)}
+.search-panel .search-body{gap:var(--space-16)}
+/* An ARRIVAL: 4px down from the field it came out of, the same travel and the
+   same direction the two header dropdowns use, multiplied by `--motion` so
+   reduced motion keeps the panel and loses the movement. It is an `animation`
+   rather than a `transition` because the panel is `hidden` when it is shut and
+   a `display` change has nothing to interpolate from. */
+@keyframes search-panel-in{from{opacity:0;translate:0 calc(-4px * var(--motion))}}
+
+/* ---- the page's own field, and why it goes away on a desk ---- */
+/* The three search pages keep a field inside the plate, because they are pages: a
+   link into `event-feed-search-results.html` has to arrive somewhere a person can
+   change the query. At the RAIL rung the header already carries one, and two fields
+   for one query on one screen is the same defect as the magnifier that linked to the
+   page it stood on. The page's field is the one that goes, because the header's is
+   the one that is there on all 108 screens. */
+@media(min-width:56.25rem){.search-page{display:none}}

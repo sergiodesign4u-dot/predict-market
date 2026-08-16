@@ -773,6 +773,47 @@
     .skip-link:focus { width: auto; height: auto; min-height: 44px; overflow: visible; clip-path: none;
       display: inline-flex; align-items: center; padding: 0 16px; font-size: 14px; text-decoration: none;
       background: #e2e2e2; color: #333; border: 1px solid #999; border-radius: 4px; }
+
+    /* ---- search: the field itself, where the mark used to be a trip to a page ---- */
+    .search { margin: 0 0 16px; }
+    .search-field { position: relative; display: flex; align-items: center; }
+    .search-ic { position: absolute; left: 12px; width: 18px; height: 18px; }
+    .search-input { flex: 1; box-sizing: border-box; width: 100%; min-height: 44px; padding: 8px 40px; border: 1px solid #888; background: #fff; font-size: 14px; font-family: inherit; }
+    .search-clear { position: absolute; right: 4px; }
+    .search-count { font-size: 12px; color: #555; margin: 0 0 10px; }
+    .search-count b { color: #111; }
+
+    /* ---- search, the two ways in: the sheet below the RAIL rung, the header field at and
+       above it. The rung is 900px and it is a measurement: the free middle of the header
+       row is 69px at 640 and 277 at 900, so a field cannot enter at DESK. ---- */
+    .search-inline { display: none; }
+    .search-bar { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border-bottom: 1px solid #ccc; }
+    .search-bar .search { flex: 1; min-width: 0; margin: 0; }
+    dialog.app-dialog.search-sheet { width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; display: flex; flex-direction: column; }
+    dialog.app-dialog.search-sheet[open] { position: fixed; inset: 0; z-index: 60; }
+    .search-body { display: flex; flex-direction: column; gap: 18px; min-height: 0; padding: 14px; overflow: auto; }
+    .search-group { display: flex; flex-direction: column; gap: 8px; }
+    .search-group-label { margin: 0; font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
+    .search-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; list-style: none; margin: 0; padding: 0; }
+    .search-tiles li { display: flex; min-width: 0; }
+    .search-tiles li > * { flex: 1; min-width: 0; justify-content: flex-start; text-align: left; }
+    /* the tiles are outside .cat-nav, so the grey chip face is restated for them here:
+       in the painted tree this is one .chip-nav and the container only sizes the cell. */
+    .search-tiles a { display: flex; align-items: center; gap: 8px; box-sizing: border-box; min-height: 44px; border: 1px solid #888; background: #d6d6d6; padding: 8px 10px; font-size: 12px; text-decoration: none; }
+    .search-tiles svg { width: 18px; height: 18px; flex: 0 0 auto; }
+    .search-rows { list-style: none; margin: 0 -10px; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+    .search-rows a { display: block; padding: 8px 10px; text-decoration: none; }
+    .search-rows strong { display: block; font-size: 13px; }
+    .search-rows span { display: block; margin-top: 2px; font-size: 11px; color: #555; }
+    .search-seeall { display: flex; align-items: center; justify-content: space-between; box-sizing: border-box; margin: 0 -10px; padding: 10px; min-height: 44px; border-top: 1px solid #ccc; font-size: 12px; font-weight: bold; text-decoration: none; }
+    .search-none { margin: 0; padding: 14px 10px; font-size: 12px; color: #555; text-align: center; }
+    @media (min-width: 900px) {
+      .search-open { display: none; }
+      .search-inline { display: flex; position: relative; flex: 1 1 auto; min-width: 0; margin: 0 12px; }
+      .search-inline .search { flex: 1; min-width: 0; margin: 0; }
+      /* the page's own field goes when the header carries one: one query, one field */
+      .search-page { display: none; }
+    }
 </style>
 </head>
 <body>
@@ -1057,6 +1098,18 @@
           <button type="button" class="logo-btn" aria-label="Yonder - go to Events home">Yonder</button>
           <button type="button" class="btn btn-ghost btn-xs hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
         </div>
+        <!-- Search, the inline face: the field itself, from the RAIL rung up. Below the rung
+             this is display:none and the mark in the utility cluster is the way in. -->
+        <form class="search-inline" role="search" action="event-feed-search-results.html">
+          <div class="search">
+            <div class="search-field">
+              <svg class="search-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 16l5 5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+              <input class="search-input" type="search" name="q" value="" placeholder="Search events"
+                     aria-label="Search events" autocomplete="off" enterkeyhint="search">
+            </div>
+          </div>
+        </form>
+
 
         <div class="utility">
           <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
@@ -1076,7 +1129,7 @@
           </a>
 
           <!-- Search: a utility on every screen, not a navigation slot. -->
-          <a class="icon-btn" href="event-feed-search.html" aria-label="Search events">
+          <a class="icon-btn search-open" href="event-feed-search.html" aria-label="Search events">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><g transform="translate(0.8472 0.8472) scale(0.9294)"><path fill="currentColor" fill-rule="evenodd" d="M11.5 2.75a8.75 8.75 0 1 0 0 17.5a8.75 8.75 0 0 0 0-17.5M1.25 11.5c0-5.66 4.59-10.25 10.25-10.25S21.75 5.84 21.75 11.5c0 2.56-.939 4.902-2.491 6.698l3.271 3.272a.75.75 0 1 1-1.06 1.06l-3.272-3.271A10.2 10.2 0 0 1 11.5 21.75c-5.66 0-10.25-4.59-10.25-10.25" clip-rule="evenodd"/></g></svg>
           </a>
           <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->

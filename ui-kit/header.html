@@ -27,6 +27,7 @@
       <span class="tk-badge">32 logged out</span>
       <span class="tk-badge">105 strips at 0px</span>
       <span class="tk-badge">9 hovers, 0 presses</span>
+      <span class="tk-badge">69px free at 640</span>
     </div>
   </div>
 
@@ -60,10 +61,22 @@
           <tr><td>the balance</td><td>73</td><td>logged in</td><td><b>0x0</b></td><td>161x42</td></tr>
           <tr><td>Sign in / Sign up</td><td>32</td><td>logged out</td><td colspan="2">the button family's</td></tr>
           <tr><td>the unread dot</td><td>70</td><td>logged in, with news</td><td colspan="2">a mark on the bell</td></tr>
+          <tr><td><b>the search field</b></td><td>108</td><td><b>56.25rem and up, never below</b></td><td><b>0x0</b></td><td><b>441x44</b></td></tr>
+          <tr><td><b>the search mark</b></td><td>108</td><td><b>below 56.25rem, never above</b></td><td>44x44</td><td><b>0x0</b></td></tr>
           <tr><td><b>the condensed strip</b></td><td>105</td><td><b>never, at rest</b></td><td><b>379x0</b></td><td><b>1049x0</b></td></tr>
         </tbody>
       </table>
     </div>
+    <p class="tk-note"><b>The two search rows are one control and they are the first pair in this band
+    that swaps rather than hides.</b> Everything else above is present-or-absent: How it works and the
+    balance are <code>0x0</code> below the desk rung and that is the end of it. Search is
+    <b>either / or</b>, on one rung, and the rung is a measurement of THIS ROW: the free middle
+    between the end of <code>.left</code> and the start of <code>.utility</code> is <b>69px at 640,
+    137 at 760 and 277 at 900</b>. <b>640 is the tightest width in the whole product</b>, because the
+    desk rung turns on the balance pill, the heart and How it works at the same moment it first gives
+    the row any width to spend. So the field cannot enter at DESK, it enters at RAIL, and below that
+    the mark opens a sheet. Read on both engines at sixteen widths from 320 to 1600: <b>exactly one
+    way in at every one of them</b>.</p>
     <p class="tk-why"><b>The condensed category strip is in the markup of every screen and 0px tall
     on every one of them.</b> It is revealed by a script watching the feed's own category bar, so a
     static reading can only ever see it collapsed. That is correct behaviour and it is worth writing
@@ -92,7 +105,7 @@
         <a class="logo logo-btn" href="../ui-visual/event-feed.html">Yonder</a>
         <button type="button" class="btn btn-ghost btn-xs hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
         </div>
-        <div class="utility">
+        <form class="search-inline" role="search" action="../ui-visual/event-feed-search-results.html"><div class="search"><div class="search-field"><svg class="ic search-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg><input class="search-input" type="search" name="q" value="" placeholder="Search events" aria-label="Search events" autocomplete="off" enterkeyhint="search"></div></div></form><div class="utility">
         <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
         <div class="bal-toggle desk-only">
         <span class="bal-figure"><span class="bal-label" id="balLabel">Portfolio</span> <span class="bal-amt" id="balAmt">$142.00</span></span>
@@ -108,7 +121,7 @@
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
         </a>
           <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
-        <a class="icon-btn" href="../ui-visual/event-feed-search.html" aria-label="Search events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg></a><details class="notif-menu">
+        <a class="icon-btn search-open" href="../ui-visual/event-feed-search.html" aria-label="Search events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg></a><details class="notif-menu">
         <summary aria-label="Notifications, 3 unread">
         <span class="bell-wrap">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
@@ -164,7 +177,7 @@
         <a class="logo logo-btn" href="../ui-visual/event-feed.html">Yonder</a>
         <button type="button" class="btn btn-ghost btn-xs hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
         </div>
-        <div class="utility">
+        <form class="search-inline" role="search" action="../ui-visual/event-feed-search-results.html"><div class="search"><div class="search-field"><svg class="ic search-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg><input class="search-input" type="search" name="q" value="" placeholder="Search events" aria-label="Search events" autocomplete="off" enterkeyhint="search"></div></div></form><div class="utility">
         <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
         <div class="bal-toggle desk-only">
         <span class="bal-figure"><span class="bal-label" id="balLabel-lt">Portfolio</span> <span class="bal-amt" id="balAmt-lt">$142.00</span></span>
@@ -180,7 +193,7 @@
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
         </a>
           <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
-        <a class="icon-btn" href="../ui-visual/event-feed-search.html" aria-label="Search events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg></a><details class="notif-menu">
+        <a class="icon-btn search-open" href="../ui-visual/event-feed-search.html" aria-label="Search events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg></a><details class="notif-menu">
         <summary aria-label="Notifications, 3 unread">
         <span class="bell-wrap">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
@@ -253,7 +266,7 @@
         <a class="logo logo-btn" href="../ui-visual/event-feed.html">Yonder</a>
         <button type="button" class="btn btn-ghost btn-xs hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
         </div>
-        <div class="utility"><a class="icon-btn" href="../ui-visual/event-feed-search.html" aria-label="Search events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg></a>
+        <form class="search-inline" role="search" action="../ui-visual/event-feed-search-results.html"><div class="search"><div class="search-field"><svg class="ic search-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg><input class="search-input" type="search" name="q" value="" placeholder="Search events" aria-label="Search events" autocomplete="off" enterkeyhint="search"></div></div></form><div class="utility"><a class="icon-btn search-open" href="../ui-visual/event-feed-search.html" aria-label="Search events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg></a>
         <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
         <div class="bal-toggle desk-only">
         <span class="bal-figure"><span class="bal-label" id="balLabel-c3">Portfolio</span> <span class="bal-amt" id="balAmt-c3">$142.00</span></span>
@@ -325,7 +338,7 @@
         <a class="logo logo-btn" href="../ui-visual/event-feed.html">Yonder</a>
         <button type="button" class="btn btn-ghost btn-xs hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
         </div>
-        <div class="utility"><a class="icon-btn" href="../ui-visual/event-feed-search.html" aria-label="Search events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg></a>
+        <form class="search-inline" role="search" action="../ui-visual/event-feed-search-results.html"><div class="search"><div class="search-field"><svg class="ic search-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg><input class="search-input" type="search" name="q" value="" placeholder="Search events" aria-label="Search events" autocomplete="off" enterkeyhint="search"></div></div></form><div class="utility"><a class="icon-btn search-open" href="../ui-visual/event-feed-search.html" aria-label="Search events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg></a>
         <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
         <div class="bal-toggle desk-only">
         <span class="bal-figure"><span class="bal-label" id="balLabel-lt-c4">Portfolio</span> <span class="bal-amt" id="balAmt-lt-c4">$142.00</span></span>
@@ -431,13 +444,13 @@
         <a class="logo logo-btn" href="../ui-visual/event-feed.html">Yonder</a>
         <button type="button" class="btn btn-ghost btn-xs hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
         </div>
-        <div class="utility">
+        <form class="search-inline" role="search" action="../ui-visual/event-feed-search-results.html"><div class="search"><div class="search-field"><svg class="ic search-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg><input class="search-input" type="search" name="q" value="" placeholder="Search events" aria-label="Search events" autocomplete="off" enterkeyhint="search"></div></div></form><div class="utility">
         <!-- Favorites kept as an affordance; tapping it logged-out routes to Sign In (saving needs an account). -->
         <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Favorites (sign in to save)">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
         </button>
         <!-- Notifications kept as an affordance; tapping it logged-out routes to Sign In. No unread badge when logged out. -->
-        <a class="icon-btn" href="../ui-visual/event-feed-search.html" aria-label="Search events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg></a><button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
+        <a class="icon-btn search-open" href="../ui-visual/event-feed-search.html" aria-label="Search events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg></a><button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
         </button>
         <!-- Auth entries replace the balance figure and the avatar dropdown entirely. -->
@@ -466,13 +479,13 @@
         <a class="logo logo-btn" href="../ui-visual/event-feed.html">Yonder</a>
         <button type="button" class="btn btn-ghost btn-xs hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
         </div>
-        <div class="utility">
+        <form class="search-inline" role="search" action="../ui-visual/event-feed-search-results.html"><div class="search"><div class="search-field"><svg class="ic search-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg><input class="search-input" type="search" name="q" value="" placeholder="Search events" aria-label="Search events" autocomplete="off" enterkeyhint="search"></div></div></form><div class="utility">
         <!-- Favorites kept as an affordance; tapping it logged-out routes to Sign In (saving needs an account). -->
         <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Favorites (sign in to save)">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
         </button>
         <!-- Notifications kept as an affordance; tapping it logged-out routes to Sign In. No unread badge when logged out. -->
-        <a class="icon-btn" href="../ui-visual/event-feed-search.html" aria-label="Search events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg></a><button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
+        <a class="icon-btn search-open" href="../ui-visual/event-feed-search.html" aria-label="Search events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg></a><button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
         </button>
         <!-- Auth entries replace the balance figure and the avatar dropdown entirely. -->
@@ -583,7 +596,7 @@
         <a class="logo logo-btn" href="../ui-visual/event-feed.html">Yonder</a>
         <button type="button" class="btn btn-ghost btn-xs hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
         </div>
-        <div class="utility">
+        <form class="search-inline" role="search" action="../ui-visual/event-feed-search-results.html"><div class="search"><div class="search-field"><svg class="ic search-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg><input class="search-input" type="search" name="q" value="" placeholder="Search events" aria-label="Search events" autocomplete="off" enterkeyhint="search"></div></div></form><div class="utility">
         <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
         <div class="bal-toggle desk-only">
         <span class="bal-figure"><span class="bal-label" id="balLabel-sc-da">Portfolio</span> <span class="bal-amt" id="balAmt-sc-da">$142.00</span></span>
@@ -599,7 +612,7 @@
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
         </a>
           <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
-        <a class="icon-btn" href="../ui-visual/event-feed-search.html" aria-label="Search events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg></a><details class="notif-menu">
+        <a class="icon-btn search-open" href="../ui-visual/event-feed-search.html" aria-label="Search events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg></a><details class="notif-menu">
         <summary aria-label="Notifications, 3 unread">
         <span class="bell-wrap">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
@@ -655,7 +668,7 @@
         <a class="logo logo-btn" href="../ui-visual/event-feed.html">Yonder</a>
         <button type="button" class="btn btn-ghost btn-xs hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
         </div>
-        <div class="utility">
+        <form class="search-inline" role="search" action="../ui-visual/event-feed-search-results.html"><div class="search"><div class="search-field"><svg class="ic search-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg><input class="search-input" type="search" name="q" value="" placeholder="Search events" aria-label="Search events" autocomplete="off" enterkeyhint="search"></div></div></form><div class="utility">
         <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
         <div class="bal-toggle desk-only">
         <span class="bal-figure"><span class="bal-label" id="balLabel-sc-li">Portfolio</span> <span class="bal-amt" id="balAmt-sc-li">$142.00</span></span>
@@ -671,7 +684,7 @@
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
         </a>
         <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
-        <a class="icon-btn" href="../ui-visual/event-feed-search.html" aria-label="Search events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg></a><details class="notif-menu">
+        <a class="icon-btn search-open" href="../ui-visual/event-feed-search.html" aria-label="Search events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg></a><details class="notif-menu">
         <summary aria-label="Notifications, 3 unread">
         <span class="bell-wrap">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>

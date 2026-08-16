@@ -556,3 +556,29 @@ dialog.app-dialog.outcome-dialog{max-width:var(--container-sheet)}
    again, that is the mechanism to reach for, and the brass plate's 135deg-to-315deg press with it. */
 .app-dialog.hiw-dialog{max-width:var(--container-dialog);overflow:clip}
 dialog.app-dialog.hiw-dialog:modal .hiw-steps{overflow:auto;min-height:0}
+
+/* ============================================================================
+   THE SEARCH SHEET IS A FRAME AND NOT A SKIN, 2026-08-17.
+
+   Every other face in this file is a SKIN over one geometry: `.win-dialog` and
+   `.loss-dialog` repaint a head, `.signin-dialog` and `.outcome-dialog` re-pad a
+   body, and all of them are the same 92 per cent-wide centred plate. This one
+   changes the geometry and keeps the skin, which is why it reads as the odd rule
+   here and is the right one anyway: a search on a phone is not a message laid
+   over a screen, it is the screen, and the plate's grain, gradient and bevels
+   are what keep it inside the Vault while it is that.
+
+   IT IS COLUMN-FLEX AND THE BODY IS THE SCROLLER, which is the rule this file
+   already paid for once, twelve lines up: a frame that clips cannot also be the
+   scroll container. `min-height:0` on the body is the half of that which is easy
+   to leave out, because a flex item's floor is its content and without it the
+   list pushes the bar off the top instead of scrolling under it.
+
+   AND IT EXISTS BELOW THE RAIL RUNG ONLY, which is a fact about the way IN
+   rather than about this rule: at 56.25rem the field stands in the header and
+   the mark that opens this is `display:none`. The frame is left reachable rather
+   than switched off, so a window dragged wide with the sheet open still has a
+   sheet, and the script closes it on the way past.
+   ============================================================================ */
+dialog.app-dialog.search-sheet{width:100%;max-width:none;height:100%;max-height:none;margin:0;border-radius:0;display:flex;flex-direction:column}
+dialog.app-dialog.search-sheet .search-body{min-height:0}

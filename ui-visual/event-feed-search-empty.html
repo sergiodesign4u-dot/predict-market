@@ -41,6 +41,7 @@ push();});})();</script>
   <title>UI Visual - Search - no matches</title>
   <link rel="stylesheet" href="../components/index.css">
   <script src="../assets/icons.js"></script>
+  <script src="../assets/search.js"></script>
 </head>
 <body>
 
@@ -267,6 +268,22 @@ document.addEventListener('click', function (e) {
           <a class="logo logo-btn" href="event-feed.html">Yonder</a>
           <button type="button" class="btn btn-ghost btn-xs hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
         </div>
+        <!-- Search, the inline face: the field itself, from the RAIL rung up. Below it this
+             element is display:none and the magnifier in the utility cluster opens the sheet.
+             The free middle of this row measures 69px at 640 and 277 at 900, which is what
+             decided the rung; components/search.css carries the ladder. -->
+        <form class="search-inline" role="search" action="event-feed-search-results.html" data-search>
+          <div class="search">
+              <div class="search-field">
+                <svg class="ic search-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg>
+                <input class="search-input" type="search" name="q" value="" placeholder="Search events"
+                       aria-label="Search events" autocomplete="off" enterkeyhint="search">
+                <button type="button" class="icon-btn icon-btn-bare search-clear" aria-label="Clear the search"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg></button>
+              </div>
+            </div>
+          <div class="search-panel" hidden></div>
+        </form>
+
 
         <div class="utility">
           <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
@@ -288,7 +305,7 @@ document.addEventListener('click', function (e) {
           <!-- Search: a utility on every screen, not a navigation slot. The IA defers search
            "until catalog scale" and names where it goes when it arrives: the Events
            destination, never a bottom slot. This is the way in from anywhere else. -->
-          <a class="icon-btn" href="event-feed-search.html" aria-label="Search events">
+          <a class="icon-btn search-open" href="event-feed-search.html" aria-label="Search events">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg>
           </a>
           <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
@@ -360,7 +377,7 @@ document.addEventListener('click', function (e) {
         <div class="cat-layout">
           <div class="cat-main">
             <div class="feed-head"><h1>Search events</h1></div>
-            <div class="search" role="search">
+            <div class="search search-page" role="search">
             <div class="search-field">
               <svg class="ic search-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg>
               <input class="search-input" id="q" type="search" name="q" value="tennis"
@@ -382,14 +399,14 @@ document.addEventListener('click', function (e) {
             <div class="grid">
 
           <!-- Binary card 1 -->
-          <article class="card" hidden data-cat="politics" data-subcat="Government Shutdown">
+          <article class="card" data-cat="politics" data-subcat="Government Shutdown">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-politics.jpg)"></span>
-                <div class="top-txt"><a class="q" href="event-detail.html" id="q-1">Will the US government shut down before March 1, 2027?</a><p class="why">Funding talks have stalled twice this quarter, but past deadlines settled late.</p></div>
+                <div class="top-txt"><a class="q" href="event-detail.html" id="s1-q-1">Will the US government shut down before March 1, 2027?</a><p class="why">Funding talks have stalled twice this quarter, but past deadlines settled late.</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">38%</span></p>
-              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="q-1-yes" aria-labelledby="q-1 q-1-yes">YES</a><a href="event-detail.html?side=no" class="no" id="q-1-no" aria-labelledby="q-1 q-1-no">NO</a></div>
+              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="s1-q-1-yes" aria-labelledby="s1-q-1 s1-q-1-yes">YES</a><a href="event-detail.html?side=no" class="no" id="s1-q-1-no" aria-labelledby="s1-q-1 s1-q-1-no">NO</a></div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $84,200</span><span>Closes: Mar 1, 2027</span></span>
                 <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
@@ -397,14 +414,16 @@ document.addEventListener('click', function (e) {
                 </button>
               </p>
             </div>
-          </article><article class="card" hidden data-cat="crypto" data-subcat="Bitcoin">
+          </article>
+
+          <article class="card" data-cat="crypto" data-subcat="Bitcoin">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-crypto.jpg)"></span>
-                <div class="top-txt"><a class="q" href="event-detail.html" id="q-2">Will Bitcoin close above $150,000 before October 1, 2026?</a><p class="why">Price has held above $120k for three weeks as inflows climb.</p></div>
+                <div class="top-txt"><a class="q" href="event-detail.html" id="s2-q-2">Will Bitcoin close above $150,000 before October 1, 2026?</a><p class="why">Price has held above $120k for three weeks as inflows climb.</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">61%</span></p>
-              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="q-2-yes" aria-labelledby="q-2 q-2-yes">YES</a><a href="event-detail.html?side=no" class="no" id="q-2-no" aria-labelledby="q-2 q-2-no">NO</a></div>
+              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="s2-q-2-yes" aria-labelledby="s2-q-2 s2-q-2-yes">YES</a><a href="event-detail.html?side=no" class="no" id="s2-q-2-no" aria-labelledby="s2-q-2 s2-q-2-no">NO</a></div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $212,900</span><span>Closes: Oct 1, 2026</span></span>
                 <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="true" aria-label="Saved">
@@ -412,15 +431,17 @@ document.addEventListener('click', function (e) {
                 </button>
               </p>
             </div>
-          </article><article class="card" hidden data-cat="culture" data-subcat="Awards">
+          </article>
+
+          <article class="card" data-cat="culture" data-subcat="Awards">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-culture.jpg)"></span>
                 <div class="top-txt"><a class="q" href="event-detail-multi.html">Who will win the 2027 Eurovision final?</a><p class="why">Three acts are polling close after the national finals.</p></div>
               </div>
               <div class="options">
-                <div class="opt-row"><span class="opt-name" id="opt-sweden-1">Sweden</span><span class="opt-prob">34%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="opt-sweden-1-yes" aria-labelledby="opt-sweden-1 opt-sweden-1-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="opt-sweden-1-no" aria-labelledby="opt-sweden-1 opt-sweden-1-no">NO</a></span></div>
-                <div class="opt-row"><span class="opt-name" id="opt-italy-2">Italy</span><span class="opt-prob">27%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="opt-italy-2-yes" aria-labelledby="opt-italy-2 opt-italy-2-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="opt-italy-2-no" aria-labelledby="opt-italy-2 opt-italy-2-no">NO</a></span></div>
+                <div class="opt-row"><span class="opt-name" id="s3-opt-sweden-1">Sweden</span><span class="opt-prob">34%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="s3-opt-sweden-1-yes" aria-labelledby="s3-opt-sweden-1 s3-opt-sweden-1-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="s3-opt-sweden-1-no" aria-labelledby="s3-opt-sweden-1 s3-opt-sweden-1-no">NO</a></span></div>
+                <div class="opt-row"><span class="opt-name" id="s3-opt-italy-2">Italy</span><span class="opt-prob">27%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="s3-opt-italy-2-yes" aria-labelledby="s3-opt-italy-2 s3-opt-italy-2-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="s3-opt-italy-2-no" aria-labelledby="s3-opt-italy-2 s3-opt-italy-2-no">NO</a></span></div>
                               <a class="opt-more" href="event-detail-multi.html">+2 more outcomes</a>
 </div>
               <p class="meta">
@@ -430,14 +451,16 @@ document.addEventListener('click', function (e) {
                 </button>
               </p>
             </div>
-          </article><article class="card" hidden data-cat="crypto" data-subcat="Ethereum">
+          </article>
+
+          <article class="card" data-cat="crypto" data-subcat="Ethereum">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-general.jpg)"></span>
-                <div class="top-txt"><a class="q" href="event-detail.html" id="q-3">Will Ethereum complete its next major network upgrade before November 1, 2026?</a><p class="why">The upgrade is on the testnet with a target window announced.</p></div>
+                <div class="top-txt"><a class="q" href="event-detail.html" id="s4-q-3">Will Ethereum complete its next major network upgrade before November 1, 2026?</a><p class="why">The upgrade is on the testnet with a target window announced.</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">72%</span></p>
-              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="q-3-yes" aria-labelledby="q-3 q-3-yes">YES</a><a href="event-detail.html?side=no" class="no" id="q-3-no" aria-labelledby="q-3 q-3-no">NO</a></div>
+              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="s4-q-3-yes" aria-labelledby="s4-q-3 s4-q-3-yes">YES</a><a href="event-detail.html?side=no" class="no" id="s4-q-3-no" aria-labelledby="s4-q-3 s4-q-3-no">NO</a></div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $147,650</span><span>Closes: Nov 1, 2026</span></span>
                 <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
@@ -445,14 +468,16 @@ document.addEventListener('click', function (e) {
                 </button>
               </p>
             </div>
-          </article><article class="card" hidden data-cat="culture" data-subcat="Movies">
+          </article>
+
+          <article class="card" data-cat="culture" data-subcat="Movies">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-crypto.jpg)"></span>
-                <div class="top-txt"><a class="q" href="event-detail.html" id="q-4">Will the next lead actor for the Bond film be announced before December 31, 2026?</a><p class="why">The studio says casting is underway, with no shortlist confirmed.</p></div>
+                <div class="top-txt"><a class="q" href="event-detail.html" id="s5-q-4">Will the next lead actor for the Bond film be announced before December 31, 2026?</a><p class="why">The studio says casting is underway, with no shortlist confirmed.</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">47%</span></p>
-              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="q-4-yes" aria-labelledby="q-4 q-4-yes">YES</a><a href="event-detail.html?side=no" class="no" id="q-4-no" aria-labelledby="q-4 q-4-no">NO</a></div>
+              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="s5-q-4-yes" aria-labelledby="s5-q-4 s5-q-4-yes">YES</a><a href="event-detail.html?side=no" class="no" id="s5-q-4-no" aria-labelledby="s5-q-4 s5-q-4-no">NO</a></div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $19,400</span><span>Closes: Dec 31, 2026</span></span>
                 <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
@@ -460,15 +485,17 @@ document.addEventListener('click', function (e) {
                 </button>
               </p>
             </div>
-          </article><article class="card" hidden data-cat="politics" data-subcat="Global Elections">
+          </article>
+
+          <article class="card" data-cat="politics" data-subcat="Global Elections">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-politics.jpg)"></span>
                 <div class="top-txt"><a class="q" href="event-detail-multi.html">Which party will win the most seats in the next UK general election?</a><p class="why">Two parties are within the margin of error in recent polls.</p></div>
               </div>
               <div class="options">
-                <div class="opt-row"><span class="opt-name" id="opt-labour-3">Labour</span><span class="opt-prob">44%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="opt-labour-3-yes" aria-labelledby="opt-labour-3 opt-labour-3-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="opt-labour-3-no" aria-labelledby="opt-labour-3 opt-labour-3-no">NO</a></span></div>
-                <div class="opt-row"><span class="opt-name" id="opt-conservatives-4">Conservatives</span><span class="opt-prob">33%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="opt-conservatives-4-yes" aria-labelledby="opt-conservatives-4 opt-conservatives-4-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="opt-conservatives-4-no" aria-labelledby="opt-conservatives-4 opt-conservatives-4-no">NO</a></span></div>
+                <div class="opt-row"><span class="opt-name" id="s6-opt-labour-3">Labour</span><span class="opt-prob">44%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="s6-opt-labour-3-yes" aria-labelledby="s6-opt-labour-3 s6-opt-labour-3-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="s6-opt-labour-3-no" aria-labelledby="s6-opt-labour-3 s6-opt-labour-3-no">NO</a></span></div>
+                <div class="opt-row"><span class="opt-name" id="s6-opt-conservatives-4">Conservatives</span><span class="opt-prob">33%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="s6-opt-conservatives-4-yes" aria-labelledby="s6-opt-conservatives-4 s6-opt-conservatives-4-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="s6-opt-conservatives-4-no" aria-labelledby="s6-opt-conservatives-4 s6-opt-conservatives-4-no">NO</a></span></div>
                               <a class="opt-more" href="event-detail-multi.html">+2 more outcomes</a>
 </div>
               <p class="meta">
@@ -478,14 +505,16 @@ document.addEventListener('click', function (e) {
                 </button>
               </p>
             </div>
-          </article><article class="card" hidden data-cat="politics" data-subcat="Europe">
+          </article>
+
+          <article class="card" data-cat="politics" data-subcat="Europe">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-general.jpg)"></span>
-                <div class="top-txt"><a class="q" href="event-detail.html" id="q-5">Will the EU formally admit a new member state before January 1, 2028?</a><p class="why">Accession talks are open but no candidate has cleared the final chapters.</p></div>
+                <div class="top-txt"><a class="q" href="event-detail.html" id="s7-q-5">Will the EU formally admit a new member state before January 1, 2028?</a><p class="why">Accession talks are open but no candidate has cleared the final chapters.</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">23%</span></p>
-              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="q-5-yes" aria-labelledby="q-5 q-5-yes">YES</a><a href="event-detail.html?side=no" class="no" id="q-5-no" aria-labelledby="q-5 q-5-no">NO</a></div>
+              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="s7-q-5-yes" aria-labelledby="s7-q-5 s7-q-5-yes">YES</a><a href="event-detail.html?side=no" class="no" id="s7-q-5-no" aria-labelledby="s7-q-5 s7-q-5-no">NO</a></div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $33,100</span><span>Closes: Jan 1, 2028</span></span>
                 <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
@@ -493,14 +522,16 @@ document.addEventListener('click', function (e) {
                 </button>
               </p>
             </div>
-          </article><article class="card" hidden data-cat="general" data-subcat="Climate">
+          </article>
+
+          <article class="card" data-cat="general" data-subcat="Climate">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-culture.jpg)"></span>
-                <div class="top-txt"><a class="q" href="event-detail.html" id="q-6">Will 2026 be confirmed as one of the three warmest years on record before April 1, 2027?</a><p class="why">The year is tracking near record heat through the first quarter.</p></div>
+                <div class="top-txt"><a class="q" href="event-detail.html" id="s8-q-6">Will 2026 be confirmed as one of the three warmest years on record before April 1, 2027?</a><p class="why">The year is tracking near record heat through the first quarter.</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">55%</span></p>
-              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="q-6-yes" aria-labelledby="q-6 q-6-yes">YES</a><a href="event-detail.html?side=no" class="no" id="q-6-no" aria-labelledby="q-6 q-6-no">NO</a></div>
+              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="s8-q-6-yes" aria-labelledby="s8-q-6 s8-q-6-yes">YES</a><a href="event-detail.html?side=no" class="no" id="s8-q-6-no" aria-labelledby="s8-q-6 s8-q-6-no">NO</a></div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $26,300</span><span>Closes: Apr 1, 2027</span></span>
                 <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
@@ -508,14 +539,16 @@ document.addEventListener('click', function (e) {
                 </button>
               </p>
             </div>
-          </article><article class="card" hidden data-cat="crypto" data-subcat="ETFs">
+          </article>
+
+          <article class="card" data-cat="crypto" data-subcat="ETFs">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-crypto.jpg)"></span>
-                <div class="top-txt"><a class="q" href="event-detail.html" id="q-7">Will a spot Solana ETF be approved before September 1, 2027?</a><p class="why">Two issuers have active filings under review this quarter.</p></div>
+                <div class="top-txt"><a class="q" href="event-detail.html" id="s9-q-7">Will a spot Solana ETF be approved before September 1, 2027?</a><p class="why">Two issuers have active filings under review this quarter.</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">44%</span></p>
-              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="q-7-yes" aria-labelledby="q-7 q-7-yes">YES</a><a href="event-detail.html?side=no" class="no" id="q-7-no" aria-labelledby="q-7 q-7-no">NO</a></div>
+              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="s9-q-7-yes" aria-labelledby="s9-q-7 s9-q-7-yes">YES</a><a href="event-detail.html?side=no" class="no" id="s9-q-7-no" aria-labelledby="s9-q-7 s9-q-7-no">NO</a></div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $71,300</span><span>Closes: Sep 1, 2027</span></span>
                 <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
@@ -523,14 +556,16 @@ document.addEventListener('click', function (e) {
                 </button>
               </p>
             </div>
-          </article><article class="card" hidden data-cat="politics" data-subcat="Congress">
+          </article>
+
+          <article class="card" data-cat="politics" data-subcat="Congress">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-politics.jpg)"></span>
-                <div class="top-txt"><a class="q" href="event-detail.html" id="q-8">Will the next US federal budget pass before the October deadline?</a><p class="why">Committee talks are moving but the largest line items stay open.</p></div>
+                <div class="top-txt"><a class="q" href="event-detail.html" id="s10-q-8">Will the next US federal budget pass before the October deadline?</a><p class="why">Committee talks are moving but the largest line items stay open.</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">41%</span></p>
-              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="q-8-yes" aria-labelledby="q-8 q-8-yes">YES</a><a href="event-detail.html?side=no" class="no" id="q-8-no" aria-labelledby="q-8 q-8-no">NO</a></div>
+              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="s10-q-8-yes" aria-labelledby="s10-q-8 s10-q-8-yes">YES</a><a href="event-detail.html?side=no" class="no" id="s10-q-8-no" aria-labelledby="s10-q-8 s10-q-8-no">NO</a></div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $52,800</span><span>Closes: Oct 1, 2026</span></span>
                 <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
@@ -538,15 +573,17 @@ document.addEventListener('click', function (e) {
                 </button>
               </p>
             </div>
-          </article><article class="card" hidden data-cat="politics" data-subcat="Midterm Elections">
+          </article>
+
+          <article class="card" data-cat="politics" data-subcat="Midterm Elections">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-culture.jpg)"></span>
                 <div class="top-txt"><a class="q" href="event-detail-multi.html">Which party will control the US Senate after the next election?</a><p class="why">The count is within a few seats across recent polling.</p></div>
               </div>
               <div class="options">
-                <div class="opt-row"><span class="opt-name" id="opt-republicans-5">Republicans</span><span class="opt-prob">52%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="opt-republicans-5-yes" aria-labelledby="opt-republicans-5 opt-republicans-5-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="opt-republicans-5-no" aria-labelledby="opt-republicans-5 opt-republicans-5-no">NO</a></span></div>
-                <div class="opt-row"><span class="opt-name" id="opt-democrats-6">Democrats</span><span class="opt-prob">48%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="opt-democrats-6-yes" aria-labelledby="opt-democrats-6 opt-democrats-6-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="opt-democrats-6-no" aria-labelledby="opt-democrats-6 opt-democrats-6-no">NO</a></span></div>
+                <div class="opt-row"><span class="opt-name" id="s11-opt-republicans-5">Republicans</span><span class="opt-prob">52%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="s11-opt-republicans-5-yes" aria-labelledby="s11-opt-republicans-5 s11-opt-republicans-5-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="s11-opt-republicans-5-no" aria-labelledby="s11-opt-republicans-5 s11-opt-republicans-5-no">NO</a></span></div>
+                <div class="opt-row"><span class="opt-name" id="s11-opt-democrats-6">Democrats</span><span class="opt-prob">48%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="s11-opt-democrats-6-yes" aria-labelledby="s11-opt-democrats-6 s11-opt-democrats-6-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="s11-opt-democrats-6-no" aria-labelledby="s11-opt-democrats-6 s11-opt-democrats-6-no">NO</a></span></div>
               </div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $96,400</span><span>Closes: Nov 3, 2026</span></span>
@@ -555,16 +592,231 @@ document.addEventListener('click', function (e) {
                 </button>
               </p>
             </div>
-          </article><article class="card" hidden data-cat="culture" data-subcat="Gaming">
+          </article>
+
+          <article class="card" data-cat="culture" data-subcat="Gaming">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/event-general.jpg)"></span>
-                <div class="top-txt"><a class="q" href="event-detail.html" id="q-9">Will the next major game console launch before the 2026 holiday season?</a><p class="why">The maker confirmed a release window but has not set a date.</p></div>
+                <div class="top-txt"><a class="q" href="event-detail.html" id="s12-q-9">Will the next major game console launch before the 2026 holiday season?</a><p class="why">The maker confirmed a release window but has not set a date.</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">58%</span></p>
-              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="q-9-yes" aria-labelledby="q-9 q-9-yes">YES</a><a href="event-detail.html?side=no" class="no" id="q-9-no" aria-labelledby="q-9 q-9-no">NO</a></div>
+              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="s12-q-9-yes" aria-labelledby="s12-q-9 s12-q-9-yes">YES</a><a href="event-detail.html?side=no" class="no" id="s12-q-9-no" aria-labelledby="s12-q-9 s12-q-9-no">NO</a></div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $18,900</span><span>Closes: Nov 1, 2026</span></span>
+                <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+                </button>
+              </p>
+            </div>
+          </article>
+
+          <article class="card" data-cat="crypto" data-subcat="Ethereum">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb" style="background-image:url(../assets/event-crypto.jpg);background-position:80% center"></span>
+                <div class="top-txt"><a class="q" href="event-detail.html" id="s13-q-4">Will Ethereum stay above $4,000 through the end of 2026?</a><p class="why">It has traded in a tight band above $4k for a month.</p></div>
+              </div>
+              <p class="prob-line">YES <span class="prob">54%</span></p>
+              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="s13-q-4-yes" aria-labelledby="s13-q-4 s13-q-4-yes">YES</a><a href="event-detail.html?side=no" class="no" id="s13-q-4-no" aria-labelledby="s13-q-4 s13-q-4-no">NO</a></div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $63,200</span><span>Closes: Dec 31, 2026</span></span>
+                <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+                </button>
+              </p>
+            </div>
+          </article>
+
+          <article class="card" data-cat="crypto" data-subcat="ETFs">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb" style="background-image:url(../assets/event-crypto.jpg);background-position:50% 70%"></span>
+                <div class="top-txt"><a class="q" href="event-detail.html" id="s14-q-5">Will a US spot XRP ETF be approved before June 1, 2027?</a><p class="why">One filing cleared its first review step this month.</p></div>
+              </div>
+              <p class="prob-line">YES <span class="prob">31%</span></p>
+              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="s14-q-5-yes" aria-labelledby="s14-q-5 s14-q-5-yes">YES</a><a href="event-detail.html?side=no" class="no" id="s14-q-5-no" aria-labelledby="s14-q-5 s14-q-5-no">NO</a></div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $38,900</span><span>Closes: Jun 1, 2027</span></span>
+                <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+                </button>
+              </p>
+            </div>
+          </article>
+
+          <article class="card" data-cat="crypto" data-subcat="Stablecoins">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb" style="background-image:url(../assets/event-crypto.jpg);background-position:12% center"></span>
+                <div class="top-txt"><a class="q" href="event-detail-multi.html">Which chain will hold the largest stablecoin supply at the end of 2026?</a><p class="why">The top two chains are within a few points on current balances.</p></div>
+              </div>
+              <div class="options">
+                <div class="opt-row"><span class="opt-name" id="s15-opt-ethereum-1">Ethereum</span><span class="opt-prob">58%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="s15-opt-ethereum-1-yes" aria-labelledby="s15-opt-ethereum-1 s15-opt-ethereum-1-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="s15-opt-ethereum-1-no" aria-labelledby="s15-opt-ethereum-1 s15-opt-ethereum-1-no">NO</a></span></div>
+                <div class="opt-row"><span class="opt-name" id="s15-opt-tron-2">Tron</span><span class="opt-prob">34%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="s15-opt-tron-2-yes" aria-labelledby="s15-opt-tron-2 s15-opt-tron-2-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="s15-opt-tron-2-no" aria-labelledby="s15-opt-tron-2 s15-opt-tron-2-no">NO</a></span></div>
+                              <a class="opt-more" href="event-detail-multi.html">+1 more outcome</a>
+</div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $44,100</span><span>Closes: Dec 31, 2026</span></span>
+                <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+                </button>
+              </p>
+            </div>
+          </article>
+
+          <article class="card" data-cat="culture" data-subcat="Movies">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb" style="background-image:url(../assets/event-culture.jpg);background-position:80% center"></span>
+                <div class="top-txt"><a class="q" href="event-detail.html" id="s16-q-3">Will the top-grossing 2026 film pass $2 billion worldwide?</a><p class="why">The summer slate is stacked but no title has broken out yet.</p></div>
+              </div>
+              <p class="prob-line">YES <span class="prob">22%</span></p>
+              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="s16-q-3-yes" aria-labelledby="s16-q-3 s16-q-3-yes">YES</a><a href="event-detail.html?side=no" class="no" id="s16-q-3-no" aria-labelledby="s16-q-3 s16-q-3-no">NO</a></div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $24,700</span><span>Closes: Jan 15, 2027</span></span>
+                <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+                </button>
+              </p>
+            </div>
+          </article>
+
+          <article class="card" data-cat="culture" data-subcat="Music">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb" style="background-image:url(../assets/event-culture.jpg);background-position:50% 70%"></span>
+                <div class="top-txt"><a class="q" href="event-detail.html" id="s17-q-4">Will a debut album top the 2026 year-end chart?</a><p class="why">Two first-time acts are leading the mid-year streaming counts.</p></div>
+              </div>
+              <p class="prob-line">YES <span class="prob">35%</span></p>
+              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="s17-q-4-yes" aria-labelledby="s17-q-4 s17-q-4-yes">YES</a><a href="event-detail.html?side=no" class="no" id="s17-q-4-no" aria-labelledby="s17-q-4 s17-q-4-no">NO</a></div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $12,300</span><span>Closes: Jan 1, 2027</span></span>
+                <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+                </button>
+              </p>
+            </div>
+          </article>
+
+          <article class="card" data-cat="culture" data-subcat="Movies">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb" style="background-image:url(../assets/event-culture.jpg);background-position:12% center"></span>
+                <div class="top-txt"><a class="q" href="event-detail-multi.html">Which genre will lead the 2026 summer box office?</a><p class="why">The release calendar is split between two crowded genres.</p></div>
+              </div>
+              <div class="options">
+                <div class="opt-row"><span class="opt-name" id="s18-opt-superhero-3">Superhero</span><span class="opt-prob">46%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="s18-opt-superhero-3-yes" aria-labelledby="s18-opt-superhero-3 s18-opt-superhero-3-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="s18-opt-superhero-3-no" aria-labelledby="s18-opt-superhero-3 s18-opt-superhero-3-no">NO</a></span></div>
+                <div class="opt-row"><span class="opt-name" id="s18-opt-animation-4">Animation</span><span class="opt-prob">31%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="s18-opt-animation-4-yes" aria-labelledby="s18-opt-animation-4 s18-opt-animation-4-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="s18-opt-animation-4-no" aria-labelledby="s18-opt-animation-4 s18-opt-animation-4-no">NO</a></span></div>
+                              <a class="opt-more" href="event-detail-multi.html">+1 more outcome</a>
+</div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $21,800</span><span>Closes: Sep 1, 2026</span></span>
+                <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+                </button>
+              </p>
+            </div>
+          </article>
+
+          <article class="card" data-cat="general" data-subcat="Climate">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb" style="background-image:url(../assets/event-general.jpg);background-position:62% center"></span>
+                <div class="top-txt"><a class="q" href="event-detail.html" id="s19-q-2">Will a new monthly global temperature record be set before September 1, 2026?</a><p class="why">Recent months have run close to prior highs.</p></div>
+              </div>
+              <p class="prob-line">YES <span class="prob">48%</span></p>
+              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="s19-q-2-yes" aria-labelledby="s19-q-2 s19-q-2-yes">YES</a><a href="event-detail.html?side=no" class="no" id="s19-q-2-no" aria-labelledby="s19-q-2 s19-q-2-no">NO</a></div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $17,600</span><span>Closes: Sep 1, 2026</span></span>
+                <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+                </button>
+              </p>
+            </div>
+          </article>
+
+          <article class="card" data-cat="general" data-subcat="Space">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb" style="background-image:url(../assets/event-general.jpg);background-position:40% 30%"></span>
+                <div class="top-txt"><a class="q" href="event-detail.html" id="s20-q-3">Will a crewed mission return from lunar orbit before January 1, 2028?</a><p class="why">The flight is on the schedule but the launch date keeps moving.</p></div>
+              </div>
+              <p class="prob-line">YES <span class="prob">39%</span></p>
+              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="s20-q-3-yes" aria-labelledby="s20-q-3 s20-q-3-yes">YES</a><a href="event-detail.html?side=no" class="no" id="s20-q-3-no" aria-labelledby="s20-q-3 s20-q-3-no">NO</a></div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $30,200</span><span>Closes: Jan 1, 2028</span></span>
+                <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+                </button>
+              </p>
+            </div>
+          </article>
+
+          <article class="card" data-cat="general" data-subcat="Climate">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb" style="background-image:url(../assets/event-general.jpg);background-position:80% center"></span>
+                <div class="top-txt"><a class="q" href="event-detail.html" id="s21-q-4">Will a Category 5 hurricane form in the Atlantic during the 2026 season?</a><p class="why">Forecasters are calling for warmer than average ocean temperatures.</p></div>
+              </div>
+              <p class="prob-line">YES <span class="prob">62%</span></p>
+              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="s21-q-4-yes" aria-labelledby="s21-q-4 s21-q-4-yes">YES</a><a href="event-detail.html?side=no" class="no" id="s21-q-4-no" aria-labelledby="s21-q-4 s21-q-4-no">NO</a></div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $22,900</span><span>Closes: Nov 30, 2026</span></span>
+                <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+                </button>
+              </p>
+            </div>
+          </article>
+
+          <article class="card" data-cat="general" data-subcat="Climate">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb" style="background-image:url(../assets/event-general.jpg);background-position:50% 70%"></span>
+                <div class="top-txt"><a class="q" href="event-detail.html" id="s22-q-5">Will global renewable capacity set a new annual record in 2026?</a><p class="why">Installations are running ahead of last year through the first half.</p></div>
+              </div>
+              <p class="prob-line">YES <span class="prob">74%</span></p>
+              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="s22-q-5-yes" aria-labelledby="s22-q-5 s22-q-5-yes">YES</a><a href="event-detail.html?side=no" class="no" id="s22-q-5-no" aria-labelledby="s22-q-5 s22-q-5-no">NO</a></div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $15,400</span><span>Closes: Dec 31, 2026</span></span>
+                <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+                </button>
+              </p>
+            </div>
+          </article>
+
+          <article class="card" data-cat="general" data-subcat="Business">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb" style="background-image:url(../assets/event-general.jpg);background-position:12% center"></span>
+                <div class="top-txt"><a class="q" href="event-detail-multi.html">Which energy source will add the most new capacity in 2026?</a><p class="why">The two leaders are close on projects already under construction.</p></div>
+              </div>
+              <div class="options">
+                <div class="opt-row"><span class="opt-name" id="s23-opt-solar-1">Solar</span><span class="opt-prob">51%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="s23-opt-solar-1-yes" aria-labelledby="s23-opt-solar-1 s23-opt-solar-1-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="s23-opt-solar-1-no" aria-labelledby="s23-opt-solar-1 s23-opt-solar-1-no">NO</a></span></div>
+                <div class="opt-row"><span class="opt-name" id="s23-opt-wind-2">Wind</span><span class="opt-prob">32%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="s23-opt-wind-2-yes" aria-labelledby="s23-opt-wind-2 s23-opt-wind-2-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="s23-opt-wind-2-no" aria-labelledby="s23-opt-wind-2 s23-opt-wind-2-no">NO</a></span></div>
+                              <a class="opt-more" href="event-detail-multi.html">+1 more outcome</a>
+</div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $19,700</span><span>Closes: Dec 31, 2026</span></span>
+                <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+                </button>
+              </p>
+            </div>
+          </article>
+
+          <article class="card" data-cat="politics" data-subcat="Global Elections">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb" style="background-image:url(../assets/event-politics.jpg);background-position:12% center"></span>
+                <div class="top-txt"><a class="q" href="event-detail.html" id="s24-q-4">Will a snap national election be called in France before July 1, 2027?</a><p class="why">The government holds a thin majority after two close confidence votes.</p></div>
+              </div>
+              <p class="prob-line">YES <span class="prob">29%</span></p>
+              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="s24-q-4-yes" aria-labelledby="s24-q-4 s24-q-4-yes">YES</a><a href="event-detail.html?side=no" class="no" id="s24-q-4-no" aria-labelledby="s24-q-4 s24-q-4-no">NO</a></div>
+              <p class="meta">
+                <span class="meta-txt"><span>Volume: $27,400</span><span>Closes: Jul 1, 2027</span></span>
                 <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
                   <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
                 </button>
@@ -861,6 +1113,50 @@ document.addEventListener('click', function (e) {
       // links are left to navigate natively (no preventDefault, no rail).
     })();
   </script>
+
+  <!-- Search, the sheet face: the whole screen, below the RAIL rung. It is the ONLY copy of
+       the body in this file - the desktop panel above clones it on first open, so the five
+       categories and the four popular events are written once and cannot drift apart. -->
+  <dialog id="searchSheet" class="app-dialog search-sheet" aria-label="Search events">
+    <form class="search-bar" role="search" action="event-feed-search-results.html" data-search>
+      <div class="search">
+        <div class="search-field">
+          <svg class="ic search-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg>
+          <input class="search-input" type="search" name="q" value="" placeholder="Search events"
+           aria-label="Search events" autocomplete="off" enterkeyhint="search">
+          <button type="button" class="icon-btn icon-btn-bare search-clear" aria-label="Clear the search"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg></button>
+        </div>
+      </div>
+      <button type="button" class="btn btn-ghost btn-sm search-cancel" data-close-search>Cancel</button>
+    </form>
+    <div class="search-body">
+      <section class="search-group" data-idle>
+        <p class="search-group-label">Categories</p>
+        <ul class="search-tiles">
+          <li><a class="chip chip-nav" href="event-feed.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><span>Trending</span></a></li>
+          <li><a class="chip chip-nav" href="event-feed-politics.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg><span>Politics</span></a></li>
+          <li><a class="chip chip-nav" href="event-feed-crypto.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg><span>Crypto</span></a></li>
+          <li><a class="chip chip-nav" href="event-feed-culture.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-culture"/></svg><span>Culture</span></a></li>
+          <li><a class="chip chip-nav" href="event-feed-general.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg><span>General</span></a></li>
+        </ul>
+      </section>
+      <section class="search-group" data-idle>
+        <p class="search-group-label">Popular right now</p>
+        <ul class="search-rows">
+          <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Will Bitcoin close above $150,000 before October 1, 2026?</strong><span>Crypto &middot; 61% YES</span></a></li>
+          <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Will Ethereum complete its next major network upgrade before November 1, 2026?</strong><span>Crypto &middot; 72% YES</span></a></li>
+          <li><a class="nav-item nav-row nav-row-stack" href="event-detail-multi.html"><strong>Which party will control the US Senate after the next election?</strong><span>Politics &middot; Republicans 52%</span></a></li>
+          <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Will the US government shut down before March 1, 2027?</strong><span>Politics &middot; 38% YES</span></a></li>
+        </ul>
+      </section>
+      <section class="search-group" data-query hidden>
+        <p class="search-group-label">Results</p>
+        <ul class="search-rows" data-results></ul>
+      </section>
+      <p class="search-none" data-none hidden>No events match <b></b>. Yonder runs a curated list, so the event you want may not be open yet. Try a shorter word, or browse a category.</p>
+      <a class="search-seeall" href="event-feed-search-results.html" data-seeall hidden><span data-seeall-label>See all results</span><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-arrow-right"/></svg></a>
+    </div>
+  </dialog>
 
   <dialog id="signinDialog" class="app-dialog signin-dialog" aria-label="Sign in or create account">
     <div class="plate-head sheet-head">

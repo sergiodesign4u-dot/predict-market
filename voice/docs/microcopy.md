@@ -1703,6 +1703,28 @@ covers them. And the deposit slot is a documented component rather than unfinish
 thumbnail label went the other way: the SPAN is ignored as uninteresting and its TEXT NODE is not,
 which is why querying the element said clean and querying the tree said 24.
 
+## 2026-08-17 - the search surface, and five strings for a control that used to be a page
+
+Search moved from a destination to a control on 2026-08-17: below the RAIL rung it is a sheet over
+the screen, at the rung and above it is a field in the header. **The copy that already existed did
+not move an inch** - the placeholder, the clear label, the count and the no-match block are the same
+words in a different container, which is the test a voice inventory is for. Five strings are new and
+every one of them is a LABEL over a group rather than a sentence, because a surface a person opened
+on purpose does not need to be told what it is.
+
+| String | Where | Why |
+|---|---|---|
+| `Cancel` | `.search-cancel`, the sheet's way out | A word and not a cross. The sheet is the whole screen, and a cross at the top of a full-bleed surface is the one control people read as "close the app". `Cancel` says the search is abandoned and the screen underneath is still there |
+| `Categories` | `.search-group-label` over the five tiles | The word the product already uses for this rail: `aria-label="Categories (second level)"` on the feed, `Categories` in the sidebar group. **Not `Topics`** and not `Browse`, which would be a second name for a thing that has one |
+| `Popular right now` | `.search-group-label` over the pre-query rows | It says WHY these four and not four others, which `Suggested` and `For you` do not: the four are the highest volume in the catalog, and volume is the one popularity figure this product prints anyway. It is also a sibling of `Hot right now` in the hero, deliberately: the same claim, one surface quieter |
+| `Results` | `.search-group-label` once a query is typed | The idle groups go and this one arrives, so the label is the whole announcement. One word, because the count is already in the seam below |
+| `See all 3 results` | `.search-seeall`, the seam to the results page | The number is the point. It is what decides whether a person needs the page at all, so the count is IN the link rather than beside it, and the singular is written: `See all 1 result` |
+
+**The one string this pass deleted a reason for.** `12 events, every one currently open` is still the
+idle count on the search page, and it is now the only place that sentence stands: the surface's own
+idle state shows categories and popular events instead of a number, because a person who has just
+opened a search has not asked how many there are.
+
 ## 2026-08-16 - the search screen, and a deferral re-opened rather than a gap filled
 
 Search is not new copy on an old screen: it is a destination the IA had **decided against**, with a

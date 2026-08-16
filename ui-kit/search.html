@@ -19,42 +19,65 @@
   <div class="tk-hero">
     <h1>Search</h1>
     <p>Level 1. A field that holds a query, a mark that says what the box is, a control that empties
-    it, and the line that answers. <b>Written 2026-08-16, and it re-opens a decision rather than
-    filling a gap</b>: the IA defers search "until catalog scale" and the catalog is 25 events.
-    The page says what was measured and what the deferral's own premise still is.</p>
+    it, and the body that answers. <b>Written 2026-08-16 as a page you went to, rebuilt 2026-08-17 as
+    a control you use</b>: below the RAIL rung it is a sheet over the screen, at the rung and above it
+    stands in the header itself. The interesting number on this page is the one that decided the
+    rung, and it is 69.</p>
     <div class="tk-badges">
-      <span class="tk-badge">6 classes</span>
-      <span class="tk-badge">3 screens</span>
-      <span class="tk-badge">105 ways in</span>
+      <span class="tk-badge">14 classes</span>
+      <span class="tk-badge">108 screens</span>
+      <span class="tk-badge">2 faces, 1 rung</span>
       <span class="tk-badge">25 events</span>
     </div>
   </div>
 
-  <section class="tk-sec" id="why">
-    <h2 data-n="1">Why it is not a variant of <code>input</code></h2>
-    <p class="tk-note"><code>input.css</code> already carries the product's field face and this file
-    reads none of it, which is a claim that needs a reason rather than a shrug. Three of them, and
-    each is anatomy rather than taste.</p>
+  <section class="tk-sec" id="moved">
+    <h2 data-n="1">It was a destination and it is a control</h2>
+    <p class="tk-note">Search shipped on 2026-08-16 as three pages reached by a magnifier in the
+    header. Measured on <code>event-feed-search.html</code> before it was touched, and the three
+    defects are one defect wearing three faces.</p>
     <div class="tk-tblwrap">
       <table class="tk-tbl">
-        <thead><tr><th>the difference</th><th>why it is anatomy</th></tr></thead>
+        <thead><tr><th>where</th><th>what was measured</th></tr></thead>
         <tbody>
-          <tr><td>the mark is INSIDE the control</td><td><code>.amount-cur</code> is a SIBLING of the field, because a currency mark is not part of the value: <code>input.css</code> argued that out and moved the <code>$</code> out of the input's own value to get the keyboard right. A magnifier is the opposite. It is not a value at all, it says what the box IS, and it sits inside it the way a placeholder does</td></tr>
-          <tr><td>the value is a QUERY, not a quantity</td><td>every declaration in <code>input.css</code> that is about the value is about a number: the display face, <code>--text-18</code> and <code>--text-30</code>, <code>inputmode="decimal"</code>, the spin buttons stripped, the mono figure. This field holds words in the body face at reading size, and it is <b>the only field in this product that does</b></td></tr>
-          <tr><td>it carries a control of its own</td><td>a field a person can empty needs something to empty it with. No other field here does, because a bet amount is replaced rather than cleared, so <code>.search-clear</code> is a STATE the input family has no vocabulary for: <b>it exists only when the field has a value</b></td></tr>
+          <tr><td>390, pointer coarse</td><td>the header is 61 tall, the category rail runs 77 to 143, the h1 lands at 184 and <b>the field lands at 221</b>. A person taps a mark at the top right and gets a 5,661px document that is the feed they just left, with the box they asked for as the FOURTH block on it</td></tr>
+          <tr><td>the same page</td><td><b>no <code>autofocus</code> anywhere in the file</b>, so the keyboard does not open either: the tap costs a navigation and buys a box you still have to tap</td></tr>
+          <tr><td>1280, product 1060</td><td>the field lies flat inside the plate at y=238, 922 wide, under an h1, while the header keeps a 36px magnifier at x=1092 whose <code>href</code> is <code>event-feed-search.html</code>. <b>On all three search pages.</b> On the results page that is a link to the page you are on that throws your query away</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="tk-why"><b>What it does share it shares through the system and not through a copy</b>:
-    the <code>--bg-well</code> ground, <code>--border-field</code>, the 44px floor from
-    <code>base.css</code>, and the two-question focus <code>input.css</code> argued for
-    (<code>:focus</code> says the field is active however you got there,
-    <code>:focus-visible</code> draws the ring for a keyboard). Those are the same because they are
-    read from the same roles, which is what a token system is for.</p>
+    <p class="tk-why"><b>A page is where you go to read something; a control is what you use where
+    you are.</b> Nothing about a query is about a document, which is why the answer now appears in the
+    surface the question was asked in, and the three pages keep the job a page is for: a full grid, a
+    link somebody can send, and a state a reader can arrive at cold.</p>
+  </section>
+
+  <section class="tk-sec" id="rung">
+    <h2 data-n="2">The rung is a measurement, not a preference</h2>
+    <p class="tk-note">The free middle of the header row, between the end of <code>.left</code> and
+    the start of <code>.utility</code>, signed in:</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>width</th><th>free</th><th>what it means</th></tr></thead>
+        <tbody>
+          <tr><td>640 <span class="tk-badge">DESK</span></td><td><b>69px</b></td><td>the TIGHTEST width on the whole ladder, because DESK turns on the balance pill, the heart and How it works at the same rung that first gives the row any width</td></tr>
+          <tr><td>760 <span class="tk-badge">DETAIL</span></td><td>137px</td><td>still not a field</td></tr>
+          <tr><td>900 <span class="tk-badge">RAIL</span></td><td><b>277px</b></td><td>the first width where a field exists. 900 is 56.25rem, a rung this ladder already has</td></tr>
+          <tr><td>1060</td><td>437px</td><td rowspan="2">fluid from there: <code>flex:1 1 auto</code> with <code>min-width:0</code>, so no second rung is needed to widen it</td></tr>
+          <tr><td>1380</td><td>757px</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>Between DESK and RAIL the mark stays and opens the sheet</b>, which is the
+    honest answer for a width with no room rather than a compromise. Measured at 320, 360, 390, 639,
+    640, 641, 759, 760, 761, 899, 900, 901, 1000, 1140, 1280 and 1600 on both engines: <b>exactly one
+    way in at every width, 0 sideways scroll</b>. <code>min-width:0</code> is not tidiness: an
+    <code>&lt;input&gt;</code> reports a default intrinsic size of 20 characters, and without it the
+    utility cluster leaves the right edge on the narrow half of the branch.</p>
   </section>
 
   <section class="tk-sec" id="spec">
-    <h2 data-n="2">The three faces, which are three states of one control</h2>
+    <h2 data-n="3">The field, in its three states and both themes</h2>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
@@ -64,7 +87,7 @@
             <input class="search-input" type="search" value="" placeholder="Search events" aria-label="Search events" autocomplete="off">
           </div>
         </div>
-        <p class="search-count"><b>12</b> events, every one currently open</p>
+        <p class="search-count"><b>25</b> events, every one currently open</p>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
         <div class="search" role="search">
@@ -73,7 +96,7 @@
             <input class="search-input" type="search" value="" placeholder="Search events" aria-label="Search events" autocomplete="off">
           </div>
         </div>
-        <p class="search-count"><b>12</b> events, every one currently open</p>
+        <p class="search-count"><b>25</b> events, every one currently open</p>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
         <div class="search" role="search">
@@ -83,7 +106,7 @@
             <button type="button" class="icon-btn icon-btn-bare search-clear" aria-label="Clear the search"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg></button>
           </div>
         </div>
-        <p class="search-count"><b>2</b> events for "election"</p>
+        <p class="search-count"><b>3</b> events for "election"</p>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
         <div class="search" role="search">
@@ -93,7 +116,7 @@
             <button type="button" class="icon-btn icon-btn-bare search-clear" aria-label="Clear the search"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg></button>
           </div>
         </div>
-        <p class="search-count"><b>2</b> events for "election"</p>
+        <p class="search-count"><b>3</b> events for "election"</p>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
         <div class="search" role="search">
@@ -116,92 +139,184 @@
         <p class="search-count"><b>0</b> events for "tennis"</p>
       </div>
     </div>
-    <p class="tk-note"><b>Empty, holding a query, and holding one that matches nothing.</b> The
-    third differs from the second in the count and in nothing else, which is the point: the field
-    does not turn red when a search fails, because a search that finds nothing is not an error and
-    the product has no error tone to spend on it anyway. The block that says what to do next is
-    <a href="state-block.html">state-block</a>, drawn under the count.</p>
+    <p class="tk-note"><b>Empty, holding a query, and holding one that matches nothing.</b> The third
+    differs from the second in the count and in nothing else, which is the point: the field does not
+    turn red when a search fails, because a search that finds nothing is not an error and the product
+    has no error tone to spend on it anyway.</p>
     <p class="tk-why"><b>The clear button is not in the markup when the field is empty.</b> A control
-    that clears an empty field is a 44px target that does nothing, so the page script adds and
-    removes it with the value. The stylesheet also carries
+    that clears an empty field is a 44px target that does nothing, so the script adds and removes it
+    with the value. The stylesheet also carries
     <code>.search-field:has(.search-input:placeholder-shown) .search-clear{display:none}</code>,
     which is not the mechanism: it is what makes a stale one harmless if a screen is ever drawn with
     the button and no value in it. <code>:placeholder-shown</code> is the one state selector that
     reads the VALUE.</p>
   </section>
 
-  <section class="tk-sec" id="type">
-    <h2 data-n="3"><code>type="search"</code> is the role, and the decoration is the price</h2>
-    <p class="tk-note">The type is what makes this a <code>searchbox</code> in the accessibility tree
-    instead of a plain textbox, which is the whole reason it is not <code>type="text"</code>. Both
-    engines draw furniture on it for free: WebKit gives it a rounded UA field and its own cancel
-    button, Chromium gives it a cancel button too. The component draws its own clear control, at 44px
-    and in the system's ink, so both UA versions come off <b>by name</b>
-    (<code>::-webkit-search-cancel-button</code>, <code>::-webkit-search-decoration</code>) rather
-    than by hoping <code>appearance:none</code> reaches them.</p>
-    <p class="tk-why"><b>This is the same shape as the amount field's <code>type="number"</code>
-    lesson, read from the other end.</b> There the type was right for a phone keyboard and wrong for
-    a locale, and the fix was to take the mark out of the value. Here the type is right for the
-    accessibility tree and wrong for the drawing, and the fix is to take the drawing off. A type is
-    never only semantics.</p>
+  <section class="tk-sec" id="body">
+    <h2 data-n="4">The body is one body, and it stands in two containers</h2>
+    <p class="tk-note">The sheet and the desktop panel show the same markup: <b>the groups are
+    written ONCE per screen, in the sheet, and the panel takes a copy of them the first time it
+    opens.</b> Written twice they would be two lists of five categories and four popular events in one
+    file, and the day one of them gains an event the other is wrong and nothing says so. Nothing
+    inside a group carries an <code>id</code> for exactly that reason: a clone of an <code>id</code>
+    is a duplicate <code>id</code>.</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark - nothing typed</span><span>Daylight, light - a query</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <div class="search-body">
+          <section class="search-group">
+            <p class="search-group-label">Categories</p>
+            <ul class="search-tiles">
+              <li><a class="chip chip-nav" href="../ui-visual/event-feed.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><span>Trending</span></a></li>
+              <li><a class="chip chip-nav" href="../ui-visual/event-feed-politics.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg><span>Politics</span></a></li>
+              <li><a class="chip chip-nav" href="../ui-visual/event-feed-crypto.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg><span>Crypto</span></a></li>
+              <li><a class="chip chip-nav" href="../ui-visual/event-feed-culture.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-culture"/></svg><span>Culture</span></a></li>
+              <li><a class="chip chip-nav" href="../ui-visual/event-feed-general.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg><span>General</span></a></li>
+            </ul>
+          </section>
+          <section class="search-group">
+            <p class="search-group-label">Popular right now</p>
+            <ul class="search-rows">
+              <li><a class="nav-item nav-row nav-row-stack" href="../ui-visual/event-detail.html"><strong>Will Bitcoin close above $150,000 before October 1, 2026?</strong><span>Crypto &middot; 61% YES</span></a></li>
+              <li><a class="nav-item nav-row nav-row-stack" href="../ui-visual/event-detail.html"><strong>Will Ethereum complete its next major network upgrade before November 1, 2026?</strong><span>Crypto &middot; 72% YES</span></a></li>
+              <li><a class="nav-item nav-row nav-row-stack" href="../ui-visual/event-detail-multi.html"><strong>Which party will control the US Senate after the next election?</strong><span>Politics &middot; Republicans 52%</span></a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <div class="search-body">
+          <section class="search-group">
+            <p class="search-group-label">Results</p>
+            <ul class="search-rows">
+              <li><a class="nav-item nav-row nav-row-stack" href="../ui-visual/event-detail-multi.html"><strong>Which party will control the US Senate after the next <mark>elect</mark>ion?</strong><span>Politics &middot; Republicans 52%</span></a></li>
+              <li><a class="nav-item nav-row nav-row-stack" href="../ui-visual/event-detail-multi.html"><strong>Which party will win the most seats in the next UK general <mark>elect</mark>ion?</strong><span>Politics &middot; Labour 44%</span></a></li>
+              <li><a class="nav-item nav-row nav-row-stack" href="../ui-visual/event-detail.html"><strong>Will a snap national <mark>elect</mark>ion be called in France before July 1, 2027?</strong><span>Politics &middot; 29% YES</span></a></li>
+            </ul>
+          </section>
+          <a class="search-seeall" href="../ui-visual/event-feed-search-results.html"><span>See all 3 results</span><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-arrow-right"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>part</th><th>what it is</th><th>why</th></tr></thead>
+        <tbody>
+          <tr><td><code>.search-tiles</code></td><td>a two-column grid of the five category chips</td><td><b>the cell is fixed here and the chip is not touched.</b> <code>.chip-nav</code> is <code>inline-flex</code> and <code>white-space:nowrap</code>, sized by its content, which is right in the rail it was written for and wrong in a grid cell. This file names its own <code>li</code> and that li's child, never <code>.chip-nav</code>: a container may decide the SIZE of the box it hands out and never the face of what stands in it</td></tr>
+          <tr><td><code>.search-rows</code></td><td><code>.nav-item.nav-row.nav-row-stack</code>, the notification dropdown's two-line row</td><td>a result row IS that row with different content, so it is not a third row face. What this file sets is the same half <code>header.css</code> sets for <code>.notif-drop</code>: the type, because a notification's second line is a sentence at 10 and a result's is a category and a figure at 11</td></tr>
+          <tr><td>the rows' negative margin</td><td><code>margin:0 calc(var(--space-12) * -1)</code></td><td>the first letter of a result sits on the same vertical line as the group label above it while the hover ground still runs wider than the text. <b>Without the pull the row reads as indented under its own heading</b>, which is the one thing a list of answers must not look like</td></tr>
+          <tr><td><code>&lt;mark&gt;</code></td><td>the matched substring, brass, no ground</td><td><code>&lt;mark&gt;</code> arrives with a UA background that is a raw yellow in both themes and belongs to no role here. The ground comes off and the brass does the marking: it is the one ink in this system whose whole job is "this is the thing you asked for". <b>The mark is drawn on the ESCAPED string and the index is taken from the original</b>, so a question carrying an <code>&amp;</code> highlights in the right place</td></tr>
+          <tr><td><code>.search-seeall</code></td><td>the seam to the results page</td><td>it carries the count, because the count is what decides whether a person needs the page at all, and it is the LAST thing in the body so the seam is where a reader runs out of rows rather than above them</td></tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 
-  <section class="tk-sec" id="ia">
-    <h2 data-n="4">What this component re-opens</h2>
-    <p class="tk-note"><b>Search is not missing from this product, it was DECIDED against</b>, and
-    the decision is conditional. <code>ia/docs/sitemap.md</code>: "Search - Deferred until catalog
-    scale. At 10-20 curated markets, users scan the Event Feed; they do not search. Search does not
-    close a confirmed job at this scale. When added, it attaches to the Events tab under FJ1 - not a
-    bottom slot."</p>
-    <p class="tk-note"><b>Measured 2026-08-16: the product draws 25 distinct events</b>, counted from
-    every <code>.q</code> and <code>.ed-q</code> in the painted tree. So the deferral's premise has
-    moved from 10-20 to 25 and has not been overturned by scale. <b>The 1,284 the critique cites is
-    the resolved-on-chain trust figure in the footer strip, not the browsable catalog</b>, and the
-    two count different things.</p>
-    <p class="tk-why"><b>What the deferral did not answer is the one the critique got right</b>:
-    there is no route to an event except scrolling a category, and the 404 draws a magnifier over
-    "This page does not exist" while <code>ia/docs/pages/system.md</code> names its two escapes as
-    "search or quick links". The product had been drawing the icon for a control it did not have.</p>
-    <p class="tk-note">The IA's own placement is honoured: the field lives on the Events destination
-    and search takes <b>no bottom-nav slot</b>. The way in from the other 102 screens is a header
-    utility, beside the bell and the favourites mark, which is where the product already puts a thing
-    that is not a destination.</p>
+  <section class="tk-sec" id="containers">
+    <h2 data-n="5">Two containers, and only one of them is new geometry</h2>
+    <p class="tk-note"><b>The sheet is a frame and not a skin.</b> Every other face in
+    <code>dialog.css</code> is a skin over one geometry: <code>.win-dialog</code> and
+    <code>.loss-dialog</code> repaint a head, <code>.signin-dialog</code> re-pads a body, and all of
+    them are the same 92 per cent-wide centred plate. This one changes the geometry and keeps the
+    skin, because <b>a search on a phone is not a message laid over a screen, it is the screen</b>,
+    and the plate's grain, gradient and bevels are what keep it inside the Vault while it is that.</p>
+    <p class="tk-note"><b>The panel spans the field it hangs from</b>, both edges set from the same
+    box. That is the one geometry that cannot repeat the defect <code>header.css</code> recorded for
+    its two dropdowns: those are pinned to the RIGHT edge of a control at the right end of the band,
+    and a <code>left</code> offset written later took 55 per cent of one of them off a 390px
+    screen.</p>
+    <p class="tk-why"><b>The panel arrives rather than appears.</b> 4px down, the same travel and the
+    same direction the two header dropdowns use, multiplied by <code>--motion</code> so reduced motion
+    keeps the panel and loses the movement. It is an <code>animation</code> and not a
+    <code>transition</code> because the panel is <code>hidden</code> when it is shut and a
+    <code>display</code> change has nothing to interpolate from.</p>
+  </section>
+
+  <section class="tk-sec" id="why">
+    <h2 data-n="6">Why the field is not a variant of <code>input</code></h2>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>the difference</th><th>why it is anatomy</th></tr></thead>
+        <tbody>
+          <tr><td>the mark is INSIDE the control</td><td><code>.amount-cur</code> is a SIBLING of the field, because a currency mark is not part of the value: <code>input.css</code> argued that out and moved the <code>$</code> out of the input's own value to get the keyboard right. A magnifier is the opposite. It is not a value at all, it says what the box IS, and it sits inside it the way a placeholder does</td></tr>
+          <tr><td>the value is a QUERY, not a quantity</td><td>every declaration in <code>input.css</code> that is about the value is about a number: the display face, <code>--text-18</code> and <code>--text-30</code>, <code>inputmode="decimal"</code>, the spin buttons stripped, the mono figure. This field holds words in the body face at reading size, and it is <b>the only field in this product that does</b></td></tr>
+          <tr><td>it carries a control of its own</td><td>a field a person can empty needs something to empty it with. No other field here does, because a bet amount is replaced rather than cleared, so <code>.search-clear</code> is a STATE the input family has no vocabulary for</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b><code>type="search"</code> is the role and the decoration is the price.</b>
+    The type is what makes this a <code>searchbox</code> in the accessibility tree instead of a plain
+    textbox. Both engines draw furniture on it for free: WebKit gives it a rounded UA field and its
+    own cancel button, Chromium gives it a cancel button too. The component draws its own clear
+    control, at 44px and in the system's ink, so both UA versions come off <b>by name</b> rather than
+    by hoping <code>appearance:none</code> reaches them.</p>
+    <p class="tk-why"><b>What it does share it shares through the system and not through a copy</b>:
+    the <code>--bg-well</code> ground, <code>--border-field</code>, the 44px floor from
+    <code>base.css</code>, and the two-question focus <code>input.css</code> argued for. Those are the
+    same because they are read from the same roles, which is what a token system is for.</p>
+  </section>
+
+  <section class="tk-sec" id="catalog">
+    <h2 data-n="7">The catalog is a second copy, and it says so out loud</h2>
+    <p class="tk-note">Every other script in the painted tree is inline and per-screen, which is right
+    for a thing that is ABOUT that screen: the sub-category rail reads the cards standing on the page
+    it is in. <b>Search is the opposite.</b> It answers from every screen in the product about events
+    that are on none of them, so the answer cannot be read out of the document it is asked in, and a
+    copy of the catalog in each of 108 files is 108 places for it to drift.</p>
+    <p class="tk-note"><code>assets/search.js</code> holds it, loaded exactly the way
+    <code>assets/icons.js</code> is and for the same measured reason: a script tag resolves from disk
+    and from a server alike, where a fetch over <code>file://</code> has no origin to match. <b>The
+    catalog is extracted, not written</b>: taken from the painted tree by walking every
+    <code>&lt;article class="card"&gt;</code> for its question, category, sub-category, lead figure and
+    volume, plus the one question that is only ever an <code>&lt;h1 class="ed-q"&gt;</code>. 25
+    events.</p>
+    <p class="tk-why"><b>The cost is written in the file rather than discovered later</b>: if the tree
+    grows an event and the catalog is not re-taken, search will not find it. That is what a second
+    copy costs, and naming it is the only thing that keeps it from being a surprise.</p>
+    <p class="tk-note"><b>Rebuilding the surface exposed a page that was already lying.</b>
+    <code>event-feed-search-results.html</code> filtered a 12-card subset and printed "2 events for
+    election" while the catalog matches 3. The two result pages carry <b>all 24 cards</b> now, so the
+    seam's count and the page it points at cannot disagree.</p>
   </section>
 
   <section class="tk-sec" id="rule">
-    <h2 data-n="5">The rule</h2>
-    <p class="tk-note"><b>A filter narrows a list you are browsing; a search finds a thing you
-    already have in mind.</b> That is why the field is not in the feed head beside Sort and How
-    often: the critique's own finding about that head is that it already carries two category
-    selectors using the same five words, and a third control doing a fourth job would be worse than
-    the defect it fixed.</p>
-    <p class="tk-note"><b>The count is mono because it is a figure a person reads twice</b>, before
-    and after typing, and a figure that changes has to be a figure both times.</p>
-    <p class="tk-note"><b>The drawn state is the static one.</b> All three screens carry their
-    filtered grid in the markup, with <code>hidden</code> on the cards that do not match, and the
-    page script only reproduces what the file already says. A page whose state exists only after a
-    script has run is the defect this repository paid for when eight bet panels carried a retired
-    payout that only a script corrected.</p>
+    <h2 data-n="8">The rule</h2>
+    <p class="tk-note"><b>A filter narrows a list you are browsing; a search finds a thing you already
+    have in mind.</b> That is why the field is not in the feed head beside Sort and How often: that
+    head already carries two category selectors using the same five words, and a third control doing a
+    fourth job would be worse than the defect it fixed.</p>
+    <p class="tk-note"><b>The mark stays an <code>&lt;a href&gt;</code>.</b> The sheet is script; the
+    page is not. The link keeps working when the script does not, and it is the same three pages the
+    IA specified, so nothing was thrown away to get here.</p>
+    <p class="tk-note"><b>One query, one field.</b> At the RAIL rung the page's own in-plate field is
+    <code>display:none</code>, because the header carries one and two fields for one query on one
+    screen is the same defect as the magnifier that linked to the page it stood on.</p>
+    <p class="tk-why"><b>The count is mono because it is a figure a person reads twice</b>, before and
+    after typing, and a figure that changes has to be a figure both times.</p>
   </section>
 
   <section class="tk-sec" id="antirule">
-    <h2 data-n="6">The anti-rule</h2>
-    <p class="tk-lab tk-bad"><b>Never give search a navigation slot.</b> <i>The IA settled this
-    before the control existed: four destinations, and finding a thing is not one of them.</i></p>
+    <h2 data-n="9">The anti-rule</h2>
+    <p class="tk-lab tk-bad"><b>Never give search a navigation slot.</b> <i>The IA settled this before
+    the control existed: four destinations, and finding a thing is not one of them.</i></p>
     <p class="tk-lab tk-bad"><b>Never colour a search that finds nothing.</b> <i>Zero results is an
     answer, not a failure, and red in this product means NO.</i></p>
-    <p class="tk-lab tk-bad"><b>Never let the count be typed.</b> <i>It is computed from the same
-    pass that hides the cards, so the figure and the grid under it cannot disagree.</i></p>
+    <p class="tk-lab tk-bad"><b>Never put the field in the header below 56.25rem.</b> <i>69px is not a
+    field, it is a field-shaped hole where the balance pill used to be.</i></p>
+    <p class="tk-lab tk-bad"><b>Never let the seam's count and the results page disagree.</b> <i>They
+    did, for one day, because the page filtered half a catalog.</i></p>
   </section>
 
   <section class="tk-sec" id="closing">
-    <h2 data-n="7">Where the rest of it is</h2>
+    <h2 data-n="10">Where the rest of it is</h2>
     <p class="tk-note">The level and its reason: <a href="vitrine.html#search">the atoms shelf</a>.
-    The stylesheet: <code>components/search.css</code>. The field it is not a variant of:
-    <a href="input.html">input</a>. The block under a search that finds nothing:
-    <a href="state-block.html">state-block</a>. The control that empties it:
-    <a href="iconbtn.html">icon button</a>. The decision it re-opens: <code>ia/docs/sitemap.md</code>,
-    Navigation - Deferred, and <code>docs/decisions.md</code> for the date.</p>
+    The stylesheet: <code>components/search.css</code>, and the sheet's frame in
+    <code>components/dialog.css</code>. The behaviour and the catalog:
+    <code>assets/search.js</code>. The field it is not a variant of: <a href="input.html">input</a>.
+    The row it borrows: <a href="navitem.html">nav item</a>. The chip its tiles are:
+    <a href="chip.html">chip</a>. The band it stands in: <a href="header.html">header</a>. The block
+    under a search that finds nothing: <a href="state-block.html">state-block</a>. The decision and
+    the date: <code>ia/docs/sitemap.md</code> and <code>docs/decisions.md</code>.</p>
   </section>
 
 </div>

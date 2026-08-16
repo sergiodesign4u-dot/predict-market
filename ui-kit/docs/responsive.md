@@ -766,3 +766,39 @@ and only then was the 0 worth reporting.
 ## What is not taken
 
 `docs/backlog.md` items 115 and 116, opened by this stage.
+
+## 2026-08-17 - the registry is 35, it was 33 and it said 34
+
+Search stopped being a page and became a control, and the inline field enters at **56.25rem, the
+RAIL rung**, so `components/search.css` carries **two** new width queries: one that swaps the mark
+for the field, and one that takes the page's own in-plate field away once the header has one. Both
+name a number already on the ladder. **No fourth rung was introduced, and the reason is a
+measurement of the header row rather than a preference**: the free middle between the end of
+`.left` and the start of `.utility` is **69px at 640, 137 at 760 and 277 at 900**, so a field cannot
+enter at DESK. 640 is the tightest width in the whole product, because DESK turns on the balance
+pill, the heart and How it works at the same rung that first gives the row any width to spend.
+
+**And re-counting found the registry's own figure one over.** This file and `README.md` both said
+34; the comment-stripped source of `components/` held **33** before this pass and holds **35**
+after. The count is re-taken from the source every time it is written down and it drifted anyway,
+which is the same defect the folder's stylesheet count had on the same day and the kit's `N lines`
+badges had the day before: **a number kept in prose is re-derived by whoever reads it and by nobody
+who edits the file.**
+
+```
+  10  (max-width:39.99875rem)     8  (min-width:56.25rem)      6  (min-width:40rem)
+   3  (min-width:47.5rem)         2  (min-width:1140px)        2  (max-width:35rem)
+   2  (max-width:47.49875rem)     1  (max-width:61.25rem)      1  (max-width:38.75rem)
+```
+
+**28 name one of the three rungs**, 16 at the desk, 3 at the detail and 8 at the rail with the two
+that arrived here; 2 name the 1140 harness, which is the review panel and not the product; 5 are
+one-offs carrying their reason beside themselves. **0 in any of the 109 documents in `ui-visual/`
+and 0 in any of the 108 in `wireframes/`** that is not the grey tree's own inline copy of this same
+rung, which is the one place a screen file is allowed a query because the grey tree links no
+stylesheet at all.
+
+**Read at the rung and one pixel either side, on both engines**: 320, 360, 390, 639, 640, 641, 759,
+760, 761, 899, 900, 901, 1000, 1140, 1280, 1600. The swap is clean at exactly 900 on Chromium and
+WebKit, there is **exactly one way in at every width**, `scrollLeft` reads back 0 everywhere, and
+the field is fluid from **281 at 900 to 761 at 1600** with no second rung to widen it.

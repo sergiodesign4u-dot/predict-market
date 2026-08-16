@@ -41,6 +41,7 @@ push();});})();</script>
   <title>UI Visual - Event Detail (error)</title>
   <link rel="stylesheet" href="../components/index.css">
   <script src="../assets/icons.js"></script>
+  <script src="../assets/search.js"></script>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -308,6 +309,22 @@ document.addEventListener('click', function (e) {
           <a class="logo logo-btn" href="event-feed.html">Yonder</a>
           <button type="button" class="btn btn-ghost btn-xs hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
         </div>
+        <!-- Search, the inline face: the field itself, from the RAIL rung up. Below it this
+             element is display:none and the magnifier in the utility cluster opens the sheet.
+             The free middle of this row measures 69px at 640 and 277 at 900, which is what
+             decided the rung; components/search.css carries the ladder. -->
+        <form class="search-inline" role="search" action="event-feed-search-results.html" data-search>
+          <div class="search">
+              <div class="search-field">
+                <svg class="ic search-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg>
+                <input class="search-input" type="search" name="q" value="" placeholder="Search events"
+                       aria-label="Search events" autocomplete="off" enterkeyhint="search">
+                <button type="button" class="icon-btn icon-btn-bare search-clear" aria-label="Clear the search"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg></button>
+              </div>
+            </div>
+          <div class="search-panel" hidden></div>
+        </form>
+
 
         <div class="utility">
           <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
@@ -329,7 +346,7 @@ document.addEventListener('click', function (e) {
           <!-- Search: a utility on every screen, not a navigation slot. The IA defers search
            "until catalog scale" and names where it goes when it arrives: the Events
            destination, never a bottom slot. This is the way in from anywhere else. -->
-          <a class="icon-btn" href="event-feed-search.html" aria-label="Search events">
+          <a class="icon-btn search-open" href="event-feed-search.html" aria-label="Search events">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg>
           </a>
           <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
@@ -692,6 +709,50 @@ document.addEventListener('click', function (e) {
       // links are left to navigate natively (no preventDefault, no rail).
     })();
   </script>
+
+  <!-- Search, the sheet face: the whole screen, below the RAIL rung. It is the ONLY copy of
+       the body in this file - the desktop panel above clones it on first open, so the five
+       categories and the four popular events are written once and cannot drift apart. -->
+  <dialog id="searchSheet" class="app-dialog search-sheet" aria-label="Search events">
+    <form class="search-bar" role="search" action="event-feed-search-results.html" data-search>
+      <div class="search">
+        <div class="search-field">
+          <svg class="ic search-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg>
+          <input class="search-input" type="search" name="q" value="" placeholder="Search events"
+           aria-label="Search events" autocomplete="off" enterkeyhint="search">
+          <button type="button" class="icon-btn icon-btn-bare search-clear" aria-label="Clear the search"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg></button>
+        </div>
+      </div>
+      <button type="button" class="btn btn-ghost btn-sm search-cancel" data-close-search>Cancel</button>
+    </form>
+    <div class="search-body">
+      <section class="search-group" data-idle>
+        <p class="search-group-label">Categories</p>
+        <ul class="search-tiles">
+          <li><a class="chip chip-nav" href="event-feed.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><span>Trending</span></a></li>
+          <li><a class="chip chip-nav" href="event-feed-politics.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg><span>Politics</span></a></li>
+          <li><a class="chip chip-nav" href="event-feed-crypto.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg><span>Crypto</span></a></li>
+          <li><a class="chip chip-nav" href="event-feed-culture.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-culture"/></svg><span>Culture</span></a></li>
+          <li><a class="chip chip-nav" href="event-feed-general.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg><span>General</span></a></li>
+        </ul>
+      </section>
+      <section class="search-group" data-idle>
+        <p class="search-group-label">Popular right now</p>
+        <ul class="search-rows">
+          <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Will Bitcoin close above $150,000 before October 1, 2026?</strong><span>Crypto &middot; 61% YES</span></a></li>
+          <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Will Ethereum complete its next major network upgrade before November 1, 2026?</strong><span>Crypto &middot; 72% YES</span></a></li>
+          <li><a class="nav-item nav-row nav-row-stack" href="event-detail-multi.html"><strong>Which party will control the US Senate after the next election?</strong><span>Politics &middot; Republicans 52%</span></a></li>
+          <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Will the US government shut down before March 1, 2027?</strong><span>Politics &middot; 38% YES</span></a></li>
+        </ul>
+      </section>
+      <section class="search-group" data-query hidden>
+        <p class="search-group-label">Results</p>
+        <ul class="search-rows" data-results></ul>
+      </section>
+      <p class="search-none" data-none hidden>No events match <b></b>. Yonder runs a curated list, so the event you want may not be open yet. Try a shorter word, or browse a category.</p>
+      <a class="search-seeall" href="event-feed-search-results.html" data-seeall hidden><span data-seeall-label>See all results</span><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-arrow-right"/></svg></a>
+    </div>
+  </dialog>
 
   <dialog id="signinDialog" class="app-dialog signin-dialog" aria-label="Sign in or create account">
     <div class="plate-head sheet-head">
