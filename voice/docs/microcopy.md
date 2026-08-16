@@ -1702,3 +1702,30 @@ and no label; read out of the accessibility tree, **all four are ignored**, with
 covers them. And the deposit slot is a documented component rather than unfinished work. The
 thumbnail label went the other way: the SPAN is ignored as uninteresting and its TEXT NODE is not,
 which is why querying the element said clean and querying the tree said 24.
+
+## 2026-08-16 - the search screen, and a deferral re-opened rather than a gap filled
+
+Search is not new copy on an old screen: it is a destination the IA had **decided against**, with a
+condition attached. `ia/docs/sitemap.md` read "Search - Deferred until catalog scale. At 10-20
+curated markets, users scan the Event Feed; they do not search." Measured before anything was
+written: **the product draws 25 distinct events**, so the premise moved from 10-20 to 25 and was not
+overturned by scale. What overturned it is reachability, which the 404 had been arguing in the
+markup for as long as it has existed.
+
+| String | Where | Why |
+|---|---|---|
+| `Search events` | `.icon-btn` in the header on 105 of 105 screens, and the `<h1>` of the search page | The same three words name the way in and the place it leads. The verb is `Search` and the noun is `events`, never `markets`: the lexicon is the same here as everywhere |
+| `Search events` | `.search-input` placeholder and its `aria-label` | The placeholder is the label rather than a hint, because the field has no visible label above it and a placeholder that vanishes on the first keystroke cannot be one on its own. Both carry the same words so nothing is announced that is not also drawn |
+| `Clear the search` | `.search-clear` | Not "Clear" alone: a screen reader hears this control out of context, and what it clears is the query rather than the results |
+| `12 events, every one currently open` | `.search-count`, empty field | The idle count is doing two jobs. It says how many there are, and it says what "all" MEANS here: this list is the open events, not the 1,284 the footer strip has resolved. Those two numbers sit on the same page and count different things |
+| `2 events for "election"` | `.search-count`, a query with matches | The figure is computed from the same pass that hides the cards, so the number and the grid under it cannot disagree. The singular is written: `1 event`, never `1 events` |
+| `0 events for "tennis"` | `.search-count`, a query with none | Zero is stated in the same sentence as any other number, because a search that finds nothing is an answer and not an error |
+| `No events match "tennis"` | `.state-title` on the no-match block | It names the query back, so a person who mistyped can see what was actually searched for |
+| `Yonder runs a curated list, so the event you want may not be open yet. Try a shorter word, or browse a category.` | `.state-msg` | Principle 1, explain rather than apologise. **The honest reason for an empty result here is the product's own shape**: 25 curated events, not a search that failed. The two suggestions are the two things that actually work |
+| `Browse all events` / `How events are chosen` | `.state-actions` | The empty-state rule: every block gives a way out, and this one gives two, because "there is nothing here" has two different questions behind it |
+| `Search events` | the 404 quick-link list | The page has drawn a magnifier over "This page does not exist" since it was written, and `ia/docs/pages/system.md` has named its escapes as "search or quick links" for just as long. It shipped the second half only |
+
+**The one string this pass did not write is the one it was most tempted to.** There is no "no
+results found" and no "we could not find anything": the count line already says `0 events for
+"tennis"` in the product's own arithmetic voice, and a second sentence saying the same thing in a
+softer one would be the apology this product's voice does not make.

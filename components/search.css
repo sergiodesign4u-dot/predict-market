@@ -1,0 +1,85 @@
+/* components/search.css
+   Component: search. Classes: .search, .search-clear, .search-count, .search-field, .search-ic, .search-input.
+
+   Reads: --bg-well, --border-field, --color-action, --focus-ring, --glow-focus,
+          --line-brass-strong, --text-muted, --text-primary
+   Stand:  ui-kit/search.html, and ui-kit/vitrine.html#search for the level and its reason
+   Stands on: 3 ui-visual screens (event-feed-search.html, event-feed-search-empty.html, event-feed-search-results.html),
+     17 elements, and the way in is elsewhere: an `.icon-btn` in the header on 105 of 105.
+   Colour goes through a role, geometry straight from a primitive. No em dash. */
+
+/* ============================================================================
+   WHY THIS IS AN ATOM OF ITS OWN AND NOT A VARIANT OF `input`, 2026-08-16.
+
+   `input.css` already carries the product's field face and this file reads none
+   of it, which is a claim that needs a reason rather than a shrug. Three of
+   them, and each is anatomy rather than taste.
+
+   THE MARK IS INSIDE THE CONTROL. `.amount-cur` is a SIBLING of the field, in
+   `.amount-row`, because a currency mark is not part of the value and the row
+   holds the two apart: that file argued it out and moved the `$` out of the
+   input's own value to get the keyboard right. A magnifier is the opposite: it
+   is not a value at all, it says what the box IS, and it sits inside the box
+   the way a placeholder does. A shared face would have to hold both readings.
+
+   THE VALUE IS A QUERY, NOT A QUANTITY. Every declaration in `input.css` that
+   is about the value is about a number: the display face, `--text-18` and
+   `--text-30`, `inputmode="decimal"`, the spin buttons stripped, the mono
+   figure. A search field holds words in the body face at reading size, and it
+   is the only field in this product that does.
+
+   AND IT CARRIES A CONTROL OF ITS OWN. A field a person can empty needs
+   something to empty it with; no other field here does, because a bet amount is
+   replaced rather than cleared. `.search-clear` appears only when the field has
+   a value, which is a STATE the input family has no vocabulary for.
+
+   WHAT IT DOES SHARE IT SHARES THROUGH THE SYSTEM AND NOT THROUGH A COPY: the
+   `--bg-well` ground, `--border-field`, the 44px floor from `base.css`, and the
+   two-question focus that `input.css` argued for (`:focus` says the field is
+   active however you got there, `:focus-visible` draws the ring for a keyboard).
+   Those are the same because they are read from the same roles, which is what a
+   token system is for.
+   ============================================================================ */
+
+.search{display:flex;flex-direction:column;gap:var(--space-8);margin:0 0 var(--space-16)}
+.search-field{position:relative;display:flex;align-items:center}
+/* The mark and the clear button are absolutely positioned INSIDE the field
+   rather than laid beside it, and the field pads itself out of their way. A flex
+   row of three would make the input a flex item whose width is what is left,
+   which reads the same until a long query arrives and the box stops growing
+   where the text does. The insets are the same 12 on both sides so the two
+   controls sit symmetrically about a value that is centred between them. */
+.search-ic{position:absolute;left:var(--space-12);width:var(--icon-18);height:var(--icon-18);color:var(--text-muted);stroke:var(--text-muted);pointer-events:none}
+.search-input{flex:1;box-sizing:border-box;width:100%;min-height:var(--control-44);
+  padding:var(--space-8) var(--space-40) var(--space-8) var(--space-40);
+  border:var(--hairline) solid var(--border-field);border-radius:var(--radius-10);
+  background:var(--bg-well);color:var(--text-primary);
+  font-family:var(--font-body);font-size:var(--text-14);
+  transition:border-color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard)}
+.search-input::placeholder{color:var(--text-muted)}
+.search-input:hover{border-color:var(--line-brass-strong)}
+.search-input:focus{outline:none;border-color:var(--color-action);box-shadow:0 0 0 3px var(--glow-focus)}
+.search-input:focus-visible{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
+/* `type="search"` IS THE ROLE AND THE DECORATION IS THE PRICE. The type is what
+   makes this a `searchbox` in the accessibility tree instead of a plain textbox,
+   which is the whole reason it is not `type="text"`, and both engines draw
+   furniture on it for free: WebKit gives it a rounded UA field and its own
+   cancel button, and Chromium gives it a cancel button too. The component draws
+   its own clear control, at 44px and in the system's ink, so both UA versions
+   come off by name rather than by hoping `appearance:none` reaches them. */
+.search-input[type=search]{-webkit-appearance:none;appearance:none}
+.search-input[type=search]::-webkit-search-cancel-button,
+.search-input[type=search]::-webkit-search-decoration{-webkit-appearance:none;appearance:none;display:none}
+/* IT IS NOT IN THE MARKUP WHEN THE FIELD IS EMPTY, and this rule is the second
+   half of that rather than the mechanism. A control that clears an empty field
+   is a target that does nothing, so the page script adds and removes it with the
+   value; the rule below is what makes a stale one harmless if a screen is drawn
+   with the button and no value in it. `:placeholder-shown` is true exactly when
+   the field is empty, which is the one state selector that reads the VALUE. */
+.search-field:has(.search-input:placeholder-shown) .search-clear{display:none}
+.search-clear{position:absolute;right:var(--space-4)}
+/* The count is the answer to the query and it is the one line on this screen that
+   changes when nothing else does, so it is mono: a figure a person reads twice,
+   before and after typing, has to be a figure both times. */
+.search-count{font-family:var(--font-mono);font-size:var(--text-12);letter-spacing:var(--track-label);color:var(--text-muted);margin:0}
+.search-count b{color:var(--text-primary);font-weight:var(--weight-semibold)}

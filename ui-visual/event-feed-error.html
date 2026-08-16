@@ -66,6 +66,9 @@ push();});})();</script>
         <a href="event-feed-empty.html" class="sidebar-sub-link">empty</a>
         <a href="event-feed-error.html" class="sidebar-sub-link active">error</a>
         <a href="event-feed-loading.html" class="sidebar-sub-link">loading</a>
+          <a href="event-feed-search.html" class="sidebar-sub-link">search</a>
+          <a href="event-feed-search-results.html" class="sidebar-sub-link">search-results</a>
+          <a href="event-feed-search-empty.html" class="sidebar-sub-link">search-empty</a>
         <a href="event-feed-push-permission-missing.html" class="sidebar-sub-link">push-permission-missing</a>
         <div class="sidebar-divider sub">Logged out</div>
         <a href="event-feed-logged-out.html" class="sidebar-sub-link">success</a>
@@ -282,6 +285,12 @@ document.addEventListener('click', function (e) {
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
           </a>
 
+          <!-- Search: a utility on every screen, not a navigation slot. The IA defers search
+           "until catalog scale" and names where it goes when it arrives: the Events
+           destination, never a bottom slot. This is the way in from anywhere else. -->
+          <a class="icon-btn" href="event-feed-search.html" aria-label="Search events">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg>
+          </a>
           <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
           <details class="notif-menu">
             <summary aria-label="Notifications, 3 unread">

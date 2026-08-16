@@ -625,7 +625,7 @@ These screens are reached only inside a flow, triggered by a user action. They a
 | Item | Status | Reason |
 |---|---|---|
 | **Public Profile** | Deferred to post-MVP (G3) | Reachable only via external shared-card link for MVP. No in-app discovery at 10-20 curated markets: users do not browse others' track records unprompted. In-app path added when leaderboard or social discovery is confirmed. |
-| **Search** | Deferred until catalog scale | At 10-20 curated markets, users scan the Event Feed; they do not search. Search does not close a confirmed job at this scale. When added, it attaches to the Events tab under FJ1 - not a bottom slot. |
+| ~~**Search**~~ | ~~Deferred until catalog scale~~ **BUILT 2026-08-16** | The deferral read: "At 10-20 curated markets, users scan the Event Feed; they do not search. Search does not close a confirmed job at this scale. When added, it attaches to the Events tab under FJ1 - not a bottom slot." **Its premise was re-measured before it was overturned and it had NOT been overturned by scale**: the product draws **25 distinct events**, counted from every `.q` and `.ed-q` in the painted tree, so 10-20 became 25 and nothing else moved. The 1,284 in the footer strip is the resolved-on-chain trust figure and counts a different thing. **What did move is the reachability finding, and the 404 had been drawing the evidence for it**: `pages/system.md` names that page's two escapes as "search or quick links", it ships the quick links and a magnifier over "This page does not exist", and there was no route to an event except scrolling a category. **The IA's own placement is honoured**: three pages on the Events destination (`event-feed-search`, `-results`, `-empty`), no bottom slot, and the way in from every other screen is a header utility beside the bell. `docs/decisions.md` 2026-08-16. |
 | **Leaderboard** | [ORPHAN] | No confirmed job. SJ2 is served by My Profile and Public Profile. Leaderboard is a view over profiles, not a job-closing destination. |
 | **Responsible-play slot (D-logic)** | Reserved, post-MVP, not built | Account-level deposit and loss limits, cooldown period, self-exclusion. Mandatory for Brazil Phase 2 (Law 14.790 / Ordinance 1,231 self-exclusion and responsible-gambling requirements). Do not discover this late. |
 
@@ -984,7 +984,7 @@ One systemic gap was found and closed during tracing: FJ1 / FJ5 / EJ3 depended o
 
 **Backlog (open):**
 - Settings / Notification Preferences - remains `[ORPHAN]` until a job is confirmed.
-- Search - deferred until catalog scale (see Navigation - Deferred section).
+- ~~Search - deferred until catalog scale~~ **CLOSED 2026-08-16, built at 25 events rather than at scale.** The deferral was conditional and its condition was not met; what overturned it was reachability, not catalog size. See the Deferred row above.
 
 ---
 

@@ -373,6 +373,43 @@
   </section>
 
   <!-- ============================ 07 yesno ============================ -->
+  <section class="tk-comp" id="search">
+    <h2>search</h2>
+    <ul class="tk-meta">
+      <li>components/search.css</li>
+      <li>84 lines</li>
+      <li>level 1</li>
+      <li>17 uses</li>
+      <li class="tk-decl">ONE CONTROL</li>
+      <li><a href="search.html">its own page</a></li>
+    </ul>
+    <p class="tk-note">A field that holds a query, a mark inside it that says what the box is, a
+    control that empties it, and the mono line that answers. <b>Written 2026-08-16, and it is the
+    first component here that re-opens an IA decision rather than filling a gap</b>: search is
+    deferred in <code>ia/docs/sitemap.md</code> "until catalog scale", and the catalog is 25 events.</p>
+    <p class="tk-note"><b>It is not a variant of <a href="input.html">input</a>, and the reason is
+    anatomy in three places</b>: the mark is INSIDE this control and beside that one, the value is a
+    query rather than a quantity, and this is the only field in the product a person can empty. What
+    it shares it shares through the roles, not through a copy.</p>
+    <div class="tk-faces">
+      <span class="tk-colh"></span>
+      <span class="tk-colh">Vault, dark</span>
+      <span class="tk-colh">Daylight, light</span>
+
+      <span class="tk-lab"><b>.search</b><i>empty: the placeholder carries the prompt and there is no clear control, because a button that empties an empty field is a target that does nothing</i></span>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="search" role="search"><div class="search-field"><svg class="ic search-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg><input class="search-input" type="search" value="" placeholder="Search events" aria-label="Search events" autocomplete="off"></div></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="search" role="search"><div class="search-field"><svg class="ic search-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg><input class="search-input" type="search" value="" placeholder="Search events" aria-label="Search events" autocomplete="off"></div></div></div>
+
+      <span class="tk-lab"><b>.search-clear</b><i>holding a query: the clear control arrives with the value, and it is an `.icon-btn.icon-btn-bare` rather than a face this file draws</i></span>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="search" role="search"><div class="search-field"><svg class="ic search-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg><input class="search-input" type="search" value="election" aria-label="Search events" autocomplete="off"><button type="button" class="icon-btn icon-btn-bare search-clear" aria-label="Clear the search"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg></button></div></div></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><div class="search" role="search"><div class="search-field"><svg class="ic search-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg><input class="search-input" type="search" value="election" aria-label="Search events" autocomplete="off"><button type="button" class="icon-btn icon-btn-bare search-clear" aria-label="Clear the search"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg></button></div></div></div>
+
+      <span class="tk-lab"><b>.search-count</b><i>the answer, in mono, because it is a figure a person reads twice. It is computed from the same pass that hides the cards, so the number and the grid cannot disagree</i></span>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><p class="search-count"><b>2</b> events for "election"</p></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><p class="search-count"><b>2</b> events for "election"</p></div>
+    </div>
+  </section>
+
   <section class="tk-comp" id="yesno">
     <h2>yesno</h2>
     <ul class="tk-meta">

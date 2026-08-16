@@ -12,6 +12,84 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-16 - Search was not missing, it was decided against, and the condition on that decision had not been met
+
+**THE FIRST THING THIS PASS DID WAS FIND THE DECISION IT WAS ABOUT TO OVERTURN.**
+`ia/docs/sitemap.md`, Navigation - Deferred: "**Search** - Deferred until catalog scale. At 10-20
+curated markets, users scan the Event Feed; they do not search. Search does not close a confirmed
+job at this scale. **When added, it attaches to the Events tab under FJ1 - not a bottom slot.**"
+`ia/docs/pages/system.md` carried the same deferral with its indexation policy already written for
+the day it shipped. So the critique's "no search control exists in 105 screens" is a true reading of
+a screen tree and a false reading of the product: the absence was argued, dated and conditional.
+
+**THE CONDITION WAS RE-MEASURED AND IT HAD NOT BEEN MET.** Counted from every `.q` and `.ed-q` in
+the painted tree, **the product draws 25 distinct events**. The deferral's premise moves from 10-20
+to 25 and nothing about it breaks. **The 1,284 the critique cites is the resolved-on-chain figure in
+the footer trust strip**, which counts settled history rather than a browsable catalog, and the two
+numbers were being read as one.
+
+**WHAT DID OVERTURN IT IS THE OTHER HALF OF THE SAME FINDING, AND THE 404 HAD BEEN DRAWING THE
+EVIDENCE.** "No route to an event except scrolling a category" is true at 25 events and does not
+wait for scale. And `ia/docs/pages/system.md` has named the 404's two escapes as "**search** or
+quick links + home" since that table was written: the page ships the quick links and draws
+`i-magnifer-o` over "This page does not exist", so **the product has been drawing the icon of a
+control it did not have**. A spec that names a thing, an icon that pictures it, and a deferral that
+withholds it is not a settled decision, it is three files disagreeing.
+
+**SO IT IS BUILT, AT 25 EVENTS RATHER THAN AT SCALE, AND THAT IS A DECISION AND NOT A DISCOVERY.**
+It is recorded here in those words so the next reader is not told the catalog grew.
+
+**THE IA'S OWN PLACEMENT IS HONOURED TO THE LETTER.** Three pages on the Events destination and
+**no bottom-nav slot**: `event-feed-search.html` with every open event and an empty field,
+`-results.html` with a query and its matches, `-empty.html` with a query and none. The way in from
+the other 106 screens is a **header utility**, beside the bell and the favourites mark, which is
+where this product already puts a thing that is not a destination. 105 of 105 painted headers, 88 of
+88 grey, 10 of 10 in the kit, and it is on the logged-out header too, because browsing and finding
+an event are pre-wallet jobs the product already advertises.
+
+**A FILTER NARROWS A LIST YOU ARE BROWSING; A SEARCH FINDS A THING YOU ALREADY HAVE IN MIND.** That
+is why the field is not in the feed head beside Sort and How often. The critique's own finding about
+that head is that it already carries two category selectors using the same five words with nothing
+distinguishing them, and a third control doing a fourth job would have been worse than the defect it
+was meant to answer.
+
+**THE COMPONENT IS AN ATOM OF ITS OWN AND NOT A VARIANT OF `input`, ON THREE COUNTS OF ANATOMY.**
+The mark is INSIDE this control and beside that one, and `input.css` argued the currency mark OUT of
+its value on purpose. The value is a query in the body face at reading size, where every value
+declaration in `input.css` is about a number. And this is the only field in the product a person can
+empty, so `.search-clear` is a state the input family has no vocabulary for. What it shares it
+shares through the roles: `--bg-well`, `--border-field`, the 44px floor, and the two-question focus.
+
+**`type="search"` IS THE ROLE AND THE DECORATION IS THE PRICE**, which is the amount field's
+`type="number"` lesson read from the other end. The type is what makes this a `searchbox` in the
+accessibility tree rather than a textbox; both engines then draw furniture on it for free, so
+`::-webkit-search-cancel-button` and `::-webkit-search-decoration` come off **by name** rather than
+by hoping `appearance:none` reaches them. Verified: `appearance:none`, 44px tall, 10px radius, the
+system's field ground and border, in Chromium and in WebKit.
+
+**THE DRAWN STATE IS THE STATIC ONE.** All three screens carry their filtered grid in the markup,
+with `hidden` on the cards that do not match, and the page script reproduces what the file already
+says rather than being the only thing that knows. That is the defect this repository paid for when
+eight bet panels carried a retired payout and a script was the only correction.
+
+**Verified.** 1,104 renders over three trees at 390 and 1280 in Chromium and WebKit: 0 page errors,
+0 responses at 400 or above, 0 documents scrolling sideways with `scrollLeft` read back, 0 duplicate
+ids, **0 headers with no way into search**, and **0 pages where the count disagrees with the number
+of cards under it**. Typing is checked in both engines: "eurovision" gives `1 event` and one card,
+"zzzz" gives `0 events` and the no-match block, and the clear control returns the list to 12. The
+accessibility tree reports one `searchbox` named "Search events", one `search` landmark and one
+`status` region per screen.
+
+**One instrument error, and it is the kit's.** The header control was inserted by finding the first
+`<details class="notif-menu">` after each `<header>`, which is correct on a screen that holds one
+header and wrong on `ui-kit/header.html`, which holds eight: two of them are logged-out and carry no
+bell, so the search reached forward into the NEXT header's cluster and left the logged-out ones
+bare. **Five of eight headers on that page ended up wrong in a way that reads as right**, and what
+found it was a per-header assertion in the browser rather than a count of insertions. Repaired by
+walking each `<header>` block on its own.
+
+---
+
 ## 2026-08-16 - Nineteen screens that were loading said so to nobody, and two of the six things the critique called defects were readings of the source
 
 The Minor Observations pass. Every finding below was re-measured against the accessibility tree or

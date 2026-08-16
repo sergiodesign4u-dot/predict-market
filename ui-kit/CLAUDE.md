@@ -1,7 +1,9 @@
 # ui-kit/ - the vitrine, rebuilt by hand 2026-08-07 to 2026-08-08
 
 **All five steps are done and the plan below is the record of how, not a to-do list.** What is on the
-stand today: **58 pages** since 2026-08-15, when the Animation stage added `motion.html` as the SIXTH
+stand today: **59 pages** since 2026-08-16, when `search.html` was written as the THIRTEENTH atom,
+for a control the IA had deferred rather than for one it had specified. It was **58** from
+2026-08-15, when the Animation stage added `motion.html` as the SIXTH
 foundation, after `responsive`. It is the one page here that cannot be printed: every specimen on it
 has to be operated, because a screenshot shows a frame and never a movement, and it is built on
 checkboxes and sibling selectors so there is no script on it either. It was **57 pages**, `_page.css`, `_nav.js`, and **seven** reports in `docs/`, the seventh being
@@ -18,12 +20,12 @@ read "all four foundation pages" and listed `icons`, `colour`, `typography`, `ge
 page the Responsive stage added was missing from the list that the total was added up from, and the
 total came out one short in both files at once. **A count taken by adding up a list is only as good
 as the list**, which is the argument for the tally that `_nav.js` computes and against the one typed
-into prose beside it. Counted 2026-08-12 by listing `ui-kit/*.html` and by parsing the registry, and
-the two agree: 1 overview, 5 foundations, 4 shelves, 12 atoms, 16 molecules, 13 organisms, 6
+into prose beside it. Re-counted 2026-08-16 by listing `ui-kit/*.html` and by parsing the registry, and
+the two agree: 1 overview, 6 foundations, 4 shelves, 13 atoms, 16 molecules, 13 organisms, 6
 patterns.
-**0 generators, 0 gates, 0 screenshots.** Every one of the **47** components placed on a level page
+**0 generators, 0 gates, 0 screenshots.** Every one of the **48** components placed on a level page
 carries its live specimen in both themes, its classes, its declaration, its rule and its anti-rule.
-**47, not the 44 this line said**: counted 2026-08-12 from the `<section id>` of each shelf, 12 on
+**48 since 2026-08-16, and 47 before it**: counted from the `<section id>` of each shelf, 13 on
 `vitrine.html`, 16 on `molecules.html`, 13 on `organisms.html` and 6 on `patterns.html`, which is
 also the number of files in `components/` once `index`, `tokens`, `base`, `course-chrome` and
 `fonts` are taken out and the six in `patterns/` are put in.
@@ -62,13 +64,14 @@ rendered**, and the six that read 0x0 at 390 stand in a panel that is `display:n
 `toggle.html` found the four faces above. None of these was visible from a level page, because a
 level page shows one specimen and every one of them is a fact about a set.
 
-The kit shows the system to a person and it holds no product code. It holds 57 pages plus its
-stylesheet and its registry: `overview.html`, which says what is happening, **all five foundation
-pages** (`icons.html`, `colour.html`, `typography.html`, `geometry.html`, `responsive.html`), **a
-shelf per rung, all four** (`vitrine.html` for the twelve atoms, `molecules.html` for the sixteen at level 2,
+The kit shows the system to a person and it holds no product code. It holds 59 pages plus its
+stylesheet and its registry: `overview.html`, which says what is happening, **all six foundation
+pages** (`icons.html`, `colour.html`, `typography.html`, `geometry.html`, `responsive.html`,
+`motion.html`), **a
+shelf per rung, all four** (`vitrine.html` for the thirteen atoms, `molecules.html` for the sixteen at level 2,
 `organisms.html` for the thirteen at level 3 and `patterns.html` for the six on the fourth rung), and
-**twelve atom pages, one per atom** (`button`, `iconbtn`, `chip`, `navitem`, `oddsbar`, `input`,
-`yesno`, `toast`, `skeleton`, `toggle`, `logo`, `platehead`) and **sixteen molecule pages** (`trustbar`, `market`,
+**thirteen atom pages, one per atom** (`button`, `iconbtn`, `chip`, `navitem`, `oddsbar`, `input`,
+`search`, `yesno`, `toast`, `skeleton`, `toggle`, `logo`, `platehead`) and **sixteen molecule pages** (`trustbar`, `market`,
 `comments`, `notice`, `filters`, `bottomnav`, `catnav`, `related`, `state-block`, `position`,
 `quick`, `options`, `seo-plate`, `loadmore`, `cookie-consent`, `toc`) and **thirteen organism pages**
 (`header`, `footer`, `dialog`, `hiw`, `tabs`, `event-detail`, `betpanel`, `bets-table`,
@@ -78,7 +81,7 @@ shelf per rung, all four** (`vitrine.html` for the twelve atoms, `molecules.html
 
 **Every component has a ROW whether or not it has a page.** `_nav.js` groups by level, the level page
 is the first row of its own group (`All atoms`, `All molecules`), and a row with no page renders as a
-`<span>` with a badge. There are no rows waiting any more, so the panel says **57 of 57** and drops its own
+`<span>` with a badge. There are no rows waiting any more, so the panel says **59 of 59** and drops its own
 sentence about rows with no page: that sentence only exists while there IS one.
 
 **The route is written once, in `_nav.js`, and a page declares no part of it**, not even its own

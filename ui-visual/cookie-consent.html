@@ -66,6 +66,9 @@ push();});})();</script>
         <a href="event-feed-empty.html" class="sidebar-sub-link">empty</a>
         <a href="event-feed-error.html" class="sidebar-sub-link">error</a>
         <a href="event-feed-loading.html" class="sidebar-sub-link">loading</a>
+          <a href="event-feed-search.html" class="sidebar-sub-link">search</a>
+          <a href="event-feed-search-results.html" class="sidebar-sub-link">search-results</a>
+          <a href="event-feed-search-empty.html" class="sidebar-sub-link">search-empty</a>
         <a href="event-feed-push-permission-missing.html" class="sidebar-sub-link">push-permission-missing</a>
         <div class="sidebar-divider sub">Logged out</div>
         <a href="event-feed-logged-out.html" class="sidebar-sub-link">success</a>
@@ -271,6 +274,11 @@ document.addEventListener('click', function (e) {
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
           </button>
 
+          <!-- Search: a utility on every screen, logged out included. Browsing and finding an
+           event are pre-wallet jobs, so this one does not route to Sign In. -->
+          <a class="icon-btn" href="event-feed-search.html" aria-label="Search events">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg>
+          </a>
           <!-- Notifications kept as an affordance; tapping it logged-out routes to Sign In. No unread badge when logged out. -->
           <button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>

@@ -62,8 +62,8 @@ because it is a stance rather than a principle, and it is written once, here.
   `wireframes/_conventions.md`.
 - **One system.** `components/` holds `tokens.css` plus one file per component, reached through
   `components/index.css`. **Every PAINTED screen links that one file and nothing else, and the grey
-  tree links no stylesheet at all**: 106 of 106 in `ui-visual/` and 57 of 57 in `ui-kit/` link it,
-  **0 of the 105 in `wireframes/` do**, and those 105 carry an inline `<style>` block each. Counted
+  tree links no stylesheet at all**: 109 of 109 in `ui-visual/` and 59 of 59 in `ui-kit/` link it,
+  **0 of the 108 in `wireframes/` do**, and those 108 carry an inline `<style>` block each. Counted
   2026-08-12 at 104 and re-counted 2026-08-15, when `terms.html` was written and the grey tree
   stopped being one screen short of the tree it decides. The sentence here said "every screen" until then, and the folder file it contradicted
   is the one that had it right. The visual language is
@@ -76,7 +76,7 @@ because it is a stance rather than a principle, and it is written once, here.
   job, and taking one apart needs room a shelf does not have, because a shelf gives every component
   one specimen and one rule. **The threshold is not a placement count** - `toast` has four and
   `toggle` has three, and four of the toggle's five faces have no placement in the product at all, so
-  a stand built by walking screens would show one grey oval and call it the component. **57 of 57 pages written**, one route in `_nav.js`, 0 generators and 0 gates. **The panel computes the tally from `_nav.js` and this line was typed by hand, which is why it said 55 while 57 files stood on disk**: 1 overview, 5 foundations, 4 shelves, 12 atoms, 16 molecules, 13 organisms, 6 patterns, counted 2026-08-12 by listing `ui-kit/*.html` and by parsing the registry, and the two agree. It was 54 until 2026-08-11, when three pages landed the same day: `logo` with the rename to Yonder, `platehead` by backlog 108, and `responsive.html`, the FIFTH foundation, which is the page every enumeration in this repository was still leaving out. And it had been 55 before that until `account` was deleted on 2026-08-08, a component whose whole stylesheet was a face nothing wore.
+  a stand built by walking screens would show one grey oval and call it the component. **59 of 59 pages written**, one route in `_nav.js`, 0 generators and 0 gates. **The panel computes the tally from `_nav.js` and this line was typed by hand, which is why it said 55 while 57 files stood on disk**: 1 overview, 6 foundations, 4 shelves, 13 atoms, 16 molecules, 13 organisms, 6 patterns, re-counted 2026-08-16 by listing `ui-kit/*.html` and by parsing the registry, and the two agree. It was 57 and five foundations until then: `motion.html` arrived with the Animation stage on 2026-08-15 as the SIXTH foundation and this line went on saying five, and `search.html` is the thirteenth atom, written 2026-08-16 for a control the IA had deferred. It was 54 until 2026-08-11, when three pages landed the same day: `logo` with the rename to Yonder, `platehead` by backlog 108, and `responsive.html`, the FIFTH foundation, which is the page every enumeration in this repository was still leaving out. And it had been 55 before that until `account` was deleted on 2026-08-08, a component whose whole stylesheet was a face nothing wore.
 
 ---
 
@@ -173,9 +173,9 @@ because it is a stance rather than a principle, and it is written once, here.
   not moving and is measuring nothing; only the browser's own default setting, CDP
   `Page.setFontSizes`, changes both the type and the rung. The 1140 harness stays in px, because a
   docked panel is 220 physical pixels whatever the reader's font is. **106 and 105 both name a
-  true thing and every number in this repository has to say which**: `ui-visual/` holds 106
-  documents, 105 of them screens, and `overview.html` is the index of the tree rather than a screen
-  in it.
+  true thing and every number in this repository has to say which**: `ui-visual/` holds 109
+  documents, 108 of them screens, and `overview.html` is the index of the tree rather than a screen
+  in it. It was 106 and 105 until 2026-08-16, when the three search screens landed in both trees.
 - **A verdict about a component is a statement about the SET of its placements.** A reading taken on
   one placement and printed as a property of the component is a fact about a slot wearing a
   component's name: `navitem` was published FIXED at 258px, the width of the third of its three

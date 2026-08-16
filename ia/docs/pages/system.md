@@ -19,11 +19,18 @@ joke, no "something went wrong", no exclamation). No em dash.
 | 503 Maintenance | page | `503` + `Retry-After` | `noindex` | retry + expected time |
 | Cookie consent | component (banner) | n/a | n/a | dismissible, reopenable from footer |
 | Toast / notification | component | n/a | n/a | auto-dismiss + manual close |
-| Search | deferred | n/a | `noindex,follow` when built | out of scope now (see note) |
+| Search | page + 2 states | `200` | `noindex,follow` | the field itself, the category strip, and a no-match block with two ways out |
 
-Search is **deferred** in `sitemap.md` ("Search - Deferred until catalog scale"), so it is not
-built here; when it ships, results are `noindex,follow` with a no-results state that offers a
-way out (this is already recorded in the indexation policy in `seo.md`).
+Search was **deferred** in `sitemap.md` ("Search - Deferred until catalog scale") and was **built on
+2026-08-16**, at 25 events rather than at scale. The indexation policy recorded here and in `seo.md`
+is what shipped: `event-feed-search.html` and its two states are `noindex,follow`, and the no-match
+state offers two ways out, "Browse all events" and "How events are chosen".
+
+**The 404 is the reason this row moved, and it had been arguing for it in the markup.** The
+"never a dead-end" column above has said "search or quick links + home" since this table was
+written; the page shipped the quick links, and drew `i-magnifer-o` over "This page does not exist"
+for a control that did not exist. It now carries "Search events" in its quick-link list, which makes
+the icon a promise the product keeps.
 
 ---
 

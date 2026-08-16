@@ -1,7 +1,9 @@
 # components/ - the system itself
 
-This folder IS the design system. **54 stylesheets, 10,805 lines**: 48 here and 6 in `patterns/`,
-re-counted 2026-08-16 after the minor-observations pass gave the skeleton a hidden status line and
+This folder IS the design system. **55 stylesheets, 10,896 lines**: 49 here and 6 in `patterns/`,
+re-counted 2026-08-16 after `search.css` was written, which is the first file added to this folder
+for a control the IA had DECIDED against rather than for one it had specified. It was 54 and 10,805
+earlier the same day, after the minor-observations pass gave the skeleton a hidden status line and
 moved the profile's lead figure off an ordinal. It was 10,764 earlier the same day, after the
 palette pass gave the hero chart a scale, took Volume off
 brass and took the tint off the spectator's YES/NO pair. It was 10,613 earlier the same day, after
@@ -29,16 +31,16 @@ was written the same day by backlog 108 out of six rules that stood in `dialog.c
 once. `tokens.css` plus
 one file per component, all reached through `index.css`.
 
-**163 documents link `index.css` and nothing else, and they are not the ones this line used to
-name.** Counted 2026-08-12 with `grep -l`: **106 of 106** documents in `ui-visual/` and **57 of 57**
-pages in `ui-kit/`. **0 of the 104 in `wireframes/` link any stylesheet at all**, and they carry 104
+**168 documents link `index.css` and nothing else, and they are not the ones this line used to
+name.** Re-counted 2026-08-16: **109 of 109** documents in `ui-visual/` and **59 of 59**
+pages in `ui-kit/`. **0 of the 108 in `wireframes/` link any stylesheet at all**, and they carry 108
 inline `<style>` blocks instead, which this file already says out loud further down and said the
 opposite of here for as long as both sentences stood. So **an edit here reaches every painted screen
 and every kit page at once and none of them can override it, and it reaches the grey tree not at
 all.** There is no build step and no gate: what you write is what ships.
 
-**106 and 105 are both right and they count different things, so every number below says which.**
-`ui-visual/` holds **106 documents**; **105 of them are screens** and `overview.html` is the index of
+**109 and 108 are both right and they count different things, so every number below says which.**
+`ui-visual/` holds **109 documents**; **108 of them are screens** and `overview.html` is the index of
 the tree rather than a screen in it, which is why about twenty `Stands on:` lines in this folder read
 105 and are exact. A sweep over `ui-visual/*.html` reads 106. A statement about the product reads
 105.

@@ -95,13 +95,14 @@ window.KIT_NAV = [
        otherwise have a title nobody could click. */
     label: 'Atoms',
     items: [
-      { label: 'All atoms',   page: 'vitrine.html', done: true, note: '12' },
+      { label: 'All atoms',   page: 'vitrine.html', done: true, note: '13' },
       { label: 'Button',      page: 'button.html',  done: true, note: '902' },
       { label: 'Icon button', page: 'iconbtn.html', done: true, note: '1,361' },
       { label: 'Chip',        page: 'chip.html',    done: true, note: '1,679' },
       { label: 'Nav item',    page: 'navitem.html', done: true, note: '995' },
       { label: 'Odds bar',    page: 'oddsbar.html', done: true, note: '72' },
       { label: 'Input',       page: 'input.html',   done: true, note: '122' },
+      { label: 'Search',      page: 'search.html',  done: true, note: '17' },
       { label: 'Yes / No',    page: 'yesno.html',   done: true, note: '116' },
       { label: 'Toast',       page: 'toast.html',   done: true, note: '4' },
       { label: 'Skeleton',    page: 'skeleton.html',done: true, note: '482' },

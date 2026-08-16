@@ -76,6 +76,12 @@
 @import url("button.css");
 @import url("iconbtn.css");
 @import url("input.css");
+/* search added 2026-08-16, and it sits beside input rather than inside it: the
+   file itself argues why, and the level is the same reading as the field it
+   stands next to. It holds `.icon-btn` in one slot and that is not containment
+   for this arithmetic, because the clear button is a placement of another atom
+   and not a part this file draws. */
+@import url("search.css");
 @import url("toggle.css");
 @import url("chip.css");
 @import url("skeleton.css");
