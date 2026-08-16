@@ -481,7 +481,24 @@ svg.ic:has(use[href^="#i-"]),svg.ic-sm:has(use[href^="#i-"]){fill:currentColor!i
    `lvh` and `vh` are one number there and this edit measures as zero on every sweep in this
    repository: **the thing it fixes cannot be read by the instrument that guards it**, which is the
    reason the argument is written here rather than left as a value. */
-.device{width:100%;max-width:none;margin:0 auto;min-height:100svh;display:flex;flex-direction:column;position:relative;border:0;background-color:var(--bg-slab);background-image:var(--surface-grain-coarse),linear-gradient(180deg,var(--bg-slab-from),var(--bg-slab-to));background-blend-mode:overlay,normal}
+.device{width:100%;max-width:none;margin:0 auto;min-height:100svh;display:flex;flex-direction:column;position:relative;border:0;background-color:var(--bg-slab);background-image:var(--surface-grain-coarse),linear-gradient(180deg,var(--bg-slab-from),var(--bg-slab-to));background-blend-mode:overlay,normal;padding-bottom:var(--bottom-nav-h)}
+/* THE FOURTH FLOOR IS THE ROOM THE STICKY FURNITURE TAKES, and it is here for the same reason the
+   focus ring and the 44px touch floor are: a person scrolling to the end of a page and a person
+   tabbing to a control are not asking each component separately.
+   `scroll-padding` did not exist anywhere in this folder, measured, and the header is 59px pinned
+   at the top while the bottom nav is 56px pinned at the foot. Tab scrolls a target only just into
+   view, so on event-detail.html at 390 it put four controls at y 816 to 826 in an 844 viewport,
+   underneath the bar: `elementFromPoint` returned `a.nav-item` at all five sample points on each,
+   and the focused and blurred screenshots of the control's clip came back byte-identical. The ring
+   was painted correctly the whole time and the bar was on top of it, which is why every audit that
+   read `outline` and `box-shadow` found 0 defects. **A ring is a claim about what is visible and
+   the only instrument for it is the paint.**
+   `.device` is padded by the same distance so the footer's last row is not under the bar now that
+   the bar is `position:fixed`. Both read `--bottom-nav-h`, which `bottomnav.css` zeroes from DESK
+   up in the block that hides the bar, so above the rung this costs nothing and says so. The dock
+   adds its own 68 on the 11 documents that carry one, declared in `betpanel.css` through
+   `html:has(.bet-dock)`, because a screen with no dock must not be padded for one. */
+:root{scroll-padding-block:var(--header-h) var(--bottom-nav-h)}
 .app-case{position:relative;background:transparent;border:0}
 /* HIDDEN IS A STATE, NOT A STYLE, so nothing may out-declare it. The user agent
    hides with display:none from ITS sheet and any author declaration beats that

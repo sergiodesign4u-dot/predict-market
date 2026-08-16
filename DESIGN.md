@@ -180,8 +180,8 @@ A graphite grayscale tilted warm, with a single matte-brass accent and a reserve
 - **Matte Brass** (`#c7a24e`): the one brand accent. Identity (the up-trend logo tick), the active tab/chip, and primary CTAs only. `#d9b968` (`brass-2`) and `#e6c877` (`brass-bright`) are the lit variants for gradients, brass art, and eyebrow text on the darker plates; `#d7ac53` (`brass-text`) is the text/link-safe brass. `#6e5a2e` (`bronze`) is the deep shadow tone. Brass-line `rgba(199,162,78,.30)` draws the inset hairline frame on notched tiles. Text on brass fills is near-black `#180810`.
 
 ### Secondary
-- **Outcome Green** (`#4fa96b`, `yes`): YES only. It fills the odds bar; on the tinted YES button the text is the lighter `#77d19b`. Never a brand or UI color.
-- **Outcome Red** (`#c85a50`, `no`): NO only. It is the odds-bar track; on the tinted NO button the text is `#e79087`. Reserved strictly for the NO outcome; never used for errors, alerts, or destructive chrome.
+- **Outcome Green** (`#4fa96b`, `yes`): YES only. It fills the odds bar; on the YES button it is the label ink, the lighter `#77d19b`, over the system's own control stone. Never a brand or UI color.
+- **Outcome Red** (`#c85a50`, `no`): NO only. It is the odds-bar track; on the NO button it is the label ink, `#e79087`, over the same control stone. Reserved strictly for the NO outcome; never used for errors, alerts, or destructive chrome.
 
 ### Neutral
 - **Page** (`#0f1013`): the void behind the device.
@@ -239,8 +239,8 @@ The product is dark; its theme is a light one, and it exists as a proof of the s
 | `--text-icon` | `--bg-surface` | 9.4:1 | 5.2:1 |
 | `--text-brass` | `--bg-surface` | 7.8:1 | 7.1:1 |
 | `--text-brass-chip` | `--bg-chip` over a brass tint | 10.0:1 | 6.2:1 |
-| `--outcome-yes-text` | its own 12% fill | 8.3:1 | 6.5:1 |
-| `--outcome-no-text` | its own 12% fill | 6.7:1 | 6.6:1 |
+| `--outcome-yes-text` | `--bg-control` | 8.0:1 | 7.7:1 |
+| `--outcome-no-text` | `--bg-control` | 6.2:1 | 8.1:1 |
 | `--icon-quiet` (a filled glyph) | `--bg-card` | 6.7:1 | 4.3:1 |
 | `--icon-brass` (a saved mark) | `--bg-card` | 8.6:1 | 3.2:1 |
 
@@ -251,7 +251,7 @@ The last two are graphics, not words: the bar is 3:1. Everything else clears 4.5
 ### Named Rules
 **The One-Accent Rule.** Brass carries identity, the active state, and primary CTAs only. It is never a decorative fill and never competes with the outcome colors. If a screen has brass on more than the logo, the active chip, and the primary action, it is overspent.
 
-**The Reserved-Outcome Rule.** Green is YES, red is NO, forever. They never appear as brand, error, success, or decoration. The odds bar (green fill on a red track) carries the outcome color so the YES/NO buttons can stay quiet tints.
+**The Reserved-Outcome Rule.** Green is YES, red is NO, forever. They never appear as brand, error, success, or decoration. The odds bar (green fill on a red track) carries the outcome color so the YES/NO buttons can stay quiet. **Quiet means the LABEL and nothing else, since 2026-08-16**: the button rests on `--bg-control` with the system's hairline, exactly like every other quiet control, and only the word YES or NO is green or red. The rule used to say "quiet tints", and a 12 per cent wash is quiet on one card and a wall on twelve: `event-feed.html` was carrying 72 outcome-colored elements in one column. The color comes back on hover and press, where a ground on a control is answering a finger rather than making a standing claim about the market.
 
 **The Veil Rule.** A veil over a photograph is not a dark color, it is the layer that guarantees the words on top of it. It follows the ink: dark ink means a pale veil. A scrim behind a white glyph is a different thing and stays dark in both themes.
 
@@ -364,8 +364,14 @@ starts at x=14 on a phone, so **it covered 34px of the brand mark on 88 pages at
 answer is not that the product indents: that would push the brand 42px off the column every line
 under it aligns to, in the review build only, for a tool. The button moved to the corner the product
 does not use, measured across five candidates - **bottom right is empty on 147 of 160 pages** against
-top-left covering the brand on 88 - and it lifts by the bottom nav's 56 plus a 12 gap below the desk
-rung. **The harness moves and the product does not**, whether what it is taking is width or paint.
+top-left covering the brand on 88 - and it lifts clear of whatever product furniture is pinned to
+that edge. **That lift was a copy of two other files' heights until 2026-08-16 and it is a sum of
+them now**: `calc(var(--bottom-nav-h) + var(--dock-h) + var(--space-12))`, which is 136 below the
+desk rung where both bars stand, 80 between the rungs where the nav is gone, and the plain 12 from
+DETAIL up where neither is. It had been `8.25rem` inside a width query cut one pixel below the rung
+the bet dock is cut at, a number that was re-measured here every time either bar moved and was
+wrong in between. **The harness moves and the product does not**, whether what it is taking is
+width or paint.
 
 - **The inner/outer rhythm.** Within a group, gaps stay small (4-12); between groups they open up
   (16-24). The bet sheet is the reference: ~20px between the header / YES-NO / amount / breakdown /
@@ -502,7 +508,7 @@ Full entry, and every other third-party asset, in [`NOTICE.md`](./NOTICE.md).
 ### Buttons
 - **Shape:** primary CTA at 10px (`rounded.cta`); YES/NO at 9px (`rounded.md`); minimum touch target 44px.
 - **Primary (brass CTA):** a brass gradient (`linear-gradient(135deg, #c7a24e, #d9b968)`), near-black text (`#180810`), used for Confirm bet / Add funds inside dialogs and for state primary actions. One per view.
-- **YES / NO (tinted, not filled):** YES is `rgba(79,169,107,.12)` with text `#77d19b` and border `#3f7d55`; NO is `rgba(200,90,80,.12)` with text `#e79087` and border `#8f4841`. They stay quiet at rest; the color deepens on hover/intent. The odds bar, not the buttons, carries the outcome weight.
+- **YES / NO (label only, not tinted and not filled):** both rest on `--bg-control` behind the system hairline; only the ink is the outcome, `#77d19b` for YES and `#e79087` for NO. Hover and press flood the ground with 32% of that side's own color, so the color is an answer to intent rather than a resting state. The odds bar, not the buttons, carries the outcome weight. This was a 12% tint with a mid-outcome border until 2026-08-16; see the Reserved-Outcome Rule for why it came off.
 - **Ghost icon buttons:** transparent on a `#2b2f38` hairline, `999px`, 44px; hover shifts to a brass-tinted border. Used for the header utility cluster and the event actions (comment / share / save into Favorites).
 
 ### Chips
@@ -526,16 +532,16 @@ Full entry, and every other third-party asset, in [`NOTICE.md`](./NOTICE.md).
 - **Mobile bottom nav:** four slots on `#1c1f24` with an engraved top groove; the active slot is brass-text with a brass icon. Money stays a utility (a balance figure), not a primary destination.
 
 ### Signature Components
-- **Event card, binary (treatment B):** editorial thumbnail (masked, bleeding left) + question (Space Grotesk) + a 2-line story "why" + the **odds bar** (a thin 4px pill: green YES fill with a soft glow on a red NO track, YES%/NO% labels in mono) + tinted YES/NO + a mono meta row (Volume / Closes) + bookmark. The action band is vertically centered so odds bars line up across cards.
+- **Event card, binary (treatment B):** editorial thumbnail (masked, bleeding left) + question (Space Grotesk) + a 2-line story "why" + the **odds bar** (a thin 4px pill: green YES fill with a soft glow on a red NO track, YES%/NO% labels in mono) + a graphite YES/NO pair with outcome labels + a mono meta row (Volume / Closes) + bookmark. The action band is vertically centered so odds bars line up across cards. The odds bar is built by the page script from the `.prob-line` figure, so the four colored elements on a card are the bar's, and the two buttons carry color only in their words.
 - **Event card, multi (treatment D):** option rows (name + probability in Space Grotesk + compact tinted YES/NO), each row a flat `#1b1e23` chip.
-- **Featured hero band:** a featured market (photo backdrop under a veil, AMM price chart), two trust cards, a notched brass brand tile, and a "hot right now" list, each on the shared card-face stone.
+- **Featured hero band:** a featured market (photo backdrop under a veil, AMM price chart), two trust cards, a notched brass brand tile, and a "hot right now" list, each on the shared card-face stone. The chart is a **scaled** reading since 2026-08-16: five ruled lines at 70 / 60 / 50 / 40 / 30 per cent with mono numerals in the gutter, the YES and NO curves mirrored about the 50 line, and volume in `--series-5` in a strip of its own under a hairline, captioned as having no scale. It draws no brand color at all.
 - **Event Detail:** two floating plates (scrolling content + a sticky bet panel), a mobile sticky bet dock, an AMM "Market" depth panel (a pool + curve, not an order book), and content tabs (Comments / Biggest bets / Bets / Activity) in spectator language.
 
 ## 7. Do's and Don'ts
 
 ### Do:
 - **Do** keep the canvas graphite (`#0f1013` / `#141619`) and spend brass (`#c7a24e`) only on identity, the active state, and one primary CTA per view.
-- **Do** let the odds bar carry the outcome color and keep the YES/NO buttons as quiet tints, so the feed reads as a spectator surface.
+- **Do** let the odds bar carry the outcome color and keep the YES/NO buttons graphite with outcome labels, so the feed reads as a spectator surface.
 - **Do** build depth from the cast-plate emboss and real drop shadow: inset top highlight + dark rim + soft shadow.
 - **Do** set every number in IBM Plex Mono and every heading in Space Grotesk; keep body prose in DM Sans at 13-14px and 60-75 characters per line, which is `--measure: 46ch` and not 66 (`ch` is a zero, not a character: see the Measure Rule in section 3).
 - **Do** use real event photography, masked and veiled into the graphite; never a grey placeholder.

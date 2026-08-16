@@ -33,10 +33,9 @@
    for that reason. If a note has to name the marker, it names it in words.
 
    Reads: --bg-control, --bg-control-hover, --bg-pressed, --border-brass-hover,
-          --border-hairline, --edge-shade-strong, --outcome-no, --outcome-no-fill,
-          --outcome-no-fill-soft, --outcome-no-line, --outcome-no-text, --outcome-yes,
-          --outcome-yes-fill, --outcome-yes-fill-soft, --outcome-yes-line, --outcome-yes-text,
-          --text-muted, --text-on-no, --text-on-yes, --text-primary, --text-strong
+          --border-hairline, --edge-shade-strong, --outcome-no, --outcome-no-text,
+          --outcome-yes, --outcome-yes-text, --text-muted, --text-on-no, --text-on-yes,
+          --text-primary, --text-strong
    Stand:  ui-kit/yesno.html, and ui-kit/vitrine.html#yesno for the level and its reason
    Stands on: 22 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
@@ -104,13 +103,44 @@
   .opt-row .yesno.compact{flex:1 0 100%}
   .opt-row .yesno.compact :is(a,button){flex:1 1 0}
 }
-.yesno > a.yes,.yesno > button.yes{background:var(--outcome-yes-fill);color:var(--outcome-yes-text);border-color:var(--outcome-yes-line)}
-.yesno > a.no,.yesno > button.no{background:var(--outcome-no-fill);color:var(--outcome-no-text);border-color:var(--outcome-no-line)}
+/* ============================ the tint comes off, 2026-08-16 ==================
+   `DESIGN.md` has said this the whole time and the paint stopped one step short of it: **the
+   odds bar carries the outcome colour SO THAT the YES/NO buttons can stay quiet.** They were
+   quiet per card and loud per screen, because the rule was written about one card and the
+   feed stacks twelve. Counted on `event-feed.html`: 9 binary cards at six outcome-coloured
+   elements each - track, fill, the two bar labels, the two buttons - plus 3 multi cards at
+   four buttons, plus the hero's own six. **72 coloured elements on one column**, and
+   `PRODUCT.md` names the green-and-red wall of YES/NO buttons as an anti-reference by name.
+   WHAT COMES OFF IS THE GROUND AND THE EDGE, NOT THE MEANING. The label keeps its outcome
+   ink, so every button still says which side it is in colour as well as in the word on it;
+   what it stops doing is fill 44px of card with that colour twelve times over. The button
+   falls back to `--bg-control`, which the base rule three lines up has always declared, and
+   to the hairline every other quiet control in the system wears.
+   IT COSTS NOTHING IN CONTRAST AND THAT IS WORTH STATING, because the tint was so faint that
+   it was never carrying legibility either: YES goes 8.31:1 to 8.01:1 and NO 6.68:1 to 6.15:1
+   in the Vault, and in daylight both IMPROVE, 7.23 to 7.69 and 7.57 to 8.05, since the ink
+   now stands on the control stone rather than on a wash of its own colour.
+   THE COLOUR RETURNS ON INTENT. Hover and press below are untouched: reaching for a side
+   still floods it with 32 per cent of that side's own green or red. So the ground stops
+   being a permanent claim about the market and becomes an answer to a finger, which is the
+   one thing a ground on a control is actually for. */
+.yesno > a.yes,.yesno > button.yes{color:var(--outcome-yes-text);border-color:var(--border-hairline)}
+.yesno > a.no,.yesno > button.no{color:var(--outcome-no-text);border-color:var(--border-hairline)}
 .yesno :is(a,button){border-radius:var(--radius-10)}
 .yesno.compact :is(a,button){border-radius:var(--radius-10)}
 .opt-list .yesno.compact button{background:var(--bg-control);color:var(--text-primary);border:var(--hairline) solid var(--border-hairline)}
-.opt-list .yesno.compact button.yes{color:var(--outcome-yes-text);border-color:var(--outcome-yes-line);background:var(--outcome-yes-fill-soft)}
-.opt-list .yesno.compact button.no{color:var(--outcome-no-text);border-color:var(--outcome-no-line);background:var(--outcome-no-fill-soft)}
+/* THE CANDIDATE LIST FOLLOWS THE PAIR ABOVE, AND IT MATTERS MORE HERE THAN ON A CARD. This is
+   a CHOOSER: `.sel` below fills the chosen side solid. With a soft tint at rest the only
+   difference between chosen and unchosen was how much of the same colour was showing, which
+   is the weakest signal a state can be given. Rest is quiet, chosen is filled, and the atom's
+   three faces - the card's pair, this list, and `.yesno-pick` in the panel - now answer the
+   question the same way at every placement.
+   `--outcome-yes-fill-soft` and `--outcome-no-fill-soft` lost their last reader here and are
+   deleted from `tokens.css` with this edit. That is the reader-side zero and not the
+   placement-side one: nothing asks for the value any more, so keeping it would be paying rent
+   on a decision already taken. */
+.opt-list .yesno.compact button.yes{color:var(--outcome-yes-text);border-color:var(--border-hairline)}
+.opt-list .yesno.compact button.no{color:var(--outcome-no-text);border-color:var(--border-hairline)}
 .opt-list .yesno.compact button.sel.yes{background:var(--outcome-yes);border-color:var(--outcome-yes);color:var(--text-on-yes)}
 .opt-list .yesno.compact button.sel.no{background:var(--outcome-no);border-color:var(--outcome-no);color:var(--text-on-no)}
 /* PRESS. This is the one control in the product where the system's neutral press would lie: settle

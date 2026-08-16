@@ -385,10 +385,10 @@ document.addEventListener('click', function (e) {
             </details>
           </section>
           <section class="ed-section ed-rules">
-            <div class="rules-tabs" role="tablist"><button type="button" class="rules-tab sel">Rules</button><button type="button" class="rules-tab">Background</button></div>
-            <div class="rules-panel"><p class="resolution"><strong>Resolves YES</strong> if a federal funding gap causes a shutdown beginning before 00:00 ET on March 1, 2027. <strong>Resolves NO</strong> if funding is in place through that date.<br>
+            <div class="rules-tabs" role="tablist"><button type="button" class="rules-tab sel" role="tab" aria-selected="true">Rules</button><button type="button" class="rules-tab" role="tab" aria-selected="false">Background</button></div>
+            <div class="rules-panel" role="tabpanel"><p class="resolution"><strong>Resolves YES</strong> if a federal funding gap causes a shutdown beginning before 00:00 ET on March 1, 2027. <strong>Resolves NO</strong> if funding is in place through that date.<br>
             <strong>Source:</strong> official US Office of Management and Budget notices. Resolved by the Yonder team.</p></div>
-            <div class="rules-panel" hidden><p class="resolution">YES is priced at 38%. Funding talks have stalled twice this quarter, but the last three deadlines were settled at the last minute. What is moving the number:</p>
+            <div class="rules-panel" role="tabpanel" hidden><p class="resolution">YES is priced at 38%. Funding talks have stalled twice this quarter, but the last three deadlines were settled at the last minute. What is moving the number:</p>
             <div class="args">
               <div class="arg-col">
                 <h3>For YES</h3>
@@ -412,13 +412,13 @@ document.addEventListener('click', function (e) {
               <input type="radio" name="edtab" id="edtab-holders" class="ed-tabradio">
               <input type="radio" name="edtab" id="edtab-positions" class="ed-tabradio">
               <input type="radio" name="edtab" id="edtab-activity" class="ed-tabradio">
-              <div class="ed-tabbar" role="tablist">
+              <div class="ed-tabbar">
                 <label class="ed-tablabel" for="edtab-comments">Comments <span class="ed-tab-count">128</span></label>
                 <label class="ed-tablabel" for="edtab-holders">Biggest bets</label>
                 <label class="ed-tablabel" for="edtab-positions">Bets</label>
                 <label class="ed-tablabel" for="edtab-activity">Activity</label>
               </div>
-            <div class="ed-tabpanel ed-panel-comments" role="tabpanel" aria-label="Comments">
+            <div class="ed-tabpanel ed-panel-comments" role="group" aria-label="Comments">
               <div class="cmt-controls">
                 <span>128 comments</span>
                 <span class="seg"><button type="button" class="chip chip-rail sel">Newest</button><button class="chip chip-rail" type="button">Top</button><button class="chip chip-rail" type="button">Bettors</button></span>
@@ -463,7 +463,7 @@ document.addEventListener('click', function (e) {
                 </div>
               </div>
             </div>
-            <div class="ed-tabpanel ed-panel-holders" role="tabpanel" aria-label="Biggest bets">
+            <div class="ed-tabpanel ed-panel-holders" role="group" aria-label="Biggest bets">
               <div class="hold-cols">
               <div class="hold-col">
                 <h3>Biggest YES bets</h3>
@@ -481,7 +481,7 @@ document.addEventListener('click', function (e) {
               </div>
               </div>
             </div>
-            <div class="ed-tabpanel ed-panel-positions" role="tabpanel" aria-label="Bets">
+            <div class="ed-tabpanel ed-panel-positions" role="group" aria-label="Bets">
               <table class="ptable">
                 <thead><tr><th>Bettor</th><th>Side</th><th>Amount</th></tr></thead>
                 <tbody>
@@ -494,7 +494,7 @@ document.addEventListener('click', function (e) {
               </table>
               <p class="pos-note">Your bet is highlighted. Bets update as the odds move.</p>
             </div>
-            <div class="ed-tabpanel ed-panel-activity" role="tabpanel" aria-label="Activity">
+            <div class="ed-tabpanel ed-panel-activity" role="group" aria-label="Activity">
               <p class="pos-note">Recent bets, largest first. Filter: over $5.</p>
               <div class="act-list">
               <div class="act-row"><span class="cmt-av">wh</span><span class="act-txt"><b>whale_07</b> bet <b>$175</b> on YES</span><span class="act-time">2m ago</span></div>
@@ -509,10 +509,10 @@ document.addEventListener('click', function (e) {
         </div>
           <aside class="bet-panel">
             <div class="bp-inner">
-              <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">execute failed</span></div>
+              <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">not sent</span></div>
               <div class="bp-dir">
-                <button type="button" class="yesno-pick bp-side sel yes">YES <span class="bp-pct">38%</span></button>
-                <button type="button" class="yesno-pick bp-side no">NO <span class="bp-pct">62%</span></button>
+                <button type="button" class="yesno-pick bp-side sel yes" aria-pressed="true">YES <span class="bp-pct">38%</span></button>
+                <button type="button" class="yesno-pick bp-side no" aria-pressed="false">NO <span class="bp-pct">62%</span></button>
               </div>
               <div>
                 <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="1" value="5.00" aria-label="Bet amount"></div>
@@ -537,11 +537,27 @@ document.addEventListener('click', function (e) {
     </div><!-- /feed-inner -->
     </main>
       <div class="bet-dock" aria-label="Place your bet">
-        <button type="button" class="yesno-pick yesno-pick-bar bp-side sel yes">YES <span class="bp-pct">38%</span></button>
-        <button type="button" class="yesno-pick yesno-pick-bar bp-side no">NO <span class="bp-pct">62%</span></button>
-        <span class="dock-meta">$5 to win<b>$13.20</b></span>
-        <a href="event-detail-bet-processing.html" class="btn btn-primary btn-md">Confirm bet</a>
+        <button type="button" class="yesno-pick yesno-pick-bar bp-side sel yes" data-open-sheet="yes" aria-pressed="true">YES <span class="bp-pct">38%</span></button>
+        <button type="button" class="yesno-pick yesno-pick-bar bp-side no" data-open-sheet="no" aria-pressed="false">NO <span class="bp-pct">62%</span></button>
       </div>
+
+      <dialog class="app-dialog bet-sheet" id="betSheet" aria-label="Place your bet">
+        <button type="button" class="sheet-grab" data-close-sheet aria-label="Close"></button>
+        <div class="bp-inner">
+              <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">not sent</span></div>
+              <div class="bp-dir">
+                <button type="button" class="yesno-pick bp-side sel yes" aria-pressed="true">YES <span class="bp-pct">38%</span></button>
+                <button type="button" class="yesno-pick bp-side no" aria-pressed="false">NO <span class="bp-pct">62%</span></button>
+              </div>
+              <div>
+                <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="1" value="5.00" aria-label="Bet amount"></div>
+                <div class="quick"><button type="button" class="chip chip-amount">$1</button><button class="chip chip-amount sel" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button></div>
+              </div>
+              <div class="inline-error" role="alert">Your bet did not register on-chain. No funds were taken.</div>
+              <a href="event-detail-bet-processing.html" class="btn btn-primary btn-md btn-block">Try again</a>
+              <a href="wallet.html" class="btn btn-secondary btn-md btn-block">Check wallet</a>
+            </div>
+      </dialog>
     </div><!-- /app-case -->
 
     <!-- Bottom navigation (mobile only) -->
@@ -889,7 +905,7 @@ document.addEventListener('click', function (e) {
                 </div>
                 <div>
                   <div class="line"><span>Your bet</span><span>$5.00</span></div>
-                  <div class="line total"><span>Potential payout</span><span>$13.20</span></div>
+                  <div class="line total"><span>Potential payout</span><span>$13.16</span></div>
                 </div>
                 <span class="btn btn-primary btn-md btn-block">Confirm bet</span>
               </div>
@@ -921,7 +937,7 @@ document.addEventListener('click', function (e) {
               </div>
               <div class="pos-figures">
                 <span class="pos-fig">Stake<b>$5.00</b></span>
-                <span class="pos-fig">Paid out<b>$13.20</b></span>
+                <span class="pos-fig">Paid out<b>$13.16</b></span>
               </div>
               <span class="pos-status">Resolved against the source it named</span>
             </article>
@@ -1194,8 +1210,8 @@ document.addEventListener('click', function (e) {
     var tabs = box.querySelectorAll('.rules-tab'), panels = box.querySelectorAll('.rules-panel');
     tabs.forEach(function(tab, i){
       tab.addEventListener('click', function(){
-        tabs.forEach(function(t){ t.classList.remove('sel'); });
-        tab.classList.add('sel');
+        tabs.forEach(function(t){ t.classList.remove('sel'); t.setAttribute('aria-selected','false'); });
+        tab.classList.add('sel'); tab.setAttribute('aria-selected','true');
         panels.forEach(function(p, j){ p.hidden = (j !== i); });
       });
     });
@@ -1348,5 +1364,32 @@ document.addEventListener('click', function (e) {
   });
 })();
 </script>
+
+  <script id="uv-bet-state">
+/* THE STATE IS THE SHEET, AND UNTIL 2026-08-16 IT WAS ONLY THE ASIDE. `components/betpanel.css`
+   declares `.bet-panel{display:none}` and only restores it at the DETAIL rung, so on the width this
+   product is designed for first, every one of these four states rendered nothing at all and the
+   dock underneath still offered "Confirm bet". The sheet below carries the same `.bp-inner` the
+   aside carries, which is the dialog rule in `ui-visual/CLAUDE.md`: one markup, two placements.
+   IT ASKS THE DOCK RATHER THAN THE WINDOW. Opening on load is right on a phone and wrong beside a
+   visible panel, and the rung that decides which is `betpanel.css`'s, not this screen's: a number
+   in a screen file is the defect the whole system is arranged against. `.bet-dock` is display:none
+   from DETAIL up, so its computed display IS the question, already answered by the component. */
+(function(){
+  var sheet = document.getElementById('betSheet'); if (!sheet) return;
+  var dock  = document.querySelector('.bet-dock');
+  function openSheet(){
+    if (sheet.open) return;
+    if (sheet.showModal) { try { sheet.showModal(); } catch (e) { sheet.setAttribute('open',''); } }
+    else sheet.setAttribute('open','');
+  }
+  function closeSheet(){ if (sheet.close) sheet.close(); else sheet.removeAttribute('open'); }
+  if (dock && getComputedStyle(dock).display !== 'none') openSheet();
+  document.querySelectorAll('[data-open-sheet]').forEach(function(b){ b.addEventListener('click', openSheet); });
+  sheet.querySelectorAll('[data-close-sheet]').forEach(function(c){
+    c.addEventListener('click', function(e){ e.preventDefault(); closeSheet(); }); });
+  sheet.addEventListener('click', function(e){ if (e.target === sheet) closeSheet(); });
+})();
+  </script>
 </body>
 </html>

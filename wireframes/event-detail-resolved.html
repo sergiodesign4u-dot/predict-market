@@ -1165,10 +1165,10 @@
             </details>
           </section>
           <section class="ed-section ed-rules">
-            <div class="rules-tabs" role="tablist"><button type="button" class="rules-tab sel">Rules</button><button type="button" class="rules-tab">Background</button></div>
-            <div class="rules-panel"><p class="resolution"><strong>Resolves YES</strong> if a federal funding gap causes a shutdown beginning before 00:00 ET on March 1, 2027. <strong>Resolves NO</strong> if funding is in place through that date.<br>
+            <div class="rules-tabs" role="tablist"><button type="button" class="rules-tab sel" role="tab" aria-selected="true">Rules</button><button type="button" class="rules-tab" role="tab" aria-selected="false">Background</button></div>
+            <div class="rules-panel" role="tabpanel"><p class="resolution"><strong>Resolves YES</strong> if a federal funding gap causes a shutdown beginning before 00:00 ET on March 1, 2027. <strong>Resolves NO</strong> if funding is in place through that date.<br>
             <strong>Source:</strong> official US Office of Management and Budget notices. Resolved by the Yonder team.</p></div>
-            <div class="rules-panel" hidden><p class="resolution">YES is priced at 38%. Funding talks have stalled twice this quarter, but the last three deadlines were settled at the last minute. What is moving the number:</p>
+            <div class="rules-panel" role="tabpanel" hidden><p class="resolution">YES is priced at 38%. Funding talks have stalled twice this quarter, but the last three deadlines were settled at the last minute. What is moving the number:</p>
             <div class="args">
               <div class="arg-col">
                 <h3>For YES</h3>
@@ -1192,13 +1192,13 @@
               <input type="radio" name="edtab" id="edtab-holders" class="ed-tabradio">
               <input type="radio" name="edtab" id="edtab-positions" class="ed-tabradio">
               <input type="radio" name="edtab" id="edtab-activity" class="ed-tabradio">
-              <div class="ed-tabbar" role="tablist">
+              <div class="ed-tabbar">
                 <label class="ed-tablabel" for="edtab-comments">Comments <span class="ed-tab-count">128</span></label>
                 <label class="ed-tablabel" for="edtab-holders">Biggest bets</label>
                 <label class="ed-tablabel" for="edtab-positions">Bets</label>
                 <label class="ed-tablabel" for="edtab-activity">Activity</label>
               </div>
-            <div class="ed-tabpanel ed-panel-comments" role="tabpanel" aria-label="Comments">
+            <div class="ed-tabpanel ed-panel-comments" role="group" aria-label="Comments">
               <div class="cmt-controls">
                 <span>128 comments</span>
                 <span class="seg"><button type="button" class="chip chip-rail sel">Newest</button><button class="chip chip-rail" type="button">Top</button><button class="chip chip-rail" type="button">Bettors</button></span>
@@ -1243,7 +1243,7 @@
                 </div>
               </div>
             </div>
-            <div class="ed-tabpanel ed-panel-holders" role="tabpanel" aria-label="Biggest bets">
+            <div class="ed-tabpanel ed-panel-holders" role="group" aria-label="Biggest bets">
               <div class="hold-cols">
               <div class="hold-col">
                 <h3>Biggest YES bets</h3>
@@ -1261,7 +1261,7 @@
               </div>
               </div>
             </div>
-            <div class="ed-tabpanel ed-panel-positions" role="tabpanel" aria-label="Bets">
+            <div class="ed-tabpanel ed-panel-positions" role="group" aria-label="Bets">
               <table class="ptable">
                 <thead><tr><th>Bettor</th><th>Side</th><th>Amount</th></tr></thead>
                 <tbody>
@@ -1274,7 +1274,7 @@
               </table>
               <p class="pos-note">Your bet is highlighted. Bets update as the odds move.</p>
             </div>
-            <div class="ed-tabpanel ed-panel-activity" role="tabpanel" aria-label="Activity">
+            <div class="ed-tabpanel ed-panel-activity" role="group" aria-label="Activity">
               <p class="pos-note">Recent bets, largest first. Filter: over $5.</p>
               <div class="act-list">
               <div class="act-row"><span class="cmt-av">wh</span><span class="act-txt"><b>whale_07</b> bet <b>$175</b> on YES</span><span class="act-time">2m ago</span></div>

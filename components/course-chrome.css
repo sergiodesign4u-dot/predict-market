@@ -67,7 +67,19 @@
    the only way to open this route below the dock, which makes it the one control on the
    page a person has no alternative to, and it was the last control in the repository under
    the project's own floor. */
-.rm-toggle{position:fixed;bottom:var(--space-12);right:var(--space-12);z-index:var(--z-chrome-top);background:var(--chrome-bg);border:var(--hairline) solid var(--chrome-border);border-radius:var(--radius-6);width:var(--control-44);height:var(--control-44);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-4);cursor:pointer}
+/* THE LIFT IS COMPUTED FROM THE FURNITURE IT CLEARS SINCE 2026-08-16, AND THAT DELETED BOTH THE
+   RUNG AND THE OVER-PROVISION BELOW. Everything argued below is still the reason this control
+   stands where it does; what changed is that the two bars it clears now have names,
+   `--bottom-nav-h` and `--dock-h`, each zeroed by the rung block that hides its own bar. So this
+   one declaration is 56+68+12 below DESK, 0+68+12 between DESK and DETAIL where the nav is gone,
+   and 0+0+12 from DETAIL up where both are, which is the plain `--space-12` this rule always had.
+   The width query that used to carry the lift is gone with it: a number that tracks the thing it
+   clears does not need a rung to be cut at, and this file's own paragraph below about a boundary
+   borrowed in the wrong unit is exactly the defect that removes.
+   The 12 is exact again, too. It had quietly become 8: the dock's own offset was `52px` against a
+   nav measuring 56, so the dock's top sat 120 from the edge while the 132 here was arithmetic for
+   124. Two files, three numbers, and only the third one was ever re-read. */
+.rm-toggle{position:fixed;bottom:calc(var(--bottom-nav-h) + var(--dock-h) + var(--space-12));right:var(--space-12);z-index:var(--z-chrome-top);background:var(--chrome-bg);border:var(--hairline) solid var(--chrome-border);border-radius:var(--radius-6);width:var(--control-44);height:var(--control-44);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-4);cursor:pointer}
 /* rung: DETAIL 760, and this is BELOW it, because that is where the bet dock exists:
    betpanel.css docks the panel as a sidebar at 760 and the dock goes with it. It was
    written at the DESK rung first and that was 8px too optimistic - at 36 the button fitted
@@ -91,9 +103,15 @@
    pieces of product furniture whose height is set by the type inside them, so at a
    24px root the stack is taller and a fixed 132 is short. That is the 5px at 640.
    Re-measured after, all three defaults, seven widths: 0 overlap everywhere. */
-@media(max-width:47.49875rem){
-  .rm-toggle{bottom:8.25rem}
-}
+/* AND THE BLOCK THAT STOOD HERE IS GONE, 2026-08-16. It was
+   `@media(max-width:47.49875rem){.rm-toggle{bottom:8.25rem}}`, and everything above is the record
+   of what it cost to get one number right in a file that could not see the number it depended on.
+   The rem conversion of 2026-08-14 was correct and it was still a copy: `8.25rem` is 132, which is
+   the sum of two other files' heights plus a gap, written here, re-measured here, and wrong again
+   the moment either of those files moved. The clearance is `calc(var(--bottom-nav-h) +
+   var(--dock-h) + var(--space-12))` on the base rule now, so this file states the RELATION and the
+   two components state their own sizes. One width query fewer, and the borrowed-boundary trap this
+   file documents cannot be re-entered here. */
 .rm-toggle span{display:block;width:var(--icon-16);height:1.5px;background:var(--chrome-text);border-radius:var(--radius-2)}
 .rm-overlay{display:none;position:fixed;inset:0;background:var(--scrim);z-index:var(--z-chrome-scrim);backdrop-filter:blur(2px)}
 .rm-overlay.open{display:block}

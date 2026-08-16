@@ -341,20 +341,32 @@
     win or lose colour, and a favourite, a focus ring, a selected chip and an active nav item are
     all brass. A candidate line in a multi-outcome chart is <b>not</b> an outcome, which is why the
     categorical series exists and is neither green nor red.</p>
-    <p class="tk-note">Each outcome has a solid, a text, a line and two fills, and the pair below is
+    <p class="tk-note">Each outcome has a solid, a text, a line and one fill, and the pair below is
     the whole vocabulary. Note that the <b>solids do not change between themes</b> and the
     <b>texts do</b>: a filled YES button is a coloured object like a brand mark, and the word YES on
     a pale tint is ink that has to clear a floor on whichever stone it lands.</p>
+    <p class="tk-note"><b>The third column is the quiet face and it stopped being a tint on
+    2026-08-16.</b> There were two fills, <code>--outcome-yes-fill-soft</code> and
+    <code>--outcome-no-fill-soft</code>, both the same 12 per cent alpha as the fill beside them,
+    and their only reader was the compact pair in an outcome list. The spectator's pair and that
+    list both rest on <code>--bg-control</code> now, so the two tokens had no reader left and are
+    deleted rather than kept: the odds bar carries the outcome colour, the button carries it in
+    the word. <b>The tint was never doing the reading either</b> - YES moved 8.31 to 8.01 and NO
+    6.70 to 6.15 in the Vault, and both went UP in daylight. What it was doing was filling 44
+    pixels of card with an outcome colour, twelve cards deep. <b>The last row uses this column for
+    something else</b>: a result is won or lost and has no third state, so the cell holds the LOST
+    fill against the WON fill beside it. That was true of the old header too, and it is written down
+    now rather than left to be inferred from the word LOST.</p>
     <div class="tk-mx tk-mx-4" data-theme="dark">
-      <span class="tk-mx-h">Vault</span><span class="tk-mx-h">solid, ink on it</span><span class="tk-mx-h">fill, text on it</span><span class="tk-mx-h">soft fill, text on it</span>
+      <span class="tk-mx-h">Vault</span><span class="tk-mx-h">solid, ink on it</span><span class="tk-mx-h">fill, text on it</span><span class="tk-mx-h">quiet face, text on it</span>
       <span class="tk-mx-r">YES</span>
       <div class="tk-mc tk-sw tk-c-outcome-yes"><b class="tk-ink tk-c-text-on-yes">YES</b><i data-m="o-d-yes-solid">6.42</i></div>
       <div class="tk-mc tk-sw tk-c-bg-card"><span class="tk-fillbox tk-sw tk-c-outcome-yes-fill"><b class="tk-ink tk-c-outcome-yes-text">YES</b></span><i data-m="o-d-yes-fill">8.31</i></div>
-      <div class="tk-mc tk-sw tk-c-bg-card"><span class="tk-fillbox tk-sw tk-c-outcome-yes-fill-soft"><b class="tk-ink tk-c-outcome-yes-text">YES</b></span><i data-m="o-d-yes-soft">8.31</i></div>
+      <div class="tk-mc tk-sw tk-c-bg-card"><span class="tk-fillbox tk-sw tk-c-bg-control"><b class="tk-ink tk-c-outcome-yes-text">YES</b></span><i data-m="o-d-yes-quiet">8.01</i></div>
       <span class="tk-mx-r">NO</span>
       <div class="tk-mc tk-sw tk-c-outcome-no"><b class="tk-ink tk-c-text-on-no">NO</b><i data-m="o-d-no-solid">4.64</i></div>
       <div class="tk-mc tk-sw tk-c-bg-card"><span class="tk-fillbox tk-sw tk-c-outcome-no-fill"><b class="tk-ink tk-c-outcome-no-text">NO</b></span><i data-m="o-d-no-fill">6.70</i></div>
-      <div class="tk-mc tk-sw tk-c-bg-card"><span class="tk-fillbox tk-sw tk-c-outcome-no-fill-soft"><b class="tk-ink tk-c-outcome-no-text">NO</b></span><i data-m="o-d-no-soft">6.70</i></div>
+      <div class="tk-mc tk-sw tk-c-bg-card"><span class="tk-fillbox tk-sw tk-c-bg-control"><b class="tk-ink tk-c-outcome-no-text">NO</b></span><i data-m="o-d-no-quiet">6.15</i></div>
       <span class="tk-mx-r">brass</span>
       <div class="tk-mc tk-sw tk-c-color-action"><b class="tk-ink tk-c-text-on-brass">Act</b><i data-m="o-d-brass-solid">8.05</i></div>
       <div class="tk-mc tk-sw tk-c-bg-card"><span class="tk-fillbox tk-sw tk-c-tint-brass-16"><b class="tk-ink tk-c-text-brass">Act</b></span><i data-m="o-d-brass-fill">6.53</i></div>
@@ -365,15 +377,15 @@
       <div class="tk-mc tk-sw tk-c-bg-card"><span class="tk-fillbox tk-sw tk-c-result-lost-fill"><b class="tk-ink tk-c-result-lost-text">LOST</b></span><i data-m="o-d-lost-fill">6.70</i></div>
     </div>
     <div class="tk-mx tk-mx-4" data-theme="light">
-      <span class="tk-mx-h">Daylight</span><span class="tk-mx-h">solid, ink on it</span><span class="tk-mx-h">fill, text on it</span><span class="tk-mx-h">soft fill, text on it</span>
+      <span class="tk-mx-h">Daylight</span><span class="tk-mx-h">solid, ink on it</span><span class="tk-mx-h">fill, text on it</span><span class="tk-mx-h">quiet face, text on it</span>
       <span class="tk-mx-r">YES</span>
       <div class="tk-mc tk-sw tk-c-outcome-yes"><b class="tk-ink tk-c-text-on-yes">YES</b><i data-m="o-l-yes-solid">6.42</i></div>
       <div class="tk-mc tk-sw tk-c-bg-card"><span class="tk-fillbox tk-sw tk-c-outcome-yes-fill"><b class="tk-ink tk-c-outcome-yes-text">YES</b></span><i data-m="o-l-yes-fill">6.51</i></div>
-      <div class="tk-mc tk-sw tk-c-bg-card"><span class="tk-fillbox tk-sw tk-c-outcome-yes-fill-soft"><b class="tk-ink tk-c-outcome-yes-text">YES</b></span><i data-m="o-l-yes-soft">6.51</i></div>
+      <div class="tk-mc tk-sw tk-c-bg-card"><span class="tk-fillbox tk-sw tk-c-bg-control"><b class="tk-ink tk-c-outcome-yes-text">YES</b></span><i data-m="o-l-yes-quiet">7.69</i></div>
       <span class="tk-mx-r">NO</span>
       <div class="tk-mc tk-sw tk-c-outcome-no"><b class="tk-ink tk-c-text-on-no">NO</b><i data-m="o-l-no-solid">4.64</i></div>
       <div class="tk-mc tk-sw tk-c-bg-card"><span class="tk-fillbox tk-sw tk-c-outcome-no-fill"><b class="tk-ink tk-c-outcome-no-text">NO</b></span><i data-m="o-l-no-fill">6.57</i></div>
-      <div class="tk-mc tk-sw tk-c-bg-card"><span class="tk-fillbox tk-sw tk-c-outcome-no-fill-soft"><b class="tk-ink tk-c-outcome-no-text">NO</b></span><i data-m="o-l-no-soft">6.57</i></div>
+      <div class="tk-mc tk-sw tk-c-bg-card"><span class="tk-fillbox tk-sw tk-c-bg-control"><b class="tk-ink tk-c-outcome-no-text">NO</b></span><i data-m="o-l-no-quiet">8.05</i></div>
       <span class="tk-mx-r">brass</span>
       <div class="tk-mc tk-sw tk-c-color-action"><b class="tk-ink tk-c-text-on-brass">Act</b><i data-m="o-l-brass-solid">8.05</i></div>
       <div class="tk-mc tk-sw tk-c-bg-card"><span class="tk-fillbox tk-sw tk-c-tint-brass-16"><b class="tk-ink tk-c-text-brass">Act</b></span><i data-m="o-l-brass-fill">5.60</i></div>
@@ -540,11 +552,11 @@
       <div class="tk-theme-fig tk-sw tk-c-color-trust" data-theme="dark"><i data-m="trust-d">#c7a24e</i></div>
       <div class="tk-theme-fig tk-sw tk-c-color-trust" data-theme="light"><i data-m="trust-l">#c7a24e</i></div>
 
-      <span class="tk-lab"><b>--outcome-yes-line</b><i>the tinted YES border</i></span>
+      <span class="tk-lab"><b>--outcome-yes-line</b><i>the YES edge on a position row. It was the tinted YES button's border until 2026-08-16, when the button took the system hairline; position.css is the reader that keeps it</i></span>
       <div class="tk-theme-fig" data-theme="dark"><span class="tk-fillbox tk-edge tk-c-outcome-yes-line"><b class="tk-ink tk-c-outcome-yes-text">YES</b></span><i data-m="yes-line-d">#3f7d55</i></div>
       <div class="tk-theme-fig" data-theme="light"><span class="tk-fillbox tk-edge tk-c-outcome-yes-line"><b class="tk-ink tk-c-outcome-yes-text">YES</b></span><i data-m="yes-line-l">#3f7d55</i></div>
 
-      <span class="tk-lab"><b>--outcome-no-line</b><i>the tinted NO border</i></span>
+      <span class="tk-lab"><b>--outcome-no-line</b><i>the NO edge on the same row, same date, same move</i></span>
       <div class="tk-theme-fig" data-theme="dark"><span class="tk-fillbox tk-edge tk-c-outcome-no-line"><b class="tk-ink tk-c-outcome-no-text">NO</b></span><i data-m="no-line-d">#8f4841</i></div>
       <div class="tk-theme-fig" data-theme="light"><span class="tk-fillbox tk-edge tk-c-outcome-no-line"><b class="tk-ink tk-c-outcome-no-text">NO</b></span><i data-m="no-line-l">#8f4841</i></div>
 

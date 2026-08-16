@@ -354,7 +354,7 @@ _13 state page(s): event-detail-bet-error.html, event-detail-bet-insufficient.ht
 | Content tabs | Text | Your row is highlighted. Positions update as the market trades. |  |
 | Content tabs | Text | Recent trades, largest first. Filter: over $5. |  |
 | Bet panel | Heading | Place your bet | **same-action / place-bet button varies** |
-| Bet panel | Label | execute failed |  |
+| Bet panel | Label | not sent | Rewritten 2026-08-16, and it now stands TWICE per screen: the mobile sheet carries the same `.bp-inner` as the aside. Was `execute failed`, an internal state name in a slot a person reads. The on-chain call is what failed and the person is not holding one. |
 | Bet panel | Field label | Amount |  |
 | Bet panel | Text | Your bet did not register on-chain (T3). No funds were taken. | **leftover spec-note (internal codes)** |
 | Bet panel | Button | Try again |  |
@@ -362,19 +362,19 @@ _13 state page(s): event-detail-bet-error.html, event-detail-bet-insufficient.ht
 | Bet panel | Text | on-chain error (T3): retry the execute step, or check your wallet balance. | **leftover spec-note (internal codes)** |
 | Bet panel | Label | $5 to win |  |
 | Bet panel | Button | Bet | **same-action / place-bet button varies** |
-| Bet panel | Label | amount over balance |  |
+| Bet panel | Label | over your balance | Rewritten 2026-08-16, and it now stands TWICE per screen: the mobile sheet carries the same `.bp-inner` as the aside. Was `amount over balance`, an internal state name in a slot a person reads. Same fact, said to a person rather than about a field. |
 | Bet panel | Text | You have $3.00. You can bet up to $3.00, or add funds to bet more. |  |
 | Bet panel | Button | Add funds | **same-thing / Deposit vs Add funds** |
 | Bet panel | Button | Bet $3.00 instead | **same-action / place-bet button varies** |
 | Bet panel | Text | insufficient-balance: inline guard in the panel before the gate fires. | **leftover spec-note (internal codes)** |
-| Bet panel | Label | submitting |  |
+| Bet panel | Label | sending | Rewritten 2026-08-16, and it now stands TWICE per screen: the mobile sheet carries the same `.bp-inner` as the aside. Was `submitting`, an internal state name in a slot a person reads. A state, not the verb a form posts with. |
 | Bet panel | Text | Registering your bet on-chain... |  |
 | Bet panel | Label | A few seconds. Keep this open. |  |
 | Bet panel | Button | View your position (on success) |  |
 | Bet panel | Text | execute on-chain processing: transitional. On success it lands on Active Bets (T14); on failure, the on-chain error state (T3). | **leftover spec-note (internal codes)** |
-| Bet panel | Label | price changed |  |
+| Bet panel | Label | price moved | Rewritten 2026-08-16, and it now stands TWICE per screen: the mobile sheet carries the same `.bp-inner` as the aside. Was `price changed`, an internal state name in a slot a person reads. The word the reconcile notice beside it already uses. |
 | Bet panel | Label | The price moved while you signed in |  |
-| Bet panel | Label | Was 38% -> Now 41%. Payout $13.20 -> $12.20 for $5. |  |
+| Bet panel | Label | Was 38% -> Now 41%. Payout $13.16 -> $12.20 for $5. |  |
 | Bet panel | Button | Confirm at new price (41%) | **same-action / place-bet button varies** |
 | Bet panel | Button | Cancel and re-evaluate |  |
 | Bet panel | Text | S5 reconcile: shown after the Sign In / Deposit gate, before execute. Confirm goes to execute; cancel re-evaluates the event (T16). | **leftover spec-note (internal codes)** |
@@ -403,11 +403,13 @@ _13 state page(s): event-detail-bet-error.html, event-detail-bet-insufficient.ht
 | Main | Text | official Republican National Committee certification. Resolved by the Yonder team. |  |
 | Content tabs | Button | Sign in to join the discussion | **same-thing / Log in vs Sign in** |
 | Content tabs | Text | Outcome |  |
-| Bet panel | Label | YES pre-selected |  |
+| Bet panel | Label | Pick a side | Replaced `YES pre-selected` on 2026-08-16. The old string existed to APOLOGISE for a default the product should not have had: `sel yes` was typed into the markup of every event detail, so the app chose a side on a two-sided money decision and then had to say so. Nothing is chosen at load now, and this is what the slot reads until the person chooses. |
+| Bet panel | Label | YES selected / NO selected | The same slot after a side is chosen, whether the reader chose it here or arrived from a card that already said which. It was `YES pre-selected` in the sheet's own script and `YES selected` in the panel's, two strings for one state, both replaced by the second. |
 | Bet panel | Field label | Your outcome |  |
 | Bet panel | Link | Change |  |
 | Bet panel | Label | Price now |  |
 | Bet panel | Label | Fee (1.5% of your bet) |  |
+| Bet panel | Label | Total to pay | New 2026-08-16. The panel showed a stake, a price, a fee and a payout and never once said what Confirm was about to take. It is the fee rounded to cents PLUS the stake, so the two figures a person can see add up: 1.5% of $5.00 is 7.5 cents, and a raw fee prints $0.07 beside a raw total of $5.08. |
 | Bet panel | Label | Potential payout |  |
 | Bet panel | Label | Your balance |  |
 | Bet panel | Button | Confirm bet | **same-action / place-bet button varies** |
@@ -575,7 +577,7 @@ _9 state page(s): active-bets-empty-new.html, active-bets-empty-resolved.html, a
 | Main | Label | WON |  |
 | Main | Label | Stake |  |
 | Main | Label | Payout |  |
-| Main | Label | +$13.20 |  |
+| Main | Label | +$13.16 |  |
 | Main | Label | Your side |  |
 | Main | Label | Result |  |
 | Main | Label | Resolved Jun 27 · tap to see your win |  |
@@ -743,13 +745,13 @@ _3 state page(s): my-profile-error.html, my-profile-loading.html, my-profile.htm
 | Main | Label | Member since |  |
 | Main | Label | Win rate is % correct on resolved bets (public). Reputation = the track record, not the balance. |  |
 | Main | Text | Share cards (past wins) |  |
-| Main | Text | Win card: US shutdown YES +$13.20 |  |
+| Main | Text | Win card: US shutdown YES +$13.16 |  |
 | Main | Text | Win card: BTC > $150k YES +$6.80 |  |
 | Main | Text | Win card: ETF approval NO +$9.40 |  |
 | Main | Text | Resolved predictions (public) |  |
 | Main | Label | US government shutdown before Mar 1, 2027 |  |
 | Main | Label | WON |  |
-| Main | Label | YES · resolved Jun 27 · +$13.20 |  |
+| Main | Label | YES · resolved Jun 27 · +$13.16 |  |
 | Main | Label | Bitcoin above $150,000 before Oct 1, 2026 |  |
 | Main | Label | YES · resolved Jun 20 · +$6.80 |  |
 | Main | Label | Spot ETH ETF approved in H1 2027 |  |
@@ -783,13 +785,13 @@ _4 state page(s): public-profile-error.html, public-profile-loading.html, public
 | Main | Label | Member since |  |
 | Main | Label | Win rate is % correct on resolved bets (public). Reputation = the track record, not the balance. |  |
 | Main | Text | Share cards (past wins) |  |
-| Main | Text | Win card: US shutdown YES +$13.20 |  |
+| Main | Text | Win card: US shutdown YES +$13.16 |  |
 | Main | Text | Win card: BTC > $150k YES +$6.80 |  |
 | Main | Text | Win card: ETF approval NO +$9.40 |  |
 | Main | Text | Resolved predictions (public) |  |
 | Main | Label | US government shutdown before Mar 1, 2027 |  |
 | Main | Label | WON |  |
-| Main | Label | YES · resolved Jun 27 · +$13.20 |  |
+| Main | Label | YES · resolved Jun 27 · +$13.16 |  |
 | Main | Label | Bitcoin above $150,000 before Oct 1, 2026 |  |
 | Main | Label | YES · resolved Jun 20 · +$6.80 |  |
 | Main | Label | Spot ETH ETF approved in H1 2027 |  |
@@ -828,10 +830,10 @@ _3 state page(s): wallet-error.html, wallet-loading.html, wallet.html_
 | Main | Label | -$30.00 |  |
 | Main | Label | Jun 28 · pending (on-chain) |  |
 | Main | Label | Payout: US government shutdown - YES won |  |
-| Main | Label | +$13.20 |  |
+| Main | Label | +$13.16 |  |
 | Main | Label | Jun 27 · completed |  |
-| Main | Label | Platform fee (won bet) |  |
-| Main | Label | -$0.40 |  |
+| Main | Label | Platform fee (1.5% of stake) | Renamed 2026-08-16. The row said `(won bet)` and carried `-$0.40`, which is 3% of the payout: the `0.03 * payout` model `PRODUCT.md` retired on 2026-08-10 and which nothing had taken out of the ledger. The fee is charged at Confirm, so the row also moved to sit with the stake it was taken on. |
+| Main | Label | -$0.38 | 1.5% of the $25.00 stake it now stands beside, rounded to cents. |
 | Main | Label | Stake: Bitcoin above $150,000 - YES |  |
 | Main | Label | -$25.00 |  |
 | Main | Label | Jun 26 · locked in-play |  |
@@ -920,8 +922,8 @@ _1 state page(s): how-it-works.html_
 | Main | Text | Each event has clear resolution conditions, written before betting opens. When the event happens, the platform team resolves it against public evidence (official sources, on-chain data, named references). |  |
 | Main | Text | Every resolution is recorded on-chain, so the outcome and the payout are verifiable and cannot be changed after the fact. |  |
 | Main | Heading | How pricing and payouts work |  |
-| Main | Text | Prices move with the market (AMM). Your payout depends on when you bet: earlier stakes at a better price earn more. The amount and potential payout are always shown before you confirm. |  |
-| Main | Text | There is no subscription. The platform earns a small fee only when you win - never on a losing bet. |  |
+| Main | Text | Prices move as people bet. You buy YES or NO at the price on screen, and that price is locked when you confirm. A winning share pays one dollar, so a lower price buys more shares and a larger payout. The amount, the fee and the payout are all shown before you confirm. | Rewritten 2026-08-16. The old line framed the payout as depending on WHEN you bet, which is the model `docs/backlog.md` 10 replaced on 2026-08-10 with shares at a locked price. The bet panel took that decision the same day (the row further up says so); How It Works did not, and kept the retired mechanic for six days. |
+| Main | Text | There is no subscription. The fee is 1.5% of your bet, added when you confirm, and the panel shows it in cents before you commit. It is the same whether you win or lose. | Rewritten 2026-08-16. The old sentence promised a fee only on a win while the panel beside it charged 1.5% of the stake at Confirm and the wallet ledger charged 3% of the payout: three surfaces, three fee models, on a product whose number one churn driver is platform betrayal. `docs/backlog.md` 6 decided 1.5% of the stake. |
 | Main | Heading | Proven, not promised |  |
 | Main | Label | Markets resolved |  |
 | Main | Label | On-chain proofs |  |
@@ -941,7 +943,7 @@ _4 state page(s): win-error.html, win-loading.html, win-payout-pending.html, win
 | Main | Label | underlying screen dimmed: Active Bets (resolved item) or a tapped win notification | **leftover spec-note (internal codes)** |
 | Main | Heading | You were right |  |
 | Main | Field label | You were right - you won |  |
-| Main | Label | +$13.20 |  |
+| Main | Label | +$13.16 |  |
 | Main | Label | $5.00 stake returned + $8.20 winnings. You held YES, avg price 38%. |  |
 | Main | Text | We couldn't generate your Share Card (T11). Your win and payout are not affected. You can share as text instead. | **leftover spec-note (internal codes)** |
 | Main | Button | Share as text |  |
@@ -953,7 +955,7 @@ _4 state page(s): win-error.html, win-loading.html, win-payout-pending.html, win
 | Main | Text | Your payout is on the way |  |
 | Main | Label | It will arrive in your balance in a few minutes (on-chain settlement delay). You can still share now. |  |
 | Main | Field label | Share Card (auto-generated) |  |
-| Main | Text | Share Card: "Called it - US shutdown, YES from 38%. +$13.20 on Yonder." (image placeholder) |  |
+| Main | Text | Share Card: "Called it - US shutdown, YES from 38%. +$13.16 on Yonder." (image placeholder) |  |
 | Main | Button | Share |  |
 | Main | Field label | What happened |  |
 | Main | Text | The federal government entered a shutdown on Feb 18, 2027 after Congress missed the funding deadline. The market resolved YES, the side you held. |  |
@@ -1079,7 +1081,7 @@ Only product copy touched; the per-event editorial (**Why this price** body, **F
 **Flagged - needs a decision / its own sub-pass:**
 - **"Liquidity" stat label - RESOLVED (2026-07-03):** relabelled to **"Open to bet"** (`<span>Open to bet<b>$31,500</b></span>`, 9 pages). Plain, spectator-legible (P3).
 - **Content tabs surface** (Comments / Top Holders / **Positions** / Activity, plus the Positions table columns **Shares** / Avg / Value and the Activity **trade** feed, and the helper "Positions update as the market trades"): this is a Polymarket-style social/trading panel built on trader vocabulary. The lexicon says bet-not-position, and "shares" / "liquidity" are forbidden - but reworking it is a real design question (do we show "shares" at all?). Held for its own sub-pass rather than half-changed here.
-- **Status chips** ("execute failed", "amount over balance", "price changed", "submitting"): terse dev-ish state labels; low priority, left for now.
+- **Status chips**: were "execute failed", "amount over balance", "price changed", "submitting", filed here as terse dev-ish state labels and left. **Closed 2026-08-16** as "not sent", "over your balance", "price moved", "sending", because the same pass copied that slot into the mobile sheet and duplicating a known defect is how a defect becomes a convention.
 
 ### Step 07 - Category Pages (Politics / Crypto / Culture / General, 32 pages: base / empty / error / loading x logged-in / logged-out)
 
@@ -1216,7 +1218,7 @@ exclamations and emoji. The stragglers and the deferred cluster, fixed:
 | `win*`, `loss*` (4 + 2, both trees) | close control `aria-label="Close"` | **`Back to My Bets`** | 2026-08-11, backlog 97. Same rule, and these six already agreed on the destination |
 | 14 screens per tree, the binary card pair (126 controls), the feed hero pair (2) and the SELECTED outcome row (2) | accessible name **`YES`** / **`NO`**, and `Back YES` in the hero | **`Will Bitcoin close above $150,000 before October 1, 2026? YES`**, `Will the US government shut down before March 1, 2027? Back NO`, `JD Vance selected YES` | 2026-08-13, backlog 103. **The same rule as row 96 below, and it writes no new string**: `aria-labelledby` points at the question the card already shows and then at the control, so this file keeps owning the wording. The binary card's outcome is not a word the way `Sweden` is, it is the card's question, so the name is 61 characters where row 96's are 11. **That length is the measurement and not the defect**: the alternative is a short title per market, a second string per event that would then have to be kept true against the first. Before this, 12 documents carried two or more controls sharing one name, five `YES` and five `NO` on a single category feed. The selected outcome row was a straggler of row 96, skipped because its `.opt-name` wraps a nested `selected` tag, and it is the row a person is most likely to act on |
 | 14 feed screens per tree, 100 controls each | accessible name **`YES`** / **`NO`** | **`Sweden YES`**, `JD Vance NO`, and so on | 2026-08-11, backlog 96. A person tabbing heard "YES link, NO link" ten times with nothing to tell one row from the next. The name is built with `aria-labelledby` pointing at the outcome span and then at the control, so **the outcome wording stays in the one place this file owns it** and is not typed into the markup a second time |
-| `event-detail*` painted bet sheet (4) | `YES selected` | **`YES pre-selected`** | 2026-08-11, backlog 87. The sheet was the one string in that block with no row in this inventory; the panel five lines above it already said the rowed one |
+| `event-detail*` painted bet sheet (4) | `YES selected` | **`YES pre-selected`** | 2026-08-11, backlog 87. The sheet was the one string in that block with no row in this inventory; the panel five lines above it already said the rowed one. **Superseded 2026-08-16**: the word the two disagreed about was the wrong word for both, because the state it named was a default nobody had decided |
 | 9 screens per tree | tab strip `role="tablist"` + `role="tab"` + `aria-selected` | **`<nav>` + `aria-current="page"`** | 2026-08-11, backlog 89. The tablist owned nothing, there is no tabpanel in that family, and the tabs navigate to another document. It is navigation with a current-page marker, which is the idiom this product already writes 1,228 times |
 | `event-detail-error`, `event-detail-logged-out-error` | **Something went wrong** while loading the event details. Check your connection and try again. | We couldn't load this event. Check your connection and try again. | Forbidden: drop "Something went wrong" |
 | `event-detail-error`, `-logged-out-error`, `-resolved` | CTA **Back to feed** | **Browse events** | Lexicon: one go-to-events label |
@@ -1493,7 +1495,8 @@ against `voice.md` when it shipped, and the two lines that were not are marked.
 | `Every outcome is public and verifiable.` / `1,284 events resolved on-chain` | `.hero-trust` | principle 2: one plain sentence of trust, with a number that can be checked |
 | `Back YES` / `Back NO` | `.hf-btn`, the featured hero | the hero is the one place the verb is written out; the cards keep bare `YES` / `NO` |
 | `Hot right now` / `See all hot events` | `.hh-head`, `.hh-all` | a heading and its exit, per the empty-state rule that every block gives a way out |
-| `Live odds &amp; volume &middot; last 30 days` | `.hf-chart-cap` | says what the chart is measuring and over what window |
+| `YES probability, last 30 days &middot; volume below, no scale` | `.hf-chart-cap` | says what the chart is measuring, over what window, and what the second series is NOT. It read `Live odds &amp; volume &middot; last 30 days` until 2026-08-16, which named both series and gave the reader no way to tell that only one of them has an axis |
+| `70%` `60%` `50%` `40%` `30%` | `.hf-axis` | the chart's scale, `aria-hidden` because the SVG beside it is. New on 2026-08-16: the four ruled lines it replaces stood at 68.05, 55.38, 42.72 and 30.05 per cent, which is a scale nobody could read a value off |
 | `Load more events` | `.load-more` | lexicon: events, never markets, in a control |
 | `Browse more events` | `.related-more` | same verb as the empty states, so leaving a dead end reads the same everywhere |
 
@@ -1624,3 +1627,52 @@ this belongs to is the third instance in this repo: an invariant kept as a list 
 screen map was five hand copies before `_twins.py`; step 24 found 43 shipped strings with no row
 here; step 14 declared itself "clean on cents / spread / liquidity / order book" while leaving every
 instance outside its own list, including the `.fine` line it edited in that same pass.
+
+### 2026-08-16 - one fee, one payout, and a line the panel had never had
+
+Ordered by the `/impeccable critique` of the painted product, P0: the same $5 bet was described by
+three surfaces as three incompatible products, and the sweep below is what it took to make them one.
+
+| Surface | Said | Says |
+|---|---|---|
+| Bet panel, computed | `Fee (1.5% of your bet) $0.07` at Confirm | `Fee (1.5% of your bet) $0.08`, and a new `Total to pay $5.08` under it |
+| How It Works | "a small fee only when you win - never on a losing bet" | 1.5% of the bet, added at Confirm, the same win or lose |
+| Wallet ledger | `Platform fee (won bet) -$0.40`, dated at the resolution | `Platform fee (1.5% of stake) -$0.38`, dated at the bet and standing beside it |
+
+**The payout figure was a fourth answer and nobody had counted it.** `$13.20` stood on **298
+occurrences across three trees** (231 painted, 46 kit, 21 grey) while the price beside it said 38%
+and the arithmetic says `5 / 0.38 = 13.16`. The reconcile panel had both in one sentence: "Payout
+$13.20 -> $12.20", where the second figure is `5 / 0.41` to the cent and the first is not `5 / 0.38`
+at all. It is `$13.16` everywhere now.
+
+**The static markup was the version that shipped when the script did not.** All eight bet panels
+carried `$0.40` and `$13.20` in the HTML, and only a page script rewrote them; the four screens with
+no script, and any screen whose script failed, showed the retired model with nothing to say so.
+
+**The rounding is the reason `Total to pay` needed a decision rather than a sum.** 1.5% of $5.00 is
+7.5 cents. A fee taken raw prints `$0.07` and a total taken raw prints `$5.08`, so the two numbers a
+person can read do not add up. The fee is rounded to cents FIRST and the total is built out of the
+rounded fee: `$0.08` and `$5.08`. The fee that is charged is the fee that is shown.
+
+**Not touched, and this is the half that keeps it honest.** The historical pass records above
+(Krok 6, the `voice_reconcile` route, the "Kept (already on-voice)" lines) still name
+`Platform fee (won bet)`, "fee only when you win" and "Prices move with the market (AMM)" as kept.
+They were true when written and they are the record of a decision, not a claim about today. The
+inventory tables above are the source of truth and they are what moved.
+
+## 2026-08-16 - a caption that named two series and gave the reader no way to tell which one has an axis
+
+The palette pass changed two strings and added five, and all seven are about the same thing: the
+hero chart draws a probability and a volume in one box, and only one of them can be read off a
+scale.
+
+| Was | Is | Why |
+|---|---|---|
+| `Live odds &amp; volume &middot; last 30 days` | `YES probability, last 30 days &middot; volume below, no scale` | The old line named both series as if they were one reading. `Live odds` is also vaguer than the chart: what is drawn is the YES probability, and the NO curve is its mirror. `no scale` is the part the product owes the reader, because the volume ribbon has none and a caption that stayed silent about it would let the new numerals vouch for it |
+| (nothing) | `70%` `60%` `50%` `40%` `30%` | The chart had four ruled lines standing at 68.05, 55.38, 42.72 and 30.05 per cent. A scale nobody can read a value off is a claim, so the lines are re-keyed to the decades and the decades are written down. `aria-hidden`, because the SVG they label is |
+
+**The pass changed no other copy**, and the two lines it was tempted to are worth naming. *YES* and
+*NO* on the buttons stayed exactly as they are: the pass took the colour off the ground and left it
+in the word, so the word is now carrying more than it was and rewriting it would have been the
+opposite move. And the `Vol` legend tag stayed three letters, because it labels a swatch beside two
+other three-to-seven character tags and the caption underneath is where the sentence goes.

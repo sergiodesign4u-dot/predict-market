@@ -581,8 +581,11 @@
 .tk-c-outcome-no-text{--tk-sw:var(--outcome-no-text)}
 .tk-c-outcome-yes-fill{--tk-sw:var(--outcome-yes-fill)}
 .tk-c-outcome-no-fill{--tk-sw:var(--outcome-no-fill)}
-.tk-c-outcome-yes-fill-soft{--tk-sw:var(--outcome-yes-fill-soft)}
-.tk-c-outcome-no-fill-soft{--tk-sw:var(--outcome-no-fill-soft)}
+/* .tk-c-outcome-yes-fill-soft and .tk-c-outcome-no-fill-soft went with their tokens on
+   2026-08-16, and they are why the deletion had to reach this file: a swatch class is a
+   READER, so leaving them here would have left two cells on colour.html painting an
+   undefined var(), which resolves to nothing and draws the card ground. A swatch that
+   silently shows the stone behind it is the most convincing wrong answer a stand can give. */
 .tk-c-outcome-yes-line{--tk-sw:var(--outcome-yes-line)}
 .tk-c-outcome-no-line{--tk-sw:var(--outcome-no-line)}
 .tk-c-outcome-no-figure{--tk-sw:var(--outcome-no-figure)}

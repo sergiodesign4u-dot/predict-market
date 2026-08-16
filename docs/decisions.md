@@ -12,6 +12,419 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-16 - The chart ruled four lines that meant 68.05, 55.38, 42.72 and 30.05 per cent, and the one ink the spec reserves for the brand was drawing a data series
+
+**THE FLAGSHIP SCREEN DREW VOLUME IN THE BRAND.** `DESIGN.md` states the One-Accent Rule, states
+that green, red and gold are reserved, and states that the categorical series exists precisely so
+that no candidate line wears a reserved ink - the first cut of the series read `#4fd694` and
+`#d9b968`, the YES green and the lit brass, and both were taken out for that reason. The hero chart
+on `event-feed.html` then drew its Volume dot, its legend label and its dashed line in brass, in
+both themes. `hero.css` had already argued about this line twice, on 2026-08-10, and both arguments
+were about WHICH brass: `--text-brass-vol` was deleted for being a role with one placement, and the
+line moved to `--text-brass-lit`. **Nobody asked whether a data series may be brass at all.**
+
+It is `--series-5` now, the desaturated neutral the palette keeps for a member that is not a
+candidate, on the dot, the label, the dashed line and both stops of the `#hfvol` gradient. That
+token had been declared since the light theme and read only by a page script; this is its first
+reader in a stylesheet. **This is not a contrast fix and saying so is the point**: measured on the
+hero plate, brass was 12.89:1 in the Vault and 6.96:1 in daylight, and the slate is 6.87 and 6.76.
+Both pass twice over in both themes, before and after. The defect was that one ink meant two things,
+and **no contrast sweep this repository owns could have seen it.**
+
+**THE GRID WAS DECORATION WEARING THE COSTUME OF A SCALE.** Four lines at y=40, 80, 120 and 160 of a
+190-unit box. The mapping is solvable from two points the chart draws itself - the YES line is at 97
+for 50 per cent and 134.9 for 38 - so the ruled paper a reader was being offered stood at **68.05,
+55.38, 42.72 and 30.05 per cent**. The band is re-keyed to y = 220 - 3p, which puts 70, 60, 50, 40
+and 30 on y = 10, 40, 70, 100 and 130, and which makes every drawn point an integer for the first
+time: the series is 50, 47, 52, 45, 48, 42, 46, 40, 43, 39, 41, 38, and the two curves stay mirrored
+about the 50 line. Five mono numerals sit on the five lines in a `3.5ch` gutter, measured on the
+line to within 0.02px at every width in both engines and over `file://` as well as `http://`.
+
+**THE TELL HAD BEEN IN THE BUILDING SINCE STAGE 08.** The event-detail chart carries `.ed-yaxis`
+with 100 / 75 / 50 / 25 / 0 per cent and an x-axis under it. So the product drew one scaled chart
+and one unscaled one, and the unscaled one was the hero. The two axes are written differently and
+the difference has a reason: that plot runs edge to edge, so `justify-content:space-between` puts
+its labels on the box's own extremes; this band is inset, because the hero shows a window on the
+odds rather than the whole range.
+
+**VOLUME LEAVES THE PROBABILITY SPACE RATHER THAN BEING LABELLED INSIDE IT.** A magnitude in dollars
+and a probability in per cent share no axis, and the moment the numerals went in, the old ribbon
+read as a third line sitting at 30 per cent. It moves down 10 units into a strip of its own under
+`.hf-split`, keeping its exact shape, and the caption says what it is and is not:
+`YES probability, last 30 days - volume below, no scale`. **Adding a scale is not free: it makes
+every other mark in the box a claim about that scale.**
+
+**THE LEADING CANDIDATE WAS PAINTED IN THE LOSING COLOUR, BY A SELECTOR THAT ASSUMED TWO SIBLINGS.**
+`card.css` gave `.ed-prob-big .prob:first-of-type` the YES green and `:last-of-type` the NO red,
+which is exactly right for `YES 38%   NO 62%` on the seven binary detail screens. The two multi
+screens print one span, `Leading: JD Vance 41%`, and **a lone element is both the first and the last
+of its type**. Equal specificity, so source order decided it and the later rule won: measured
+`rgb(231,144,135)` in the Vault and `rgb(134,50,40)` in daylight, the NO role, on the market's
+front-runner. The outcome inks now ask for a pair - `:first-of-type:not(:last-of-type)` - so no
+source order can reach a lone figure, and `:only-of-type` takes `--text-primary` at 14.71:1 and
+14.85:1, with the odds bar three lines below carrying the colour. **The stand could not have caught
+it**: all 8 placements of `.ed-prob-big` in `ui-kit/` carry the pair and 0 carry the single, which is
+the chosen NO of 2026-08-15 in a different file.
+
+**"HOT RIGHT NOW" PAINTED FIVE PROBABILITIES GREEN AND TWO OF THE FIVE HAVE NO YES SIDE.** The list
+ran 61, 38, 72, 34 and 19 per cent, all in `--outcome-yes-text`, so a market the crowd puts at 19
+read in the same ink as one at 72 and the colour carried no information. Two rows are multi events -
+the Eurovision winner and an EU accession - and a multi market has no YES for the ink to be about.
+Green is a SIDE and this figure is a magnitude. It keeps the mono face, which is what says "this is
+a reading", and takes `--text-primary`.
+
+**THE TINT CAME OFF THE SPECTATOR'S PAIR, AND `DESIGN.md` HAD ALREADY SAID WHY.** The
+Reserved-Outcome Rule reads: the odds bar carries the outcome colour **so that** the YES/NO buttons
+can stay quiet. They were quiet per card and loud per screen, because the rule was written about one
+card and the feed stacks twelve. Counted on `event-feed.html`: 9 binary cards at six
+outcome-coloured elements each, 3 multi cards at four, plus the hero's six. The buttons now rest on
+`--bg-control` behind the system hairline and carry the outcome only in the word. **Measured, the
+tint was never doing the reading either**: YES goes 8.31:1 to 8.01:1 and NO 6.70 to 6.15 in the
+Vault, and both IMPROVE in daylight, 7.23 to 7.69 and 7.57 to 8.05. What the tint was doing was
+filling 44 pixels of card with an outcome colour, twelve cards deep. **The colour returns on
+intent**: hover and press are untouched and still flood the side with 32 per cent of its own green
+or red, so a ground on a control answers a finger instead of making a standing claim.
+
+**THE CANDIDATE LIST FOLLOWED, AND IT MATTERED MORE THERE THAN ON A CARD.** `.opt-list` is a chooser
+with a `.sel` that fills solid; with a soft tint at rest, chosen and unchosen differed only in how
+much of the same colour was showing. Rest is quiet and chosen is filled now, so the atom's three
+faces - the card's pair, the outcome list, and `.yesno-pick` in the panel - answer the same question
+the same way at every placement. `--outcome-yes-fill-soft` and `--outcome-no-fill-soft` lost their
+last reader with it and are **deleted**: that is the reader side of a zero and not the placement
+side, so it is not a face waiting for markup to come back. The deletion had to reach `_page.css`
+too, because a swatch class is a reader: left in place, two cells of `colour.html` would have painted
+an undefined `var()` and drawn the card ground, which is the most convincing wrong answer a stand can
+give.
+
+**WHAT THE PASS DID NOT DO, AND THE NUMBER IS THE REASON.** The critique reads brass spent eight
+times on one 1280 screen against a rule that allows three. Censused in the browser with the review
+chrome cropped: 45 brass-bearing elements in each theme, and almost all of them are the eyebrow, the
+section kicker, the rank column and the trust badge - the label typography `DESIGN.md` licenses by
+name in the type section. **The One-Accent Rule is about identity, the active state and the primary
+action, and the one placement that was none of those three was the data series.** That is the one
+that moved. Repainting a spec'd label to make a count smaller would be answering the number instead
+of the rule.
+
+**THE INSTRUMENT WAS WRONG TWICE AND BOTH ARE RECORDED IN `CLAUDE.md`.** The first sweep reported
+the light theme identical to the Vault on every value and passed its own colour control, because
+these screens boot the theme from `localStorage` and the boot script REMOVES `data-theme` when the
+key is absent: setting the attribute is not setting the theme. The second reported that taking a
+tint off 32 buttons changed nothing - `ground 22 -> 22`, `edge 0 -> 0`, identical painted area -
+because injecting a stylesheet STARTS a transition and the value at t=0 is the value the page is
+leaving. Frozen first, the same census gives **ground 54 -> 22, edge 32 -> 0, and 220,689 square
+pixels of outcome colour down to 18,025 at 390**. A third predicate, "a numeral wider than its
+gutter", flagged 200 hits and every one was in the grey tree, where `ch` is a proportional zero;
+measured against the criterion that matters it is **0 clipped and 0 crowding the plot**, worst left
+margin 15.09px inside the clipping ancestor. That one is the twin of `scrollWidth > clientWidth`.
+
+**Verified.** 1,076 renders over `ui-visual`, `ui-kit` and `wireframes` at 390 and 1280 in Chromium
+and WebKit: 0 page errors, 0 responses at 400 or above, 0 documents scrolling sideways with
+`scrollLeft` read back, 0 duplicate ids, 0 hero charts missing their five numerals, 0 live readers of
+the two deleted tokens, with a 4000px box proving the scroll probe fires. 160 further renders over
+the four documents that carry the chart at 20 widths including both sides of every rung: 0
+horizontal scroll and 0 numerals off their grid line. The kit's twelve stale `N lines` figures were
+re-taken on the way past, and the hero's `.hf-graph` row in the inventory, published as a CONSTANT 91
+per cent, is corrected to 78.2-84.3 per cent of `.hf-chart` now that the gutter is there.
+
+---
+
+## 2026-08-16 - The app picked a side on a two-sided money decision, and 212 links had been saying which side the reader wanted into nothing at all
+
+**EVERY FEED CARD ALREADY CARRIED THE ANSWER AND NO DOCUMENT READ IT.** `Back YES` and `Back NO`
+are `event-detail.html?side=yes` and `?side=no`, **212 of them across the painted tree**, and
+`location.search` was read by **0 of 106 documents**, measured. So the parameter was a promise the
+product made on every card and kept nowhere, which is the same species as the
+`pattern="[0-9.$]*"` that validated nothing on 113 amount fields: an attribute that reads as a
+mechanism to everyone who opens the markup and does nothing at any moment.
+
+**WHAT SHIPPED INSTEAD WAS `sel yes` TYPED INTO THE MARKUP, AND THE PRODUCT HAD TO APOLOGISE FOR IT
+IN A LABEL.** Every event detail loaded with YES chosen: a solid `rgb(79,169,107)` block against a
+ghost, on the side the market puts at 38 per cent, while the side at 62 per cent was the quieter of
+the two. The hint slot beside it read *YES pre-selected*, **a string whose only job was to admit the
+default**. A default on a two-sided financial decision is a nudge with money attached, and the paint
+amplified it rather than neutralising it.
+
+**NOTHING IS CHOSEN AT LOAD NOW.** Arrive from a card and you arrive on the side you pressed; arrive
+by the title or the photograph and you choose, with the hint reading *Pick a side* and Confirm
+carrying `aria-disabled="true"` until you do. **`aria-disabled` and not `disabled`**, which is the
+reason `button.css` had already written for the deposit dialog: a natively disabled control is not
+focusable, so the person who most needs to know why it is dead is the one who cannot reach it. The
+capture-phase handler that blocks a dead Confirm was verified rather than assumed: pressing it with
+no side chosen leaves `location` unchanged in both engines.
+
+**THE STATE IS THE SAME IN THREE PLACES AND IS NOW WRITTEN IN ALL THREE.** The panel, the dock and
+the sheet each hold the pair, so a side chosen anywhere sets `.sel` and `aria-pressed` on all three,
+and the hint on both. `aria-pressed` did not exist on these buttons at all: it was on `.theme-switch`
+and `[data-fav]` and nowhere else, so a screen reader heard "YES 38%, button. NO 62%, button." and
+was told nothing about which one the app had chosen for it. WCAG 1.4.1 and 4.1.2.
+
+**AND THE FOUR STATE SCREENS KEEP THEIR SIDE, WHICH IS THE POINT OF THE DISTINCTION.** A default is
+the app choosing; a bet in flight is the person having chosen. Those four are not touched except to
+say so out loud, with `aria-pressed` matching the `.sel` that was already there.
+
+**THREE `role="tablist"` DECLARATIONS AND EXACTLY ONE OF THEM COULD BE TRUE.** Measured: 20 tablists
+in the painted tree, **0 `role="tab"` and 0 `aria-selected` anywhere in either tree**.
+- `.rules-tabs` is two real `<button>`s with two real panels and a script that swaps them, so it CAN
+  be a tablist and now is one: `role="tab"` with `aria-selected` on the buttons, `role="tabpanel"` on
+  the panels, and the script keeps the attribute in step with the class it was already toggling.
+- `.ed-tabbar` and `.ptab-bar` are `<label for>` children driving hidden radios. **A label is not a
+  tab because a label is not focusable**, which is the same fact this repository paid for when a
+  262px brass primary turned out to be a `<label>` no Tab could reach. The role is gone from both.
+  Their panels lose `role="tabpanel"` as well, because a tabpanel with no tab is an orphan role;
+  `.ed-tabpanel` is `role="group"` with the label it already had, and `.ptab-panel` is a `<section>`
+  with `aria-label`, which needs nothing added.
+**A wrong role is worse than no role**, because it promises a keyboard model the markup cannot
+honour, and it was the third tablist that made the point: the profile pair was missed by the first
+pass and found by the check rather than by reading, which is the only way it could have been found.
+
+**Verified after.** Four query states on both engines: no parameter and a bogus parameter give 0
+chosen of 6 picks, both hints *Pick a side* and 2 of 2 Confirms disabled; `?side=yes` and `?side=no`
+each give 3 chosen, 3 `aria-pressed="true"`, both hints naming the side and 0 Confirms disabled.
+Clicking a side with no parameter moves all three placements together. **212 renders over 106
+painted documents and 210 over 105 grey, at two widths in two engines: 0 page errors, 0 HTTP 400 or
+worse, 0 horizontally scrolling documents, 0 duplicate ids.** The role predicate reads 9 tablists,
+18 tabs and 18 tabpanels in the painted tree with **0 broken**, after a planted tablist with no tab
+proved the check could come back red.
+
+**Opened by this pass:** `docs/backlog.md` 160. Measuring whether the chosen side is distinguishable
+without colour turned up something older and larger: **in Daylight `--bg-control` and `--bg-page`
+are the same value**, `#fcfaf4`, so a control standing on the page has no ground and is defined by
+its border alone. In Vault the two channels swap and the border does none of the work at 1.10:1
+while the ground carries it at 1.25:1. Neither is a failure; the system answering one question with
+a different channel per theme, with nothing saying so, is the row.
+
+---
+
+## 2026-08-16 - Four states of the act this product exists for had never been drawn on the width it is designed for
+
+**`components/betpanel.css` DECLARES `.bet-panel{display:none}` AND ONLY RESTORES IT AT THE DETAIL
+RUNG, AND THE FOUR BET-STATE SCREENS PUT THEIR WHOLE STATE IN THAT PANEL.** The mobile presentation
+is `#betSheet`, and `event-detail-bet-processing.html`, `-bet-error.html`, `-bet-insufficient.html`
+and `-bet-reconcile.html` carried none: measured, 0 occurrences each against 1 on
+`event-detail.html`. So on a phone, "Registering your bet on-chain. A few seconds. Keep this open."
+never appeared; "Your bet did not register on-chain. No funds were taken." never appeared; the
+insufficient-balance guard never appeared while the dock underneath offered a $5 bet against a $3
+balance; and the S5 price reconcile, **the single moment `PRODUCT.md` names as the reason the whole
+payout model was chosen**, never appeared. All four rendered the pre-confirm bar reading
+*Confirm bet*. **The grey tree had the identical hole**, which is what makes it a gap in the work
+rather than a slip in the paint: `wireframes/` carries the same four screens and the same four
+missing sheets.
+
+This is the repository's own rule about a rule that cannot be rendered, met from the far side. That
+rule was written for a face the product never places. **These four are the opposite: the state is
+authored, the copy is written, the page exists, and the width the product is designed for first is
+the one that never draws it.**
+
+**THE SHEET IS THE ASIDE'S OWN `.bp-inner`, NOT A SECOND WRITING OF IT.** The sweep lifted each
+panel's inner verbatim and wrapped it, which is the dialog rule in `ui-visual/CLAUDE.md`: one markup,
+two placements. Verified in the browser rather than in the diff: the sheet's `.bp-inner.innerHTML`
+equals the panel's on all four screens in both engines, once the one id that may not stand twice in
+a document is normalised. `bet-funds-error` is suffixed `-sheet` in the copy together with the
+`aria-describedby` that points at it, which is the kit's own convention for a duplicated id, and
+**0 duplicate ids** were measured afterwards on all four.
+
+**IT ASKS THE DOCK, NOT THE WINDOW.** Opening on load is right on a phone and wrong beside a visible
+panel, and the rung that decides which belongs to `betpanel.css`. A `matchMedia` in a screen file
+would have put that number in the one place the system cannot see it, which is the same defect as an
+`@media` in a screen file wearing different clothes. `.bet-dock` is `display:none` from DETAIL up, so
+its computed display IS the question, already answered by the component. Measured: at 390 the sheet
+is open and `:modal` on all four in both engines with the panel hidden; at 1280 the sheet is closed,
+the panel is visible and the dock computes `none`.
+
+**THE DOCK WAS TWO SHAPES AND THE SECOND ONE WAS A SYMPTOM.** `ui-kit/betpanel.html` recorded, as a
+design finding, that "four docks CHOOSE and four CONFIRM" and argued the two were not a long and a
+short form of one thing. They were one shape and a workaround: the confirmer stood on exactly the
+four screens with no sheet, where the dock was the only thing a phone rendered, so it had to carry
+the stake, the payout and a Confirm by itself. What it could not carry was the state. All 8 docks are
+the chooser now, two sides carrying `data-open-sheet`. **The kit section is kept at full length and
+rewritten rather than trimmed**, because a page that recorded a difference as a decision and was
+wrong about which of the two it was is worth more than a page that quietly agrees with today.
+
+**`.dock-meta` IS AT 0 PLACEMENTS AND IS NOT DELETED, AND WHICH ZERO IT IS WAS ASKED BEFORE
+ANYTHING WAS TOUCHED.** Its rules are whole and its markup is what went, so it is `.icon-btn-lift`'s
+case and not `account.css`'s. The headstone is in `betpanel.css` beside the intact rules, the class
+stays in the file's own class list, and the specimen stays on the kit page labelled with the zero and
+its reason.
+
+**THE RECONCILE SCREEN CONTRADICTED ITSELF INSIDE ONE VIEWPORT AND NOW DOES NOT.** Its notice read
+"Was 38% -> Now 41%" while the YES button directly above it still read 38% and the dock below read
+38% as well. The `bp-pct` spans read 41% and 59% now, in the panel, the sheet and the dock, and the
+notice is the only place 38 still appears, which is where it belongs: it is the explanation of the
+move. The percentages were replaced by matching the `bp-pct` span alone, never the prose, so the
+sentence that names both numbers survived intact.
+
+**AND THE FOUR HINTS WERE INTERNAL STATE NAMES, WHICH IS WHY THEY WERE FIXED IN THE SAME PASS
+RATHER THAN FILED.** `submitting`, `execute failed`, `amount over balance` and `price changed` sat in
+a slot a person reads, and `voice/docs/microcopy.md` had them logged as "terse dev-ish state labels;
+low priority, left for now". This pass copies that slot into a second placement per screen, and
+**duplicating a known defect is how a defect becomes a convention**, so they are `sending`,
+`not sent`, `over your balance` and `price moved`, in both trees and in the inventory.
+
+**Verified after**, 16 combinations, four screens by two widths by two engines: sheet open and
+`:modal` at 390 with the panel hidden and the dock `flex`; sheet closed at 1280 with the panel
+visible and the dock `none`; sheet inner identical to panel inner on every one; 0 duplicate ids;
+0 page errors. The chosen NO now stands on two placements rather than one, both on
+`event-detail-bet-processing.html`, which is the screen that drew this repository's only chosen NO
+at all.
+
+---
+
+## 2026-08-16 - The two bars at the foot of the phone were sticky, which means they gave up, and three files were writing one number down
+
+**A STICKY ELEMENT STOPS BEING STUCK AT ITS OWN PLACE IN THE DOCUMENT, AND FOR THESE TWO THAT PLACE
+WAS INSIDE THE PAGE.** `.bottom-nav` and `.bet-dock` sat in flow between `.app-case` and the footer,
+so they held the viewport bottom only while the reader was above them. Measured on
+`event-detail.html` at 390, document 3,852 tall: flush to the bottom to scrollY 1613, then **232px
+up at 2009, 623 at 2406 and 1,266 at the foot of the document**, with the dock riding 56 above that
+and the sticky header already gone at -582. The four-slot bar and the YES / NO dock end up stacked
+in the upper third of a phone screen with the trust strip beneath them. **That is the only
+navigation a phone has and the product's primary action, sliding into the middle of the page on the
+screen where trust is being asked for**, and on the dialog screens the same release parked the bar
+behind the modal a third of the way down. Both are `position:fixed` now; `.device` is padded and the
+scroll container reserves the same distance, so the footer's last row is still reachable.
+
+**THE OFFSET THAT WAS SUPPOSED TO CLEAR THE NAV HAD NEVER BEEN EQUAL TO THE NAV.** The dock read
+`bottom:52px` against a bar measuring **56**, so the two overlapped by 4px at every width below the
+desk rung; and the nav is `display:none` from 640 up while the 52 stayed, so **from 640 to 759 the
+dock hung over an empty 52px band**. `course-chrome.css` then lifted its review toggle by `8.25rem`,
+arithmetic for a dock top at 120 that was really at 124. Three files, three numbers, one fact, and
+each was correct inside its own file. They are `--header-h`, `--bottom-nav-h` and `--dock-h` now,
+**and each is zeroed by the rung block that already hides its own bar**, so the question "how much
+furniture is at the foot of THIS width" has one answer instead of three. The chrome's width query is
+deleted with the copy it carried: the lift is
+`calc(var(--bottom-nav-h) + var(--dock-h) + var(--space-12))` and measures **exactly 12 at every
+width and every root**, which the `8.25rem` version could not do without a rung borrowed from
+another file in another unit, the defect that file already documents.
+
+**A CLEARANCE IS PART PADDING AND PART TYPE, SO NEITHER UNIT IS RIGHT ON ITS OWN.** Measured with
+`Page.setFontSizes`, the only thing that moves a browser default, at 16 / 20 / 24: the nav is
+**56 / 64 / 73**, the dock **68 / 76 / 85**, the header **59 / 63 / 69**. A px token is exact at the
+default and 17px short at 24, which would show a strip of page between two bars that are supposed to
+touch. A `rem` token overshoots, because the padding half does not grow. Both fit a line with the
+same slope, 2.125 per pixel of root, so each token is written as its px half plus its type half:
+`--bottom-nav-h:calc(22px + 2.125rem)` reads 56 / 64.5 / 73. **Verified after: the seam between the
+dock and the nav is 0.0, 0.2 and 0.5px at the three roots.**
+
+**`scroll-padding` DID NOT EXIST IN `components/` AT ALL, WHICH IS WHY EVERY FOCUS AUDIT HERE CAME
+BACK CLEAN.** Tab scrolls a target only just into view, so a 56px bar pinned at the foot catches
+what lands there: four controls measured on `event-detail.html` at 390 at y 816 to 826 in an 844
+viewport, `elementFromPoint` returning `a.nav-item` at all five sample points, and the focused and
+blurred screenshots of the control's clip **byte-identical**. Every instrument this repository owns
+read `outline` and `box-shadow`, found a 2px brass ring on every control probed, and reported zero
+defects. **A ring is a claim about what is visible, and the only instrument for that is the paint.**
+It is `scroll-padding-block:var(--header-h) var(--bottom-nav-h)` on `:root` in `base.css`, a floor
+for the same reason the focus ring and the 44px touch floor are floors, and `betpanel.css` adds the
+dock's own 68 through `html:has(.bet-dock)` so a screen without one is not padded for one.
+
+**AND THE THIRD ITEM OF THIS PASS WAS CLOSED BY MEASURING IT RATHER THAN BY EDITING ANYTHING.** The
+critique filed **147 interactive elements under 24x24 at 390** as a P1 against WCAG 2.5.8. Two
+corrections, both of which this repository had already written down and one of which it wrote in the
+very file the finding pointed at:
+1. **The pointer.** Headless Chromium reports `pointer:fine`, so the run measured the 36px branch,
+   which is the exact instrument error `base.css` recorded on 2026-08-08. Re-read with touch
+   emulation and `matchMedia('(pointer:coarse)')` asserted true: **155 under 24 by size**, so the
+   number barely moved and the first correction was not the one that mattered.
+2. **The criterion.** 2.5.8 is satisfied by size OR by spacing: a target under 24 passes when a 24px
+   circle centred on it touches no other target's circle. Measured that way over 12 screens at 390
+   and at 1280: **0 failures at either width.** The footer's popular row is 80x16 at 26.1 apart and
+   its legal row 30.8x14 at 41.9, which is what `footer.css` measured on 2026-08-13 for backlog 137
+   and wrote into its own comment to the tenth of a pixel. The residue is seven 1x1 inputs whose
+   target is their own `<label>` and one pair on `sign-in.html` at 21.3 apart, which is a link
+   inside a `:modal` dialog measured against a link on the inert page behind it.
+
+**So nothing was changed for it, and the reason is worth more than the change would have been.**
+Raising the footer to 44 would have added 330px to a phone footer to buy nothing the criterion asks
+for, which is the sentence `footer.css` already contains. **Read the criterion, not the dimension**,
+and when a file in the system already carries the measurement, the audit is what gets re-run.
+
+**Verified after, both engines.** 130 renders each over 10 screens at 13 widths including both sides
+of every rung: **0 horizontally scrolling documents, 0 page errors.** The drift table re-read at six
+scroll depths: nav gap 0 and dock gap 56 at every one of them, against 1,266 and 1,322 before. The
+footer's last row clears the furniture at the document end. The dock's seam with the nav is 0 below
+640 and the dock sits flush at 0 from 640 to 759, where it used to float over a void.
+`scroll-padding-bottom` computes 124 below the desk, 68 between the rungs and 0 from DETAIL up. The
+focus probe was proved able to fail first, with a full-page overlay reading 5 of 5 points occluded,
+and then read 0 product occlusions on the four controls that had been under the bar. The one
+remaining hit is the course chrome's own toggle over the right edge in WebKit, which is chrome and
+is cropped by this repository's own rule about the 220px panel.
+
+---
+
+## 2026-08-16 - Three surfaces described one $5 bet as three products, and the number nobody had counted was the fourth
+
+**THE FEE WAS THREE INCOMPATIBLE MODELS AND ALL THREE SHIPPED.** The bet panel computed
+`Fee (1.5% of your bet)` and charged it at Confirm. `how-it-works.html` said, on the page headed
+"You always know what you are doing, why, and what happens to your money. This is a promise, not a
+FAQ", that "the platform earns a small fee only when you win - never on a losing bet". The wallet
+ledger charged `Platform fee (won bet) -$0.40` against a `+$13.20` payout, which is 3 per cent of
+the payout: the `0.03 * payout` formula `PRODUCT.md` retired on 2026-08-10 with `docs/backlog.md`
+6, still standing in the ledger six days later because the decision was applied to the panel and
+nobody walked the other surfaces. **A person who read How It Works, confirmed a bet and then opened
+their wallet got three different answers to "what did you take from me", and `PRODUCT.md` names
+platform betrayal as the number one churn driver.** It is 1.5 per cent of the stake, charged at
+Confirm, on all three now.
+
+**THE PAYOUT FIGURE WAS THE FOURTH ANSWER AND IT WAS THE LARGEST BY COUNT.** `$13.20` stood on
+**298 occurrences across three trees**, 231 painted, 46 in the kit and 21 grey, while the price
+beside it read 38 per cent and `5 / 0.38` is 13.16. **The reconcile panel had both in one
+sentence**: "Was 38% -> Now 41%. Payout $13.20 -> $12.20 for $5", where the second figure is
+`5 / 0.41` to the cent and the first is not `5 / 0.38` at all. Nothing had ever compared the two
+halves of that line, because both are prose to a grep and neither is wrong on its own. It is
+`$13.16` everywhere.
+
+**THE STATIC MARKUP WAS THE VERSION THAT SHIPPED WHENEVER THE SCRIPT DID NOT.** All eight bet panels
+carried `$0.40` and `$13.20` in the HTML and a page script rewrote them on load. So the retired fee
+model was what a reader saw on any screen with no script, on any screen whose script threw, and in
+the markup itself, which is what a developer reads. **A number that is only correct after JavaScript
+runs is a number the repository cannot check by reading**, and this repository has one rule about
+exactly that shape: reading the source is not reading the page. Here it ran the other way, and the
+answer is the same either way, which is that the two have to agree.
+
+**`Total to pay` DID NOT EXIST, AND ADDING IT WAS A ROUNDING DECISION RATHER THAN A SUM.** The panel
+showed a stake, a price, a fee and a payout, and never said what Confirm was about to take. 1.5 per
+cent of $5.00 is 7.5 cents: a fee taken raw prints `$0.07` while a total taken raw prints `$5.08`,
+so the two figures a person can read do not add up. **The fee is rounded to cents FIRST and the
+total is built out of the rounded fee**, `$0.08` and `$5.08`, in both page scripts of all four
+detail screens. The fee that is charged is the fee that is shown.
+
+**THE NEW LINE IS ONE DECLARATION IN THE SYSTEM AND NOT A FACE.** `.line.due` is
+`font-weight:var(--weight-bold)` and nothing else, because `.line span:last-child` already gives the
+value `--text-primary`. The difference from `.line.total` is the ink: **what could come back is
+brass, what leaves the wallet now is not**, and a second brass figure in a four-line block is the
+accent spent twice on one plate. `components/betpanel.css`, then the markup in `ui-kit/betpanel.html`
+and the screens, which is the two places markup is allowed.
+
+**THE LEDGER ROW MOVED AS WELL AS CHANGING ITS NUMBER, AND THAT IS THE HALF THAT MAKES IT TRUE.**
+Under the decided model the fee is taken at Confirm, so a fee row dated at the resolution is wrong
+about WHEN even if the figure is right. It reads `Platform fee (1.5% of stake) -$0.38` now and sits
+beside the `-$25.00` stake it was taken on, on the same date, so the arithmetic is checkable inside
+one screen: 1.5 per cent of 25 is 37.5 cents.
+
+**AND THE PAGE THAT PROMISES A COUNT YOU CAN CHECK CONTRADICTED ITSELF BY 44.** `how-it-works.html`
+printed "Every figure here is a count you can check, not a claim. EVENTS RESOLVED 1,240" in its side
+column while its own footer strip, on that page and on the other 105, said "1,284 events resolved".
+The strip is 106 of 106 and the side column was 1 of 1, so the side column moved.
+
+**Route.** Two throwaway sweeps in the scratchpad, both deleted: 298 payout figures, 24 fee rows,
+4 resolved counts, over `ui-visual/` (105 files), `wireframes/` (17) and `ui-kit/` (14); then the
+four page scripts by exact-match assertion, `count == 1` per block per file, so a drifted copy would
+have failed rather than been skipped. The prose went by exact string in both trees at once, because
+grey owns copy and a copy edit that reaches one tree is the drift it was meant to fix.
+
+**What was NOT touched, and it is the half that keeps the record honest.** The historical pass
+records in `voice/docs/microcopy.md` still name `Platform fee (won bet)`, "fee only when you win"
+and "Prices move with the market (AMM)" as strings deliberately kept. They were true on their own
+dates. The inventory tables above them are the source of truth and they are what moved, and a dated
+section at the foot of that file says so. `docs/decisions.md` keeps its own two references to
+`$13.20` for the same reason: an entry is written once.
+
+**Opened by this pass:** `docs/backlog.md` 159. `voice/voice.html` carries 23 em dashes and is the
+only file in the repository that carries any, measured at `ui-visual/` 0, `wireframes/` 0, `ui-kit/`
+0, `components/` 0, `ia/` 0. One of the 24 went with this pass because it stood inside a UI string
+the guide offers as a model line; the other 23 are prose and need a reading each, not a sweep.
+
+---
+
 ## 2026-08-15 - Four open rows closed before Handoff, and three of them closed by finding out what was not there
 
 **349 `<details>` NOW ARRIVE, AND THE HEIGHT IS DELIBERATELY NOT ANIMATED.** The connection job had

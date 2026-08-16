@@ -74,29 +74,26 @@
                           <span class="hf-tag vol"><i></i>Vol</span>
                         </div>
                         <div class="hf-graph-wrap">
-                          <svg class="hf-graph" viewBox="0 0 360 190" preserveAspectRatio="none" aria-hidden="true">
+                          <div class="hf-axis" aria-hidden="true"><span>70%</span><span>60%</span><span>50%</span><span>40%</span><span>30%</span></div><svg class="hf-graph" viewBox="0 0 360 190" preserveAspectRatio="none" aria-hidden="true">
                             <defs>
                               <linearGradient id="hfyes" x1="0" y1="0" x2="0" y2="1">
                                 <stop offset="0" stop-color="var(--outcome-yes)" stop-opacity=".2"/>
                                 <stop offset="1" stop-color="var(--outcome-yes)" stop-opacity="0"/>
                               </linearGradient>
                               <linearGradient id="hfvol" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0" stop-color="var(--color-action)" stop-opacity=".2"/>
-                                <stop offset="1" stop-color="var(--color-action)" stop-opacity="0"/>
+                                <stop offset="0" stop-color="var(--series-5)" stop-opacity=".2"/>
+                                <stop offset="1" stop-color="var(--series-5)" stop-opacity="0"/>
                               </linearGradient>
                             </defs>
-                            <g class="hf-grid" vector-effect="non-scaling-stroke">
-                              <line x1="16" y1="40" x2="344" y2="40"/><line x1="16" y1="80" x2="344" y2="80"/>
-                              <line x1="16" y1="120" x2="344" y2="120"/><line x1="16" y1="160" x2="344" y2="160"/>
-                            </g>
-                            <path class="hf-area" d="M16,97 L46,106.5 L76,90.7 L105,112.8 L135,103.3 L165,122.3 L195,109.6 L225,128.6 L255,119.1 L284,131.8 L314,125.4 L344,134.9 L344,190 L16,190 Z"/>
-                            <path class="hf-vol-area" d="M16,178 L46,169 L76,174 L105,160 L135,167 L165,151 L195,164 L225,147 L255,161 L284,153 L314,163 L344,149 L344,190 L16,190 Z"/>
-                            <polyline class="hf-vol-line" vector-effect="non-scaling-stroke" points="16,178 46,169 76,174 105,160 135,167 165,151 195,164 225,147 255,161 284,153 314,163 344,149"/>
-                            <polyline class="hf-line no" vector-effect="non-scaling-stroke" points="16,97 46,87.5 76,103.3 105,81.2 135,90.7 165,71.7 195,84.4 225,65.4 255,74.9 284,62.2 314,68.6 344,59.1"/>
-                            <polyline class="hf-line yes" vector-effect="non-scaling-stroke" points="16,97 46,106.5 76,90.7 105,112.8 135,103.3 165,122.3 195,109.6 225,128.6 255,119.1 284,131.8 314,125.4 344,134.9"/>
+                            <g class="hf-grid" vector-effect="non-scaling-stroke"><line x1="16" y1="10" x2="344" y2="10"/><line x1="16" y1="40" x2="344" y2="40"/><line x1="16" y1="70" x2="344" y2="70"/><line x1="16" y1="100" x2="344" y2="100"/><line x1="16" y1="130" x2="344" y2="130"/></g><line class="hf-split" x1="16" y1="145" x2="344" y2="145" vector-effect="non-scaling-stroke"/>
+                            <path class="hf-area" d="M16,70 L46,79 L76,64 L105,85 L135,76 L165,94 L195,82 L225,100 L255,91 L284,103 L314,97 L344,106 L344,140 L16,140 Z"/>
+                            <path class="hf-vol-area" d="M16,188 L46,179 L76,184 L105,170 L135,177 L165,161 L195,174 L225,157 L255,171 L284,163 L314,173 L344,159 L344,190 L16,190 Z"/>
+                            <polyline class="hf-vol-line" vector-effect="non-scaling-stroke" points="16,188 46,179 76,184 105,170 135,177 165,161 195,174 225,157 255,171 284,163 314,173 344,159"/>
+                            <polyline class="hf-line no" vector-effect="non-scaling-stroke" points="16,70 46,61 76,76 105,55 135,64 165,46 195,58 225,40 255,49 284,37 314,43 344,34"/>
+                            <polyline class="hf-line yes" vector-effect="non-scaling-stroke" points="16,70 46,79 76,64 105,85 135,76 165,94 195,82 225,100 255,91 284,103 314,97 344,106"/>
                           </svg>
                         </div>
-                        <span class="hf-chart-cap">Live odds &amp; volume &middot; last 30 days</span>
+                        <span class="hf-chart-cap">YES probability, last 30 days &middot; volume below, no scale</span>
                       </div>
                     </article>
                     <div class="hero-duo">
@@ -484,29 +481,26 @@
                           <span class="hf-tag vol"><i></i>Vol</span>
                         </div>
                         <div class="hf-graph-wrap">
-                          <svg class="hf-graph" viewBox="0 0 360 190" preserveAspectRatio="none" aria-hidden="true">
+                          <div class="hf-axis" aria-hidden="true"><span>70%</span><span>60%</span><span>50%</span><span>40%</span><span>30%</span></div><svg class="hf-graph" viewBox="0 0 360 190" preserveAspectRatio="none" aria-hidden="true">
                             <defs>
                               <linearGradient id="hfyes-lt" x1="0" y1="0" x2="0" y2="1">
                                 <stop offset="0" stop-color="var(--outcome-yes)" stop-opacity=".2"/>
                                 <stop offset="1" stop-color="var(--outcome-yes)" stop-opacity="0"/>
                               </linearGradient>
                               <linearGradient id="hfvol-lt" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0" stop-color="var(--color-action)" stop-opacity=".2"/>
-                                <stop offset="1" stop-color="var(--color-action)" stop-opacity="0"/>
+                                <stop offset="0" stop-color="var(--series-5)" stop-opacity=".2"/>
+                                <stop offset="1" stop-color="var(--series-5)" stop-opacity="0"/>
                               </linearGradient>
                             </defs>
-                            <g class="hf-grid" vector-effect="non-scaling-stroke">
-                              <line x1="16" y1="40" x2="344" y2="40"/><line x1="16" y1="80" x2="344" y2="80"/>
-                              <line x1="16" y1="120" x2="344" y2="120"/><line x1="16" y1="160" x2="344" y2="160"/>
-                            </g>
-                            <path class="hf-area" d="M16,97 L46,106.5 L76,90.7 L105,112.8 L135,103.3 L165,122.3 L195,109.6 L225,128.6 L255,119.1 L284,131.8 L314,125.4 L344,134.9 L344,190 L16,190 Z"/>
-                            <path class="hf-vol-area" d="M16,178 L46,169 L76,174 L105,160 L135,167 L165,151 L195,164 L225,147 L255,161 L284,153 L314,163 L344,149 L344,190 L16,190 Z"/>
-                            <polyline class="hf-vol-line" vector-effect="non-scaling-stroke" points="16,178 46,169 76,174 105,160 135,167 165,151 195,164 225,147 255,161 284,153 314,163 344,149"/>
-                            <polyline class="hf-line no" vector-effect="non-scaling-stroke" points="16,97 46,87.5 76,103.3 105,81.2 135,90.7 165,71.7 195,84.4 225,65.4 255,74.9 284,62.2 314,68.6 344,59.1"/>
-                            <polyline class="hf-line yes" vector-effect="non-scaling-stroke" points="16,97 46,106.5 76,90.7 105,112.8 135,103.3 165,122.3 195,109.6 225,128.6 255,119.1 284,131.8 314,125.4 344,134.9"/>
+                            <g class="hf-grid" vector-effect="non-scaling-stroke"><line x1="16" y1="10" x2="344" y2="10"/><line x1="16" y1="40" x2="344" y2="40"/><line x1="16" y1="70" x2="344" y2="70"/><line x1="16" y1="100" x2="344" y2="100"/><line x1="16" y1="130" x2="344" y2="130"/></g><line class="hf-split" x1="16" y1="145" x2="344" y2="145" vector-effect="non-scaling-stroke"/>
+                            <path class="hf-area" d="M16,70 L46,79 L76,64 L105,85 L135,76 L165,94 L195,82 L225,100 L255,91 L284,103 L314,97 L344,106 L344,140 L16,140 Z"/>
+                            <path class="hf-vol-area" d="M16,188 L46,179 L76,184 L105,170 L135,177 L165,161 L195,174 L225,157 L255,171 L284,163 L314,173 L344,159 L344,190 L16,190 Z"/>
+                            <polyline class="hf-vol-line" vector-effect="non-scaling-stroke" points="16,188 46,179 76,184 105,170 135,177 165,161 195,174 225,157 255,171 284,163 314,173 344,159"/>
+                            <polyline class="hf-line no" vector-effect="non-scaling-stroke" points="16,70 46,61 76,76 105,55 135,64 165,46 195,58 225,40 255,49 284,37 314,43 344,34"/>
+                            <polyline class="hf-line yes" vector-effect="non-scaling-stroke" points="16,70 46,79 76,64 105,85 135,76 165,94 195,82 225,100 255,91 284,103 314,97 344,106"/>
                           </svg>
                         </div>
-                        <span class="hf-chart-cap">Live odds &amp; volume &middot; last 30 days</span>
+                        <span class="hf-chart-cap">YES probability, last 30 days &middot; volume below, no scale</span>
                       </div>
                     </article>
                     <div class="hero-duo">

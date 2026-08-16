@@ -42,13 +42,13 @@
                       <input type="radio" name="edtab" id="edtab-holders" class="ed-tabradio">
                       <input type="radio" name="edtab" id="edtab-positions" class="ed-tabradio">
                       <input type="radio" name="edtab" id="edtab-activity" class="ed-tabradio">
-                      <div class="ed-tabbar" role="tablist">
+                      <div class="ed-tabbar">
                         <label class="ed-tablabel" for="edtab-comments">Comments <span class="ed-tab-count">128</span></label>
                         <label class="ed-tablabel" for="edtab-holders">Biggest bets</label>
                         <label class="ed-tablabel" for="edtab-positions">Bets</label>
                         <label class="ed-tablabel" for="edtab-activity">Activity</label>
                       </div>
-                    <div class="ed-tabpanel ed-panel-comments" role="tabpanel" aria-label="Comments">
+                    <div class="ed-tabpanel ed-panel-comments" role="group" aria-label="Comments">
                       <div class="cmt-controls">
                         <span>128 comments</span>
                         <span class="seg"><button type="button" class="chip chip-rail sel">Newest</button><button class="chip chip-rail" type="button">Top</button><button class="chip chip-rail" type="button">Bettors</button></span>
@@ -93,7 +93,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="ed-tabpanel ed-panel-holders" role="tabpanel" aria-label="Biggest bets">
+                    <div class="ed-tabpanel ed-panel-holders" role="group" aria-label="Biggest bets">
                       <div class="hold-cols">
                       <div class="hold-col">
                         <h3>Biggest YES bets</h3>
@@ -111,7 +111,7 @@
                       </div>
                       </div>
                     </div>
-                    <div class="ed-tabpanel ed-panel-positions" role="tabpanel" aria-label="Bets">
+                    <div class="ed-tabpanel ed-panel-positions" role="group" aria-label="Bets">
                       <table class="ptable">
                         <thead><tr><th>Holds 320 YES</th><th>Side</th><th>Amount</th></tr></thead>
                         <tbody>
@@ -124,7 +124,7 @@
                       </table>
                       <p class="pos-note">Your bet is highlighted. Bets update as the odds move.</p>
                     </div>
-                    <div class="ed-tabpanel ed-panel-activity" role="tabpanel" aria-label="Activity">
+                    <div class="ed-tabpanel ed-panel-activity" role="group" aria-label="Activity">
                       <p class="pos-note">Recent bets, largest first. Filter: over $5.</p>
                       <div class="act-list">
                       <div class="act-row"><span class="cmt-av">wh</span><span class="act-txt"><b>whale_07</b> bet <b>$175</b> on YES</span><span class="act-time">2m ago</span></div>
@@ -145,13 +145,13 @@
                       <input type="radio" name="edtab-lt" id="edtab-holders-lt" class="ed-tabradio">
                       <input type="radio" name="edtab-lt" id="edtab-positions-lt" class="ed-tabradio">
                       <input type="radio" name="edtab-lt" id="edtab-activity-lt" class="ed-tabradio">
-                      <div class="ed-tabbar" role="tablist">
+                      <div class="ed-tabbar">
                         <label class="ed-tablabel" for="edtab-comments-lt">Comments <span class="ed-tab-count">128</span></label>
                         <label class="ed-tablabel" for="edtab-holders-lt">Biggest bets</label>
                         <label class="ed-tablabel" for="edtab-positions-lt">Bets</label>
                         <label class="ed-tablabel" for="edtab-activity-lt">Activity</label>
                       </div>
-                    <div class="ed-tabpanel ed-panel-comments" role="tabpanel" aria-label="Comments">
+                    <div class="ed-tabpanel ed-panel-comments" role="group" aria-label="Comments">
                       <div class="cmt-controls">
                         <span>128 comments</span>
                         <span class="seg"><button type="button" class="chip chip-rail sel">Newest</button><button class="chip chip-rail" type="button">Top</button><button class="chip chip-rail" type="button">Bettors</button></span>
@@ -196,7 +196,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="ed-tabpanel ed-panel-holders" role="tabpanel" aria-label="Biggest bets">
+                    <div class="ed-tabpanel ed-panel-holders" role="group" aria-label="Biggest bets">
                       <div class="hold-cols">
                       <div class="hold-col">
                         <h3>Biggest YES bets</h3>
@@ -214,7 +214,7 @@
                       </div>
                       </div>
                     </div>
-                    <div class="ed-tabpanel ed-panel-positions" role="tabpanel" aria-label="Bets">
+                    <div class="ed-tabpanel ed-panel-positions" role="group" aria-label="Bets">
                       <table class="ptable">
                         <thead><tr><th>Holds 320 YES</th><th>Side</th><th>Amount</th></tr></thead>
                         <tbody>
@@ -227,7 +227,7 @@
                       </table>
                       <p class="pos-note">Your bet is highlighted. Bets update as the odds move.</p>
                     </div>
-                    <div class="ed-tabpanel ed-panel-activity" role="tabpanel" aria-label="Activity">
+                    <div class="ed-tabpanel ed-panel-activity" role="group" aria-label="Activity">
                       <p class="pos-note">Recent bets, largest first. Filter: over $5.</p>
                       <div class="act-list">
                       <div class="act-row"><span class="cmt-av">wh</span><span class="act-txt"><b>whale_07</b> bet <b>$175</b> on YES</span><span class="act-time">2m ago</span></div>
@@ -262,6 +262,19 @@
     fixed the ownership and left a tab with no panel that leaves the page. So the roles came OFF,
     the container is a <code>&lt;nav&gt;</code> so its label still names something, and the state is
     the idiom this product already writes <b>1,228 times</b>. Backlog 89.</p>
+    <p class="tk-why"><b>AND THE OPPOSITE HAPPENED TO A DIFFERENT STRIP ON 2026-08-16, WHICH IS WHY
+    BOTH SENTENCES BELONG ON ONE PAGE.</b> That pass removed the role from the strip that could not
+    own one; it did not look at the other two bars in this file, and both were still declaring
+    <code>role="tablist"</code> over children with <b>0 <code>role="tab"</code> and 0
+    <code>aria-selected</code> in either tree</b>. <code>.rules-tabs</code> is the one of the three
+    that CAN own the role, because it is two real <code>&lt;button&gt;</code>s over two real panels
+    with a script that swaps them, so it has <code>role="tab"</code>, <code>aria-selected</code> and
+    <code>role="tabpanel"</code> now, kept in step by the same handler that was already toggling the
+    class. <code>.ed-tabbar</code> and <code>.ptab-bar</code> are <code>&lt;label for&gt;</code> over
+    hidden radios, and <b>a label is not a tab because a label is not focusable</b>, so the role came
+    off both and their panels lost <code>role="tabpanel"</code> with it. <b>The third of the three
+    was missed by the sweep that fixed the first two</b> and was caught by re-running the check,
+    which is the only way a role can be found: nothing in a stylesheet can see one.</p>
     <div class="tk-pairv">
       <div class="tk-th">Vault, dark</div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
@@ -290,7 +303,7 @@
           <input type="radio" name="ptab-dk" id="ptab-record-dk" class="ptab-in" checked>
           <input type="radio" name="ptab-dk" id="ptab-wins-dk" class="ptab-in">
           <input type="radio" name="ptab-dk" id="ptab-resolved-dk" class="ptab-in">
-          <div class="ptab-bar" role="tablist">
+          <div class="ptab-bar">
             <label for="ptab-record-dk" class="ptab-lbl">Track record</label>
             <label for="ptab-wins-dk" class="ptab-lbl">Past wins</label>
             <label for="ptab-resolved-dk" class="ptab-lbl">Resolved</label>
@@ -308,7 +321,7 @@
           </section>
           <section class="ptab-panel" aria-label="Past wins">
             <div class="gallery">
-              <div class="card">Win card: US shutdown YES +$13.20</div>
+              <div class="card">Win card: US shutdown YES +$13.16</div>
               <div class="card">Win card: BTC &gt; $150k YES +$6.80</div>
               <div class="card">Win card: ETF approval NO +$9.40</div>
             </div>
@@ -320,7 +333,7 @@
                   <span class="pos-q">US government shutdown before Mar 1, 2027</span>
                   <span class="pos-side pos-won">WON</span>
                 </div>
-                <span class="pos-status">YES &middot; resolved Jun 27 &middot; +$13.20</span>
+                <span class="pos-status">YES &middot; resolved Jun 27 &middot; +$13.16</span>
               </article>
               <article class="pos">
                 <div class="pos-top">
@@ -339,7 +352,7 @@
           <input type="radio" name="ptab-lt" id="ptab-record-lt" class="ptab-in" checked>
           <input type="radio" name="ptab-lt" id="ptab-wins-lt" class="ptab-in">
           <input type="radio" name="ptab-lt" id="ptab-resolved-lt" class="ptab-in">
-          <div class="ptab-bar" role="tablist">
+          <div class="ptab-bar">
             <label for="ptab-record-lt" class="ptab-lbl">Track record</label>
             <label for="ptab-wins-lt" class="ptab-lbl">Past wins</label>
             <label for="ptab-resolved-lt" class="ptab-lbl">Resolved</label>
@@ -357,7 +370,7 @@
           </section>
           <section class="ptab-panel" aria-label="Past wins">
             <div class="gallery">
-              <div class="card">Win card: US shutdown YES +$13.20</div>
+              <div class="card">Win card: US shutdown YES +$13.16</div>
               <div class="card">Win card: BTC &gt; $150k YES +$6.80</div>
               <div class="card">Win card: ETF approval NO +$9.40</div>
             </div>
@@ -369,7 +382,7 @@
                   <span class="pos-q">US government shutdown before Mar 1, 2027</span>
                   <span class="pos-side pos-won">WON</span>
                 </div>
-                <span class="pos-status">YES &middot; resolved Jun 27 &middot; +$13.20</span>
+                <span class="pos-status">YES &middot; resolved Jun 27 &middot; +$13.16</span>
               </article>
               <article class="pos">
                 <div class="pos-top">
@@ -444,13 +457,13 @@
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
         <section class="ed-section ed-rules">
-          <div class="rules-tabs"><button type="button" class="rules-tab">Rules</button><button type="button" class="rules-tab">Background</button></div>
+          <div class="rules-tabs" role="tablist"><button type="button" class="rules-tab" role="tab" aria-selected="false">Rules</button><button type="button" class="rules-tab" role="tab" aria-selected="false">Background</button></div>
         </section>
         <div class="ed-range"><button type="button" class="chip chip-rail">1d</button><button type="button" class="chip chip-rail">1w</button><button type="button" class="chip chip-rail">1m</button><button type="button" class="chip chip-rail sel">all</button></div>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
         <section class="ed-section ed-rules">
-          <div class="rules-tabs"><button type="button" class="rules-tab">Rules</button><button type="button" class="rules-tab">Background</button></div>
+          <div class="rules-tabs" role="tablist"><button type="button" class="rules-tab" role="tab" aria-selected="false">Rules</button><button type="button" class="rules-tab" role="tab" aria-selected="false">Background</button></div>
         </section>
         <div class="ed-range"><button type="button" class="chip chip-rail">1d</button><button type="button" class="chip chip-rail">1w</button><button type="button" class="chip chip-rail">1m</button><button type="button" class="chip chip-rail sel">all</button></div>
       </div>

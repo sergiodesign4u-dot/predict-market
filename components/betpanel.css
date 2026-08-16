@@ -1,5 +1,5 @@
 /* components/betpanel.css
-   Component: betpanel. Classes: .bet-dock, .bet-panel, .bet-sheet, .bp-amount-lbl, .bp-amount-row, .bp-cash, .bp-change, .bp-dir, .bp-head, .bp-hint, .bp-inner, .bp-pct, .bp-sel-name, .bp-selected, .bp-side, .dock-meta, .line, .rp-inner, .sheet-grab, .total.
+   Component: betpanel. Classes: .bet-dock, .bet-panel, .bet-sheet, .bp-amount-lbl, .bp-amount-row, .bp-cash, .bp-change, .bp-dir, .bp-head, .bp-hint, .bp-inner, .bp-pct, .bp-sel-name, .bp-selected, .bp-side, .dock-meta, .due, .line, .rp-inner, .sheet-grab, .total.
 
    Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-card-to, --bg-control, --bg-dock,
           --bg-dock-from, --bg-page, --bg-plate, --bg-plate-from, --bg-pressed, --border-brass,
@@ -12,6 +12,14 @@
 
 .line{display:flex;justify-content:space-between;font-size:var(--text-12);padding:var(--space-4) 0;border-top:var(--hairline) solid var(--border-hairline)}
 .line.total{font-weight:var(--weight-bold);border-top:var(--hairline) solid var(--border-hairline)}
+/* THE TWO BOLD LINES IN THE BREAKDOWN ANSWER TWO DIFFERENT QUESTIONS AND ONLY ONE OF THEM IS BRASS.
+   `.total` is what could come back and takes --text-brass from the panel rule below; `.due` is what
+   leaves the wallet now and stays on --text-primary, which `.line span:last-child` already gives it.
+   So this class is one declaration and not a face: the weight is the whole difference, because a
+   second brass figure in a four-line block is the accent spent twice on one plate. Written
+   2026-08-16 with the `Total to pay` row, which existed nowhere before: the panel showed a stake, a
+   fee and a payout and never once said what the confirm button was about to take. */
+.line.due{font-weight:var(--weight-bold)}
 .bet-panel .bp-inner{padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-8)}
 .bp-head{display:flex;align-items:center;justify-content:space-between}
 .bp-head h3{margin:0}
@@ -32,6 +40,15 @@
 /* Label muted, figure bright: the same ranking the card meta row uses. The
    colours are stated here because nothing else states them, and without them
    the dock inherited body text for both halves. */
+/* `.dock-meta` HAS 0 PLACEMENTS SINCE 2026-08-16 AND ITS RULES ARE WHOLE, WHICH IS THE SECOND KIND
+   OF ZERO AND NOT THE FIRST. `account.css` was deleted on 2026-08-08 for having no face left; this
+   face is intact and its markup went. It stood in the second of the dock's two shapes, the one that
+   carried a stake, a payout and a Confirm of its own, on the four bet-state screens. Those four had
+   no mobile sheet, so the dock was the only thing a phone rendered and it had to carry everything;
+   when they got the sheet the shape had nothing left to do, and the "Confirm bet" it carried was a
+   label lying over four states where confirming was not the next act. All 8 docks are the chooser
+   now. The rules stay, they are named in the class list at the top of this file, and the specimen
+   stays on `ui-kit/betpanel.html` labelled with this zero and its reason. */
 .bet-dock .dock-meta{font-size:var(--text-10);flex:0 0 auto;text-align:center;color:var(--text-muted)}
 .bet-dock .dock-meta b{display:block;font-size:var(--text-12);color:var(--text-primary)}
 .bet-panel{flex:0 0 300px;top:var(--space-8);align-self:flex-start}
@@ -53,7 +70,23 @@
     max-height:calc(100svh - 120px - var(--space-16));
     overflow-y:auto;overscroll-behavior:contain}
   .bet-dock{display:none}
+  /* AND THE CLEARANCE GOES WITH THE DOCK, the same shape `bottomnav.css` uses for its own bar. The
+     dock's markup stands at every width and only its `display` changes, so `html:has(.bet-dock)`
+     below says "this document has a dock" and cannot say "the dock is on the screen right now".
+     Zeroing the token here is what makes the second question answerable, in the one block that
+     already knows the answer. */
+  :root{--dock-h:0px}
 }
+/* THE ROOM THE FIXED FURNITURE TAKES, PAID FOR ONLY BY THE DOCUMENTS THAT HAVE IT.
+   `.device` is padded so the footer's last row is not under the bars, and the scroll container
+   reserves the same distance so a control tabbed to does not land underneath them. `base.css`
+   declares both for the nav, which every screen has; this pair adds the dock, which 11 screens
+   have. Measured before: on event-detail.html at 390, Tab put `summary.market-head`, two comment
+   buttons and `a.opt-more` at y 816 to 826 in an 844 viewport, and `elementFromPoint` returned
+   `a.nav-item` at all five sample points on each of them, with the focused and blurred screenshots
+   of the control's clip BYTE-IDENTICAL. The ring was painted and the bar was on top of it. */
+html:has(.bet-dock){scroll-padding-block-end:calc(var(--bottom-nav-h) + var(--dock-h))}
+html:has(.bet-dock) .device{padding-bottom:calc(var(--bottom-nav-h) + var(--dock-h))}
 :is(.bet-panel,.bet-sheet) .bp-inner{padding:var(--space-16);gap:var(--space-12)}
 .bp-head h3{font-family:var(--font-display);font-size:var(--text-16);font-weight:var(--weight-bold);color:var(--text-primary)}
 .bp-hint{color:var(--text-muted);font-size:var(--text-11)}
@@ -132,7 +165,16 @@
 :is(.bet-panel,.bet-sheet) .line span:last-child{color:var(--text-primary)}
 :is(.bet-panel,.bet-sheet) .line.total{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
 :is(.bet-panel,.bet-sheet) .line.total span:last-child{color:var(--text-brass)}
-.bet-dock{position:sticky;bottom:52px;z-index:var(--z-dock);gap:var(--space-8);padding:var(--space-8) var(--space-12);border:0;border-top:var(--hairline) solid var(--border-brass);background-color:var(--bg-dock);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-dock-from),var(--bg-card-to));background-blend-mode:overlay,normal;box-shadow:0 -14px 26px -18px var(--shadow-ink-85)}
+/* FIXED AND NOT STICKY SINCE 2026-08-16, AND THE OFFSET IS A TOKEN BECAUSE THE LITERAL WAS WRONG
+   AT EVERY WIDTH. It read `bottom:52px` to clear a bottom nav that measures 56, so the two
+   overlapped by 4px on every phone; and the nav is `display:none` from DESK up while the 52 stayed,
+   so from 640 to 759 the dock hung over an empty 52px band. Two numbers written the same day to be
+   one number, which is this folder's named trap. `--bottom-nav-h` is 56 and is 0 above the rung,
+   set in `bottomnav.css` inside the block that hides the bar.
+   Sticky was the larger defect. Measured before the change at 390 on event-detail.html: the dock
+   released at scrollY 1805 and stood 1,322px above the viewport bottom at the foot of the document,
+   which puts the product's primary action in the middle of the screen over the footer. */
+.bet-dock{position:fixed;left:0;right:0;bottom:var(--bottom-nav-h);z-index:var(--z-dock);gap:var(--space-8);padding:var(--space-8) var(--space-12);border:0;border-top:var(--hairline) solid var(--border-brass);background-color:var(--bg-dock);background-image:var(--surface-grain),linear-gradient(160deg,var(--bg-dock-from),var(--bg-card-to));background-blend-mode:overlay,normal;box-shadow:0 -14px 26px -18px var(--shadow-ink-85)}
 /* The dock's copy of the figure, and it lost its `opacity:.85` with the panel's `.78` for the
    reason written out beside that rule: 4.39:1 on the NO side in the Vault at 10px, and the
    dock IS this panel below 760px, so one control cannot fade its ink two different amounts.

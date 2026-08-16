@@ -9,6 +9,21 @@
      declares its own, so that a class with no rule can be told from dead markup.
    Stand:  ui-kit/tabs.html, and ui-kit/organisms.html#tabs for the level and its reason
    Stands on: 20 ui-visual screens (active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, active-bets-history-empty.html, active-bets-history-error.html, ...)
+   THIS FILE HOLDS THREE TAB BARS AND ONLY ONE OF THEM CAN BE A `role="tablist"`, WHICH IS A FACT
+     ABOUT THE ELEMENTS AND NOT ABOUT THE STYLING. All three declared the role until 2026-08-16 and
+     the tree carried **0 `role="tab"` and 0 `aria-selected`**, so all three were announcing a
+     keyboard model none of them had.
+     `.rules-tabs` is two real `<button>`s over two real panels with a script that swaps them, so it
+     is one now: `role="tab"` and `aria-selected` on the buttons, `role="tabpanel"` on the panels,
+     and the script sets the attribute beside the class it was already toggling.
+     `.ed-tabbar` and `.ptab-bar` are `<label for>` children driving hidden radios, and **a label is
+     not a tab because a label is not focusable** - the same fact that cost this repository a 262px
+     brass primary no Tab could reach. The role is off both, and their panels lose `role="tabpanel"`
+     with it, because a tabpanel with no tab is an orphan: `.ed-tabpanel` is a labelled
+     `role="group"` and `.ptab-panel` is a `<section>` with `aria-label`, which needs nothing.
+     **A wrong role is worse than no role**: it promises a model the markup cannot honour, and
+     nothing in a stylesheet can see it. The third of the three was missed by the sweep that fixed
+     the first two and found by re-running the check, which is the only way it could have been.
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .tabs{display:flex}

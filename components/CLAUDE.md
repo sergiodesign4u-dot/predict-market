@@ -1,7 +1,10 @@
 # components/ - the system itself
 
-This folder IS the design system. **54 stylesheets, 10,381 lines**: 48 here and 6 in `patterns/`,
-re-counted 2026-08-15 after the Animation stage's frame-cost pass took the knob and the step dot off
+This folder IS the design system. **54 stylesheets, 10,764 lines**: 48 here and 6 in `patterns/`,
+re-counted 2026-08-16 after the same day's palette pass gave the hero chart a scale, took Volume off
+brass and took the tint off the spectator's YES/NO pair. It was 10,613 earlier the same day, after
+the critique pass took the bottom nav and the bet dock off `sticky` and
+gave the sticky furniture three names. It was 10,381 on 2026-08-15 after the Animation stage's frame-cost pass took the knob and the step dot off
 `left` and `width` and deleted the blanket reduced-motion net. It was 10,332 earlier the same day,
 after the same stage rewrote 69 motion declarations, gave six silent
 components a response and gave the skeleton the only status animation in the product. It was 10,140
@@ -158,7 +161,12 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   file needs a break that is not one of them it is a one-off and says so in a comment beside itself,
   or it is a fourth rung and gets named in the ladder in `tokens.css` FIRST. A breakpoint cannot be a
   token: a media query condition does not read a custom property and there is no build step here, so
-  the ladder is kept by being read. **There are 32 width rules, and this line has said 33, then 35,
+  the ladder is kept by being read. **The move to 33 on 2026-08-16 is this pass taking one AWAY, not
+  adding one**: the same comment-stripping script read 34 immediately before the critique fix and 33
+  immediately after, when `course-chrome.css` lost the block carrying its toggle's lift and the lift
+  became a sum of the two tokens it clears. Two readings by one script minutes apart are a delta that
+  can be trusted; a delta against a sentence written on another tree is not, which is the whole
+  reason this line keeps its own history. **There are 33 width rules, and this line has said 33, then 35,
   then 33, then 32**, counted each time from the comment-stripped source and never from the sentence
   before it:
   **25 name one of the three rungs, 2 name the 1140 harness, 4 name no rung** (560 in
@@ -228,7 +236,8 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   and it existed to keep these rules off the course chrome. Measured across all 106 documents in `ui-visual/` with
   every dialog open: it changed the outcome for **13 of 375 selector tails**, eight of them one file
   drawing a page differently from a sheet on purpose, and it matched **0 elements of the chrome**. The
-  bottom nav, the footer and all 337 dialogs stand outside it, so what the wrapper actually did was
+  bottom nav, the footer and all 337 dialogs stand outside it (**341 since 2026-08-16**, when the four
+  bet-state screens got the mobile sheet they never had), so what the wrapper actually did was
   hide three regions of the product from its own system, eight times in two days. **A wrapper that
   everything is inside is not a scope, it is a hole shaped like the exceptions.**
 - **The fix for a scope is never a second selector.** The amount chip was repaired once by writing
@@ -354,6 +363,76 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   because a comment has none. They point at the level page and its anchor now, verified by opening
   all 44 in a browser rather than by grepping for the id. If a line here names a path, open it.
 
+- **`position:sticky` STOPS BEING STUCK WHERE ITS OWN NORMAL-FLOW POSITION IS, AND FOR THE TWO BARS
+  AT THE FOOT OF THIS PRODUCT THAT WAS INSIDE THE PAGE.** `.bottom-nav` and `.bet-dock` sat in flow
+  between `.app-case` and the footer, so they were stuck only while the reader was above their own
+  place in the document. Measured on event-detail.html at 390, document 3,852 tall: flush to the
+  viewport bottom to scrollY 1613, **232px up at 2009, 623 at 2406 and 1,266 at the foot**, with the
+  dock 56px above that and the sticky header already gone at -582. Three bars stacked in the upper
+  third of a phone screen with the trust strip beneath them. The only navigation a phone has, and
+  the product's primary action, sliding into the middle of the page. **A sticky element whose
+  container also holds the footer is a fixed element that gives up at the end**, and nothing in a
+  stylesheet says so: `position:sticky` reads as a promise and the containing block is where the
+  promise is actually written. Both are `fixed` now, with `.device` padded and `scroll-padding`
+  reserved by the same tokens.
+- **THREE FILES WERE WRITING ONE NUMBER DOWN AND NONE OF THEM COULD SEE THE OTHER TWO.** The dock
+  offset itself by `52px` to clear a nav measuring **56**, so the two overlapped on every phone; the
+  nav is `display:none` from DESK up while the 52 stayed, so from 640 to 759 the dock hung over an
+  empty band; and `course-chrome.css` lifted its toggle by `8.25rem`, arithmetic for a dock top at
+  120 that was really at 124. Three numbers, one fact, and each was re-measured in its own file and
+  correct there. They are `--header-h`, `--bottom-nav-h` and `--dock-h` now, **and each is zeroed by
+  the rung block that hides its own bar**, which is what lets a reader ask "how much furniture is at
+  the foot of THIS width" and get an answer. The chrome's width query is deleted: its lift is
+  `calc(--bottom-nav-h + --dock-h + --space-12)` and is 12 at every width and every root. This is
+  the same family as the `759.98px` against `47.5rem` defect two bullets down, met from the other
+  side: **that one was a boundary borrowed in the wrong unit, this one was a height borrowed at all.**
+- **A CLEARANCE IS PART PADDING AND PART TYPE, SO NEITHER `px` NOR `rem` IS RIGHT ON ITS OWN.**
+  Measured with `Page.setFontSizes` at defaults 16 / 20 / 24 on event-detail.html: the nav is
+  **56 / 64 / 73**, the dock **68 / 76 / 85**, the header **59 / 63 / 69**. A px token is exact at
+  the default and 17px short at 24, which shows a strip of page between two bars that are supposed
+  to touch; a `rem` token overshoots, because the padding half does not grow. Both fit a line with
+  the same slope, 2.125 per pixel of root, so each token is its px half plus its type half:
+  `calc(22px + 2.125rem)` reads 56 / 64.5 / 73 against a measured 56 / 64 / 73. **Verified after: the
+  seam between dock and nav is 0.0 / 0.2 / 0.5px at the three roots**, and the chrome's gap is
+  12 / 12.2 / 12.5. `course-chrome.css` had already met this and paid for it with an
+  over-provision, which is what a single unit buys you when the thing you are clearing is two units.
+- **`scroll-padding` DID NOT EXIST IN THIS FOLDER AT ALL, AND THAT IS WHY EVERY FOCUS AUDIT CAME
+  BACK CLEAN.** Tab scrolls a target only just into view, so with a 56px bar pinned at the foot it
+  lands controls UNDERNEATH it: four of them measured on event-detail.html at 390 at y 816 to 826 in
+  an 844 viewport, `elementFromPoint` returning `a.nav-item` at all five sample points, and the
+  focused and blurred screenshots of the control's clip **byte-identical**. Every instrument this
+  repository had read `outline` and `box-shadow`, found a 2px brass ring on every control, and
+  reported zero. **A ring is a claim about what is VISIBLE and the only instrument for it is the
+  paint.** It is a floor on `:root` in `base.css` now, for the same reason the focus ring and the
+  44px touch floor are floors, and the dock's extra 68 is added by `betpanel.css` through
+  `html:has(.bet-dock)` so that a screen with no dock is not padded for one.
+- **A TARGET UNDER 24px IS NOT A WCAG 2.5.8 FAILURE AND THIS FOLDER HAS NOW BEEN TOLD SO TWICE.**
+  A critique filed 147 targets under 24x24 at 390 as a P1. Re-measured with the pointer asserted
+  coarse, which is the first half of the correction `base.css` already carries in prose: **155 under
+  24 by SIZE**. Then re-measured against the criterion instead of against the number, which is a
+  24px circle centred on the target touching no other target's circle: **0 failures at 390 and 0 at
+  1280.** The footer's popular row is 80x16 at 26.1 apart and its legal row 30.8x14 at 41.9, which
+  is what `footer.css` measured on 2026-08-13 and wrote down to the tenth. Of the residue, seven are
+  1x1 inputs whose target is their own `<label>` and one pair is a link inside a `:modal` dialog
+  measured against a link on the inert page behind it. **Read the criterion, not the dimension**, and
+  when a file in this folder already carries the measurement, the audit is what gets re-run.
+- **AN ATTRIBUTE THAT LOOKS LIKE A MECHANISM IS READ AS ONE, AND THIS TREE HAS NOW SHIPPED TWO.**
+  `pattern="[0-9.$]*"` stood on 113 amount fields in a product with 0 `<form>` elements, so it was
+  consulted at no moment. **`?side=yes` and `?side=no` stood on 212 feed-card links and 0 of 106
+  documents read `location.search`**, so every card in the product was passing a choice to a screen
+  that threw it away and typed `sel yes` into its own markup instead. Both read as a working
+  mechanism to anyone opening the file, and neither could be found by looking at the thing that
+  carries it: the first needed a census of `<form>`, the second needed a census of the READER. **Ask
+  what consumes an attribute before believing it does anything**, and if nothing does, it is either
+  a defect to wire or a lie to delete.
+- **A `role` IS A PROMISE ABOUT THE KEYBOARD AND A `<label>` CANNOT KEEP IT.** Three bars in
+  `tabs.css` declared `role="tablist"` and the tree carried 0 `role="tab"` and 0 `aria-selected`.
+  Only `.rules-tabs` could be repaired, because only it is made of `<button>`s; `.ed-tabbar` and
+  `.ptab-bar` are `<label for>` over hidden radios, and a label is not focusable, which is the same
+  fact that cost this folder a 262px brass primary no Tab could reach. **A wrong role is worse than
+  no role**, and nothing in a stylesheet can see one. The third of the three was missed by the sweep
+  that fixed the other two and caught by re-running the predicate, so **the check is the instrument
+  and reading the markup is not**.
 - **A MARGIN ON A FLEX CHILD IS ADDED TO THE CONTAINER'S GAP AND NEVER MERGED WITH IT.** This is the
   one place the intuition everybody has from adjacent-margin collapse gives the wrong answer, and it
   cost the narrowest screen double. `.feed .feed-inner` is a flex column with `gap:var(--space-16)`,
@@ -561,6 +640,51 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   shape `.bt-by` and `.seo-by` take by declaring no ink at all. **Adding a class to an element runs
   it past every selector in the system that was written for that element type**, which is the half of
   a markup change that a diff of the markup does not show.
+
+- **A PAIR OF ORDINALS IS A CLAIM THAT THERE ARE TWO, AND A LONE ELEMENT IS BOTH OF THEM.**
+  `card.css` painted `.ed-prob-big .prob:first-of-type` green and `:last-of-type` red, which is
+  right for `YES 38% NO 62%` and is a trap for `Leading: JD Vance 41%`. One span matches both
+  selectors at equal specificity, so source order decided it and the later rule won: **the market's
+  leading candidate was drawn in the ink that means the losing side**, on the two multi screens
+  where there is no second figure to compare it against. The fix is to make the outcome ink ask for
+  a PAIR - `:first-of-type:not(:last-of-type)` - so no source order can reach a lone figure, and to
+  give `:only-of-type` its own answer. **The stand could not have caught it**: all 8 placements of
+  `.ed-prob-big` in `ui-kit/` carry the pair and 0 carry the single, so this is the chosen NO again
+  in a different file. An ordinal selector is a statement about the SET, and the set has to be
+  checked before the ordinal is written.
+- **A GRID LINE IS A NUMBER OR IT IS DECORATION, AND DECORATION THAT LOOKS LIKE A SCALE IS THE
+  WORST OF THE THREE.** The hero chart ruled four lines at y=40, 80, 120 and 160 of a 190-unit box.
+  The mapping is solvable from two points the chart itself draws - the YES line is at 97 for 50 per
+  cent and at 134.9 for 38 - so the lines stood at **68.05, 55.38, 42.72 and 30.05 per cent**.
+  Nobody could read a value off them and the ruled paper said they could. Re-keyed so that
+  y = 220 - 3p, the decades land on 10, 40, 70, 100 and 130 and every drawn point becomes an integer
+  for the first time. **The tell was in the building the whole time**: the event-detail chart has
+  carried a labelled y-axis since Stage 08, so the product drew one scaled chart and one unscaled
+  one, and the unscaled one was the flagship.
+- **A MAGNITUDE AND A PROBABILITY SHARE NO AXIS, SO LABELLING ONE MAKES THE OTHER A LIE.** Volume in
+  dollars sat inside the same plot as the odds in per cent, and the moment the per-cent numerals
+  went in, the volume ribbon read as a third line hovering near 30. It moves into a strip of its own
+  under `.hf-split` and the caption says it has no scale. **Adding a scale is not free: it makes
+  every other mark in the box a claim about that scale.**
+- **`ch` IS THE WIDTH OF A ZERO, WHICH IS THE RIGHT UNIT FOR A MONO GUTTER AND THE WRONG ONE
+  EVERYWHERE ELSE.** `--measure` had to leave `ch` on 2026-08-12 for this reason; the chart's numeral
+  column is the case where it is exact, because on a monospace face every glyph is one advance.
+  Measured: `3.5ch` gives 23.1px and holds a 20.8px "70%" in the paint, over `http://` and over
+  `file://`, in both engines. **The grey tree has no mono face, so the same declaration gives 19.25px
+  for a 21.16px label, and that is the lesson stated from the other side.** It is NOT a defect, and
+  the predicate that called it one is the twin of `scrollWidth > clientWidth`: the criterion is
+  whether a numeral is CLIPPED or crowds the plot, and measured on both trees, both engines and five
+  widths it is **0 clipped and 0 overlapping, worst left margin 15.09px inside the clipping
+  ancestor**. A box wider than its column is not text that has been cut off.
+- **INJECTING A STYLESHEET STARTS A TRANSITION, AND THE VALUE AT t=0 IS THE VALUE IT IS LEAVING.**
+  The before-and-after census of outcome colour on the feed reported `ground 22 -> 22, edge 0 -> 0,
+  identical painted area`, over an edit that took a tint off 32 buttons. `addStyleTag` had applied
+  correctly; `.yesno :is(a,button)` carries `transition:background var(--dur-fast)`, and two
+  `requestAnimationFrame`s into a 150ms transition the computed background is still the old one.
+  Freeze `transition` and `animation` FIRST, then inject, then read: the same census then returned
+  **ground 54 -> 22, edge 32 -> 0, 220,689px2 of outcome colour down to 18,025**. This is the
+  root file's "a reading that does not move when the input moves", met from the direction where the
+  instrument is the thing that moved and the page is not.
 
 ## Where the record is
 

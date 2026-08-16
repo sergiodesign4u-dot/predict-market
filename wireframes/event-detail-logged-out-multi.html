@@ -1149,10 +1149,10 @@
             </details>
           </section>
           <section class="ed-section ed-rules">
-            <div class="rules-tabs" role="tablist"><button type="button" class="rules-tab sel">Rules</button><button type="button" class="rules-tab">Background</button></div>
-            <div class="rules-panel"><p class="resolution"><strong>Resolves to the candidate</strong> who is the Republican Party's official presidential nominee at the 2028 national convention. All other outcomes resolve NO.<br>
+            <div class="rules-tabs" role="tablist"><button type="button" class="rules-tab sel" role="tab" aria-selected="true">Rules</button><button type="button" class="rules-tab" role="tab" aria-selected="false">Background</button></div>
+            <div class="rules-panel" role="tabpanel"><p class="resolution"><strong>Resolves to the candidate</strong> who is the Republican Party's official presidential nominee at the 2028 national convention. All other outcomes resolve NO.<br>
             <strong>Source:</strong> official Republican National Committee certification. Resolved by the Yonder team.</p></div>
-            <div class="rules-panel" hidden><p class="resolution">JD Vance leads at 41% as the incumbent-aligned candidate, with Trump-endorsed momentum the main swing factor. What is moving the field:</p>
+            <div class="rules-panel" role="tabpanel" hidden><p class="resolution">JD Vance leads at 41% as the incumbent-aligned candidate, with Trump-endorsed momentum the main swing factor. What is moving the field:</p>
             <div class="args">
               <div class="arg-col">
                 <h3>For the leader (Vance)</h3>
@@ -1176,13 +1176,13 @@
               <input type="radio" name="edtab" id="edtab-holders" class="ed-tabradio">
               <input type="radio" name="edtab" id="edtab-positions" class="ed-tabradio">
               <input type="radio" name="edtab" id="edtab-activity" class="ed-tabradio">
-              <div class="ed-tabbar" role="tablist">
+              <div class="ed-tabbar">
                 <label class="ed-tablabel" for="edtab-comments">Comments <span class="ed-tab-count">128</span></label>
                 <label class="ed-tablabel" for="edtab-holders">Biggest bets</label>
                 <label class="ed-tablabel" for="edtab-positions">Bets</label>
                 <label class="ed-tablabel" for="edtab-activity">Activity</label>
               </div>
-            <div class="ed-tabpanel ed-panel-comments" role="tabpanel" aria-label="Comments">
+            <div class="ed-tabpanel ed-panel-comments" role="group" aria-label="Comments">
               <div class="cmt-controls">
                 <span>128 comments</span>
                 <span class="seg"><button type="button" class="chip chip-rail sel">Newest</button><button class="chip chip-rail" type="button">Top</button><button class="chip chip-rail" type="button">Bettors</button></span>
@@ -1223,7 +1223,7 @@
                 </div>
               </div>
             </div>
-            <div class="ed-tabpanel ed-panel-holders" role="tabpanel" aria-label="Biggest bets">
+            <div class="ed-tabpanel ed-panel-holders" role="group" aria-label="Biggest bets">
               <div class="hold-cols">
                 <div class="hold-col">
                   <h3>Biggest bets by outcome</h3>
@@ -1236,7 +1236,7 @@
                 </div>
               </div>
             </div>
-            <div class="ed-tabpanel ed-panel-positions" role="tabpanel" aria-label="Bets">
+            <div class="ed-tabpanel ed-panel-positions" role="group" aria-label="Bets">
               <table class="ptable">
                 <thead><tr><th>Bettor</th><th>Outcome</th><th>Amount</th></tr></thead>
                 <tbody>
@@ -1248,7 +1248,7 @@
               </table>
               <button type="button" class="btn btn-prompt btn-lg btn-block cmt-signin" data-open="signin">Sign in to place and track your bet</button>
             </div>
-            <div class="ed-tabpanel ed-panel-activity" role="tabpanel" aria-label="Activity">
+            <div class="ed-tabpanel ed-panel-activity" role="group" aria-label="Activity">
               <p class="pos-note">Recent bets, largest first. Filter: over $5.</p>
               <div class="act-list">
               <div class="act-row"><span class="cmt-av">wh</span><span class="act-txt"><b>whale_07</b> bet <b>$205</b> on JD Vance</span><span class="act-time">2m ago</span></div>
@@ -1263,15 +1263,15 @@
         </div>
           <aside class="bet-panel">
             <div class="bp-inner">
-              <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
+              <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">Pick a side</span></div>
               <span class="field-label">Your outcome</span>
               <div class="bp-selected">
                 <span class="bp-sel-name">JD Vance <span class="opt-prob">41%</span></span>
                 <a href="#edOutcomes" class="bp-change">Change</a>
               </div>
               <div class="bp-dir">
-                <button type="button" class="yesno-pick bp-side sel yes">YES <span class="bp-pct">41%</span></button>
-                <button type="button" class="yesno-pick bp-side no">NO <span class="bp-pct">59%</span></button>
+                <button type="button" class="yesno-pick bp-side yes" aria-pressed="false">YES <span class="bp-pct">41%</span></button>
+                <button type="button" class="yesno-pick bp-side no" aria-pressed="false">NO <span class="bp-pct">59%</span></button>
               </div>
               <div>
                 <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="1" value="5.00" aria-label="Bet amount"></div>
@@ -1279,7 +1279,7 @@
               </div>
               <div>
                 <div class="line"><span>Price now</span><span>41%</span></div>
-                <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.40</span></div>
+                <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.08</span></div><div class="line due"><span>Total to pay</span><span>$5.08</span></div>
                 <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
               </div>
               <button type="button" class="btn btn-primary btn-md btn-block" data-open="signin">Confirm bet</button>
@@ -1301,8 +1301,8 @@
     </main>
       <!-- Mobile sticky bet dock (above the bottom nav; taps expand to a confirm sheet) -->
       <div class="bet-dock" aria-label="Place your bet">
-        <button type="button" class="yesno-pick yesno-pick-bar bp-side sel yes" data-open-sheet="yes">JD Vance YES <span class="bp-pct">41%</span></button>
-        <button type="button" class="yesno-pick yesno-pick-bar bp-side no" data-open-sheet="no">NO <span class="bp-pct">59%</span></button>
+        <button type="button" class="yesno-pick yesno-pick-bar bp-side yes" data-open-sheet="yes" aria-pressed="false">JD Vance YES <span class="bp-pct">41%</span></button>
+        <button type="button" class="yesno-pick yesno-pick-bar bp-side no" data-open-sheet="no" aria-pressed="false">NO <span class="bp-pct">59%</span></button>
       </div>
 
       <!-- Mobile bet sheet: the dock raises it, and its body is the desktop panel.
@@ -1311,15 +1311,15 @@
       <dialog class="app-dialog bet-sheet" id="betSheet" aria-label="Place your bet">
         <button type="button" class="sheet-grab" data-close-sheet aria-label="Close"></button>
         <div class="bp-inner">
-          <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES pre-selected</span></div>
+          <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">Pick a side</span></div>
           <span class="field-label">Your outcome</span>
           <div class="bp-selected">
             <span class="bp-sel-name">JD Vance <span class="opt-prob">41%</span></span>
             <a href="#edOutcomes" class="bp-change" data-close-sheet>Change</a>
           </div>
           <div class="bp-dir">
-            <button type="button" class="yesno-pick bp-side sel yes">YES <span class="bp-pct">41%</span></button>
-            <button type="button" class="yesno-pick bp-side no">NO <span class="bp-pct">59%</span></button>
+            <button type="button" class="yesno-pick bp-side yes" aria-pressed="false">YES <span class="bp-pct">41%</span></button>
+            <button type="button" class="yesno-pick bp-side no" aria-pressed="false">NO <span class="bp-pct">59%</span></button>
           </div>
           <div>
             <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="1" value="5.00" aria-label="Bet amount"></div>
@@ -1327,7 +1327,7 @@
           </div>
           <div>
             <div class="line"><span>Price now</span><span>41%</span></div>
-            <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.40</span></div>
+            <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.08</span></div><div class="line due"><span>Total to pay</span><span>$5.08</span></div>
             <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
           </div>
           <button type="button" class="btn btn-primary btn-lg btn-block" data-open="signin">Confirm bet</button>
@@ -1741,7 +1741,7 @@
           if (pick) pick.classList.add('sel');
         }
         var h = sheet.querySelector('.bp-hint');
-        if (h) h.textContent = (side === 'no' ? 'NO' : 'YES') + ' pre-selected';
+        if (h) h.textContent = (side === 'no' ? 'NO' : 'YES') + ' selected';
         if (sheet.showModal) sheet.showModal(); else sheet.setAttribute('open', '');
       }
       function shut() { if (sheet.close) sheet.close(); else sheet.removeAttribute('open'); }
@@ -1756,5 +1756,50 @@
     })();
   </script>
 
+
+  <script id="uv-side">
+/* THE SIDE COMES FROM THE READER, AND 212 LINKS IN THIS TREE HAD BEEN SAYING SO INTO NOTHING.
+   Every feed card's `Back YES` and `Back NO` is `event-detail.html?side=yes` or `?side=no`, 212 of
+   them across the painted tree, and until 2026-08-16 **0 documents read `location.search`**: the
+   parameter was a promise the product made on every card and kept nowhere, which is the same shape
+   as the `pattern="[0-9.$]*"` that validated nothing on 113 amount fields.
+   What shipped instead was `sel yes` typed into the markup, so the app picked a side on a two-sided
+   money decision and then had to apologise for it in the hint slot ("YES pre-selected"). Nothing is
+   chosen at load now. Arrive from a card and you arrive on the side you pressed; arrive by the
+   title and you choose, with Confirm carrying `aria-disabled` until you do.
+   `aria-disabled` AND NOT `disabled`, which is the reason button.css already writes for the deposit
+   dialog: a natively disabled control is not focusable, so the person who most needs to know why it
+   is dead is the one who cannot reach it. */
+(function(){
+  var q = (new URLSearchParams(location.search).get('side') || '').toLowerCase();
+  var want = (q === 'yes' || q === 'no') ? q : '';
+  var live = function(e){ return e && !e.closest('.hiw-step'); };
+  function apply(){
+    document.querySelectorAll('.bp-dir .bp-side, .bet-dock .bp-side').forEach(function(b){
+      if (!live(b)) return;
+      var on = !!want && b.classList.contains(want);
+      b.classList.toggle('sel', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    document.querySelectorAll('.bp-hint').forEach(function(h){
+      if (!live(h)) return;
+      h.textContent = want ? want.toUpperCase() + ' selected' : 'Pick a side';
+    });
+    document.querySelectorAll('[data-sheet-confirm], .bet-panel .btn-primary.btn-block, .bet-sheet .btn-primary.btn-block').forEach(function(c){
+      if (!live(c)) return;
+      if (want) c.removeAttribute('aria-disabled'); else c.setAttribute('aria-disabled', 'true');
+    });
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target;
+    if (!t || !t.closest) return;
+    var dead = t.closest('[aria-disabled="true"]');
+    if (dead) { e.preventDefault(); e.stopPropagation(); return; }
+    var b = t.closest('.bp-dir .bp-side, .bet-dock .bp-side');
+    if (live(b)) { want = b.classList.contains('no') ? 'no' : 'yes'; apply(); }
+  }, true);
+  apply();
+})();
+  </script>
 </body>
 </html>

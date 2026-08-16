@@ -117,8 +117,24 @@
 .ed-main>.card:hover{transform:none;box-shadow:none}
 .ed-main>.card::before,.ed-main>.card::after{display:none}
 .ed-prob-big .prob{font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-20);letter-spacing:var(--track-none);text-transform:none;border:0;background:transparent;padding:0 var(--space-4)}
-.ed-prob-big .prob:first-of-type{color:var(--outcome-yes-text)}
-.ed-prob-big .prob:last-of-type{color:var(--outcome-no-figure)}
+/* A PAIR OF ORDINALS IS A CLAIM THAT THERE ARE TWO, AND ON THE MULTI DETAIL THERE IS ONE.
+   These two rules were written for `YES 38% NO 62%`, where first is green and last is red,
+   and they are correct there. `event-detail-multi.html` and its logged-out twin print one
+   span - `Leading: JD Vance 41%` - and a lone element is BOTH `:first-of-type` and
+   `:last-of-type`. Equal specificity, so source order decided it, and the LAST rule won:
+   **the market's leading candidate was painted in the ink that means the losing side**, on
+   the two screens where nobody had a second figure to compare it against. Measured
+   rgb(231,144,135) in the Vault and rgb(134,50,40) in daylight, both the NO role.
+   THE STAND COULD NOT HAVE CAUGHT IT: the one-span form has 0 specimens in `ui-kit/`, where
+   all 8 placements of `.ed-prob-big` carry the pair. Same shape as the chosen NO that had
+   never been drawn - a face the product places and the vitrine does not.
+   THE OUTCOME INK NOW ASKS FOR A PAIR RATHER THAN AN ORDINAL, so neither rule can reach a
+   lone figure whatever the source order is, and the lone figure takes --text-primary
+   (14.71:1 in the Vault, 14.85:1 in daylight) because a leading candidate is not a side. The
+   colour it lost is the odds bar's job three lines below it, which already carries it. */
+.ed-prob-big .prob:first-of-type:not(:last-of-type){color:var(--outcome-yes-text)}
+.ed-prob-big .prob:last-of-type:not(:first-of-type){color:var(--outcome-no-figure)}
+.ed-prob-big .prob:only-of-type{color:var(--text-primary)}
 .gallery .card{width:172px;height:98px;flex:0 0 auto;border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:linear-gradient(150deg,var(--bg-control-brass),var(--bg-control) 70%);color:var(--text-primary);font-size:var(--text-11);line-height:var(--leading-snug);font-weight:var(--weight-semibold);padding:var(--space-12);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;position:relative;overflow:hidden;box-shadow:inset 0 1px 0 var(--edge-groove-light),0 14px 30px -24px var(--shadow-ink)}
 .gallery .card::before{display:none}
 /* AND IT HAS TO TAKE THE MASK OFF, NOT JUST THE PICTURE, WHICH WAS ALREADY TRUE BEFORE THE MASK

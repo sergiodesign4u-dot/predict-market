@@ -368,7 +368,9 @@
   --z-content:1;       /* content lifted above its own decoration */
   --z-float:2;         /* a frame or a control floating over a card */
   --z-close:3;         /* the close control on a photographic head */
-  --z-dock:4;          /* sticky furniture at the foot of the content */
+  --z-dock:4;          /* fixed furniture at the foot of the window: the bet dock, the CTA bar.
+                          It said `sticky` until 2026-08-16 and both bars were, which is why they
+                          left the viewport with the footer. See --bottom-nav-h in the page frame */
   --z-nav:5;           /* the mobile bottom nav, over the dock it meets */
   --z-header:6;        /* the sticky app header */
   --z-menu:7;          /* what opens from the header or the toolbar */
@@ -507,6 +509,50 @@
      already that number, and a second name for 16px is one number with two spellings. The three
      sticky TOP offsets stay raw, 120, 120 and 66, because they are not one fact either: they
      measure what happens to stand above each column, and what stands above differs. */
+
+  /* ---- THE STICKY FURNITURE, 2026-08-16, and it is three names for three facts that four files
+     were already writing down separately and getting wrong ----
+     These pass the test the block above sets, which is how many files use a number rather than how
+     round it is. `--bottom-nav-h` is read by `betpanel.css` for the dock's offset, by `base.css`
+     for the page's bottom padding and for `scroll-padding`, and it is zeroed by `bottomnav.css`
+     inside the rung block that hides the bar: three files and one fact, which is `--rail-width`'s
+     case exactly.
+     THE COST OF NOT HAVING THEM WAS ALREADY BEING PAID AND IT IS THIS FOLDER'S NAMED TRAP. The
+     dock sat at `bottom:52px` to clear a bar that measures 56, so the two overlapped by 4px on
+     every phone, and from DESK up the bar is `display:none` while the 52 stayed, leaving the dock
+     floating over a 52px void from 640 to 759. Two numbers written to be one number and equal at
+     no width at all, which is the `759.98px` against `47.5rem` defect the CLAUDE.md in this folder
+     already carries.
+     THEY ARE NOT PLAIN PIXELS AND THAT IS THE WHOLE POINT OF WRITING THEM DOWN. A bar's height is
+     part padding, which is on the px ladder, and part the type inside it, which follows the
+     reader's own browser default. Measured on event-detail.html at 390 with `Page.setFontSizes`,
+     the only thing that moves a root, at defaults 16 / 20 / 24: the nav is **56 / 64 / 73**, the
+     dock **68 / 76 / 85** and the header **59 / 63 / 69**. So a px token is exact at the default
+     and 17px short at 24, which would show a strip of page between two bars that are supposed to
+     touch; and a pure `rem` token overshoots, because the padding half does not grow. The fit is
+     linear in both cases and the slope is the same 2.125 per pixel of root, so each token is
+     written as its px half plus its type half and lands within half a pixel at all three defaults.
+     `course-chrome.css` had already paid for the alternative: it bought the same clearance with
+     `8.25rem`, an over-provision chosen because a fixed 132 was short at a 24px root, and it needed
+     a width query and a borrowed rung to do it. Both are gone now, because a number that tracks
+     the thing it clears does not need a rung to be cut at.
+     MEASURED 2026-08-16 in Chromium, re-read in both engines after the change. They are CLEARANCES
+     that other files ask for, not sizes assigned to the bars: each bar's height still comes from
+     its own content, and the check that keeps these honest is to render the bar and compare. */
+  --header-h:calc(39px + 1.25rem);      /* the sticky app header: 59 / 63 / 69 at roots 16 / 20 / 24,
+                                           and this expression gives 59 / 64 / 69. It is what a
+                                           control scrolled to by Tab has to clear at the top */
+  --bottom-nav-h:calc(22px + 2.125rem); /* the mobile bottom nav: 56 / 64 / 73 measured, 56 / 64.5 /
+                                           73 here. 0 from DESK up, overridden in bottomnav.css
+                                           inside the rung block that already hides the bar, so the
+                                           number and the reason it becomes 0 stand in one place */
+  --dock-h:calc(34px + 2.125rem);       /* the event detail's bet dock, which rides on top of the
+                                           nav: 68 / 76 / 85 measured, 68 / 76.5 / 85 here. Only the
+                                           documents that HAVE one pay for it, through
+                                           `html:has(.bet-dock)` in betpanel.css, because a screen
+                                           with no dock must not be padded for one. It is 0 from
+                                           DETAIL up, set in betpanel.css beside the rule that
+                                           hides it */
   --measure:46ch;            /* THE LINE MEASURE FOR CONTINUOUS TEXT.
                                 `ch` IS NOT A CHARACTER, and until 2026-08-12 this token was
                                 written as though it were. `ch` is the advance width of the
@@ -1444,16 +1490,27 @@
   --outcome-yes:var(--green-500);            /* from: odds-bar fill, selected YES side */
   --outcome-no:var(--red-500);               /* from: odds-bar track, selected NO side */
   --outcome-yes-text:var(--green-300);       /* from: the quiet YES text on 15 selectors */
-  --outcome-yes-fill:var(--green-a12);       /* from: the tinted YES button (spectator, not trader) */
-  --outcome-yes-line:var(--green-700);       /* from: the tinted YES border */
+  --outcome-yes-fill:var(--green-a12);       /* from: the tinted YES button (spectator, not trader). The
+                                                spectator's button gave the tint back on 2026-08-16; the
+                                                readers left are the position row and the depth-table bar */
+  --outcome-yes-line:var(--green-700);       /* from: the tinted YES border. Same date, same move: the pair
+                                                takes --border-hairline now and position.css keeps this */
   --outcome-no-text:var(--red-300);          /* from: the quiet NO text on a button or chip */
   --outcome-no-figure:var(--red-300);        /* same value as --outcome-no-text and --result-lost-text
                                                 for now. From: the NO figure, column head and market stat.
                                                 Same job, one step brighter; the two merged into --red-300 in step 6 */
-  --outcome-no-fill:var(--red-a12);          /* same value as --outcome-no-fill-soft and --result-lost-fill for now .             From: the tinted NO button */
+  --outcome-no-fill:var(--red-a12);          /* same value as --result-lost-fill for now. From: the tinted NO
+                                                position row. It said "the tinted NO button" until 2026-08-16,
+                                                and the button it named stopped being tinted that day: the
+                                                readers left are position.css and market.css */
   --outcome-no-line:var(--red-700);          /* same value as --result-lost-line for now .             From: the tinted NO border */
-  --outcome-yes-fill-soft:var(--green-a12);  /* from: the compact YES in an outcome list */
-  --outcome-no-fill-soft:var(--red-a12);     /* from: the compact NO in an outcome list */
+  /* --outcome-yes-fill-soft and --outcome-no-fill-soft went on 2026-08-16 and this is the
+     READER side of a zero, not the placement side. `yesno.css` was their only reader, at the
+     compact pair in an outcome list, and that pair now rests on --bg-control like every other
+     quiet control: nothing asks for the value, so the value is not a face waiting for markup
+     to come back, it is rent on a decision already taken. They were --green-a12 and --red-a12,
+     the same two alphas --outcome-yes-fill and --outcome-no-fill still carry for `position.css`
+     and `market.css`, so no primitive left with them. */
   /* --outcome-*-fill-strong and --outcome-*-text-lit were retired on 2026-08-06 when
      backlog S49 was answered: the chosen side in the mobile dock is the solid
      --outcome-yes / --outcome-no the panel and the option list already used, so the
@@ -1474,7 +1531,15 @@
      script can write var(--series-N) and the browser resolves it live.
      (The open question this block used to end on, that --series-1 was the YES
      green, is what the paragraph above answers: step 7 moved all five. The note
-     outlived the defect by one pass, which is how a comment starts lying.) */
+     outlived the defect by one pass, which is how a comment starts lying.)
+     --series-5 GOT ITS FIRST READER IN A STYLESHEET on 2026-08-16: the hero chart's
+     volume dot, label and dashed line, which had been drawing in the brand's brass.
+     That is what the desaturated neutral is FOR - a series member that is not a
+     candidate - and it is the reason this block exists at all, one level up: the
+     first cut of the series wore the YES green and the lit brass, and the flagship
+     chart was still wearing the second of those. It shares its value with the fifth
+     candidate line of the multi-outcome chart, and the two never stand in one
+     document: that chart is on the event detail and this one is on the feed. */
   --series-1:var(--cyan-400);
   --series-2:var(--blue-400);
   --series-3:var(--violet-400);

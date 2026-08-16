@@ -7,7 +7,20 @@
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.bottom-nav{margin:0;position:sticky;bottom:0}
+/* FIXED AND NOT STICKY SINCE 2026-08-16, because a sticky bar stops being stuck the moment its
+   own normal-flow position is reached, and this bar's normal position is between `.app-case` and
+   the footer. Measured before the change on event-detail.html at 390, document 3852 tall: flush to
+   the viewport bottom to scrollY 1613, 37px up at 1805, 232 at 2009, 623 at 2406 and **1266px above
+   the bottom at the foot of the document**, with the bet dock riding 56px above it and the header
+   already gone at -582. So the four-slot bar and the YES / NO dock end up stacked in the upper
+   third of a phone screen with the trust strip beneath them, which reads as a bug rather than as a
+   release, and it is the ONLY navigation a phone has. On the dialog screens the same release put
+   the bar behind the modal a third of the way down.
+   The room it takes back is `--bottom-nav-h` on `.device` in base.css, so the footer's last row is
+   not underneath it. No ancestor declares a transform, a filter or a will-change, which are the
+   three things that would turn `fixed` into `absolute`; base.css says the same about the skip link
+   and it was re-read here rather than borrowed. */
+.bottom-nav{margin:0;position:fixed;left:0;right:0;bottom:0}
 .bottom-nav ul{list-style:none;display:flex;margin:0;padding:0}
 .bottom-nav li{flex:1;text-align:center}
 .bottom-nav li:last-child{border-right:none}
@@ -15,6 +28,13 @@
 /* rung: DESK 40rem, 640px at the default root, the one divide. The ladder is in tokens.css, page frame. */
 @media (min-width: 40rem){
   .bottom-nav{display:none}
+  /* AND THE CLEARANCE GOES WITH THE BAR. `--bottom-nav-h` is what the dock offsets by, what the
+     page pads by and what `scroll-padding` reserves, so a bar that is not on the screen has to
+     stop being paid for in the same block that takes it off. It did not before: the dock's 52px
+     offset was written as a literal and stayed at every width, so from 640 to 759 the dock floated
+     over an empty 52px band. The declaration lives here rather than in tokens.css because this is
+     the rule that makes it true. */
+  :root{--bottom-nav-h:0px}
 }
 .bottom-nav{background:var(--bg-surface);z-index:var(--z-nav)}
 .bottom-nav li{border-right:var(--hairline) solid var(--border-hairline)}

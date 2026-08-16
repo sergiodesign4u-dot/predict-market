@@ -137,6 +137,22 @@ because it is a stance rather than a principle, and it is written once, here.
   exposed it was rendering the same mask at two qualities and diffing THOSE: Chromium moved 10.57 per
   cent of its pixels and WebKit moved 0.00. **Vary the input by something you know must show, and
   check the instrument saw it, before you believe what it says about the page.**
+- **AN INSTRUMENT THAT CHANGES THE PAGE HAS TO WAIT FOR THE PAGE IT CHANGED, AND THIS SYSTEM MOVES
+  NOW.** Since Stage 11 the components carry real transitions, so **injecting a stylesheet to
+  measure a before-and-after STARTS one**, and the computed value at t=0 is the value the page is
+  leaving. A census of outcome colour on the feed reported `ground 22 -> 22, edge 0 -> 0, painted
+  area identical` over an edit that had taken a tint off 32 buttons, because two
+  `requestAnimationFrame`s into a 150ms transition the background is still the old one: the probe
+  read the AFTER state twice and called it no change. Freeze `transition` and `animation` on
+  everything FIRST, then inject, then read, and the same census gives **ground 54 -> 22, edge 32 ->
+  0, and 220,689 square pixels of outcome colour down to 18,025**. The same freeze the
+  before-and-after rule above already demands for entrance animation is now required for any probe
+  that writes CSS, which is most of them. **Two themes are the same trap in a different place**:
+  these screens boot their theme from `localStorage`, and the boot script REMOVES `data-theme` when
+  the key is absent, so setting the attribute is not setting the theme. A whole sweep came back with
+  daylight identical to the Vault, on every value, and passed its own colour control. **Every
+  theme-aware reading gets a theme control: the page ground has to differ between the two runs, or
+  the run is one theme measured twice.**
 - **"Both widths" is not a measurement of a responsive system: measure AT the rungs and one pixel
   either side of each.** A defect can live entirely between the two widths everybody reads. The
   system breaks at 40rem, 47.5rem and 56.25rem and the review chrome docked at 860, and every audit here read

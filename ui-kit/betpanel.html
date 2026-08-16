@@ -19,9 +19,11 @@
   <div class="tk-hero">
     <h1>Bet panel</h1>
     <p>Level 3, and <b>the control a bet is actually placed with</b>. Three faces that never coexist:
-    a pinned panel above 760, a sticky dock below it, and a sheet the dock opens. <b>11 panels, 8
-    docks and 4 sheets on 11 painted screens.</b> Measured 2026-08-08 in a browser, at 390 and
-    1280.</p>
+    a pinned panel above 760, a fixed dock below it, and a sheet the dock opens. <b>11 panels, 8
+    docks and 8 sheets on 11 painted screens.</b> The sheets were 4 until 2026-08-16, when the four
+    bet-state screens got one: the panel is <code>display:none</code> below 760, so
+    <b>every state of the act this component exists for rendered on desktop only</b>. Measured
+    2026-08-08 in a browser at 390 and 1280, re-counted 2026-08-16.</p>
     <div class="tk-badges">
       <span class="tk-badge">3 faces, all 3 shown</span>
       <span class="tk-badge">0x0 at the other width</span>
@@ -64,7 +66,7 @@
             </div>
             <div>
               <div class="line"><span>Price now</span><span>41%</span></div>
-              <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.40</span></div>
+              <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.08</span></div><div class="line due"><span>Total to pay</span><span>$5.08</span></div>
               <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
             </div>
             <button type="button" class="btn btn-primary btn-md btn-block">Confirm bet</button>
@@ -94,7 +96,7 @@
             </div>
             <div>
               <div class="line"><span>Price now</span><span>41%</span></div>
-              <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.40</span></div>
+              <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.08</span></div><div class="line due"><span>Total to pay</span><span>$5.08</span></div>
               <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
             </div>
             <button type="button" class="btn btn-primary btn-md btn-block">Confirm bet</button>
@@ -115,21 +117,28 @@
   </section>
 
   <section class="tk-sec" id="dock">
-    <h2 data-n="2">The dock is two docks, and the one that matters is the pair that opens the sheet</h2>
+    <h2 data-n="2">The dock was two docks and is one, and the second was a phone with nowhere to put a state</h2>
     <p class="tk-why"><b>The argument was that a dock cannot stand on a page also read at 1280,
     because it is <code>display:none</code> above 760.</b> That is true of the panel above it in
     exactly the same way and in the opposite direction, and the kit had already answered it once:
     <code>.tk-show-nav</code> pins the bottom bar visible on the one page where the bar is not the
     subject. <b>Here all three faces ARE the subject</b>, so both take the bargain and both say what
     it costs.</p>
-    <p class="tk-why"><b>And "the richest instance" is the wrong question for this one.</b> Counted
-    across the eight: <b>four docks CHOOSE and four CONFIRM</b>, and the two are not a long form and
-    a short form of one thing. The chooser is two sides carrying
+    <p class="tk-why"><b>Counted across the eight until 2026-08-16: four docks CHOSE and four
+    CONFIRMED</b>, and this page argued they were two shapes rather than a long and a short form of
+    one. <b>They were one shape and a symptom.</b> The confirmer stood on the four bet-state screens,
+    and those four were the screens with no sheet: the panel is <code>display:none</code> below 760,
+    so on a phone the dock was the only thing that rendered and it had to carry the stake, the payout
+    and a Confirm by itself. <b>What it could not carry was the state.</b> "Registering your bet
+    on-chain" never appeared, nor did "Your bet did not register on-chain. No funds were taken", nor
+    the insufficient-balance guard while the same bar offered a $5 bet against a $3 balance, nor the
+    price reconcile that is the reason the whole payout model was chosen. The bar said
+    <i>Confirm bet</i> through all four.</p>
+    <p class="tk-why"><b>All 8 docks are the chooser now</b>, two sides carrying
     <code>data-open-sheet</code>, and pressing either one is <b>the only way a phone reaches the bet
-    panel at all</b>. The confirmer has no such attribute: it stands on the four bet-state screens
-    where the amount is already set, and it carries the stake, the payout and its own Confirm. A page
-    that showed the fuller one alone would have shown the dock without the thing the dock is
-    <i>for</i>.</p>
+    panel at all</b>. This section is kept at its full length on purpose: <b>a page that recorded a
+    difference as a design decision, and was wrong about which of the two it was, is worth more than
+    a page that quietly agrees with today.</b></p>
     <p class="tk-note"><b>The chooser</b>, from <code>event-detail.html</code>: 4 elements, on the
     four plain detail screens. The multi-outcome pair names the outcome in the button, <i>JD Vance
     YES</i>, because on that screen YES alone would not say which of five.</p>
@@ -149,16 +158,20 @@
         </div>
       </div>
     </div>
-    <p class="tk-note"><b>The confirmer</b>, from <code>event-detail-bet-error.html</code>: 7
-    elements, on the four bet-state screens. Same bar, same two sides, plus the stake and its payout
-    and a Confirm of its own.</p>
+    <p class="tk-note"><b>The confirmer, and it is worn by nothing since 2026-08-16.</b> It stood on
+    the four bet-state screens and had 7 elements: the same bar, the same two sides, plus the stake,
+    its payout and a Confirm of its own. <b>This is the second kind of zero, not the first</b>: the
+    rules in <code>betpanel.css</code> are whole and the markup is what went, which is
+    <code>.icon-btn-lift</code>'s case and not <code>account.css</code>'s. It is drawn here rather
+    than deleted so that the zero is a thing a reader can see, next to the reason it is a
+    zero.</p>
     <div class="tk-pairv">
       <div class="tk-th">Vault, dark</div>
       <div class="tk-theme-fig tk-bleed tk-stack tk-show-dock" data-theme="dark">
         <div class="bet-dock" aria-label="Place your bet">
           <button type="button" class="yesno-pick yesno-pick-bar bp-side sel yes">YES <span class="bp-pct">38%</span></button>
           <button type="button" class="yesno-pick yesno-pick-bar bp-side no">NO <span class="bp-pct">62%</span></button>
-          <span class="dock-meta">$5 to win<b>$13.20</b></span>
+          <span class="dock-meta">$5 to win<b>$13.16</b></span>
           <a href="#" class="btn btn-primary btn-md">Confirm bet</a>
         </div>
       </div>
@@ -167,14 +180,16 @@
         <div class="bet-dock" aria-label="Place your bet">
           <button type="button" class="yesno-pick yesno-pick-bar bp-side sel yes">YES <span class="bp-pct">38%</span></button>
           <button type="button" class="yesno-pick yesno-pick-bar bp-side no">NO <span class="bp-pct">62%</span></button>
-          <span class="dock-meta">$5 to win<b>$13.20</b></span>
+          <span class="dock-meta">$5 to win<b>$13.16</b></span>
           <a href="#" class="btn btn-primary btn-md">Confirm bet</a>
         </div>
       </div>
     </div>
     <p class="tk-note"><b>Two things differ here, not one</b>: the dock is declared visible, as the
-    panel is, and it is pinned static, because <code>position:sticky;bottom:52px</code> is a claim
-    about a scrolling screen and not about a cell. <b>Label muted, figure bright</b> in the
+    panel is, and it is pinned static, because <code>position:fixed;bottom:var(--bottom-nav-h)</code> is
+    a claim about a window and not about a cell. It read <code>sticky;bottom:52px</code> until
+    2026-08-16, and both halves of that were wrong: sticky gave up at the footer, and 52 was written
+    to clear a bottom nav measuring 56. <b>Label muted, figure bright</b> in the
     <code>.dock-meta</code>, which is the same ranking the card's meta row uses, and the reason it is
     stated in <code>betpanel.css</code> at all is that without it both halves inherit body text and
     the two read as one sentence.</p>
@@ -195,8 +210,8 @@
         <thead><tr><th>face</th><th>worn</th><th>at 390</th><th>at 1280</th></tr></thead>
         <tbody>
           <tr><td><code>.bet-panel</code></td><td>11</td><td><b>0x0</b>, display:none</td><td>322x273 to 322x558, pinned</td></tr>
-          <tr><td><code>.bet-dock</code></td><td>8</td><td>379x68, sticky at the foot</td><td><b>0x0</b>, display:none</td></tr>
-          <tr><td><code>.bet-sheet</code></td><td>4</td><td>379x529 and 379x623</td><td>560x529 and 560x623</td></tr>
+          <tr><td><code>.bet-dock</code></td><td>8</td><td>379x68, <b>fixed</b> at the foot</td><td><b>0x0</b>, display:none</td></tr>
+          <tr><td><code>.bet-sheet</code></td><td><b>8</b></td><td>379x529 and 379x623</td><td>560x529 and 560x623</td></tr>
         </tbody>
       </table>
     </div>
@@ -263,7 +278,7 @@
             </div>
             <div>
               <div class="line"><span>Price now</span><span>41%</span></div>
-              <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.40</span></div>
+              <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.08</span></div><div class="line due"><span>Total to pay</span><span>$5.08</span></div>
               <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
             </div>
             <button type="button" class="btn btn-primary btn-lg btn-block">Confirm bet</button>
@@ -285,7 +300,7 @@
             </div>
             <div>
               <div class="line"><span>Price now</span><span>41%</span></div>
-              <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.40</span></div>
+              <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.08</span></div><div class="line due"><span>Total to pay</span><span>$5.08</span></div>
               <div class="line total"><span>Potential payout</span><span>$12.20</span></div>
             </div>
             <button type="button" class="btn btn-primary btn-lg btn-block">Confirm bet</button>

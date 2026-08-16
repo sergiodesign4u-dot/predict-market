@@ -1,13 +1,13 @@
 /* components/hero.css
-   Component: hero. Classes: .brand-tile, .bt-by, .bt-photo, .bt-quote, .bt-tick, .bt-veil, .feed-hero, .hero-duo, .hero-feature, .hero-hot, .hero-main, .hero-promo, .hero-side, .hero-trust, .hf-area, .hf-bar, .hf-chart, .hf-chart-cap, .hf-chart-legend, .hf-cta, .hf-eyebrow, .hf-foot, .hf-graph, .hf-graph-wrap, .hf-grid, .hf-info, .hf-line, .hf-no, .hf-odds, .hf-odds-row, .hf-photo, .hf-tag, .hf-title, .hf-veil, .hf-vol-area, .hf-vol-line, .hf-why, .hf-yes, .hh-all, .hh-head, .hh-list, .hh-name, .hh-prob, .hh-rank, .hh-vol, .ht-badge, .ht-body, .no, .vol, .yes.
+   Component: hero. Classes: .brand-tile, .bt-by, .bt-photo, .bt-quote, .bt-tick, .bt-veil, .feed-hero, .hero-duo, .hero-feature, .hero-hot, .hero-main, .hero-promo, .hero-side, .hero-trust, .hf-area, .hf-axis, .hf-bar, .hf-chart, .hf-chart-cap, .hf-chart-legend, .hf-cta, .hf-eyebrow, .hf-foot, .hf-graph, .hf-graph-wrap, .hf-grid, .hf-info, .hf-line, .hf-no, .hf-odds, .hf-odds-row, .hf-photo, .hf-split, .hf-tag, .hf-title, .hf-veil, .hf-vol-area, .hf-vol-line, .hf-why, .hf-yes, .hh-all, .hh-head, .hh-list, .hh-name, .hh-prob, .hh-rank, .hh-vol, .ht-badge, .ht-body, .no, .vol, .yes.
 
    Reads: --bevel-hair, --bevel-md, --bg-card, --bg-card-from, --bg-card-to, --bg-control,
-          --bg-control-brass, --border-brass, --border-hairline-brass, --color-action,
+          --bg-control-brass, --border-brass, --border-hairline, --border-hairline-brass,
           --color-trust, --line-grid, --mask-solid, --outcome-line-no, --outcome-line-yes,
           --outcome-no, --outcome-no-figure, --outcome-yes, --outcome-yes-text, --scrim,
-          --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain,
-          --text-brass, --text-brass-lit, --text-chip-hover, --text-muted, --text-primary,
-          --tint-brass-60, --veil-brand, --veil-photo-edge, --veil-photo-from,
+          --series-5, --shadow-ink-45, --shadow-ink-60, --shadow-ink-72, --shadow-ink-85,
+          --surface-grain, --text-brass, --text-brass-lit, --text-chip-hover, --text-muted,
+          --text-primary, --veil-brand, --veil-photo-edge, --veil-photo-from,
           --veil-photo-mid, --veil-photo-to
    Stand:  ui-kit/hero.html, and ui-kit/organisms.html#hero for the level and its reason
    Stands on: 2 ui-visual screens (event-feed.html, how-it-works.html)
@@ -111,9 +111,50 @@
 .hf-tag.no i{background:var(--outcome-no)}
 .hf-tag.yes{color:var(--outcome-yes-text)}
 .hf-tag.yes i{background:var(--outcome-yes)}
-.hf-graph-wrap{flex:1;min-height:148px}
-.hf-graph{width:100%;height:100%;display:block}
+/* THE FOUR GRID LINES WERE DECORATION THAT LOOKED LIKE A SCALE, and that is worse than no
+   grid at all. The chart's own mapping is solvable from two points it draws: the YES line
+   is at 97 for 50 per cent and at 134.9 for 38, so y = 254.92 - 3.1583p, and the lines the
+   reader was being offered at 40, 80, 120 and 160 stood at **68.05, 55.38, 42.72 and 30.05
+   per cent**. Nobody could have read a value off them, and the ruled paper said they could.
+   THE FIX IS THE GEOMETRY AND NOT A LABEL BOLTED ONTO IT. The band is re-keyed so that
+   y = 220 - 3p, which puts 70, 60, 50, 40 and 30 per cent on y = 10, 40, 70, 100 and 130,
+   and it makes every drawn point an integer for the first time: the series is 50, 47, 52,
+   45, 48, 42, 46, 40, 43, 39, 41, 38, and the two curves stay mirrored about the 50 line.
+   VOLUME LEAVES THE PROBABILITY SPACE rather than being labelled inside it. A magnitude in
+   dollars and a probability in per cent share no axis, so under a scale the old ribbon read
+   as a third line sitting at 30 per cent. It moves down by 10 units into a strip of its own
+   under `.hf-split`, keeping its exact shape, and the caption says it has no scale. */
+.hf-graph-wrap{flex:1;min-height:148px;display:flex;gap:var(--space-8)}
+/* `ch` IS THE WIDTH OF A ZERO AND NOT OF A CHARACTER, which is why `--measure` had to leave
+   it in 2026-08-12 - and on a MONOSPACE face those two are the same thing, so it is the one
+   correct unit here. 3.5ch is three digits and a half at whatever size the reader's root
+   gives this column, so the gutter grows with the numerals it holds instead of being a px
+   guess that clips at one root and gapes at another. The labels are absolutely positioned
+   and contribute no width, so the column has to declare one. */
+.hf-axis{position:relative;flex:0 0 3.5ch;font-family:var(--font-mono);font-size:var(--text-11);letter-spacing:var(--track-label);color:var(--text-muted)}
+/* The five numerals sit ON the five grid lines, and each fraction is that line's own y over
+   the 190-unit box: 10, 40, 70, 100 and 130. The scale belongs to the component and not to
+   the screen, so it is written once here rather than five times in every document.
+   `chart.css` writes its own y-axis as a flex column with `justify-content:space-between`,
+   which is SHORTER and is not available here, and the difference has a reason: that plot
+   runs 0 to 100 per cent edge to edge, so its five labels are the box's own extremes. This
+   band is INSET - 70 per cent at 10 of 190 and 30 at 130 - because the hero shows a window
+   on the odds rather than the whole range, and space-between would put the first and last
+   numerals at the top and bottom of a box neither line touches. Two charts, two answers,
+   and the second one is the product's only OTHER scaled reading: it had an axis all along,
+   which is what made the missing one on the flagship worth finding. */
+.hf-axis span{position:absolute;right:0;transform:translateY(-50%)}
+.hf-axis span:nth-of-type(1){top:5.26%}
+.hf-axis span:nth-of-type(2){top:21.05%}
+.hf-axis span:nth-of-type(3){top:36.84%}
+.hf-axis span:nth-of-type(4){top:52.63%}
+.hf-axis span:nth-of-type(5){top:68.42%}
+.hf-graph{flex:1;min-width:0;height:100%;display:block}
 .hf-grid line{stroke:var(--line-grid)}
+/* Not a grid line: the floor of the probability band and the ceiling of the volume strip.
+   It takes the hairline rather than --line-grid so that it reads as an edge between two
+   readings and not as a sixth rule of the same ruled paper. */
+.hf-split{stroke:var(--border-hairline)}
 /* THESE TWO FILLS NAME A DOCUMENT-UNIQUE ID AND THERE IS NO OTHER WAY TO WRITE THEM, which is
    what is left of backlog 45. That row counted **9 declarations over 13 ids** and said a component
    keyed to an id is not a component: `tabs.css` held 6 of them and moved to `:nth-of-type` on
@@ -129,7 +170,7 @@
    id a cell redefines, which `ui-kit/CLAUDE.md` already carries. */
 .hf-area{fill:url(#hfyes)}
 .hf-vol-area{fill:url(#hfvol)}
-.hf-vol-line{fill:none;stroke:var(--tint-brass-60);stroke-width:1.4;stroke-dasharray:2 3}
+.hf-vol-line{fill:none;stroke:var(--series-5);stroke-width:1.4;stroke-dasharray:2 3}
 .hf-line{fill:none;stroke-width:2}
 .hf-line.yes{stroke:var(--outcome-line-yes)}
 .hf-line.no{stroke:var(--outcome-line-no)}
@@ -140,9 +181,21 @@
    eyebrow's brass-200, 10.08 to 11.13 on the same hero plate, a step of 1.05 in contrast that
    nobody chose and nothing else in the product uses. A role is a reason, not a value, and one
    placement whose reason is "it is on the hero" is the reason `--text-brass-lit` already
-   carries. docs/backlog.md 33. */
-.hf-tag.vol{color:var(--text-brass-lit)}
-.hf-tag.vol i{background:var(--color-action)}
+   carries. docs/backlog.md 33.
+   AND THE MOVE FIXED THE WRONG HALF OF IT, 2026-08-16. Both readings above are about WHICH
+   brass, and the question nobody asked was whether a data series may be brass at all. It may
+   not: `DESIGN.md` reserves green, red and gold, states the series exists so that no
+   candidate line wears a reserved ink, and then the flagship chart drew Volume in the brand.
+   Once brass is a series the One-Accent Rule has nothing left to mean, which is the same
+   argument, one level up, that took `#4fd694` and `#d9b968` out of the series in the first
+   place. `--series-5` is the desaturated neutral the palette keeps for exactly a member that
+   is not a candidate, and it is the whole answer: dot, label and dashed line all take it.
+   THIS IS NOT A CONTRAST FIX AND SAYING SO IS THE POINT. Measured on the hero plate, brass
+   was 12.89:1 in the Vault and 6.96:1 in daylight; the slate is 6.87:1 and 6.76:1. Both pass
+   twice over, in both themes, before and after. The defect was never legibility, it was that
+   one ink meant two things, and no contrast sweep this repository owns could have seen it. */
+.hf-tag.vol{color:var(--series-5)}
+.hf-tag.vol i{background:var(--series-5)}
 .hf-chart-cap{font-family:var(--font-mono);font-size:var(--text-11);letter-spacing:var(--track-label);color:var(--text-muted);margin-top:var(--space-8)}
 .hero-trust{display:flex;align-items:center;gap:var(--space-12);padding:var(--space-16) var(--space-20);min-height:82px}
 /* THE FOURTH PLACEMENT OF THE TRUST DRAWINGS, AND IT WAS THE LAST ONE STILL FETCHING A PICTURE.
@@ -233,7 +286,16 @@
    row. Ink again, for the reason written above .hf-title:active. 6.40:1 in the
    Vault, 7.22:1 in daylight, on the hot-list card. */
 .hh-name:active{color:var(--text-muted)}
-.hh-prob{font-family:var(--font-mono);font-size:var(--text-13);color:var(--outcome-yes-text)}
+/* GREEN ON ALL FIVE, WHATEVER THE FIVE SAID. The list ran 61, 38, 72, 34 and 19 per cent and
+   painted every one of them in the YES ink, so the colour carried no information at all: a
+   market the crowd puts at 19 read in the same green as one at 72. Worse, two of the five
+   rows are MULTI events - "Eurovision 2027 winner", "EU admits a new member state" - and a
+   multi market has no YES side for the ink to be about. Green is a SIDE, and this figure is a
+   magnitude, so the outcome ink was being spent on a number that has no side.
+   The figure keeps the mono face, which is what already says "this is a reading", and goes to
+   --text-primary: 14.71:1 in the Vault against the green's 9.82, 14.85:1 in daylight against
+   7.23. The row loses nothing legible and stops making a claim it cannot support. */
+.hh-prob{font-family:var(--font-mono);font-size:var(--text-13);color:var(--text-primary)}
 .hh-vol{font-family:var(--font-mono);font-size:var(--text-11);color:var(--text-muted);min-width:var(--size-40);text-align:right}
 .hh-all{margin-top:var(--space-12);font-size:var(--text-13);font-weight:var(--weight-semibold);color:var(--text-brass-lit);text-decoration:none;align-self:flex-start}
 /* THE WORST NUMBER THIS PASS FOUND, and it was already shipped. --color-action-lit
