@@ -12,6 +12,57 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-16 - The tags were dealt rather than decided, and the control the row blamed had never worked at all
+
+**THE TAGS.** `data-cat` on the feed card against the category page that actually lists the same
+event: **6 of 12 agreed and 6 did not.** The Ethereum upgrade was tagged `general` and stands on
+Crypto, the Bond film `crypto` and stands on Culture, the EU member state `general` and stands on
+Politics, the warmest-years event `culture` and stands on General, the US Senate `culture` and stands
+on Politics, the game console `general` and stands on Culture. **In all six the category page is
+right on the merits**, which is not a coin flip and is the first sign of what happened.
+
+**THE SECOND SIGN IS THE DISTRIBUTION: EXACTLY THREE PER CATEGORY.** Politics 3, Crypto 3, Culture 3,
+General 3, over twelve cards. **The tags were DEALT to give a filter an even spread, not derived from
+the events.** After the correction the same twelve read politics 5, crypto 3, culture 3, general 1,
+which is what a real catalog looks like and is the proof the even four-by-three was arithmetic rather
+than classification.
+
+Set from the category pages: **60 attribute edits over 10 documents, both trees.** Verified on both
+engines across all five feed documents per tree: **60 of 60 cards agree, 0 disagreements**, where
+there were 30.
+
+**AND THE CONSEQUENCE THE ROW NAMED WAS NEVER TRUE.** The row said the sub-filter reads `data-cat`,
+so filtering the feed by Crypto shows a Bond film. Measured in the rendered page: the consumer script
+IS on those ten documents, and the `.subcat` rail it binds to is **`hidden` and holds zero chips** on
+every one of them. There was nothing to click. The tags were wrong; the harm attributed to them was
+not. **A script and its data can both be present while the control between them is absent**, and the
+row had inferred the behaviour from the source rather than reading the page, which is this
+repository's oldest rule.
+
+**WHICH LED TO THE THING WORTH MORE THAN THE ROW.** The sub-category rail IS visible somewhere: on
+the category pages, with real chips. Walked every chip on every document, both engines, clicking each
+one and comparing the grid's hidden-signature before and after:
+
+**546 chips across 56 documents, and not one of them changes the grid on any document.**
+
+On **8 of the 56** the `aria-current` marker moves, so the chip lights up as chosen and the cards do
+not change, which is worse than a control that visibly does nothing: it confirms the click and
+delivers nothing. On the other 48 nothing moves at all. The cause is that the two halves were built
+against different vocabularies: the rail's chips are SUB-categories (`Trump`, `Courts`, `Epstein`,
+`LA Mayor`) and the only category datum on a card is the TOP-level one, and the category pages'
+cards carry no `data-cat` at all.
+
+**AND THE CHIPS PROMISE A CATALOG THAT DOES NOT EXIST.** The counts beside the labels sum to
+**7,585** across the four rails, `Midterm Elections 537`, `Trump 297`, `Global Elections 122`, against
+a product that draws **25 distinct events** and shows 6 on a category page. That is the same figure
+class as the fee and the payout: a number on screen with no derivation behind it.
+
+**NOT FIXED HERE, AND IT IS ROW 173.** Giving 546 chips a real filter needs a sub-category datum on
+every card, which does not exist in either tree; removing the rail deletes a navigation level
+`ia/docs/sitemap.md` declares. Both are product decisions, and the counts are a third.
+
+---
+
 ## 2026-08-16 - The head layer belongs to neither tree, and both prove it in the same element
 
 **THE ROW ASKED WHICH TREE AND THE MEASUREMENT ANSWERED "NEITHER".** `docs/backlog.md` 171 opened on
