@@ -12,6 +12,99 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-16 - The score moved 22 to 30, and three of the six things the run found were readings of the instrument
+
+**THE RE-SCORE.** Same target, same method family, so this one is comparable: **22/40 on 2026-08-16
+at 09:02, 30/40 at 14:27.** Eight of the ten heuristics moved up by one and none moved down. Both P0s
+of the morning are closed and one of the three P1s survives in a different shape. Run degraded
+(single-context) on purpose, because this project forbids sub-agents, and the banner is in the
+snapshot rather than left implied.
+
+**WHAT THE NINE PASSES ACTUALLY BOUGHT, MEASURED RATHER THAN CLAIMED.** All four bet failure states
+now render at 390, four sides and the message, in the sheet. 19 of 23 loading screens announce.
+`$13.20` reads 0 and `$13.16` stands in 108 files. The internal state names are gone: `submitting`,
+`execute failed`, `amount over balance` and `price changed` all read 0, and the surfaces say
+"sending", "not sent", "over your balance", "price moved". The feed reads **2 "market" against 22
+"event"**. The bottom nav computes `position:fixed` and sits at gap 0 from the viewport foot at the
+document end, where it used to sit 1,266px above it. No side ships pre-selected. Search is on 108 of
+108. 28 of 30 error surfaces carry `.inline-error` or `role="alert"`. 0 sideways scroll over 5
+screens x 13 widths x 2 engines with the probe proved sighted first, 0 page errors, 0 responses at or
+above 400, 0 duplicate ids.
+
+**AND THE DETECTOR RETURNED 6,051 FINDINGS OF WHICH 6,050 ARE NOT THE PRODUCT.** Every one but a
+single copy warning is inside `ui-visual/old/`, 30 replaced pre-Vault documents that live inside the
+live tree. That is not a defect list, it is a fact about where the archive sits: any instrument
+pointed at the folder reads 30 documents that were superseded. `docs/kit-archive/` is the shape this
+repository already uses for frozen material.
+
+**THE ONE FINDING WORTH THE WHOLE RUN.** The win screen says **"+$13.16"** over **"$5.00 stake
+returned + $8.20 winnings"**, and 5.00 + 8.20 is 13.20. The correct winnings on a $5.00 stake at 38%
+are $8.16. The figure had been unified from $13.20 to $13.16 across 108 files by an earlier pass, and
+**the sentence that adds up to it kept the old arithmetic**: the pass measured the figure and not its
+derivation. Corrected in 9 places across `ui-visual/`, `wireframes/`, `ui-kit/` and the voice
+inventory. **This is the peak of the emotional journey and the screen a person screenshots**, on a
+product whose own How It Works page says every figure is a count you can check.
+
+**THREE OF THE SIX THINGS THE RUN FOUND WERE THE INSTRUMENT, AND EACH ONE WOULD HAVE SHIPPED AS A
+DEFECT.**
+
+- **"No h1 on five screens."** `deposit`, `sign-in`, `win`, `loss` and `deposit-error-card` are the
+  feed with a modal over it, and the modal is a `<dialog>` that sits OUTSIDE `.device`. Scoped to
+  `.device` the probe saw the feed behind the overlay and reported the overlay screens as headless.
+  **The product on an overlay screen is `.device` PLUS the open dialog**, and every one of the five
+  has its h1.
+- **"The money breakdown is desktop-only."** At 390 the bet panel computes `display:none` and the
+  phone uses a sheet, which is closed in a static file. Forced open, the sheet carries **Fee (1.5% of
+  your bet) $0.08, Total to pay $5.08, Potential payout $13.16, identical to the desktop panel**. A
+  closed state is not a missing state.
+- **"The amount field says $42.00 while every figure is computed on $5."** `innerText` had run the
+  AMOUNT label into the balance chip beside it. The input is `value="5.00"` and **$42.00 is the cash
+  balance**, so the three derived figures are right and it was the reading that was wrong. **This one
+  was two minutes from being published as a P0.**
+
+**AND ONE MORE, WHICH IS THE NEW RULE.** A tap-target sweep reported the header controls at 36x36 and
+32x32, under the 44 the tokens cite. `base.css` puts the whole 44px floor inside
+`@media(pointer:coarse)`, and **a headless browser is `pointer:fine`, so the entire block was off in
+the instrument**. Re-run with `hasTouch` and `isMobile` set and the assertion verified in the page,
+the floor applies and the real number is **190 of 496 targets under 44x44 over 8 screens, 176 of them
+one family**: the footer's bare `<a>` links at 36x25, which the floor's named list never included.
+The defect is real and it is a quarter of the size the broken instrument reported, in a different
+place. **An emulated environment has defaults, and a default is a value: a media query the product
+depends on can be switched off by the harness without anything failing.**
+
+**TWO ROWS CLOSED AND ONE RE-STATED, WHICH IS THE BACKLOG WORK THIS RUN CARRIED.**
+
+- **159 was already closed and had not been struck.** `voice/` measures 0 em dashes and the commit
+  that removed them is the same pass that opened the row: it fixed the file it was reading and then
+  wrote a row about what it had just fixed. Its other claim, "the only file in the repository that
+  carries any", was measured over six folders. `concept/brand-toolkit/` carried **35** and they are
+  gone today; `concept/old/pre-vault-3d/` carries 3 and stays, frozen. **A rule stated with
+  "anywhere" gets measured over the repository, not over the folders somebody remembered.**
+- **163 closed, and the plate wrapper was not the cause.** The row and `_conventions.md` both read the
+  divergence as the paint-only wrapper forcing the grey tree's hand. **`.cat-main` exists in BOTH
+  trees on all three screens.** Nothing forced anything; the two trees had chosen differently and the
+  paint had the better element, because `<main class="feed">` also holds the category rail, which is
+  not loading. The grey moved to the paint on all three and both engines now read every busy region
+  as the same element with `.sk-status` as its first child.
+- **160 re-stated, not fixed.** The row said a control has no ground in Daylight because
+  `--bg-control` and `--bg-page` are both `#fcfaf4`. The collision is real and it is not what makes
+  the control hard to see: `.bp-side` sits on `--bg-plate`, not on the page. Measured by walking up
+  to the first ancestor that actually paints, theme set before first paint, ground proved different
+  between runs: `.icon-btn` border **2.23:1 Daylight and 1.10:1 Vault**, `.bp-side` **1.04 fill /
+  2.15 border Daylight and 1.25 / 1.38 Vault**, quiet `.chip` 2.23 Daylight and 6.85 Vault. **Four of
+  six under 2.3 where 1.4.11 asks 3:1, and three of them in the canonical theme, so the Vault is the
+  worse one and the row had named the better.** The fill numbers are the material and are not the
+  defect. The defect is that a control reads the DECORATIVE hairline where a field reads
+  `--border-field`, which already passes at 4.43 and 6.85. Left open because the fix repaints every
+  icon button and the bet picker on 108 screens in both themes.
+
+**FIVE ROWS OPENED, ALL FROM THE RE-SCORE**: 165 the tap-target family, 166 AMM undefined on 9
+screens, 167 no back control anywhere in the product, 168 four loading screens that announce nothing,
+169 `.spinner-box` worn by three different jobs one of which is a legal disclaimer and none of which
+spins.
+
+---
+
 ## 2026-08-16 - Nineteen auth pairs of twenty had the same feed body, and the twentieth is the one a visitor lands on
 
 **THE CONVENTION WAS WRITTEN AND ONE SCREEN DID NOT OBEY IT.** `wireframes/_conventions.md`, S5, the

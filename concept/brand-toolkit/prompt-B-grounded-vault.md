@@ -1,4 +1,4 @@
-# Variant B — "Grounded Vault" (graphite + matte brass) — v2, expanded
+# Variant B, "Grounded Vault" (graphite + matte brass), v2, expanded
 
 Mood: solid, architectural, vault-like; premium and weighty, not shiny. Trust through
 weight and craft. One matte antique-brass signal on graphite.
@@ -10,14 +10,14 @@ weight and craft. One matte antique-brass signal on graphite.
   applications (business card, tote, pin, sticker).
 
 Ask ChatGPT for **wide landscape 16:9** (dense board). Keep individual labels short.
-It's intentionally dense — if the model crowds, drop zones 05 / 07 / 08 first.
+It's intentionally dense, if the model crowds, drop zones 05 / 07 / 08 first.
 
 ---
 
 ## Prompt (copy-paste)
 
-A single professional brand identity guidelines board — one wide poster, landscape
-16:9 — photographed flat, top-down, for a real-money prediction-market platform called
+A single professional brand identity guidelines board, one wide poster, landscape
+16:9, photographed flat, top-down, for a real-money prediction-market platform called
 "Predict Market". Dark graphite surface (#14161A), matte and architectural, weighty and
 premium, never shiny. Panel surfaces #1E2126, warm off-white text #EDE7DA, muted stone
 #8C8578. Exactly ONE loud accent: matte antique brass / gold #C7A24E (satin, not glossy
@@ -36,18 +36,18 @@ labeled zones separated by thin hairline dividers:
   wallet, globe, clock, lock, share) with brass highlights on the shield and checkmark.
 - 05 LOGO CONSTRUCTION: the brass mark on a geometric baseline / construction grid drawn
   in thin brass lines.
-- 06 UI DIRECTION: a realistic DESKTOP web-browser mockup of the platform — a top
+- 06 UI DIRECTION: a realistic DESKTOP web-browser mockup of the platform, a top
   navigation bar with category tabs, a featured event with a probability line chart and
   a right-hand trending sidebar, and a grid of market cards each with an odds bar and
-  YES / NO — shown beside ONE single smartphone mockup of the mobile feed. Dark graphite
+  YES / NO, shown beside ONE single smartphone mockup of the mobile feed. Dark graphite
   screens with brass accents.
-- 07 UI COMPONENTS: a small component sheet — YES / NO buttons, a green/red odds bar, a
+- 07 UI COMPONENTS: a small component sheet, YES / NO buttons, a green/red odds bar, a
   category chip row, bookmark and share icons, a toggle.
-- 08 APPLICATIONS: a flat-lay of real branded objects — a matte-black business card with
+- 08 APPLICATIONS: a flat-lay of real branded objects, a matte-black business card with
   a brass-foil mark, a tote bag, an enamel pin, and a sticker.
 - 09 SOCIAL TILES: two square social posts in the same graphite-and-brass system.
 
 Footer strip: a small brass shield with "REAL MARKETS. REAL MONEY. REAL OUTCOMES." and
-"predictmarket.com". Overall mood: solid, grounded, premium, verified — trust through
+"predictmarket.com". Overall mood: solid, grounded, premium, verified, trust through
 weight and craft; matte materials, deep shadows, tactile surfaces, crisp studio
 lighting, sharp focus. No casino shine, no neon, no decorative gradients.

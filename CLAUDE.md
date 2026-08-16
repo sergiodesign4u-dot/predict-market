@@ -221,6 +221,31 @@ because it is a stance rather than a principle, and it is written once, here.
   same box at every width is usually not a defect. So a width sweep gets a settle AND a positive
   control: inject a box wider than the window and prove the probe sees it, because 0 is also what a
   blind probe reports.
+- **AN EMULATED ENVIRONMENT HAS DEFAULTS, AND A DEFAULT IS A VALUE: A MEDIA QUERY THE PRODUCT DEPENDS
+  ON CAN BE SWITCHED OFF BY THE HARNESS AND NOTHING FAILS.** `base.css` puts the whole 44px touch
+  floor inside `@media(pointer:coarse)`, and **a headless browser is `pointer:fine`**, so every
+  tap-target sweep taken here without `hasTouch` was measuring a product with the floor turned off.
+  It reported the header controls at 36x36 and 32x32, under the number `tokens.css` cites, and each
+  one was a rule that was present, correct and not applying. With `hasTouch` and `isMobile` set and
+  `matchMedia('(pointer:coarse)').matches` asserted IN THE PAGE before the sweep, the floor applies
+  and the real number is **190 of 496 targets under 44x44 over 8 screens, 176 of them one family**:
+  the footer's bare `<a>` links at 36x25, which the floor's named list never included. The defect is
+  a quarter of the size the broken instrument reported and it is somewhere else entirely. **The twin
+  of "a missing value is a value": assert that the branch you are measuring is the branch that is
+  on.** The same class covers `prefers-reduced-motion`, `prefers-color-scheme`, `forced-colors` and
+  the theme attribute this file already warns about.
+- **THE PRODUCT ON AN OVERLAY SCREEN IS THE DEVICE PLUS THE OPEN DIALOG, AND A CLOSED STATE IS NOT A
+  MISSING STATE.** Two findings in one run, both of them would have shipped. Scoping a probe to
+  `.device` reported **0 `<h1>` on five screens**, because `deposit`, `sign-in`, `win`, `loss` and
+  `deposit-error-card` are the feed with a `<dialog>` over it and the dialog sits OUTSIDE `.device`:
+  all five have their heading. And the same scope reported the money breakdown as desktop-only,
+  because at 390 the panel computes `display:none` and the phone uses a sheet that a static file
+  ships CLOSED; forced open it carries Fee $0.08, Total to pay $5.08 and Potential payout $13.16,
+  identical to the desktop panel. **A third in the same run was one word wide**: `innerText` ran the
+  AMOUNT label into the balance chip beside it and produced "AMOUNT $42.00" over figures computed on
+  $5, which read as the one input nothing reads. The field is `value="5.00"` and $42.00 is the cash
+  balance. **Read what the container excludes before believing what the probe counted, and open the
+  state before calling it absent.**
 - **A MOVEMENT NAMES ITS JOB BEFORE IT IS WRITTEN, AND THERE ARE THREE JOBS.** A response, a control
   answering a finger. An arrival, an element saying it is here. A status, a process still running.
   A moment for which none of the three can be named does not enter the register and never gets a
@@ -251,4 +276,9 @@ because it is a stance rather than a principle, and it is written once, here.
   visitor**. Nothing read the rule, so nothing could report the one screen that broke it, and the
   screen that broke it is the one a person who has never signed in arrives on. **When a rule is
   stated over a SET, measure the set: 19 of 20 looks like compliance from any single file.**
-- **No em dash**, anywhere.
+- **No em dash**, anywhere, and **"anywhere" is the repository rather than the folders somebody
+  remembered.** It was measured over six on 2026-08-16, read 0, and was published as "the only file
+  that carries any" while `concept/brand-toolkit/` carried 35 across four files. Those are gone;
+  `concept/old/pre-vault-3d/` keeps 3 and is frozen, the way `docs/kit-archive/` is. **A rule stated
+  over a set is measured over the set**, which is the same sentence as the convention nineteen auth
+  pairs of twenty obeyed.

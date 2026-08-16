@@ -947,7 +947,7 @@ _4 state page(s): win-error.html, win-loading.html, win-payout-pending.html, win
 | Main | Heading | You were right |  |
 | Main | Field label | You were right - you won |  |
 | Main | Label | +$13.16 |  |
-| Main | Label | $5.00 stake returned + $8.20 winnings. You held YES, avg price 38%. |  |
+| Main | Label | $5.00 stake returned + $8.16 winnings. You held YES, avg price 38%. |  |
 | Main | Text | We couldn't generate your Share Card (T11). Your win and payout are not affected. You can share as text instead. | **leftover spec-note (internal codes)** |
 | Main | Button | Share as text |  |
 | Main | Button | See next events | **same-action / go-to-events button varies** |
