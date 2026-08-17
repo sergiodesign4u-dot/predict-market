@@ -357,6 +357,15 @@ because it is a stance rather than a principle, and it is written once, here.
   the entity, give it exactly one identity and one lifecycle, and read the whole set for
   disagreement**, the same way a rule stated over a set is measured over the set. `PRODUCT.md`
   carries the catalog size now, because a count with no denominator is what let this stand.
+- **EVERY READING HERE RUNS ACROSS THE PAGE AND NONE OF THEM RUNS DOWN IT.** Horizontal scroll at
+  fifty widths, contrast, tap targets, computed style, duplicate ids, dead links, and **not one
+  instrument has ever read `scrollHeight`**. So a `<dialog>` missing its `[open]` put an **844px
+  sheet after the footer on 108 of the 109 documents in `ui-visual/`**, doubling `404.html` from
+  1,011 to 1,855, and every sweep in this file passed it: it throws no error, duplicates no id, adds
+  no sideways scroll, and sits below the last element anything measures. **Reported by the user, on a
+  screenshot, which is the third time in two days.** Document height is one number per render and it
+  is the cheapest check in this repository: **take it, and take it in both trees**, because the grey
+  tree read 0 on the same defect and the disagreement between them was the finding.
 - **No em dash**, anywhere, and **"anywhere" is the repository rather than the folders somebody
   remembered.** It was measured over six on 2026-08-16, read 0, and was published as "the only file
   that carries any" while `concept/brand-toolkit/` carried 35 across four files. Those are gone;

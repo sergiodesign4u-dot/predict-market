@@ -742,6 +742,17 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   each was read before it was left alone** - a sign-in sheet is still offering to sign you in, a
   provider conflict is a guard, and `win-error` is a WIN whose share card failed. A grep for
   `inline-error` would have repainted all eight.
+- **`display` ON A `<dialog>` IS THE PROPERTY THAT KEEPS IT SHUT, SO GEOMETRY ON AN OVERLAY BELONGS
+  BEHIND `[open]`.** The UA stylesheet holds `dialog:not([open]){display:none}` at author weight,
+  which means one `display:flex` here beats it and the closed thing renders in normal flow.
+  `dialog.app-dialog.search-sheet` shipped without the `[open]` and put a **844px sheet after the
+  footer on 108 of the 109 documents in `ui-visual/`**, taking `404.html` from 1,011 to 1,855: the
+  product carried a second screen below the fold for a day. **The grey tree read 0** and could not
+  report the disagreement, because it links no stylesheet of ours. **Nothing here saw it**, and the
+  reason is a shape rather than an oversight: it raises no error, duplicates no id, adds no
+  horizontal scroll, and every probe in this repository reads across the page rather than down it.
+  The other four dialogs were correct only because they declare no `display` at all. `docs/backlog.md`
+  178.
 
 ## Where the record is
 

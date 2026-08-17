@@ -579,6 +579,19 @@ dialog.app-dialog.hiw-dialog:modal .hiw-steps{overflow:auto;min-height:0}
    the mark that opens this is `display:none`. The frame is left reachable rather
    than switched off, so a window dragged wide with the sheet open still has a
    sheet, and the script closes it on the way past.
+
+   THE `[open]` IS LOAD-BEARING AND THIS RULE SHIPPED WITHOUT IT. `display` on a
+   dialog is the one property the UA stylesheet uses to KEEP IT SHUT:
+   `dialog:not([open]){display:none}` is an author-weight rule in that sheet, so
+   any `display` declared here beats it and the closed sheet renders in flow.
+   It did, on **108 of the 109 documents in `ui-visual/`**, 844px tall, appended
+   after the footer, which took `404.html` from 1,011 to 1,855: the whole product
+   was carrying a second screen below the fold. **The grey tree read 0**, because
+   it links no stylesheet, so the two trees disagreed and neither could say so.
+   No sweep saw it: it throws no error, adds no horizontal scroll, duplicates no
+   id, and is below every element anything here measures. So geometry on an
+   overlay is scoped to the state that shows it, and `display` most of all.
+   `docs/backlog.md` 178.
    ============================================================================ */
-dialog.app-dialog.search-sheet{width:100%;max-width:none;height:100%;max-height:none;margin:0;border-radius:0;display:flex;flex-direction:column}
+dialog.app-dialog.search-sheet[open]{width:100%;max-width:none;height:100%;max-height:none;margin:0;border-radius:0;display:flex;flex-direction:column}
 dialog.app-dialog.search-sheet .search-body{min-height:0}

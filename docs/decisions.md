@@ -12,6 +12,49 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - A screen-sized sheet stood under the footer of 108 screens for a day, and every instrument here reads across a page rather than down it
+
+**Reported by the user, on a screenshot of the footer**: the mobile search sheet,
+its field, its Cancel, its Politics and Culture tiles and its popular rows, all
+of it drawn in normal flow below the end of the page.
+
+**The cause is one missing selector and it is a property of `<dialog>` rather
+than of this system.** The UA stylesheet keeps a dialog shut with
+`dialog:not([open]){display:none}`, and that rule sits at author weight, so a
+single `display:flex` in `components/dialog.css` outranked it.
+`dialog.app-dialog.search-sheet` shipped with the search rebuild earlier the same
+day carrying `display:flex` unscoped, which is the one property on a dialog that
+cannot be declared unconditionally. The other four dialogs in the file were
+correct only because none of them declares `display` at all.
+
+**MEASURED AT 1280 BEFORE THE FIX: 108 of the 109 documents in `ui-visual/`**,
+the sheet 844px tall with its top just past the footer. `404.html` stood at
+**1,855 where it should be 1,011** and `active-bets-empty-new.html` at 1,928. The
+product was carrying a second screen below the fold on almost every page.
+**`wireframes/` read 0**, because it links no stylesheet of ours, so the two trees
+disagreed and neither had a way to say so.
+
+**WHY NOTHING SAW IT IS A SHAPE, NOT AN OVERSIGHT.** It raises no error,
+duplicates no id, adds no horizontal scroll, breaks no link, and stands below the
+last element any probe here goes looking for. The settled-market pass ran 868
+renders over two engines the same afternoon and reported all zeros, correctly, on
+every axis it reads. **Every instrument in `CLAUDE.md` runs ACROSS a page and not
+one of them has ever read `scrollHeight`**, which is one number per render and the
+cheapest check in this repository. That is the rule the day earned, and it is
+written in the root file and in `components/CLAUDE.md` as the dialog trap.
+
+**FIXED** by scoping the whole declaration to `[open]`, because a closed dialog
+needs no geometry. **Verified on Chromium and WebKit at 390 and 1280 over 217
+documents: 0 closed dialogs rendering, 0 sideways scroll, 0 page errors**, with
+the probe proved able to come back red by forcing `display:flex!important` on the
+same element, which it caught. **Behaviour intact on both engines**: the phone
+sheet still opens from the mark at 844px with the field focused, and the desktop
+panel still fills by cloning `.search-body` out of a sheet that is now
+`display:none`, giving one row and one highlight mark for "bitcoin" under
+"See all 1 result". `docs/backlog.md` 178.
+
+---
+
 ## 2026-08-17 - Yonder runs about 25 events open at once, and the reason nobody could say so is that three of them were open and settled at the same time
 
 **The decision backlog 164 was waiting for, taken: about 25 open events.** A
