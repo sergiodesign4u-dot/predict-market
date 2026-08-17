@@ -1914,6 +1914,43 @@
       if (!live(c)) return;
       if (want) c.removeAttribute('aria-disabled'); else c.setAttribute('aria-disabled', 'true');
     });
+    /* AND THE FIGURES, WHICH THE PARAMETER COULD NOT PRODUCE UNTIL 2026-08-17, docs/backlog.md 186.
+       The panel prints both outcomes or neither, and the pair stands in the markup only on the
+       screens where a side is picked in the FILE. So a reader arriving from a card landed on a lit
+       side with `Pick a side to see what each outcome pays` still under it and no payout anywhere:
+       the script could make the state and could not furnish it. It builds the pair now, in the
+       block the instruction was standing in, and the instruction goes with it along with the
+       `aria-describedby` that pointed at it. The painted tree recomputes on every keystroke after
+       this; the grey tree has no such script, so these six lines of arithmetic are the only ones it
+       does, which is why they are here and not in the recompute the paint carries. */
+    if (!want) return;
+    document.querySelectorAll('.bet-panel, .bet-sheet').forEach(function(scope){
+      if (!live(scope)) return;
+      var box = scope.querySelector('.bp-outcomes'), pick = scope.querySelector('.bp-pick');
+      if (!box) {
+        if (!pick) return;
+        box = document.createElement('div');
+        box.className = 'bp-outcomes';
+        box.innerHTML = '<div class="bp-outcome"><span></span><b></b></div><div class="bp-outcome"><span></span><b></b></div>';
+        pick.parentNode.appendChild(box);
+        var pid = pick.id;
+        pick.parentNode.removeChild(pick);
+        if (pid) document.querySelectorAll('[aria-describedby="' + pid + '"]').forEach(function(c){ c.removeAttribute('aria-describedby'); });
+      }
+      var rows = box.querySelectorAll('.bp-outcome');
+      if (rows.length < 2) return;
+      var btn = scope.querySelector('.bp-dir .bp-side.sel');
+      var input = scope.querySelector('.amount-input');
+      var A = input ? (parseFloat(String(input.value).replace(/[^0-9.]/g, '')) || 0) : 0;
+      var pctEl = btn && btn.querySelector('.bp-pct');
+      var p = pctEl ? (parseFloat(pctEl.textContent) || 0) / 100 : 0;
+      var win = p > 0 ? A / p : 0;
+      ['YES', 'NO'].forEach(function(which, i){
+        var mine = which.toLowerCase() === want;
+        rows[i].querySelector('span').textContent = 'If ' + which + ' wins' + (mine ? ', your side' : '');
+        rows[i].querySelector('b').textContent = '$' + (mine ? win : 0).toFixed(2);
+      });
+    });
   }
   document.addEventListener('click', function(e){
     var t = e.target;

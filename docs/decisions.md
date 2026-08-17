@@ -12,6 +12,54 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - Counting the links decided a row that had been filed as a product owner's call
+
+**Backlog 186 said three answers were legible and none obviously right.** The
+parameter `?side=yes|no` lights a side on arrival and could not produce the
+figures, because the outcome pair stands in the markup only where a side is picked
+in the FILE, so a reader arriving from a card landed on a lit YES with `Pick a
+side to see what each outcome pays` still under it and no payout anywhere. The
+three answers were: the script builds the pair, or the parameter redirects to a
+static state page, or the parameter goes and cards link straight to one.
+
+**The counting settles it.** `?side=` is carried by **940 links across 40
+documents**, and it serves a binary screen and a multi-outcome one in both auth
+states. A static state page per side is therefore **YES and NO twins of four
+screens: eight new pages, eight more rollouts across 219 documents each**, and a
+multi-outcome market has no single "side" to name in a file name anyway. Against
+that, the arrival script is **one identical text in all 8 documents that read the
+parameter**, both trees included. One edit against sixteen. That is not a taste
+question once the numbers are on the table, and a row that says a decision belongs
+to somebody else should be measured before it is asked.
+
+**What the script does now.** It appends `.bp-outcomes` into the block the
+instruction was standing in, removes the instruction and the `aria-describedby`
+that pointed at it, and fills both rows from the amount in the field and the
+pressed side's own percentage. **The NO side finally has its own price**: `?side=no`
+on a $5 bet reads `If YES wins $0.00` against `If NO wins, your side $8.06`, which
+is 5 / 0.62 and not the YES figure this panel printed for either side until
+yesterday. The painted tree recomputes on every keystroke afterwards; the grey
+tree has no such script, so those six lines are the only arithmetic it does, which
+is why they live in the arrival script and not in the paint's recompute.
+
+**Verified by URL and by click, both trees, both engines, both widths.** Arriving
+at `?side=no` gives NO pressed, the pair, and a Confirm carrying no
+`aria-disabled`; arriving with no parameter gives nothing pressed, the instruction,
+and Confirm held with `aria-describedby` pointing at it. Pressing NO in the panel
+and then typing 25 gives **`$40.32` with `Fee $0.38` and `Total to pay $25.38`**,
+and switching to YES gives **`$65.79` against `$0.00`**. Full sweep: **279
+documents, 1,188 renders** including every arrival state, 0 sideways scroll with
+the probe proved sighted, 0 duplicate ids despite the pair being built at run time,
+0 shut dialogs visible, 0 page errors.
+
+**One thing the sweep flagged and it was the probe.** `ui-kit/event-detail.html`
+came back with a panel carrying no pair and no instruction on every arrival read,
+and it is a kit specimen of the RESOLVED panel, which has neither by design; the
+file matched a filename pattern meant for the product tree. The product documents
+are 0 of 0.
+
+---
+
 ## 2026-08-17 - The bet that is simply ready has a page now, and the entry above overstated one of its findings
 
 **CORRECTION FIRST, because the entry below is wrong on one line and this file does
