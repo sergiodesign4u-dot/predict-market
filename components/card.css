@@ -40,7 +40,7 @@
    .why, .prob-line and .meta all carry it on the same card body. Equal specificity to the hover
    above (0,3,1), so this has to sit after it. */
 .card a.q:active{color:var(--text-muted)}
-.why{color:var(--text-muted);font-size:var(--text-13);min-height:35px;margin-bottom:var(--space-12)}
+.why{color:var(--text-muted);font-size:var(--text-13);min-height:2.1875rem;margin-bottom:var(--space-12)}
 .card .prob-line{color:var(--text-muted);font-size:var(--text-11);letter-spacing:var(--track-label);text-transform:uppercase}
 .card .prob{font-family:var(--font-display);background:transparent;border:0;color:var(--text-primary);font-size:var(--text-16);padding:0 var(--space-2)}
 .card .meta{color:var(--text-muted);align-items:center;margin-bottom:0;padding-top:var(--space-8);font-family:var(--font-mono)}
@@ -97,6 +97,22 @@
 .card .meta{border-top:var(--hairline) solid var(--shadow-ink-45);box-shadow:inset 0 1px 0 var(--bevel-faint);margin-top:auto}
 .card .top{align-items:stretch;gap:var(--space-12);margin-bottom:var(--space-12);min-height:88px}
 .card .top-txt{display:flex;flex-direction:column;gap:var(--space-8);min-width:0}
+/* THE CLAMP RESERVES LINES, NOT PIXELS, AND THE FLOOR UNDER IT IS IN rem SINCE 2026-08-17.
+   docs/backlog.md 115. The type tokens have been in `rem` for a while, so the whole tree already
+   answers a reader who set a bigger browser default - measured at 16, 20 and 24 through CDP
+   `Page.setFontSizes`, 0 horizontal scroll at every root and the RAIL rung correctly reading false
+   at 1280 under a 24px default. **The one family that paid for it was this one**: clipped elements
+   at 390 went 358 to 439 between root 16 and 24 and `p.why` went 10 to 83, which is 73 of the 81
+   new clips, while every other clipped family was flat. The cause was `min-height:35px`, a pixel
+   floor under two lines of rem text: at root 24 two lines need 2.1875rem = 52.5px and the box
+   reserved 35, so the sentence that says why an event matters was the one sentence cut. The floor
+   is the same 35px at the default root and it moves with the reader now.
+   AND THAT CHANGED THE NUMBER BY NOTHING, which is the finding. Re-measured after: 439 clipped and
+   83 `.why` at root 24, identical to before. The pixel floor was wrong on principle and was not the
+   cause. **`-webkit-line-clamp:2` is**: at a bigger default fewer words fit in two lines, so more
+   sentences are cut, and the clamp is doing exactly what it was told. Whether two lines is still
+   the right reservation for a reader at 24px is a DESIGN question about a fixed card height, not a
+   units question, and 115 is closed as measured rather than as migrated. */
 .card .top-txt .why{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
 .card .thumb{width:var(--size-56);flex:0 0 var(--size-56);height:auto;align-self:stretch;min-height:84px;border:0;border-radius:var(--radius-6) var(--radius-6) var(--radius-6) var(--radius-6);background-size:cover;background-position:center;-webkit-mask-image:linear-gradient(to right,var(--mask-solid) 52%,transparent);mask-image:linear-gradient(to right,var(--mask-solid) 52%,transparent)}
 .card .top-txt .why{margin:0}
