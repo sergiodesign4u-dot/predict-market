@@ -12,6 +12,46 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - A Bitcoin coin on a James Bond market, and two claims in the row that were wrong
+
+**Backlog 183. Measured across the painted tree: 84 cards carry both a `data-cat`
+and a photograph, and 30 of them wore another category's**, on 5 documents, in six
+distinct market-to-photo pairs. The card asking who plays the next Bond
+(`data-cat="culture"`) carried `event-crypto.jpg`, a gold Bitcoin coin. The
+Ethereum upgrade carried the general photograph, the US Senate market carried the
+culture one. `DESIGN.md` names real event photography as a key characteristic and
+`PRODUCT.md` calls the story-led feed the motivation entry, so a picture that
+argues with its own headline is not decoration, it is the feature failing.
+
+**Every card photograph is bound to its own `data-cat` now**, and the assertion is
+taken from the RENDER rather than the source: over 1,116 renders on two engines at
+two widths, **0 mismatches and 0 failed image requests**.
+
+**TWO OF THE ROW'S OWN CLAIMS WERE WRONG AND BOTH ARE WORTH THE SPACE.** The row
+said the related-events list showed the same coin for the Bitcoin and Ethereum
+rows. Read against the categories the cards declare, **the related thumbs were 30
+of 30 already correct**; Ethereum is crypto, and the crypto photograph is what it
+should carry. The second instance did not exist.
+
+**And the hero veil claim was the reverse of true.** The row said the hero
+photograph is veiled to near-invisibility at 1440. The first probe read
+`backgroundImage` on `.hf-photo` and got `none`, which looks exactly like a
+missing photograph and is simply what an `<img>` element returns for that
+property: the hero photo is an `<img>` at `opacity:.42` under a two-layer veil.
+Rendering the hero with the photo and again with it `display:none` gives **214,831
+against 213,626 bytes at 390 and 317,515 against 306,318 at 1440**, so the
+photograph contributes roughly nine times more at the wide width than at the
+narrow one. Nothing was changed there. **A probe that reads the wrong property
+returns a plausible number, and a critique that eyeballs a treatment can invert
+it.**
+
+**187 opened for the part four photographs cannot answer.** Binding to `data-cat`
+buys consistency, not story: three politics markets now share one picture of a
+capitol. At about 25 open events the honest fix is about 25 images, and that is a
+decision with a budget attached rather than an edit.
+
+---
+
 ## 2026-08-17 - Three things that belong to the product were the browser's, and one attribute held all three
 
 **Backlog 184. `type="number"` hands the browser the SPINNER, the DECIMAL
