@@ -53,7 +53,7 @@
    docs/backlog.md, not here. */
 .ed-tabradio{position:absolute;width:var(--hairline);height:var(--hairline);opacity:0;pointer-events:none}
 .ed-tabbar{display:flex;gap:0;overflow-x:auto}
-.ed-tablabel{flex:0 0 auto;padding:var(--space-8) var(--space-12);cursor:pointer;white-space:nowrap}
+.ed-tablabel{flex:0 0 auto;padding:var(--space-8) var(--space-12);cursor:pointer;white-space:nowrap;transition:background var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard)}
 .ed-tab-count{font-size:var(--text-10)}
 .ed-tabpanel{display:none;padding:var(--space-8)}
 /* THESE FOUR SWITCHES ARE KEYED TO POSITION, NOT TO AN ID, SINCE 2026-08-10. Every
@@ -75,7 +75,7 @@
 .ptab-lbl{border-bottom:none}
 .ptab-panel{display:none}
 .ed-rules .rules-tabs{display:flex;gap:var(--space-20);border-bottom:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 -1px 0 var(--edge-groove-light);margin:0 0 var(--space-16)}
-.rules-tab{background:transparent;border:0;border-bottom:2px solid transparent;border-radius:0;color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:0 0 var(--space-8);margin-bottom:-2px;cursor:pointer;transition:color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
+.rules-tab{background:transparent;border:0;border-bottom:2px solid transparent;border-radius:0;color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-14);padding:0 0 var(--space-8);margin-bottom:-2px;cursor:pointer;transition:color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard),background var(--dur-fast) var(--ease-standard)}
 .rules-tab:hover{color:var(--text-primary)}
 /* PRESS, the axis every tab in this file was missing. A tab is a quiet control, so it settles onto
    --bg-pressed, the one held-down role in the system, declared in both themes. Each press mirrors
@@ -126,7 +126,7 @@
    three rules down already declares the same four, because it is a <label> and
    never had them either. Third time in this system: `.chip` and `.icon-btn` both
    wrote them out on 2026-08-07 for the same discovery. */
-.tabs :is(a,button){border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;text-align:center;text-decoration:none}
+.tabs :is(a,button){border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill);background:var(--bg-chip);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-16);min-height:var(--control-36);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;text-align:center;text-decoration:none;transition:background var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard)}
 .tabs :is(a,button):hover{color:var(--text-primary)}
 .tabs :is(a,button):active{background:var(--bg-pressed)}
 /* Both selected grounds in this file were `color-mix(in oklab,var(--color-action)

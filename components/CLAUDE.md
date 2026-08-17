@@ -1,5 +1,6 @@
-This folder IS the design system. **56 stylesheets, 11366 lines**: 50 here and 6 in `patterns/`,
-re-counted 2026-08-17 after search stopped being a page you go to and became a control you use: the field
+This folder IS the design system. **56 stylesheets, 11553 lines**: 50 here and 6 in `patterns/`,
+re-counted 2026-08-17 after sixteen files were given the response they had never carried, and again the
+same day after search stopped being a page you go to and became a control you use: the field
 grew a sheet face and a header face on one rung, and the rung was chosen by measuring the free middle of the
 header row at **69px on 640, 137 on 760 and 277 on 900**, which is why it enters at RAIL and not at DESK; and after the
 multi-outcome card stopped truncating its field above the DESK rung, which is the other rung and the other measurement.
@@ -753,6 +754,29 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   horizontal scroll, and every probe in this repository reads across the page rather than down it.
   The other four dialogs were correct only because they declare no `display` at all. `docs/backlog.md`
   178.
+- **A `transition` DECLARATION REPLACES THE ONE IT OUT-SPECIFIES, IT DOES NOT EXTEND IT, AND THAT
+  IS HOW AN ATOM ENDS UP ANSWERING FOR TWO OF ITS FIVE FACES.** Measured 2026-08-17 by crossing the
+  browser's parsed rules with computed style on every placement over the 109 painted screens: **77
+  declarations changed a painted property with nothing between the two states, 20,864
+  property-on-placement readings.** Three files had the same shape and it is the shape to watch,
+  because each half of it looks correct on its own. `chip` wrote a response on `rail` and `amount`
+  and none on `quiet`, `nav` or `lane`, so the category strip - the one control on a phone that
+  changes what the page is ABOUT - moved a ground, four border sides and an ink on the frame the
+  pointer arrived, 860 placements. `iconbtn` wrote one on four faces and none on the atom.
+  `.btn-provider` wrote `border-color, background, transform` at (0,2,0) over `.btn`'s four at
+  (0,1,0), so the three sign-in buttons on every screen **lost** `color` and `box-shadow` from a
+  list that was already right. **One declaration on the atom carrying the union of everything any
+  face changes, and the face keeps only what it CHANGES**: the duration belongs to the control and
+  the distance belongs to the face, which is the same split `--motion` already draws. `chip` 19,130
+  readings to 240, `iconbtn` 7,642 to 0, `button` 334 to 0.
+- **A RESPONSE THAT CANNOT FIRE IS NOT A RESPONSE, SO BEFORE WRITING ONE, ASK WHETHER THE STATE
+  CHANGES WHILE THE DOCUMENT STANDS.** `[aria-current]` on a nav slot, the chip's own count, a
+  selected option row, the contents rail's number and the chart legend are all written into the
+  markup and never changed again, which is 12,238 readings that get nothing and say why. Where a
+  control has both kinds the live half pays for the declaration and the parse-time half rides on it
+  for free, which is why the chosen chip fades and the count inside it does not. The twin trap is in
+  the instrument: **`text-decoration:none` is a SHORTHAND**, so a census reading a rule's longhands
+  finds `text-decoration-color` changing on 2,397 footer links that draw no line at all.
 
 ## Where the record is
 

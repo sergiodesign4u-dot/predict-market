@@ -617,3 +617,86 @@ covers everything is a delay between a tap and a keyboard, and the keyboard is w
 for. The three jobs were read against it and none of them was namable: nothing is being connected
 that a full-bleed replacement does not already say, no process is running, and the response was the
 tap being accepted, which the sheet's own appearance is.
+
+---
+
+## 10. The census this stage never ran, 2026-08-17: a state that CHANGES and does not move
+
+Reported by the user, on a screenshot of the category strip, and the report was right. Every
+instrument section 1 describes reads a DURATION and groups it by role, which is the right question
+for a product whose controls all move and the wrong one for finding a control that does not: **a
+component with no `transition` at all contributes no rows to a census of durations.** So the stage
+that unified 69 declarations and named six silent components could report `0 duration literals, 0
+`transition: all`, one role one number` and be true about every one of them while the loudest chip
+in the product changed six properties on the frame the pointer arrived.
+
+**The question that finds it is the inverse and it is one line: does the element that CHANGES a
+painted property have that property in its own `transition-property`?** Read from the browser's own
+parsed rules crossed with computed style on every placement, over the 109 painted screens.
+
+### The reading
+
+| | declarations | property-on-placement readings |
+|---|---|---|
+| **snapping: a painted property changes with nothing between the two states** | **77** | **20,864** |
+| state set at parse time and never changed again | 33 | 12,238 |
+| `text-decoration-color` reached by the `text-decoration` shorthand | 6 | 5,758 |
+| the focus ring, refused by this stage at step 6 | 12 | 3,178 |
+| the phone filter sheet, an arrival drawn by `display` | 15 | 1,012 |
+| `.ed-main > .card`, `transition:none` on purpose | 6 | 72 |
+| the review harness, which is chrome and not the product | 17 | 49,486 |
+
+**A reading is one property on one placement**, so a chip whose hover moves a ground, four border
+sides and an ink counts six. After the pass: **6 declarations and 654 readings**, all of them one
+control, and it is refused below.
+
+### What it was, and it was two of five faces rather than a component
+
+Twelve component files, and the shape repeated in three of them: **the ATOM wrote no response and
+some of its FACES wrote their own.** `chip` had it on `rail` and `amount` and not on `quiet`, `nav`
+or `lane`; `iconbtn` had it on `tile`, `lift`, `photo` and `bal-add` and not on the plain circle or
+the bare mark; `button` had it on `.btn` and then `.btn-provider` **replaced** the list to add a
+`transform`, which is what a `transition` declaration does, and the three sign-in buttons on every
+screen lost `color` and `box-shadow` from it. In all three the fix is the same and it is smaller
+than what it replaces: **one declaration on the atom, the union of everything any face changes, and
+the face keeps only what it CHANGES.** `chip` 19,130 readings to 240, `iconbtn` 7,642 to 0,
+`button` 334 to 0.
+
+The other nine were controls nobody had ever given a response: the header's two disclosures and its
+brand link, the notification list's footer, the footer's own lockup, the search seam, the skip step
+in How it works, three kinds of tab, both faces of the compact outcome pair, the related row, the
+three hero links, the breadcrumb, the sign-in fine print, the card's question, the panel's Change
+link and the position plate's shadow.
+
+**Verified by hovering, not by reading the file.** A real pointer on a reachable placement in both
+engines, counting `transitionrun` by property, with a positive control proving the probe sees a
+transition and does not see an element without one. Chromium and WebKit agree to the property on
+every row. The probe fell into two traps first and both are worth keeping: **the first match of a
+selector is usually the CHOSEN one**, whose face out-specifies its own hover so nothing changes, and
+**an element under the sticky header takes no `:hover` at all**, so a reachability test has to come
+before the reading.
+
+### Four refusals, each with its reason
+
+- **The focus ring, and the skip link with it.** 3,178 readings plus the 654 that survive the pass.
+  Section 6 already decided the ring stays instant; the skip link is the same control in a different
+  place, a thing that has to be fully there the moment a key is pressed. A ring that fades in is a
+  ring that is not there yet when it is needed.
+- **A state written into the document and never changed.** `[aria-current]` on a nav slot, the
+  category chip's count, a selected option row, the contents rail's number, the chart legend. **A
+  transition on a value decided at parse time is a rule that cannot render**, which is the one kind
+  of rule nothing here can check. Where a control has both kinds, the live half pays for the
+  declaration and the parse-time half rides on it for nothing: that is why the chip's chosen face
+  fades and the count beside it does not.
+- **`text-decoration-color`, 5,758 readings, and it is the instrument rather than the page.**
+  `text-decoration:none` is a shorthand, so it sets a longhand that resolves to `currentColor`; the
+  footer's 2,397 links declare it twice and draw no line at all. A census that reads a rule's
+  longhands has to be read back against what the rule DRAWS.
+- **The filter sheet**, which is the one finding a duration cannot close. `docs/backlog.md` 198.
+
+### And the register did not change
+
+Every declaration written today reads `--dur-fast` and `--ease-standard`, so the ladder is still two
+durations and two curves and the token override still reaches all of them: **12 screens, both
+engines, 1,473 moving elements per pass and 0 above 1ms under `prefers-reduced-motion`**, with an
+injected `999ms` literal read back at 999ms first to prove the probe could fail.

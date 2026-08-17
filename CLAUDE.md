@@ -373,6 +373,26 @@ because it is a stance rather than a principle, and it is written once, here.
   screenshot, which is the third time in two days.** Document height is one number per render and it
   is the cheapest check in this repository: **take it, and take it in both trees**, because the grey
   tree read 0 on the same defect and the disagreement between them was the finding.
+- **EVERY INSTRUMENT THIS REPOSITORY HAS FOR MOTION READS A DURATION, AND A CONTROL WITH NO
+  TRANSITION CONTRIBUTES NO ROWS TO ONE.** The Animation stage took the transcript from the source
+  and from the computed output, grouped every duration by role, found one role wearing four numbers
+  and closed with `0 duration literals, 0 transition:all, one role one number`. All of it true, and
+  **the whole method was pointed away from the defect**: a component that declares nothing has
+  nothing to group. **Reported by the user, on a screenshot, which is the fourth time in three
+  days.** The inverse question is one line - does the element that CHANGES a painted property carry
+  that property in its own `transition-property` - and read from the browser's parsed rules crossed
+  with computed style on every placement it gave **77 declarations and 20,864
+  property-on-placement readings changing with nothing between the two states**, against 6 and 654
+  after. **The repeating shape was an ATOM that wrote no response while some of its FACES wrote
+  their own**, in three files: `chip` answered on two of five faces, `iconbtn` on four of six, and
+  `.btn-provider` REPLACED the atom's list to add a `transform`, which is what a `transition`
+  declaration does, so the sign-in buttons lost `color` and `box-shadow`. **A face that writes its
+  own response is a face that can disagree with the next one**, and the fix is smaller than what it
+  replaces: one declaration on the atom, the union of everything any face changes. **And a zero has
+  to say which zero it is**: 12,238 readings are a state written into the document and never
+  changed, where a transition is a rule that cannot render; 5,758 are the `text-decoration`
+  shorthand resolving to `currentColor` on links that draw no line; 3,178 are the focus ring, which
+  stays instant on purpose. **Ask what a census cannot see before believing what it counted.**
 - **A LABEL THAT NAMES THE TOOL THAT WROTE SOMETHING IS NOT A LABEL, AND THE THING IT HIDES IS
   WHETHER ANYTHING IS MISSING.** The grey tree copies its chrome into 108 inline stylesheets and the
   copies AGREE: **390 of the 412 selectors that stand in 50 documents or more carry identical source

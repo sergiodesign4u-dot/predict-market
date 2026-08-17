@@ -103,7 +103,8 @@
   box-sizing:border-box;border:var(--hairline) solid transparent;border-radius:var(--radius-10);text-align:center;text-decoration:none;
   font-family:var(--font-body);cursor:pointer;min-height:var(--control-h);
   transition:border-color var(--dur-fast) var(--ease-standard),background var(--dur-fast) var(--ease-standard),
-    color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard)}
+    color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard),
+    transform var(--dur-fast) var(--ease-standard)}
 .btn .ic{width:var(--icon-18);height:var(--icon-18)}
 
 /* THE TWO EMPHASES. Quiet is every action that is not the point of its zone;
@@ -379,8 +380,15 @@
    stayed lifted for as long as a finger was on it. The press is the rest
    position restated, which is the same answer the other three give and costs no
    new value. */
-.btn.btn-provider{transition:border-color var(--dur-fast) var(--ease-standard),
-  background var(--dur-fast) var(--ease-standard),transform var(--dur-fast) var(--ease-standard)}
+/* AND THE LIFT NO LONGER RE-DECLARES THE WHOLE RESPONSE, 2026-08-17. This face
+   used to write its own `transition` to add `transform`, and a transition
+   declaration REPLACES rather than extends: `.btn.btn-provider` is (0,2,0)
+   against `.btn`'s (0,1,0), so the three sign-in buttons on every screen lost
+   `color` and `box-shadow` from the list and changed their ink on the frame the
+   pointer arrived while every other button in the product faded. 334 placements
+   against 196, measured by computed style over the 109 painted screens. The
+   distance stays here with `--motion` around it and the duration stays on the
+   atom, which is the same split components/iconbtn.css took the same hour. */
 .btn.btn-provider:hover{transform:translateY(calc(-1px * var(--motion)))}
 .btn.btn-provider:active{transform:translateY(0)}
 /* AND THE LIFT IS REMOVED BY NAME UNDER REDUCED MOTION, 2026-08-12. The global block in

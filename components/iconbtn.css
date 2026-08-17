@@ -80,6 +80,23 @@
    it was given a name. ui-kit/docs/backlog.md S48. */
 .icon-btn{background:transparent;border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-pill)}
 .icon-btn{width:var(--control-36);height:var(--control-36);color:var(--text-primary)}
+/* THE SAME FINDING AS components/chip.css, IN THE SAME HOUR AND ON THE SAME
+   INSTRUMENT: four of this atom's faces wrote their own response and the atom
+   wrote none, so the plain bordered button and the bare one both changed on the
+   frame the pointer arrived while the tile, the lift, the photo control and the
+   brass balance button faded. 783 placements against 456, over 109 screens.
+   The list below is the union of every state any face declares, so the four
+   copies underneath are deleted rather than left to drift: a face now says what
+   it CHANGES and the atom says how long the change takes. `transform` is in the
+   list for `.icon-btn-lift` alone, and the distance it travels stays in its own
+   rule with `--motion` around it, which is the split tokens.css argues for. */
+.icon-btn{transition:background var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard),transform var(--dur-fast) var(--ease-standard)}
+/* A MARK IS NOT ITS BUTTON, and the bare face is the proof: it changes nothing
+   on the box and takes its whole hover on the glyph, quiet ink to brass on 368
+   placements. The button's own transition cannot reach a child, so the mark
+   carries its own. `fill` is here for the bookmark, whose pressed state fills
+   the same glyph it strokes. */
+.icon-btn .ic{transition:stroke var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard),fill var(--dur-fast) var(--ease-standard)}
 .icon-btn:hover{background:var(--tint-brass-16);border-color:var(--color-action)}
 .icon-btn:active{background:var(--bg-pressed)}
 /* The two modifiers, and they are a SIZE and a FACE. Add funds is the one icon
@@ -90,7 +107,6 @@
 .icon-btn.bal-swap,.icon-btn.bal-add{width:var(--control-32);height:var(--control-32)}
 .icon-btn.bal-add{background:linear-gradient(135deg,var(--color-action),var(--color-action-lit));border-color:var(--color-action)}
 .icon-btn.bal-add .ic{stroke:var(--text-on-brass);color:var(--text-on-brass)}
-.icon-btn.bal-add{transition:background var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
 .icon-btn.bal-add:hover{background:linear-gradient(135deg,var(--color-action-lit),var(--color-action-lit));box-shadow:0 6px 18px -8px var(--color-action)}
 .icon-btn.bal-add:active{background:linear-gradient(315deg,var(--color-action),var(--color-action-lit));box-shadow:none}
 /* A sprite mark is filled with the CURRENT colour, so the button has to hand it
@@ -131,7 +147,7 @@
    takes back what it inherited, which measured 24px in every one of the 333
    places it stands, and the migration stays at zero. A partition that changes a
    computed value is a partition that made a decision it did not declare. */
-.icon-btn.icon-btn-photo{width:var(--control-32);height:var(--control-32);padding:0;line-height:inherit;color:var(--text-on-photo);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:var(--hairline) solid var(--line-on-photo);transition:background var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
+.icon-btn.icon-btn-photo{width:var(--control-32);height:var(--control-32);padding:0;line-height:inherit;color:var(--text-on-photo);background:color-mix(in oklab,var(--scrim-photo) 34%,transparent);border:var(--hairline) solid var(--line-on-photo)}
 .icon-btn.icon-btn-photo .ic{width:var(--icon-16);height:var(--icon-16);stroke:var(--text-on-photo);color:var(--text-on-photo)}
 .icon-btn.icon-btn-photo:hover{background:color-mix(in oklab,var(--scrim-photo) 55%,transparent);border-color:var(--line-on-photo-hover)}
 .icon-btn.icon-btn-photo:active{background:color-mix(in oklab,var(--scrim-photo) 72%,transparent);border-color:var(--line-on-photo-hover)}
@@ -227,7 +243,7 @@
    flex box holding one svg and no text node renders identically at 0 and at
    normal, and a computed value that moves for no drawn reason is a diff that
    buries the one drawn reason this pass has. */
-.icon-btn.icon-btn-tile{border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-muted);line-height:inherit;transition:color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard),background var(--dur-fast) var(--ease-standard)}
+.icon-btn.icon-btn-tile{border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-muted);line-height:inherit}
 .icon-btn.icon-btn-tile .ic{width:var(--icon-18);height:var(--icon-18);fill:currentColor;stroke:none}
 .icon-btn.icon-btn-tile .ic:has(use){color:inherit}
 /* The tile keeps its own hover and therefore has to say so twice: the atom's
@@ -348,7 +364,7 @@
    floor is not a control nobody measured**, and the measurement is written here so
    the next sweep that finds 525 of them reads this before filing a row.
    docs/backlog.md 64. */
-.icon-btn.icon-btn-lift{width:var(--size-28);height:var(--size-28);padding:0;line-height:inherit;transition:background var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard),transform var(--dur-fast) var(--ease-standard)}
+.icon-btn.icon-btn-lift{width:var(--size-28);height:var(--size-28);padding:0;line-height:inherit}
 .icon-btn.icon-btn-lift .ic{width:var(--icon-18);height:var(--icon-18)}
 .icon-btn.icon-btn-lift:hover{background:var(--bg-control-brass);border-color:var(--text-brass);transform:translateY(calc(-2px * var(--motion)))}
 .icon-btn.icon-btn-lift:hover .ic{stroke:var(--text-primary);color:var(--text-primary)}

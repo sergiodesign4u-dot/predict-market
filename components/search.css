@@ -209,7 +209,7 @@
    carries the count because the count is what decides whether a person needs
    the page at all, and it is the last thing in the body so the seam is where a
    reader runs out of rows rather than above them. */
-.search-seeall{margin:0 calc(var(--space-12) * -1);display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);min-height:var(--control-44);padding:var(--space-8) var(--space-12);border-top:var(--hairline) solid var(--border-hairline);color:var(--text-brass);font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-semibold);text-decoration:none}
+.search-seeall{margin:0 calc(var(--space-12) * -1);display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);min-height:var(--control-44);padding:var(--space-8) var(--space-12);border-top:var(--hairline) solid var(--border-hairline);color:var(--text-brass);font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-semibold);text-decoration:none;transition:background var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard)}
 .search-seeall:hover{background:var(--tint-brass-09)}
 .search-seeall:active{background:var(--bg-pressed)}
 .search-none{margin:0;padding:var(--space-16) var(--space-12);font-size:var(--text-12);line-height:var(--leading-base);color:var(--text-muted);text-align:center}

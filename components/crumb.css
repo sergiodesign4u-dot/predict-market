@@ -63,7 +63,7 @@
    not apply to a non-replaced INLINE box, so a bare `<a>` joining that list is
    silently inert without a box of its own. That file paid for this once already
    with `.sys-link-list a` at 39.6 x 21 while its computed style read 44. */
-.crumb a{display:inline-flex;align-items:center;color:var(--text-muted);text-decoration:none;border-radius:var(--radius-8)}
+.crumb a{display:inline-flex;align-items:center;color:var(--text-muted);text-decoration:none;border-radius:var(--radius-8);transition:color var(--dur-fast) var(--ease-standard)}
 .crumb a:hover{color:var(--text-brass);text-decoration:underline;text-underline-offset:2px}
 .crumb a:focus-visible{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
 /* The last item is the page you are on and it is not a link, because a link to

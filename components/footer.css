@@ -32,7 +32,7 @@
    wherever it SIGNS a block, here and on the brand tile and the SEO plate, and stays
    at the default 16 in the header, where it is a control in a 44px row and not a
    signature. */
-.footer-logo{--logo-size:var(--text-20);align-self:flex-start;margin-left:var(--logo-bleed)}
+.footer-logo{--logo-size:var(--text-20);align-self:flex-start;margin-left:var(--logo-bleed);transition:background var(--dur-fast) var(--ease-standard)}
 .footer-tagline{margin:0;max-width:280px}
 .lang-menu{width:max-content}
 .lang-menu summary .ic{width:var(--icon-16);height:var(--icon-16)}

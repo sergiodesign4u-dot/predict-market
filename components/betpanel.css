@@ -290,7 +290,7 @@ dialog.app-dialog.bet-sheet[open]{animation:betSheetUp var(--dur-slow) var(--eas
 }
 .bp-selected{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);padding:var(--space-8)}
 .bp-sel-name{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-display);font-size:var(--text-13);font-weight:var(--weight-bold);color:var(--text-primary)}
-.bp-change{font-size:var(--text-10);color:var(--text-brass);text-decoration:underline;white-space:nowrap}
+.bp-change{font-size:var(--text-10);color:var(--text-brass);text-decoration:underline;white-space:nowrap;transition:background var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard)}
 /* Change is an <a> and it is the way back out of a chosen outcome on a multi market, and it
    had neither state. Both axes the system usually uses are already spent on it: it carries
    no padding, so the ground alone is the 1.04:1 the footer measured behind one line of small

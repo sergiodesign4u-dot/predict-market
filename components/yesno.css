@@ -128,7 +128,7 @@
 .yesno > a.no,.yesno > button.no{color:var(--outcome-no-text);border-color:var(--border-hairline)}
 .yesno :is(a,button){border-radius:var(--radius-10)}
 .yesno.compact :is(a,button){border-radius:var(--radius-10)}
-.opt-list .yesno.compact button{background:var(--bg-control);color:var(--text-primary);border:var(--hairline) solid var(--border-hairline)}
+.opt-list .yesno.compact button{background:var(--bg-control);color:var(--text-primary);border:var(--hairline) solid var(--border-hairline);transition:background var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard)}
 /* THE CANDIDATE LIST FOLLOWS THE PAIR ABOVE, AND IT MATTERS MORE HERE THAN ON A CARD. This is
    a CHOOSER: `.sel` below fills the chosen side solid. With a soft tint at rest the only
    difference between chosen and unchosen was how much of the same colour was showing, which
@@ -227,8 +227,8 @@
    divide a row, and the odds figure inside each one. The percentage is the
    panel's DATUM rather than the control's face, the way an event photograph is
    the card's content: whoever owns the odds owns how they are set. */
-.yesno-pick,.yesno-pick-bar{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-bold);cursor:pointer}
-.yesno-pick{font-size:var(--text-16);padding:var(--space-12) var(--space-8);transition:background var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
+.yesno-pick,.yesno-pick-bar{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-muted);font-family:var(--font-body);font-weight:var(--weight-bold);cursor:pointer;transition:background var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard)}
+.yesno-pick{font-size:var(--text-16);padding:var(--space-12) var(--space-8)}
 .yesno-pick-bar{font-size:var(--text-12);padding:var(--space-8) var(--space-8);position:relative}
 /* THE PANEL MOVES THE EDGE AND THE INK, THE BAR ALSO MOVES THE GROUND, and that
    difference is left exactly as it stands because S49 did not ask about it. The

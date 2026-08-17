@@ -12,6 +12,72 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - Every instrument for motion here reads a duration, and a control with none contributes no rows
+
+**Reported by the user, on a screenshot of the category strip: the chips do not animate.** They do
+not, and neither did eleven other controls, and the reason nothing had said so is the shape worth
+keeping rather than the fix.
+
+**The Animation stage measured what MOVES.** It took the transcript from the source and from the
+computed output, grouped every duration by role, found one role wearing four numbers, and closed
+with `0 duration literals, 0 transition:all, one role one number`. Every one of those statements is
+true. **A component with no `transition` at all contributes no rows to a census of durations**, so
+the whole method was pointed away from the defect: the stage could report a clean ladder while
+`.chip-nav` changed a ground, four border sides and an ink on the frame the pointer arrived, 860
+placements over 109 screens.
+
+**The inverse question is one line and it is the whole finding.** For every rule that changes a
+painted property in a state, does the element it changes carry that property in its own
+`transition-property`? Read from the browser's parsed rules crossed with computed style on every
+placement: **77 declarations and 20,864 property-on-placement readings snapping**, against 12,238
+that are a state written into the document and never changed, 5,758 that are the `text-decoration`
+shorthand rather than a drawn line, 3,178 that are the focus ring this stage already refused, 1,012
+that are the filter sheet's `display` arrival, and 49,486 in the review harness, which is chrome.
+After the pass: **6 declarations and 654 readings, all of them the skip link, refused for the same
+reason as the ring.**
+
+**The repeating shape was an ATOM that wrote no response while some of its FACES wrote their own**,
+and it was in three files. `chip` answered on `rail` and `amount` and not on `quiet`, `nav` or
+`lane`. `iconbtn` answered on four faces and not on the plain circle or the bare mark. `button`
+answered on `.btn` and then `.btn-provider` **replaced** the list to add a `transform` - which is
+what a `transition` declaration does to the one it out-specifies - so the three sign-in buttons on
+every screen lost `color` and `box-shadow` and were the loudest thing in the file's own subject.
+**The fix is smaller than what it replaces**: one declaration on the atom carrying the union of
+everything any face changes, and the face keeps only the property it CHANGES. `chip` 19,130 readings
+to 240, `iconbtn` 7,642 to 0, `button` 334 to 0. A face that writes its own response is a face that
+can disagree with the next one, and all three had.
+
+**Nine more controls had simply never been given one**: the header's two disclosures and its brand
+link, the notification footer, the footer lockup, the search seam, the How-it-works skip, three
+kinds of tab, the compact outcome pair, the related row, three hero links, the breadcrumb, the
+sign-in fine print, the card's question, the panel's Change link and the position plate's shadow.
+Sixteen files, 71 declarations, and not one new token: every one reads `--dur-fast` and
+`--ease-standard`, so the ladder is unchanged and the reduced-motion override still reaches all of
+them, measured at **1,473 moving elements and 0 above 1ms on 12 screens in both engines**, with an
+injected 999ms literal read back at 999ms before the zero was believed.
+
+**Four refusals, each with its reason, because a zero has to say which zero it is.** The focus ring
+and the skip link stay instant, which section 6 of `motion.md` had already decided for the ring and
+which is the same argument for a control that has to be fully there the moment a key is pressed. A
+state written into the document and never changed gets nothing, because **a transition on a value
+decided at parse time is a rule that cannot render** - and where a control has both kinds, as the
+chip does, the live half pays for the declaration and the parse-time half rides on it for free,
+which is exactly why the chip's chosen face fades and the count inside it does not.
+`text-decoration-color` was 5,758 readings of the instrument rather than the page: `text-decoration:
+none` is a shorthand, it sets a longhand that resolves to `currentColor`, and the footer's 2,397
+links draw no line at all. And the phone's filter sheet is the one silent moment a duration cannot
+close, because it arrives by `display`, which has nothing to interpolate: `docs/backlog.md` 198.
+
+**Verified by hovering rather than by reading the file**, a real pointer on a reachable placement in
+Chromium and WebKit, counting `transitionrun` by property, both engines agreeing to the property on
+every row. The probe fell into two traps first and both are the same family as everything else in
+`CLAUDE.md`: **the first match of a selector is usually the CHOSEN one**, whose face out-specifies
+its own hover so nothing changes and the probe reports silence on a control that answers, and **an
+element under the sticky header takes no `:hover` at all**. A reachability test comes before the
+reading, or the reading is of the chrome above the control.
+
+---
+
 ## 2026-08-17 - The cost of a bigger reader default is one element, and it is the one the feed exists for
 
 **Backlog 115 has been waiting for a number since it was written, and this is it.**

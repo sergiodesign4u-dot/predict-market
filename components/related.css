@@ -35,9 +35,9 @@
 .related-list{display:flex;flex-direction:column}
 .related-list li{border-bottom:var(--hairline) solid var(--edge-groove-dark)}
 .related-list li:last-child{border-bottom:0}
-.related-list a{display:flex;align-items:center;gap:var(--space-12);padding:var(--space-12) var(--space-4);color:var(--text-primary);text-decoration:none}
+.related-list a{display:flex;align-items:center;gap:var(--space-12);padding:var(--space-12) var(--space-4);color:var(--text-primary);text-decoration:none;transition:background var(--dur-fast) var(--ease-standard)}
 .rel-thumb{width:46px;height:46px;flex:0 0 46px;border-radius:var(--radius-10);border:var(--hairline) solid var(--border-hairline);background-size:cover;background-position:center}
-.rel-q{flex:1;min-width:0;font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-14);line-height:var(--leading-snug);letter-spacing:var(--track-question);color:var(--text-primary);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.rel-q{flex:1;min-width:0;font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-14);line-height:var(--leading-snug);letter-spacing:var(--track-question);color:var(--text-primary);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;transition:color var(--dur-fast) var(--ease-standard)}
 .related-list a:hover .rel-q{color:var(--text-brass)}
 /* Press. The whole row IS the link, so the ground goes on the <a>: the <li> around it owns only
    the groove between rows, and a state drawn there would sit outside the thing being pushed. This

@@ -61,7 +61,7 @@
    What the wrapper WAS for is measured in docs/decisions.md: across 106 painted
    screens it changed the outcome for 13 of 375 selector tails, and it matched
    ZERO elements of the course chrome it was put there to protect. */
-.chip-rail{--control-h:var(--control-28);min-height:var(--control-h);display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12);cursor:pointer;transition:background var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard)}
+.chip-rail{--control-h:var(--control-28);min-height:var(--control-h);display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;color:var(--text-muted);border-radius:var(--radius-10);padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-weight:var(--weight-semibold);font-size:var(--text-12);cursor:pointer}
 .chip-rail:hover{color:var(--text-primary)}
 .chip-rail:active{background:var(--bg-pressed)}
 /* A SELECTED CHIP IS A TINT, NOT A FILL, which is the rule DESIGN.md states
@@ -116,7 +116,23 @@
    a face that depends on which ELEMENT it is written on is not a face, and the
    day a chip is given a width is the day this would have been found the other
    way. */
-.chip{cursor:pointer;font-family:var(--font-body);text-decoration:none;text-align:center}
+/* THE ATOM ANSWERS A POINTER, AND UNTIL 2026-08-17 TWO OF ITS FIVE FACES DID.
+   `.chip-rail` and `.chip-amount` each carried a `transition` of their own and
+   `quiet`, `nav` and `lane` carried none, so the same gesture got two answers:
+   measured by computed style over the 109 painted screens, 590 chips faded and
+   1,325 changed on the frame the pointer arrived. THE SILENT THREE INCLUDED THE
+   LOUDEST CHIP IN THE PRODUCT - the category strip is the one control on a phone
+   that changes what the page is ABOUT, and its 860 hovers moved a ground, an
+   edge and an ink all at once with nothing between the two states.
+
+   ONE DECLARATION, AND IT BELONGS TO THE CONTROL RATHER THAN TO THE FACE. A face
+   that writes its own response is a face that can disagree with the next one,
+   which is what this file had; the four properties are the UNION of everything
+   any chip state changes - ground, edge, ink, halo - so the sixth face answers
+   before anybody writes a rule for it. The job is RESPONSE, so --dur-fast, and
+   nothing here moves: a chip cross-fades and does not travel, which is why there
+   is no `transform` in the list and no `--motion` to multiply. */
+.chip{cursor:pointer;font-family:var(--font-body);text-decoration:none;text-align:center;transition:background var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard)}
 .chip-quiet{display:inline-flex;align-items:center;min-height:0;background:transparent;border:var(--hairline) solid transparent;border-radius:var(--radius-pill);color:var(--text-muted);font-weight:var(--weight-semibold);font-size:var(--text-13);padding:var(--space-8) var(--space-12)}
 .chip-quiet:hover{color:var(--text-chip-hover);background:var(--tint-hover)}
 /* THE AMOUNT CHIP ALSO STANDS IN A DIALOG, AND IT TOOK TWO PASSES TO SAY SO ONCE.
@@ -137,7 +153,6 @@
    this file, so a chip is a chip wherever it stands and there is nowhere left
    for the next state to be forgotten. Backlog 42 closed. */
 .chip-amount{border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);background:var(--bg-control);color:var(--text-primary);padding:var(--space-8) var(--space-8);font-size:var(--text-12)}
-.chip-amount{transition:border-color var(--dur-fast) var(--ease-standard),background var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard)}
 /* The amount answers a pointer, and both places it stands do now. The deposit
    sheet had this hover and the bet panel had none - the same face on the same
    control, one scope answering and the other silent, which is not a decision
@@ -365,7 +380,7 @@
    sweep can read, so quiet has to be a colour. This is a monochrome glyph with
    no contrast floor to clear, and the two steps are a weight rather than a
    quiet. */
-.chip-ic{width:var(--icon-18);height:var(--icon-18);flex:0 0 auto;fill:currentColor;stroke:none;opacity:.9}
+.chip-ic{width:var(--icon-18);height:var(--icon-18);flex:0 0 auto;fill:currentColor;stroke:none;opacity:.9;transition:opacity var(--dur-fast) var(--ease-standard)}
 .chip-nav:hover .chip-ic,[aria-current="page"] .chip-nav .chip-ic,[aria-current="location"] .chip-nav .chip-ic{opacity:1}
 /* THE COUNT, and it is the sub-category rail's whole argument: a number tells a
    person which branch is worth opening before they open it. Mono, because it is
@@ -373,6 +388,15 @@
    read as a second thing inside the label rather than as part of it. It follows
    the chip it sits in into the chosen state, which is the reason it is here and
    not with the rail. */
+/* AND THE COUNT DELIBERATELY GETS NOTHING, which is the line this pass drew and
+   is worth stating because the mark beside it got a transition in the same hour.
+   `.chip-ic` steps from .9 to 1 when the chip is HOVERED, so its change has a
+   moment a person can be inside; the count only ever changes under
+   `[aria-current]`, which is written into the document before it is parsed and
+   never changes again while it stands. A transition on a value that is decided
+   at parse time is a rule that cannot render, and this repository has just spent
+   a stage on why that is the one kind of rule nothing can check. It arrives the
+   day a filter re-colours a count without a page load. */
 .chip-cnt{font-size:var(--text-11);color:var(--text-muted);font-family:var(--font-mono);background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-6);padding:var(--space-2) var(--space-8)}
 /* THE TWIN OF THE WASH S48 MOVED BY HAND, and it took a day and a tool to catch.
    Both of these were colour functions - 14 per cent and 45 - so both were invisible

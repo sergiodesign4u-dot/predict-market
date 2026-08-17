@@ -284,7 +284,7 @@
    real target, and the alternative is a script that this tree does not have and
    that would not run from a file:// page in every engine anyway. */
 .hiw-next{cursor:pointer}
-.hiw-skip{display:block;text-align:center;font-size:var(--text-13);color:var(--text-muted);text-decoration:none;padding:var(--space-8)}
+.hiw-skip{display:block;text-align:center;font-size:var(--text-13);color:var(--text-muted);text-decoration:none;padding:var(--space-8);transition:color var(--dur-fast) var(--ease-standard)}
 .hiw-skip:hover{color:var(--text-brass)}
 
 /* THE PAGE. A page is not a bigger dialog: it has room, so the hero gets an edge

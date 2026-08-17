@@ -52,7 +52,7 @@
 .hf-info>:not(.hf-photo):not(.hf-veil){position:relative;z-index:var(--z-content)}
 .hf-eyebrow{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-semibold);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-brass-lit);margin-bottom:var(--space-12)}
 .hf-eyebrow svg{width:var(--icon-16);height:var(--icon-16);fill:var(--text-brass-lit)}
-.hf-title{font-family:var(--font-display);font-size:var(--display-hero);font-weight:var(--weight-bold);line-height:var(--leading-tight);letter-spacing:var(--track-question);color:var(--text-primary);text-decoration:none;margin:0 0 var(--space-8);text-wrap:balance}
+.hf-title{font-family:var(--font-display);font-size:var(--display-hero);font-weight:var(--weight-bold);line-height:var(--leading-tight);letter-spacing:var(--track-question);color:var(--text-primary);text-decoration:none;margin:0 0 var(--space-8);text-wrap:balance;transition:color var(--dur-fast) var(--ease-standard)}
 /* A STATE THAT ONLY EXISTS IN ONE THEME DOES NOT EXIST. This read --text-strong,
    which is white on graphite and INK ON CHALK, and the rest colour here is
    --text-primary, which is ink on chalk too. So in the Vault the headline lit up
@@ -279,7 +279,7 @@
 .hh-list li{display:grid;grid-template-columns:20px minmax(0,1fr) auto auto;align-items:center;gap:var(--space-8);padding:var(--space-8) 0;border-top:var(--hairline) solid var(--shadow-ink-45);box-shadow:inset 0 1px 0 var(--bevel-hair)}
 .hh-list li:first-child{border-top:0;box-shadow:none}
 .hh-rank{font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--text-13);color:var(--text-brass-lit);text-align:center}
-.hh-name{font-size:var(--text-13);color:var(--text-primary);text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hh-name{font-size:var(--text-13);color:var(--text-primary);text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color var(--dur-fast) var(--ease-standard)}
 .hh-name:hover{color:var(--text-brass)}   /* same one-theme hover as .hf-title above, same fix */
 /* The row is a grid and only the name is the link, so a stone would paint one
    cell of five and read as a highlight on the title rather than a press on the
@@ -297,7 +297,7 @@
    7.23. The row loses nothing legible and stops making a claim it cannot support. */
 .hh-prob{font-family:var(--font-mono);font-size:var(--text-13);color:var(--text-primary)}
 .hh-vol{font-family:var(--font-mono);font-size:var(--text-11);color:var(--text-muted);min-width:var(--size-40);text-align:right}
-.hh-all{margin-top:var(--space-12);font-size:var(--text-13);font-weight:var(--weight-semibold);color:var(--text-brass-lit);text-decoration:none;align-self:flex-start}
+.hh-all{margin-top:var(--space-12);font-size:var(--text-13);font-weight:var(--weight-semibold);color:var(--text-brass-lit);text-decoration:none;align-self:flex-start;transition:color var(--dur-fast) var(--ease-standard)}
 /* THE WORST NUMBER THIS PASS FOUND, and it was already shipped. --color-action-lit
    is the LIT stop of an action gradient, a pale brass meant to sit under dark ink.
    Section 3 does not move it, because a mid-luminance metal reads on both stones.

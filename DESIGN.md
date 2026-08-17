@@ -735,6 +735,24 @@ with its reason (the condensed band collapses by `max-height`, and no transform 
 the flow), and five `box-shadow` kept because all five sit on the element's own hover or focus, so
 **at most one element in the document is animating a shadow at a time**.
 
+### The response belongs to the CONTROL, not to the face, decided 2026-08-17
+
+A `transition` declaration **replaces** the one it out-specifies rather than extending it, so a face
+that writes its own response is a face that can disagree with the next one. Three files had grown
+exactly that: `chip` answered a pointer on two of its five faces, `iconbtn` on four of its six, and
+the provider button re-declared the list to add a `transform` and lost `color` and `box-shadow` from
+it. **The declaration goes on the atom and carries the union of everything any face changes**; a
+face keeps only the property it CHANGES and the distance it travels. Measured before: 77
+declarations changed a painted property with nothing between the two states, over 20,000
+property-on-placement readings on the 109 painted screens, and the loudest of them was the category
+strip, which is the one control on a phone that changes what the page is about.
+
+**And a state that is written into the document and never changes gets no movement.** `[aria-current]`
+on a nav slot, a selected option row, a chip's count: a transition on a value decided at parse time
+is a rule that cannot render. Where a control has both kinds, the live half pays for the declaration
+and the parse-time half rides on it, which is why a chosen chip fades and the count inside it does
+not.
+
 ### Less motion is an obligation, and it has one mechanism
 
 One block in `tokens.css` redeclares the tokens at 1ms. Every component reading a `var()` obeys

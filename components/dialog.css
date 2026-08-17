@@ -312,7 +312,7 @@ dialog.app-dialog .sheet-close:focus-visible{outline-color:var(--text-strong)}
    says how dense that body's content is. Four bodies at 8, 12, 12 and 16 is the
    open half of this row and it is filed rather than guessed at. */
 dialog.app-dialog.signin-dialog .sheet-body{padding:var(--space-16) var(--space-20);gap:var(--space-12)}
-dialog.app-dialog.signin-dialog .fine a{color:var(--text-brass);text-decoration:none;border-bottom:var(--hairline) solid var(--tint-brass-45);padding-bottom:.4px}
+dialog.app-dialog.signin-dialog .fine a{color:var(--text-brass);text-decoration:none;border-bottom:var(--hairline) solid var(--tint-brass-45);padding-bottom:.4px;transition:background var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard)}
 dialog.app-dialog.signin-dialog .fine a:hover{border-bottom-color:var(--text-brass)}
 /* The Terms and Privacy links, and they are the file's only text links. Already brass at
    rest, so colour cannot carry the press, and the ground cannot carry it alone: the
