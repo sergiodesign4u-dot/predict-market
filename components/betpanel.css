@@ -49,8 +49,15 @@
    carried a stake, a payout and a Confirm of its own, on the four bet-state screens. Those four had
    no mobile sheet, so the dock was the only thing a phone rendered and it had to carry everything;
    when they got the sheet the shape had nothing left to do, and the "Confirm bet" it carried was a
-   label lying over four states where confirming was not the next act. All 8 docks are the chooser
-   now. The rules stay, they are named in the class list at the top of this file, and the specimen
+   label lying over four states where confirming was not the next act. All 8 docks were the chooser
+   alone until 2026-08-17, and 4 of the 12 carry this face again, docs/backlog.md 194: on the four
+   screens where a side IS picked the dock was the ONLY thing a phone rendered of the decision, and
+   `event-detail-bet-ready.html` measured 4,349px against `event-detail.html`'s 4,349px with exactly
+   one computed value between them, the dock's YES background. A screen whose whole mobile
+   representation is a colour change is not a screen. It carries the stake, the side and what the
+   side returns now, so the dock is a summary and the chooser both; what does NOT come back is the
+   Confirm it used to hold, which was a label lying over four states where confirming was not the
+   next act. The rules stay, they are named in the class list at the top of this file, and the specimen
    stays on `ui-kit/betpanel.html` labelled with this zero and its reason. */
 .bet-dock .dock-meta{font-size:var(--text-10);flex:0 0 auto;text-align:center;color:var(--text-muted)}
 .bet-dock .dock-meta b{display:block;font-size:var(--text-12);color:var(--text-primary)}
