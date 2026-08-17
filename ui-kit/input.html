@@ -65,11 +65,11 @@
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
         <span class="field-label">Amount to add</span>
-        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="10" value="20.00" aria-label="Amount to add"></div>
+        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="10" value="20.00" aria-label="Amount to add"></div>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
         <span class="field-label">Amount to add</span>
-        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="10" value="20.00" aria-label="Amount to add"></div>
+        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="10" value="20.00" aria-label="Amount to add"></div>
       </div>
     </div>
     <p class="tk-why"><b>There is no plate behind this specimen, and until 2026-08-08 there had to
@@ -86,10 +86,10 @@
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark">
-        <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="1" value="120.00" aria-label="Bet amount"></div>
+        <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="1" value="120.00" aria-label="Bet amount"></div>
       </div>
       <div class="tk-theme-fig tk-stack" data-theme="light">
-        <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="1" value="120.00" aria-label="Bet amount"></div>
+        <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="1" value="120.00" aria-label="Bet amount"></div>
       </div>
     </div>
     <p class="tk-note">No box at all: a 1.5px underline, 30px bold display, right aligned, 150 wide
@@ -124,7 +124,7 @@
         <thead><tr><th></th><th>before</th><th>after</th></tr></thead>
         <tbody>
           <tr><td>the mark</td><td>inside the value</td><td><b>a sibling, <code>.amount-cur</code></b></td></tr>
-          <tr><td>the element</td><td><code>type="text"</code></td><td><b><code>type="number"</code></b>, with <code>step="0.01"</code> and the rail's own <code>min</code>: <b>10</b> on the 217 deposit fields, <b>1</b> on the 35 bet fields</td></tr>
+          <tr><td>the element</td><td><code>type="text"</code></td><td><b><code>type="text"</code> since 2026-08-17</b>, with <code>inputmode="decimal"</code> and a pattern, and the rail's own minimum as <code>data-min</code>: <b>10</b> on the deposit fields, <b>1</b> on the bet fields. <b>It was <code>type="number"</code> until then</b>, which hands the browser three things that belong to the product: the spinner, the decimal separator, and the wheel. <code>docs/backlog.md</code> 184</td></tr>
           <tr><td>the value</td><td><code>$20.00</code></td><td><code>20.00</code>, a number a machine can read</td></tr>
           <tr><td>the guard</td><td>a pattern that never fired, on 113 of 121</td><td><b>the browser</b>, on 121 of 121</td></tr>
           <tr><td>the two trees</td><td>disagreed on 8 fields</td><td><b>identical markup, 116 grey and 121 painted</b></td></tr>
@@ -144,7 +144,7 @@
     the stylesheet that owns the class and not the page that demonstrates it.</p>
     <p class="tk-why"><b>Typed with a keyboard, not assigned by a script, because those are two
     different paths through the value sanitiser and only one of them is what a person does.</b>
-    Measured 2026-08-10 on a field carrying <code>type="number" step="0.01" min="10"</code>:</p>
+    Measured 2026-08-10 on a field carrying <code>type="number" step="0.01" min="10"</code>: <b>All three of those are gone with the attribute, 2026-08-17.</b> Rendered in both engines with the same value and the same font, a text input and a number input do not paint the same pixels, and the text input paints the SAME pixels in <code>en-US</code> and <code>de-DE</code> while the number input does not: 842 bytes either way in Chromium against 895, and 1,142 either way in WebKit against 1,568 and 1,629. <b>The separator belongs to the page now.</b> The wheel over the focused field left the stake at <code>5.00</code> on both engines, where it had moved it to <code>5.01</code>.</p>
     <div class="tk-tblwrap">
       <table class="tk-tbl">
         <thead><tr><th>typed</th><th><code>.value</code></th><th>what it means</th></tr></thead>

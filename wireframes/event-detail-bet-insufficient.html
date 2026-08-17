@@ -1387,7 +1387,7 @@
                 <button type="button" class="yesno-pick bp-side no" aria-pressed="false">NO <span class="bp-pct">62%</span></button>
               </div>
               <div>
-                <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$3.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="1" value="25.00" aria-invalid="true" aria-describedby="bet-funds-error" aria-label="Bet amount"></div>
+                <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$3.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="1" value="25.00" aria-invalid="true" aria-describedby="bet-funds-error" aria-label="Bet amount"></div>
                 <div class="quick"><button class="chip chip-amount" type="button">$1</button><button class="chip chip-amount" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount sel" type="button">$25</button></div>
               </div>
               <div class="inline-error" id="bet-funds-error"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg>You have $3.00. You can bet up to $3.00, or add funds to bet more.</div>
@@ -1423,7 +1423,7 @@
                 <button type="button" class="yesno-pick bp-side no" aria-pressed="false">NO <span class="bp-pct">62%</span></button>
               </div>
               <div>
-                <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$3.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="1" value="25.00" aria-invalid="true" aria-describedby="bet-funds-error-sheet" aria-label="Bet amount"></div>
+                <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$3.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="1" value="25.00" aria-invalid="true" aria-describedby="bet-funds-error-sheet" aria-label="Bet amount"></div>
                 <div class="quick"><button class="chip chip-amount" type="button">$1</button><button class="chip chip-amount" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount sel" type="button">$25</button></div>
               </div>
               <div class="inline-error" id="bet-funds-error-sheet"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg>You have $3.00. You can bet up to $3.00, or add funds to bet more.</div>
@@ -1707,7 +1707,7 @@
     <div class="sheet-body">
       <div>
         <span class="field-label">Amount to add</span>
-        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="10" value="20.00" aria-label="Amount to add"></div>
+        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="10" value="20.00" aria-label="Amount to add"></div>
         <div class="quick"><button class="chip chip-amount" type="button">$10</button><button type="button" class="chip chip-amount sel">$20</button><button class="chip chip-amount" type="button">$50</button><button class="chip chip-amount" type="button">$100</button></div>
       </div>
       <div><span class="field-label">Pay with</span>

@@ -12,6 +12,45 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - Three things that belong to the product were the browser's, and one attribute held all three
+
+**Backlog 184. `type="number"` hands the browser the SPINNER, the DECIMAL
+SEPARATOR and the WHEEL**, and the stake field had all three. Chromium painted
+`5,00` with a comma on a USD amount while `input.value` read `5.00`; WebKit drew
+native spinner arrows inside a hand-cast panel; and a mouse wheel over the focused
+field moved a stake from **5.00 to 5.01** on a page that scrolls. Not one of those
+is a rule the product wrote.
+
+**All three go with the attribute.** 285 fields across 223 documents are
+`type="text"` with `inputmode="decimal"` and a pattern, which keeps the numeric
+keypad on a phone and takes the other three back. `min` became `data-min` because
+it does nothing on a text field and the intent of backlog 95 is worth keeping where
+a script can still read it; `step` is gone with the spinner it stepped. **And the
+field is in the mono `DESIGN.md` calls the spectator's honesty cue**, which it was
+not: it was the only figure in the panel set in Space Grotesk, on the one screen
+where a spectator spends.
+
+**THE SEPARATOR IS PROVED BY PIXELS RATHER THAN ASSERTED.** Rendered with the same
+value and the same font, a text input and a number input do not paint the same
+bytes, and **the text input paints the SAME bytes in `en-US` and `de-DE` while the
+number input does not**: 842 either way in Chromium against 895, and 1,142 either
+way in WebKit against 1,568 and 1,629. That is the whole claim, measured on the
+platform rather than argued from it. The wheel test came back `5.00` on both
+engines.
+
+**The two rules that hid the spinner are deleted, and their own comment had
+predicted the day.** They were written against the class rather than the type "so
+the rule cannot outlive the attribute quietly: if the field ever stops being a
+number, these do nothing and say so." The field stopped being a number. What the
+comment did not know is that WebKit was drawing the spinner anyway.
+
+**Verified over 279 documents, 1,116 renders**, Chromium and WebKit at 390 and
+1280: 0 sideways scroll with the probe proved sighted, 0 duplicate ids, 0 shut
+dialogs visible, 0 page errors, **0 visible amount fields under 40px** and 0 of any
+type but `text`.
+
+---
+
 ## 2026-08-17 - A figure no price can produce, and the two rows the critique had cleared
 
 **Backlog 181 named one row and it was two of three.** Re-derived against

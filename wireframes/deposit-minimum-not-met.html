@@ -777,7 +777,7 @@
         <div class="sheet-body">
           <div>
             <span class="field-label">Amount to add</span>
-            <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="10" value="4.00" aria-invalid="true" aria-describedby="deposit-min-error" aria-label="Amount to add"></div>
+            <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="10" value="4.00" aria-invalid="true" aria-describedby="deposit-min-error" aria-label="Amount to add"></div>
             <div class="inline-error" id="deposit-min-error"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg>The minimum is $10. Enter $10 or more to continue.</div>
             <div class="quick">
               <button class="chip chip-amount" type="button">$10</button>
@@ -928,7 +928,7 @@
     <div class="sheet-body">
       <div>
         <span class="field-label">Amount to add</span>
-        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="10" value="20.00" aria-label="Amount to add"></div>
+        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="10" value="20.00" aria-label="Amount to add"></div>
         <div class="quick"><button class="chip chip-amount" type="button">$10</button><button type="button" class="chip chip-amount sel">$20</button><button class="chip chip-amount" type="button">$50</button><button class="chip chip-amount" type="button">$100</button></div>
       </div>
       <div><span class="field-label">Pay with</span>

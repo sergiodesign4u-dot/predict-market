@@ -717,7 +717,7 @@ document.addEventListener('click', function (e) {
     <div class="sheet-body">
       <div>
         <span class="field-label">Amount to add</span>
-        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="10" value="20.00" aria-label="Amount to add"></div>
+        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="10" value="20.00" aria-label="Amount to add"></div>
         <div class="quick"><button class="chip chip-amount" type="button">$10</button><button type="button" class="chip chip-amount sel">$20</button><button class="chip chip-amount" type="button">$50</button><button class="chip chip-amount" type="button">$100</button></div>
       </div>
       <div><span class="field-label">Pay with</span>
@@ -927,7 +927,7 @@ document.addEventListener('click', function (e) {
   </script><dialog class="app-dialog" id="outcomeDialog" aria-label="Add funds"><div class="plate-head sheet-head"><h1>Add funds</h1><a href="event-detail.html" class="icon-btn icon-btn-photo sheet-close" aria-label="Back to the event"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg></a></div><div class="sheet-body">
           <div>
             <span class="field-label">Amount to add</span>
-            <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="number" inputmode="decimal" step="0.01" min="10" value="4.00" aria-invalid="true" aria-describedby="deposit-min-error" aria-label="Amount to add"></div>
+            <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="10" value="4.00" aria-invalid="true" aria-describedby="deposit-min-error" aria-label="Amount to add"></div>
             <div class="inline-error" id="deposit-min-error"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-danger-triangle-b"/></svg>The minimum is $10. Enter $10 or more to continue.</div>
             <div class="quick">
               <button class="chip chip-amount" type="button">$10</button>

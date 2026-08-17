@@ -157,7 +157,7 @@
 .amount-input{flex:1;box-sizing:border-box;min-height:var(--control-44);padding:var(--space-8);
   border:var(--hairline) solid var(--border-field);border-radius:var(--radius-10);
   background:var(--bg-well);color:var(--text-primary);
-  font-family:var(--font-display);font-size:var(--text-18);
+  font-family:var(--font-mono);font-size:var(--text-18);
   transition:border-color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard),opacity var(--dur-fast) var(--ease-standard)}
 .amount-input:hover:not(:disabled){border-color:var(--line-brass-strong)}
 /* :focus and :focus-visible are two different questions and this control needs both.
@@ -173,15 +173,18 @@
 .amount-input:focus{outline:none;border-color:var(--color-action);box-shadow:0 0 0 3px var(--glow-focus)}
 .amount-input:focus-visible{outline:var(--ring) solid var(--focus-ring);outline-offset:var(--ring)}
 .amount-input:disabled{opacity:var(--opacity-disabled);cursor:not-allowed;background:var(--bg-surface)}
-/* A NUMBER INPUT COMES WITH A SPINNER AND THIS ONE MAY NOT HAVE ONE. The field
-   is 44 tall by rule and a spinner takes a strip off its right edge, which on
-   the sheet field would sit exactly where the figure ends. Two spellings,
-   because the two engines hide it differently, and both are written against the
-   class rather than the type so the rule cannot outlive the attribute quietly:
-   if the field ever stops being a number, these do nothing and say so. */
-.amount-input::-webkit-outer-spin-button,
-.amount-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-.amount-input[type=number]{-moz-appearance:textfield;appearance:textfield}
+/* THE FIELD STOPPED BEING A NUMBER ON 2026-08-17 AND THE RULES THAT HID ITS SPINNER
+   ARE GONE WITH IT. docs/backlog.md 184. The comment here said the two spellings were
+   written against the class rather than the type "so the rule cannot outlive the
+   attribute quietly: if the field ever stops being a number, these do nothing and say
+   so" - which is exactly what happened, except that WebKit was drawing the spinner
+   anyway. `type="number"` hands three things to the browser that belong to the product:
+   the SPINNER, the DECIMAL SEPARATOR (Chromium painted `5,00` on a USD amount while
+   `input.value` read `5.00`), and the WHEEL, which moved a stake from 5.00 to 5.01 on a
+   page that scrolls. All 285 fields are `type="text"` with `inputmode="decimal"` and a
+   pattern now, which keeps the numeric keypad on a phone and takes the other three back.
+   `min` became `data-min` because it does nothing on a text field and the intent of
+   backlog 95 is worth keeping where a script can still read it. */
 
 /* ================================================ the bet field, 12 of 122 --
    No box at all: a 1.5px underline and a 30px figure, right aligned. It is the
