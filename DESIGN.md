@@ -524,6 +524,38 @@ Full entry, and every other third-party asset, in [`NOTICE.md`](./NOTICE.md).
 - **Border:** a dark cast rim (`1px solid rgba(0,0,0,.4)` plus inset highlights), never a bright 1px line and never a nested card inside a card.
 - **Internal Padding:** card body 13px; content plate 24px 28px 30px; sections 16px 20px.
 
+**The Card Anatomy Rule, decided on three screenshots on 2026-08-17.** A card is
+where a person decides whether to LOOK, not where they choose, and every part of it
+is measured against that sentence.
+
+- **Two outcomes and no more, at every width.** A multi-outcome card carries the
+  two most-backed and nothing else. There was a rung under the old behaviour, rows
+  three and up hidden below 640, and that answers a phone rather than the market: a
+  race with twenty runners would have arrived with twenty rows and forty buttons.
+  The markup never ships a third row now, so the case is impossible rather than
+  merely unlikely, and the whole field lives on the detail page.
+- **No count of what is missing.** The `+N more outcomes` link is gone with it. It
+  was the quietest text on the card, in the same ink as `Volume` and `Closes`, and
+  the question is already the route to the market. A caption counting what is not
+  there is a fourth thing to read on a surface being made smaller.
+- **No plate under an outcome.** The row has no ground, no border and no radius: the
+  card already IS the plate, and a box around each outcome made two lines read as
+  two objects to weigh. What identifies a row is its name and its figure, and what
+  is interactive on it wears its own face.
+- **One card, one divider.** The rule between two outcomes is the same engraved
+  groove the card draws above its meta row, a hairline in `--shadow-ink-45` with an
+  inset lit lip in `--bevel-faint`, and it sits at the MIDPOINT of the gap: the
+  padding is equal on both sides and the column gap is zero, because a gap is how
+  two objects are spaced and these are two lines of one list.
+- **The story line reserves two lines, and the cost is stated rather than hidden.**
+  At a 24px browser default all twelve `.why` lines on the feed are cut, where two
+  of twelve are cut at the default 16; three lines would cut two and add 29px to
+  every card for every reader. Density won. A reader who set a large default gets
+  the question whole and the story shortened, with the whole sentence one tap away.
+
+The arithmetic of the four together, measured at 1280: the multi card went **407 to
+288**, and the feed document went **4,149 to 3,847**.
+
 ### Inputs / Fields
 - **Style:** the amount / text field sits recessed at `#0d0f12` with the `#2b2f38` hairline and a 10px radius, so it reads as cut into the plate rather than raised.
 - **Focus:** a 2px brass focus ring (`outline: 2px solid #d7ac53; outline-offset: 2px`) on every interactive control.
