@@ -1,5 +1,5 @@
 /* components/options.css
-   Component: options. Classes: .opt-list, .opt-more, .opt-name, .opt-prob, .opt-row, .opt-sel-tag, .options, .sel.
+   Component: options. Classes: .opt-list, .opt-name, .opt-prob, .opt-row, .opt-sel-tag, .options, .sel.
 
    Reads: --bevel-notice, --bg-chip, --bg-control, --border-hairline, --text-brass,
           --text-muted, --text-primary, --tint-brass-09, --tint-brass-16, --tint-brass-60
@@ -39,9 +39,6 @@
    Republicans 52 and Democrats 48 are the whole market, on 3 cards in each tree.
    IT IS A LINK, not a label, and it goes where the card goes. A person told that three
    outcomes are missing needs the place they are, and that place is the event. */
-.card .opt-more{display:block;padding:var(--space-4) var(--space-12);font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-medium);color:var(--text-muted);text-decoration:none;transition:color var(--dur-fast) var(--ease-standard)}
-.card .opt-more:hover{color:var(--text-primary)}
-.card .opt-more:active{color:var(--text-brass)}
 .card .opt-row,.card .opt-row:first-child{border-radius:var(--radius-10);background:var(--bg-chip);border:var(--hairline) solid var(--bevel-notice);/* symmetric inset - equal gap on both sides, no dead space to the right of NO */
   padding:var(--space-4) var(--space-12)}
 .opt-list{padding:var(--space-2) 0}
@@ -124,14 +121,13 @@
    already claimed: a count the product states beats a count anybody derives,
    which is the rule the 2026-08-10 entry wrote for this same row.
    ============================================================================ */
-/* TWO OUTCOMES ON A CARD AT EVERY WIDTH, AND THE REST IS A NUMBER. 2026-08-17,
-   decided by the product owner. There was a rung here: below 640 the third row
-   onwards was hidden and the link said how many, at 640 and above every row stood
-   and the link had nothing left to say. That answers a phone and it does not answer
-   the market: a race with twenty runners would have put twenty rows and forty
-   buttons on one card in a feed, and the card is a place a person DECIDES WHETHER TO
-   LOOK, not a place they choose. So the markup carries the two most-backed outcomes
-   and nothing else, the link carries the count of what is not there, and the detail
-   page is where the whole field lives. The rules that hid rows and hid the link are
-   gone because there is nothing left for either of them to do: a card that never
-   ships a third row does not need a rule to hide one. `docs/backlog.md` 188. */
+/* TWO OUTCOMES ON A CARD, AND NOTHING ELSE. 2026-08-17, decided by the product owner in two
+   steps on two screenshots. First the card stopped showing every outcome a market has, which a
+   twenty-runner race would have turned into twenty rows and forty buttons in a feed. Then the
+   `+N more outcomes` link went too, and the second step is the one worth the reason: the link
+   was `--text-muted` at 12px, the same ink as the `Volume` and `Closes` line under it, on a card
+   whose title and question are the actual route to the market. **A card is where a person decides
+   whether to LOOK.** The question does that; a grey caption counting what is missing was a fourth
+   thing to read on a surface being made smaller, and the whole field is one tap away on the title.
+   The rules that hid rows and hid the link are gone with both, and `.opt-more` is off this file's
+   class list because it has no face left here. `docs/backlog.md` 182, 188, 189. */

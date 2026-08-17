@@ -12,6 +12,57 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - The second critique scored 27 of 40 and its sharpest finding was an error of mine
+
+**Re-run with the same two isolated agents on the same surface: 27 of 40 against
+22 the same morning**, with the five rows the first critique opened all closed and
+the three they caused closed too. The detector reads **1 finding on 110 live
+documents** and 880 renders come back all zeros.
+
+**AND IT CAUGHT A CORRECTION I HAD MADE WRONG THE SAME DAY.** Backlog 181
+re-derived the Conservatives position to `Avg price 33%, Potential payout $30.30`,
+which is 10 / 0.33 and internally perfect. **The feed prices the Conservatives
+OUTCOME at 33%**, so backing NO costs 67% and $10 pays **$14.93**. I made a row
+consistent with itself and contradictory to the screen it came from, which is the
+exact failure the row was filed against, one document over. It reads `Avg price
+67%, Price now 54%, Potential payout $14.93` now, every figure still derived.
+
+**Three more of the same class, and together they are one defect.** The bet panel
+offered `$42.00 cash` while the wallet said `Cash (available) $92.00`; `In-play
+(open bets) $50.00` stood against three open stakes summing to $40.00; a
+notification had Bitcoin `jumped from 58% to 64%` where the feed and the hot list
+both price it at 61%. **The account triple adds up for the first time**: cash $92
+plus in-play $40 is **$132.00**, and that is the header figure on all 221
+documents that carry one, where it had been $142.00 and equal to nothing.
+
+**The `+N more outcomes` link is deleted, and the reasoning is the second half of
+yesterday's.** The critique measured it at `--text-muted` 12px, the same ink as the
+`Volume` and `Closes` line beneath it, against a brass `See all hot events` on the
+same screen, and called it the only route to what the card withheld. **The answer
+was not to make it louder.** The card title is the route and the question is what a
+person reads; a grey caption counting what is missing was a fourth thing to read on
+a surface being deliberately made smaller. **68 links removed across 33 documents**,
+rules out of `components/options.css`, the 15 grey inline copies, the component
+manifest and the touch-floor selector list in `base.css`. The feed goes **3,915 to
+3,847 at 1280**.
+
+**Verified over 279 documents, 1,116 renders**, Chromium and WebKit at 390 and
+1280: 0 `.opt-more` anywhere, every visible multi card still at exactly 2 rows, 0
+sideways scroll with the probe proved sighted, 0 duplicate ids, 0 shut dialogs
+visible, 0 page errors, and 0 occurrences of `$42.00`, `$50.00`, `$30.30` or the
+64% notification in either product tree.
+
+**What is left from this critique and is NOT done**, so it is not mistaken for
+closed: the category band shows three of five at 390 with no affordance
+(`scrollWidth 556 / clientWidth 328`, `mask-image: none`); the panel's four
+breakdown figures are all `--text-muted`; `event-detail-bet-ready.html` and
+`event-detail.html` are both 4,349px at 390 and differ in one computed value; and
+`the price you see is the price you get` still stands on the same document as a
+slippage table reaching 49% at $5,000, which is a product decision rather than an
+edit.
+
+---
+
 ## 2026-08-17 - One class on two strips, and the row that nearly got filed as already fixed
 
 **Backlog 182, decided by the product owner: the category band keeps the taxonomy
