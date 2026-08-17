@@ -112,7 +112,14 @@
    cause. **`-webkit-line-clamp:2` is**: at a bigger default fewer words fit in two lines, so more
    sentences are cut, and the clamp is doing exactly what it was told. Whether two lines is still
    the right reservation for a reader at 24px is a DESIGN question about a fixed card height, not a
-   units question, and 115 is closed as measured rather than as migrated. */
+   units question, and 115 is closed as measured rather than as migrated.
+   THE ANSWER IS TWO LINES AND IT IS SAID OUT LOUD, 2026-08-17, docs/backlog.md 196. At a 24px
+   browser default all 12 story lines on the feed are cut, where 2 of 12 are cut at 16; three lines
+   would cut 2 of 12 and cost 29px on every card, for every reader. **The product owner chose the
+   density.** So this is a known and accepted cost rather than an oversight: a reader who set a
+   large default gets the question whole and the story shortened, and the whole sentence is one tap
+   away on the event. It is written here because a cost nobody wrote down is a defect the next pass
+   files again. */
 .card .top-txt .why{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
 .card .thumb{width:var(--size-56);flex:0 0 var(--size-56);height:auto;align-self:stretch;min-height:84px;border:0;border-radius:var(--radius-6) var(--radius-6) var(--radius-6) var(--radius-6);background-size:cover;background-position:center;-webkit-mask-image:linear-gradient(to right,var(--mask-solid) 52%,transparent);mask-image:linear-gradient(to right,var(--mask-solid) 52%,transparent)}
 .card .top-txt .why{margin:0}

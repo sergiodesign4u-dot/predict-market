@@ -39,8 +39,15 @@
    Republicans 52 and Democrats 48 are the whole market, on 3 cards in each tree.
    IT IS A LINK, not a label, and it goes where the card goes. A person told that three
    outcomes are missing needs the place they are, and that place is the event. */
-.card .opt-row,.card .opt-row:first-child{border-radius:var(--radius-10);background:var(--bg-chip);border:var(--hairline) solid var(--bevel-notice);/* symmetric inset - equal gap on both sides, no dead space to the right of NO */
-  padding:var(--space-4) var(--space-12)}
+/* NO PLATE UNDER AN OUTCOME ON A CARD, 2026-08-17, docs/backlog.md 195, decided by the product
+   owner on a screenshot and it is the third cut to the same surface in a day. The row had
+   `--bg-chip`, a hairline in `--bevel-notice` and a 10px radius, which made every outcome a small
+   card inside a card: two of them stacked read as two objects to weigh rather than two lines to
+   scan. The card already IS the plate. What identifies a row is its name and its figure, and what
+   is interactive on it wears its own face already, so the box was drawing a boundary nothing
+   needed. The horizontal padding goes with it, because a plate's inset has no meaning once the
+   plate is gone, and the row keeps its vertical rhythm alone. */
+.card .opt-row,.card .opt-row:first-child{padding:var(--space-4) 0}
 .opt-list{padding:var(--space-2) 0}
 .opt-list .opt-row,.opt-list .opt-row:first-child{display:flex;align-items:center;gap:var(--space-8);background:var(--bg-control);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);padding:var(--space-8) var(--space-12);margin-top:var(--space-8)}
 .opt-list .opt-row:first-child{margin-top:0}
