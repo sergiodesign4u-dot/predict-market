@@ -1,4 +1,4 @@
-This folder IS the design system. **56 stylesheets, 11599 lines**: 50 here and 6 in `patterns/`,
+This folder IS the design system. **56 stylesheets, 11607 lines**: 50 here and 6 in `patterns/`,
 re-counted 2026-08-17 after the product's one bottom-sheet arrival stopped being two, and again the same day
 after sixteen files were given the response they had never carried, and again the
 same day after search stopped being a page you go to and became a control you use: the field

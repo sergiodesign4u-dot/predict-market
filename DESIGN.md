@@ -158,7 +158,7 @@ components:
 
 **Creative North Star: "The Brass Vault"**
 
-A tactile graphite-and-brass system for a prediction market that must read as credible before it reads as anything else. The surface is a near-black graphite canvas cut into embossed stone plates, each with an inset top highlight and a dark cast rim, floating on their own drop shadow. One matte-brass accent does all the identity work; green and red are spent only on the YES / NO outcome and never on brand. Real event photography carries the story. The feeling is a cast metal plate and a vault fitting, not a casino floor and not a trading terminal. **Corrected 2026-08-17, `docs/backlog.md` 187: it does not yet.** The product owns FOUR photographs, one per category, and runs about 25 open events, so a card is illustrated by its category and not by its event: one capitol stands on three politics markets in a single viewport at 1280. Binding the picture to `data-cat` on 2026-08-17 stopped a gold Bitcoin coin from illustrating a James Bond casting market, which is a correction and not the feature. **The sentence above becomes true at about 25 images and not before**, and until then this line is a plan rather than a description.
+A tactile graphite-and-brass system for a prediction market that must read as credible before it reads as anything else. The surface is a near-black graphite canvas cut into embossed stone plates, each with an inset top highlight and a dark cast rim, floating on their own drop shadow. One matte-brass accent does all the identity work; green and red are spent only on the YES / NO outcome and never on brand. Every market carries its own picture. The feeling is a cast metal plate and a vault fitting, not a casino floor and not a trading terminal. **Corrected twice, and this is the true version, 2026-08-17.** The product owned FOUR pictures, one per category, and ran 25 markets, so a card was illustrated by its category and not by its event and one capitol stood on three politics markets in a single viewport. It now owns **25, one per market**, verified across both trees by reading every thumbnail's computed background against the question of the card that holds it: **299 of 299 agreeing, 25 distinct markets illustrated, 0 disagreeing.** **They are GENERATED images and not photographs of anything**, which is the half of this line that has to stay said out loud: a prediction market is a claim about the world and may not illustrate one with a fabricated record of it, so no image contains a person, a likeness, a legible word or a number, and each shows the SUBJECT rather than the OUTCOME. A ballot box, not a result. An empty stage, not a winner. `NOTICE.md` carries the rule in full and the two layout constraints that go with it, and `docs/backlog.md` 187 is closed.
 
 This system is built for Alex, a News Junkie, whose documented fear is "this looks like crypto, so it is a scam." Every choice answers that fear with weight and restraint: contrast and one loud accent supply the energy, never shine or color-drench. The odds bar carries the outcome color so the buttons can stay quiet; the plate emboss supplies depth so nothing needs a glow. It explicitly rejects the trader-terminal look (order books, leverage sliders, PNL ranks, ticker walls, gamified loot), the beige / warm / soft-pastel AI-default palette, the low-contrast Kalshi complaint, and the muddy-navy Hedgehog look. The standing risk to pull back from is the green/red "wall of YES/NO buttons" trader-floor reflex.
 
@@ -170,7 +170,7 @@ Sources of the language: `concept/docs/concept.md` (taste and the five attribute
 - Every panel is an embossed casting (inset top highlight + dark cast rim), never a flat fill.
 - Restrained-to-committed color strategy: color is rare and structural, never decorative fill.
 - Three typefaces on a contrast axis: Space Grotesk display, DM Sans body, IBM Plex Mono numbers.
-- Real event photography in thumbnails and hero, masked and veiled into the graphite, never a grey placeholder.
+- The market's own picture in thumbnails and hero, masked and veiled into the graphite, never a grey placeholder.
 
 ## 2. Colors
 
@@ -578,7 +578,7 @@ The arithmetic of the four together, measured at 1280: the multi card went **407
 - **Do** let the odds bar carry the outcome color and keep the YES/NO buttons graphite with outcome labels, so the feed reads as a spectator surface.
 - **Do** build depth from the cast-plate emboss and real drop shadow: inset top highlight + dark rim + soft shadow.
 - **Do** set every number in IBM Plex Mono and every heading in Space Grotesk; keep body prose in DM Sans at 13-14px and 60-75 characters per line, which is `--measure: 46ch` and not 66 (`ch` is a zero, not a character: see the Measure Rule in section 3).
-- **Do** use real event photography, masked and veiled into the graphite; never a grey placeholder.
+- **Do** use the event pictures, masked and veiled into the graphite; never a grey placeholder. They are generated, one per market, and they show the subject and never the outcome: `NOTICE.md`.
 - **Do** state trust in one plain provable line ("USDC held 1:1, we never lend it. / N events resolved on-chain") near the action, in neutral stone, not in red.
 - **Do** hold WCAG AA: body >= 4.5:1, large/UI >= 3:1; 44px touch targets; a brass `:focus-visible` ring on every control.
 

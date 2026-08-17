@@ -1,8 +1,8 @@
 # Third-party assets, and what each one requires
 
-This repository ships two kinds of asset it did not draw: an icon set and three type families.
-Each entry says what it is, where it came from, what its licence requires, and where the
-requirement is met. **An asset with no entry here has not been cleared and may not ship.**
+This repository ships three kinds of asset it did not draw: an icon set, three type families, and
+the event pictures. Each entry says what it is, where it came from, what its licence requires, and
+where the requirement is met. **An asset with no entry here has not been cleared and may not ship.**
 
 ## Solar, the icon set
 
@@ -36,6 +36,34 @@ requirement is met. **An asset with no entry here has not been cleared and may n
 Fifteen Solar Bold glyphs were already in the sprite with the set named in a comment and **no
 attribution anywhere**, so the licence was being relied on and not honoured. Naming an asset is not
 crediting it. Backlog 31, and the account is in `docs/decisions.md`.
+
+## The event pictures, and they are GENERATED rather than photographed
+
+- **What:** `assets/ev-*.webp`, 25 images, one per open market, 1400 x 788, about 1.7 MB in total.
+  They stand in the card thumbnail, the event detail head and the feed hero, and they are the whole
+  of what `DESIGN.md` used to call "real event photography".
+- **Where they came from:** generated on 2026-08-17 with **Seedream 5 Pro** through Magnific, from
+  text prompts written here. No reference image, no photograph, no stock library, no person's
+  likeness. The prompts are recorded in `docs/decisions.md` under the entry for that date.
+- **What that requires:** nothing a licence asks for, and something this product asks for.
+  **A prediction market is a claim about the world, so it must not illustrate one with a fabricated
+  record of the world.** The rule these 25 were written under, and the rule any replacement has to
+  keep:
+  - **no people at all**, no faces, no silhouettes, so no likeness is invented;
+  - **no legible text**, no signage, no numbers, no logos, so nothing reads as a document;
+  - **the SUBJECT, never the OUTCOME**: a ballot box, not a result; an empty stage, not a winner;
+    cracked ground, not a named drought. The picture says what the market is ABOUT and takes no
+    side, which is the same discipline that keeps green and red off the brand;
+  - **no red or green light source**, because in this product those two colours mean YES and NO.
+    The first attempt returned a data hall lit by red and green indicators, and it was discarded on
+    that ground alone.
+- **Two more constraints came from the layout rather than from ethics**, and they are here because
+  a replacement image has to meet them too: the card crops to the **central 37.5 per cent** of the
+  frame, so the subject has to live in the middle third; and the hero draws the picture at 42 per
+  cent opacity under a veil that follows the ink, so a pale image vanishes in Daylight and a dark
+  one drowns in the Vault. Mid-tone with internal contrast, and neutral: **not pre-graded.**
+- **Where this is said to a reader:** here, and in `DESIGN.md` under Photography, which no longer
+  claims the pictures are photographs of anything.
 
 ## The three type families
 

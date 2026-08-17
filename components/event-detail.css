@@ -26,7 +26,15 @@
 .ed-head{position:relative;padding:var(--space-16) 118px var(--space-12) var(--space-20);gap:var(--space-12)}
 /* The photograph is a placeholder here, not a rule: one sample event image so the stand has a
    picture. The shipped page writes its own on the element. */
-.ed-thumb{width:var(--size-72);height:var(--size-72);flex:0 0 var(--size-72);border:var(--hairline) solid var(--border-brass);border-radius:var(--radius-10);background:url(../assets/event-politics.jpg) center/cover;color:transparent;font-size:0}
+/* THE PHOTOGRAPH CAME OFF THIS FILE ON 2026-08-17, AND IT HAD BEEN A STYLESHEET NAMING ONE
+   PICTURE. `background:url(../assets/event-politics.jpg)` stood here, so all ten event detail
+   screens wore the politics photograph whatever their market was: a market about a game console
+   was illustrated by a federal building, from a rule no markup could override. The card grid was
+   at least bound to `data-cat`; this was bound to nothing. **A photograph is a DATUM**, which is
+   one of the three things `CLAUDE.md` allows on the element, and the sibling `.thumb` had always
+   done it that way. The geometry stays here and the picture arrives with the market.
+   `docs/backlog.md` 187. */
+.ed-thumb{width:var(--size-72);height:var(--size-72);flex:0 0 var(--size-72);border:var(--hairline) solid var(--border-brass);border-radius:var(--radius-10);background-size:cover;background-position:center;color:transparent;font-size:0}
 .ed-cat{font-family:var(--font-body);font-size:var(--text-12);font-weight:var(--weight-semibold);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-brass-lit)}
 .ed-q{font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-question);line-height:var(--leading-tight);letter-spacing:var(--track-question);color:var(--text-primary);margin:var(--space-8) 0 0;text-wrap:balance}
 .ed-prob-big{font-family:var(--font-mono);font-size:var(--text-12);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-muted);margin:var(--space-8) 0 0}

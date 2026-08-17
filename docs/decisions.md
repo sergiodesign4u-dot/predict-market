@@ -12,6 +12,59 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - A card is illustrated by its market now, and the picture is generated, which is a thing that has to be said rather than noticed
+
+Backlog 187 had been half closed since the morning: the words were corrected and the pictures were
+not bought. They are made instead. **Codex cannot generate an image** - it is a coding agent - and
+the Higgsfield account holds 0.76 credits on a free plan, so the 25 came from **Seedream 5 Pro
+through Magnific**, 100 credits each, from prompts written here.
+
+**Four were made first, on purpose, and two of them failed.** That is the whole argument for the
+four: a data hall came back lit by **red and green indicator lights**, which in this product are
+YES and NO, so a card would have carried outcome colour next to an outcome control; and a cinema
+marquee came back pre-graded into blue dusk, which under a veil that already darkens is darkened
+twice. Both also contained a person, twice ignoring an explicit instruction not to.
+
+**The measurement that changed the brief was the card's own crop.** `.card .thumb` is 56 x 84 with
+`background-size:cover`, so a 2560 x 1440 frame scales to 149.3 wide and the card shows **the
+central 37.5 per cent of it**. The federal building survived because its middle is the doors; the
+marquee died because its middle is a blank board. So the brief for the remaining 21 says the
+subject lives in the centre third. **The second constraint came from the hero**: `.hf-photo` draws
+at `opacity:.42` under `.hf-veil`, and the veil follows the ink, so a pale image vanishes in
+Daylight and a dark one drowns in the Vault. Mid-tone with internal contrast, and never pre-graded.
+
+**The rule the pictures are made under is in `NOTICE.md` as a requirement.** No people, no
+likeness, no legible word or number, no red or green light source, and **the subject rather than the
+outcome**: a ballot box and not a result, an empty stage and not a winner. A prediction market is a
+claim about the world and must not illustrate one with a fabricated record of it. `DESIGN.md` no
+longer says "real event photography carries the story", because that sentence would now be false in
+a new way rather than merely unfulfilled.
+
+**The check read the render and found two things the source could not show.** For every thumbnail
+in both trees it took the computed background image and the question of the card holding it, and
+asked whether they name the same market. First pass: **284 of 289 agreeing**, and the five were a
+bug in my own sweep - it picked the first entry in MAP ORDER rather than the question nearest the
+element, so a card whose neighbour was Bitcoin got the Bitcoin picture. Second finding, older and
+worse: **`components/event-detail.css` was naming a photograph in a stylesheet**,
+`background:url(../assets/event-politics.jpg)` on `.ed-thumb`, so all ten event detail screens wore
+the politics picture whatever their market was. The card grid was at least bound to `data-cat`; the
+detail head was bound to nothing, and no markup could override it. **A photograph is a DATUM**,
+which is one of the three things allowed on the element, and the sibling `.thumb` had always done
+it that way. After both: **299 of 299 agreeing, 25 distinct markets, 0 disagreeing**, and 379 of 379
+pictures decoding with 0 non-200 responses in Chromium and WebKit over 170 documents.
+
+**And removing the stylesheet default broke two kit specimens**, which is the cost of taking a
+default away and the reason the check was re-run rather than trusted: `organisms.html` and
+`patterns.html` each carry the detail head twice, once per theme, and the repair had replaced only
+the first. Both are photographed now and the blank count is 0.
+
+1400 x 788 at q76, **1.7 MB for 25**, which is the same intrinsic size the old hero declared, so no
+`width`/`height` attribute had to move. The five category jpgs stay on disk with **0 live
+references**: `ui-visual/old/` is frozen and still draws them, and that is the zero being named
+rather than a face nobody measured.
+
+---
+
 ## 2026-08-17 - The third reader is what closes a duplicate, and one movement had two names and two properties
 
 The census earlier today left exactly one thing open: **the phone's filter sheet arrives on one
