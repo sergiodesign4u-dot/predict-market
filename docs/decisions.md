@@ -12,6 +12,39 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - The cost of a bigger reader default is one element, and it is the one the feed exists for
+
+**Backlog 115 has been waiting for a number since it was written, and this is it.**
+All 110 painted documents rendered at browser default **16, 20 and 24**, through
+CDP `Page.setFontSizes`, which is the only mechanism that moves both the type and a
+`rem` media query. Writing `html{font-size:24px}` moves neither, and that is why
+every earlier attempt at this measured nothing.
+
+**Control first, as always here.** Root 16 read twice returns the identical 358
+clipped elements and 2,921px mean height at 390, and 322 and 1,520 at 1280. The
+instrument does not move when the input does not.
+
+**Two things the sweep settles.** Horizontal scroll is **0 at every root and both
+widths**. And the rungs already do what putting the ladder in `rem` was for: at
+root 24 the RAIL query, 56.25rem, is 1350px, and it reads **false at 1280**, so a
+reader with a 24px default keeps one column until 1350.
+
+**The whole cost lands on one family.** Clipped elements at 390 go **358 to 439**
+between root 16 and 24, and **`p.why` goes 10 to 83**: 73 of the 81 new clips are
+the story line under a card question. Every other clipped family is flat at both
+roots and clipped by design - `a.skip-link` 109, `nav.cat-condensed` 61,
+`span.rel-q` 30, `p.sk-status` 22, `div.plate-head` 14. Mean document height goes
+2,921 to 3,658 at 390.
+
+**So the decision is smaller than the row assumed.** `.why` is the sentence that
+answers why an event matters, and `PRODUCT.md` calls the story-led feed the
+motivation entry: it is the one line that must not be cut, and it is the only one
+that is. Moving the 10 type tokens and the 8 display tokens to `rem` costs one
+clamp on `.why` and nothing else measurable; the eight `clamp()` display tokens
+that mix `px` and `vw` are the only part that needs an answer of its own.
+
+---
+
 ## 2026-08-17 - The pricing table was the model the product had already replaced, and four photographs cannot become twenty-five
 
 **Backlog 191. `PRODUCT.md` decided this on 2026-08-10 and the screen never
