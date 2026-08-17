@@ -928,3 +928,79 @@ wireframes would be paying for a face this tree does not own.
 **So the rule this tree needs is a reading, not a rewrite**: when a shared element
 changes here, it changes in every document that carries it, and the parse above is
 what says whether it did. `docs/backlog.md` 179.
+
+## A rule's home was the tool that wrote it, and every region says its numbers now (2026-08-17)
+
+Closing 179 re-took the measurement from source and the text was already in
+agreement: **412 selectors stand in 50 documents or more and 390 of them carry
+identical source text.** The markup-to-CSS contract holds on every shared chrome
+family - skip link 91/91, footer trust strip 91/91, search field 91/91,
+how-it-works dialog 91/91, bell 59 markup against 64 stylesheets, the five extra
+being logged-out event-detail pages that share the logged-in header's rules -
+with **0 documents carrying the markup and not the rules**. The 17 that carry none
+of it are the invoked-overlay screens, which is the boundary row above, and the
+count matches it exactly.
+
+**The mechanism was never the text, it was the PLACE.** Four region names in these
+files name the SCRIPT that wrote the rules rather than the subject they style, so
+a rule's home is wherever a script's cursor happened to be:
+
+| what was measured | the number |
+|---|---|
+| the notification block's home region | `How it works` in **61** documents, `chrome ported by port_chrome.py` in **3** |
+| and those three are | `404`, `500`, `toasts` - the three that carried 7 of its 12 rules |
+| the skip link's home region | `port_chrome.py` in **59**, `port_structure.py` in **32** |
+| documents carrying a SECOND `<style>` block | **17**, appended by a later script rather than merged |
+| documents carrying the 12-rule bell block TWICE | **13**, all event-detail, **156 duplicate rules** |
+| region orders across the tree | **13**, with the same ten-region prefix in 105 of 108 |
+
+A file that is missing a shared block and a file that keeps it somewhere else look
+identical to anything that reads region names, which is why nothing saw the
+reduced copy. **The fix made the day before landed in a fourth region and
+reproduced the mechanism it was closing.**
+
+**The repair is a label, because the rules were already right.** Every region
+marker now states its kind and its numbers:
+
+```
+SHARED (N of 108, R rules)       these R rules stand in N documents and stand
+                                 alone in this region: one text, no exceptions
+SHARED BASE (N of 108, R rules)  the same base stands in N, and this page's own
+                                 rules are mixed in among them
+THIS PAGE                        promises nothing to any other file
+```
+
+**A copy that holds fewer than R contradicts its own header**, and that is the only
+kind of check this tree can carry: it links no stylesheet, so nothing can compute
+for it, and this repository does not keep gates. The three words are defined at
+the top of all 108 stylesheets, beside the sentence that says this file is one of
+108 copies.
+
+The bell and the skip link were given their own named regions instead of living
+inside another subject's, which took the how-it-works region **from 7 texts to 1**;
+109 region boundaries were moved so a SHARED region ends where its shared rules
+end; the 17 second stylesheets were merged and **108 of 108 documents hold exactly
+one**; the 156 duplicate rules are gone.
+
+**After: 2,413 markers - 1,918 SHARED, 193 SHARED BASE, 302 THIS PAGE. Every
+SHARED region is byte-identical across the documents that carry it.** The two that
+stay SHARED BASE are the feed (3 texts over 53 documents) and the event detail (4
+over 93), and both are the base with page rules interleaved, which is what the
+label says.
+
+**Verified as a layout rather than as a diff.** 108 documents rendered before and
+after on Chromium and WebKit at 390 and 1280, transitions and animations frozen,
+two `requestAnimationFrame`s to settle, the cold pass thrown away: **432 renders,
+0 differing in layout**, every element's box identical, **0 documents whose height
+moved**, 0 sideways scroll, 0 duplicate ids, 0 page errors. The instrument was
+proved before the finding - the same page read twice returned the identical
+signature on all four engine-width pairs. The only DOM difference anywhere is 17
+documents holding one `<style>` element instead of two.
+
+**Two things left standing on purpose.** The 44x44 bell `<summary>` on those three
+pages against 22x22 on the other 56, for the reason in the section above. And the
+**24 painted class names the ports left here with no grey rule behind them** -
+`.chip`, `.chip-amount`, `.btn-provider`, `.state-problem`, `.filters-close` and
+19 more, nine of them in all 108 documents - which are not a defect: a wireframe
+draws structure, and a class that carries only paint has nothing to draw in this
+tree.

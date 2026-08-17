@@ -373,6 +373,23 @@ because it is a stance rather than a principle, and it is written once, here.
   screenshot, which is the third time in two days.** Document height is one number per render and it
   is the cheapest check in this repository: **take it, and take it in both trees**, because the grey
   tree read 0 on the same defect and the disagreement between them was the finding.
+- **A LABEL THAT NAMES THE TOOL THAT WROTE SOMETHING IS NOT A LABEL, AND THE THING IT HIDES IS
+  WHETHER ANYTHING IS MISSING.** The grey tree copies its chrome into 108 inline stylesheets and the
+  copies AGREE: **390 of the 412 selectors that stand in 50 documents or more carry identical source
+  text**, and the markup-to-CSS contract holds on every shared family with 0 documents carrying the
+  markup and not the rules. What had no owner was the PLACE. Four of the region names in those files
+  named the SCRIPT that wrote the rules - `chrome ported ... by port_chrome.py` and its kind - so a
+  rule's home is wherever a script's cursor happened to be, and **the notification block sat under
+  `How it works` in 61 documents and under the port's name in three, which are exactly the three
+  that carried 7 of its 12 rules**. A file that has LOST a shared block and a file that KEEPS it
+  somewhere else are indistinguishable to anything that reads names, which is why nothing saw it,
+  and **the fix made the day before landed in a fourth region and reproduced the mechanism it was
+  closing**. The same parse found 17 documents carrying a second `<style>` block and 13 carrying the
+  same 12 rules twice. **A shared block now states its own numbers - `SHARED (N of 108, R rules)` -
+  so a reduced copy contradicts its own header**, which is the only kind of check a tree that links
+  nothing can carry, and it is read rather than run. **Name a region for its SUBJECT and put the
+  count in it**; a name that records provenance tells the next reader nothing about what should be
+  there.
 - **No em dash**, anywhere, and **"anywhere" is the repository rather than the folders somebody
   remembered.** It was measured over six on 2026-08-16, read 0, and was published as "the only file
   that carries any" while `concept/brand-toolkit/` carried 35 across four files. Those are gone;

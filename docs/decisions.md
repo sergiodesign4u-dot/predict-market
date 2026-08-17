@@ -12,6 +12,76 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - A rule's home was the tool that wrote it, so a region could not say what belonged in it
+
+**Backlog 179 asked how the grey tree's 108 copies of the chrome could be checked
+against each other, and the first thing the parse said is that they already
+agree.** Re-measured from source over all 108 inline stylesheets: **412 selectors
+stand in 50 documents or more and 390 of them carry identical source text.** The
+markup-to-CSS contract holds on every shared chrome family - skip link, footer
+trust strip, search field, how-it-works dialog and the bell - with **0 documents
+carrying the markup and not the rules**. The 17 documents that carry none of it
+are the invoked-overlay screens, and 17 is the number `_conventions.md` has
+declared as the layer boundary since Stage 09 step 7e.
+
+**So the mechanism was never the text. It was the PLACE.** Four of the region
+names in these files name the SCRIPT that wrote the rules rather than the subject
+they style - `chrome ported from the painted twin by port_chrome.py`,
+`ported ... by port_structure.py` and two more - so a rule's home is wherever a
+script's cursor happened to be. Measured: **the notification block sits in a
+region called "How it works" in 61 documents and in one called "chrome ported by
+port_chrome.py" in three**, and those three are `404`, `500` and `toasts`, the
+exact three that backlog 177 found carrying 7 of its 12 rules. A file missing a
+shared block and a file keeping it somewhere else look identical to anything that
+reads region names. **The fix made the day before landed in a fourth region and
+reproduced the mechanism it was closing.**
+
+**Two more instances the same parse found. Seventeen documents carried a SECOND
+`<style>` block**, appended by a later script rather than merged, and **thirteen
+event-detail documents carried the whole 12-rule notification block twice**, 156
+duplicate rules whose only effect was that a reader could not tell which copy was
+the live one.
+
+**WHAT WAS DONE IS A LABEL, NOT A REWRITE, BECAUSE THE RULES WERE ALREADY RIGHT.**
+Every region marker now states its kind and its numbers: `SHARED (N of 108, R
+rules)` when those R rules stand in N documents and stand alone in that region,
+`SHARED BASE (N of 108, R rules)` when the same base stands in N and this page's
+own rules are mixed in among them, and `THIS PAGE` when nothing is promised to
+anybody. **A copy that holds fewer than R now contradicts its own header**, which
+is the only kind of check this tree can carry: it links no stylesheet, so nothing
+can compute for it, and the repository has already refused to keep gates. The
+contract is written at the top of all 108 stylesheets. The bell and the skip link
+were given their own named regions rather than living inside another subject's,
+which took **the how-it-works region from 7 texts to 1**; 109 boundaries were
+moved so that a SHARED region ends where its shared rules end.
+
+**After: 2,413 region markers, 1,918 of them SHARED, 193 SHARED BASE, 302 THIS
+PAGE. Every SHARED region is byte-identical across the documents that carry it -
+one text, no exceptions.** The two regions still labelled SHARED BASE are the feed
+(3 texts over 53 documents) and the event detail (4 over 93), and both carry the
+base plus page rules interleaved, which the label says. The 17 second stylesheets
+are merged and **108 of 108 documents now hold exactly one**.
+
+**VERIFIED AS A LAYOUT, NOT AS A DIFF.** 108 documents rendered before and after on
+Chromium and WebKit at 390 and 1280, transitions and animations frozen, two
+`requestAnimationFrame`s to settle, the cold pass thrown away: **432 renders, 0
+differing in layout**, every element's box identical, **0 documents whose height
+moved**, 0 sideways scroll, 0 duplicate ids, 0 page errors. The instrument was
+proved first - the same page read twice returned the identical signature on all
+four engine-width pairs. The only DOM difference anywhere is 17 documents holding
+one `<style>` element instead of two.
+
+**What is NOT done and why.** The 44x44 bell `<summary>` on those three pages
+against 22x22 on the other 56 stays: the touch floor that matters lives in
+`components/base.css` and belongs to the painted tree, and putting it into 56 grey
+wireframes would be paying for a face this tree does not own. And the 24 painted
+class names the ports left in this tree with no grey rule behind them - `.chip`,
+`.btn-provider`, `.state-problem` and 21 more - are not filed as a defect: a
+wireframe draws structure, and a class that carries only paint has nothing to draw
+here.
+
+---
+
 ## 2026-08-17 - The row was filed on a box that paints nothing, and the defect was in the state no sweep opens
 
 **Backlog 177 said the notification dropdown collapsed to 38px of container on

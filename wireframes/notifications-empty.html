@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wireframe - Notifications (logged in - state: empty (no alerts yet))</title>
 <style>
+    /* ================================================================================
+       ONE OF 108 COPIES. This tree links no stylesheet, so every rule below stands in
+       this file alone, and 107 other documents carry their own copy of the shared part.
+       Each region marker says which kind it is, and each kind is a claim with numbers:
+
+         SHARED (N of 108, R rules)       these R rules stand in N of the 108 documents,
+                                          and in this region they stand alone. Edit one
+                                          here and you have edited one copy of N.
+         SHARED BASE (N of 108, R rules)  the same R rules stand in N documents, and this
+                                          page's own rules are mixed in among them.
+         THIS PAGE                        promises nothing to any other file.
+
+       A copy that holds fewer than R contradicts its own header, and that is the only
+       check this tree can carry: it links nothing, so nothing can compute for it. How
+       the numbers were taken is written up in wireframes/_conventions.md, under the
+       chrome copied 108 times. docs/backlog.md 179.
+       ================================================================================ */
+
     /* a link takes the ink around it, never the browser's blue. */
     a { color: inherit; }
     /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
@@ -21,7 +39,7 @@
 
     .page-label { border: 1px dashed #888; background: #dcdcdc; padding: 6px 10px 6px 104px; font-size: 12px; }
 
-    /* ---- Wireframe screen-tree nav (meta-nav, identical on every wireframe page) ---- */
+    /* ---- SHARED (108 of 108, 24 rules): wireframe screen-tree nav, the meta-nav ---- */
     .wf-toggle { position: fixed; top: 8px; left: 8px; z-index: 60; display: inline-flex; align-items: center; gap: 6px;
       border: 1px solid #888; background: #d6d6d6; padding: 6px 9px; font-size: 11px; cursor: pointer; }
     .wf-toggle .ic { width: 16px; height: 16px; }
@@ -58,7 +76,7 @@
       .page-label { padding-left: 10px; }
     }
 
-    /* ---- State pages (empty / error / loading / push-permission-missing) ---- */
+    /* ---- SHARED (108 of 108, 37 rules): state pages (empty / error / loading / push-permission-missing) ---- */
     .state-switch { border: 1px dashed #888; background: #e3e3e3; padding: 7px 10px; font-size: 11px;
       display: flex; flex-direction: column; gap: 5px; }
     .state-switch .ss-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
@@ -114,7 +132,7 @@
     }
     button, select, summary { font: inherit; }
 
-    /* ---- Icons (simple monochrome outline) ---- */
+    /* ---- SHARED (108 of 108, 3 rules): icons (simple monochrome outline) ---- */
     .ic { width: 22px; height: 22px; stroke: #444; fill: none; stroke-width: 1.6;
       stroke-linecap: round; stroke-linejoin: round; vertical-align: middle; display: block; }
     .ic-sm { width: 13px; height: 13px; stroke: #444; fill: none; stroke-width: 1.8;
@@ -125,7 +143,7 @@
       display: inline-flex; align-items: center; justify-content: center; line-height: 0;
     }
 
-    /* ---- Header (lean, same at all widths) ---- */
+    /* ---- SHARED (108 of 108, 22 rules): header (lean, same at all widths) ---- */
     .app-header { background: #e2e2e2; margin: 0; position: sticky; top: 0; z-index: 5; }
     .app-header .row {
       display: flex; justify-content: space-between; align-items: center;
@@ -169,7 +187,7 @@
        now, so a selector on the tag stopped reaching them, and `width:100%` does
        nothing to an inline box. No button is left inside this dropdown. */
 
-    /* ---- Second-level navigation: categories ---- */
+    /* ---- SHARED (108 of 108, 4 rules): second-level navigation, categories ---- */
     .cat-nav { background: #ededed; margin: 0; }
     .cat-nav ul {
       list-style: none; margin: 0; padding: 6px 8px; display: flex; gap: 6px;
@@ -178,7 +196,7 @@
     .cat-nav a { border: 1px solid #888; background: #d6d6d6; padding: 5px 10px; font-size: 11px; cursor: pointer; white-space: nowrap; }
     .cat-nav li[aria-current="page"] a, .cat-nav li[aria-current="location"] a, .cat-condensed li[aria-current="page"] a, .cat-condensed li[aria-current="location"] a { background: #b8b8b8; border-width: 2px; font-weight: bold; }
 
-    /* ---- Feed ---- */
+    /* ---- SHARED (108 of 108, 40 rules): feed ---- */
     .feed { background: #f4f4f4; margin: 0; flex: 1; }
     .feed-inner { padding: 8px; }
     .feed-head {
@@ -230,7 +248,7 @@
     .card .bookmark-btn .ic { width: 14px; height: 14px; }
     .card .bookmark-btn[aria-pressed="true"] .ic { fill: #888; }
 
-    /* ---- Bottom nav (mobile only) ---- */
+    /* ---- SHARED (108 of 108, 9 rules): bottom nav (mobile only) ---- */
     .bottom-nav { background: #e2e2e2; margin: 0; position: sticky; bottom: 0; }
     .bottom-nav ul { list-style: none; display: flex; margin: 0; padding: 0; }
     .bottom-nav li { flex: 1; text-align: center; border-right: 1px solid #bbb; }
@@ -242,7 +260,7 @@
     .bottom-nav .badge-dot { position: static; margin-left: 2px; }
     .bn-bal { font-weight: bold; font-size: 12px; border: 1px solid #999; background: #dcdcdc; padding: 0 5px; line-height: 1.4; }
 
-    /* ---- Footer (global element, product footer) ---- */
+    /* ---- SHARED (108 of 108, 26 rules): footer (global element, product footer) ---- */
     .app-footer { background: #e2e2e2; margin: 0; font-size: 11px; }
     .app-footer .footer-inner { padding: 16px 12px; display: flex; flex-direction: column; gap: 18px; }
     .app-footer nav { border: none; }
@@ -279,7 +297,7 @@
       .footer-col { min-width: 120px; }
     }
 
-    /* ---- Annotations + nav tree (out of layout flow) ---- */
+    /* ---- SHARED (108 of 108, 13 rules): annotations + nav tree (out of layout flow) ---- */
     .side { width: 100%; max-width: 1400px; margin: 16px auto; padding: 0 8px; }
     .side aside, .side section { background: #f4f4f4; margin: 0 0 12px; }
     .side .zone-tag { background: #cdcdcd; }
@@ -303,8 +321,8 @@
       .side > aside { flex: 2; }
       .side > .nav-col { flex: 1; }
     }
-  
-    /* ---- Event Detail ---- */
+
+    /* ---- SHARED BASE (93 of 108, 17 rules): event detail ---- */
     .ed-head { display: flex; gap: 10px; padding: 10px; align-items: flex-start; }
     .ed-thumb { width: 72px; height: 72px; flex: 0 0 72px; border: 1px solid #999; background: #d2d2d2;
       display: flex; align-items: center; justify-content: center; font-size: 8px; text-align: center; padding: 2px; }
@@ -327,7 +345,7 @@
     .cta-bar :is(a,button) { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-align: center; text-decoration: none; }
     @media (min-width: 640px) { .args { flex-direction: row; } .arg-col { flex: 1; } }
 
-    /* ---- Invoked overlays (Bet / Sign In / Deposit): modal on desktop, bottom sheet on mobile ---- */
+    /* ---- SHARED (93 of 108, 25 rules): invoked overlays (Bet / Sign In / Deposit), modal on desktop and bottom sheet on mobile ---- */
     .backdrop { background: #cfcfcf; flex: 1; position: relative; min-height: 70vh; display: flex;
       align-items: flex-end; justify-content: center; }
     .dim-note { position: absolute; top: 8px; left: 8px; font-size: 10px; color: #555; background: #dcdcdc; border: 1px solid #aaa; padding: 2px 6px; }
@@ -357,7 +375,7 @@
       justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 8px; }
     .protect { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 11px; }
 
-    /* ---- Active Bets ---- */
+    /* ---- SHARED (93 of 108, 14 rules): active bets ---- */
     .tabs { display: flex; gap: 0; margin: 0 0 10px; }
     .tabs :is(a,button) { border: 1px solid #888; border-bottom: 1px solid #bbb; background: #dcdcdc; padding: 8px 14px; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-align: center; text-decoration: none; }
     .tabs [aria-current="page"] { background: #f4f4f4; font-weight: bold; border-bottom-color: #f4f4f4; }
@@ -372,7 +390,7 @@
     .pos.skeleton .w70 { width: 70%; } .pos.skeleton .w40 { width: 40%; }
     .pos-status { font-size: 10px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
 
-    /* ---- Event Detail two-column: scrolling content + sticky bet panel ---- */
+    /* ---- SHARED (93 of 108, 34 rules): event detail two-column, scrolling content + sticky bet panel ---- */
     .ed-layout { display: flex; flex-direction: column; }
     .ed-main { flex: 1; min-width: 0; }
     /* schematic probability chart (raised fidelity per design call: a drawn grey line, still no color) */
@@ -428,7 +446,7 @@
       .bet-dock { display: none; }
     }
 
-    /* ---- Category page: side sub-category panel + filtered feed ---- */
+    /* ---- SHARED (93 of 108, 12 rules): category page, side sub-category panel + filtered feed ---- */
     .cat-main { flex: 1; min-width: 0; }
     .subcat { background: #ededed; }
     .subcat .zone-tag { background: #d2d2d2; }
@@ -458,10 +476,11 @@
     /* Category grid adapts to the width left by the sub-category rail (no fixed 4-col overflow). */
     .cat-main .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
 
-    /* ---- Shared in-page dialogs (native <dialog>, opened over the current page) ---- */
+    /* ---- SHARED (93 of 108, 2 rules): in-page dialogs (native <dialog>, opened over the current page) ---- */
     dialog.app-dialog { width: 92%; max-width: 420px; border: 1px solid #999; background: #f0f0f0; color: #222; padding: 0; }
     dialog.app-dialog::backdrop { background: rgba(0,0,0,.4); }
-    /* ---- How it works: header button + quick-explainer dialog (WF) ---- */
+
+    /* ---- SHARED (91 of 108, 13 rules): how it works, header button + quick-explainer dialog ---- */
     .hiw-btn { border: 1px solid #999; background: #e0e0e0; padding: 5px 10px; font-size: 12px; cursor: pointer; }
     /* rung: DETAIL 760, and this is BELOW it. The paint hides this 88px control there
        because the desk row asks 694px without it: components/header.css. */
@@ -477,7 +496,8 @@
     dialog.app-dialog .hiw-full { display: block; box-sizing: border-box; border: 1px solid #888; background: #c4c4c4; padding: 12px; font-size: 14px; font-weight: bold; text-align: center; text-decoration: none; color: #222; }
     dialog.app-dialog .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
     .dlg-note { font-size: 10px; color: #555; padding: 6px 10px; border-top: 1px dashed #bbb; margin: 0; }
-    /* notifications dropdown (header bell -> mini-list, no chevron) */
+
+    /* ---- SHARED (64 of 108, 12 rules): notification bell dropdown ---- */
     .notif-menu { position: relative; }
     .notif-menu summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; }
     .notif-menu summary::-webkit-details-marker { display: none; }
@@ -490,16 +510,20 @@
     .notif-drop li a strong { display: block; font-size: 12px; }
     .notif-drop li a span { display: block; font-size: 10px; color: #555; }
     .notif-all { display: block; text-align: center; padding: 8px; border-top: 1px solid #999; font-size: 11px; text-decoration: none; color: #222; background: #dcdcdc; }
+
+    /* ---- THIS PAGE ---- */
     .bal-add { padding: 3px; }
     .notif-empty { margin: 0; padding: 14px 10px; text-align: center; font-size: 11px; color: #555; }
-    /* ---- Footer trust strip + SEO popular-links (WF reconcile, Krok 3) ---- */
+
+    /* ---- SHARED (91 of 108, 6 rules): footer trust strip + SEO popular-links ---- */
     .footer-trust { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; padding: 10px 12px; border-bottom: 1px solid #ccc; font-size: 12px; color: #444; }
     .footer-trust .trust-item { display: inline-block; }
     .footer-popular { padding: 10px 12px; border-top: 1px solid #ccc; }
     .footer-popular h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; margin: 0 0 6px; }
     .popular-links { display: flex; flex-wrap: wrap; gap: 6px 14px; list-style: none; padding: 0; margin: 0; font-size: 12px; }
     .popular-links a { color: #444; }
-  /* ---- chrome ported from the painted twin by port_chrome.py ---- */
+
+    /* ---- THIS PAGE: what the chrome port brought with the markup, and nothing here is promised to another file ---- */
     /* Layout taken from components/, every colour replaced by the
        wireframe palette. See wireframes/_generators/port_chrome.py. */
     .app-dialog.hiw-dialog { max-width: 464px; overflow: clip; }
@@ -558,7 +582,9 @@
     @media(max-width:759.98px) {
       .footer-trust .trust-items { grid-template-columns: 1fr; }
     }
-      /* Skip link (WCAG 2.4.1 Bypass Blocks). The first focusable element on the page, clipped to
+
+    /* ---- SHARED (91 of 108, 2 rules): skip link ---- */
+    /* Skip link (WCAG 2.4.1 Bypass Blocks). The first focusable element on the page, clipped to
        a 1x1 box until it takes focus, because display:none and visibility:hidden are the two ways
        of hiding that also remove a control from the tab order, which is the whole point of it.
        clip-path clips hit testing too, so the parked box cannot swallow a click. Grey, like the
@@ -568,7 +594,7 @@
       display: inline-flex; align-items: center; padding: 0 16px; font-size: 14px; text-decoration: none;
       background: #e2e2e2; color: #333; border: 1px solid #999; border-radius: 4px; }
 
-    /* ---- search: the field itself, where the mark used to be a trip to a page ---- */
+    /* ---- SHARED (88 of 108, 7 rules): search, the field itself, where the mark used to be a trip to a page ---- */
     .search { margin: 0 0 16px; }
     .search-field { position: relative; display: flex; align-items: center; }
     .search-ic { position: absolute; left: 12px; width: 18px; height: 18px; }
@@ -577,9 +603,9 @@
     .search-count { font-size: 12px; color: #555; margin: 0 0 10px; }
     .search-count b { color: #111; }
 
-    /* ---- search, the two ways in: the sheet below the RAIL rung, the header field at and
-       above it. The rung is 900px and it is a measurement: the free middle of the header
-       row is 69px at 640 and 277 at 900, so a field cannot enter at DESK. ---- */
+    /* ---- SHARED (91 of 108, 20 rules): search, the two ways in: the sheet below the RAIL rung, the header field at and above it ---- */
+    /* The rung is 900px and it is a measurement: the free middle of the header row
+       is 69px at 640 and 277 at 900, so a field cannot enter at DESK. */
     .search-inline { display: none; }
     .search-bar { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border-bottom: 1px solid #ccc; }
     .search-bar .search { flex: 1; min-width: 0; margin: 0; }
@@ -608,7 +634,8 @@
       /* the page's own field goes when the header carries one: one query, one field */
       .search-page { display: none; }
     }
-</style>
+
+    </style>
 </head>
 <body>
   <!-- ===== Wireframe screen-tree nav (meta navigation, identical on every wireframe page) ===== -->
