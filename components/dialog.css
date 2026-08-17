@@ -425,7 +425,6 @@ dialog.app-dialog .sheet-body>a{text-decoration:none}
    is in the middle of the page, so a direction would have to be invented, and an invented direction
    points at nothing. The arrival is stated by presence instead. The backdrop takes the same rule so
    the scrim does not land a frame before the surface it belongs to. */
-@keyframes sheet-appear{from{opacity:0}}
 dialog.app-dialog:modal{position:fixed;animation:sheet-appear var(--dur-slow) var(--ease-enter) both}
 dialog.app-dialog:modal::backdrop{animation:sheet-appear var(--dur-slow) var(--ease-enter) both}
 
@@ -474,7 +473,6 @@ dialog.app-dialog:modal .sheet-body{overflow:auto;min-height:0}
     max-height:var(--sheet-cap);
     border-radius:var(--radius-16) var(--radius-16) 0 0;border-bottom-width:0;
     animation:sheet-rise var(--dur-slow) var(--ease-enter) both}
-  @keyframes sheet-rise{from{translate:0 100%}to{translate:0 0}}
 }
 
 /* The two skins, folded in from signin.css and outcome-dialog.css. Same

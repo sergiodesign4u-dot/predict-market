@@ -1,5 +1,6 @@
-This folder IS the design system. **56 stylesheets, 11553 lines**: 50 here and 6 in `patterns/`,
-re-counted 2026-08-17 after sixteen files were given the response they had never carried, and again the
+This folder IS the design system. **56 stylesheets, 11599 lines**: 50 here and 6 in `patterns/`,
+re-counted 2026-08-17 after the product's one bottom-sheet arrival stopped being two, and again the same day
+after sixteen files were given the response they had never carried, and again the
 same day after search stopped being a page you go to and became a control you use: the field
 grew a sheet face and a header face on one rung, and the rung was chosen by measuring the free middle of the
 header row at **69px on 640, 137 on 760 and 277 on 900**, which is why it enters at RAIL and not at DESK; and after the
@@ -777,6 +778,20 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   for free, which is why the chosen chip fades and the count inside it does not. The twin trap is in
   the instrument: **`text-decoration:none` is a SHORTHAND**, so a census reading a rule's longhands
   finds `text-decoration-color` changing on 2,397 footer links that draw no line at all.
+- **A `@keyframes` NAME IS DOCUMENT-WIDE AND ITS DECLARATION IS NOT, SO ONE DECLARED INSIDE A MEDIA
+  QUERY EXISTS AT ONE WIDTH AND NOWHERE ELSE.** `sheet-rise` sat in `dialog.css`'s
+  `max-width:39.99875rem` block for the 337 modal dialogs that rise on a phone, and any second
+  reader outside that query would have resolved to **no animation at all**, with no error, at every
+  width but one - which is the same failure shape as a selector that matches nothing and therefore
+  agrees with every hypothesis. **A condition belongs on the rule that APPLIES a movement, never on
+  the declaration of the movement.** The same pass found the product performing ONE movement under
+  two names and in two properties, `sheet-rise` at `translate:0 100%` and `betSheetUp` at
+  `transform:translateY(100%)`, with a comment above the second saying it sat next to its only
+  consumer. It was not the only one even then. **A third reader is what forces a duplicate**: both
+  are one name in `base.css` now, on `translate`, because that is the individual property and cannot
+  clobber a `transform` an element carries for something else. **An `animation` naming a keyframes
+  that does not exist produces no animation at all, so `getAnimations().length` is the proof the
+  name resolves** and the only cheap one there is.
 
 ## Where the record is
 

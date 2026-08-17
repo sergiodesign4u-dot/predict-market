@@ -12,6 +12,59 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - The third reader is what closes a duplicate, and one movement had two names and two properties
+
+The census earlier today left exactly one thing open: **the phone's filter sheet arrives on one
+frame**, 1,012 property-on-placement readings over 44 screens, and no duration could reach it
+because it is drawn by `display`, which has nothing to interpolate. Two mechanisms were legal.
+`transition-behavior:allow-discrete` with an `@starting-style` block is one, and this system uses it
+nowhere; an `animation` on the open state is the other, and `search.css` has done exactly that since
+the day the search panel was written. **The product's own mechanism wins, because a second way of
+doing one thing is the cost, not the code.**
+
+**And then the movement turned out to exist twice already.** `dialog.css` declared
+`@keyframes sheet-rise{from{translate:0 100%}}` for 337 modal dialogs on a phone; `betpanel.css`
+declared `@keyframes betSheetUp{from{transform:translateY(100%)}}` for 4 bet sheets, with a comment
+above it saying it sat "next to its only consumer". **One movement, two names, two properties, and
+the Animation stage had already written the sentence**: `one job with two answers and two spellings
+of the same 100 per cent translate`. It unified the DURATION, which is what a census of durations
+can see, and left the spellings standing. Adding a third for the filter sheet would have been the
+drift growing rather than closing, so the row closed by **deleting** a spelling: one `sheet-rise` in
+`base.css`, on `translate`, with three readers.
+
+**`translate` rather than `transform`, and it is not a preference.** It is the individual property,
+so a movement written there cannot silently clobber a `transform` an element carries for something
+else, and it is the spelling with 337 readers against 4.
+
+**The keyframes also left the media query, which is the finding worth keeping.** `sheet-rise` was
+declared INSIDE `dialog.css`'s `max-width:39.99875rem` block, and a `@keyframes` name is
+document-wide but only exists while its block applies. So the name was silently absent above the
+desk rung: any second reader outside that query would have resolved to **no animation at all**, with
+no error, at every width but one. That is the same failure shape as a selector that matches nothing
+and agrees with every hypothesis. **A condition belongs on the rule that applies a movement, never
+on the declaration of the movement itself**, and both keyframes are unconditional in `base.css` now
+while all four call sites keep their own scope. The precedent is the one this folder already argues
+for the focus ring and the 44px touch floor: **a rule that belongs to a FAMILY rather than to a
+component is declared once, in the file the family can be named from.**
+
+Measured in Chromium and WebKit, identical to the value: the filter sheet starts at `translate:0px
+100%` with its top at 844 in an 844 viewport and settles at 578; the scrim starts at `opacity:0`;
+the bet sheet and the phone modal still rise on `sheet-rise`; the desk modal still takes
+`sheet-appear` and no travel, which is the rule that a centred modal has no edge to come from. Under
+`prefers-reduced-motion` every one of them still ARRIVES, at 1ms or with the bet sheet's own
+`animation:none`, so the movement goes and the state does not. **An `animation` naming a keyframes
+that does not exist produces no animation at all, so `getAnimations().length` is itself the proof
+the name resolves**, and it reads 1 on every sheet in both engines.
+
+**And the probe found a document that is not there.** The first hover pass reported the lane chip
+`NOT PRESENT` on `browse-politics.html`, which was read as a reachability problem and was a **404**:
+the browse screens are `event-feed-politics.html` and its seven states. A missing document and a
+missing control return the same word. Re-read on the file that exists, the lane chip fades five
+properties in both engines. **Check the response code before believing the census**, which is the
+same sentence as every other instrument note in this repository.
+
+---
+
 ## 2026-08-17 - Every instrument for motion here reads a duration, and a control with none contributes no rows
 
 **Reported by the user, on a screenshot of the category strip: the chips do not animate.** They do

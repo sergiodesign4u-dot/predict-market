@@ -224,7 +224,7 @@
      not read as modal. A backdrop that does not darken is a backdrop that is not
      there, and picking the nearest-sounding token is how a product grows two answers
      to one question. */
-  .filters-toggle:checked~.filters-scrim{display:block;position:fixed;inset:0;z-index:var(--z-menu);background:var(--shadow-ink-45);cursor:pointer}
+  .filters-toggle:checked~.filters-scrim{display:block;position:fixed;inset:0;z-index:var(--z-menu);background:var(--shadow-ink-45);cursor:pointer;animation:sheet-appear var(--dur-slow) var(--ease-enter) both}
   /* THE CAP IS `--sheet-cap`. It was `max-height:80svh` for two hours, a number
      invented for one sheet while the system already had four answers to "a surface that
      must not exceed the viewport": 92vh on `.bet-sheet`, 88dvh on a modal dialog, and
@@ -235,7 +235,24 @@
      because on a phone `vh` is the LARGE viewport and a sheet capped in it is a sheet
      that can run under the browser's own bar. `docs/backlog.md` 152 carries the other
      half, which is that `.bet-sheet` still has no `svh` twin. */
-  .filters-toggle:checked~.feed-controls{display:flex;flex-direction:column;flex-wrap:nowrap;gap:0;position:fixed;inset:auto 0 0 0;z-index:var(--z-menu);padding:0 0 var(--space-32);max-height:var(--sheet-cap);overflow:auto;overscroll-behavior:contain;background:var(--bg-surface);border-top:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10) var(--radius-10) 0 0;box-shadow:0 -20px 50px -24px var(--shadow-ink)}
+  /* THE LARGEST SURFACE IN THE PRODUCT ARRIVED ON ONE FRAME, and for three days nothing could
+     report it: every motion instrument here reads a DURATION, and a sheet that goes from
+     `display:none` to `display:flex` declares none. Measured 2026-08-17 by asking the inverse
+     question - does the element that CHANGES a painted property carry it in its own
+     `transition-property` - **1,012 property-on-placement readings over 44 screens**, the ground,
+     the top edge, the shadow and both labels at once. `docs/backlog.md` 198.
+     A TRANSITION CANNOT REACH IT AND THAT IS THE WHOLE REASON THIS IS AN `animation`. `display` is
+     discrete, so interpolating it needs `transition-behavior:allow-discrete` and an
+     `@starting-style` block, which is a mechanism this system does not use anywhere. It already
+     owns the other one: `search.css` animates its panel out of `hidden` the same way, and a sheet
+     is not a new question.
+     AND THE MOVEMENT IS BORROWED RATHER THAN CHOSEN. `sheet-rise` is what the 337 modal dialogs and
+     the 4 bet sheets do on a phone, declared once in `base.css`; this is the third bottom sheet in
+     the product and a second answer to "where does a bottom sheet come from" would have been the
+     drift the shared name was just written to close. The scrim takes `sheet-appear` on the same
+     duration for the reason dialog.css gives for its own backdrop: a scrim that lands a frame
+     before the surface it belongs to reads as two events. */
+  .filters-toggle:checked~.feed-controls{display:flex;flex-direction:column;flex-wrap:nowrap;gap:0;position:fixed;inset:auto 0 0 0;z-index:var(--z-menu);padding:0 0 var(--space-32);max-height:var(--sheet-cap);overflow:auto;overscroll-behavior:contain;background:var(--bg-surface);border-top:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10) var(--radius-10) 0 0;box-shadow:0 -20px 50px -24px var(--shadow-ink);animation:sheet-rise var(--dur-slow) var(--ease-enter) both}
   /* THE SHEET IS A LIST AND NOT TWO PILLS ON A PANEL, 2026-08-14. The first cut kept
      the two summaries in their own chip face and stood them in a padded box, and it
      read as two large empty buttons floating on a surface with nothing to say what

@@ -700,3 +700,65 @@ Every declaration written today reads `--dur-fast` and `--ease-standard`, so the
 durations and two curves and the token override still reaches all of them: **12 screens, both
 engines, 1,473 moving elements per pass and 0 above 1ms under `prefers-reduced-motion`**, with an
 injected `999ms` literal read back at 999ms first to prove the probe could fail.
+
+---
+
+## 11. The one thing the census could not close with a duration, and the duplicate it exposed
+
+`docs/backlog.md` 198, filed and struck the same day.
+
+**The phone's filter sheet arrived on one frame** - 1,012 property-on-placement readings over 44
+screens, the ground, the top edge, the shadow and both labels at once - and no duration reaches it,
+because the sheet goes from `display:none` to `display:flex` and `display` is discrete. Two
+mechanisms were legal and the product already owns one of them.
+
+| mechanism | verdict |
+|---|---|
+| `transition-behavior:allow-discrete` with `@starting-style` | correct, and used nowhere in this system. A second way of doing one thing is the cost |
+| an `animation` on the open state | **taken.** `search.css` has done exactly this since the search panel was written, out of `hidden` rather than out of `display:none` |
+
+### And the movement already existed twice
+
+| file | name | property | readers |
+|---|---|---|---|
+| `dialog.css` | `sheet-rise` | `translate:0 100%` | 337 modal dialogs, below the desk rung |
+| `betpanel.css` | `betSheetUp` | `transform:translateY(100%)` | 4 bet sheets, at every width |
+
+Section 6 of this file had already written the sentence - *one job with two answers and two spellings
+of the same 100 per cent translate* - and the stage unified the **duration**, which is what a census
+of durations can see. **The third reader is what forces a duplicate**: closing 198 by writing a
+third spelling would have been the drift growing. One `sheet-rise`, in `base.css`, on `translate`,
+with three readers. `translate` because it is the individual property, so a movement written there
+cannot clobber a `transform` an element carries for something else, and because 337 beats 4.
+
+### A `@keyframes` name is document-wide and its DECLARATION is not
+
+`sheet-rise` lived inside `dialog.css`'s `max-width:39.99875rem` block. The name is global, but it
+only exists while that block applies, so above the desk rung it was **absent**: any second reader
+outside the query would have resolved to no animation at all, with no error, at every width but one.
+A condition belongs on the rule that APPLIES a movement, never on the declaration of the movement
+itself. Both keyframes are unconditional in `base.css` now and all four call sites keep their own
+scope, which is the same argument the focus ring and the 44px touch floor are kept by.
+
+### Measured, both engines, identical to the value
+
+| | normal | `prefers-reduced-motion` |
+|---|---|---|
+| filter sheet | `sheet-rise`, 250ms, starts `translate:0px 100%` with its top at 844 in an 844 viewport, settles at 578 | 1ms, still arrives at 578 |
+| filter scrim | `sheet-appear`, 250ms, starts `opacity:0` | 1ms, still arrives |
+| bet sheet | `sheet-rise`, 250ms | `animation:none`, its own rule, visible at 322 |
+| phone modal | `sheet-rise` | 1ms |
+| desk modal at 1280 | `sheet-appear`, `translate:none` | 1ms |
+
+**An `animation` naming a keyframes that does not exist produces no animation at all**, so
+`getAnimations().length` is itself the proof the name resolves after the move, and it reads 1 on
+every sheet in both engines. Rest state proved unchanged by stripping comments, transitions,
+animations and keyframes from all four stylesheets before and after: byte-identical, 4 of 4.
+
+### And the probe read a document that is not there
+
+The hover pass in section 10 reported the lane chip `NOT PRESENT` on `browse-politics.html` and it
+was read as a reachability problem. It was a **404**: the browse screens are
+`event-feed-politics.html` and its seven states. **A missing document and a missing control return
+the same word.** Re-read on the file that exists, the lane chip fades five properties in both
+engines. Check the response code before believing the census.

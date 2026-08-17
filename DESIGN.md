@@ -753,6 +753,17 @@ is a rule that cannot render. Where a control has both kinds, the live half pays
 and the parse-time half rides on it, which is why a chosen chip fades and the count inside it does
 not.
 
+### One bottom sheet, one arrival, declared once
+
+Three surfaces in this product rise from the foot of a phone: the modal dialog, the bet sheet and
+the filter sheet. They perform **one** movement, `sheet-rise`, `--dur-slow` on `--ease-enter`, and it
+is declared once in `base.css` rather than in any of the three, because a `@keyframes` name is
+document-wide and a movement that belongs to a family is kept the same way the focus ring and the
+44px touch floor are. Until 2026-08-17 it was two names in two properties, and the third reader is
+what closed the duplicate rather than adding to it. A centred desk modal takes `sheet-appear`, an
+opacity arrival with no travel, because a surface in the middle of the page has no edge to come from
+and an invented direction points at nothing.
+
 ### Less motion is an obligation, and it has one mechanism
 
 One block in `tokens.css` redeclares the tokens at 1ms. Every component reading a `var()` obeys

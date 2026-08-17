@@ -284,7 +284,7 @@ dialog.app-dialog.bet-sheet::backdrop{background:var(--shadow-ink-60);backdrop-f
 .bet-sheet .bp-dir{gap:var(--space-8)}
 .bet-sheet .bp-amount-row{margin:0 0 var(--space-12)}
 .bet-sheet .line{padding:var(--space-8) 0}
-dialog.app-dialog.bet-sheet[open]{animation:betSheetUp var(--dur-slow) var(--ease-enter)}
+dialog.app-dialog.bet-sheet[open]{animation:sheet-rise var(--dur-slow) var(--ease-enter)}
 @media(prefers-reduced-motion:reduce){
   dialog.app-dialog.bet-sheet[open]{animation:none}
 }
@@ -311,11 +311,14 @@ dialog.app-dialog.bet-sheet[open]{animation:betSheetUp var(--dur-slow) var(--eas
    `.btn` declares text-decoration:none and inline-flex now, which is where a
    control's own face belongs. */
 
-/* The keyframe the bet sheet animates with, moved out of base.css next to its only consumer. */
-@keyframes betSheetUp{
-  from{transform:translateY(100%)}
-  to{transform:translateY(0)}
-}
+/* THE KEYFRAME THIS FILE OWNED IS GONE, 2026-08-17, AND IT WENT BACK TO base.css RATHER THAN TO
+   ANOTHER COMPONENT. It read `transform:translateY(100%)` and drew, to the pixel, what
+   `dialog.css` drew as `sheet-rise` with `translate:0 100%` on 337 dialogs: one movement, two
+   names, two properties, and the comment above it said its consumer was the only one. It was not
+   even then, and the filter sheet made it three. The rise is a FAMILY - a surface anchored to the
+   bottom of a phone saying where it came from - and a family is declared once, which is the same
+   rule the focus ring and the touch floor are kept by. The bet sheet reads the shared name now and
+   its reduced-motion exception above stays exactly as it was. */
 /* THE PANEL'S OWN FINE PRINT, moved here from dialog.css on 2026-08-03 (docs/backlog.md
    17). `.fine` is a typographic role dialog.css owns, and these two rules are not about a
    dialog: the subject scope is the bet panel and the bet sheet, which is a component

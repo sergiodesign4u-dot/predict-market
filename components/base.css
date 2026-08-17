@@ -728,3 +728,31 @@ details[open]::details-content{opacity:1}
    REPLACING rather than shortening, which no duration can express. Both are written down in
    `../ui-kit/docs/motion.md` under what the override does not reach, and a list is worth more than
    a rule that makes the list unreadable. */
+
+/* ================================ the two arrivals the product performs more than once ======
+   A `@keyframes` NAME IS DOCUMENT-WIDE, SO DECLARING ONE INSIDE A COMPONENT MAKES EVERY OTHER
+   READER A HIDDEN DEPENDENCY ON THAT COMPONENT'S FILE, AND ON ITS MEDIA QUERY. This is the same
+   argument the focus ring and the 44px touch floor already won here: a rule that belongs to a
+   FAMILY rather than to a component is declared once, in the file the family can be named from.
+
+   THE PRODUCT HAD ONE MOVEMENT UNDER TWO NAMES AND IN TWO PROPERTIES, and the Animation stage
+   named it on 2026-08-15 without closing it: `sheet-rise` in `dialog.css` at `translate:0 100%`
+   across 337 dialogs and `betSheetUp` in `betpanel.css` at `transform:translateY(100%)` across 4
+   bet sheets, "one job with two answers and two spellings of the same 100 per cent translate".
+   The stage unified the DURATION, which is what its instrument could see, and left the two
+   spellings standing. **The third reader is what forced it**: the phone's filter sheet arrived on
+   2026-08-17 with no movement at all (`docs/backlog.md` 198), and adding a third spelling to close
+   it would have been the defect growing rather than closing.
+
+   `translate` RATHER THAN `transform`, AND IT IS NOT A PREFERENCE. The two sheets that rise are
+   `<dialog>` elements and the third is a `.feed-controls` box, and any of them may one day carry a
+   `transform` of its own for something else; `translate` is the individual property, so a movement
+   written there cannot silently clobber one. It is also the spelling with 337 readers against 4.
+
+   AND THE KEYFRAMES LEAVE THE MEDIA QUERY. `sheet-rise` lived inside `dialog.css`'s
+   `max-width:39.99875rem` block, so the NAME existed only below the desk rung: an `animation`
+   referencing it from anywhere else would have resolved to nothing, silently, at every other
+   width. A condition on a movement belongs on the rule that applies it, which is where it still
+   is. Both are unconditional here and every one of their four call sites carries its own scope. */
+@keyframes sheet-rise{from{translate:0 100%}to{translate:0 0}}
+@keyframes sheet-appear{from{opacity:0}}
