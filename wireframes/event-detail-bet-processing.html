@@ -395,7 +395,7 @@
     .cta-bar :is(a,button) { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-align: center; text-decoration: none; }
     @media (min-width: 640px) { .args { flex-direction: row; } .arg-col { flex: 1; } }
 
-    /* ---- SHARED (93 of 108, 25 rules): invoked overlays (Bet / Sign In / Deposit), modal on desktop and bottom sheet on mobile ---- */
+    /* ---- SHARED (93 of 108, 28 rules): invoked overlays (Bet / Sign In / Deposit), modal on desktop and bottom sheet on mobile ---- */
     .backdrop { background: #cfcfcf; flex: 1; position: relative; min-height: 70vh; display: flex;
       align-items: flex-end; justify-content: center; }
     .dim-note { position: absolute; top: 8px; left: 8px; font-size: 10px; color: #555; background: #dcdcdc; border: 1px solid #aaa; padding: 2px 6px; }
@@ -415,7 +415,12 @@
     .quick button { border: 1px solid #888; background: #d6d6d6; padding: 6px 10px; font-size: 12px; cursor: pointer; }
     .quick button.sel { background: #b8b8b8; font-weight: bold; }
     .line { display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0; border-top: 1px solid #ddd; }
-    .line.total { font-weight: bold; border-top: 1px solid #999; }
+    /* the payout was one bold line and it is a PAIR now: both outcomes, same weight, one of
+       them zero. docs/backlog.md 180, components/betpanel.css carries the argument. */
+    .bp-outcomes { display: flex; flex-direction: column; }
+    .bp-outcome { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; padding: 4px 0; border-top: 1px solid #ddd; }
+    .bp-outcome b { font-weight: 600; }
+    .bp-pick { margin: 0; font-size: 13px; line-height: 1.5; }
     .inline-error { display: flex; align-items: flex-start; gap: 8px; border: 1px solid #666; background: #e0e0e0; padding: 8px; font-size: 12px; font-weight: 600; }
     .inline-error .ic { width: 22px; height: 22px; flex: 0 0 22px; }
     .reconcile-box { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 12px; display: flex; flex-direction: column; gap: 4px; }
@@ -1378,7 +1383,8 @@
                 <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="1" value="5.00" aria-label="Bet amount"></div>
                 <div class="quick"><button type="button" class="chip chip-amount">$1</button><button class="chip chip-amount sel" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button></div>
               </div>
-              <div class="quiet-box qb-working" role="status">Registering your bet on-chain...<br><span class="fine">A few seconds. Keep this open.</span></div>
+              <div class="bp-outcomes"><div class="bp-outcome"><span>If YES wins</span><b>$0.00</b></div><div class="bp-outcome"><span>If NO wins, your side</span><b>$8.06</b></div></div>
+                <div class="quiet-box qb-working" role="status">Registering your bet on-chain...<br><span class="fine">A few seconds. Keep this open.</span></div>
               <a href="active-bets.html" class="btn btn-primary btn-md btn-block">View your bet</a>
             </div>
           </aside>
@@ -1413,7 +1419,8 @@
                 <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="1" value="5.00" aria-label="Bet amount"></div>
                 <div class="quick"><button type="button" class="chip chip-amount">$1</button><button class="chip chip-amount sel" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button></div>
               </div>
-              <div class="quiet-box qb-working" role="status">Registering your bet on-chain...<br><span class="fine">A few seconds. Keep this open.</span></div>
+              <div class="bp-outcomes"><div class="bp-outcome"><span>If YES wins</span><b>$0.00</b></div><div class="bp-outcome"><span>If NO wins, your side</span><b>$8.06</b></div></div>
+                <div class="quiet-box qb-working" role="status">Registering your bet on-chain...<br><span class="fine">A few seconds. Keep this open.</span></div>
               <a href="active-bets.html" class="btn btn-primary btn-md btn-block">View your bet</a>
             </div>
       </dialog>

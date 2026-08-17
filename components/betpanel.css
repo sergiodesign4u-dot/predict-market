@@ -1,24 +1,27 @@
 /* components/betpanel.css
-   Component: betpanel. Classes: .bet-dock, .bet-panel, .bet-sheet, .bp-amount-lbl, .bp-amount-row, .bp-cash, .bp-change, .bp-dir, .bp-head, .bp-hint, .bp-inner, .bp-pct, .bp-sel-name, .bp-selected, .bp-side, .dock-meta, .due, .line, .rp-inner, .sheet-grab, .total.
+   Component: betpanel. Classes: .bet-dock, .bet-panel, .bet-sheet, .bp-amount-lbl, .bp-amount-row, .bp-cash, .bp-change, .bp-dir, .bp-head, .bp-hint, .bp-inner, .bp-outcome, .bp-outcomes, .bp-pct, .bp-pick, .bp-sel-name, .bp-selected, .bp-side, .dock-meta, .due, .line, .rp-inner, .sheet-grab.
 
    Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-card-to, --bg-control, --bg-dock,
           --bg-dock-from, --bg-page, --bg-plate, --bg-plate-from, --bg-pressed, --border-brass,
           --border-hairline, --edge-groove-dark, --edge-groove-light, --scrim, --shadow-ink-45,
           --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass,
           --text-muted, --text-primary, --text-strong
+   Fonts:  --font-mono, on the outcome pair only
    Stand:  ui-kit/betpanel.html, and ui-kit/organisms.html#betpanel for the level and its reason
    Stands on: 11 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .line{display:flex;justify-content:space-between;font-size:var(--text-12);padding:var(--space-4) 0;border-top:var(--hairline) solid var(--border-hairline)}
-.line.total{font-weight:var(--weight-bold);border-top:var(--hairline) solid var(--border-hairline)}
-/* THE TWO BOLD LINES IN THE BREAKDOWN ANSWER TWO DIFFERENT QUESTIONS AND ONLY ONE OF THEM IS BRASS.
-   `.total` is what could come back and takes --text-brass from the panel rule below; `.due` is what
-   leaves the wallet now and stays on --text-primary, which `.line span:last-child` already gives it.
-   So this class is one declaration and not a face: the weight is the whole difference, because a
-   second brass figure in a four-line block is the accent spent twice on one plate. Written
-   2026-08-16 with the `Total to pay` row, which existed nowhere before: the panel showed a stake, a
-   fee and a payout and never once said what the confirm button was about to take. */
+
+/* THE ONE BOLD LINE IN THE BREAKDOWN IS WHAT LEAVES THE WALLET NOW, and it stays on
+   --text-primary, which `.line span:last-child` already gives it. So this class is one declaration
+   and not a face: the weight is the whole difference. Written 2026-08-16 with the `Total to pay`
+   row, which existed nowhere before: the panel showed a stake, a fee and a payout and never once
+   said what the confirm button was about to take.
+   IT WAS A PAIR OF BOLD LINES UNTIL 2026-08-17, `.due` against `.total`, and the argument for the
+   split was that only one of the two should be brass. `.total` was `Potential payout` and it is
+   gone with the single figure it drew; what could come back is `.bp-outcomes` now, and it comes
+   back as two rows rather than one. See the block further down. */
 .line.due{font-weight:var(--weight-bold)}
 .bet-panel .bp-inner{padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-8)}
 .bp-head{display:flex;align-items:center;justify-content:space-between}
@@ -163,8 +166,41 @@ html:has(.bet-dock) .device{padding-bottom:calc(var(--bottom-nav-h) + var(--dock
 .bp-cash{font-family:var(--font-mono);font-size:var(--text-11);color:var(--text-muted)}
 :is(.bet-panel,.bet-sheet) .line{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light);color:var(--text-muted)}
 :is(.bet-panel,.bet-sheet) .line span:last-child{color:var(--text-primary)}
-:is(.bet-panel,.bet-sheet) .line.total{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
-:is(.bet-panel,.bet-sheet) .line.total span:last-child{color:var(--text-brass)}
+
+/* BOTH OUTCOMES, OR NEITHER, AND NEVER ONE. 2026-08-17, docs/backlog.md 180.
+   The panel printed `Potential payout $13.16` while BOTH sides read
+   aria-pressed="false": 5 / 0.38, the YES figure, computed from a side the reader
+   had not picked, so a person who meant NO read a number that was not theirs (NO
+   at 62% pays $8.06). It was also the only coloured figure on the plate, in
+   --text-brass, which spent the accent on the upside and left the downside with
+   no ink at all: there was no sentence, number or mark anywhere in the panel or
+   the sheet saying what a wrong call costs. PRODUCT.md voice principle 4 is
+   `design the loss`, and the loss was designed on the screen AFTER it happens and
+   nowhere on the screen where it is chosen.
+   So the block is a PAIR now, and the pair is the whole reason for the class:
+   `If YES wins` and `If NO wins`, same face, same weight, same ink, one of them
+   $0.00. Equal weight is the argument - a payout drawn heavier than the zero
+   beside it is the old defect with two rows instead of one - and that is why the
+   figure is --weight-semibold on --text-primary rather than the bold brass the
+   single line used to carry. Mono, because DESIGN.md calls the mono numeral the
+   spectator's honesty cue and this is the one place a spectator spends.
+   `.line.total` is gone with the single figure it drew. It had 116 placements and
+   every one of them said `Potential payout`; this is the zero where the MARKUP was
+   deleted on purpose, not the zero where a face is waiting for a placement to
+   return, and the brass declaration went with it. */
+.bp-outcomes{display:flex;flex-direction:column}
+.bp-outcome{display:flex;justify-content:space-between;gap:var(--space-8);font-size:var(--text-12);padding:var(--space-4) 0;color:var(--text-muted)}
+.bp-outcome b{font-family:var(--font-mono);font-weight:var(--weight-semibold);color:var(--text-primary)}
+:is(.bet-panel,.bet-sheet) .bp-outcome{border-top:var(--hairline) solid var(--edge-groove-dark);box-shadow:inset 0 1px 0 var(--edge-groove-light)}
+
+/* AND THE INSTRUCTION IS THE BLOCK NOW, NOT A WHISPER IN THE CORNER OF THE HEAD.
+   `.bp-hint` still carries the panel's status word - `sending`, `price moved`,
+   `over your balance` - at 11px beside the heading, which is the right size for a
+   word that comments on a state. `Pick a side` was in that slot too, and it is not
+   a comment, it is the missing input: the one thing standing between the reader
+   and every figure the block would otherwise print. At body scale it stands where
+   the numbers used to be, which is also the answer to why the block got shorter. */
+.bp-pick{margin:0;font-size:var(--text-13);line-height:var(--leading-base);color:var(--text-primary)}
 /* FIXED AND NOT STICKY SINCE 2026-08-16, AND THE OFFSET IS A TOKEN BECAUSE THE LITERAL WAS WRONG
    AT EVERY WIDTH. It read `bottom:52px` to clear a bottom nav that measures 56, so the two
    overlapped by 4px on every phone; and the nav is `display:none` from DESK up while the 52 stayed,

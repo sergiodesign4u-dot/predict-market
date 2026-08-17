@@ -12,6 +12,92 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - Both outcomes, or neither, and the moment the panel is about was drawn nowhere
+
+**The first dual-agent `/impeccable critique` scored 22 of 40 against 30 on
+2026-08-16, and the deterministic half came back cleaner than it has ever been**:
+1 detector finding on 109 live documents, and 0 sideways scroll, 0 page errors, 0
+duplicate ids and 0 theme height deltas over 872 renders. The drop is a harder
+lens, not a regression. Five rows opened, 180 to 184; this entry closes 180.
+
+**The panel printed `Potential payout $13.16` while all 8 `aria-pressed`
+attributes read `"false"`.** That figure is 5 / 0.38, the YES price, computed from
+a side the reader had not picked, so a person who meant NO read a number that was
+not theirs: NO at 62% pays $8.06. It was also the only coloured figure on the
+plate, in `--text-brass`, so the accent was spent on the upside and the downside
+had no ink anywhere. **No sentence, number or mark in either the panel or the
+sheet said what a wrong call costs**, against `PRODUCT.md` voice principle 4,
+design the loss.
+
+**AND THE STATE THE PANEL IS ABOUT WAS DRAWN NOWHERE.** The four
+`event-detail-bet-*` screens all have a side picked, and all four replace the
+breakdown with a status or an error box, so the breakdown appeared ONLY when
+nothing was chosen. The product has 109 painted screens and not one of them showed
+a bet with a side on it and figures under it.
+
+**Both outcomes now, or neither.** `.bp-outcomes` prints `If YES wins` and `If NO
+wins` in IBM Plex Mono, same weight, same ink, one of them `$0.00`; the reader's
+own side takes `, your side` after the label rather than a mark of its own,
+because the chosen button is lit eight pixels above and a second signal is the
+accent spent twice. **Equal weight is the argument**: a payout drawn heavier than
+the zero beside it is the old defect with two rows instead of one. At rest the
+block is `.bp-pick` at body scale where the figures were, over `Fee` and `Total to
+pay`, which are true whatever the reader picks. `Price now` is struck with it: it
+was the YES price standing in for a choice nobody had made, and the two side
+buttons already carry 38% and 62%.
+
+**`.line.total` is deleted with the single figure it drew**, and its brass
+declaration went with it. It had 116 placements and every one said `Potential
+payout`. **This is the zero where the markup was removed on purpose**, not the
+zero where a whole face waits for a placement to return, which is the distinction
+`CLAUDE.md` already draws and the reason the deletion is safe.
+
+**The held Confirm was an `<a href>`.** `aria-disabled="true"` does not stop a
+link, so a control declaring itself unavailable navigated to
+`event-detail-bet-processing.html` when it was clicked. It is a `<button>` now.
+`aria-disabled` STAYS rather than the property, for the reason
+`components/button.css` has carried since it was written - a native disabled
+button is not focusable and the reason for it has to stay reachable - and
+`aria-describedby` now points at the instruction, so the reason is reachable
+rather than only visible. Verified: `tabIndex 0`, `href null`, and clicking it
+does not navigate.
+
+**The disabled primary changes ROLE, not strength, and it is the only one that
+does.** Every other disabled control takes `--opacity-disabled`, .45, which works
+because it was already quiet. The primary is a brass gradient, and 45 per cent of
+the one lit surface on the plate still read as the live action, so a reader who
+could not yet act was looking at the thing that looked most actionable. It drops
+the fill for the control ground with muted ink, measured at **5.49:1**, at
+`opacity:1`, because a second dimming on top of a role change reads as a rendering
+fault.
+
+**Placements: 16 resting surfaces, 8 picked, 108 still-lifes.** The pair went onto
+`event-detail-bet-processing.html` (NO picked, $0.00 / $8.06) and
+`event-detail-bet-reconcile.html` (YES picked at the new 41%, $12.20 / $0.00) in
+both trees, which covers both halves of a symmetric control - the rule this
+repository learned when it found the chosen NO had never once been drawn. And the
+how-it-works still-life on all 108 painted documents was teaching the upside
+alone; it teaches the pair now, which is the explainer agreeing with the thing it
+explains.
+
+**Verified over all three trees**: 277 documents, **1,108 renders**, Chromium and
+WebKit at 390 and 1280, motion frozen, two settle frames, cold pass discarded - **0
+sideways scroll with the probe proved sighted, 0 duplicate ids** despite two new
+`id` attributes per document, **0 shut dialogs visible, 0 page errors**. The grey
+tree's inline rules went in as one byte-identical edit across the 93 documents that
+carry the invoked-overlays region, and the region marker moved from 25 rules to 28
+with it, which is the machinery written earlier the same day doing its first real
+job: after the edit, **every SHARED region in the grey tree is still byte-identical
+except the two labelled SHARED BASE**.
+
+**185 opened by what this walked into.** The plain state - side chosen, amount
+entered, nothing wrong, Confirm live - is still drawn nowhere, and it was not
+written here because a new screen means an entry in the screen-tree nav of all 108
+grey documents and the review rail of all 109 painted ones, which is a 217-file
+edit with no business riding inside a component change.
+
+---
+
 ## 2026-08-17 - A rule's home was the tool that wrote it, so a region could not say what belonged in it
 
 **Backlog 179 asked how the grey tree's 108 copies of the chrome could be checked

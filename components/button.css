@@ -317,12 +317,31 @@
    because the invitation is to sign in and not to spend brass on it. */
 .btn.btn-prompt:hover{border-color:var(--border-brass-hover);color:var(--text-brass);background:var(--bg-prompt-hover)}
 .btn.btn-prompt:active{background:var(--bg-pressed)}
-/* Disabled. The product disables exactly one control, Add funds in the deposit
-   dialog when the amount is under the minimum, and it says so with aria-disabled
-   because a native disabled button is not focusable and the reason for it has to
-   stay reachable. All three spellings are matched so the attribute and the
-   property give the same answer. */
-.btn:disabled,.btn[disabled],.btn[aria-disabled="true"]{opacity:var(--opacity-disabled);cursor:not-allowed}
+/* Disabled, and it says so with aria-disabled rather than the property because a
+   native disabled button is not focusable and the reason for it has to stay
+   reachable. All three spellings are matched so the attribute and the property
+   give the same answer. This comment said "the product disables exactly one
+   control, Add funds in the deposit dialog" until 2026-08-17 and there were 11
+   placements on 5 screens by then: Confirm bet in the panel and the sheet is the
+   other one, held until a side is picked. */
+.btn:disabled,.btn[disabled],.btn[aria-disabled="true"]{cursor:not-allowed}
+.btn:disabled,.btn[disabled],.btn[aria-disabled="true"]{opacity:var(--opacity-disabled)}
+/* EXCEPT THE PRIMARY, WHICH AT .45 IS STILL THE LOUDEST THING ON THE PLATE.
+   2026-08-17, docs/backlog.md 180. Opacity is the right answer for the quiet
+   emphases: it takes an already-muted control further down and nothing else on
+   the plate is competing with it. The primary is a brass gradient, and 45 per cent
+   of the one lit surface in the panel still reads as the live action, so a reader
+   who cannot yet act is looking at the thing that looks most actionable. This is
+   the one variant that has to change ROLE and not just strength, so it drops the
+   fill entirely and takes the control ground with muted ink: a disabled primary
+   should look like a button that is not ready, not like the primary with a veil
+   over it. Opacity goes back to 1 here for the same reason, because a second
+   dimming on top of a role change reads as a rendering fault.
+   The gradient is not overridden with another gradient: `background-image:none`
+   takes the lit surface off and lets `background-color` be the whole answer, which
+   is what the ground token is. */
+.btn.btn-primary:disabled,.btn.btn-primary[disabled],.btn.btn-primary[aria-disabled="true"]{
+  opacity:1;background-image:none;background-color:var(--bg-control);color:var(--text-muted)}
 
 /* ------------------------------------------------------- the one scope left --
    THE SIGN-IN SHEET IS THE ONLY PLACE THAT STILL NEEDS A RULE, and it is the
