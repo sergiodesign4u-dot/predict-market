@@ -328,6 +328,17 @@ _13 state page(s): event-detail-bet-error.html, event-detail-bet-insufficient.ht
 | Main | Heading | For NO |  |
 | Main | Text | Last three deadlines met with short-term funding. |  |
 | Main | Text | Both parties signalled willingness to extend. |  |
+| Main | Label | Resolved YES on Jun 27, 2026 | resolved state only, `.ed-result`, 1 per tree |
+| Main | Label | At close: YES 38% NO 62% | resolved state only, `.ed-prob-big` |
+| Main | Label | YES at close | resolved state only, `.ms-label` |
+| Main | Label | NO at close | resolved state only, `.ms-label` |
+| Main | Label | Final volume | resolved state only, `.ms-label` |
+| Main | Label | Settled | resolved state only, `.ms-label` |
+| Main | Label | How the odds were set | resolved state only, the `<summary>` in past tense, 1 per tree |
+| Main | Heading | How it settled | resolved state only, `.md-title`, replaces the price-by-bet-size table |
+| Main | Text | Trading closed on Jun 27, 2026. Everyone holding YES was paid in full and everyone holding NO was not, against the source named in the rules. There is no price now and nothing to bet. | resolved state only, `.md-sub`. Spectator language: no shares, no settlement price, no order book |
+| Main | Text | YES closed at 38%. Funding talks had stalled twice that quarter, and the three deadlines before it were settled at the last minute. What was moving the number: | resolved state only, the Background panel in past tense |
+| Main | Text | A bloc had committed to opposing the stopgap bill. | resolved state only |
 | Main | Heading | Resolution conditions |  |
 | Main | Label | Resolves YES |  |
 | Main | Text | if a federal funding gap causes a shutdown beginning before 00:00 ET on March 1, 2027. |  |
@@ -1610,8 +1621,8 @@ Sorted by that invariant, eight placements. **Five fail and are rewritten here:*
 | was | is | where | which half of the invariant |
 |---|---|---|---|
 | `Holders` | `Bettors` | a `.seg` button in the Comments tab, 9 screens per tree | a control label. The lexicon's word for a person's stake is **bet**, and `position` is the trader's word for the same thing |
-| `Liquidity` | `Available to bet` | `.ms-label` beside its figure, 9 per tree | a figure read to decide. The panel it stands in IS exempt, for EXPLANATION, and a naked number explains nothing, so it also fails principle 1 |
-| `Market` | `How the odds are set` | the `<summary>` of the collapsed panel, `.market-title`, 9 per tree | the head of the exempt block. It is read by everyone who never opens the panel, and it now says what is inside instead of naming the mechanism |
+| `Liquidity` | `Available to bet` | `.ms-label` beside its figure, 8 per tree since 2026-08-17, when the resolved state stopped claiming anything was available | a figure read to decide. The panel it stands in IS exempt, for EXPLANATION, and a naked number explains nothing, so it also fails principle 1 |
+| `Market` | `How the odds are set` | the `<summary>` of the collapsed panel, `.market-title`, 8 per tree since 2026-08-17, the resolved state saying `were` instead | the head of the exempt block. It is read by everyone who never opens the panel, and it now says what is inside instead of naming the mechanism |
 | `Market Context` | `Background` | a `.rules-tab` beside `Rules`, 9 per tree | a tab label is an invitation, not an explanation. This was the worst spot in the product for the product's most-confused word: it sat next to the one panel that exists to keep `market` unconfused |
 | `Payout depends on when you bet (AMM).` | `Payout depends on when you bet.` | `.fine` under Confirm, 4 screens, 8 painted occurrences and 4 grey | fine print read while deciding. The mechanism is still named where it is explained, one screen away |
 

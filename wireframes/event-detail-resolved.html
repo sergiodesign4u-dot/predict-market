@@ -356,6 +356,8 @@
     .ed-cat { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: #555; }
     .ed-q { font-size: 16px; font-weight: bold; margin: 4px 0 6px; }
     .ed-prob-big { font-size: 13px; margin: 0; }
+    .ed-result { font-size: 13px; font-weight: 600; margin: 6px 0 0; }
+    .ed-result b { font-weight: bold; border: 1px solid #888; background: #d6d6d6; padding: 1px 6px; }
     .ed-prob-big .prob { font-weight: bold; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; font-size: 14px; }
     .ed-section { padding: 10px; border-top: 1px solid #ccc; }
     .ed-section h2, .ed-section h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; margin: 0 0 6px; }
@@ -1193,7 +1195,8 @@
               <div class="ed-head-txt">
                 <span class="ed-cat">Politics &middot; One-time event &middot; Trading closed</span>
                 <h1 class="ed-q">Did the US government shut down before July 1, 2026?</h1>
-                <p class="ed-prob-big">YES <span class="prob">38%</span> &nbsp; NO <span class="prob">62%</span></p>
+                <p class="ed-result">Resolved <b class="ed-result-yes">YES</b> on Jun 27, 2026</p>
+                <p class="ed-prob-big">At close: YES <span class="prob">38%</span> &nbsp; NO <span class="prob">62%</span></p>
                 <div class="ed-oddsbar" aria-hidden="true"><span class="track"><span class="fill" style="width:38%"></span></span></div>
               </div>
             </div>
@@ -1215,10 +1218,10 @@
           </div>
           <section class="ed-section">
             <details class="market-box" open>
-              <summary class="market-head"><span class="market-title">How the odds are set <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></span><svg class="market-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+              <summary class="market-head"><span class="market-title">How the odds were set <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></span><svg class="market-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
               <div class="market-body">
-                <div class="market-stats"><div><span class="ms-label">Yes price</span><span class="ms-val ms-yes">38%</span></div><div><span class="ms-label">No price</span><span class="ms-val ms-no">62%</span></div><div><span class="ms-label">24h</span><span class="ms-val ms-up">+2 pts</span></div><div><span class="ms-label">Volume</span><span class="ms-val">$84,200</span></div><div><span class="ms-label">Available to bet</span><span class="ms-val">$31,500</span></div></div>
-                <div class="market-depth"><span class="md-title">Price by bet size</span><span class="md-sub">How the YES price moves as your bet grows. Your own bet moves it, so a bigger bet buys at a worse average price.</span><div class="md-table"><div class="md-row md-row-head"><span>Bet</span><span>Avg YES price</span><span>You receive if YES</span></div><div class="md-row"><span class="md-bar" style="width:12%"></span><span class="md-amt">$10</span><span class="md-price">38%</span><span class="md-get">$26.32</span></div><div class="md-row"><span class="md-bar" style="width:30%"></span><span class="md-amt">$100</span><span class="md-price">39%</span><span class="md-get">$256.41</span></div><div class="md-row"><span class="md-bar" style="width:58%"></span><span class="md-amt">$1,000</span><span class="md-price">42%</span><span class="md-get">$2,380.95</span></div><div class="md-row"><span class="md-bar" style="width:88%"></span><span class="md-amt">$5,000</span><span class="md-price">49%</span><span class="md-get">$10,204.08</span></div></div></div>
+                <div class="market-stats"><div><span class="ms-label">YES at close</span><span class="ms-val ms-yes">38%</span></div><div><span class="ms-label">NO at close</span><span class="ms-val ms-no">62%</span></div><div><span class="ms-label">Final volume</span><span class="ms-val">$84,200</span></div><div><span class="ms-label">Settled</span><span class="ms-val">Jun 27, 2026</span></div></div>
+                <div class="market-depth"><span class="md-title">How it settled</span><span class="md-sub">Trading closed on Jun 27, 2026. Everyone holding YES was paid in full and everyone holding NO was not, against the source named in the rules. There is no price now and nothing to bet.</span></div>
               </div>
             </details>
           </section>
@@ -1226,13 +1229,13 @@
             <div class="rules-tabs" role="tablist"><button type="button" class="rules-tab sel" role="tab" aria-selected="true">Rules</button><button type="button" class="rules-tab" role="tab" aria-selected="false">Background</button></div>
             <div class="rules-panel" role="tabpanel"><p class="resolution"><strong>Resolved YES</strong> on Jun 27, 2026: a federal funding gap caused a shutdown beginning before 00:00 ET on July 1, 2026. It would have <strong>resolved NO</strong> had funding held through that date.<br>
             <strong>Source:</strong> official US Office of Management and Budget notices. Resolved by the Yonder team.</p></div>
-            <div class="rules-panel" role="tabpanel" hidden><p class="resolution">YES is priced at 38%. Funding talks have stalled twice this quarter, but the last three deadlines were settled at the last minute. What is moving the number:</p>
+            <div class="rules-panel" role="tabpanel" hidden><p class="resolution">YES closed at 38%. Funding talks had stalled twice that quarter, and the three deadlines before it were settled at the last minute. What was moving the number:</p>
             <div class="args">
               <div class="arg-col">
                 <h3>For YES</h3>
                 <ul>
                   <li>Budget talks stalled in committee, no scheduled vote.</li>
-                  <li>A bloc has committed to opposing the stopgap bill.</li>
+                  <li>A bloc had committed to opposing the stopgap bill.</li>
                 </ul>
               </div>
               <div class="arg-col">

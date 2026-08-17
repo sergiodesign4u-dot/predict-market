@@ -12,6 +12,69 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - The resolved event told a reader it was over 2,227 pixels after inviting them to bet on it
+
+**Backlog 176, and the row named three surfaces while the ordering was the
+finding.** `event-detail-resolved.html` announced its own resolution only in
+`.resolved-panel`, which is **y=167 on the desk and y=2,227 of a 4,566px document
+on a phone**. Between the top of that page and the sentence "This event just
+resolved" a reader met the odds explainer, a **Price by bet size** table with four
+rows of "You receive if YES" up to $10,204.08, **Available to bet $31,500**, a
+**24h +2 pts** move on a market that closed in June, and a Background panel
+opening "YES is priced at 38%" in the present tense.
+
+**`ia/docs/pages/seo.md` had already specified the answer**: a resolved event
+"keeps its URL, stays 200 and index,follow, and shows the resolved state (outcome
+plus at-close odds). It is an indexed archive, not a dead-end." Two of those three
+were true and the outcome was not, so the page was an archive that would not say
+what it archived.
+
+**THE OUTCOME MOVED INTO THE HEAD, WHERE THE READER ALREADY IS.** `.ed-result` is
+new in `components/event-detail.css`, and on a phone it stands at **y=344**. The
+panel keeps its own job and it is a different sentence: it is about YOUR bet, not
+about the market, which is why printing the outcome twice was never the fix.
+
+**The side takes `--outcome-yes-text`, not `--result-won-text`, and the two are
+the same colour for different reasons.** This is which side of the MARKET won;
+the other is whether the reader's bet did. `tokens.css` draws that line and a new
+selector is exactly where it gets honoured or quietly lost. Measured from the
+render on both engines: **10.00 in the Vault and 7.43 in Daylight** for the side,
+14.97 and 15.24 for the line.
+
+**`.ed-result-no` has 0 placements and is on the stand anyway.** A rule that
+cannot be rendered cannot be checked and will be wrong the day it first draws:
+this system shipped five rules for a chosen NO that had never once stood on an
+element, and found the tighter contrast ratio only when it finally drew.
+
+**AND THE BETTING APPARATUS IS OFF THE PAGE RATHER THAN REWORDED.** The stats row
+lost **24h** and **Available to bet**, which are not facts about a closed market,
+and reads **YES at close / NO at close / Final volume / Settled**. The depth table
+is replaced by one paragraph, **How it settled**, in spectator language: no
+shares, no settlement price, no order book, which is the same line backlog 166
+drew when it struck "runs on an AMM, not an order book". The summary says **How
+the odds were set**, and the Background panel is in the past. Both trees, one
+screen each, and the strings are in `voice/docs/microcopy.md` marked resolved-only
+because all six phrases still stand correctly on eight open pages.
+
+**ONE ERROR ON THE WAY AND THE RENDER CAUGHT IT.** The throwaway that swapped the
+depth block matched `</div></div>` for its end, which is the md-row close plus the
+md-table close rather than the block's own, so it left an extra `</div>` and the
+desk layout collapsed: the panel went from y=167 to **y=5,059** and the document
+from 2,893 to 6,343. **The tell was arithmetic on a number that had no reason to
+move**, the same shape as the 458px box that was the same width at every viewport.
+A div-depth matcher is what that job needs, and this repository had already
+written one for a grid three passes ago.
+
+**VERIFIED**: 277 documents across all three trees, Chromium and WebKit, 390 and
+1280, **1,108 renders**, motion frozen, cold pass discarded. **0 sideways scroll,
+0 duplicate ids, 0 closed dialogs rendering, 0 page errors**, and **0 documents
+that say "Trading closed" while also offering a price or something to bet**, with
+that probe proved able to come back red by appending "Available to bet $1" to the
+resolved page, which it caught. Desk `docH` 2,893 to **2,757**, phone 4,566 to
+**4,451**.
+
+---
+
 ## 2026-08-17 - A screen-sized sheet stood under the footer of 108 screens for a day, and every instrument here reads across a page rather than down it
 
 **Reported by the user, on a screenshot of the footer**: the mobile search sheet,

@@ -101,7 +101,7 @@ re-measures this table should re-derive the sample first.
 | `dialog` | 291 | **HOLDS** `button`, `chip`, `iconbtn`, `input`, `notice`, `quick`. **It gained `.hiw-dialog`, `.hiw-body`, `.hiw-full` and `.hiw-arrow` on 2026-08-11**, 420 elements over the same 105 screens, with backlog 15 and 18. It does not HOLD the how-it-works block: the sheet host is one element WEARING two component classes, and what it genuinely holds is `.sheet-close` |
 | `betpanel` | 120 | **HOLDS** `yesno`, `chip`, `button`, `input`, `quick`, `notice`, `state-block` |
 | `tabs` | 153 | **HOLDS** `bets-table`, `comments`, `position`, `button`, `chip` |
-| `event-detail` | 126 | **HOLDS** fourteen, and it is the screen's own shell |
+| `event-detail` | 128 | **HOLDS** fourteen, and it is the screen's own shell. **126 until 2026-08-17**, when `.ed-result` and its two sides arrived to put a settled market's outcome in the head: the resolved panel that had been announcing it sits at y=167 on the desk and **y=2,227 of a 4,566px document on a phone**, so the reader met the odds explainer, a price-by-bet-size table and the rules first. `.ed-result` is y=344 on the phone. **`.ed-result-no` has 0 placements and is drawn on the stand anyway**, which is the chosen-NO rule: half a symmetric face went unmeasured in this system once already |
 | `bets-table` | 89 | **HOLDS** `comments`, `position` |
 | `chart` | 84 | **HOLDS** `chip`, `tabs` |
 | `card` | 58 | **HOLDS** `yesno`, `oddsbar`, `options`, `iconbtn`, `skeleton` |

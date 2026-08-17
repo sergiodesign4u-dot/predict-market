@@ -365,6 +365,38 @@
     <a href="betpanel.html">bet panel</a> states in full: a panel that is
     <code>display:none</code> below 760 cannot otherwise be a specimen on a page read at both
     widths.</p>
+
+    <h3 class="tk-subh">And the panel is not where the resolution is announced</h3>
+    <p class="tk-note"><b>Measured 2026-08-17 on the one screen that carries it</b>: this panel sits
+    at <b>y=167 on the desk and y=2,227 of a 4,566px document on a phone</b>, so a reader holding a
+    phone met the odds explainer, a price-by-bet-size table and the rules before anything said the
+    market was over. <code>ia/docs/pages/seo.md</code> asks a resolved event for "outcome plus
+    at-close odds", and the head is where a reader already is: <code>.ed-result</code> is
+    <b>y=344 on the phone</b> now. <b>The panel keeps its own job, which is a different sentence</b>
+    - it is about YOUR bet, not about the market.</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark">
+        <p class="ed-cat">Politics &middot; One-time event &middot; Trading closed</p>
+        <p class="ed-result">Resolved <b class="ed-result-yes">YES</b> on Jun 27, 2026</p>
+        <p class="ed-prob-big">At close: YES <span class="prob">38%</span> &nbsp; NO <span class="prob">62%</span></p>
+        <p class="ed-result">Resolved <b class="ed-result-no">NO</b> on Jun 27, 2026</p>
+      </div>
+      <div class="tk-theme-fig tk-stack" data-theme="light">
+        <p class="ed-cat">Politics &middot; One-time event &middot; Trading closed</p>
+        <p class="ed-result">Resolved <b class="ed-result-yes">YES</b> on Jun 27, 2026</p>
+        <p class="ed-prob-big">At close: YES <span class="prob">38%</span> &nbsp; NO <span class="prob">62%</span></p>
+        <p class="ed-result">Resolved <b class="ed-result-no">NO</b> on Jun 27, 2026</p>
+      </div>
+    </div>
+    <p class="tk-why"><b>The NO face has no placement and it is drawn anyway, which is this
+    repository's own rule about the chosen NO.</b> A rule that cannot be rendered cannot be checked
+    and will be wrong the day it first draws, and half of a symmetric control had gone unmeasured
+    here once already. The side takes <code>--outcome-yes-text</code> rather than
+    <code>--result-won-text</code>: the two are the same colour for different reasons, and this one
+    is which side of the MARKET won, not whether the reader's bet did. Measured from the render on
+    both engines: <b>10.00 in the Vault and 7.43 in Daylight</b> for the side, 14.97 and 15.24 for
+    the line it stands in.</p>
   </section>
 
   <section class="tk-sec" id="facts">
