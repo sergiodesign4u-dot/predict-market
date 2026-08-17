@@ -39,9 +39,15 @@ crediting it. Backlog 31, and the account is in `docs/decisions.md`.
 
 ## The event pictures, and they are GENERATED rather than photographed
 
-- **What:** `assets/ev-*.webp`, 25 images, one per open market, 1400 x 788, about 1.7 MB in total.
-  They stand in the card thumbnail, the event detail head and the feed hero, and they are the whole
-  of what `DESIGN.md` used to call "real event photography".
+- **What:** `assets/ev-*.webp`, 25 images, one per open market, **in two sizes**. The master is
+  1400 x 788, about 1.7 MB for the set, and it is what the feed hero draws. `-sm` is 480 x 270,
+  312 KB for the set, and it is what the card thumbnail, the related row and the event detail head
+  draw, because those slots paint 168, 138 and 216 device pixels wide and a 1400px file in a 56px
+  slot cost the feed **833 KB of pictures against 237**. The small variant is re-encoded from the
+  master rather than from the original, which is a small quality cost in a slot that oversamples it
+  three times over. They are the whole of what `DESIGN.md` used to call "real event photography".
+  **24 of the 25 masters have 0 live references** and are kept deliberately: they are the only copy
+  of each picture at a usable size, and a layout that wants a bigger slot has nowhere else to go.
 - **Where they came from:** generated on 2026-08-17 with **Seedream 5 Pro** through Magnific, from
   text prompts written here. No reference image, no photograph, no stock library, no person's
   likeness. The prompts are recorded in `docs/decisions.md` under the entry for that date.

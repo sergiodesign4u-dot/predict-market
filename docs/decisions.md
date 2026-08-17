@@ -12,6 +12,51 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - A 56px slot was being served a 1400px picture, and the first reading of that said 16 KB
+
+Twenty-five pictures went in an hour earlier, and none of the instruments in this repository had
+ever weighed one. **The first measurement said the mean screen carries 16 KB of images and the worst
+149 KB**, which is a comfortable number and was entirely the probe: the response handler `await`s
+`r.body()`, so it resolves AFTER the synchronous read of the counter that follows `goto`. The
+handler was also detached one line later. **A number that arrives before the thing it counts is a
+reading of the order of statements**, and the tell was that it did not move between dpr 2 and dpr 3.
+
+**The control that settled it was the cache hypothesis, and it failed**: the same screen twice in
+one context read 833 KB and 833 KB, so nothing was cached and the low number had no explanation
+left. A cold context per document, and the true reading is **833 KB of pictures on the feed at 390,
+13 files**, 282 on the event detail, 564 on favourites.
+
+**Then measure the slot rather than the file.** Every photograph slot against its own device
+pixels, at 390/dpr3 and 1280/dpr2:
+
+| slot | css | device at dpr 3 | a 16:9 source needs |
+|---|---|---|---|
+| `.card .thumb` | 56 x 88 | 168 x 264 | **469 wide** |
+| `.ed-thumb` | 72 x 72 | 216 x 216 | 384 |
+| `.rel-thumb` | 46 x 46 | 138 x 138 | 245 |
+| `img.hf-photo` | 359 x 300 | 1077 x 900 | **1600 wide** |
+
+**`cover` from a 16:9 source makes HEIGHT the governing axis on every one of these slots**, which is
+why the numbers are all larger than the css width suggests and why the hero's requirement is 1600
+rather than 1077. So the set splits: a `-sm` master at **480 wide** for the three small slots, 312
+KB for 25, and the 1400 stays for the hero. Feed **833 to 237 KB**, detail 282 to 47, favourites 564
+to 88, and the small variant still oversamples its worst slot by nearly three times.
+
+**And the same measurement found the one picture that is too SMALL**, which a bytes-only reading
+would never have surfaced: the hero needs 1600 wide and has 1400, so it upscales 14 per cent on a 3x
+phone, on the screen a person arrives on. It cannot be re-encoded out of what is here, and the 2560
+originals went with the throwaway scratchpad. `docs/backlog.md` 199, with the note that they are
+recoverable from the account that generated them.
+
+**24 of the 25 masters now have 0 live references and they stay.** That zero is the second kind:
+they are the only copy of each picture at a usable size, and the small files are derived from them.
+Deleting them would leave 480px as the highest resolution this product owns.
+
+Re-verified after the split, both engines: **380 pictures agreeing with their market, 0 disagreeing,
+388 decoding, 0 blank, 0 sideways scroll, 0 page errors, 0 non-200** over 170 documents.
+
+---
+
 ## 2026-08-17 - A card is illustrated by its market now, and the picture is generated, which is a thing that has to be said rather than noticed
 
 Backlog 187 had been half closed since the morning: the words were corrected and the pictures were
