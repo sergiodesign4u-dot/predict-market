@@ -124,14 +124,14 @@
    already claimed: a count the product states beats a count anybody derives,
    which is the rule the 2026-08-10 entry wrote for this same row.
    ============================================================================ */
-/* rung: DESK 40rem, 640px at the default root, the one divide. Below it the third
-   row onwards is hidden and the link says how many; at it and above the field is
-   whole and the link has nothing left to say. `:nth-child` and not `:nth-of-type`
-   because the link is the last child and is not an `.opt-row`, so the compound
-   already excludes it and the count stays about rows. */
-@media(max-width:39.99875rem){
-  .card .options > .opt-row:nth-child(n+3){display:none}
-}
-@media(min-width:40rem){
-  .card .opt-more{display:none}
-}
+/* TWO OUTCOMES ON A CARD AT EVERY WIDTH, AND THE REST IS A NUMBER. 2026-08-17,
+   decided by the product owner. There was a rung here: below 640 the third row
+   onwards was hidden and the link said how many, at 640 and above every row stood
+   and the link had nothing left to say. That answers a phone and it does not answer
+   the market: a race with twenty runners would have put twenty rows and forty
+   buttons on one card in a feed, and the card is a place a person DECIDES WHETHER TO
+   LOOK, not a place they choose. So the markup carries the two most-backed outcomes
+   and nothing else, the link carries the count of what is not there, and the detail
+   page is where the whole field lives. The rules that hid rows and hid the link are
+   gone because there is nothing left for either of them to do: a card that never
+   ships a third row does not need a rule to hide one. `docs/backlog.md` 188. */

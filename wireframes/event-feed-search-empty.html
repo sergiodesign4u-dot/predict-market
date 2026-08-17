@@ -671,15 +671,9 @@
     }
 
     /* ---- THIS PAGE ---- */
-    /* the card carries its whole field; the phone is the only place any of it is hidden.
-       rung DESK 640: below it row 3 onwards goes and the link says how many, at it and
-       above the field is whole and the link has nothing left to say. */
-    @media (max-width: 639.98px) {
-      .card .options > .opt-row:nth-child(n+3) { display: none; }
-    }
-    @media (min-width: 640px) {
-      .card .opt-more { display: none; }
-    }
+    /* Two outcomes on a card at every width and the rest is a number, 2026-08-17,
+       docs/backlog.md 188. The rung that hid the third row onwards below 640 and hid the
+       link above it is gone: the markup never ships a third row now. */
 
     </style>
 </head>
@@ -1136,9 +1130,8 @@
               <div class="options">
                 <div class="opt-row"><span class="opt-name" id="g3-opt-sweden-1">Sweden</span><span class="opt-prob">34%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="g3-opt-sweden-1-yes" aria-labelledby="g3-opt-sweden-1 g3-opt-sweden-1-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="g3-opt-sweden-1-no" aria-labelledby="g3-opt-sweden-1 g3-opt-sweden-1-no">NO</a></span></div>
                 <div class="opt-row"><span class="opt-name" id="g3-opt-italy-2">Italy</span><span class="opt-prob">27%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="g3-opt-italy-2-yes" aria-labelledby="g3-opt-italy-2 g3-opt-italy-2-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="g3-opt-italy-2-no" aria-labelledby="g3-opt-italy-2 g3-opt-italy-2-no">NO</a></span></div>
-                <div class="opt-row"><span class="opt-name" id="g3-opt-ukraine-7">Ukraine</span><span class="opt-prob">22%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="g3-opt-ukraine-7-yes" aria-labelledby="g3-opt-ukraine-7 g3-opt-ukraine-7-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="g3-opt-ukraine-7-no" aria-labelledby="g3-opt-ukraine-7 g3-opt-ukraine-7-no">NO</a></span></div>
-                <div class="opt-row"><span class="opt-name" id="g3-opt-finland-8">Finland</span><span class="opt-prob">17%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="g3-opt-finland-8-yes" aria-labelledby="g3-opt-finland-8 g3-opt-finland-8-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="g3-opt-finland-8-no" aria-labelledby="g3-opt-finland-8 g3-opt-finland-8-no">NO</a></span></div>
-                <a class="opt-more" href="event-detail-multi.html">+2 more outcomes</a>
+                
+                <a class="opt-more" href="event-detail-multi.html">+4 more outcomes</a>
 </div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $61,500</span><span>Closes: May 15, 2027</span></span>
@@ -1192,9 +1185,8 @@
               <div class="options">
                 <div class="opt-row"><span class="opt-name" id="g6-opt-labour-3">Labour</span><span class="opt-prob">44%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="g6-opt-labour-3-yes" aria-labelledby="g6-opt-labour-3 g6-opt-labour-3-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="g6-opt-labour-3-no" aria-labelledby="g6-opt-labour-3 g6-opt-labour-3-no">NO</a></span></div>
                 <div class="opt-row"><span class="opt-name" id="g6-opt-conservatives-4">Conservatives</span><span class="opt-prob">33%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="g6-opt-conservatives-4-yes" aria-labelledby="g6-opt-conservatives-4 g6-opt-conservatives-4-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="g6-opt-conservatives-4-no" aria-labelledby="g6-opt-conservatives-4 g6-opt-conservatives-4-no">NO</a></span></div>
-                <div class="opt-row"><span class="opt-name" id="g6-opt-reform-9">Reform</span><span class="opt-prob">14%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="g6-opt-reform-9-yes" aria-labelledby="g6-opt-reform-9 g6-opt-reform-9-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="g6-opt-reform-9-no" aria-labelledby="g6-opt-reform-9 g6-opt-reform-9-no">NO</a></span></div>
-                <div class="opt-row"><span class="opt-name" id="g6-opt-liberal-democrats-10">Liberal Democrats</span><span class="opt-prob">9%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="g6-opt-liberal-democrats-10-yes" aria-labelledby="g6-opt-liberal-democrats-10 g6-opt-liberal-democrats-10-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="g6-opt-liberal-democrats-10-no" aria-labelledby="g6-opt-liberal-democrats-10 g6-opt-liberal-democrats-10-no">NO</a></span></div>
-                <a class="opt-more" href="event-detail-multi.html">+2 more outcomes</a>
+                
+                <a class="opt-more" href="event-detail-multi.html">+4 more outcomes</a>
 </div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $58,700</span><span>Closes: Jul 1, 2027</span></span>
@@ -1352,8 +1344,8 @@
               <div class="options">
                 <div class="opt-row"><span class="opt-name" id="g15-opt-ethereum-1">Ethereum</span><span class="opt-prob">58%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="g15-opt-ethereum-1-yes" aria-labelledby="g15-opt-ethereum-1 g15-opt-ethereum-1-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="g15-opt-ethereum-1-no" aria-labelledby="g15-opt-ethereum-1 g15-opt-ethereum-1-no">NO</a></span></div>
                 <div class="opt-row"><span class="opt-name" id="g15-opt-tron-2">Tron</span><span class="opt-prob">34%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="g15-opt-tron-2-yes" aria-labelledby="g15-opt-tron-2 g15-opt-tron-2-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="g15-opt-tron-2-no" aria-labelledby="g15-opt-tron-2 g15-opt-tron-2-no">NO</a></span></div>
-                <div class="opt-row"><span class="opt-name" id="g15-opt-solana-3">Solana</span><span class="opt-prob">8%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="g15-opt-solana-3-yes" aria-labelledby="g15-opt-solana-3 g15-opt-solana-3-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="g15-opt-solana-3-no" aria-labelledby="g15-opt-solana-3 g15-opt-solana-3-no">NO</a></span></div>
-                <a class="opt-more" href="event-detail-multi.html">+1 more outcome</a>
+                
+                <a class="opt-more" href="event-detail-multi.html">+2 more outcomes</a>
 </div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $44,100</span><span>Closes: Dec 31, 2026</span></span>
@@ -1407,8 +1399,8 @@
               <div class="options">
                 <div class="opt-row"><span class="opt-name" id="g18-opt-superhero-3">Superhero</span><span class="opt-prob">46%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="g18-opt-superhero-3-yes" aria-labelledby="g18-opt-superhero-3 g18-opt-superhero-3-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="g18-opt-superhero-3-no" aria-labelledby="g18-opt-superhero-3 g18-opt-superhero-3-no">NO</a></span></div>
                 <div class="opt-row"><span class="opt-name" id="g18-opt-animation-4">Animation</span><span class="opt-prob">31%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="g18-opt-animation-4-yes" aria-labelledby="g18-opt-animation-4 g18-opt-animation-4-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="g18-opt-animation-4-no" aria-labelledby="g18-opt-animation-4 g18-opt-animation-4-no">NO</a></span></div>
-                <div class="opt-row"><span class="opt-name" id="g18-opt-horror-7">Horror</span><span class="opt-prob">23%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="g18-opt-horror-7-yes" aria-labelledby="g18-opt-horror-7 g18-opt-horror-7-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="g18-opt-horror-7-no" aria-labelledby="g18-opt-horror-7 g18-opt-horror-7-no">NO</a></span></div>
-                <a class="opt-more" href="event-detail-multi.html">+1 more outcome</a>
+                
+                <a class="opt-more" href="event-detail-multi.html">+2 more outcomes</a>
 </div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $21,800</span><span>Closes: Sep 1, 2026</span></span>
@@ -1496,8 +1488,8 @@
               <div class="options">
                 <div class="opt-row"><span class="opt-name" id="g23-opt-solar-1">Solar</span><span class="opt-prob">51%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="g23-opt-solar-1-yes" aria-labelledby="g23-opt-solar-1 g23-opt-solar-1-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="g23-opt-solar-1-no" aria-labelledby="g23-opt-solar-1 g23-opt-solar-1-no">NO</a></span></div>
                 <div class="opt-row"><span class="opt-name" id="g23-opt-wind-2">Wind</span><span class="opt-prob">32%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="g23-opt-wind-2-yes" aria-labelledby="g23-opt-wind-2 g23-opt-wind-2-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="g23-opt-wind-2-no" aria-labelledby="g23-opt-wind-2 g23-opt-wind-2-no">NO</a></span></div>
-                <div class="opt-row"><span class="opt-name" id="g23-opt-nuclear-3">Nuclear</span><span class="opt-prob">17%</span><span class="yesno compact"><a href="event-detail-multi.html?side=yes" class="yes" id="g23-opt-nuclear-3-yes" aria-labelledby="g23-opt-nuclear-3 g23-opt-nuclear-3-yes">YES</a><a href="event-detail-multi.html?side=no" class="no" id="g23-opt-nuclear-3-no" aria-labelledby="g23-opt-nuclear-3 g23-opt-nuclear-3-no">NO</a></span></div>
-                <a class="opt-more" href="event-detail-multi.html">+1 more outcome</a>
+                
+                <a class="opt-more" href="event-detail-multi.html">+2 more outcomes</a>
 </div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $19,700</span><span>Closes: Dec 31, 2026</span></span>

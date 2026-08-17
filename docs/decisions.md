@@ -12,6 +12,41 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - A card is where a person decides whether to look, not where they choose
+
+**Reported by the product owner on a screenshot, and it is the fourth time in
+three days that a person found what no sweep could.** The multi-outcome card
+carried as many outcome rows as the market had: 2, 3 or 4 in the tree today, each
+row with its own YES and NO, so the Eurovision card was four names and eight
+buttons in a feed. **The question that decided it was not about the four**: what
+happens when a race has twenty runners. Nothing in the shape said no.
+
+**There was a rung under the old behaviour and it answered the wrong question.**
+Below 640 the third row onwards was hidden and the link said how many; at 640 and
+above every row stood and the link had nothing left to say. That is an answer
+about a phone. The card is a place a person decides whether to LOOK, and the whole
+field belongs on the detail page where they choose.
+
+**Two outcomes at every width now, the two most-backed, and the rest is a
+number.** The markup carries two rows and the link carries what is not there:
+**62 cards trimmed across 31 documents in all three trees, 100 rows dropped**, and
+six kit specimens that had never had a link were given one so their count is not
+silence. The two media rules are deleted from `components/options.css` and from
+the 15 grey inline copies, because **a card that never ships a third row does not
+need a rule to hide one**.
+
+**Measured before and after in the same run.** At 390 nothing moves, because the
+phone already showed two. At 1280 the multi cards go **407 to 317** and the feed
+document goes **4,149 to 3,969**, 180px off a desk screen for two cards. Verified
+over 279 documents and 1,116 renders on two engines at two widths: **256 visible
+multi cards, every one showing exactly 2 rows, 0 links hidden**, 0 sideways
+scroll, 0 duplicate ids, 0 page errors.
+
+**And the twenty-runner case is now structurally impossible rather than merely
+unlikely**, which is the difference between a rule and a shape.
+
+---
+
 ## 2026-08-17 - A Bitcoin coin on a James Bond market, and two claims in the row that were wrong
 
 **Backlog 183. Measured across the painted tree: 84 cards carry both a `data-cat`
