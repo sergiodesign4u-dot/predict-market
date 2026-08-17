@@ -12,6 +12,48 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - The pricing table was the model the product had already replaced, and four photographs cannot become twenty-five
+
+**Backlog 191. `PRODUCT.md` decided this on 2026-08-10 and the screen never
+heard.** The bet panel's footnote read "the price you see is the price you get";
+900px to its left, `HOW THE ODDS ARE SET` printed `Price by bet size` - $10 at
+38%, $100 at 39%, $1,000 at 42%, **$5,000 at 49%** - under the sentence "your own
+bet moves it, so a bigger bet buys at a worse average price." **That is AMM
+pricing, which `PRODUCT.md` replaced with shares at a locked price precisely
+because the old model could not be said in a sentence a newcomer would follow.**
+It was kept alive in a table standing above the sentence that denies it, and
+calibrated for a $5,000 bettor on a product whose default stake is $5.
+
+**The table is deleted and what replaces it is the worked example the product did
+not have anywhere.** The second critique's own observation was that
+`how-it-works.html` is four screens of prose without the one diagram this product
+needs. It now reads, on every document that had the table: *A YES share costs 38
+cents and pays $1 if the event happens. $5.00 buys 13.16 shares, so YES returns
+$13.16 and NO returns nothing. The price is locked when you confirm.* **19 blocks
+across 19 documents in all three trees.**
+
+**The first attempt failed its own div-balance assertion and was reverted whole**,
+which is the third time in this session that a boundary guessed from the first
+`</div>` has been wrong and the second time the assertion caught it before a render
+did. The depth-aware remover is now the only way this repository cuts a block.
+
+**Backlog 187 is half closed, and the half that could be done was the half that was
+a claim.** There is no edit that turns four photographs into twenty-five.
+`DESIGN.md` named "real event photography carries the story" as a key
+characteristic of the system, and **it does not**: a card is illustrated by its
+CATEGORY, one capitol standing on three politics markets in a single viewport at
+1280. Binding the picture to `data-cat` earlier today stopped a gold Bitcoin coin
+from illustrating a James Bond casting market, which is a correction and not the
+feature. The line says so now and says what makes it true. **What stays open is a
+purchase and not a decision.**
+
+**Verified over 279 documents, 1,116 renders**, Chromium and WebKit at 390 and
+1280: 0 occurrences of the replaced model anywhere in the three trees, 0 sideways
+scroll with the probe proved sighted, 0 duplicate ids, 0 shut dialogs visible, 0
+page errors.
+
+---
+
 ## 2026-08-17 - The second critique scored 27 of 40 and its sharpest finding was an error of mine
 
 **Re-run with the same two isolated agents on the same surface: 27 of 40 against
