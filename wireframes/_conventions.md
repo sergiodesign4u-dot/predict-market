@@ -895,3 +895,36 @@ and Yonder has 25, and two rows of five chips in one sheet would have been the
 fourth and fifth controls made of the same five words on a screen where three had
 already been counted. The four popular rows are the highest volume in the catalog,
 which is a fact the product already prints on every card.
+
+## The chrome is copied 108 times and nothing checked that the copies agree (2026-08-17)
+
+This tree links no stylesheet, which is the whole point of it, and the price is
+that every shared element carries its own rules inside every document. **Measured
+by parsing all 108 inline `<style>` blocks and resolving each selector's whole
+cascade per file: 412 selectors stand in 50 documents or more, and 40 of them
+resolve differently somewhere.**
+
+**Most of that is a decision rather than drift.** The odd-one-out groups are page
+FAMILIES: 15 selectors on the event-detail set, 11 on `how-it-works` and `terms`,
+4 on the search pages. A family that shares a difference has usually been given
+one.
+
+**The residue is a family of three carrying something the other 105 do not**, and
+it cost a backlog row to find. `404.html`, `500.html` and `toasts.html` were
+written later, in the system-pages step, and they got a REDUCED copy of the
+notification block: 7 rules where the other 61 carry 12, with
+`.notif-menu .dropdown` missing entirely. Nothing showed it, because a shut
+`<details>` reports a box from `getBoundingClientRect()` while `checkVisibility()`
+reads false, so the closed state measured fine and **the open state took the
+header from 50 to 236 pixels at 390**. Fixed by lifting the canonical block
+verbatim out of `event-feed.html`.
+
+**One difference is left standing on purpose**: the bell's `<summary>` is 44x44 on
+those three at 390 and 22x22 on the other 56, because they carry a touch floor in
+a media query the rest of this tree never had. The floor that matters lives in
+`components/base.css` and belongs to the painted tree; adding it to 56 grey
+wireframes would be paying for a face this tree does not own.
+
+**So the rule this tree needs is a reading, not a rewrite**: when a shared element
+changes here, it changes in every document that carries it, and the parse above is
+what says whether it did. `docs/backlog.md` 179.

@@ -12,6 +12,55 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - The row was filed on a box that paints nothing, and the defect was in the state no sweep opens
+
+**Backlog 177 said the notification dropdown collapsed to 38px of container on
+three grey system pages, and the evidence was wrong.** The 48-over-22 came from
+`getBoundingClientRect()` on a span inside a **shut `<details>`**, where
+`checkVisibility()` reads **false** and `elementFromPoint` at that box's own centre
+lands on the page behind it. Nothing was collapsing, nothing was clipped, and the
+row would have been closed as a phantom by anyone who checked.
+
+**The real defect was one state away.** Forced open, `wireframes/404.html`,
+`500.html` and `toasts.html` put the dropdown at `position:static` with no width,
+so it sat IN the header row rather than over the page and took the header from
+**50 to 236 at 390 and from 60 to 222 at 1280**, against 260px absolute and a 50px
+header on every other page in the tree.
+
+**MEASURED OVER THE SET, WHICH IS WHERE THE CAUSE WAS.** Those three carry a
+REDUCED copy of the notification block: **7 rules where the other 61 carry 12**,
+missing `.notif-menu .dropdown` entirely along with the row borders, the link
+colour and the footer link's ground. The canonical block was lifted verbatim out
+of `wireframes/event-feed.html` into all three, so the fix is a copy rather than
+an authored rule.
+
+**VERIFIED WITH THE BELL FORCED OPEN ON EVERY GREY PAGE THAT HAS ONE**, Chromium
+and WebKit, 390 and 1280: **59 pages**, dropdown width `[260]` and position
+`[absolute]` as single values across the whole set, header heights `[48,50]` at
+390 and `[58,60]` at 1280, **0 sideways scroll**. The probe was proved able to come
+back red by stripping the rule again, which took the header to **241**. The five
+logged-out pages have no bell and are correctly not in the count: a visitor has no
+notifications.
+
+**AND THE MECHANISM BEHIND IT IS NOW A NUMBER RATHER THAN A WORRY.** This tree
+links no stylesheet, so every shared element carries its rules in all 108
+documents and nothing has ever checked that the copies agree. Parsed: **412
+selectors stand in 50 documents or more, and 40 resolve differently somewhere.**
+Most is not drift, because the odd-one-out groups are page FAMILIES, 15 selectors
+on event-detail, 11 on `how-it-works` and `terms`, 4 on search, and a family that
+shares a difference has usually been given one. **The residue is a family of three
+carrying what 105 do not**, which is exactly what this row was.
+
+**One difference is left standing on purpose.** The bell's `<summary>` is **44x44
+on those three at 390 and 22x22 on the other 56**, because they carry a touch
+floor in a media query the rest of this tree never had. The floor that matters
+lives in `components/base.css` and belongs to the painted tree; adding it to 56
+grey wireframes would be paying for a face this tree does not own.
+`wireframes/_conventions.md` carries the parse and `docs/backlog.md` 179 carries
+the mechanism.
+
+---
+
 ## 2026-08-17 - The resolved event told a reader it was over 2,227 pixels after inviting them to bet on it
 
 **Backlog 176, and the row named three surfaces while the ordering was the

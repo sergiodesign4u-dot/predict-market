@@ -524,12 +524,17 @@
     .hiw-faq dd { font-size: 13px; line-height: 1.5; margin: 0; }
     .app-dialog.hiw-dialog .hiw-arrow { width: 18px; height: 18px; }
     .notif-menu { position: relative; }
-    .notif-menu summary { list-style: none; display: inline-flex; align-items: center; }
+    .notif-menu summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; }
+    .notif-menu summary::-webkit-details-marker { display: none; }
+    .notif-menu .dropdown { position: absolute; right: 0; top: calc(100% + 4px); width: 260px; max-width: 80vw; border: 1px solid #888; background: #e6e6e6; z-index: 10; }
+    .notif-menu .dropdown .zone-tag { background: #cdcdcd; }
     .notif-drop ul { list-style: none; margin: 0; padding: 0; }
-    .notif-drop li a { display: block; padding: 8px 8px; }
+    .notif-drop li { border-top: 1px solid #ccc; }
+    .notif-drop li:first-child { border-top: none; }
+    .notif-drop li a { display: block; padding: 8px 10px; text-decoration: none; color: #222; }
     .notif-drop li a strong { display: block; font-size: 12px; }
-    .notif-drop li a span { display: block; font-size: 10px; }
-    .notif-all { display: block; text-align: center; padding: 8px; font-size: 11px; }
+    .notif-drop li a span { display: block; font-size: 10px; color: #555; }
+    .notif-all { display: block; text-align: center; padding: 8px; border-top: 1px solid #999; font-size: 11px; text-decoration: none; color: #222; background: #dcdcdc; }
     .bal-add { padding: 4px; }
     .icon-btn.bal-add { width: 32px; height: 32px; }
     .notif-menu summary { height: 36px; display: inline-flex; align-items: center; gap: 4px; padding: 0 8px; }

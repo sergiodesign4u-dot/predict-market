@@ -276,7 +276,14 @@ because it is a stance rather than a principle, and it is written once, here.
   AMOUNT label into the balance chip beside it and produced "AMOUNT $42.00" over figures computed on
   $5, which read as the one input nothing reads. The field is `value="5.00"` and $42.00 is the cash
   balance. **Read what the container excludes before believing what the probe counted, and open the
-  state before calling it absent.**
+  state before calling it absent.** **AND THE INVERSE COST A WHOLE BACKLOG ROW**: a closed state can
+  report a box that paints nothing. `getBoundingClientRect()` inside a shut `<details>` returned
+  38 x 505 on three grey pages and a row was filed on it, while `checkVisibility()` read **false**
+  and `elementFromPoint` at that box's own centre landed on the page behind. **The real defect was
+  in the state nobody opened**: forced open, those three put the dropdown at `position:static` and
+  took the header from **50 to 236 at 390 and 60 to 222 at 1280**. `getBoundingClientRect` is not a
+  visibility test, `checkVisibility()` is, and a control's defect usually lives in the state a sweep
+  never enters.
 - **A MOVEMENT NAMES ITS JOB BEFORE IT IS WRITTEN, AND THERE ARE THREE JOBS.** A response, a control
   answering a finger. An arrival, an element saying it is here. A status, a process still running.
   A moment for which none of the three can be named does not enter the register and never gets a
