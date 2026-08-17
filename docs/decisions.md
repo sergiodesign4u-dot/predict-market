@@ -12,6 +12,53 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - A figure no price can produce, and the two rows the critique had cleared
+
+**Backlog 181 named one row and it was two of three.** Re-derived against
+`PRODUCT.md`, which decided the model on 2026-08-10 - shares at a locked price, a
+winning share pays $1, so payout is stake over price and nothing else:
+
+| row | stake | price paid | payout owed | payout printed |
+|---|---|---|---|---|
+| YES | $5.00 | 38% | $13.16 | $13.16 |
+| YES | $25.00 | 61% | **$40.98** | **$41.00** |
+| NO, Conservatives | $10.00 | 33% | **$30.30** | **$22.50** |
+
+**$22.50 implies 44.4%, which is neither the outcome's price nor its complement**,
+and $41.00 is two cents of rounding in the wrong direction on a screen whose whole
+job is proving the platform will not cheat. The critique had said rows 1 and 2
+checked out exactly; row 2 does not, and that is what re-deriving rather than
+trusting a report is for.
+
+**`Current value` is struck rather than renamed.** It was a mark-to-market dollar
+figure on a product with no sell path, defined on none of the 110 screens: it
+moves, it can only make a reader feel worse, and there is no action attached to it.
+The slot carries **`Price now`** instead, the current price of the side held,
+beside `Avg price`, which is what was paid for it. **The three values are derived
+from the ones they replace** - $5.40 over 13.16 shares is 41%, $31.80 over 40.98 is
+78%, $8.10 over 30.30 is 27% - so nothing was invented, and the row now reads
+Stake, Avg price, Price now, Potential payout: what you paid, what the market says
+today, what it pays if your side wins. The words `Price now` were struck from the
+bet panel the day before for saying "the price" while meaning the YES price; here
+the side is known, so the label is exact.
+
+**THREE MORE COPIES WERE CARRYING THE OLD SHAPE AND NO SWEEP IN THIS REPOSITORY
+COULD SEE ANY OF THEM.** The bet SHEET has its own recompute script, separate from
+the panel's, in 5 painted documents: it was still writing `Price now` and
+`Potential payout` into two lines deleted the day before, and never filled the
+pair, so a phone that changed its amount got a stale figure. **15
+`class="line total"` specimens across 5 kit pages** were rendering with a class
+that no longer exists in the system. And `ui-kit/position.html` carried an open
+position worth **$31.80 on a $10 stake at 38%**, which is a price above 100 per
+cent, and had carried it before any of this. A sweep reads whether a page renders;
+none of these three stopped rendering.
+
+**Verified over 279 documents, 1,116 renders**, Chromium and WebKit at 390 and
+1280, motion frozen, two settle frames, cold pass discarded: 0 sideways scroll with
+the probe proved sighted, 0 duplicate ids, 0 shut dialogs visible, 0 page errors.
+
+---
+
 ## 2026-08-17 - Counting the links decided a row that had been filed as a product owner's call
 
 **Backlog 186 said three answers were legible and none obviously right.** The

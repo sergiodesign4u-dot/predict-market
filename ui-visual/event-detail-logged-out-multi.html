@@ -1442,19 +1442,29 @@ document.addEventListener('click', function (e) {
   if(!sheet)return;
   function num(v){return parseFloat(String(v).replace(/[^0-9.]/g,''))||0;}
   function money(x){return '$'+x.toFixed(2);}
-  function side(){return sheet.querySelector('.bp-dir .bp-side.sel')||sheet.querySelector('.bp-dir .bp-side');}
+  /* NO FALLBACK, and both outcomes or neither: the same two corrections the panel's own script
+     took on 2026-08-17. This one is the SHEET's copy and it was found a day later, still writing
+     `Price now` and `Potential payout` into two lines that had been deleted from the markup.
+     docs/backlog.md 180, 181. */
+  function side(){return sheet.querySelector('.bp-dir .bp-side.sel');}
   function recompute(){
     var inp=sheet.querySelector('.amount-input'); if(!inp)return;
-    var A=num(inp.value), b=side(); if(!b)return;
-    var pe=b.querySelector('.bp-pct'), p=pe?num(pe.textContent)/100:0.5;
-    var payout=p>0?A/p:0, fee=Math.round(A*1.5)/100;
+    var A=num(inp.value), b=side();
+    var pe=b&&b.querySelector('.bp-pct'), p=pe?num(pe.textContent)/100:0;
+    var win=p>0?A/p:0, fee=Math.round(A*1.5)/100;
     sheet.querySelectorAll('.line').forEach(function(l){
       var s=l.querySelectorAll('span'); if(s.length<2)return;
       var t=s[0].textContent;
-      if(t.indexOf('Price now')===0)s[s.length-1].textContent=Math.round(p*100)+'%';
-      else if(t.indexOf('Fee')===0)s[s.length-1].textContent=money(fee);
+      if(t.indexOf('Fee')===0)s[s.length-1].textContent=money(fee);
       else if(t.indexOf('Total to pay')===0)s[s.length-1].textContent=money(A+fee);
-      else if(t.indexOf('Potential payout')===0)s[s.length-1].textContent=money(payout);
+    });
+    var box=sheet.querySelector('.bp-outcomes'); if(!box)return;
+    var mine=b?(b.textContent||'').trim().split(/\s+/)[0].toUpperCase():'';
+    var rows=box.querySelectorAll('.bp-outcome'); if(rows.length<2)return;
+    ['YES','NO'].forEach(function(which,i){
+      var is=!!mine&&which===mine;
+      rows[i].querySelector('span').textContent='If '+which+' wins'+(is?', your side':'');
+      rows[i].querySelector('b').textContent=money(is?win:0);
     });
   }
   sheet.querySelectorAll('.bp-dir .bp-side').forEach(function(b){

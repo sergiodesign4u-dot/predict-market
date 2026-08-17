@@ -607,7 +607,9 @@ _9 state page(s): active-bets-empty-new.html, active-bets-empty-resolved.html, a
 | Main | Label | NO · Action |  |
 | Main | Label | Resolved Jun 2, 2026 · tap to see your win |  |
 | Main | Label | Current value |  |
-| Main | Label | Potential payout |  |
+| Main | Label | Potential payout | The open position's figure, and a different string from the bet panel's struck one: this is what the row PAYS if the side held wins. **Corrected 2026-08-17, docs/backlog.md 181**: two of the three rows on `active-bets.html` printed a figure no price produces. $25 at 61% pays $40.98 and read $41.00; $10 at 33% pays $30.30 and read $22.50, which implies 44.4% and is neither the outcome's price nor its complement. Shares at a locked price, a winning share pays $1, so the payout is the stake over the price and nothing else. |
+| Main | Label | ~~Current value~~ | **Struck 2026-08-17, docs/backlog.md 181.** A mark-to-market dollar figure on a product with no sell path: it moves, it can only make a reader feel worse, and it was defined on none of the 110 screens. What a person can act on is the price, so the slot carries `Price now` instead and the row reads what was paid against what the market says today. |
+| Main | Label | Price now | **New 2026-08-17.** The current price of the side held, beside `Avg price`, which is what was paid for it. The two together are the whole story of an open position without inventing a dollar figure or implying an exit that does not exist. The three values are DERIVED from the ones they replace: $5.40 over 13.16 shares is 41%, $31.80 over 40.98 is 78%, $8.10 over 30.30 is 27%. The same words stood in the bet panel until the day before and were struck there for saying "the price" while meaning the YES price; here the side is known, so the label is exact. |
 | Main | Label | Avg price |  |
 | Main | Label | Open · just placed |  |
 | Main | Label | Open |  |
