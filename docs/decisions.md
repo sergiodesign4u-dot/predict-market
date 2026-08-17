@@ -12,6 +12,75 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - Yonder runs about 25 events open at once, and the reason nobody could say so is that three of them were open and settled at the same time
+
+**The decision backlog 164 was waiting for, taken: about 25 open events.** A
+curated set a person can scan, which is what the IA assumed when it deferred
+search and what the product has drawn all along. So search stays exactly as it
+was rebuilt on 2026-08-17, the hand-kept catalog in `assets/search.js` is an
+accepted cost at this size, and **search indexes the OPEN set only**: a settled
+market is reached from your own history, never from the field. The number now
+lives in `PRODUCT.md`, which is where the row said it did not.
+
+**MEASURING IT IS WHAT FOUND THE DEFECT, BECAUSE THE COUNT HAD NO DENOMINATOR.**
+The catalog was clean: 25 rows against 25 distinct questions in the paint, exact
+string match both ways, 0 drift. Two event-shaped texts stood outside it, both on
+`active-bets-history.html`, and both were markets the product already had under
+another name. Pulling that thread gave **six contradictions on one fixture set**:
+
+- **Three markets were Open and settled at the same time, on adjacent tabs of the
+  same account.** `active-bets.html` held the shutdown, Bitcoin and UK markets as
+  Open; `active-bets-history.html` held the same three as WON, resolved in June.
+- **The bell shipped the resolution on 73 of 109 painted screens and 56 of 108
+  grey ones**, `event-feed.html` among them, where the same market is the hero at
+  **YES 38%**. A reader tapping that row went to a win screen for a card they
+  could see trading.
+- **`win.html` and `loss.html` were the same market resolved both ways.** The
+  government shut down on Feb 18, 2027 on one screen and a stopgap bill passed on
+  Feb 27, 2027 on the other, and the history dated the same market to Jun 27.
+- **The profile listed the ETF bet under Past wins and as LOST in the tab beside
+  it**, with a third figure for it, `+$9.40`, that appears nowhere else.
+- **The track record mixed two meanings in one unlabelled column**: `+$13.16` is
+  a payout on a $5.00 stake and `+$6.80` is net on a $25.00 one, in adjacent rows.
+- **One row held NO on Conservatives, Conservatives won, and it read WON** with a
+  positive figure, while the history's figure column was labelled Payout and
+  carried `-$5.00`, which is not a payout.
+
+**THE SETTLED SET IS NOW ITS OWN FOUR MARKETS AND NONE OF THEM IS IN THE OPEN 25**:
+the shutdown before Jul 1 2026, Bitcoin above $100,000 in H1 2026, the spot ETH
+ETF before Jul 1 2026, and the genre that led the 2026 spring box office. Three
+are prior instances of markets the product still runs, which is how a recurring
+market actually behaves and is the cheapest way to keep the categories, the
+photographs and the related lists where they were. Every resolution date carries
+its year now, because a bare `Jun 27` cannot be told from a future one.
+
+**EACH MARKET HAS EXACTLY TWO NAMES AND EVERY PLACEMENT USES ONE OF THEM**: the
+full question where the row is the subject of its screen, the short label where it
+is one line of a list. The UK market had carried three, and search knew only the
+first, so its own history was unfindable from the field that indexes it.
+
+**THE FIGURES ARE NAMED RATHER THAN RECONCILED.** `active-bets-history.html` says
+**Paid out**, total returned, `$0.00` on the loss, matching the How It Works still
+that has always said Paid out. The profiles say **net**, and three of their four
+rows were already net, so the majority on the screen decided it and one number
+moved. `win.html` keeps `+$13.16` because it states its own breakdown out loud.
+
+**WHAT THE HOW IT WORKS DIALOG DOES, DELIBERATELY**: steps 1 and 2 keep the OPEN
+market, because "pick an event you follow" over a closed one is a lie of a
+different kind, and step 3 shows a settled position. The figures carry across, the
+names differ by date, and no single still claims an open market has settled.
+
+**VERIFIED**: 868 renders, Chromium and WebKit, 390 and 1280, motion frozen, cold
+pass discarded, the overflow probe proved on an injected 4000px box and the theme
+probe proved on a ground that moves `rgb(15,16,19)` to `rgb(252,250,244)`.
+**0 settled rows naming an open market, 0 sideways scroll, 0 duplicate ids, 0 page
+errors.** The one thing the sweep flagged, a notification row at 22px of container
+on three grey system pages, **reads identically at HEAD**: 48 over 22 before the
+edit and 48 over 22 after, `overflow:visible`, so nothing is clipped and nothing
+here caused it. It is backlog 177.
+
+---
+
 ## 2026-08-17 - The card was hiding two outcomes of four on a screen with room for all of them, and the row that said so was counting the wrong thing
 
 **Reported by the user, on a desktop screenshot**: a Eurovision card two columns

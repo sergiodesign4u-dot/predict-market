@@ -71,6 +71,21 @@ web (mobile-first, base 360-390px, then responsive desktop).
 - MVP: Politics, Crypto, Culture, General
 - Post-MVP: Sports, and expansion based on interest / demand
 
+## Catalog size
+**About 25 events open at once, curated.** Decided 2026-08-17, closing backlog 164, and it is
+here because that row could not be settled anywhere else: every question about reachability,
+search, paging and the category rail resolves against this number and the repository had never
+written one down. At 25 a person can scan the feed and search is a convenience; at 250 search
+would be the only way in and the navigation model of `ia/docs/sitemap.md` would need re-deciding.
+
+Two things follow and both are already true in the trees. **Search indexes the OPEN set only** -
+a settled market is reached from your own history, never from the field - which is why the
+catalog in `assets/search.js` can be kept by hand at this size. And **a market is open or
+settled, never both**: the settled examples the product ships are four markets that stand
+outside the open set, three of them prior instances of markets it still runs, because a
+recurring market settling and reopening is the real shape of this. `docs/decisions.md`
+2026-08-17.
+
 ## MVP feature scope
 Sharpened by the CJM To-Be backlog (`user-research/docs/cjm-to-be.md`, Alex x main job). One list, ordered by the To-Be path. The motivation features (story-led entry, explain the number) are co-equal MVP with the friction fixes, since the riskiest assumption "the barrier is friction, not motivation" was substantially refuted (research section 9, F4).
 

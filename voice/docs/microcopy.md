@@ -130,7 +130,7 @@ version of it costs them the recognition without buying anything.
 | Header | Icon button | Add funds | **same-thing / Deposit vs Add funds** |
 | Header | Icon button | Favorites | **same-thing / Bookmark vs save vs Favorites** |
 | Header | Label | Position resolved |  |
-| Header | Label | US government shutdown before Mar 1 - YES won |  |
+| Header | Label | US government shutdown before Jul 1, 2026 - YES won |  |
 | Header | Label | Odds moved |  |
 | Header | Label | Bitcoin above $150k - now 61% |  |
 | Header | Label | Deadline approaching |  |
@@ -422,7 +422,7 @@ _13 state page(s): event-detail-bet-error.html, event-detail-bet-insufficient.ht
 | Main | Text | The market closed while you were reading (event-closed). Betting is no longer available. You hold a position, so you can open your result. |  |
 | Main | Button | See your position |  |
 | Main | Label | Politics · One-time market · Trading closed |  |
-| Main | Label | YES 38% at close |  |
+| Main | Label | YES 38% at close, resolved YES |  |
 
 ### Category Page
 
@@ -579,20 +579,20 @@ _9 state page(s): active-bets-empty-new.html, active-bets-empty-resolved.html, a
 | Main | Text | Something went wrong while loading your resolved bets. Check your connection and try again. |  |
 | Main | Label | WON |  |
 | Main | Label | Stake |  |
-| Main | Label | Payout |  |
-| Main | Label | +$13.16 |  |
+| Main | Label | Paid out |  |
+| Main | Label | $13.16 |  |
 | Main | Label | Your side |  |
 | Main | Label | Result |  |
-| Main | Label | Resolved Jun 27 · tap to see your win |  |
-| Main | Label | +$31.80 |  |
-| Main | Label | Resolved Jun 20 · tap to see your win |  |
-| Main | Label | Spot ETH ETF approved in H1 2027? |  |
+| Main | Label | Resolved Jun 27, 2026 · tap to see your win |  |
+| Main | Label | $31.80 |  |
+| Main | Label | Resolved Jun 20, 2026 · tap to see your win |  |
+| Main | Label | Was a spot ETH ETF approved before July 1, 2026? |  |
 | Main | Label | LOST |  |
-| Main | Label | -$5.00 |  |
-| Main | Label | Resolved Jun 12 · tap to see what happened |  |
-| Main | Label | +$21.10 |  |
-| Main | Label | NO · Conservatives |  |
-| Main | Label | Resolved Jun 2 · tap to see your win |  |
+| Main | Label | $0.00 |  |
+| Main | Label | Resolved Jun 12, 2026 · tap to see what happened |  |
+| Main | Label | $21.10 |  |
+| Main | Label | NO · Action |  |
+| Main | Label | Resolved Jun 2, 2026 · tap to see your win |  |
 | Main | Label | Current value |  |
 | Main | Label | Potential payout |  |
 | Main | Label | Avg price |  |
@@ -748,20 +748,20 @@ _3 state page(s): my-profile-error.html, my-profile-loading.html, my-profile.htm
 | Main | Label | Member since |  |
 | Main | Label | Win rate is % correct on resolved bets (public). Reputation = the track record, not the balance. |  |
 | Main | Text | Share cards (past wins) |  |
-| Main | Text | Win card: US shutdown YES +$13.16 |  |
-| Main | Text | Win card: BTC > $150k YES +$6.80 |  |
-| Main | Text | Win card: ETF approval NO +$9.40 |  |
+| Main | Text | Win card: US shutdown YES net +$8.16 |  |
+| Main | Text | Win card: BTC above $100k YES net +$6.80 |  |
+| Main | Text | Win card: Spring box office NO Action net +$11.10 |  |
 | Main | Text | Resolved predictions (public) |  |
-| Main | Label | US government shutdown before Mar 1, 2027 |  |
+| Main | Label | US government shutdown before Jul 1, 2026 |  |
 | Main | Label | WON |  |
-| Main | Label | YES · resolved Jun 27 · +$13.16 |  |
-| Main | Label | Bitcoin above $150,000 before Oct 1, 2026 |  |
-| Main | Label | YES · resolved Jun 20 · +$6.80 |  |
-| Main | Label | Spot ETH ETF approved in H1 2027 |  |
+| Main | Label | YES · resolved Jun 27, 2026 · net +$8.16 |  |
+| Main | Label | Bitcoin above $100,000 in H1 2026 |  |
+| Main | Label | YES · resolved Jun 20, 2026 · net +$6.80 |  |
+| Main | Label | Spot ETH ETF before Jul 1, 2026 |  |
 | Main | Label | LOST |  |
-| Main | Label | NO · resolved Jun 12 · -$5.00 |  |
-| Main | Label | Which party wins the most UK seats |  |
-| Main | Label | NO · Conservatives · resolved Jun 2 · +$11.10 |  |
+| Main | Label | NO · resolved Jun 12, 2026 · net -$5.00 |  |
+| Main | Label | Genre leading the 2026 spring box office |  |
+| Main | Label | NO · Action · resolved Jun 2, 2026 · net +$11.10 |  |
 
 ### Public Profile
 
@@ -788,20 +788,20 @@ _4 state page(s): public-profile-error.html, public-profile-loading.html, public
 | Main | Label | Member since |  |
 | Main | Label | Win rate is % correct on resolved bets (public). Reputation = the track record, not the balance. |  |
 | Main | Text | Share cards (past wins) |  |
-| Main | Text | Win card: US shutdown YES +$13.16 |  |
-| Main | Text | Win card: BTC > $150k YES +$6.80 |  |
-| Main | Text | Win card: ETF approval NO +$9.40 |  |
+| Main | Text | Win card: US shutdown YES net +$8.16 |  |
+| Main | Text | Win card: BTC above $100k YES net +$6.80 |  |
+| Main | Text | Win card: Spring box office NO Action net +$11.10 |  |
 | Main | Text | Resolved predictions (public) |  |
-| Main | Label | US government shutdown before Mar 1, 2027 |  |
+| Main | Label | US government shutdown before Jul 1, 2026 |  |
 | Main | Label | WON |  |
-| Main | Label | YES · resolved Jun 27 · +$13.16 |  |
-| Main | Label | Bitcoin above $150,000 before Oct 1, 2026 |  |
-| Main | Label | YES · resolved Jun 20 · +$6.80 |  |
-| Main | Label | Spot ETH ETF approved in H1 2027 |  |
+| Main | Label | YES · resolved Jun 27, 2026 · net +$8.16 |  |
+| Main | Label | Bitcoin above $100,000 in H1 2026 |  |
+| Main | Label | YES · resolved Jun 20, 2026 · net +$6.80 |  |
+| Main | Label | Spot ETH ETF before Jul 1, 2026 |  |
 | Main | Label | LOST |  |
-| Main | Label | NO · resolved Jun 12 · -$5.00 |  |
-| Main | Label | Which party wins the most UK seats |  |
-| Main | Label | NO · Conservatives · resolved Jun 2 · +$11.10 |  |
+| Main | Label | NO · resolved Jun 12, 2026 · net -$5.00 |  |
+| Main | Label | Genre leading the 2026 spring box office |  |
+| Main | Label | NO · Action · resolved Jun 2, 2026 · net +$11.10 |  |
 
 ### Wallet
 
@@ -832,8 +832,8 @@ _3 state page(s): wallet-error.html, wallet-loading.html, wallet.html_
 | Main | Label | Withdrawal to USDC address |  |
 | Main | Label | -$30.00 |  |
 | Main | Label | Jun 28 · pending (on-chain) |  |
-| Main | Label | Payout: US government shutdown - YES won |  |
-| Main | Label | +$13.16 |  |
+| Main | Label | Payout: US government shutdown before Jul 1, 2026 - YES won |  |
+| Main | Label | $13.16 |  |
 | Main | Label | Jun 27 · completed |  |
 | Main | Label | Platform fee (1.5% of stake) | Renamed 2026-08-16. The row said `(won bet)` and carried `-$0.40`, which is 3% of the payout: the `0.03 * payout` model `PRODUCT.md` retired on 2026-08-10 and which nothing had taken out of the ledger. The fee is charged at Confirm, so the row also moved to sit with the stake it was taken on. |
 | Main | Label | -$0.38 | 1.5% of the $25.00 stake it now stands beside, rounded to cents. |
@@ -862,21 +862,21 @@ _5 state page(s): notifications-empty.html, notifications-error.html, notificati
 | Main | Button | Not now |  |
 | Main | Text | In-app notifications still work here. Enable system push so alerts reach you when the app is closed. |  |
 | Main | Text | Unread |  |
-| Main | Label | Your bet resolved: US government shutdown - YES won. Tap to see your win. |  |
+| Main | Label | Your bet resolved: US government shutdown before Jul 1, 2026 - YES won. Tap to see your win. |  |
 | Main | Label | 2m |  |
 | Main | Label | [unread] |  |
 | Main | Label | Position resolved |  |
 | Main | Label | Odds moved: "Bitcoin above $150,000" jumped from 58% to 64%. |  |
 | Main | Label | 18m |  |
 | Main | Label | Odds moved significantly |  |
-| Main | Label | Closing soon: "Which party wins the most UK seats" closes in 6 hours. |  |
+| Main | Label | Closing soon: "Genre leading the 2026 spring box office" closes in 6 hours. |  |
 | Main | Label | 1h |  |
 | Main | Label | Event deadline approaching |  |
 | Main | Text | Earlier |  |
 | Main | Label | New in Crypto: "Will ETH flip BTC by 2027?" is now live. |  |
 | Main | Label | Yesterday |  |
 | Main | Label | New event in a followed category |  |
-| Main | Label | Your bet resolved: ETF approval - NO. Tap to see what happened. |  |
+| Main | Label | Your bet resolved: Spot ETH ETF before Jul 1, 2026 - NO. Tap to see what happened. |  |
 | Main | Label | 2d |  |
 
 ### How It Works, the dialog
@@ -946,7 +946,7 @@ _4 state page(s): win-error.html, win-loading.html, win-payout-pending.html, win
 | Main | Label | underlying screen dimmed: Active Bets (resolved item) or a tapped win notification | **leftover spec-note (internal codes)** |
 | Main | Heading | You were right |  |
 | Main | Field label | You were right - you won |  |
-| Main | Label | +$13.16 |  |
+| Main | Label | $13.16 |  |
 | Main | Label | $5.00 stake returned + $8.16 winnings. You held YES, avg price 38%. |  |
 | Main | Text | We couldn't generate your Share Card (T11). Your win and payout are not affected. You can share as text instead. | **leftover spec-note (internal codes)** |
 | Main | Button | Share as text |  |
@@ -958,10 +958,10 @@ _4 state page(s): win-error.html, win-loading.html, win-payout-pending.html, win
 | Main | Text | Your payout is on the way |  |
 | Main | Label | It will arrive in your balance in a few minutes (on-chain settlement delay). You can still share now. |  |
 | Main | Field label | Share Card (auto-generated) |  |
-| Main | Text | Share Card: "Called it - US shutdown, YES from 38%. +$13.16 on Yonder." (image placeholder) |  |
+| Main | Text | Share Card: "Called it - US shutdown, YES from 38%. Paid out $13.16 on Yonder." (image placeholder) |  |
 | Main | Button | Share |  |
 | Main | Field label | What happened |  |
-| Main | Text | The federal government entered a shutdown on Feb 18, 2027 after Congress missed the funding deadline. The market resolved YES, the side you held. |  |
+| Main | Text | The federal government entered a shutdown on Jun 26, 2026 after Congress missed the funding deadline. The market resolved YES on Jun 27, the side you held. |  |
 | Main | Text | One moment, then move on - no confetti loop. Share is the primary action; "see next events" is deliberately secondary (research F5: the first win, not loss, drives overconfidence and escalation). | **leftover spec-note (internal codes)** |
 
 ### Loss Screen
@@ -975,10 +975,10 @@ _2 state page(s): loss-loading.html, loss.html_
 | Main | Text | Loading the resolution... |  |
 | Main | Label | Fetching what resolved and why. |  |
 | Main | Field label | What happened |  |
-| Main | Text | Congress passed a stopgap funding bill on Feb 27, 2027, two days before the deadline, so no shutdown occurred. The market resolved NO. You held YES. |  |
+| Main | Text | The first spot ETH ETFs were approved on Jun 10, 2026, inside the window the market named. It resolved YES on Jun 12. You held NO. |  |
 | Main | Field label | Result |  |
-| Main | Label | -$5.00 |  |
-| Main | Label | Your $5.00 stake on YES did not return. Avg price 38%. |  |
+| Main | Label | $0.00 |  |
+| Main | Label | Your $5.00 stake on NO did not return. Avg price 62%. |  |
 | Main | Button | Back to your bets | **same-action / go-to-events button varies** |
 | Main | Button | Browse events | **same-action / go-to-events button varies** |
 | Main | Text | One clear next step, and no "bet again" prompt. The resolution note is shown first so the outcome is understood before any new bet (FJ5 + EJ3: a conscious exit, no impulse to chase). | **leftover spec-note (internal codes)** |
@@ -991,13 +991,13 @@ These lines are authored per event or by other users - event questions, outcome 
 
 - Which coin will have the highest market cap on January 1, 2027?
 - Which company will reach a $5T market cap first?
-- Which party will win the most seats in the next UK election?
+- Which genre led the 2026 spring box office?
 - Which party will win the most seats in the next UK general election?
 - Who will win Album of the Year at the 2027 Grammys?
 - Who will win the 2027 Eurovision final?
 - Who will win the 2028 Republican presidential nomination?
 - Will 2026 be confirmed as one of the three warmest years on record before April 1, 2027?
-- Will Bitcoin close above $150,000 before October 1, 2026?
+- Did Bitcoin close above $100,000 in the first half of 2026?
 - Will Democrats win control of the House in the 2026 midterms?
 - Will Ethereum complete its next major network upgrade before November 1, 2026?
 - Will Trump's average approval exceed 45% in Q1 2027?
@@ -1011,7 +1011,7 @@ These lines are authored per event or by other users - event questions, outcome 
 - Will a spot Solana ETF be approved before July 1, 2027?
 - Will any memecoin enter the top 10 by market cap before 2027?
 - Will the EU formally admit a new member state before January 1, 2028?
-- Will the US government shut down before March 1, 2027?
+- Did the US government shut down before July 1, 2026?
 - Will the full Epstein files be released before January 1, 2027?
 - Will the most-streamed show of 2026 be a returning series?
 - Will the next lead actor for the Bond film be announced before December 31, 2026?

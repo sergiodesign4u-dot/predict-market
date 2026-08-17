@@ -340,6 +340,23 @@ because it is a stance rather than a principle, and it is written once, here.
   renders**, because the sweeps will pass either way. **And a number a surface prints about another
   document is a claim that has to be read**: the seam counts from the catalog and said "See all 3
   results" while the page it points at filtered a 12-card subset and printed 2.
+- **EVERY INSTRUMENT HERE READS ONE DOCUMENT, AND A FACT THAT STANDS ON TWO DOCUMENTS IS OWNED BY
+  NEITHER.** The rule above says no instrument asks whether a page is the RIGHT page. This is its
+  twin and it is worse, because the page IS right: **three markets were Open on `active-bets.html`
+  and WON on `active-bets-history.html`**, which are two tabs of one screen in one reader's account,
+  and **868 renders over two engines at two widths reported zero**. The bell shipped "your bet
+  resolved, YES won" on **73 of 109 painted screens and 56 of 108 grey ones**, `event-feed.html`
+  among them, where the same market is the hero at **YES 38%**. `win.html` had the government
+  shutting down on Feb 18 2027 and `loss.html` had the same market resolving NO on Feb 27 2027, and
+  the history dated it to Jun 27. The profile listed one bet under **Past wins** and as **LOST** in
+  the tab beside it, mixed a payout and a net figure in one unlabelled column, and marked WON a row
+  that held NO on the outcome that won. **Six contradictions, one fixture set, and every single
+  document valid on its own.** The check that finds this is not a renderer: it is a SET read across
+  documents, keyed on the thing they share, and the key here is a market's IDENTITY, which is why
+  the same market wearing three names made it unfindable - search knew one of the three. So: **name
+  the entity, give it exactly one identity and one lifecycle, and read the whole set for
+  disagreement**, the same way a rule stated over a set is measured over the set. `PRODUCT.md`
+  carries the catalog size now, because a count with no denominator is what let this stand.
 - **No em dash**, anywhere, and **"anywhere" is the repository rather than the folders somebody
   remembered.** It was measured over six on 2026-08-16, read 0, and was published as "the only file
   that carries any" while `concept/brand-toolkit/` carried 35 across four files. Those are gone;
