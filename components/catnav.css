@@ -131,6 +131,29 @@
    has to be explained to anybody. */
 .feed-inner .cat-nav{margin:0}
 .feed-inner .cat-nav>ul{max-width:none;margin:0;padding:var(--space-2);gap:var(--space-8);display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+
+/* AND THE ROW SAYS THAT IT SCROLLS, SINCE 2026-08-17, docs/backlog.md 192. Measured at 390: the
+   course is 556 wide inside 328, and the cut lands 3px past the end of `Crypto`, so **Culture and
+   General are 0 per cent visible and the row reads as a complete list of three categories**. There
+   was no fade, no arrow and no chip cut in half; `mask-image` computed `none`. The row had a second
+   control beside it until the same morning, and deleting that one is what made this the only route
+   to two of the five categories.
+   NOT `flex-wrap:wrap`, which is the fix this looks like and is the one the block above already
+   refused with numbers: two courses cost 83.0px against 37.5, and a wrapping row grows with the
+   catalogue while a scrolling one does not. The affordance is the right answer and the scroll is
+   not the defect.
+   The fade is a MASK and not a gradient over the top, because the chips sit on the content plate
+   and a solid overlay would have to know the plate's colour at both themes. A mask is alpha, so it
+   costs one declaration and is theme-blind.
+   IT IS ON AT EVERY WIDTH AND THE FIRST ATTEMPT SWITCHED IT OFF AT DESK, which measured wrong at
+   the rung and one pixel either side of it: the course is 577 inside 577 at 639 and **656 inside
+   578 at 640**, because the desk header arrives and the chips grow with it, so the one width where
+   the fade was turned off is a width where the row still scrolls. It fits again at 1280, 946 in
+   946. There is no rung that separates fitting from not fitting, and CSS cannot ask whether a
+   scroller overflows, so the mask stays: its cost where nothing overflows is a 32px alpha ramp on
+   the tail of a chip, and its cost where something does is a reader who never learns two of five
+   categories exist. */
+.feed-inner .cat-nav>ul{mask-image:linear-gradient(90deg,#000 calc(100% - var(--space-32)),transparent)}
 .feed-inner .cat-nav>ul::-webkit-scrollbar{display:none}
 .feed-inner .cat-nav li{flex:0 0 auto}
 /* A MARGIN BELOW A CHILD OF A FLEX COLUMN IS ADDED TO THE COLUMN'S GAP, NEVER
