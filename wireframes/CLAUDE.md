@@ -1,8 +1,9 @@
 # wireframes/ - the grey tree
 
-108 screens. This tree owns **structure and copy**. It decides what is on a page, in what order, and
+109 screens. This tree owns **structure and copy**. It decides what is on a page, in what order, and
 what it says. The painted tree follows it. It said 105 until 2026-08-17, and it was 104 when it was
-written: `terms.html` arrived on 2026-08-15 and the three search screens on 2026-08-16.
+written: `terms.html` arrived on 2026-08-15, the three search screens on 2026-08-16 and
+`event-detail-bet-ready.html` on 2026-08-17.
 
 ## The invariants
 
@@ -33,18 +34,17 @@ written: `terms.html` arrived on 2026-08-15 and the three search screens on 2026
   number, which is `docs/backlog.md` 119.
 
 - **EVERY REGION OF EVERY INLINE STYLESHEET SAYS WHAT IT PROMISES, AND THE PROMISE HAS NUMBERS IN
-  IT.** This tree links nothing, so the shared chrome is copied 108 times and nothing can compute
+  IT.** This tree links nothing, so the shared chrome is copied 109 times and nothing can compute
   whether the copies agree. **The copies do agree - 390 of the 412 selectors that stand in 50
   documents or more carry identical source text** - and what had no owner was the PLACE: four region
   names in these files named the SCRIPT that wrote a rule rather than the subject it styles, so the
   notification block sat under `How it works` in 61 documents and under `chrome ported by
   port_chrome.py` in three, and **those three are the three that carried 7 of its 12 rules**. A file
   that has lost a shared block and a file that keeps it elsewhere look the same to anything reading
-  region names. So a marker now reads `SHARED (N of 108, R rules)`, or `SHARED BASE (N of 108, R
+  region names. So a marker now reads `SHARED (N of 109, R rules)`, or `SHARED BASE (N of 109, R
   rules)` when this page's own rules are mixed into the base, or `THIS PAGE` when nothing is
   promised. **A copy holding fewer than R contradicts its own header**, which is the only check a
-  tree that links nothing can carry. 2,413 markers, and every SHARED region is byte-identical across
-  the documents that carry it. Adding a rule to a shared block means adding it to all N and moving
+  tree that links nothing can carry. 2,413 markers when it was written and the counts are recomputed whenever a screen is added, which happened the next day. **Every SHARED region is byte-identical across the documents that carry it**, and the two exceptions carry the words SHARED BASE. Adding a rule to a shared block means adding it to all N and moving
   the count. `docs/backlog.md` 179.
 
 ## The contract and the log

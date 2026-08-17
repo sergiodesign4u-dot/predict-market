@@ -62,8 +62,8 @@ because it is a stance rather than a principle, and it is written once, here.
   `wireframes/_conventions.md`.
 - **One system.** `components/` holds `tokens.css` plus one file per component, reached through
   `components/index.css`. **Every PAINTED screen links that one file and nothing else, and the grey
-  tree links no stylesheet at all**: 109 of 109 in `ui-visual/` and 60 of 60 in `ui-kit/` link it,
-  **0 of the 108 in `wireframes/` do**, and those 108 carry an inline `<style>` block each. Counted
+  tree links no stylesheet at all**: 110 of 110 in `ui-visual/` and 60 of 60 in `ui-kit/` link it,
+  **0 of the 109 in `wireframes/` do**, and those 109 carry an inline `<style>` block each. Counted
   2026-08-12 at 104 and re-counted 2026-08-15, when `terms.html` was written and the grey tree
   stopped being one screen short of the tree it decides. The sentence here said "every screen" until then, and the folder file it contradicted
   is the one that had it right. The visual language is

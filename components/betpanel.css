@@ -8,7 +8,7 @@
           --text-muted, --text-primary, --text-strong
    Fonts:  --font-mono, on the outcome pair only
    Stand:  ui-kit/betpanel.html, and ui-kit/organisms.html#betpanel for the level and its reason
-   Stands on: 11 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-loading.html, ...)
+   Stands on: 12 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-ready.html, event-detail-bet-reconcile.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .line{display:flex;justify-content:space-between;font-size:var(--text-12);padding:var(--space-4) 0;border-top:var(--hairline) solid var(--border-hairline)}

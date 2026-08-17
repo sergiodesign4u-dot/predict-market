@@ -12,6 +12,72 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - The bet that is simply ready has a page now, and the entry above overstated one of its findings
+
+**CORRECTION FIRST, because the entry below is wrong on one line and this file does
+not edit.** It says the held Confirm was an `<a href>` so a control declaring
+itself unavailable "navigated when it was clicked". **Measured on the pre-change
+tree at `1df6115c`: it did not.** Those four screens carry a `?side=` arrival
+script whose click handler does `t.closest('[aria-disabled="true"]')` and
+`preventDefault()`, so the link was already guarded. The `<a>` to `<button>`
+change stands and is still right - a control that is not a destination should not
+be a link, and safety should not depend on a script that four of the eight
+surfaces happen to carry - but **the defect as stated did not exist at runtime**.
+Backlog 180's row and `ui-kit/betpanel.html` are corrected in place; this entry is
+the record.
+
+**Backlog 185 was the row the entry below opened: four screens have a side picked
+and every one of them is a PROBLEM** - sending, failed, over your balance, price
+moved. The plain state, side chosen and nothing wrong, is the most common moment
+in the product and it was drawn in neither tree. `event-detail-bet-ready.html`
+now stands in both: YES pressed at 38%, $5.00 in the field, `Fee $0.08`, `Total to
+pay $5.08`, `If YES wins, your side $13.16` against `If NO wins $0.00`, and a live
+Confirm that goes to processing.
+
+**IT DOES NOT CARRY THE `?side=` ARRIVAL SCRIPT, AND THAT WAS FOUND BY THE
+RENDER.** The first build of the page shipped a pressed YES in the markup and
+rendered with **nothing pressed and Confirm held again**: with no query parameter
+that script sets `want` to empty and then CLEARS every side and re-holds the
+button, so it un-readied the one state the screen is. The other four bet-state
+pages do not carry it either. **A static state page and a script that computes the
+same state from a URL cannot both own it**, and the page wins because it is the
+thing a person opens.
+
+**Two more copies were out of step and the count is the finding.** The panel's
+recompute script stands in 13 painted documents and **9 of them carried an older
+version**: `fee = 0.015 * A` unrounded, with no `Total to pay` line, from before
+the rounding decision of 2026-08-16 that `voice/docs/microcopy.md` explains at
+length. All 13 are one text now, and `sideBtn()` lost the fallback that returned
+the FIRST side when nothing was chosen, which is where the entry below's defect
+actually lived. **And 4 of the 9 grey documents that carry `<dialog class="bet-sheet">`
+markup carried no rules for it**, so the mobile sheet on the four bet-state
+wireframes would have drawn as a centred default box; they have the block now, at
+the same point in the file the other five keep it.
+
+**The 217-file edit the row named was 216.** The screen-tree nav of every grey
+document and the review rail of every painted one, plus the file itself: 109 grey
+and 110 painted carry the link, `event-detail-bet-insufficient.html` needed a
+different anchor because its own row is the current one, and the grey markers were
+recomputed for a 109-file tree - every `SHARED (N of 108, R rules)` is now `of
+109` with its N and R re-derived. **After the recompute every SHARED region is
+byte-identical again and the only two that are not carry the words SHARED BASE**,
+which is the same reading as the day the markers were written.
+
+**Verified over three trees: 279 documents, 1,116 renders**, Chromium and WebKit
+at 390 and 1280, motion frozen, two settle frames, cold pass discarded - 0
+sideways scroll with the probe proved sighted, 0 duplicate ids, 0 shut dialogs
+visible, 0 page errors, and **28,341 links checked with 0 dead**. The new page
+renders in both trees with YES pressed, the pair filled from the render rather
+than from the markup, one `<h1>`, and a Confirm carrying no `aria-disabled`.
+
+**186 opened.** Arriving at a resting screen with `?side=yes` still lights the side
+and releases Confirm while the instruction goes on saying `Pick a side to see what
+each outcome pays` and no figures appear, because the pair markup stands only
+where a side is picked in the file. That is a seam between a static state tree and
+a script that makes a state, and it is the same shape as the paragraph above.
+
+---
+
 ## 2026-08-17 - Both outcomes, or neither, and the moment the panel is about was drawn nowhere
 
 **The first dual-agent `/impeccable critique` scored 22 of 40 against 30 on

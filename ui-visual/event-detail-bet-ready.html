@@ -38,7 +38,7 @@ var f=document.getElementsByTagName('iframe');
 for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
 push();});})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UI Visual - Public Profile, loading</title>
+  <title>UI Visual - Event Detail (bet: ready to confirm)</title>
   <link rel="stylesheet" href="../components/index.css">
   <script src="../assets/icons.js"></script>
   <script src="../assets/search.js"></script>
@@ -47,11 +47,12 @@ push();});})();</script>
  "@context": "https://schema.org",
  "@graph": [
   {
-   "@type": "ProfilePage",
-   "@id": "/u#page",
-   "url": "/u",
+   "@type": "WebPage",
+   "@id": "/event/will-the-us-government-shut-down-before-march-1-2027#page",
+   "name": "Will the US government shut down before March 1, 2027?",
+   "url": "/event/will-the-us-government-shut-down-before-march-1-2027",
    "breadcrumb": {
-    "@id": "/u#crumb"
+    "@id": "/event/will-the-us-government-shut-down-before-march-1-2027#crumb"
    },
    "isPartOf": {
     "@id": "/#website"
@@ -59,7 +60,7 @@ push();});})();</script>
   },
   {
    "@type": "BreadcrumbList",
-   "@id": "/u#crumb",
+   "@id": "/event/will-the-us-government-shut-down-before-march-1-2027#crumb",
    "itemListElement": [
     {
      "@type": "ListItem",
@@ -70,7 +71,13 @@ push();});})();</script>
     {
      "@type": "ListItem",
      "position": 2,
-     "name": "Profile"
+     "name": "Politics",
+     "item": "/c/politics"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Will the US government shut down before March 1, 2027?"
     }
    ]
   }
@@ -155,7 +162,7 @@ push();});})();</script>
         <a href="event-feed-general-logged-out-error.html" class="sidebar-sub-link">error</a>
         <a href="event-feed-general-logged-out-loading.html" class="sidebar-sub-link">loading</a>
       </div>
-      <div class="sidebar-divider">Event Detail</div>
+      <div class="sidebar-divider active">Event Detail</div>
       <div class="sidebar-sub">
         <div class="sidebar-divider sub">Logged in</div>
         <a href="event-detail.html" class="sidebar-sub-link">binary</a>
@@ -164,7 +171,7 @@ push();});})();</script>
         <a href="event-detail-loading.html" class="sidebar-sub-link">loading</a>
         <a href="event-detail-error.html" class="sidebar-sub-link">error</a>
         <div class="sidebar-divider sub">Placing a bet</div>
-        <a href="event-detail-bet-ready.html" class="sidebar-sub-link">ready</a>
+        <a href="event-detail-bet-ready.html" class="sidebar-sub-link active">ready</a>
         <a href="event-detail-bet-reconcile.html" class="sidebar-sub-link">price moved</a>
         <a href="event-detail-bet-insufficient.html" class="sidebar-sub-link">low balance</a>
         <a href="event-detail-bet-processing.html" class="sidebar-sub-link">processing</a>
@@ -226,10 +233,10 @@ push();});})();</script>
         <a href="my-profile-loading.html" class="sidebar-sub-link">loading</a>
         <a href="my-profile-error.html" class="sidebar-sub-link">error</a>
       </div>
-      <div class="sidebar-divider active">Public Profile</div>
+      <div class="sidebar-divider">Public Profile</div>
       <div class="sidebar-sub">
         <a href="public-profile.html" class="sidebar-sub-link">success</a>
-        <a href="public-profile-loading.html" class="sidebar-sub-link active">loading</a>
+        <a href="public-profile-loading.html" class="sidebar-sub-link">loading</a>
         <a href="public-profile-error.html" class="sidebar-sub-link">error</a>
         <a href="public-profile-not-found.html" class="sidebar-sub-link">not found</a>
       </div>
@@ -322,26 +329,76 @@ document.addEventListener('click', function (e) {
 
 
         <div class="utility">
-          <!-- Favorites kept as an affordance; tapping it logged-out routes to Sign In (saving needs an account). -->
-          <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Favorites (sign in to save)">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
-          </button>
+          <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
+          <div class="bal-toggle desk-only">
+            <span class="bal-figure"><span class="bal-label" id="balLabel">Portfolio</span> <span class="bal-amt" id="balAmt">$142.00</span></span>
+            <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Portfolio)">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-transfer-horizontal-b"/></svg>
+            </button>
+            <button type="button" class="icon-btn bal-add" data-open="deposit" aria-label="Add funds">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plus-b"/></svg>
+            </button>
+          </div>
 
-          <!-- Notifications kept as an affordance; tapping it logged-out routes to Sign In. No unread badge when logged out. -->
+          <!-- Favorites: desktop header only (on mobile it is the bottom-bar slot). -->
+          <a class="icon-btn desk-only" href="favorites.html" aria-label="Favorites, see saved events">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+          </a>
+
+          <!-- Search: a utility on every screen, not a navigation slot. The IA defers search
+           "until catalog scale" and names where it goes when it arrives: the Events
+           destination, never a bottom slot. This is the way in from anywhere else. -->
           <a class="icon-btn search-open" href="event-feed-search.html" aria-label="Search events">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg>
           </a>
-          <button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
-          </button>
+          <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
+          <details class="notif-menu">
+            <summary aria-label="Notifications, 3 unread">
+              <span class="bell-wrap">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
+                <span class="badge-dot">3</span>
+              </span>
+            </summary>
+            <div class="dropdown notif-drop" role="menu">
+              <ul>
+                <li><a class="nav-item nav-row nav-row-stack" href="win.html"><strong>Bet resolved</strong><span>US government shutdown before Jul 1, 2026 - YES won</span></a></li>
+                <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
+                <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
+              </ul>
+              <a class="notif-all" href="notifications.html">See all notifications</a>
+            </div>
+          </details>
 
-          <!-- Auth entries replace the balance figure and the avatar dropdown entirely. -->
-          <div class="auth-btns">
-            <button type="button" class="btn btn-secondary btn-sm" data-open="signin">Sign in</button>
-            <button type="button" class="btn btn-primary btn-sm" data-open="signin">Sign up</button>
-          </div>
+          <details class="avatar-menu">
+            <summary aria-label="Account menu">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-user-b"/></svg>
+              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-chevron-down"/></svg>
+            </summary>
+            <div class="dropdown" role="menu">
+              <ul>
+                <li><a class="nav-item nav-row" href="my-profile.html" role="menuitem">My Profile</a></li>
+                <li><a class="nav-item nav-row" href="active-bets.html" role="menuitem">My Bets</a></li>
+                <li><a class="nav-item nav-row" href="favorites.html" role="menuitem">Favorites</a></li>
+                <li><a class="nav-item nav-row" href="wallet.html" role="menuitem">Wallet</a></li>
+                <li><a class="nav-item nav-row" href="how-it-works.html" role="menuitem">How It Works</a></li>
+                <li><a class="nav-item nav-row" href="event-feed-logged-out.html" role="menuitem">Logout</a></li>
+              </ul>
+            </div>
+          </details>
         </div>
       </div>
+      <!-- Condensed category strip: hidden until you scroll past the full category
+           bar, then it slides into the sticky header so the tabs stay reachable.
+           Small, icon-less chips (the full bar below keeps its icons). -->
+      <nav class="cat-condensed" aria-label="Categories (sticky header)">
+        <ul>
+          <li><a class="chip chip-quiet" href="event-feed.html">Trending</a></li>
+          <li aria-current="location"><a class="chip chip-quiet" href="event-feed-politics.html">Politics</a></li>
+          <li><a class="chip chip-quiet" href="event-feed-crypto.html">Crypto</a></li>
+          <li><a class="chip chip-quiet" href="event-feed-culture.html">Culture</a></li>
+          <li><a class="chip chip-quiet" href="event-feed-general.html">General</a></li>
+        </ul>
+      </nav>
     </header>
 
     <!-- Second-level navigation moved onto the content plate (below) -->
@@ -350,54 +407,250 @@ document.addEventListener('click', function (e) {
     <!-- Feed -->
     <main class="feed" id="main-content" tabindex="-1">
       <div class="feed-inner">
-        <div class="cat-layout">
-        <div class="cat-main" aria-busy="true"><p class="sk-status" role="status">Loading this profile</p>
-            <nav class="crumb" aria-label="Breadcrumb"><ol>
-            <li><a href="event-feed.html">Home</a></li>
-            <li><span class="crumb-here" aria-current="page">Profile</span></li>
-            </ol></nav>
-        <div class="feed-head"><h1>Profile</h1></div>
-        <article class="pos skeleton" aria-hidden="true">
-          <div class="sk-line w40"></div>
-          <div class="sk-line w70"></div>
-        </article>
-        <div class="pos-list" aria-busy="true"><p class="sk-status" role="status">Loading this track record</p>
-          <article class="pos skeleton" aria-hidden="true">
-            <div class="sk-line w70"></div>
-            <div class="sk-line w40"></div>
+        <nav class="cat-nav" aria-label="Categories (second level)">
+          <ul>
+            <li><a class="chip chip-nav" href="event-feed.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><span>Trending</span></a></li>
+            <li aria-current="location"><a class="chip chip-nav" href="event-feed-politics.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg><span>Politics</span></a></li>
+            <li><a class="chip chip-nav" href="event-feed-crypto.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg><span>Crypto</span></a></li>
+            <li><a class="chip chip-nav" href="event-feed-culture.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-culture"/></svg><span>Culture</span></a></li>
+            <li><a class="chip chip-nav" href="event-feed-general.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg><span>General</span></a></li>
+          </ul>
+        </nav>
+      <div class="ed-layout">
+        <div class="ed-main">
+          <article class="card">
+            <div class="ed-head"><div class="ed-actions"><button type="button" class="icon-btn icon-btn-tile" data-comments aria-label="Jump to comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat-b"/></svg></button><button type="button" class="icon-btn icon-btn-tile" aria-label="Share this event"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-share-b"/></svg></button><button type="button" class="icon-btn icon-btn-tile" data-fav aria-pressed="false" aria-label="Save into Favorites"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></button></div>
+              <span class="ed-thumb"></span>
+              <div class="ed-head-txt">
+                <span class="ed-cat">Politics &middot; One-time event</span>
+                <h1 class="ed-q">Will the US government shut down before March 1, 2027?</h1>
+                <p class="ed-prob-big">YES <span class="prob">38%</span> &nbsp; NO <span class="prob">62%</span></p>
+                <div class="ed-oddsbar" aria-hidden="true"><span class="track"><span class="fill" style="width:38%"></span></span></div>
+              </div>
+            </div>
           </article>
-          <article class="pos skeleton" aria-hidden="true">
-            <div class="sk-line w70"></div>
-            <div class="sk-line w40"></div>
-          </article>
-          <article class="pos skeleton" aria-hidden="true">
-            <div class="sk-line w70"></div>
-            <div class="sk-line w40"></div>
-          </article>
+          <section class="ed-section ed-chart">
+            <div class="ed-chart-head"><h2>Price chart</h2><span class="ed-chart-now">YES 38% now</span></div>
+            <div class="ed-chart-area">
+              <div class="ed-yaxis"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div>
+              <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="edyes" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--outcome-yes)" stop-opacity=".22"/><stop offset="1" stop-color="var(--outcome-yes)" stop-opacity="0"/></linearGradient></defs><line class="ed-even" x1="0" y1="50" x2="300" y2="50"/><path class="ed-area" fill="url(#edyes)" d=""/><polyline points=""/></svg><span class="ed-now-dot" aria-hidden="true" style="--v:38"></span></div>
+            </div>
+            <div class="ed-xaxis" aria-hidden="true"></div>
+            <div class="ed-chart-foot"><div class="ed-range" role="group" aria-label="Time range"><button class="chip chip-rail" type="button">1d</button><button class="chip chip-rail" type="button">1w</button><button class="chip chip-rail" type="button">1m</button><button type="button" class="chip chip-rail sel">all</button></div></div>
+          </section>
+          <div class="ed-facts">
+            <span>Volume<b>$84,200</b></span>
+            <span>Open to bet<b>$31,500</b></span>
+            <span>Closes<b>Mar 1, 2027</b></span>
+            <span>How often<b>One-time</b></span>
+          </div>
+          <section class="ed-section">
+            <details class="market-box" open>
+              <summary class="market-head"><span class="market-title">How the odds are set <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-info-circle-b"/></svg></span><svg class="market-chevron" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-chevron-down"/></svg></summary>
+              <div class="market-body">
+                <div class="market-stats"><div><span class="ms-label">Yes price</span><span class="ms-val ms-yes">38%</span></div><div><span class="ms-label">No price</span><span class="ms-val ms-no">62%</span></div><div><span class="ms-label">24h</span><span class="ms-val ms-up">+2 pts</span></div><div><span class="ms-label">Volume</span><span class="ms-val">$84,200</span></div><div><span class="ms-label">Available to bet</span><span class="ms-val">$31,500</span></div></div>
+                <div class="market-depth"><span class="md-title">Price by bet size</span><span class="md-sub">How the YES price moves as your bet grows. Your own bet moves it, so a bigger bet buys at a worse average price.</span><div class="md-table"><div class="md-row md-row-head"><span>Bet</span><span>Avg YES price</span><span>You receive if YES</span></div><div class="md-row"><span class="md-bar" style="width:12%"></span><span class="md-amt">$10</span><span class="md-price">38%</span><span class="md-get">$26.32</span></div><div class="md-row"><span class="md-bar" style="width:30%"></span><span class="md-amt">$100</span><span class="md-price">39%</span><span class="md-get">$256.41</span></div><div class="md-row"><span class="md-bar" style="width:58%"></span><span class="md-amt">$1,000</span><span class="md-price">42%</span><span class="md-get">$2,380.95</span></div><div class="md-row"><span class="md-bar" style="width:88%"></span><span class="md-amt">$5,000</span><span class="md-price">49%</span><span class="md-get">$10,204.08</span></div></div></div>
+              </div>
+            </details>
+          </section>
+          <section class="ed-section ed-rules">
+            <div class="rules-tabs" role="tablist"><button type="button" class="rules-tab sel" role="tab" aria-selected="true">Rules</button><button type="button" class="rules-tab" role="tab" aria-selected="false">Background</button></div>
+            <div class="rules-panel" role="tabpanel"><p class="resolution"><strong>Resolves YES</strong> if a federal funding gap causes a shutdown beginning before 00:00 ET on March 1, 2027. <strong>Resolves NO</strong> if funding is in place through that date.<br>
+            <strong>Source:</strong> official US Office of Management and Budget notices. Resolved by the Yonder team.</p></div>
+            <div class="rules-panel" role="tabpanel" hidden><p class="resolution">YES is priced at 38%. Funding talks have stalled twice this quarter, but the last three deadlines were settled at the last minute. What is moving the number:</p>
+            <div class="args">
+              <div class="arg-col">
+                <h3>For YES</h3>
+                <ul>
+                  <li>Budget talks stalled in committee, no scheduled vote.</li>
+                  <li>A bloc has committed to opposing the stopgap bill.</li>
+                </ul>
+              </div>
+              <div class="arg-col">
+                <h3>For NO</h3>
+                <ul>
+                  <li>Last three deadlines met with short-term funding.</li>
+                  <li>Both parties signalled willingness to extend.</li>
+                </ul>
+              </div>
+            </div><p class="rules-note">Background from the Yonder team to explain the odds. It plays no role in how this market resolves.</p></div>
+          </section>
+          <section class="ed-section ed-tabs">
+            <div class="ed-tabwrap">
+              <input type="radio" name="edtab" id="edtab-comments" class="ed-tabradio" checked>
+              <input type="radio" name="edtab" id="edtab-holders" class="ed-tabradio">
+              <input type="radio" name="edtab" id="edtab-positions" class="ed-tabradio">
+              <input type="radio" name="edtab" id="edtab-activity" class="ed-tabradio">
+              <div class="ed-tabbar">
+                <label class="ed-tablabel" for="edtab-comments">Comments <span class="ed-tab-count">128</span></label>
+                <label class="ed-tablabel" for="edtab-holders">Biggest bets</label>
+                <label class="ed-tablabel" for="edtab-positions">Bets</label>
+                <label class="ed-tablabel" for="edtab-activity">Activity</label>
+              </div>
+            <div class="ed-tabpanel ed-panel-comments" role="group" aria-label="Comments">
+              <div class="cmt-controls">
+                <span>128 comments</span>
+                <span class="seg"><button type="button" class="chip chip-rail sel">Newest</button><button class="chip chip-rail" type="button">Top</button><button class="chip chip-rail" type="button">Bettors</button></span>
+              </div>
+              <div class="cmt-compose">
+                <span class="cmt-av">you</span>
+                <span class="cmt-input">Add a comment...</span>
+                <button type="button" class="btn btn-primary btn-sm">Post</button>
+              </div>
+              <div class="cmt-list">
+                <div class="cmt">
+                  <span class="cmt-av">mm</span>
+                  <div class="cmt-body">
+                    <div class="cmt-meta"><span class="cmt-user">marketmaven</span><span class="cmt-badge">Holds 320 YES</span><span>2h ago</span></div>
+                    <p class="cmt-text">These always go to the wire. I am holding my position and adding if it dips.</p>
+                    <div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg>24</button><button class="btn btn-bare" type="button">Reply</button></div>
+                  </div>
+                </div>
+                <div class="cmt reply">
+                  <span class="cmt-av">dd</span>
+                  <div class="cmt-body">
+                    <div class="cmt-meta"><span class="cmt-user">deadline_dan</span><span>1h ago</span></div>
+                    <p class="cmt-text">The committee bloc looks firmer this time though.</p>
+                    <div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg>6</button><button class="btn btn-bare" type="button">Reply</button></div>
+                  </div>
+                </div>
+                <div class="cmt">
+                  <span class="cmt-av">pp</span>
+                  <div class="cmt-body">
+                    <div class="cmt-meta"><span class="cmt-user">polly_predicts</span><span class="cmt-badge">Holds 150 NO</span><span>5h ago</span></div>
+                    <p class="cmt-text">Volume jumped right after the headline. Watching how it settles.</p>
+                    <div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg>11</button><button class="btn btn-bare" type="button">Reply</button></div>
+                  </div>
+                </div>
+                <div class="cmt">
+                  <span class="cmt-av">nh</span>
+                  <div class="cmt-body">
+                    <div class="cmt-meta"><span class="cmt-user">newhere</span><span>1d ago</span></div>
+                    <p class="cmt-text">First bet here. The resolution source being official notices makes this easy to trust.</p>
+                    <div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg>8</button><button class="btn btn-bare" type="button">Reply</button></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ed-tabpanel ed-panel-holders" role="group" aria-label="Biggest bets">
+              <div class="hold-cols">
+              <div class="hold-col">
+                <h3>Biggest YES bets</h3>
+                <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">wh</span><span class="hold-name">whale_07</span><span class="hold-amt">$1,240</span></div>
+                <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">ma</span><span class="hold-name">marketmaven</span><span class="hold-amt">$320</span></div>
+                <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">al</span><span class="hold-name">alpha_ape</span><span class="hold-amt">$280</span></div>
+                <div class="hold-row"><span class="hold-rank">4</span><span class="cmt-av">sa</span><span class="hold-name">satoshi_jr</span><span class="hold-amt">$150</span></div>
+              </div>
+              <div class="hold-col">
+                <h3>Biggest NO bets</h3>
+                <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">he</span><span class="hold-name">hedge_hannah</span><span class="hold-amt">$980</span></div>
+                <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">po</span><span class="hold-name">polly_predicts</span><span class="hold-amt">$150</span></div>
+                <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">ca</span><span class="hold-name">caut_carl</span><span class="hold-amt">$120</span></div>
+                <div class="hold-row"><span class="hold-rank">4</span><span class="cmt-av">ri</span><span class="hold-name">riskoff</span><span class="hold-amt">$90</span></div>
+              </div>
+              </div>
+            </div>
+            <div class="ed-tabpanel ed-panel-positions" role="group" aria-label="Bets">
+              <table class="ptable">
+                <thead><tr><th>Bettor</th><th>Side</th><th>Amount</th></tr></thead>
+                <tbody>
+                <tr class="you"><td>You</td><td><span class="pos-side">YES</span></td><td>$4.94</td></tr>
+                <tr><td>whale_07</td><td><span class="pos-side">YES</span></td><td>$471</td></tr>
+                <tr><td>hedge_hannah</td><td><span class="pos-side">NO</span></td><td>$588</td></tr>
+                <tr><td>marketmaven</td><td><span class="pos-side">YES</span></td><td>$121</td></tr>
+                <tr><td>polly_predicts</td><td><span class="pos-side">NO</span></td><td>$87</td></tr>
+                </tbody>
+              </table>
+              <p class="pos-note">Your bet is highlighted. Bets update as the odds move.</p>
+            </div>
+            <div class="ed-tabpanel ed-panel-activity" role="group" aria-label="Activity">
+              <p class="pos-note">Recent bets, largest first. Filter: over $5.</p>
+              <div class="act-list">
+              <div class="act-row"><span class="cmt-av">wh</span><span class="act-txt"><b>whale_07</b> bet <b>$175</b> on YES</span><span class="act-time">2m ago</span></div>
+              <div class="act-row"><span class="cmt-av">hh</span><span class="act-txt"><b>hedge_hannah</b> bet <b>$180</b> on NO</span><span class="act-time">14m ago</span></div>
+              <div class="act-row"><span class="cmt-av">mm</span><span class="act-txt"><b>marketmaven</b> cashed out <b>$31</b> on YES</span><span class="act-time">1h ago</span></div>
+              <div class="act-row"><span class="cmt-av">pp</span><span class="act-txt"><b>polly_predicts</b> bet <b>$87</b> on NO</span><span class="act-time">3h ago</span></div>
+              <div class="act-row"><span class="cmt-av">nh</span><span class="act-txt"><b>newhere</b> bet <b>$4.94</b> on YES</span><span class="act-time">5h ago</span></div>
+              </div>
+            </div>
+            </div>
+          </section>
         </div>
-        </div><!-- /cat-main --></div><!-- /cat-layout --></div><!-- /feed-inner -->
+          <aside class="bet-panel">
+            <div class="bp-inner">
+              <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES selected</span></div>
+              <div class="bp-dir">
+                <button type="button" class="yesno-pick bp-side sel yes" aria-pressed="true">YES <span class="bp-pct">38%</span></button>
+                <button type="button" class="yesno-pick bp-side no" aria-pressed="false">NO <span class="bp-pct">62%</span></button>
+              </div>
+              <div>
+                <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="1" value="5.00" aria-label="Bet amount"></div>
+                <div class="quick"><button type="button" class="chip chip-amount">$1</button><button class="chip chip-amount sel" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button></div>
+              </div>
+              <div>
+                <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.08</span></div><div class="line due"><span>Total to pay</span><span>$5.08</span></div>
+                <div class="bp-outcomes"><div class="bp-outcome"><span>If YES wins, your side</span><b>$13.16</b></div><div class="bp-outcome"><span>If NO wins</span><b>$0.00</b></div></div>
+              </div>
+              <a href="event-detail-bet-processing.html" class="btn btn-primary btn-md btn-block">Confirm bet</a>
+              <p class="fine">$1 minimum, no maximum. The price you see is the price you get.</p>
+            </div>
+          </aside>
+      </div>
+      <!-- Related events (crawlable internal-linking block, WF reconcile) -->
+      <section class="related-events" aria-label="Related events">
+        <h2>Related events</h2>
+        <ul class="related-list">
+          <li><a href="event-detail.html"><span class="rel-thumb" style="background-image:url(../assets/event-crypto.jpg)"></span><span class="rel-q">Will Bitcoin close above $150,000 before October 1, 2026?</span><span class="rel-odds">YES 61%</span></a></li>
+          <li><a href="event-detail.html"><span class="rel-thumb" style="background-image:url(../assets/event-crypto.jpg)"></span><span class="rel-q">Will Ethereum complete its next major network upgrade before November 1, 2026?</span><span class="rel-odds">YES 72%</span></a></li>
+          <li><a href="event-detail-multi.html"><span class="rel-thumb" style="background-image:url(../assets/event-politics.jpg)"></span><span class="rel-q">Which party will win the most seats in the next UK general election?</span><span class="rel-odds">4 outcomes</span></a></li>
+        </ul>
+        <a href="event-feed.html" class="related-more">Browse more events</a>
+      </section>
+    </div><!-- /feed-inner -->
     </main>
+      <div class="bet-dock" aria-label="Place your bet">
+        <button type="button" class="yesno-pick yesno-pick-bar bp-side sel yes" data-open-sheet="yes" aria-pressed="true">YES <span class="bp-pct">38%</span></button>
+        <button type="button" class="yesno-pick yesno-pick-bar bp-side no" data-open-sheet="no" aria-pressed="false">NO <span class="bp-pct">62%</span></button>
+      </div>
+    
+      <dialog class="app-dialog bet-sheet" id="betSheet" aria-label="Place your bet">
+        <button type="button" class="sheet-grab" data-close-sheet aria-label="Close"></button>
+        <div class="bp-inner">
+          <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES selected</span></div>
+          <div class="bp-dir"><button type="button" class="yesno-pick bp-side sel yes" aria-pressed="true">YES <span class="bp-pct">38%</span></button><button type="button" class="yesno-pick bp-side no" aria-pressed="false">NO <span class="bp-pct">62%</span></button></div>
+          <div>
+            <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$42.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="number" inputmode="decimal" step="0.01" min="1" value="5.00" aria-label="Bet amount"></div>
+            <div class="quick"><button type="button" class="chip chip-amount">$1</button><button class="chip chip-amount sel" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button></div>
+          </div>
+          <div>
+            <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.08</span></div><div class="line due"><span>Total to pay</span><span>$5.08</span></div>
+                <div class="bp-outcomes"><div class="bp-outcome"><span>If YES wins, your side</span><b>$13.16</b></div><div class="bp-outcome"><span>If NO wins</span><b>$0.00</b></div></div>
+          </div>
+          <a href="event-detail-bet-processing.html" class="btn btn-primary btn-lg btn-block">Confirm bet</a>
+          <p class="fine">$1 minimum, no maximum. The price you see is the price you get.</p>
+        </div>
+      </dialog>
     </div><!-- /app-case -->
 
     <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
       <ul>
-        <li><a class="nav-item nav-slot" href="event-feed-logged-out.html">
+        <li aria-current="location"><a class="nav-item nav-slot" href="event-feed.html">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-widget-b"/></svg>
           <span>Events</span>
         </a></li>
-        <li><button class="nav-item nav-slot" type="button" data-open="signin">
+        <li><a class="nav-item nav-slot" href="active-bets.html">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-list-b"/></svg>
           <span>My Bets</span>
-        </button></li>
-        <li><button class="nav-item nav-slot" type="button" data-open="signin">
+        </a></li>
+        <li><a class="nav-item nav-slot" href="favorites.html">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
           <span>Favorites</span>
-        </button></li>
-        <li><button class="nav-item nav-slot" type="button" data-open="signin" aria-label="Sign in">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-login-3-b"/></svg>
-          <span>Sign in</span>
-        </button></li>
+        </a></li>
+        <li><a class="nav-item nav-slot" href="my-profile.html" aria-label="Portfolio, balance $142">
+          <span class="bn-bal">$142</span>
+          <span>Portfolio</span>
+        </a></li>
       </ul>
     </nav>
 
@@ -944,7 +1197,211 @@ document.addEventListener('click', function (e) {
         io.observe(fullNav);
       })();
     })();
-  </script>  <script id="uv-deposit">
+  </script><script>
+(function(){
+  /* YES/NO selector + dock: click switches the active item */
+  document.querySelectorAll('.bp-dir, .bet-dock').forEach(function(group){
+    var items = group.querySelectorAll('.bp-side');
+    if(items.length < 2) return;
+    items.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        items.forEach(function(b){ b.classList.remove('sel'); });
+        btn.classList.add('sel');
+      });
+    });
+  });
+  /* per bet panel: live amount, quick chips, recomputed fee/payout */
+  document.querySelectorAll('.bet-panel').forEach(function(panel){
+    var input = panel.querySelector('.amount-input');
+    var dir = panel.querySelector('.bp-dir');
+    var hint = panel.querySelector('.bp-hint');
+    function num(v){ return parseFloat(String(v).replace(/[^0-9.]/g, '')) || 0; }
+    function money(x){ return '$' + x.toFixed(2); }
+    /* NO FALLBACK. It read `|| dir.querySelector('.bp-side')` until 2026-08-17, so with
+       nothing chosen it returned the FIRST side and every figure below was computed
+       from a side the reader had not picked. docs/backlog.md 180. */
+    function sideBtn(){ return panel.querySelector('.bp-dir .bp-side.sel'); }
+    function setLine(prefix, val){
+      panel.querySelectorAll('.line').forEach(function(line){
+        var s = line.querySelectorAll('span');
+        if(s.length >= 2 && s[0].textContent.indexOf(prefix) === 0){ s[s.length - 1].textContent = val; }
+      });
+    }
+    /* BOTH OUTCOMES OR NEITHER, 2026-08-17. The pair stands only where a side IS picked,
+       so this writes it when it is there and says nothing when it is not. The winning side
+       gets stake / price and the other gets zero, which is the whole content of the block:
+       a payout printed without the zero beside it is a promise with no cost. */
+    function setOutcomes(A, btn){
+      var box = panel.querySelector('.bp-outcomes');
+      if(!box) return;
+      var side = btn ? (btn.textContent || '').trim().split(/\s+/)[0].toUpperCase() : '';
+      var pctEl = btn && btn.querySelector('.bp-pct');
+      var p = pctEl ? num(pctEl.textContent) / 100 : 0;
+      var win = p > 0 ? A / p : 0;
+      box.querySelectorAll('.bp-outcome').forEach(function(row){
+        var lbl = row.querySelector('span'), fig = row.querySelector('b');
+        if(!lbl || !fig) return;
+        var which = lbl.textContent.indexOf('YES') >= 0 ? 'YES' : 'NO';
+        var mine = !!side && which === side;
+        lbl.textContent = 'If ' + which + ' wins' + (mine ? ', your side' : '');
+        fig.textContent = money(mine ? win : 0);
+      });
+    }
+    function recompute(){
+      if(!input) return;
+      var A = num(input.value), btn = sideBtn();
+      /* THE FEE IS ROUNDED TO CENTS BEFORE THE TOTAL IS BUILT OUT OF IT, and that order is the
+         whole point. 1.5 per cent of $5.00 is 7.5 cents, so a raw fee prints $0.07 while a raw
+         total prints $5.08, and the two figures a person can see then do not add up. The fee that
+         is charged is the fee that is shown. */
+      var fee = Math.round(A * 1.5) / 100;
+      setLine('Fee', money(fee));
+      setLine('Total to pay', money(A + fee));
+      setOutcomes(A, btn);
+    }
+    if(dir){
+      dir.querySelectorAll('.bp-side').forEach(function(b){
+        b.addEventListener('click', function(){
+          if(hint){ hint.textContent = (b.textContent || '').trim().split(/\s+/)[0] + ' selected'; }
+          recompute();
+        });
+      });
+    }
+    panel.querySelectorAll('.quick button').forEach(function(chip){
+      chip.addEventListener('click', function(){
+        panel.querySelectorAll('.quick button').forEach(function(b){ b.classList.remove('sel'); });
+        chip.classList.add('sel');
+        if(input){ input.value = num(chip.textContent).toFixed(2); }
+        recompute();
+      });
+    });
+    if(input){
+      input.addEventListener('input', function(){
+        panel.querySelectorAll('.quick button').forEach(function(b){ b.classList.remove('sel'); });
+        recompute();
+      });
+      input.addEventListener('blur', function(){ input.value = num(input.value).toFixed(2); recompute(); });
+    }
+    recompute();
+  });
+  /* price chart (single line): fill the polyline + X axis, switch on 1d/1w/1m/all */
+  document.querySelectorAll('.ed-chart:not(.ed-chart-multi)').forEach(function(chart){
+    var poly = chart.querySelector('.chart-svg polyline');
+    var area = chart.querySelector('.chart-svg .ed-area');
+    var dot = chart.querySelector('.ed-now-dot');
+    var xaxis = chart.querySelector('.ed-xaxis');
+    if(!poly) return;
+    var DATA = {
+      '1d':  {s:[40,41,39,42,40,43,41,42,40,38], x:['24h','18h','12h','6h','now']},
+      '1w':  {s:[46,44,48,45,50,43,45,41,39,38], x:['7d','5d','3d','1d','now']},
+      '1m':  {s:[44,46,42,45,41,47,43,48,45,50,46,52,49,44,38], x:['30d','3w','2w','1w','now']},
+      'all': {s:[41,44,40,36,47,43,50,45,49,44,53,57,38], x:['Jul','Sep','Nov','Jan','now']}
+    };
+    function render(key){
+      var d = DATA[key] || DATA.all, n = d.s.length;
+      var pts = d.s.map(function(v,i){ return (i/(n-1)*300).toFixed(1)+','+(100-v).toFixed(1); });
+      poly.setAttribute('points', pts.join(' '));
+      /* The area is the same points closed down to the floor. It is written here and
+         not in the markup for the reason the polyline is: this chart has four ranges
+         and the shape belongs to whichever one is chosen. */
+      if (area) { area.setAttribute('d', 'M' + pts.join('L') + 'L300,100L0,100Z'); }
+      /* The dot sits at the last value. Every range in this data ends at the same
+         number, so the markup carries it as a datum and this only keeps it true if a
+         range ever ends somewhere else. */
+      if (dot) { dot.style.setProperty('--v', d.s[n-1]); }
+      if(xaxis){ xaxis.innerHTML = d.x.map(function(t){ return '<span>'+t+'</span>'; }).join(''); }
+    }
+    chart.querySelectorAll('.ed-range button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        chart.querySelectorAll('.ed-range button').forEach(function(b){ b.classList.remove('sel'); });
+        btn.classList.add('sel');
+        render(btn.textContent.trim().toLowerCase());
+      });
+    });
+    var sel = chart.querySelector('.ed-range button.sel') || chart.querySelector('.ed-range button:last-child');
+    render(sel ? sel.textContent.trim().toLowerCase() : 'all');
+  });
+  /* multi-outcome chart: ALL outcome lines + legend; range switch + highlight */
+  document.querySelectorAll('.ed-chart-multi').forEach(function(chart){
+    var NAMES=['JD Vance','Donald Trump','Ron DeSantis','Nikki Haley','Other'];
+    var COLORS=['var(--series-1)','var(--series-2)','var(--series-3)','var(--series-4)','var(--series-5)'];
+    var DATA=[
+      [38,40,37,41,39,43,40,44,42,47,44,49,41],
+      [26,24,27,25,23,22,24,21,23,20,22,21,22],
+      [16,17,15,16,14,15,13,14,13,15,14,13,14],
+      [10,9,11,8,10,9,10,8,9,7,9,8,8],
+      [10,10,10,10,14,11,13,13,13,11,11,9,15]
+    ];
+    var XL={'1d':['24h','18h','12h','6h','now'],'1w':['7d','5d','3d','1d','now'],'1m':['30d','3w','2w','1w','now'],'all':['Jul','Sep','Nov','Jan','now']};
+    var NPTS={'1d':5,'1w':7,'1m':10,'all':13};
+    var lines=chart.querySelectorAll('.ml-line');
+    var xaxis=chart.querySelector('.ed-xaxis');
+    var legend=chart.querySelector('.ed-legend');
+    var nowEl=chart.querySelector('.ed-chart-now');
+    var sel=0;
+    function range(){ var b=chart.querySelector('.ed-range button.sel'); return b?b.textContent.trim().toLowerCase():'all'; }
+    function draw(){
+      var key=range(), n=NPTS[key]||13;
+      lines.forEach(function(ln,i){
+        var s=DATA[i].slice(-n);
+        ln.setAttribute('points', s.map(function(v,j){ return (j/(s.length-1)*300).toFixed(1)+','+(100-v).toFixed(1); }).join(' '));
+        ln.style.stroke=COLORS[i];
+        ln.style.opacity=(i===sel)?'1':'0.28';
+        ln.style.strokeWidth=(i===sel)?'2.2':'1.3';
+      });
+      if(xaxis){ xaxis.innerHTML=(XL[key]||XL.all).map(function(t){ return '<span>'+t+'</span>'; }).join(''); }
+    }
+    function legendHTML(){ if(legend){ legend.innerHTML=NAMES.map(function(nm,i){ return '<span class="lg-item'+(i===sel?' sel':'')+'"><i style="background:'+COLORS[i]+'"></i>'+nm+'</span>'; }).join(''); } }
+    function nowHTML(){ if(nowEl){ nowEl.textContent=NAMES[sel]+' '+DATA[sel][DATA[sel].length-1]+'% now'; nowEl.style.color=COLORS[sel]; } }
+    chart.selectOutcome=function(i){ sel=i; draw(); legendHTML(); nowHTML(); };
+    chart.querySelectorAll('.ed-range button').forEach(function(b){ b.addEventListener('click',function(){ chart.querySelectorAll('.ed-range button').forEach(function(x){ x.classList.remove('sel'); }); b.classList.add('sel'); draw(); }); });
+    draw(); legendHTML(); nowHTML();
+  });
+  /* multi outcomes list: click an outcome to select it (fill + tag + sync bet panel + chart) */
+  document.querySelectorAll('#edOutcomes').forEach(function(box){
+    var rows=box.querySelectorAll('.opt-row');
+    var chart=document.querySelector('.ed-chart-multi');
+    rows.forEach(function(row,i){
+      row.addEventListener('click',function(){
+        rows.forEach(function(r){ r.classList.remove('sel'); r.removeAttribute('aria-current'); var t=r.querySelector('.opt-sel-tag'); if(t) t.remove(); });
+        row.classList.add('sel'); row.setAttribute('aria-current','true');
+        var nameEl=row.querySelector('.opt-name');
+        var nm=nameEl.childNodes[0].textContent.trim();
+        var prob=row.querySelector('.opt-prob').textContent;
+        var tag=document.createElement('span'); tag.className='opt-sel-tag'; tag.textContent='selected';
+        nameEl.appendChild(document.createTextNode(' ')); nameEl.appendChild(tag);
+        var bp=document.querySelector('.bp-selected .bp-sel-name');
+        if(bp){ bp.innerHTML=nm+' <span class="opt-prob">'+prob+'</span>'; }
+        if(chart && chart.selectOutcome){ chart.selectOutcome(i); }
+      });
+    });
+  });
+  /* Rules / Background tabs */
+  document.querySelectorAll('.ed-rules').forEach(function(box){
+    var tabs = box.querySelectorAll('.rules-tab'), panels = box.querySelectorAll('.rules-panel');
+    tabs.forEach(function(tab, i){
+      tab.addEventListener('click', function(){
+        tabs.forEach(function(t){ t.classList.remove('sel'); t.setAttribute('aria-selected','false'); });
+        tab.classList.add('sel'); tab.setAttribute('aria-selected','true');
+        panels.forEach(function(p, j){ p.hidden = (j !== i); });
+      });
+    });
+  });
+  /* header actions: save-into-Favorites toggle + jump to comments */
+  document.querySelectorAll('.ed-actions [data-fav]').forEach(function(b){
+    b.addEventListener('click', function(){
+      b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+    });
+  });
+  document.querySelectorAll('.ed-actions [data-comments]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var r = document.getElementById('edtab-comments'); if(r){ r.checked = true; }
+      var t = document.querySelector('.ed-tabs'); if(t){ t.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+})();
+</script>
+  <script id="uv-deposit">
 (function(){
   // Non-bet amount fields (the deposit dialog + the wallet withdraw form). Bet
   // panels/sheets keep their own richer handlers, so skip .bp-inner contexts.
@@ -974,5 +1431,215 @@ document.addEventListener('click', function (e) {
   });
 })();
   </script>
+  <script id="uv-drawer">
+(function(){
+  // digit-only: bet amount takes numbers, a dot and $ only (no letters)
+  document.querySelectorAll('input.amount-input').forEach(function(inp){
+    inp.addEventListener('input',function(){
+      var caret=inp.selectionStart, cleaned=inp.value.replace(/[^0-9.$]/g,'');
+      if(cleaned!==inp.value){inp.value=cleaned;try{inp.setSelectionRange(caret-1,caret-1);}catch(e){}}
+    });
+  });
+
+  // multi: kit-style outcome selection. Clicking a row - or its YES / NO - selects
+  // that outcome AND that side on the LEFT (the compact button fills solid, others
+  // clear), then drives the desktop bet panel: outcome name, YES/NO side (solid),
+  // percentages, and the panel's own recompute (dispatched click).
+  var outBox=document.getElementById('edOutcomes');
+  var deskPanel=document.querySelector('.ed-layout .bet-panel')||document.querySelector('.bet-panel');
+  if(outBox){
+    outBox.addEventListener('click',function(e){
+      var row=e.target.closest('.opt-row'); if(!row||!outBox.contains(row))return;
+      var btn=e.target.closest('.yesno.compact button');
+      outBox.querySelectorAll('.opt-row').forEach(function(r){
+        r.classList.remove('sel'); r.removeAttribute('aria-current');
+        r.querySelectorAll('.yesno.compact button').forEach(function(b){b.classList.remove('sel');});
+      });
+      row.classList.add('sel'); row.setAttribute('aria-current','true');
+      var yn=row.querySelector('.yesno.compact'); if(!yn)return;
+      var first=yn.querySelector('button:first-child');
+      var chosen=btn||first; if(chosen)chosen.classList.add('sel');
+      var isYes=(chosen===first);
+      if(!deskPanel)return;
+      var pe=row.querySelector('.opt-prob'), pct=pe?parseInt(pe.textContent,10):null;
+      var ne=row.querySelector('.opt-name'), nm=ne?(ne.childNodes[0].textContent||'').trim():'';
+      var selName=deskPanel.querySelector('.bp-sel-name');
+      if(selName)selName.innerHTML=nm+' <span class="opt-prob">'+(pct!=null?pct+'%':'')+'</span>';
+      var dir=deskPanel.querySelector('.bp-dir'); if(!dir)return;
+      var yesBtn=dir.querySelector('.bp-side:first-child'), noBtn=dir.querySelector('.bp-side:last-child');
+      var yp=yesBtn&&yesBtn.querySelector('.bp-pct'), np=noBtn&&noBtn.querySelector('.bp-pct');
+      if(pct!=null){ if(yp)yp.textContent=pct+'%'; if(np)np.textContent=(100-pct)+'%'; }
+      dir.querySelectorAll('.bp-side').forEach(function(x){x.classList.remove('sel');});
+      var deskSide=isYes?yesBtn:noBtn;
+      if(deskSide){deskSide.classList.add('sel'); deskSide.dispatchEvent(new MouseEvent('click',{bubbles:true}));}
+    });
+  }
+
+  // mobile bottom sheet
+  var sheet=document.getElementById('betSheet');
+  if(!sheet)return;
+  function num(v){return parseFloat(String(v).replace(/[^0-9.]/g,''))||0;}
+  function money(x){return '$'+x.toFixed(2);}
+  function side(){return sheet.querySelector('.bp-dir .bp-side.sel')||sheet.querySelector('.bp-dir .bp-side');}
+  function recompute(){
+    var inp=sheet.querySelector('.amount-input'); if(!inp)return;
+    var A=num(inp.value), b=side(); if(!b)return;
+    var pe=b.querySelector('.bp-pct'), p=pe?num(pe.textContent)/100:0.5;
+    var payout=p>0?A/p:0, fee=Math.round(A*1.5)/100;
+    sheet.querySelectorAll('.line').forEach(function(l){
+      var s=l.querySelectorAll('span'); if(s.length<2)return;
+      var t=s[0].textContent;
+      if(t.indexOf('Price now')===0)s[s.length-1].textContent=Math.round(p*100)+'%';
+      else if(t.indexOf('Fee')===0)s[s.length-1].textContent=money(fee);
+      else if(t.indexOf('Total to pay')===0)s[s.length-1].textContent=money(A+fee);
+      else if(t.indexOf('Potential payout')===0)s[s.length-1].textContent=money(payout);
+    });
+  }
+  sheet.querySelectorAll('.bp-dir .bp-side').forEach(function(b){
+    b.addEventListener('click',function(){
+      sheet.querySelectorAll('.bp-dir .bp-side').forEach(function(x){x.classList.remove('sel');});
+      b.classList.add('sel');
+      var h=sheet.querySelector('.bp-hint'); if(h)h.textContent=(b.textContent||'').trim().split(/\s+/)[0]+' selected';
+      recompute();
+    });
+  });
+  sheet.querySelectorAll('.quick button').forEach(function(c){
+    c.addEventListener('click',function(){
+      sheet.querySelectorAll('.quick button').forEach(function(x){x.classList.remove('sel');});
+      c.classList.add('sel');
+      var inp=sheet.querySelector('.amount-input'); if(inp)inp.value=num(c.textContent).toFixed(2);
+      recompute();
+    });
+  });
+  var sinp=sheet.querySelector('.amount-input');
+  if(sinp){
+    sinp.addEventListener('input',function(){sheet.querySelectorAll('.quick button').forEach(function(x){x.classList.remove('sel');});recompute();});
+    sinp.addEventListener('blur',function(){sinp.value=num(sinp.value).toFixed(2);recompute();});
+  }
+  function preselect(s){
+    if(!s)return; var d=sheet.querySelector('.bp-dir'); if(!d)return;
+    d.querySelectorAll('.bp-side').forEach(function(x){x.classList.remove('sel');});
+    (s==='no'?d.querySelector('.bp-side:last-child'):d.querySelector('.bp-side:first-child')).classList.add('sel');
+    var h=sheet.querySelector('.bp-hint'); if(h)h.textContent=(s==='no'?'NO':'YES')+' selected';
+    recompute();
+  }
+  document.querySelectorAll('[data-open-sheet]').forEach(function(b){
+    b.addEventListener('click',function(){
+      preselect(b.getAttribute('data-open-sheet'));
+      if(sheet.showModal)sheet.showModal();else sheet.setAttribute('open','');
+    });
+  });
+  function closeSheet(){ if(sheet.close)sheet.close(); else sheet.removeAttribute('open'); }
+  sheet.addEventListener('click',function(e){if(e.target===sheet)closeSheet();});
+  sheet.querySelectorAll('[data-close-sheet]').forEach(function(c){c.addEventListener('click',function(e){e.preventDefault();closeSheet();});});
+  var cf=sheet.querySelector('[data-sheet-confirm]');
+  if(cf)cf.addEventListener('click',function(){
+    /* Signed in, so the bet is placed rather than gated: the same destination the
+       dock carried before the drawer replaced it. backlog 87, 2026-08-11. */
+    closeSheet();
+    location.href='event-detail-bet-processing.html';
+  });
+  recompute();
+})();
+  </script>
+<script id="uv-filters-sheet">
+/* Four things a stylesheet cannot say, and nothing else.
+   1. A SCROLLER DOES NOT START AT ITS ACTIVE ITEM. The category strip is a one-line
+      scroller, and on 3 of the 5 category pages at 360 the chip carrying aria-current
+      stood off the right edge: Crypto by 92px, Culture by 223, General by 356, which is
+      the whole chip. `scroll-start-target` is the CSS answer to exactly this and NEITHER
+      Chromium 151 NOR WebKit 26.5 supports it, measured with CSS.supports before this was
+      written. scrollLeft is set directly rather than through scrollIntoView, because
+      scrollIntoView also moves the page, and rectangles rather than offsetLeft, because
+      offsetLeft is measured from the offsetParent and this list is not one.
+   2. A CHECKBOX HAS NO ESCAPE, NO FOCUS TRAP AND NO FOCUS RESTORE. The sheet is a
+      checkbox, which buys ONE markup and ONE set of radios and does not buy the three
+      things a modal surface owes a keyboard. `inert` is the answer to the trap and it
+      takes a WALK: what has to become inert is every SIBLING along the path from the
+      sheet up to <body>, and nothing else, because inert INHERITS DOWN and setting it on
+      an ancestor would take the sheet with it. Three elements are skipped on purpose and
+      they are the ones that CLOSE it: the toggle, which Space still has to reach, and the
+      two labels pointing at it, one of which is the scrim. Sealing the way out along with
+      the room is how a trap becomes a cage.
+      EVERY PATH GOES THROUGH ONE FUNCTION, because the first build listened for `change`
+      and Escape sets `checked` in script: **a property assignment fires no event**, so the
+      sheet closed and left 26 elements inert behind it. That is the same sentence this
+      file already carries about Reset and the printed value, met a second time in one day.
+   3. A <label> IS NOT A TAB STOP. `Show results` and the close were labels, which is
+      correct for the pointer and invisible to a keyboard: a 262px brass button that Tab
+      never reaches. They are <button>s now and this closes them, so the CSS-only exits
+      that remain are the scrim and the mark, both of which are pointer paths anyway.
+   4. RESET IS THE OTHER HALF OF THE DOT. One <label> checks one radio and a reset checks
+      two. `change` is DISPATCHED and not merely implied, because the value printed beside
+      each row is written by this page's own change listener. */
+(function () {
+  var ul = document.querySelector('.cat-nav > ul');
+  var act = ul && ul.querySelector('[aria-current]');
+  if (act) {
+    var box = act.closest('li') || act;
+    var r = box.getBoundingClientRect(), b = ul.getBoundingClientRect();
+    ul.scrollLeft += (r.left - b.left) - (b.width - r.width) / 2;
+  }
+
+  var toggle = document.getElementById('filtersOpen');
+  var sheet = document.querySelector('.feed-head > .feed-controls');
+  var sealed = [], last = null;
+
+  function seal(on) {
+    while (sealed.length) sealed.pop().inert = false;
+    if (!on || !sheet) return;
+    var node = sheet;
+    while (node && node.parentNode && node !== document.body) {
+      var sib = node.parentNode.firstElementChild;
+      for (; sib; sib = sib.nextElementSibling) {
+        if (sib === node || sib.inert) continue;
+        if (sib === toggle || sib.getAttribute('for') === 'filtersOpen') continue;
+        sib.inert = true;
+        sealed.push(sib);
+      }
+      node = node.parentNode;
+    }
+  }
+
+  /* One function for every path in and out. The rAF is not a flourish: activating a
+     <label> moves focus to its input AFTER this runs, so a focus() called here is
+     overwritten and the sheet opens with the caret still outside it. */
+  function apply() {
+    if (!toggle || !sheet) return;
+    if (toggle.checked) {
+      if (!sealed.length) last = document.activeElement;
+      seal(true);
+      requestAnimationFrame(function () {
+        var first = sheet.querySelector('button, summary, [href], input:not([type=radio])');
+        if (first && first.focus) first.focus();
+      });
+    } else {
+      seal(false);
+      if (last && last.focus) { last.focus(); last = null; }
+    }
+  }
+  function close() { if (toggle && toggle.checked) { toggle.checked = false; apply(); } }
+
+  if (toggle) toggle.addEventListener('change', apply);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  var outs = document.querySelectorAll('.filters-done, .filters-close');
+  for (var k = 0; k < outs.length; k++) outs[k].addEventListener('click', close);
+
+  var reset = document.querySelector('.filters-reset');
+  if (reset) reset.addEventListener('click', function () {
+    var d = document.querySelectorAll('.filter-panel input[data-default]');
+    for (var i = 0; i < d.length; i++) {
+      if (d[i].checked) continue;
+      d[i].checked = true;
+      d[i].dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  });
+})();
+</script>
+
+    <!-- The `?side=` arrival script is NOT on this page. It exists so a YES or NO tapped on a
+       card lands here with that side pressed, and with no parameter it CLEARS every side and
+       holds Confirm again, which on this screen would un-ready the one state the screen is.
+       The four other bet-state pages do not carry it either. docs/backlog.md 185. -->
 </body>
 </html>

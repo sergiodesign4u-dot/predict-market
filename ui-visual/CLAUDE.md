@@ -1,6 +1,7 @@
 # ui-visual/ - the painted tree
 
-109 documents, 108 of them screens, the colour copies of `wireframes/`. This tree owns **the visual
+110 documents, 109 of them screens, the colour copies of `wireframes/`. It was 109 and 108 until
+2026-08-17, when the state a bet is actually in got a page of its own, `docs/backlog.md` 185. This tree owns **the visual
 layer**: colour, type, radius, photography, texture. It does not own what is on the page.
 
 **AND SINCE 2026-08-16 IT OWNS ONE THING THAT IS NOT VISUAL, WITH A REASON.** 58 of the 108 screens

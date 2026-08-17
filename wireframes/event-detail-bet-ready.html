@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wireframe - Event Detail (logged out - state: success / binary)</title>
+  <title>Wireframe - Event Detail (logged in - state: success / binary - bet panel: ready to confirm)</title>
 <style>
     /* ================================================================================
        ONE OF 109 COPIES. This tree links no stylesheet, so every rule below stands in
@@ -841,7 +841,7 @@
 
     </style>
 </head>
-<body data-loggedin-target="event-detail.html">
+<body>
   <!-- ===== Wireframe screen-tree nav (meta navigation, identical on every wireframe page) ===== -->
   <button type="button" class="wf-toggle" id="wfToggle" aria-label="Open screen tree" aria-expanded="false">
     <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -880,13 +880,13 @@
           <li><a href="event-detail-error.html">error</a></li>
           <li><a href="event-detail-loading.html">loading</a></li>
           <li><a href="event-detail-resolved.html">resolved-while-reading</a></li>
-          <li><a href="event-detail-bet-ready.html">bet panel: ready to confirm</a></li>
+          <li class="cur"><a href="event-detail-bet-ready.html">bet panel: ready to confirm (this page)</a></li>
             <li><a href="event-detail-bet-insufficient.html">bet panel: insufficient-balance</a></li>
           <li><a href="event-detail-bet-reconcile.html">bet panel: S5 reconcile</a></li>
           <li><a href="event-detail-bet-processing.html">bet panel: processing</a></li>
           <li><a href="event-detail-bet-error.html">bet panel: on-chain error</a></li>
           <li class="wf-substate">Logged out</li>
-          <li class="cur"><a href="event-detail-logged-out.html">success / binary (this page)</a></li>
+          <li><a href="event-detail-logged-out.html">success / binary</a></li>
           <li><a href="event-detail-logged-out-multi.html">success / multi-outcome</a></li>
           <li><a href="event-detail-logged-out-error.html">error</a></li>
           <li><a href="event-detail-logged-out-loading.html">loading</a></li>
@@ -1117,7 +1117,7 @@
          until it takes focus. Structure lives here; the painted twin takes its look from
          components/base.css. -->
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <!-- Header (logged-out: no account; Log in / Sign up replace balance and avatar) -->
+    <!-- Header (lean: logo = Events/home, right icon cluster) -->
     <header class="app-header">
       <div class="row">
         <div class="left">
@@ -1138,27 +1138,66 @@
 
 
         <div class="utility">
-          <!-- Favorites kept as an affordance; tapping it logged-out routes to Sign In (saving needs an account). -->
-          <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Favorites (sign in to save)">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-          </button>
+          <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
+          <div class="bal-toggle desk-only">
+            <span class="bal-figure"><span class="bal-label" id="balLabel">Portfolio</span> <span class="bal-amt" id="balAmt">$142.00</span></span>
+            <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Portfolio)">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg>
+            </button>
+            <button type="button" class="icon-btn bal-add" data-open="deposit" aria-label="Add funds">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
 
-          <!-- Notifications kept as an affordance; tapping it logged-out routes to Sign In. No unread badge when logged out. -->
+          <!-- Favorites: desktop header only (on mobile it is the bottom-bar slot). -->
+          <a class="icon-btn desk-only" href="favorites.html" aria-label="Favorites, see saved events">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></svg>
+          </a>
+
+          <!-- Search: a utility on every screen, not a navigation slot. -->
           <a class="icon-btn search-open" href="event-feed-search.html" aria-label="Search events">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><g transform="translate(0.8472 0.8472) scale(0.9294)"><path fill="currentColor" fill-rule="evenodd" d="M11.5 2.75a8.75 8.75 0 1 0 0 17.5a8.75 8.75 0 0 0 0-17.5M1.25 11.5c0-5.66 4.59-10.25 10.25-10.25S21.75 5.84 21.75 11.5c0 2.56-.939 4.902-2.491 6.698l3.271 3.272a.75.75 0 1 1-1.06 1.06l-3.272-3.271A10.2 10.2 0 0 1 11.5 21.75c-5.66 0-10.25-4.59-10.25-10.25" clip-rule="evenodd"/></g></svg>
           </a>
-          <button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
-          </button>
+          <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
+          <details class="notif-menu">
+            <summary aria-label="Notifications, 3 unread">
+              <span class="bell-wrap">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.75 9.71v-.705C18.75 5.136 15.726 2 12 2S5.25 5.136 5.25 9.005v.705a4.4 4.4 0 0 1-.692 2.375L3.45 13.81c-1.011 1.575.062 3.68 1.966 3.843a51 51 0 0 0 13.167 0c1.904-.163 2.977-2.268 1.966-3.843l-1.108-1.725a4.4 4.4 0 0 1-.692-2.375"/><path fill="currentColor" d="M7.243 18.545a5.002 5.002 0 0 0 9.513 0c-3.145.28-6.367.281-9.513 0"/></svg>
+                <span class="badge-dot">3</span>
+              </span>
+            </summary>
+            <div class="dropdown notif-drop" role="menu">
+              <ul>
+                <li><a class="nav-item nav-row nav-row-stack" href="win.html"><strong>Bet resolved</strong><span>US government shutdown before Jul 1, 2026 - YES won</span></a></li>
+                <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
+                <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
+              </ul>
+              <a class="notif-all" href="notifications.html">See all notifications</a>
+            </div>
+          </details>
 
-          <!-- Auth entries replace the balance figure and the avatar dropdown entirely. -->
-          <div class="auth-btns">
-            <button type="button" class="btn btn-secondary btn-sm" data-open="signin">Sign in</button>
-            <button type="button" class="btn btn-primary btn-sm" data-open="signin">Sign up</button>
-          </div>
+          <details class="avatar-menu">
+            <summary aria-label="Account menu">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="dropdown" role="menu">
+              <ul>
+                <li><a class="nav-item nav-row" href="my-profile.html" role="menuitem">My Profile</a></li>
+                <li><a class="nav-item nav-row" href="active-bets.html" role="menuitem">My Bets</a></li>
+                <li><a class="nav-item nav-row" href="favorites.html" role="menuitem">Favorites</a></li>
+                <li><a class="nav-item nav-row" href="wallet.html" role="menuitem">Wallet</a></li>
+                <li><a class="nav-item nav-row" href="how-it-works.html" role="menuitem">How It Works</a></li>
+                <li><a class="nav-item nav-row" href="event-feed-logged-out.html" role="menuitem">Logout</a></li>
+              </ul>
+            </div>
+          </details>
         </div>
       </div>
-    <nav class="cat-condensed" aria-label="Categories (sticky header)">
+      <!-- Condensed category strip: hidden until you scroll past the full category
+           bar, then it slides into the sticky header so the tabs stay reachable.
+           Small, icon-less chips (the full bar below keeps its icons). -->
+      <nav class="cat-condensed" aria-label="Categories (sticky header)">
         <ul>
           <li><a class="chip chip-quiet" href="event-feed.html">Trending</a></li>
           <li aria-current="location"><a class="chip chip-quiet" href="event-feed-politics.html">Politics</a></li>
@@ -1257,7 +1296,11 @@
                 <span>128 comments</span>
                 <span class="seg"><button type="button" class="chip chip-rail sel">Newest</button><button class="chip chip-rail" type="button">Top</button><button class="chip chip-rail" type="button">Bettors</button></span>
               </div>
-              <button type="button" class="btn btn-prompt btn-lg btn-block cmt-signin" data-open="signin">Sign in to join the discussion</button>
+              <div class="cmt-compose">
+                <span class="cmt-av">you</span>
+                <span class="cmt-input">Add a comment...</span>
+                <button type="button" class="btn btn-primary btn-sm">Post</button>
+              </div>
               <div class="cmt-list">
                 <div class="cmt">
                   <span class="cmt-av">mm</span>
@@ -1315,13 +1358,14 @@
               <table class="ptable">
                 <thead><tr><th>Bettor</th><th>Side</th><th>Amount</th></tr></thead>
                 <tbody>
+                <tr class="you"><td>You</td><td><span class="pos-side">YES</span></td><td>$4.94</td></tr>
                 <tr><td>whale_07</td><td><span class="pos-side">YES</span></td><td>$471</td></tr>
                 <tr><td>hedge_hannah</td><td><span class="pos-side">NO</span></td><td>$588</td></tr>
                 <tr><td>marketmaven</td><td><span class="pos-side">YES</span></td><td>$121</td></tr>
                 <tr><td>polly_predicts</td><td><span class="pos-side">NO</span></td><td>$87</td></tr>
                 </tbody>
               </table>
-              <button type="button" class="btn btn-prompt btn-lg btn-block cmt-signin" data-open="signin">Sign in to place and track your bet</button>
+              <p class="pos-note">Your bet is highlighted. Bets update as the odds move.</p>
             </div>
             <div class="ed-tabpanel ed-panel-activity" role="group" aria-label="Activity">
               <p class="pos-note">Recent bets, largest first. Filter: over $5.</p>
@@ -1338,9 +1382,9 @@
         </div>
           <aside class="bet-panel">
             <div class="bp-inner">
-              <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">Pick a side</span></div>
+              <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES selected</span></div>
               <div class="bp-dir">
-                <button type="button" class="yesno-pick bp-side yes" aria-pressed="false">YES <span class="bp-pct">38%</span></button>
+                <button type="button" class="yesno-pick bp-side sel yes" aria-pressed="true">YES <span class="bp-pct">38%</span></button>
                 <button type="button" class="yesno-pick bp-side no" aria-pressed="false">NO <span class="bp-pct">62%</span></button>
               </div>
               <div>
@@ -1348,10 +1392,10 @@
                 <div class="quick"><button type="button" class="chip chip-amount">$1</button><button class="chip chip-amount sel" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button></div>
               </div>
               <div>
-                <p class="bp-pick" id="bp-pick-panel">Pick a side to see what each outcome pays.</p>
                 <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.08</span></div><div class="line due"><span>Total to pay</span><span>$5.08</span></div>
+                <div class="bp-outcomes"><div class="bp-outcome"><span>If YES wins, your side</span><b>$13.16</b></div><div class="bp-outcome"><span>If NO wins</span><b>$0.00</b></div></div>
               </div>
-              <button type="button" class="btn btn-primary btn-md btn-block" data-open="signin">Confirm bet</button>
+              <a href="event-detail-bet-processing.html" class="btn btn-primary btn-md btn-block">Confirm bet</a>
               <p class="fine">$1 minimum, no maximum. The price you see is the price you get.</p>
             </div>
           </aside>
@@ -1370,7 +1414,7 @@
     </main>
       <!-- Mobile sticky bet dock (above the bottom nav; taps expand to a confirm sheet) -->
       <div class="bet-dock" aria-label="Place your bet">
-        <button type="button" class="yesno-pick yesno-pick-bar bp-side yes" data-open-sheet="yes" aria-pressed="false">YES <span class="bp-pct">38%</span></button>
+        <button type="button" class="yesno-pick yesno-pick-bar bp-side sel yes" data-open-sheet="yes" aria-pressed="true">YES <span class="bp-pct">38%</span></button>
         <button type="button" class="yesno-pick yesno-pick-bar bp-side no" data-open-sheet="no" aria-pressed="false">NO <span class="bp-pct">62%</span></button>
       </div>
 
@@ -1380,9 +1424,9 @@
       <dialog class="app-dialog bet-sheet" id="betSheet" aria-label="Place your bet">
         <button type="button" class="sheet-grab" data-close-sheet aria-label="Close"></button>
         <div class="bp-inner">
-          <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">Pick a side</span></div>
+          <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">YES selected</span></div>
           <div class="bp-dir">
-            <button type="button" class="yesno-pick bp-side yes" aria-pressed="false">YES <span class="bp-pct">38%</span></button>
+            <button type="button" class="yesno-pick bp-side sel yes" aria-pressed="true">YES <span class="bp-pct">38%</span></button>
             <button type="button" class="yesno-pick bp-side no" aria-pressed="false">NO <span class="bp-pct">62%</span></button>
           </div>
           <div>
@@ -1390,32 +1434,32 @@
             <div class="quick"><button type="button" class="chip chip-amount">$1</button><button class="chip chip-amount sel" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button></div>
           </div>
           <div>
-            <p class="bp-pick" id="bp-pick-sheet">Pick a side to see what each outcome pays.</p>
-                <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.08</span></div><div class="line due"><span>Total to pay</span><span>$5.08</span></div>
+            <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.08</span></div><div class="line due"><span>Total to pay</span><span>$5.08</span></div>
+                <div class="bp-outcomes"><div class="bp-outcome"><span>If YES wins, your side</span><b>$13.16</b></div><div class="bp-outcome"><span>If NO wins</span><b>$0.00</b></div></div>
           </div>
-          <button type="button" class="btn btn-primary btn-lg btn-block" data-open="signin">Confirm bet</button>
+          <a href="event-detail-bet-processing.html" class="btn btn-primary btn-lg btn-block">Confirm bet</a>
           <p class="fine">$1 minimum, no maximum. The price you see is the price you get.</p>
         </div>
       </dialog>
-    <!-- Bottom navigation (mobile only, logged-out: slot 4 = Sign in) -->
+    <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
       <ul>
-        <li aria-current="location"><a class="nav-item nav-slot" href="event-feed-logged-out.html">
+        <li aria-current="location"><a class="nav-item nav-slot" href="event-feed.html">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
           <span>Events</span>
         </a></li>
-        <li><button class="nav-item nav-slot" type="button" data-open="signin">
+        <li><a class="nav-item nav-slot" href="active-bets.html">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
           <span>My Bets</span>
-        </button></li>
-        <li><button class="nav-item nav-slot" type="button" data-open="signin">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+        </a></li>
+        <li><a class="nav-item nav-slot" href="favorites.html">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></svg>
           <span>Favorites</span>
-        </button></li>
-        <li><button class="nav-item nav-slot" type="button" data-open="signin" aria-label="Sign in">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 12h10M16 8l4 4-4 4M14 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8"/></svg>
-          <span>Sign in</span>
-        </button></li>
+        </a></li>
+        <li><a class="nav-item nav-slot" href="my-profile.html" aria-label="Portfolio, balance $142">
+          <span class="bn-bal">$142</span>
+          <span>Portfolio</span>
+        </a></li>
       </ul>
     </nav>
     <!-- Footer (global element) -->
@@ -1820,49 +1864,9 @@
   </script>
 
 
-  <script id="uv-side">
-/* THE SIDE COMES FROM THE READER, AND 212 LINKS IN THIS TREE HAD BEEN SAYING SO INTO NOTHING.
-   Every feed card's `Back YES` and `Back NO` is `event-detail.html?side=yes` or `?side=no`, 212 of
-   them across the painted tree, and until 2026-08-16 **0 documents read `location.search`**: the
-   parameter was a promise the product made on every card and kept nowhere, which is the same shape
-   as the `pattern="[0-9.$]*"` that validated nothing on 113 amount fields.
-   What shipped instead was `sel yes` typed into the markup, so the app picked a side on a two-sided
-   money decision and then had to apologise for it in the hint slot ("YES pre-selected"). Nothing is
-   chosen at load now. Arrive from a card and you arrive on the side you pressed; arrive by the
-   title and you choose, with Confirm carrying `aria-disabled` until you do.
-   `aria-disabled` AND NOT `disabled`, which is the reason button.css already writes for the deposit
-   dialog: a natively disabled control is not focusable, so the person who most needs to know why it
-   is dead is the one who cannot reach it. */
-(function(){
-  var q = (new URLSearchParams(location.search).get('side') || '').toLowerCase();
-  var want = (q === 'yes' || q === 'no') ? q : '';
-  var live = function(e){ return e && !e.closest('.hiw-step'); };
-  function apply(){
-    document.querySelectorAll('.bp-dir .bp-side, .bet-dock .bp-side').forEach(function(b){
-      if (!live(b)) return;
-      var on = !!want && b.classList.contains(want);
-      b.classList.toggle('sel', on);
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
-    });
-    document.querySelectorAll('.bp-hint').forEach(function(h){
-      if (!live(h)) return;
-      h.textContent = want ? want.toUpperCase() + ' selected' : 'Pick a side';
-    });
-    document.querySelectorAll('[data-sheet-confirm], .bet-panel .btn-primary.btn-block, .bet-sheet .btn-primary.btn-block').forEach(function(c){
-      if (!live(c)) return;
-      if (want) c.removeAttribute('aria-disabled'); else c.setAttribute('aria-disabled', 'true');
-    });
-  }
-  document.addEventListener('click', function(e){
-    var t = e.target;
-    if (!t || !t.closest) return;
-    var dead = t.closest('[aria-disabled="true"]');
-    if (dead) { e.preventDefault(); e.stopPropagation(); return; }
-    var b = t.closest('.bp-dir .bp-side, .bet-dock .bp-side');
-    if (live(b)) { want = b.classList.contains('no') ? 'no' : 'yes'; apply(); }
-  }, true);
-  apply();
-})();
-  </script>
+    <!-- The `?side=` arrival script is NOT on this page. It exists so a YES or NO tapped on a
+       card lands here with that side pressed, and with no parameter it CLEARS every side and
+       holds Confirm again, which on this screen would un-ready the one state the screen is.
+       The four other bet-state pages do not carry it either. docs/backlog.md 185. -->
 </body>
 </html>

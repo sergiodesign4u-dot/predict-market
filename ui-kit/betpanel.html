@@ -19,8 +19,10 @@
   <div class="tk-hero">
     <h1>Bet panel</h1>
     <p>Level 3, and <b>the control a bet is actually placed with</b>. Three faces that never coexist:
-    a pinned panel above 760, a fixed dock below it, and a sheet the dock opens. <b>11 panels, 8
-    docks and 8 sheets on 11 painted screens.</b> The sheets were 4 until 2026-08-16, when the four
+    a pinned panel above 760, a fixed dock below it, and a sheet the dock opens. <b>12 panels, 9
+    docks and 9 sheets on 12 painted screens.</b> It was 11, 8 and 8 until 2026-08-17, when the state
+    a bet is actually in - side chosen, nothing wrong, Confirm live - got a page of its own,
+    <code>event-detail-bet-ready.html</code>. The sheets were 4 until 2026-08-16, when the four
     bet-state screens got one: the panel is <code>display:none</code> below 760, so
     <b>every state of the act this component exists for rendered on desktop only</b>. Measured
     2026-08-08 in a browser at 390 and 1280, re-counted 2026-08-16.</p>
@@ -181,8 +183,11 @@
     <b>5.49:1</b> against that ground and <code>opacity:1</code>, because a second dimming on top of
     a role change reads as a rendering fault. <b>It is a <code>&lt;button&gt;</code> and not a
     link.</b> The product carried <code>&lt;a href="event-detail-bet-processing.html"
-    aria-disabled="true"&gt;</code> until 2026-08-17, so a control that declared itself unavailable
-    navigated when it was clicked; <code>aria-disabled</code> stays rather than the property, for
+    aria-disabled="true"&gt;</code> until 2026-08-17. <b>It did not actually navigate</b>, because those
+    screens carry a script that calls <code>preventDefault()</code> on a click inside
+    <code>[aria-disabled="true"]</code>; the change stands because a control that is not a destination
+    should not be a link, and because safety should not rest on a script that four of the eight
+    surfaces happen to carry. <code>aria-disabled</code> stays rather than the property, for
     the reason <code>components/button.css</code> gives, and <code>aria-describedby</code> points at
     the instruction so the reason it is held is reachable and not only visible.</p>
   </section>

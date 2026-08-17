@@ -171,6 +171,7 @@ push();});})();</script>
         <a href="event-detail-loading.html" class="sidebar-sub-link">loading</a>
         <a href="event-detail-error.html" class="sidebar-sub-link">error</a>
         <div class="sidebar-divider sub">Placing a bet</div>
+        <a href="event-detail-bet-ready.html" class="sidebar-sub-link">ready</a>
         <a href="event-detail-bet-reconcile.html" class="sidebar-sub-link">price moved</a>
         <a href="event-detail-bet-insufficient.html" class="sidebar-sub-link">low balance</a>
         <a href="event-detail-bet-processing.html" class="sidebar-sub-link">processing</a>
@@ -1178,28 +1179,47 @@ document.addEventListener('click', function (e) {
     var hint = panel.querySelector('.bp-hint');
     function num(v){ return parseFloat(String(v).replace(/[^0-9.]/g, '')) || 0; }
     function money(x){ return '$' + x.toFixed(2); }
-    function sideBtn(){ return panel.querySelector('.bp-dir .bp-side.sel') || (dir && dir.querySelector('.bp-side')); }
+    /* NO FALLBACK. It read `|| dir.querySelector('.bp-side')` until 2026-08-17, so with
+       nothing chosen it returned the FIRST side and every figure below was computed
+       from a side the reader had not picked. docs/backlog.md 180. */
+    function sideBtn(){ return panel.querySelector('.bp-dir .bp-side.sel'); }
     function setLine(prefix, val){
       panel.querySelectorAll('.line').forEach(function(line){
         var s = line.querySelectorAll('span');
         if(s.length >= 2 && s[0].textContent.indexOf(prefix) === 0){ s[s.length - 1].textContent = val; }
       });
     }
+    /* BOTH OUTCOMES OR NEITHER, 2026-08-17. The pair stands only where a side IS picked,
+       so this writes it when it is there and says nothing when it is not. The winning side
+       gets stake / price and the other gets zero, which is the whole content of the block:
+       a payout printed without the zero beside it is a promise with no cost. */
+    function setOutcomes(A, btn){
+      var box = panel.querySelector('.bp-outcomes');
+      if(!box) return;
+      var side = btn ? (btn.textContent || '').trim().split(/\s+/)[0].toUpperCase() : '';
+      var pctEl = btn && btn.querySelector('.bp-pct');
+      var p = pctEl ? num(pctEl.textContent) / 100 : 0;
+      var win = p > 0 ? A / p : 0;
+      box.querySelectorAll('.bp-outcome').forEach(function(row){
+        var lbl = row.querySelector('span'), fig = row.querySelector('b');
+        if(!lbl || !fig) return;
+        var which = lbl.textContent.indexOf('YES') >= 0 ? 'YES' : 'NO';
+        var mine = !!side && which === side;
+        lbl.textContent = 'If ' + which + ' wins' + (mine ? ', your side' : '');
+        fig.textContent = money(mine ? win : 0);
+      });
+    }
     function recompute(){
       if(!input) return;
       var A = num(input.value), btn = sideBtn();
-      if(!btn) return;
-      var pctEl = btn.querySelector('.bp-pct');
-      var p = pctEl ? num(pctEl.textContent) / 100 : 0.5;
       /* THE FEE IS ROUNDED TO CENTS BEFORE THE TOTAL IS BUILT OUT OF IT, and that order is the
          whole point. 1.5 per cent of $5.00 is 7.5 cents, so a raw fee prints $0.07 while a raw
          total prints $5.08, and the two figures a person can see then do not add up. The fee that
          is charged is the fee that is shown. */
-      var payout = p > 0 ? A / p : 0, fee = Math.round(A * 1.5) / 100;
-      setLine('Price now', Math.round(p * 100) + '%');
+      var fee = Math.round(A * 1.5) / 100;
       setLine('Fee', money(fee));
       setLine('Total to pay', money(A + fee));
-      setLine('Potential payout', money(payout));
+      setOutcomes(A, btn);
     }
     if(dir){
       dir.querySelectorAll('.bp-side').forEach(function(b){
