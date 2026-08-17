@@ -12,6 +12,48 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - One class on two strips, and the row that nearly got filed as already fixed
+
+**Backlog 182, decided by the product owner: the category band keeps the taxonomy
+and the `Show:` row is deleted.** The row said one taxonomy wore four controls with
+two different mechanics. Re-measured before touching anything, and it nearly read
+as stale: **every `.chip-quiet` in the header carries an `href`**, which looks
+exactly like the two mechanics having merged, and an earlier row had given the
+sub-category chips their links.
+
+**They had not merged. `.chip-quiet` is worn by two different strips.** The
+condensed sticky band is anchors that route to a category page; the `Show:` row is
+`<button data-filter="politics">` with no href at all, narrowing the list already
+on screen, writing no URL, undoable by nothing. **Reading one class was not enough
+to see that**, and the report I gave from the first grep was wrong for exactly one
+turn.
+
+**6 blocks and 10 scripts removed across 11 documents in all three trees**, with
+the rules taken out of `components/catnav.css`, the 15 grey inline copies and
+`ui-kit/catnav.html`. `.feed-subfilter` and `.subfilter-lab` are off the component
+manifest, and the long note in `catnav.css` that explained why a rule keyed to `a`
+inside a sub-filter was written for the wrong strip is one sentence now, because
+the difference no longer has to be explained to anybody.
+
+**Measured before and after in the same run**: the feed goes **7,517 to 7,463 at
+390 and 3,969 to 3,915 at 1280**, controls 273 to 268, and the taxonomy's words on
+one document **24 to 19**.
+
+**AND THE FIRST REMOVAL BROKE THE TREE IN A WAY A COUNT CAUGHT AND A RENDER
+CONFIRMED.** A non-greedy regex cut at the first `</div>` that stood on its own
+line, which is not the block's own, and left **2 unbalanced closes**: `article.card`
+ran 125px past the viewport on 3 documents at 1280 and the sweep came back with 9
+sideways-scrolling renders. Reverted whole and redone with a depth-aware remover
+that asserts each file's div balance before writing. **This is the second time in
+one session that a non-greedy match on `</div>` has cost a pass**, and both times
+the tell was arithmetic rather than a screenshot.
+
+**Verified over 279 documents, 1,116 renders**, Chromium and WebKit at 390 and
+1280: 0 sideways scroll with the probe proved sighted, 0 duplicate ids, 0 shut
+dialogs visible, 0 page errors, and 0 sub-filter elements anywhere.
+
+---
+
 ## 2026-08-17 - A card is where a person decides whether to look, not where they choose
 
 **Reported by the product owner on a screenshot, and it is the fourth time in

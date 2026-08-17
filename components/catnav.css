@@ -1,5 +1,5 @@
 /* components/catnav.css
-   Component: catnav. Classes: .cat-nav, .feed-subfilter, .subcat, .subcat-head, .subfilter-lab.
+   Component: catnav. Classes: .cat-nav, .subcat, .subcat-head.
 
    Reads: --edge-groove-dark, --edge-groove-light, --text-muted
    Stand:  ui-kit/catnav.html, and ui-kit/molecules.html#catnav-lt for the level and its reason (the -lt is the shelf's own id suffix and not a variant of this component: ui-kit/CLAUDE.md)
@@ -98,12 +98,10 @@
    label at all. The alternative considered and refused was renaming the chips, which
    would have meant giving the four categories a second set of names to say the same
    four things.
-   The label sits OUTSIDE the scroller, which is why `.feed-subfilter` is the flex row
+   The label sat OUTSIDE the scroller, which is why the removed row was the flex row
    and the `<ul>` is the item that scrolls: a label inside a scroller is a label that
    leaves. `min-width:0` on the item, because a flex item's default `min-width:auto`
    refuses to shrink below its content and the row would push the label off instead. */
-.cat-main .feed-subfilter{margin:var(--space-2) 0 var(--space-16);display:flex;align-items:center;gap:var(--space-8)}
-.subfilter-lab{flex:0 0 auto;font-size:var(--text-13);color:var(--text-muted)}
 /* THE ROW IS ONE COURSE AND IT SCROLLS, SINCE 2026-08-14. It was `flex-wrap:wrap`,
    and the five chips need 332px of row: at 360 the feed column offers 298, so the
    row stood in TWO courses and cost 83.0px where one course costs 37.5. Measured
@@ -124,27 +122,13 @@
    hands it to the neighbours. Measured with it in place: 4px above the row and 12
    below, where this file's own two numbers are 2 and 16. An inward ring costs no
    geometry at all. */
-.cat-main .feed-subfilter ul{list-style:none;margin:0;padding:0;flex:1 1 auto;min-width:0;display:flex;flex-wrap:nowrap;gap:var(--space-8);overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-inline:contain}
-.cat-main .feed-subfilter ul::-webkit-scrollbar{display:none}
-.cat-main .feed-subfilter .chip:focus-visible{outline-offset:calc(var(--ring) * -1)}
-.cat-main .feed-subfilter li{flex:0 0 auto}
-/* `.cat-main .feed-subfilter a` was here. The sub-filter has no links any more:
-   it filters the page it is on instead of navigating away from it, so its chips
-   are buttons, and the rule that painted an anchor had nothing left to reach.
-   THE EXCEPTION THIS NOTE USED TO CARRY NAMED A DELETED FILE. Until 2026-08-12
-   it read "the only <a> left inside one is in ui-kit/kit.html, and the frozen
-   kit is provenance, not product". THAT FILE DOES NOT EXIST: it went with the
-   old vitrine on 2026-08-07 and survives only as prose in `docs/kit-archive/`,
-   so the sentence was defending a rule against a page nobody could open.
-   RE-MEASURED 2026-08-12 over every .html in the repository, .git excluded: the
-   tree holds **4 `.feed-subfilter` blocks and 20 chips, 20 of 20 `<button>` and
-   0 `<a>`, in 0 files**. There is no exception any more, which is the stronger
-   version of the same rule: the sub-filter is a control and not a route.
-   The CONTRAST is the reason this is written down at all. `.cat-nav` above it
-   IS a route, and its chips are 602 anchors against 24 buttons across the same
-   corpus. Two strips that look alike and one navigates: the element is the
-   difference, so a rule keyed to `a` inside a sub-filter is a rule written for
-   the wrong strip. */
+/* THE `Show:` ROW IS GONE, 2026-08-17, docs/backlog.md 182, chosen by the product owner, and
+   the note that stood here is worth one sentence because it names what the removal settled.
+   TWO STRIPS LOOKED ALIKE AND ONLY ONE NAVIGATED: `.cat-nav`'s chips were 602 anchors that route
+   to a category page, and the sub-filter's were 20 of 20 buttons that narrowed the list already on
+   screen, the same pill about 1,580px apart on the busiest document, with nothing on either saying
+   which was which. The band keeps the taxonomy and the row is deleted, so the difference no longer
+   has to be explained to anybody. */
 .feed-inner .cat-nav{margin:0}
 .feed-inner .cat-nav>ul{max-width:none;margin:0;padding:var(--space-2);gap:var(--space-8);display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
 .feed-inner .cat-nav>ul::-webkit-scrollbar{display:none}
@@ -223,9 +207,6 @@
    property of the family is the same defect as a count taken by matching a string.
    ============================================================================ */
 @supports (animation-timeline:scroll(self inline)){
-  .cat-nav>ul,.cat-main .feed-subfilter ul,.subcat ul{
-    animation-name:edge-fade;animation-timing-function:linear;animation-fill-mode:both;
-    animation-timeline:scroll(self inline)}
   @keyframes edge-fade{
     0%{mask-image:linear-gradient(90deg,transparent 0,#000 0,#000 calc(100% - var(--space-32)),transparent 100%)}
     8%,92%{mask-image:linear-gradient(90deg,transparent 0,#000 var(--space-32),#000 calc(100% - var(--space-32)),transparent 100%)}

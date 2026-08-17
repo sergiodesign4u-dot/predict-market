@@ -676,23 +676,7 @@ document.addEventListener('click', function (e) {
           </div>
         </div>
 
-        <!-- #90: content sub-filter chips for the Trending feed (a quick filter over
-             the feed content; the top category nav stays the main category switcher). -->
-        <!-- The label is the whole point of this row since 2026-08-14. The chips below say the
-             same five words as the category navigation 100px above them, and the two do
-             different things: that one ROUTES to a category page, this one NARROWS the list
-             already on screen. `Show:` is what says which, and it is the same shape as the
-             `Sort:` and `How often:` labels this feed's other two filters already carry. -->
-        <div class="feed-subfilter" role="group" aria-label="Show events by category">
-          <span class="subfilter-lab">Show:</span>
-          <ul>
-            <li aria-current="page"><button type="button" data-filter="all" aria-pressed="true" class="chip chip-quiet">All</button></li>
-            <li><button type="button" data-filter="politics" aria-pressed="false" class="chip chip-quiet">Politics</button></li>
-            <li><button type="button" data-filter="crypto" aria-pressed="false" class="chip chip-quiet">Crypto</button></li>
-            <li><button type="button" data-filter="culture" aria-pressed="false" class="chip chip-quiet">Culture</button></li>
-            <li><button type="button" data-filter="general" aria-pressed="false" class="chip chip-quiet">General</button></li>
-          </ul>
-        </div><!-- /feed-subfilter -->
+        <!-- /feed-subfilter -->
 
         <div class="grid">
 
@@ -1563,36 +1547,6 @@ document.addEventListener('click', function (e) {
   });
 })();
   </script>
-<script id="uv-subfilter">
-/* The Trending sub-filter filters Trending. Built by
-   wireframes/_generators/subfilter.py; see that file for why this is not the
-   category nav. A hidden card is hidden by the ATTRIBUTE, so it leaves the
-   accessibility tree with the layout. */
-(function () {
-  var group = document.querySelector('.feed-subfilter');
-  if (!group) return;
-  var grid = document.querySelector('.grid');
-  if (!grid) return;
-  group.addEventListener('click', function (e) {
-    var btn = e.target.closest('button[data-filter]');
-    if (!btn) return;
-    var want = btn.getAttribute('data-filter');
-    var all = group.querySelectorAll('button[data-filter]');
-    for (var i = 0; i < all.length; i++) {
-      var on = all[i] === btn;
-      all[i].setAttribute('aria-pressed', on ? 'true' : 'false');
-      all[i].parentNode.toggleAttribute('aria-current', false);
-      if (on) { all[i].parentNode.setAttribute('aria-current', 'page'); }
-      else { all[i].parentNode.removeAttribute('aria-current'); }
-    }
-    var cards = grid.querySelectorAll('.card');
-    for (var j = 0; j < cards.length; j++) {
-      var cat = cards[j].getAttribute('data-cat');
-      cards[j].toggleAttribute('hidden', want !== 'all' && cat !== want);
-    }
-  });
-})();
-</script>
 <script id="uv-filters-sheet">
 /* Four things a stylesheet cannot say, and nothing else.
    1. A SCROLLER DOES NOT START AT ITS ACTIVE ITEM. The category strip is a one-line
