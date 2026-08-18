@@ -12,6 +12,113 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-19 - The five document pages were reading at the feed's blurb size, and a slot with one placement is a slot nobody can disagree with
+
+**Reported by the user, on a screenshot, and the report was right.** The question was why the
+policy and company pages are so narrow. The answer is three decisions stacked, each taken for a
+different page, and only one of the three is a width.
+
+**FIRST, THE PAINT HAD DRIFTED FROM THE STRUCTURE AND NOTHING COULD SEE IT.** Measured on
+`terms.html` at 1440: the reading column is **600px in the paint and 720px in grey**, and inside it
+the paint stood on **three left edges** where the grey twin has one. The blocks read 600 / 346 / 300
+centred / 417 offset 91, six widths on one page. **Column width is not among the seven differences
+`wireframes/_conventions.md` declares**, so this was drift by that document's own definition.
+
+**THE MECHANISM IS ONE DECLARATION MEANING TWO OPPOSITE THINGS.** `.feed-seo` carries
+`max-width:var(--container-read);margin-left:auto;margin-right:auto` in `seo-plate.css`, written for
+`.feed-inner>.feed-seo`, where it centres an 800px block in a 1400px page. `.read-col` is
+`display:flex;flex-direction:column`, and **on a flex item an auto inline margin cancels the
+`align-items:stretch` default**: the item stops filling the line, shrink-wraps to its content and
+centres what is left. So every section stood at 417px, which is `.feed-seo p{max-width:46ch}` plus
+the block's own padding, at an offset of 91. **The prose cap was sizing the block that holds it.**
+`seo-plate.css` already carried the override for the OTHER re-placement,
+`.feed-seo-wrap .feed-seo{max-width:none;margin:0}`, written the day the plate became a grid. The
+flex column never got one, and **every instrument in this repository reads ONE document**, so a
+block disagreeing with its own twin in the other tree is a fact standing on two.
+
+**SECOND, THE REAL CAUSE OF "NARROW" IS A TYPE SCALE AND NOT A WIDTH, AND EVERY SWEEP PASSED IT.**
+`.feed-seo p` is `--text-13`. That is right where the component was born, the SEO plate at the foot
+of a card grid, a paragraph a reader passes on the way somewhere else. The five documents reuse the
+component, so **the only surfaces in this product that are nothing but prose read end to end were
+set in the smallest prose size the product has**, and at 13px the 60-to-75-character band the system
+already enforces caps the column at **409px on a 1220px frame**. The line length was INSIDE the
+band, the contrast was clean, nothing scrolled sideways. **The band was doing its job and the job
+was the wrong size.** No instrument here asks what reading mode a placement is.
+
+**THE FIX COSTS NOTHING BECAUSE `--measure` IS IN `ch`.** Swept over all five documents at 13, 14
+and 16px against six caps from 38 to 48ch, longest full line counted by walking each text node and
+counting characters per line BOX: **the count is identical down every size column, 62 / 66 / 69 /
+71 / 73 / 77**, and it is the cap that moves it, never the size. 46ch is the last rung inside the
+band. So `--text-16` bought **409px to 503px of column at 70 to 73 characters**, measured on all
+five from DESK 640 up. At 360 the gutter caps it at 298px and 41 to 44 characters, which is the
+phone and not the rule. 16px rather than 14 because it is `1rem`: **a policy document is the page a
+reader who has raised their browser's default font size is most likely to have come to read.**
+`DESIGN.md` section 3 gained a **Document** rank rather than a wider Body, and the Measure Rule's
+list of sizes went from three to four. **The invented example in `tokens.css` arrived**: that
+comment said one number would cap "an 11px legal line and a 16px paragraph" at one character count,
+then admitted there was no 16px capped paragraph and the example was invented. A px cap anywhere in
+the 373 to 405 window it swept would have given 50 to 54 characters, under the band at every point
+of it. It gave 70 to 73. **The prediction was tested rather than reasoned, three months after it was
+written.**
+
+**THIRD, A MEASURE WRITTEN TWICE IS A MEASURE WRITTEN WRONG.** `--container-doc` capped the column
+at 600 while `--measure` capped the prose at 409, and the 191px between them was a ragged edge
+nobody had decided. **The token is deleted, and the sentence that killed it was in its own comment**:
+*the day a document puts uncapped prose straight into this column, the cap belongs on the prose and
+not here*. That day had come and gone and the cap went on the prose AND stayed on the column. The
+column takes `--measure` now and every block in it fills it, so `.protect-page`, `.related-more` and
+`.feed-seo p` have their caps taken off INSIDE `.read-col` and keep them everywhere else:
+`.protect-page` on `wallet.html` still needs one, because there the sentence stands in a column
+sized for cards and 150ch wide.
+
+**FOURTH, A SPACE THE IA DECLARED WOULD NOT BE FILLED HAD A BORDER DRAWN AROUND IT.**
+`ia/docs/blocks.md` says the desktop change on these pages is that the contents is promoted to a
+sticky left column and **"the body keeps its 60 to 75 character measure rather than filling the
+remaining width"**. The paint read the first half. `.cat-layout` is a browse plate sized for a card
+grid that wants every pixel of the 1400 band, and on a document it drew a border, a bevel and a
+shadow around the part the IA had just said would go unused: at 1440, a 1140px plate holding a 214px
+rail and a 600px column, 144px between them and 153px of nothing to the right; at 1600, `about.html`
+running 600 of 1140. `.cat-layout:has(.read-col){width:fit-content}` from the RAIL rung, in both
+trees. Measured after, at 1440: **795 on terms, 561 on about**, and every block in the column reads
+the same number at every width, 258 / 298 / 328 / 503.4.
+
+**AND THE SAME READ TURNED THE IA'S OWN RUNG.** That paragraph said the contents is promoted at
+`min-width 760px`; the build has always used 900 and nobody had read the difference. Forcing the
+rail on at four widths gives the column **388px at 760, 428 at 800, 488 at 860 and its full 503 at
+900**. So promoting at 760 would make the reading column **narrower than it is at 640 with no rail
+at all**, which is the one thing the sentence beside it forbids. RAIL 900 is the first width at
+which both halves of the declaration are true at once. **A declaration has two halves and a build
+can satisfy one of them.**
+
+**BACKLOG 46 CLOSED BY ITS OWN CONDITION, AND THAT IS WHY ANY OF THIS WAS FINDABLE.** The row said
+`.read-col` was a slot in a pattern file standing on ONE screen, two short of the threshold, and
+that what it needed was **"a second and a third long document, not an edit"**. Four landed on
+2026-08-18. It stands on 5 painted screens and 5 grey twins, so the rung is cleared by three rather
+than missed by two, and nobody touched the rule. **A slot with one placement is a slot nobody can
+disagree with**: one document cannot show that a block is at the wrong width, because there is
+nothing for it to be at the wrong width against. Five could, and did, within a day.
+
+**WHAT WAS REJECTED.** An aside gutter down the right, carrying the prototype notice, the
+effective-date block, the trust sentence and the sibling list, so the plate would be full. Rejected
+on two grounds, one of them the IA's: `blocks.md` refuses family 3 by name, "a right-hand contents
+would be a second answer to a question the system has answered", and `seo.md` pins B4 and B7 between
+the H1 and the first H2 as content so the outline stays the document's own. The second ground is
+arithmetic: there are six aside blocks against fourteen prose sections on `terms`, so the gutter
+would run out after roughly 500px of a 5,800px column and the emptiness it was built to remove would
+come back four times longer. **Widening the prose was rejected too**, and it is the thing the report
+literally asked for: the line is already at the top of the band and it cannot get longer. The page
+can stop being smaller than the document it holds, which is a different fix for the same complaint.
+
+**ALSO RECORDED RATHER THAN FIXED.** `about.html` runs the DOCUMENT body shape and the bank gives it
+STATEMENT: B15 hero and B19 closing action are declared and not built, B16 and B17 are built as prose
+sections rather than as a custody block and a stats band, and it carries a breadcrumb the bank gives
+to DOC only. The **prototype notice** is on all five pages in both trees and was banked nowhere; it
+is B21 now, SCAFFOLDING, the same rank as the wireframe's TBD chip, and it leaves the day real legal
+copy lands. And grey `wallet.html` does not carry the `.protect-page` class its painted twin does,
+5 in grey against 6 in the paint.
+
+---
+
 ## 2026-08-18 - The roll-out was never a stage here, and running its checklist anyway found the thing three artefacts disagreed about
 
 **There is no roll-out row in `README.md` and none in `assets/_roadmap.js`.** The pipeline's stage 12

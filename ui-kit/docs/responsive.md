@@ -265,7 +265,7 @@ answered as a side effect of something else. Item 115 is closed.
 
 | token | value | why |
 |---|---|---|
-| `--measure` | `46ch` | the line measure for continuous text, in `ch` so one number caps an 11px legal line and a 16px paragraph at the same character count. **It was `66ch` here and in the token until 2026-08-12, on the stated ground that 66 is inside the 60-75 band `DESIGN.md` states, and the ground was a unit error**: `ch` is the advance of the digit zero and a lining digit is one of the widest glyphs a prose face draws, so in DM Sans 1ch is 1.48 mean prose advances and 66ch bought about 98 characters. The census could not see it because it computed `width / 1ch` and compared the answer to a band written in characters, which is asking the token its own question. 46 is `67.5 / 1.48`, and it was swept as well as derived: the window in which every capped placement sits inside 60 to 75 is 45ch to 48ch |
+| `--measure` | `46ch` | the line measure for continuous text, in `ch` so one number caps an 11px legal line and a 16px paragraph at the same character count. **That example was invented when it was written and it became real on 2026-08-19**, when the five document pages went from `--text-13` to `--text-16` and `.read-col` took this token as its own cap: swept at 13, 14 and 16px against six caps from 38 to 48ch, the longest full line is the same count down every size column, and 46ch measures 70 to 73 characters on all five documents from DESK up. A px cap anywhere in the 373 to 405 window would have given 50 to 54, under the band, exactly as `tokens.css` predicted. **It was `66ch` here and in the token until 2026-08-12, on the stated ground that 66 is inside the 60-75 band `DESIGN.md` states, and the ground was a unit error**: `ch` is the advance of the digit zero and a lining digit is one of the widest glyphs a prose face draws, so in DM Sans 1ch is 1.48 mean prose advances and 66ch bought about 98 characters. The census could not see it because it computed `width / 1ch` and compared the answer to a band written in characters, which is asking the token its own question. 46 is `67.5 / 1.48`, and it was swept as well as derived: the window in which every capped placement sits inside 60 to 75 is 45ch to 48ch |
 | `--grid-col-min` | `300px` | the card floor, moved out of `patterns/card-grid.css` where it stood as a literal |
 | `--plate-inset` | `clamp(16px, …, 28px)`, ramping DESK to DETAIL | the inset INSIDE the two-stone plate, added 2026-08-12. It is the second half of a step the first half had been taking alone: `--gutter` is the page gutter OUTSIDE the plate and went 40 to 14 at the rung, and this one held 28 at every width, so the two nested gutters took 42px a side on a phone, 84 of 360, before a card began. Read in one place, `base.css`, the two-stone plate, and only by the SIDES: vertical space has nothing above it competing for the same 360px. **Both STEPPED at DESK until 2026-08-13 and both RAMP now**, 640 to 760, because a step of 38px a side against a window that has grown by one pixel takes 76px out of the content column at the rung: backlog 129 |
 
@@ -274,8 +274,12 @@ space ladder is already the gap ladder; a second name for 16px would be one numb
 spellings. **The column count is not a token either**: `auto-fit` counts the columns, which is why
 the track works at 1100px, a width nobody designed for.
 
-`--container-max`, `--container-read` and `--container-doc` already existed and are not renamed: the
-page frame was decided at stage 08 and this stage adds to it rather than restating it.
+`--container-max` and `--container-read` already existed and are not renamed: the page frame was
+decided at stage 08 and this stage adds to it rather than restating it. **`--container-doc` stood in
+that line too and it is DELETED, 2026-08-19**, by the sentence in its own comment: *the day a
+document puts uncapped prose straight into this column, the cap belongs on the prose and not here*.
+That day had come and the cap went on the prose AND stayed on the column, so the five document pages
+drew a 600px column around 409px of text. `.read-col` takes `--measure` now.
 
 **None of these tokens has a theme pair, and that is not an oversight.** A `:root` / `[data-theme]`
 pair is a property of the semantic level, which is colour. Width and spacing are geometry.

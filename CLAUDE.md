@@ -488,6 +488,53 @@ because it is a stance rather than a principle, and it is written once, here.
   The sweep behind it would have returned a clean zero over three trees. Mobile emulation turned an
   instrument off twice in one day here, this and `scrollLeft`. **Build the control out of the same
   material as the page, or it is measuring a different document.**
+- **A COMPONENT CARRIES ITS FIRST PLACEMENT'S TYPE SCALE INTO ITS SECOND, AND NO INSTRUMENT HERE
+  ASKS WHETHER A SIZE FITS THE READING MODE.** The user reported the five document pages as too
+  narrow, and the cause was not a width. `.feed-seo` is the SEO plate from the foot of a card grid
+  and its prose is `--text-13`, the size of a paragraph a reader passes on the way somewhere else.
+  `about`, `terms`, `privacy`, `cookies` and `responsible-betting` reuse the component, so **the only
+  five surfaces in this product that are nothing but prose read end to end were set in the smallest
+  prose size the product has**, and at 13px the 60-to-75-character band the system already enforces
+  caps the column at 409px on a 1220px frame. Every sweep passed: the line length was INSIDE the
+  band, the contrast was clean, nothing scrolled sideways. **The band was doing its job and the job
+  was the wrong size.** The fix costs nothing because `--measure` is in `ch` and a `ch` scales with
+  the face: swept over all five documents at 13, 14 and 16px against six caps from 38 to 48ch, the
+  longest full line is the SAME count down every size column, 62 / 66 / 69 / 71 / 73 / 77. So 16px
+  bought 409px to 503px of column at 70 to 73 characters, and `DESIGN.md` gained a Document rank
+  rather than a wider Body. **Ask what reading mode a placement is, not only whether it renders**,
+  which is the same sentence as asking what a control is FOR before measuring whether it draws.
+- **AN AUTO MARGIN MEANS ONE THING IN A BLOCK AND THE OPPOSITE ON A FLEX ITEM, AND THE SAME
+  DECLARATION THEREFORE INVERTS WHEN A COMPONENT MOVES.** `.feed-seo` carries
+  `max-width:800px;margin-left:auto;margin-right:auto`, which centres an 800px block in the 1400px
+  feed. Dropped into `.read-col`, a `display:flex;flex-direction:column`, **the auto inline margin
+  cancels the `align-items:stretch` default**: the item stops filling the line, shrink-wraps to its
+  content and centres what is left. Measured at 1440: 417px at an offset of 91 inside a 600px
+  column, so a legal document's headings, notices and body had **three left edges where its grey
+  twin has one**, and the 417 was the paragraph's own `46ch` cap sizing the block that holds it.
+  `seo-plate.css` already carried the override for the OTHER re-placement and the flex column never
+  got one. **Column width is not among the seven differences `wireframes/_conventions.md` declares**,
+  so this was drift by that document's own definition, and it took a cross-TREE read to see it: every
+  instrument here reads one document. **A slot with ONE placement is a slot nobody can disagree
+  with** - `.read-col` stood on `terms.html` alone from the day it was written, `ui-kit/patterns.html`
+  filed it as two screens short of the pattern threshold, and the four documents that arrived on
+  2026-08-18 both closed the row and exposed six widths on one page. **And a measure written twice is
+  a measure written wrong**: `--container-doc` capped the column at 600 while `--measure` capped the
+  prose at 409, which is one question answered at two numbers, and the 191px between them was a
+  ragged edge nobody had decided. The token is deleted; the column carries the measure once.
+- **A SPACE THE IA HAS DECLARED WILL NOT BE FILLED MUST NOT HAVE A BORDER DRAWN AROUND IT.**
+  `ia/docs/blocks.md` says of the document pages that desktop promotes the contents to a sticky left
+  column and **"the body keeps its 60 to 75 character measure rather than filling the remaining
+  width"**. The paint read the first half and not the second: `.cat-layout` is a browse plate sized
+  for a card grid that wants every pixel of the 1400 band, and on a document it drew a border, a
+  bevel and a shadow around the part the IA had just said would go unused - at 1440 a 1140px plate
+  holding a 214px rail and a 600px column, 144px between them and 153px of nothing to the right; at
+  1600 `about.html` ran 600 of 1140. The plate fits the document now in both trees. **The same read
+  turned the IA's own rung**: that paragraph said the contents is promoted at `min-width 760px`, and
+  forcing the rail on at four widths gives the column **388px at 760, 428 at 800, 488 at 860 and its
+  full 503 at 900** - so promoting at 760 would make the reading column NARROWER than it is at 640
+  with no rail, which is the one thing the sentence beside it forbids. RAIL 900 is the first width at
+  which both halves of the declaration are true at once. **A declaration has two halves and a build
+  can satisfy one of them.**
 - **No em dash**, anywhere, and **"anywhere" is the repository rather than the folders somebody
   remembered.** It was measured over six on 2026-08-16, read 0, and was published as "the only file
   that carries any" while `concept/brand-toolkit/` carried 35 across four files. Those are gone;

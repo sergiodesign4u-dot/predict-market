@@ -154,22 +154,33 @@
       <table class="tk-tbl">
         <thead><tr><th></th><th>at 390</th><th>at 1280</th></tr></thead>
         <tbody>
-          <tr><td>the column</td><td>293x6357</td><td><b>600x4124</b>, centred in what the rail leaves</td></tr>
-          <tr><td>the measure</td><td colspan="2">600px on 13px prose, against the plate's 800px which measures <b>89ch</b></td></tr>
-          <tr><td>children</td><td colspan="2">21, each at a 16 gap and no margin of its own</td></tr>
+          <tr><td>the column</td><td>328x8133</td><td><b>503x6140</b>, and the plate around it is 795 wide, which is the rail plus the column and nothing else</td></tr>
+          <tr><td>the measure</td><td colspan="2"><code>--measure</code>, 46ch at <code>--text-16</code>, which is <b>503px and 70 to 73 characters</b> measured on all five documents from 640 up. It read <b>600px on 13px prose</b> until 2026-08-19, with the prose capped again at 409px inside it: one question answered twice at two different numbers</td></tr>
+          <tr><td>children</td><td colspan="2"><b>12 to 22</b> across the five documents, each at a 16 gap and no margin of its own. It said 21 when terms was the only one</td></tr>
         </tbody>
       </table>
     </div>
     <p class="tk-note"><b>The measure is the other half of the fix.</b> The feed's plate uses a width
     that is 89 characters on this type, against the 60 to 75 the design decides, <b>and a long
-    document is where a reader sees the difference</b>. So the column takes a narrower token and
+    document is where a reader sees the difference</b>. So the column takes the measure itself and
     centres itself.</p>
-    <p class="tk-note"><b>It stands on ONE screen</b>, which is two short of the threshold this rung
-    enforces. It is filed with its number rather than quietly kept: <code>docs/backlog.md</code>
-    46.</p>
+    <p class="tk-why"><b>THE COLUMN CARRIES THE MEASURE ONCE, SINCE 2026-08-19.</b> It was
+    <code>--container-doc</code> at 600px with <code>--measure</code> on the paragraphs inside it, so
+    a document page drew a 600px column holding 409px of text and <b>the 191px between them was a
+    ragged edge nobody had decided</b>. Four more widths and two more left edges came off the same
+    page in the same pass. The reading size went from <code>--text-13</code>, which is the size of a
+    card blurb on the feed this component was born on, to <code>--text-16</code>: <b>a <code>ch</code>
+    scales with the face, so the character band did not move</b>, and the column grew from 409 to
+    503px for it. Swept at 13, 14 and 16px over six caps from 38 to 48ch: the longest line is the
+    same count down every size column, and 46ch is the last rung inside the band.</p>
+    <p class="tk-note"><b>It stood on ONE screen and it now stands on FIVE</b>, about, terms, privacy,
+    cookies and responsible-betting, so the rung this pattern file enforces is cleared by three
+    rather than missed by two. <code>docs/backlog.md</code> 46 said what it needed in as many words,
+    <i>a second and a third long document, not an edit</i>, and it was closed by the tree growing on
+    2026-08-18 rather than by anybody touching the rule.</p>
     <p class="tk-why"><b>And a column measured in a table on a page that never drew it is a number
-    with no subject.</b> The three blocks below are the head of <code>terms.html</code>, the one
-    screen that carries it: <code>.cat-main.read-col</code> with prose children at the container's
+    with no subject.</b> The three blocks below are the head of <code>terms.html</code>, the longest
+    of the five that carry it: <code>.cat-main.read-col</code> with prose children at the container's
     gap and no margin of their own.</p>
     <div class="tk-pairv">
       <div class="tk-th">Vault, dark</div>
@@ -194,7 +205,8 @@
 
   <!-- ================================================================== width --><section class="tk-sec" id="width">
     <h2>What it does with width</h2>
-    <p class="tk-note"><b>Its own width query: 900 RAIL.</b> The shell turns from a column into a row at RAIL and takes a 20px gap. That is the whole pattern: it decides the arrangement and the rail decides its own 214px. <b>A pattern adds no styles of its own beyond the arrangement</b>, and this file is 59 declarations across the six patterns of which not one is a colour, a face, a border or a surface.</p>
+    <p class="tk-note"><b>Its own width query: 900 RAIL, and since 2026-08-19 there are two rules at that rung rather than one.</b> The first is the one this pattern has always had: the shell turns from a column into a row at RAIL and takes a 20px gap, it decides the arrangement and the rail decides its own 214px. <b>The second is the first thing this shell has ever decided about its own width</b>, <code>.cat-layout:has(.read-col){width:fit-content;max-width:100%;margin-inline:auto}</code>, and it applies on the five document pages only, because <code>.read-col</code> stands on those and nowhere else. <b>The reason is quoted rather than reasoned</b>: <code>ia/docs/blocks.md</code> says that on desktop the contents is promoted to a sticky left column and "the body keeps its 60 to 75 character measure rather than filling the remaining width", so the leftover width is DECLARED to go unused, and a plate that goes on drawing a border, a bevel and a shadow around width nobody asked for is drawing a page around nothing. Measured at 1440: <code>terms.html</code> is a <b>795px</b> plate against 1140 before, and <code>about.html</code>, which carries no rail, is <b>561</b>.</p>
+    <p class="tk-note"><b>A pattern still adds no styles of its own beyond the arrangement, and the count moved.</b> Counted on 2026-08-19 by reading the six files in <code>components/patterns/</code> with comments stripped: <b>75 declarations over 23 properties</b>, where this line said <b>59</b> and the pattern shelf said 59 over 16 on 2026-08-08. Not one of the 75 is a colour, a border, a background or a surface, which is the half of the claim that holds unchanged. <b>Eight of them are neither an arrangement nor a colour and are worth naming rather than counting past</b>: four <code>font-size</code>, three <code>line-height</code> and one <code>text-align</code>, every one of them inside <code>.read-col</code> and every one of them from the reading-column repair. A column that sets its own reading size is a pattern holding a type decision, and it is written here rather than in a component because <b>the size is a property of the arrangement, not of the block</b>, exactly as the gap already was: <code>--measure</code> is in <code>ch</code>, so the column's font-size and the column's cap are one decision and splitting them across two files is how a page ends up asking the same question twice at two numbers.</p>
   </section>
 
   <section class="tk-sec" id="rule">

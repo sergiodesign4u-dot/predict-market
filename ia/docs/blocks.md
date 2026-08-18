@@ -121,7 +121,7 @@ observation with its date rather than replaced by a guess.
 | B5 | **Table of contents, anchored**, sticky on desktop and collapsed above the body on mobile | DOC | MVP | SEO (the H2 list is decided in IA and the anchors are its internal-linking plane); FJ1 scanning behaviour | Families 2 and 3: Maze, Slack, Craft, GoFundMe, Leonardo, Instacart | Futuur ships **16,739 words behind one anchor**. That is the measured failure this block exists against, and the threshold is stated in the bank rather than left to taste: over 1,500 words the contents is not optional |
 | B6 | **The document body**: H2 sections, no skipped levels, numbered, section titles written as the reader's own question | DOC | MVP | `voice/docs/voice.md`; `CLAUDE.md` heading rule (one H1, no skipped level, in both trees) | Revolut: "Can I open an Account?", "How is my money protected?", "How do I close my Account?" | Revolut is alone in doing this and it does it in a bank's register. Ours carries the same question form into a spectator product, and the lexicon is already fixed in `microcopy.md`, so the phrasing does not drift between five documents |
 | B7 | **The money answer, lifted to the top** of Terms and Privacy: one plain provable sentence about custody, linked to How It Works | DOC | MVP | FJ4, EJ2, GZ3; benchmark C2, where Polymarket and Futuur both score 1 of 5 | Revolut buries the same answer at section 7 ("How is my money protected?"); Polymarket has no such sentence anywhere | **This is the differentiator on this page type.** The benchmark says our two closest competitors score 1/5 on the funds question. Putting the answer above the fold of the legal page costs one paragraph and closes the gap the whole product is positioned on |
-| B8 | **Reading aids**: a 60 to 75 CHARACTER column, which is `--measure:46ch`, the `seo-plate` type scale, anchor links on every H2 | DOC | MVP | `DESIGN.md` section 3 (body prose at 13-14px and 60 to 75 characters). **This cell and the two above it said `60-75ch` until 2026-08-18, which is the mistake `tokens.css` records against this very unit**: `ch` is the advance of a zero, not of a character, so `70ch` renders about 104 characters and the number would have been wrong on all four documents this bank is about to build | Bet365 and Futuur both sit at a 720px column; Revolut at 1000px | All three exceed our own rule. 720px at 16px is roughly 90 characters and 1000px is well past 120. We already decided 60 to 75 characters and measured it; here it simply gets enforced on a page that is nothing but prose. **This was the FOURTH `60-75ch` in this row and the first pass caught three**, which is the point about a unit written wrong: it does not appear once, it appears everywhere the number is repeated |
+| B8 | **Reading aids**: a 60 to 75 CHARACTER column, which is `--measure:46ch`, **a DOCUMENT type scale of 16px/1.6 since 2026-08-19**, anchor links on every H2 | DOC | MVP | `DESIGN.md` section 3 (body prose at 13-14px and 60 to 75 characters). **This cell and the two above it said `60-75ch` until 2026-08-18, which is the mistake `tokens.css` records against this very unit**: `ch` is the advance of a zero, not of a character, so `70ch` renders about 104 characters and the number would have been wrong on all four documents this bank is about to build | Bet365 and Futuur both sit at a 720px column; Revolut at 1000px | All three exceed our own rule. 720px at 16px is roughly 90 characters and 1000px is well past 120. We already decided 60 to 75 characters and measured it; here it simply gets enforced on a page that is nothing but prose. **This was the FOURTH `60-75ch` in this row and the first pass caught three**, which is the point about a unit written wrong: it does not appear once, it appears everywhere the number is repeated. **AND THE CELL SAID `the seo-plate type scale` UNTIL 2026-08-19, WHICH IS THE OTHER HALF OF THE SAME MISTAKE.** `seo-plate` is the plate at the foot of a card grid and its prose is `--text-13`, the size of a paragraph a reader passes on the way somewhere else; naming it here set the only five surfaces in this product that are nothing but prose read end to end in the smallest prose size the product has, and the reader saw a 409px column on a 1220px frame. The competitor cell beside this one is the tell: Bet365 and Futuur were marked down for a 720px column, and the number that made theirs wrong was the CHARACTER count, not the type size. Ours is 16px/1.6 now at the same 46ch, and the band did not move by one character, because a `ch` scales with the face. `DESIGN.md` section 3 carries the Document rank |
 | B9 | **Sibling documents block**: the other four, named, at the foot of the body | BOTH | MVP | Backlog item 27 (the footer promises destinations the map omits); GZ5 | Family 4: Square, Expedia, ManyChat | The five nodes are a SET and every source treats each as an island. A reader who reached Cookie Policy from the cookie banner has no path to Privacy on any page we read except through a footer they have to hunt |
 | B10 | **Contact line**: the one address for a question about this document | BOTH | MVP | `ia/docs/sitemap.md` Contact / Support node; EJ2 | Futuur closes with support@; Mocha exposes a copyable legal address | Both bury it in the last paragraph. Ours is a block, because a person who has a question about a term has already decided not to finish reading |
 | B11 | **Footer + bottom nav**, unchanged | BOTH | MVP | R9 (the bottom nav stands on every screen); "a screen is never a dead end" | Kalshi and Revolut keep the footer; Futuur's Notion page and Bet365's help article have none | Two of the seven pages we read have no way back into the product except the browser's back button. Our own rule already forbids that, and this is the first page type where it would have been tempting to make an exception |
@@ -133,6 +133,7 @@ observation with its date rather than replaced by a guess.
 | B17 | **Numbers block**: events resolved, USDC held, markets live | STATEMENT | MVP | SJ2, EJ2; `aarrr.md` social proof | Teal, Clearful, Homerun all ship a stats band; Polymarket uses volume as its entire trust case | Volume as social proof is the competitor default and it says nothing about whether you get paid. Ours counts **resolutions**, which is the only figure that answers the question a new user is actually asking |
 | B18 | **People**, named, with what each is accountable for | STATEMENT | LATER | EJ2 | Kalshi (Tarek & Luana), Dropbox, Fable, Craft | LATER because the team is not public yet. Named so the About layout reserves the slot instead of being redrawn |
 | B19 | **Closing action back into the product** | STATEMENT | MVP | MJ; the "never a dead end" rule | Kalshi ends About with "Create your account"; Pastel, Bezi, Limitless all end a legal page with a CTA | The competitors' CTA is a signup button on a page about the company. Ours routes to the feed, not to signup: this stage's own rule is that a bet panel does not stand where a person has not chosen an event, and a signup gate is the same mistake one step earlier |
+| B21 | **Prototype notice**: this page's structure, headings and dates are real and its body text is not an operative term | BOTH | **SCAFFOLDING** | nothing, and that is the point | nothing: no shipped product carries one | **BANKED 2026-08-19, AFTER IT HAD BEEN BUILT ON ALL FIVE PAGES AND DECLARED ON NONE.** It is the first block in the DOM after the H1 on every one of the five, in both trees, and no row here described it, so a reader of this bank would have found a composition the pages do not have. It is SCAFFOLDING rather than MVP, the same rank as the wireframe's `TBD` chip: it exists because the copy under it is a description of what each section would decide rather than the clause itself, and **it leaves the day real legal copy lands**. Banked rather than deleted because a page that carries prototype copy and does not say so is the worse of the two failures |
 | B20 | **Logo wall of investors / partners** | STATEMENT | **NOT BANKED** | nothing | Maze, Teal, Fable, Krisp, Nothing, Kalshi ("Our Backers") | Six of the ten statement pages ship one and it traces to no job. Rule 1 keeps it out. Recorded here so that the next person who notices its absence finds the decision instead of the gap |
 
 ### What the sources offered and the bank refused
@@ -158,20 +159,51 @@ breadcrumb parent (B9), and the effective-date block gains a changed-line (B4).
 
 ### Block order, mobile first (base 360px)
 
-DOCUMENT: B1 header, B2 breadcrumb, B3 H1 + lede, B4 effective-date block, B7 money answer, B5
-contents (collapsed), B6 body, B10 contact, B9 siblings, B11 footer + bottom nav.
+DOCUMENT: B1 header, B2 breadcrumb, B3 H1 + lede, **B21 prototype notice**, B4 effective-date
+block, B7 money answer, B5 contents (collapsed), B6 body, B10 contact, B9 siblings, B11 footer +
+bottom nav.
 
 B7 stands above the contents on purpose. On mobile the contents is a collapsed control, so anything
 below it is below a closed door; the one sentence that answers the money question is the last thing
 that may sit there.
 
-Desktop (min-width 760px) promotes B5 to a sticky left column and the body keeps its 60 to 75 character measure
+Desktop promotes B5 to a sticky left column and the body keeps its 60 to 75 character measure
 rather than filling the remaining width. That is family 2, chosen over family 3 because our side
 panel vocabulary already puts navigation on the left in all three trees and a right-hand contents
 would be a second answer to a question the system has answered.
 
-STATEMENT: B1, B3, B15 hero, B16 resolution and custody, B17 numbers, B18 people (LATER), B19
-closing action, B11.
+**THIS LINE SAID `min-width 760px` UNTIL 2026-08-19 AND THE RUNG IS 900, WHICH IS THE RAIL RUNG THE
+LADDER ALREADY HAS.** The build has always used 900 and the difference was never read; measured on
+`ui-visual/terms.html` by forcing the rail on at four widths, the reading column arrives at
+**388px at 760, 428 at 800, 488 at 860 and its full 503 at 900**. So promoting the contents at 760
+would have made the reading column **narrower than it is at 640 with no rail at all**, which is the
+one thing the sentence beside it forbids: the body keeps its measure, and a rail that takes the
+measure to pay for itself is a rail that has been given the wrong rung. 900 is not a compromise
+here, it is the first width at which both halves of this paragraph are true at once. The ladder is
+`components/tokens.css`, page frame: DESK 40rem, DETAIL 47.5rem, RAIL 56.25rem.
+
+**AND THE SECOND HALF OF THIS PARAGRAPH DECIDES SOMETHING THE PAINT WAS NOT DOING.** "The body keeps
+its measure rather than filling the remaining width" means the width is DECLARED to go unused, and
+until 2026-08-19 the painted plate went on drawing a border, a bevel and a shadow around the part
+that goes unused: at 1440 a 1140px plate held a 214px rail and a 600px column with 144px between
+them and 153px of nothing to the right, and about.html ran 600 of 1140. The plate fits the document
+now, in both trees. A declaration that a space will not be filled is also a declaration that nothing
+should be drawn around it.
+
+STATEMENT: B1, B3, **B21 prototype notice**, B15 hero, B16 resolution and custody, B17 numbers,
+B18 people (LATER), B19 closing action, B11.
+
+**WHAT `about.html` ACTUALLY HOLDS, READ FROM THE DOM 2026-08-19, AND IT IS NOT THIS ORDER.** The
+page runs the DOCUMENT body shape: a breadcrumb, the H1, B21, the money answer, a link to How It
+Works, then **five `feed-seo` sections** (`#what`, `#resolution`, `#money`, `#numbers`,
+`#regulation`), a contact box and B9 siblings. So **B16 and B17 are built as prose sections rather
+than as a custody block and a stats band**, which is a fair rendering of both; **B15 hero and B19
+closing action are declared and not built at all**; and the page carries **B2, a breadcrumb this
+bank gives to DOC only**. Recorded rather than quietly corrected, because two of the three are
+product decisions and not layout ones: a numbers band needs numbers and a closing action needs a
+destination chosen. The order above is what the bank decides, this paragraph is what the disk holds,
+and `docs/backlog.md` carries the row. It is the same class as `blocks.md` line 45: the four
+documents were built against `terms.html` rather than from this table.
 
 ### States
 

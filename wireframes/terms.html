@@ -662,16 +662,40 @@
 
     /* ---- THIS PAGE: a second stylesheet stood here until 2026-08-17, appended by a later script rather than merged. One file, one stylesheet now ---- */
 
-    /* Terms is the one screen in this tree with a reading column and a table of contents.
+    /* FIVE screens in this tree carry a reading column and FOUR of them a table of contents:
+       about, terms, privacy, cookies and responsible-betting, and about is the one without,
+       because `ia/docs/blocks.md` gives it the STATEMENT profile and B5 is DOC only. This said
+       "Terms is the one screen" from the day terms was written until 2026-08-19, and the other
+       four arrived on 2026-08-18.
        Every value is written out: a grey file holds no token, so a number here is the number
-       the painted twin resolves its token to, and the two are kept in step by hand. */
+       the painted twin resolves its token to, and the two are kept in step by hand. A PIXEL
+       PORTS AND A CHARACTER COUNT DOES NOT: this tree draws in whatever face the browser hands
+       it, so 503px is 71 characters in the paint's DM Sans and 82 here. The box is the promise,
+       the count belongs to the layer that owns the typeface. */
     /* The page inset. The painted twin gets it from `.feed-inner`, which is a plate and is one
        of the six differences, so the grey page has to declare the inset itself or a legal
        document 316px wide runs its text into both edges at 320. Measured before it was added:
        first text at x=2 here against x=31 in the paint. */
     main.feed > .cat-layout { padding: 0 12px; }
-    .read-col { display: flex; flex-direction: column; gap: 16px; max-width: 720px; margin-inline: auto; }
+    /* THE COLUMN IS THE MEASURE, AND THE NUMBER IS THE ONE THE PAINTED TWIN RESOLVES ITS TOKEN
+       TO, 2026-08-19. `--measure` is 46ch and this column reads at 16px, which is 503px of DM
+       Sans. It said 720 here while the paint stood at 600, so the two trees disagreed about one
+       block by 120px, and the comment three lines above promises they are kept in step by hand.
+       The reading size is 16px rather than the 13px this tree gave the body: these five are the
+       only screens in the product that are nothing but prose read end to end, and 13px is the
+       size of a card blurb. The character band does not move, because a `ch` scales with the
+       face: swept at 13, 14 and 16px, the longest line is the same count at every size and the
+       cap is what moves it. Every block in the column now fills the column; the per-block caps
+       below are taken OFF rather than tuned, because a second measure inside a reading column
+       is what put six widths and three left edges on this page. */
+    .read-col { display: flex; flex-direction: column; gap: 16px; max-width: 503px; margin-inline: auto;
+      font-size: 16px; line-height: 1.6; }
     .read-col > * { margin-block: 0; }
+    .read-col .feed-seo p, .read-col .feed-seo dd, .read-col .feed-seo dt { font-size: inherit; line-height: inherit; max-width: none; }
+    .read-col .protect { max-width: none; font-size: 14px; line-height: 1.6; padding: 12px; }
+    .read-col .reconcile-box { font-size: 14px; padding: 12px; }
+    .read-col .quiet-box { text-align: start; }
+    .read-col .related-more { max-width: none; margin-inline: 0; }
 
     /* The contents list is a disclosure on a phone and a sticky rail from 900px, which is the
        RAIL rung and the same width the sub-category rail arrives at. */
@@ -708,11 +732,17 @@
       width: 100%; max-width: 300px; min-height: 44px; padding: 12px; border: 1px solid #888;
       background: #dcdcdc; font-size: 13px; text-decoration: none; color: #222; }
 
+    /* THE ARRANGEMENT STOPS WHERE THE DOCUMENT STOPS. The painted twin caps its plate the same
+       way and for a reason `ia/docs/blocks.md` line 168 states outright: the desktop change is
+       that the contents is promoted to a sticky left column and the body keeps its measure
+       rather than filling the remaining width. The width is DECLARED to go unused, so the row
+       fits itself instead of standing a rail and a column at two ends of an empty box. */
     @media (min-width: 900px) {
       .toc { flex: 0 0 214px; position: sticky; top: 66px; align-self: flex-start;
         max-height: calc(100vh - 82px); overflow-y: auto; overscroll-behavior: contain; }
       .toc-head { display: none; }
       .toc-d::details-content { display: block; content-visibility: visible; }
+      main.feed > .cat-layout { width: fit-content; max-width: 100%; margin-inline: auto; }
     }
 
     /* ---- SHARED (94 of 114, 7 rules): search, the field itself, where the mark used to be a trip to a page ---- */

@@ -396,17 +396,17 @@
                                 prose inside it is capped one selector deeper and runs 87
                                 characters, measured at 1440 on event-feed-crypto.html. A
                                 container is not a measure. */
-  --container-doc:600px;     /* the reading column of a long document: 67ch of the same face,
-                                measured the same way. A separate value and not a correction of
-                                the one above, because the two answer different questions and a
-                                single number would move ten shipped screens to fix one.
-                                67ch IS 99 CHARACTERS, by the same conversion, so this column is
-                                over the band as a line and inside it as a column. It stays 600px
-                                because it is a COLUMN: what wraps inside it is capped by
-                                --measure, and terms.html reads 68 characters on its longest line
-                                with both in force, measured at 1440. The day a document puts
-                                uncapped prose straight into this column, the cap belongs on the
-                                prose and not here. */
+  /* `--container-doc:600px` STOOD HERE AND IT IS GONE, 2026-08-19, and the sentence that killed
+     it was already written in its own comment: "The day a document puts uncapped prose straight
+     into this column, the cap belongs on the prose and not here." That day had come and gone
+     without anyone noticing, because the cap went on the prose AND stayed here, which is one
+     question answered twice at two different numbers. `.read-col` was 600px with `--measure` on
+     the paragraphs inside it, so a document page carried a 600px column holding 409px of text,
+     and the 191px between them was the ragged edge a reader sees. The column takes `--measure`
+     now and every block in it fills the column. It had exactly one reader, `.read-col` in
+     patterns/browse-shell.css, so this is a deletion and not a rename; the reason it existed
+     (a long document is a different question from the feed's SEO plate) is still true and is
+     now answered by the reading SIZE rather than by a second container. */
   --container-dialog:464px;  /* how-it-works dialog */
   --container-sheet:420px;   /* outcome overlay */
   /* HOW TALL A MODAL SURFACE MAY GET, and it is ONE number now, 2026-08-14, backlog 153.
@@ -588,7 +588,8 @@
                                 the gutter.
                                 WHY `ch` SURVIVES THE CORRECTION. It is the only unit that holds
                                 a character count across type sizes, which is what the rule is
-                                about, and the three sizes here are real: 11, 12 and 13px. The
+                                about, and the sizes here are real: 11, 12, 13 and, from
+                                2026-08-19, 16px. It said THREE until that day. The
                                 px alternative was swept rather than dismissed, and it does
                                 work TODAY: one px value puts all five placements inside 60 to
                                 75 anywhere from 373 to 405px, a window 33px wide, and it is
@@ -600,11 +601,27 @@
                                 clears only at the top. A px cap is solved for the sizes that
                                 happen to be there; the cap is a typographic rule and it takes
                                 a typographic unit.
-                                AND THE OLD JUSTIFICATION NAMED A CASE THE PRODUCT DOES NOT
-                                HAVE. It said one number caps "an 11px legal line and a 16px
-                                paragraph" at one character count. There is no 16px capped
-                                paragraph: all five placements are 11, 12 and 13px, counted in
-                                the browser. The argument is right and the example was invented.
+                                AND THE INVENTED EXAMPLE ARRIVED, 2026-08-19, WHICH IS THE
+                                CLOSEST THING A TOKEN COMMENT EVER GETS TO A PREDICTION HOLDING.
+                                This paragraph read: the old justification names a case the
+                                product does not have, it said one number caps "an 11px legal
+                                line and a 16px paragraph" at one character count, there is no
+                                16px capped paragraph, the argument is right and the example was
+                                invented. Then the five document pages were raised from
+                                `--text-13` to `--text-16` and `.read-col` took this token as its
+                                own cap, and the sentence above it was tested rather than
+                                reasoned. The px alternative would have given 50 to 54 characters
+                                at a cap anywhere in the 373 to 405 window, under the band at
+                                every point of it, exactly as predicted; `46ch` gives **70 to 73
+                                characters measured on all five documents from DESK 640 up**, and
+                                the column that carries it is 503px rather than 409. Swept as
+                                well as derived, because the whole point is that one number is a
+                                coincidence: at 13, 14 and 16px against caps of 38 / 40 / 42 /
+                                44 / 46 / 48ch, the longest full line is the SAME count down
+                                every size column, 62 / 66 / 69 / 71 / 73 / 77. The size is free
+                                and the cap is what moves it, which is the sentence this token
+                                has been making since 2026-08-12 with no fourth size to prove it
+                                on.
                                 THE THREE RIGHT EDGES ARE NOT AN ARGUMENT AGAINST IT EITHER, and
                                 that was checked rather than waved off. A constant character
                                 count buys three pixel widths, 409 / 378 / 346, so the page frame
@@ -612,7 +629,15 @@
                                 across all 106 painted screens: .resolution, .sys-note and
                                 .protect-page NEVER STAND ON THE SAME SCREEN, 9 and 2 and 2
                                 screens with no overlap, so there is no page on which two of
-                                those edges can disagree. The page frame is about the bands a
+                                those edges can disagree. THE FOURTH EDGE, `.read-col` at 503px,
+                                ARRIVED ON 2026-08-19 AND IT IS THE ONE THAT COULD HAVE BROKEN
+                                THIS, because it stands on five screens where `.protect-page` and
+                                `.feed-seo p` also stand. It does not, and the reason is the fix
+                                rather than luck: inside that column those two no longer take the
+                                cap, so the five documents have ONE right edge and not three.
+                                Re-counted from the rendered DOM of 115 painted documents on
+                                2026-08-19, the denominator of 106 above being the tree of the
+                                day it was written. The page frame is about the bands a
                                 page is built from; a measure is about one block of prose.
                                 THE CENSUS THIS TOKEN EXISTS FOR, taken at step 4 at 1440 over
                                 all 106 painted screens with every dialog open. It counts only
@@ -641,7 +666,15 @@
                                 own them, .resolution (event-detail.css), .sys-note
                                 (state-block.css) and .protect-page (notice.css), and the
                                 .feed-seo family joined them on 2026-08-12 in seo-plate.css, so
-                                the token has five reader selectors in four files.
+                                the token had five reader selectors in four files. SIX IN FIVE
+                                FROM 2026-08-19: `.read-col` in patterns/browse-shell.css takes
+                                it as the COLUMN's own max-width, which is the first reader that
+                                is not a paragraph. On the five documents that column is the only
+                                measure in force, because the same pass took the cap off
+                                `.feed-seo p` and `.protect-page` inside it: a reading column
+                                that carries a measure and holds blocks that carry it again is
+                                one question answered twice, and the two answers were 600px and
+                                409px with a ragged 191px between them.
                                 IT IS DELIBERATELY NOT A BLANKET RULE ON `p`: a paragraph inside
                                 a card is already at 38ch and a floor that reaches it teaches
                                 the wrong thing.

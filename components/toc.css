@@ -30,7 +30,13 @@
    Reads: --bg-control-hover, --bg-pressed, --border-hairline, --color-action, --text-brass,
           --text-muted, --text-primary
    Stand:  ui-kit/toc.html, and ui-kit/molecules.html#toc for the level and its reason. WALKED 2026-08-08: HOLDS its own rows, and they are anchors, level 2, so the word UNMEASURED came off
-   Stands on: 1 ui-visual screens (terms.html)
+   Stands on: 4 ui-visual screens and their 4 grey twins (terms, privacy, cookies,
+     responsible-betting), re-counted from the rendered DOM 2026-08-19. THIS LINE SAID 1 AND NAMED
+     terms.html ALONE for the day between the four documents landing and anybody reading it, which
+     is what a typed count does. about.html is the fifth document and carries NO contents by
+     decision, not by omission: `ia/docs/blocks.md` gives it the STATEMENT profile and B5 is DOC
+     only, and the bank argues the split rather than assuming it - "pretending they are one
+     composition would give the About page a table of contents and the Terms page a team grid"
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .toc{margin:0}
@@ -46,8 +52,11 @@
    transition between them, so the change happened on the frame the pointer arrived and the
    control never answered, it just WAS different. The properties are named one at a time
    because `transition: all` animates whatever a later rule adds, including the expensive.
-   One placement, and it is the contents rail of the terms document: a list a person
-   reads down with a pointer, which is the shape that shows a dead hover fastest. */
+   One placement when this was written, the contents rail of the terms document, and FOUR
+   since 2026-08-18: cookies, privacy, responsible-betting and terms, 47 rows between them,
+   re-counted from the rendered DOM 2026-08-19. A list a person reads down with a pointer is
+   the shape that shows a dead hover fastest, and the product now has four of them instead of
+   the one this sentence was written against. */
 .toc-link{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);text-decoration:none;color:var(--text-primary);font-family:inherit;font-size:var(--text-13);font-weight:var(--weight-medium);line-height:var(--leading-snug);padding:var(--space-8);min-height:var(--control-36);border:var(--hairline) solid transparent;border-radius:var(--radius-10);
   transition:background var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard)}
 .toc-head{transition:color var(--dur-fast) var(--ease-standard)}

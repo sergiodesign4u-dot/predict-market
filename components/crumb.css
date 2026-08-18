@@ -4,14 +4,24 @@
    Reads: --border-hairline, --control-44, --space-4, --space-8, --space-16,
           --text-12, --text-brass, --text-muted, --text-primary
    Stand:  ui-kit/crumb.html, and ui-kit/vitrine.html#crumb for the level and its reason
-   Stands on: 6 ui-visual screens (how-it-works.html, terms.html, public-profile.html and its
-     three states), 6 grey twins, and nowhere else. The reason it is not on the other 102 is
-     in the block below and it is a count rather than an omission.
+   Stands on: 10 documents in ui-visual/ and 10 in wireframes/, re-counted from the rendered
+     DOM 2026-08-19: how-it-works.html, public-profile.html and its three states, and the five
+     documents about, cookies, privacy, responsible-betting and terms. It said 6 and named
+     terms.html as the only document, which was the whole product on 2026-08-16 when the block
+     below was argued; the other four landed on 2026-08-18 and each took the trail, because
+     each is exactly the case that block describes. The reason it is not on the rest of the
+     tree is in the block below and it is a count rather than an omission.
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 /* ============================================================================
    IT IS ON SIX SCREENS AND THE IA ASKED FOR IT ON SIX PAGE TYPES, 2026-08-16,
    docs/backlog.md 167. The gap between those two numbers is the whole decision.
+   IT IS ON TEN NOW AND THE DECISION DID NOT MOVE, re-counted from the rendered
+   DOM 2026-08-19: the two page types that already answer their own trail with
+   the category nav still answer it, and the four documents built on 2026-08-18
+   are four more of the case argued below rather than a fifth kind of screen.
+   A decision that survives its own set quadrupling is a decision and not a
+   coincidence of what happened to be on disk the day it was taken.
 
    `ia/docs/pages/seo.md` specifies a trail on six page types: the event detail
    (`Home > {Category} > {Event}`), the category page (`Home > {Category}`), How
@@ -44,10 +54,18 @@
 
    THE ANCESTOR WITH NO PAGE IS A `<span>`, NOT A DEAD LINK. The IA's trail for a
    legal document is `Home > Legal > {document}` and this product has no legal
-   index screen: three of the four legal pages do not exist yet. A crumb that
+   index screen. A crumb that
    points at nothing is a broken link, and this repository counts those. So the
    level is rendered as text, which is what a breadcrumb ancestor without a page
    is, and it becomes a link on the day the page exists.
+   THIS PARAGRAPH READ "three of the four legal pages do not exist yet" UNTIL
+   2026-08-19, AND THAT WAS NEVER THE REASON. All four exist now, cookies,
+   privacy, responsible-betting and terms, built 2026-08-18, and `Legal` is still
+   a `<span>` on every one of them, verified in the rendered markup: what is
+   missing is the INDEX the ancestor would point at, not the documents it sits
+   above. A reason that expires while the rule it explains stands is a reason
+   that was standing in for the real one, which is the same shape as a `Stand:`
+   line naming a file that no longer exists.
    ============================================================================ */
 
 .crumb{margin:0 0 var(--space-16)}

@@ -123,7 +123,7 @@ Geometry comes straight from a primitive. Colour goes through a role. There is n
 | `--leading-*` | 6 | 1, 1.05, 1.15, 1.3, 1.5, 1.6 |
 | `--weight-*` | 4 | 400, 500, 600, 700 |
 | `--track-*` | 8 | -.03em to .1em |
-| `--container-*` | 6 | max 1400, read 800, doc 600, dialog 464, sheet 420, sidebar 220 |
+| `--container-*` | **5** | max 1400, read 800, dialog 464, sheet 420, sidebar 220. **It was 6 and `doc 600` is deleted, 2026-08-19**: the reading column of a long document was a container 600px wide holding prose capped again at 409px by `--measure`, which is one question answered twice at two different numbers, and the 191px between them was the ragged edge a reader saw. `.read-col` takes `--measure` itself now, at `--text-16`, so the column IS the measure and every block in it fills it |
 
 Four lengths are named rather than stepped, because each answers one question: `--measure:46ch`
 (`ch` is the advance of a zero, not of a character, which is why it is 46 and not 66),

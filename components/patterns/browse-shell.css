@@ -11,19 +11,40 @@
      reads this line, which is exactly why it went unnoticed. Found by
      ui-kit/patterns.html, 2026-08-08.
    Stand:  ui-kit/browse-shell.html, and ui-kit/patterns.html#browse-shell for the shelf and the threshold
-   Stands on: 77 ui-visual screens, 76 when this was written and the tree grew
-     by one (event-feed x41, active-bets x9,
+   Stands on: 85 documents in ui-visual/ and 85 in wireframes/, counted on .cat-layout and
+     .cat-main, which stand on the same 85 each, re-counted from the rendered DOM 2026-08-19.
+     THIS LINE SAID 77 WHILE THE ROSTER THREE WORDS UNDER IT SUMMED TO 72, which is one typed
+     count disagreeing with itself inside one comment and neither half agreeing with the disk.
+     The roster is kept as the 2026-08-08 reading rather than re-typed, because a list of
+     screens is the product on the day somebody walked it and not a property of this pattern:
+     (event-feed x41, active-bets x9,
      notifications x5, public-profile x4, my-profile x3, wallet x3, favorites x3,
-     event-detail x2, maintenance, how-it-works). Fourteen different sets of
-     content across those 76, which is the argument for a pattern rather than a
-     component: the arrangement is stable and what it holds is not.
+     event-detail x2, maintenance, how-it-works). What has landed in the tree since: the three
+     search screens on 2026-08-16, event-detail-bet-ready on 2026-08-17, and the four static
+     content pages about, privacy, cookies and responsible-betting on 2026-08-18, which joined
+     terms.html in the reading column below and are why backlog 46 closed. Fourteen different
+     sets of content were counted across the 72, which is the argument for a pattern rather
+     than a component: the arrangement is stable and what it holds is not.
    Moved here from: components/catnav.css, five rules, cut and not copied.
      .cat-layout and .cat-main were catnav's only because catnav was the first
      file that needed them; nothing in either rule is about a category.
    The SURFACE those two stand on did not come with them. The two-stone plate is
      the page's material, not this arrangement's, and it is in base.css with the
      rest of the frame.
-   Colour goes through a role, geometry straight from a primitive. No em dash. */
+   Colour goes through a role, geometry straight from a primitive. No em dash.
+
+   AND THIS FILE DECLARES TYPE NOW, WHICH IT DID NOT BEFORE, 2026-08-19. `ui-kit/patterns.html`
+   has always said a pattern adds no styles of its own beyond the arrangement, and the walk that
+   backed it counted 0 colours, 0 faces, 0 borders and 0 surfaces across all six pattern files.
+   That half still reads 0. What changed is that 8 of the 75 declarations here are TYPE: four
+   `font-size`, three `line-height` and one `text-align`, every one of them inside `.read-col`.
+   **They are here because the cap and the size are one decision and cannot be split.**
+   `.read-col` is capped at `--measure`, which is `46ch`, and a `ch` resolves against the
+   ELEMENT'S OWN font-size: move the size to another file and the cap in this one silently means
+   a different width. Splitting them across two files is the shape of the defect this pass was
+   fixing, a measure written twice at two numbers. So the claim is turned rather than broken: a
+   pattern declares no colour, no face, no border and no surface, and it may declare a size where
+   the size IS the arrangement. */
 
 .cat-layout{display:flex;flex-direction:column;gap:var(--space-12)}
 .cat-main{flex:1;min-width:0}
@@ -43,9 +64,34 @@
    the 0,1,0 above, so specificity decides this and not the order of the files.
    THE SELECTOR NAMES BOTH RAILS because the slot takes more than one: a page
    with a .toc and no .subcat is still a page with a rail. Widening it is a
-   no-op on every screen that has no .toc, which is 76 of the 77, and that was
-   measured rather than reasoned. */
+   no-op on every screen that has no .toc, and .toc stands on 4 of the 85
+   (cookies, privacy, responsible-betting, terms), re-counted from the rendered
+   DOM 2026-08-19. It read "76 of the 77" while terms.html was the only document
+   in the tree, and the four that landed on 2026-08-18 are what moved both
+   figures. about.html is the fifth document and carries no contents rail by
+   decision rather than by omission: ia/docs/blocks.md gives it the STATEMENT
+   profile and B5 is DOC only. Measured rather than reasoned, both times. */
 .cat-layout:not(:has(.subcat,.toc)){align-items:stretch}
+
+/* THE PLATE STOPS WHERE THE DOCUMENT STOPS, 2026-08-19. `.cat-layout` is a browse plate and
+   its width is right for what a browse page puts in it, a card grid that wants every pixel of
+   the 1400px band. A document does not want them, and `ia/docs/blocks.md` line 168 says so in
+   as many words: the desktop change is that the contents is promoted to a sticky left column
+   and "the body keeps its 60 to 75 character measure rather than filling the remaining
+   width". So the width is DECLARED to go unused, and the defect was that the plate went on
+   drawing a border, a bevel and a shadow around it. Measured at 1440 before this rule:
+   terms.html ran a 1140px plate holding a 214px rail and a 600px column, with 144px between
+   the rail and the column and 153px of nothing to the right of it; about.html, which has no
+   rail, ran 600 of 1140 and 350px of empty plate at 1600.
+   `width:fit-content` and not a calc, because the two things being added are a token and a
+   `ch` value that resolves at 16px inside `.read-col`: arithmetic here would need a third
+   spelling of both and would go stale the day either moves. It is inside the RAIL rung
+   because below it there is no row to fit, the plate is the page, and shrink-wrapping a
+   stacked column would size the page to its longest heading. */
+/* rung: RAIL 56.25rem, 900px at the default root, a rail beside the content. The ladder is in tokens.css, page frame. */
+@media(min-width:56.25rem){
+  .cat-layout:has(.read-col){width:fit-content;max-width:100%;margin-inline:auto}
+}
 
 /* ---------------------------------------------------------- the reading column
    THE SECOND THING THE MAIN COLUMN CAN BE. Until now it held a grid or a list,
@@ -66,13 +112,81 @@
    THE MEASURE IS THE OTHER HALF. --container-read is 800px and belongs to the
    feed's SEO plate; on 13px prose that is 89ch measured, against the 60 to 75
    DESIGN.md decided. A long document is where a reader sees the difference, so
-   the column takes --container-doc and centres itself in whatever the rail
-   leaves. */
-.read-col{display:flex;flex-direction:column;gap:var(--space-16);max-width:var(--container-doc);margin-inline:auto}
+   the column takes the measure and centres itself in whatever the rail leaves.
+   THIS PARAGRAPH READ "the column takes --container-doc" UNTIL 2026-08-19, and
+   --container-doc is deleted: the column was 600px with --measure on the prose
+   inside it, which is the same question answered twice. See the reading-size
+   block at the foot of this file. */
+.read-col{display:flex;flex-direction:column;gap:var(--space-16);max-width:var(--measure);margin-inline:auto;
+  font-size:var(--text-16);line-height:var(--leading-loose)}
 .read-col>*{margin-block:0}
 /* A prose block is a stack too, one level down, and it is the same argument:
    .feed-seo p carries margin:0 because the block was designed as one paragraph
    under one heading. Fourteen sections of two to five paragraphs is the first
    time it held more. */
 .read-col .feed-seo{display:flex;flex-direction:column;gap:var(--space-8)}
+/* AN AUTO MARGIN MEANS ONE THING IN A BLOCK AND THE OPPOSITE ON A FLEX ITEM, 2026-08-18.
+   `.feed-seo` carries `max-width:var(--container-read);margin-left:auto;margin-right:auto`
+   in seo-plate.css, and that pair was written for `.feed-inner>.feed-seo`, where the block
+   is 800px wide and centred in a 1400px page. `.read-col` is `display:flex` with
+   `flex-direction:column`, and on a flex item an auto inline margin CANCELS the
+   `align-items:stretch` default: the item stops filling the line and shrink-wraps to its
+   content, then centres what is left. Measured on terms.html at 1440 before this rule:
+   the column is 600 and every `.feed-seo` in it stood at **417px, offset 91px from the
+   column's own left edge**, so the document's h1, its notices and its section headings had
+   THREE left edges (0, 91 and 150) where the grey twin has one. The width was 417 because
+   that is `.feed-seo p{max-width:46ch}` plus the block's own padding: the prose cap was
+   sizing the block that holds it.
+   The same file already carries this override for the OTHER placement,
+   `.feed-seo-wrap .feed-seo{max-width:none;margin-left:0;margin-right:0}`, written the day
+   the plate became a grid. The flex column never got one, and nothing here could report it:
+   every instrument in this repository reads ONE document, and a block that disagrees with
+   its own twin in the other tree is a fact standing on two. Column width is not among the
+   seven differences `wireframes/_conventions.md` declares, so this was drift by that
+   document's own definition. */
+.read-col .feed-seo{max-width:none;margin-inline:0}
 .read-col .feed-seo h2{margin-bottom:0}
+
+/* ------------------------------------------------ the document reading size, 2026-08-19
+   THIS COLUMN WAS READING AT THE FEED'S BLURB SIZE, AND THAT IS WHY THE FIVE DOCUMENT PAGES
+   LOOKED NARROW. `.feed-seo p` is `--text-13`, which is right where the component was born:
+   the SEO plate at the foot of a card grid, a paragraph a reader passes on the way somewhere
+   else. about, terms, privacy, cookies and responsible-betting reuse the component and
+   inherited the card grid's type scale with it, so the only surface in this product that is
+   nothing but prose read end to end was set in the smallest prose size the product has.
+
+   THE BAND IS IN CHARACTERS AND `ch` MAKES THE SIZE FREE. `--measure` is 46ch, and a `ch`
+   scales with the element's own font, so the same cap holds the same character count at any
+   size. Swept over all five documents at 13, 14 and 16px and at 38 / 40 / 42 / 44 / 46 / 48ch,
+   longest full line measured by walking each text node and counting characters per line BOX:
+   the count is IDENTICAL down each size column, 62 / 66 / 69 / 71 / 73 / 77, and it is the cap
+   that moves it, never the size. 46ch is the last rung inside the 60 to 75 band DESIGN.md
+   states, worst case 73 on privacy.html; 48ch gives 77 on about.html and leaves it. So the
+   column keeps the number it already had and the reader gets a document-sized face for
+   nothing: at 16px the same 46ch is 503px of column against 409px before, and the longest
+   line is 73 characters in both.
+   16px rather than 14 is `1rem`, so this page moves with the reader's own default font size.
+   That is worth more here than anywhere else in the product: a policy document is the page a
+   person who has raised their browser's default is most likely to have come to read.
+   DESIGN.md section 3 said body prose is 13 to 14px and it is turned rather than broken: the
+   Measure Rule beside it reasons about "the three sizes this cap serves (11, 12 and 13px)",
+   which is a list written before this product had a document in it. terms.html arrived
+   2026-08-15 and the other four on 2026-08-18.
+
+   THE COLUMN CARRIES THE MEASURE ONCE. It was `--container-doc`, 600px, with `--measure` on
+   the prose inside it, which is one question answered twice at two different numbers and it
+   is what put six widths and three left edges on one page. The column IS the measure now, so
+   every block in it fills it, and the per-block caps below are taken off rather than tuned:
+   a cap on `.protect-page` is right on wallet.html, where the sentence stands in a column
+   sized for cards, and it is a second measure inside a reading column here.
+   `--container-doc` has no reader left and is gone from tokens.css. */
+.read-col .feed-seo p,.read-col .feed-seo dd,.read-col .feed-seo dt{font-size:inherit;line-height:inherit;max-width:none}
+.read-col .protect.protect-page{max-width:none;font-size:var(--text-14);line-height:var(--leading-loose);padding:var(--space-12)}
+.read-col .reconcile-box{font-size:var(--text-14);padding:var(--space-12)}
+/* A CENTRED BLOCK IN A LEFT-ALIGNED DOCUMENT IS A SECOND ALIGNMENT, and both of these were
+   centred for a place that is not this one: `.quiet-box` centres its text because it is a
+   placeholder standing in for a widget, and `.related-more` is `width:100%;max-width:300px;
+   margin-inline:auto` because on the feed it is Load more under a card grid. In a reading
+   column they are the document's own blocks and they take the document's own edge. */
+.read-col .quiet-box{text-align:start}
+.read-col .related-more{max-width:none;margin-inline:0}

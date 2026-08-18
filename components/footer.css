@@ -113,10 +113,18 @@
    has BUILT was reachable from the review sidebar 106 times and from the product ONCE, on
    `overview.html`, which is the index of the tree and not a screen in it. **A placeholder is a
    promise with a date on it, and nobody went back to the list when the date passed.** 213 anchors
-   in `ui-visual/` and 7 kit specimens point at it now. The remaining four here are `Privacy`,
-   `Contact`, `About` and `Responsible play`, and the grey tree keeps all five because
-   `ia/docs/sitemap.md` records that Terms of Service is the first screen in this product with no
-   grey twin.
+   in `ui-visual/` and 7 kit specimens point at it now.
+   **AND IT WENT THE OTHER WAY ON 2026-08-18, WHICH IS WHY THE COUNT IS STILL WORTH KEEPING.**
+   This line said the remaining four were `Privacy`, `Contact`, `About` and `Responsible play`,
+   and three of those four were built that day and are live links in BOTH trees now:
+   `privacy.html`, `about.html` and `responsible-betting.html`, read out of the rendered footer
+   on 2026-08-19 rather than off the list. So the placeholder count here is ONE, and it is
+   `Contact`, the only `href="#"` left in this footer and the only one of the four with no
+   screen to point at. The second half of the old sentence expired the same day: it recorded
+   that Terms of Service was the first screen in this product with no grey twin, and
+   `wireframes/` carries all five documents now, so the two footers no longer differ here at
+   all. **A placeholder list is a promise with a date on it in both directions**: nobody went
+   back to it when terms.html shipped, and nobody went back to it when three more did.
    **AND THE FIVE SOCIAL MARKS BESIDE THEM CAME OUT ON 2026-08-13**, `docs/backlog.md` 144, which is
    why `.social-row` has left this file's Classes line and its one rule with it. They were **525
    anchors, five per screen on 105 painted and 435 more in the grey**, pointing at accounts that are

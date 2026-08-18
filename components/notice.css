@@ -6,7 +6,13 @@
           --outcome-yes-text, --result-won, --text-brass, --text-muted, --text-primary,
           --tint-brass-06, --tint-brass-09, --tint-brass-30, --tint-brass-45
    Stand:  ui-kit/notice.html, and ui-kit/molecules.html#notice-lt for the level and its reason (the -lt is the shelf's own id suffix and not a variant of this component: ui-kit/CLAUDE.md)
-   Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
+   Stands on: 114 documents in ui-visual/ and 114 in wireframes/, 131 .protect elements in the
+     paint, re-counted from the rendered DOM 2026-08-19. It said 105 with a truncated roster
+     after it (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html,
+     active-bets-error.html, ...), which was exact when the painted tree was 105 screens and
+     was never re-taken: the three search screens, event-detail-bet-ready and the four static
+     content pages all arrived carrying a protection note. 9 of the 131 wear the page face and
+     they are counted where that face is declared, below.
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
 .push-banner{padding:var(--space-8) var(--space-12);margin:0 0 var(--space-8);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-8)}
@@ -28,11 +34,30 @@
 
    `.protect` had two real faces and no class for either: a TRUST tint inside a
    dialog and a BRASS tint in the page, kept apart by nothing but the fact that a
-   `<dialog>` sits outside the `.app-case` wrapper. Measured: 113 of the 116
-   stand in a dialog and 3 in the page. So the trust face is the DEFAULT, the
+   `<dialog>` sits outside the `.app-case` wrapper. Measured 2026-08-08: 113 of
+   the 116 stood in a dialog and 3 in the page. Re-counted from the rendered DOM
+   2026-08-19 it is 131 elements on 114 painted documents, of which 9 wear
+   `.protect-page` and they stand on 6: about, cookies, privacy,
+   responsible-betting, terms and wallet. The page face went from 3 to 9 when the
+   four static content pages landed on 2026-08-18 beside terms, and the split is
+   the same shape it was, a large default and a small named exception, which is
+   the reason the default was chosen that way rather than a coincidence of the
+   day it was counted. So the trust face is the DEFAULT, the
    page face is `.protect-page`, and neither depends on where the element
    happens to land. The stand had been showing the minority face while its own
    table described the majority one.
+
+   AND THE TWO TREES DISAGREE BY ONE, WHICH IS A FACT NEITHER OF THEM CAN STATE
+   ON ITS OWN. `.protect.protect-page` stands on 6 painted documents and on 5
+   grey ones, because grey `wallet.html` does not carry the class its painted
+   twin does, re-counted from the rendered DOM 2026-08-19. It is written down
+   here rather than closed by an edit, for two reasons: markup in `wireframes/`
+   belongs to the grey tree and not to this folder, and a face is not among the
+   differences `wireframes/_conventions.md` declares between the layers, so this
+   is drift by that document's own definition and somebody has to decide which
+   side is right before either moves. Every instrument in this repository reads
+   ONE document, so a class that appears in one tree and not the other is exactly
+   the shape none of them can report.
 
    WHAT STAYS SCOPED, and it is a state rather than a face: the outcome overlay
    sizes both boxes for a screen that is one figure and a sentence, and the win
@@ -53,7 +78,19 @@
    happens to be short enough not to wrap and so ran 117 characters on ONE line. Both are the
    same defect and only one of them wraps, which is why the cap is on the box rather than on a
    rule about wrapping. A notice narrower than its column is what a notice looks like.
-   Responsive step 4, tokens.css page frame. */
+   Responsive step 4, tokens.css page frame.
+   AND HALF OF THAT JUSTIFICATION IS GONE, 2026-08-19: the `.read-col` half. The cap here still
+   binds on `wallet.html`, which is the case the paragraph above describes and the reason the rule
+   survives, but on the five document pages (about, terms, privacy, cookies, responsible-betting)
+   `patterns/browse-shell.css` now takes it off with `.read-col .protect.protect-page{max-width:none}`.
+   The reason is the other half of the same sentence: a notice narrower than its column is what a
+   notice looks like, and a notice narrower than a column THAT IS ITSELF THE MEASURE is a second
+   measure inside a reading column. Measured before it came off, at 1440: the column was 600, this
+   box 346 and the prose inside the sections 409, three widths on one page where the grey twin had
+   one. `.read-col` carries `--measure` itself now, at `--text-16`, so the box fills the column and
+   the column is the cap. THE ROLE DID NOT CHANGE, THE PLACEMENT DID: on wallet this sentence stands
+   in `.cat-main`, a column sized for cards and 150ch wide, and there it is still the only thing
+   holding the line. */
 .protect.protect-page{border-color:var(--tint-brass-30);background:var(--tint-brass-06);color:var(--text-muted);max-width:var(--measure)}
 /* `strong` came off this line on 2026-08-15 and `b` came off the `.reconcile-box` line below, and
    the pair is worth one sentence: **each block names both tags and each block only ever ships one

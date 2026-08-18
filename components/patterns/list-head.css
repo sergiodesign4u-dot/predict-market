@@ -6,10 +6,19 @@
      display face and its colour are what the block looks like, so they stay in
      components/feed.css. This file is the row.
    Stand:  ui-kit/list-head.html, and ui-kit/patterns.html#list-head for the shelf and the threshold
-   Stands on: 71 ui-visual screens carry .feed-head, 70 when this was written (event-feed x41,
+   Stands on: 79 documents in ui-visual/ and 79 in wireframes/, one .feed-head each,
+     re-counted from the rendered DOM 2026-08-19. It said 71, and 70 the day the file was
+     written, over the roster kept here as the 2026-08-08 reading rather than re-typed
+     (event-feed x41,
      active-bets x9, notifications x5, public-profile x4, my-profile x3,
-     wallet x3, favorites x3, cookie-consent, toasts); 44 of them also carry
-     .feed-controls, the rest have a title with nothing to sort.
+     wallet x3, favorites x3, cookie-consent, toasts). What moved it is the tree and not this
+     pattern: the three search screens landed 2026-08-16, event-detail-bet-ready 2026-08-17,
+     and the four static content pages about, privacy, cookies and responsible-betting
+     2026-08-18, and a page that opens with a title and the controls that act on its list
+     lands in this pattern by definition. The `44 of them also carry .feed-controls` figure
+     is the 2026-08-08 reading and was NOT re-taken on 2026-08-19, so it is a date and not a
+     live count: 44 of the 71 carried the controls then, and the rest have a title with
+     nothing to sort.
    Moved here from: components/feed.css, four rules, cut and not copied.
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 

@@ -19,12 +19,18 @@
   <div class="tk-hero">
     <h1>Contents</h1>
     <p>Level 2, declared on 2026-08-08 and unmeasured until that day. A document's own contents
-    beside it: <b>1 rail and 14 rows on 1 painted screen</b>. Same geometry as the category rail and
-    the opposite job, and it is <b>a rail on a desktop and a disclosure on a phone</b>. Measured in a
-    browser at 390 and 1280, in both pointer branches.</p>
+    beside it: <b>4 rails on 4 painted screens, 47 rows in total</b>, read from the rendered DOM on
+    2026-08-19. <b>This line said "1 rail and 14 rows on 1 painted screen"</b>, which was true on
+    2026-08-08, when <code>terms.html</code> was the only long document in the tree, and stayed typed
+    while privacy, cookies and responsible-betting landed on 2026-08-18. <b>The 47 are not divided
+    evenly and no document holds a quarter of them</b>, so a single row number is a fact about one
+    document rather than about the component: the badge carries the total and the section below
+    carries one document's list. Same geometry as the category rail and the opposite job, and it is
+    <b>a rail on a desktop and a disclosure on a phone</b>. Measured in a browser at 390 and 1280, in
+    both pointer branches.</p>
     <div class="tk-badges">
-      <span class="tk-badge">1 rail</span>
-      <span class="tk-badge">14 rows</span>
+      <span class="tk-badge">4 rails, 4 screens</span>
+      <span class="tk-badge">47 rows in total</span>
       <span class="tk-badge">214px, pinned</span>
       <span class="tk-badge">36 to 44 with a finger</span>
     </div>
@@ -96,10 +102,18 @@
     them. <b>Two things that look the same and mean different things are two components</b>, which is
     the same test that keeps the consent screen's page placeholder out of
     <a href="skeleton.html">skeleton</a>.</p>
-    <p class="tk-note">It was <b>unmeasured</b> until today, like <code>account</code> (walked and then deleted, <a href="action-bar.html#level">action bar</a>)
+    <p class="tk-note">It was <b>unmeasured</b> until 2026-08-08, like <code>account</code> (walked and then deleted, <a href="action-bar.html#level">action bar</a>)
     and <a href="cookie-consent.html">cookie consent</a>, because it stands on no anchor screen.
-    Walked today: it holds 14 anchors of its own, which is the level formula's blind spot, so the
-    declaration is written in words. <b>HOLDS its own rows, level 2.</b></p>
+    Walked that day: the one document in the tree held 14 anchors of its own, which is the level
+    formula's blind spot, so the declaration is written in words. <b>HOLDS its own rows, level
+    2.</b></p>
+    <p class="tk-why"><b>Five documents carry a reading column and four carry a contents, and the
+    fifth is a decision rather than a gap.</b> <code>about.html</code> has no rail, and
+    <code>ia/docs/blocks.md</code> is where that was settled before the page was drawn: the bank gives
+    About the STATEMENT profile, and B5, the anchored contents, is a DOC block, which is the four
+    legal documents and not About. <b>A zero has to say which zero it is</b>, and this one is a page
+    the bank never asked to carry the component rather than a page that lost it or a face nobody
+    measured. So the denominator here is four of five, and the fifth is written down.</p>
   </section>
 
   <section class="tk-sec" id="spec">
@@ -127,13 +141,24 @@
       <table class="tk-tbl">
         <thead><tr><th></th><th>at 390</th><th>at 1280</th></tr></thead>
         <tbody>
-          <tr><td>the rail</td><td>293x598, in the flow, above the document</td><td><b>214x601</b>, pinned beside it</td></tr>
+          <tr><td>the rail</td><td>293x598, in the flow, above the document</td><td><b>214</b> wide, pinned beside it. The height is one document's list</td></tr>
           <tr><td>the head</td><td>293x44, <b>a summary you tap</b></td><td><b>0x0, display:none</b></td></tr>
           <tr><td>a row</td><td>285x36, and 285x52 where the label wraps</td><td>206x36, and <b>four rows at 52</b> because 206 is narrower</td></tr>
           <tr><td>a row with a finger</td><td colspan="2"><b>44</b>, from the one floor in <code>base.css</code></td></tr>
         </tbody>
       </table>
     </div>
+    <p class="tk-note"><b>The 214 and the sticky are unchanged and what stands beside them is not,
+    2026-08-19.</b> The two heights in this table were read on 2026-08-08 off <code>terms.html</code>,
+    the only long document in the tree that day, and a rail is exactly as tall as the list it holds,
+    so 598 and 601 are a fact about that document and the cell says so rather than printing a number
+    about the component. What moved is the other column. <code>.read-col</code> carries the measure
+    itself now, at <code>--text-16</code>, which computes <b>503px</b> from DESK 640 up, against a
+    600px column with a second cap on the prose inside it before; and
+    <code>.cat-layout:has(.read-col)</code> shrink-wraps the plate to what it holds, so at 1440
+    <code>terms.html</code> is a <b>795px</b> plate, the 214 rail plus a 20px gap plus the 503 column
+    plus the plate's own inset, where it was 1140 with 153px of nothing to the right of the text.
+    <b>The rail did not move; the page stopped being wider than its own contents.</b></p>
     <p class="tk-note">Every row carries its number in mono on the right, and the current row takes a
     brass edge and brass ink, <b>both of them keyed to <code>aria-current</code> rather than to a
     class</b>, so the drawing and the accessibility tree cannot disagree about which section you are

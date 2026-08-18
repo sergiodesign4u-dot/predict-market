@@ -421,10 +421,15 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
    wrong**: `browse-shell` names `feed`, and `main.feed` is its PARENT (line 361 against line 469 on
    `event-feed.html`), which is the level arithmetic's blind spot written down by hand;
    `position-list` names `profile`, and the record block's classes moved to `position.css` on
-   2026-08-03 in the pass that fixed five misfiled classes. And **`.read-col` is a slot in a pattern
+   2026-08-03 in the pass that fixed five misfiled classes. And **`.read-col` WAS a slot in a pattern
    file standing on ONE screen**, two short of the threshold the rung exists to enforce, because the
    argument for WHERE the rule goes was answered as if it were the argument for WHETHER it exists
-   yet. Backlog 46.
+   yet. **Backlog 46 CLOSED 2026-08-19 by its own condition**: the row said what would close it, *a
+   second and a third long document, not an edit*, and four landed on 2026-08-18. It stands on FIVE
+   painted screens and five grey twins, counted from the rendered DOM. **And the four exposed what
+   one had hidden**: a slot with one placement is a slot nobody can disagree with, and read together
+   the five carried six widths and three left edges, because an auto inline margin cancels stretch on
+   a flex item and the pair that centres `.feed-seo` on the feed was written for a block box.
 
    **A third component whose visible content is not in its markup.** The browse shell's rail ships as
    `<nav class="subcat" id="subcatRail" hidden></nav>` and a page script fills it. After the card's

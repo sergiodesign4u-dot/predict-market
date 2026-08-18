@@ -7,17 +7,29 @@
           --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass,
           --text-chip-hover, --text-muted, --text-primary, --text-strong
    Stand:  ui-kit/related.html, and ui-kit/molecules.html#related-lt for the level and its reason (the -lt is the shelf's own id suffix and not a variant of this component: ui-kit/CLAUDE.md)
-   Stands on: 10 ui-visual screens (event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...)
+   Stands on: 15 documents in ui-visual/ and 15 in wireframes/, one list each, 50 rows in the
+     paint, re-counted from the rendered DOM 2026-08-19: the ten event-detail screens and the
+     five documents about, cookies, privacy, responsible-betting and terms. It said 10 with a
+     truncated roster of event-detail screens after it (event-detail-bet-error.html,
+     event-detail-bet-insufficient.html, event-detail-bet-processing.html,
+     event-detail-bet-reconcile.html, event-detail-logged-out-multi.html, ...), which was exact
+     until 2026-08-18, when the four static content pages each arrived with a sibling list
+     beside the one terms.html has carried since 2026-08-15.
    THE THUMBNAIL IS OPTIONAL AND THE LIST DECIDES, 2026-08-08. .rel-thumb is a
      flex item with a fixed 46 square, so the left column comes from the child
      rather than from the row: a list where every row has one is aligned, a list
      where no row has one is aligned, and a MIXED list is the one arrangement
      this component does not draw. Measured, by building one: the question of a
      row with a thumbnail starts 58px right of the questions without, at 390 and
-     at 1280. There is no mixed list in the product. The 10 lists are 9 of
-     markets, every row with a photograph, and one on terms.html headed "The
-     other documents" where no row has one, which is why the count "4 of 31 rows
-     have no thumbnail" reads like a defect and is not one. No rule was added for
+     at 1280. There is still no mixed list in the product and the claim has been
+     tested four more times since it was made: the 15 lists are 10 of markets,
+     every row with a photograph, and FIVE of documents, one per document page,
+     headed "The other documents" and carrying no thumbnail on any row. 20 of the
+     50 rows have none and all 20 stand on those five, re-counted from the
+     rendered DOM 2026-08-19. It read "4 of 31 rows have no thumbnail" while
+     terms.html was the only document, and the sentence was already making the
+     point the bigger number makes better: a figure like that reads like a defect
+     and is not one, because it is five uniform lists and not one mixed one. No rule was added for
      the mixed case: it has no reader, and the day a market genuinely arrives
      without a photograph the placeholder is something to design. Backlog 60.
    Colour goes through a role, geometry straight from a primitive. No em dash. */
