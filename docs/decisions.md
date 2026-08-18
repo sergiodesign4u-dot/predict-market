@@ -12,6 +12,85 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-18 - Two panels that named the wrong page, and the job the whole browse layer serves had no flow
+
+**Walked as research, then IA, then wireframes, then UI.** Research had nothing to add: the
+surfaces all exist and none of this is a product question. IA had a hole and it was the biggest
+finding of the day. The two trees had a defect each, and they were the same defect twice.
+
+**Search shipped on 2026-08-16 and no chart ever got a route for it.** `ia/docs/flows.md` draws
+MJ, FJ2, FJ5 + EJ3 and SJ1, and its coverage note lists what is deliberately left undrawn: SJ2,
+the notifications list, the bet-history tab, **by design, not a gap**. FJ1 was in neither list.
+The word "search" appears five times in that file and **all five are the substring inside
+`user-research/`**. So the job that names the entire browse layer - feed, category pages,
+Favorites, search, four surfaces - had no diagram, and the surface added two days earlier had
+nowhere to be drawn even in principle.
+
+**Written as FJ1, above FJ2, 20 nodes and 28 edges.** The first three edges close the job with no
+query at all, which is the honest shape: the catalog is about 25 events open at once, so the feed
+is scannable and **search is a convenience rather than the way in**. The two faces are on the
+chart because the split is a measurement rather than a taste - the free middle of the header row
+is 69px at 640, 137 at 760 and 277 at 900, so the field enters at the RAIL rung and below it the
+mark opens a sheet over the page you are on. Both submit to the same results page, which is also
+the deep-link target and the 404 escape, and that is what the third search page is for.
+**T17 is a churn terminal and not an error**: a query with no match is the open set answering,
+because search indexes open markets only and a settled one is reached from your own history.
+
+**Then the trees, and the finding was that they disagreed.** Each panel is a registry of its own
+tree, and reading them as one SET is what made this visible - the same method the fixture
+contradictions needed, and for the same reason: every document is valid read on its own.
+
+- **Ten documents told the reader they were somewhere else.** The three search screens were built
+  by copying the feed and the four Type 1 documents by copying `terms`, and **the current-page
+  marker came with the copy both times**. So all three search screens, in both trees, marked
+  `event-feed.html`, and the five Legal and Company documents marked `terms.html` in the paint.
+- **The grey panel had no row for search at all.** `-results` and `-empty` were reachable from
+  **0 of 113** grey documents and the surface itself only through the header magnifier, which the
+  17 invoked-overlay screens do not render. The painted sidebar had listed all three from day one.
+- **Five painted documents did not list themselves.** 109 sidebars carried the full Legal and
+  Company group; the five documents the group is about carried only `terms`, because they were
+  copied from it before the sweep that wired the others ran.
+
+**Nothing could have caught any of this.** Both panels are off-canvas, so a wrong marker adds no
+height, no sideways scroll, no duplicate id and no page error, and every instrument in
+`CLAUDE.md` passes a panel that is confidently wrong. The check is one line and it is a set read:
+**the row a document marks current has to be the document.**
+
+**The instrument was wrong twice before the finding was.** Counting one marker instead of two
+called 85 grey documents defective when 82 were correct, because the panel marks the parent
+SCREEN and the state row separately and both are legitimate. Then a grep that wanted the href and
+the label on the same line in that order reported the painted sidebar as missing four rows on 109
+documents that already had them - **the first pass believed it and duplicated the block on all
+109**, and what caught that was reading the rendered panel, not the source. The painted tree was
+reverted to HEAD and redone from a measurement of what each sidebar actually holds.
+
+**And the grey tree's own check had been switched off for a day.** That tree links no stylesheet,
+so `SHARED (N of 113, R rules)` in each region header is the only check it can carry: a copy
+holding fewer than R contradicts its own header. **All 31 regions carried a stale number.** Every
+denominator read 109 against a tree of 113 and 19 numerators were exactly four short, which is the
+four documents from the day before; the preamble called the file one of 109 copies and then said
+the rules stand in N of the 108 documents, in one paragraph. Recomputed by walking the tree rather
+than retyped, R untouched because no rule moved. **The pointer at its foot named a count and now
+names its subject** - a pointer that carries a number goes stale on a day nobody touched the thing
+it points at, and the dated section it points to keeps its own numbers, because a dated reading is
+a record rather than a claim.
+
+**What was NOT done.** The `ui-kit/betpanel.html` link filed as broken is not broken and never
+was: `event-detail-bet-processing.html` appears there once, inside `<code>` as escaped text
+describing markup the product carried until 2026-08-17. **The row was written by reading the
+source instead of the page**, which is the rule this repository already has, applied to itself.
+
+**Verified.** 908 renders, Chromium and WebKit, 390 and 1280, transition and animation frozen,
+two `requestAnimationFrame`s to settle, a positive control asserting the probe can see an
+over-wide box before any zero was believed: **0 sideways scroll, 0 duplicate ids, 0 page errors.**
+Document height and body width against the tree as it stood before the edit, served from a git
+worktree at HEAD on a second port: **0 of 454 rows moved**, with the instrument proved first by
+reading HEAD twice and getting 0. **20,487 grey internal references and 19,698 painted, 0 broken**,
+and both registries now name the identical set of 113 documents with 0 documents marking a row
+that is not themselves.
+
+---
+
 ## 2026-08-18 - Four documents the IA had specified and nobody had built, and a rail invisible for three days
 
 **Walked as research, then IA, then wireframes, then UI**, checking currency at every stage that

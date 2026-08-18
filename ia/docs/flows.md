@@ -33,8 +33,9 @@
 | T14 | MJ closed - bet placed | MJ - success | success |
 | T15 | Wallet connect failed | MJ - Crypto Native branch | error |
 | T16 | Price rejected at S5 reconcile | MJ - priceConfirm no | churn |
+| T17 | Query matches nothing in the open set | FJ1 - Search | churn |
 
-> Coverage note: Flows are drawn for the main job and key related jobs only. Jobs and screens without a dedicated flow (SJ2, Notifications list, Bet History tab) are covered passively or inside existing screens - this is by design, not a gap.
+> Coverage note: Flows are drawn for the main job and key related jobs only. Jobs and screens without a dedicated flow (SJ2, Notifications list, Bet History tab) are covered passively or inside existing screens - this is by design, not a gap. **FJ1 was in that position and did not belong there (2026-08-18)**: the browse layer it names is four surfaces wide - feed, category pages, Favorites and search - and search shipped on 2026-08-16 with no route on any chart, so the job the whole layer exists for was the one job nobody had drawn. It has its own flow now, above FJ2.
 
 > Deferred polish (P3 - later pass): P3-3 (HIW static vs fetch clarification), P3-4 (first-visit vs return-visit layout naming on Event Feed), P3-6 (minimal Wallet withdrawal flow), P3-7 (HIW as optional step in FJ2).
 
@@ -167,6 +168,80 @@ everyone. The bet is still placed on Event Detail (in its inline bet panel). The
 is no Feed -> bet edge: nothing bypasses the context screen. Event Detail must
 accept a pre-selected option and side on entry (pre-selected entry variant, see
 ia/docs/sitemap.md Event Detail states).
+
+---
+
+## FJ1 - When something important happens and I have an opinion on the outcome, I want to find that event among the open markets before the topic goes cold
+
+```mermaid
+flowchart TD
+    trigger(["trigger: read the news, heard it in a chat, or followed a shared link"])
+    trigger --> EF["Event Feed"]
+
+    EF --> onScreen{"is the event on the first screen?"}
+    onScreen -->|"yes"| ED["Event Detail"]
+    onScreen -->|"no"| wayIn{"which way in?"}
+
+    wayIn -->|"by topic"| CAT["Category page - Politics / Crypto / Culture / General"]
+    wayIn -->|"saved it earlier"| FAV["Favorites"]
+    wayIn -->|"knows what it is called"| SRF{"viewport at the RAIL rung?"}
+
+    CAT --> catHit{"in this category?"}
+    catHit -->|"yes"| ED
+    catHit -->|"no"| SRF
+    FAV --> favHit{"still saved and open?"}
+    favHit -->|"yes"| ED
+    favHit -->|"no"| SRF
+
+    SRF -->|"below 56.25rem: the mark opens a sheet"| SH["Search sheet, over the current page"]
+    SRF -->|"at and above: the field is in the header"| FLD["Search field, header row"]
+    SH --> SR
+    FLD --> SR["Search - results"]
+
+    linkIn(["cold entry: a shared link, a bookmark, or the 404 escape"]) --> SP["Search - the page"]
+    SP --> SR
+
+    SR --> hits{"anything open matches?"}
+    hits -->|"yes"| ED
+    hits -->|"no"| SE["Search - no matches"]
+    SE --> T17(["T17 - the open set holds nothing for this query"])
+    T17 -->|"shorter word"| SR
+    T17 -->|"browse all events"| EF
+    T17 -->|"how events are chosen"| HIW["How It Works"]
+    HIW --> EF
+
+    ED --> fj1Done(["FJ1 closed - the event is open on screen, in time"])
+
+    classDef success fill:#12351f,stroke:#3fb56b,color:#eafff9;
+    classDef dead fill:#3a1618,stroke:#e5484d,color:#ffd7d7;
+    classDef neutral fill:#1b1b1b,stroke:#5a5a5a,color:#dddddd;
+    class trigger,linkIn,fj1Done success;
+    class EF,ED,CAT,FAV,SH,FLD,SP,SR,SE,HIW,onScreen,wayIn,catHit,favHit,SRF,hits,T17 neutral;
+```
+
+**Traces to CJM To-Be step 1** (arrive on a live event, not a signup): every node above is
+reachable logged out, and none of them asks for an account. Source:
+`user-research/docs/cjm-to-be.md`.
+
+**Search is a convenience on this flow and never the only way in.** The catalog is about 25
+events open at once (`PRODUCT.md`), so the feed is scannable and the first three edges close
+the job without a query. That is why the deferral in `ia/docs/sitemap.md` stood until
+2026-08-16 and why overturning it did not change the navigation model: no bottom slot, the
+Events destination, three pages.
+
+**Search has two faces and one destination, and the split is a measurement rather than a
+taste.** The free middle of the header row is 69px at 640, 137px at 760 and 277px at 900, so
+the field enters at the RAIL rung (56.25rem) and below it the mark opens a full-bleed sheet
+over the page you are on. Both submit to the same results page, which is also the deep-link
+target and the 404 escape - that is what `SP` is for, and why the surface exists as a page as
+well as a sheet.
+
+**It indexes the OPEN set only.** A settled market is reached from your own history
+(Active Bets - past), not from here, which is why T17 is a churn terminal and not an error:
+nothing failed, the answer is that the market is not open.
+
+**Not on this flow.** The bet is not placed here: every path lands on Event Detail, and FJ2
+(context before the bet) is preserved exactly as in MJ. There is no search-to-bet edge.
 
 ---
 

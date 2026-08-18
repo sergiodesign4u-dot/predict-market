@@ -1004,3 +1004,40 @@ pages against 22x22 on the other 56, for the reason in the section above. And th
 19 more, nine of them in all 108 documents - which are not a defect: a wireframe
 draws structure, and a class that carries only paint has nothing to draw in this
 tree.
+
+## The panel names every document again, and a denominator is not a decoration (2026-08-18)
+
+Two of the four Type 1 documents that landed the day before were already in this
+panel, and the count in every region header was not. **31 of 31 shared regions
+carried a stale number, all of them at once**: every denominator still read 109
+against a tree of 113, and 19 numerators were exactly four short, which is the
+four documents. The preamble contradicted itself in the same breath, calling the
+file one of 109 copies and then saying the rules stand in N of the 108 documents.
+The headers were written as the only check a tree that links nothing can carry, so
+a header that is wrong is not cosmetic: it is the check switched off.
+
+**Recomputed rather than retyped.** N is now counted by walking the tree for a
+region with that title, the denominator is the tree size, and R is untouched
+because no rule moved. The pointer at the foot of the preamble named a count -
+`chrome copied 108 times` - and now names its subject, because a pointer that
+carries a number goes stale on a day nobody touched the thing it points at. The
+section it points to keeps its own numbers: that section is dated, and a dated
+reading is a record rather than a claim.
+
+**The panel had three screens it did not list.** `event-feed-search`, `-results`
+and `-empty` shipped on 2026-08-16 with no row in the screen tree, so the two
+states were reachable from **0 of 113 documents** and the surface itself only
+through the header magnifier, which the 17 invoked-overlay screens do not render.
+The painted tree listed all three from the first day. **The disagreement between
+the trees was the finding**, exactly as it was for the fixture set: each panel is
+valid read on its own.
+
+**And a registry that names a document still does not know where you are.** All
+three search screens, in BOTH trees, marked `event-feed.html` as the current page,
+because they were built from the feed and the marker came with the copy. The five
+Legal and Company documents did the same with `terms.html` in the paint. **Ten
+documents told the reader they were somewhere else**, and nothing could see it:
+the panel is off-canvas here, it adds no height, no sideways scroll and no
+duplicate id, and every sweep in this repository passed it. The check is one line
+and it is a SET read: the row a document marks current has to be the document.
+Both trees read 0 now.

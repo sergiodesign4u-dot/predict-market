@@ -433,6 +433,25 @@ because it is a stance rather than a principle, and it is written once, here.
   protected the copy nobody looks at and left the copy everybody looks at to go stale**, which is
   the opposite of what it was for. A registry is not prose and cannot be deleted into one owner, so
   it is TURNED with the table, and a status that renders is turned first.
+- **A REGISTRY THAT NAMES EVERY DOCUMENT STILL DOES NOT KNOW WHERE THE READER IS, AND AN
+  OFF-CANVAS PANEL IS INVISIBLE TO EVERY INSTRUMENT IN THIS FILE.** The rule above is about a
+  count going stale; this is its twin about a POSITION, and it is worse, because the count at
+  least renders. **Ten documents marked a different page as the one you are on**: the three search
+  screens were built by copying the feed and the four Type 1 pages by copying `terms`, and the
+  current-page marker came with the copy both times, in both trees. Separately the grey panel had
+  no row for search at all, so two states were reachable from **0 of 113** grey documents while the
+  painted sidebar had listed all three from day one. **Nothing here could have caught it**: both
+  panels are off-canvas, so a panel that is confidently wrong adds no height, no sideways scroll,
+  no duplicate id and no page error, and 908 renders over two engines passed it. The check is one
+  line and it is a SET read, like the fixture contradictions and the auth pairs: **the row a
+  document marks current has to be the document, and the two trees' registries have to name the
+  same set.** **And read the instrument twice here, because this one is cheap to get wrong in both
+  directions**: counting one marker instead of two called 85 grey documents defective when 82 were
+  right, since a panel marks the parent SCREEN and the state row separately; then a grep wanting an
+  href and its label on one line in one order reported 109 painted sidebars as missing four rows
+  they already had, and believing it duplicated the block on all 109. **What caught that was
+  reading the rendered panel.** A filed defect can be the same mistake: `ui-kit/betpanel.html` was
+  on this list as a broken link for a string that stands inside `<code>` as escaped text.
 - **No em dash**, anywhere, and **"anywhere" is the repository rather than the folders somebody
   remembered.** It was measured over six on 2026-08-16, read 0, and was published as "the only file
   that carries any" while `concept/brand-toolkit/` carried 35 across four files. Those are gone;
