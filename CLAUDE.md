@@ -433,6 +433,20 @@ because it is a stance rather than a principle, and it is written once, here.
   protected the copy nobody looks at and left the copy everybody looks at to go stale**, which is
   the opposite of what it was for. A registry is not prose and cannot be deleted into one owner, so
   it is TURNED with the table, and a status that renders is turned first.
+- **`scrollLeft` IS BLIND UNDER CHROMIUM MOBILE EMULATION, AND THE REPOSITORY'S ONE APPROVED
+  SIDEWAYS-SCROLL PROBE IS BUILT ON IT.** This file already says `scrollWidth > clientWidth` is not
+  a page that scrolls sideways, and the fix was to set `document.scrollingElement.scrollLeft = 9999`
+  and read it back. **Under `isMobile:true` Chromium widens the layout viewport instead of
+  scrolling**: a control page with a box 120px past the edge reads back **0** while `innerWidth`
+  reads 440 against a `clientWidth` of 320. WebKit reads 120 either way. So the row that filed the
+  logged-out header defect said "WebKit reads 2, Chromium reads 0 either way, which is an emulated
+  default being a value" - **and the second half of that sentence was the instrument, not the
+  engine.** Read with `scrollWidth` as well, both engines agree exactly: **36 painted documents 2px
+  over at 320, not four and not WebKit-only.** The cause was neither: `@media(pointer:coarse)` takes
+  the two icon marks from 32 to 44, the logged-out cluster asks 213.72 against 306, and the auth
+  pair was being SHRUNK to pay for it, `Sign in` at 49.27 against a natural 63.97. **A probe gets
+  one control per engine AND per emulation mode**, because the mode changes which reading exists,
+  and a signal that cannot come back positive is not a signal.
 - **A REGISTRY THAT NAMES EVERY DOCUMENT STILL DOES NOT KNOW WHERE THE READER IS, AND AN
   OFF-CANVAS PANEL IS INVISIBLE TO EVERY INSTRUMENT IN THIS FILE.** The rule above is about a
   count going stale; this is its twin about a POSITION, and it is worse, because the count at

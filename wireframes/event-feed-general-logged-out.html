@@ -1046,11 +1046,20 @@
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
           </button>
 
-          <!-- Notifications kept as an affordance; tapping it logged-out routes to Sign In. No unread badge when logged out. -->
+          <!-- Search: the way in from anywhere, at every width. It is the one mark in this
+               cluster that goes somewhere of its own. -->
           <a class="icon-btn search-open" href="event-feed-search.html" aria-label="Search events">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><g transform="translate(0.8472 0.8472) scale(0.9294)"><path fill="currentColor" fill-rule="evenodd" d="M11.5 2.75a8.75 8.75 0 1 0 0 17.5a8.75 8.75 0 0 0 0-17.5M1.25 11.5c0-5.66 4.59-10.25 10.25-10.25S21.75 5.84 21.75 11.5c0 2.56-.939 4.902-2.491 6.698l3.271 3.272a.75.75 0 1 1-1.06 1.06l-3.272-3.271A10.2 10.2 0 0 1 11.5 21.75c-5.66 0-10.25-4.59-10.25-10.25" clip-rule="evenodd"/></g></svg>
           </a>
-          <button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
+          <!-- Notifications kept as an affordance; tapping it logged-out routes to Sign In, and it
+               carries no unread badge because there is no account to count for. DESK-ONLY SINCE
+               2026-08-18, the same rung and the same reason as the heart above it: at 320 with the
+               touch floor on, this cluster asks for 213.72px against the 306 the row can give, and
+               the 44 + 8 this mark takes is what puts the Sign up button 1.81px past the edge and
+               eats the gutter. Below the rung the thumb bar carries Sign in in slot 4, so a bell
+               whose only job is a fourth route to the same sheet is the one control here that costs
+               more than it says. docs/backlog.md 205. -->
+          <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Notifications (sign in)">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
           </button>
 

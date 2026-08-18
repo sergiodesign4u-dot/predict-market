@@ -300,7 +300,15 @@ document.addEventListener('click', function (e) {
           <a class="icon-btn search-open" href="event-feed-search.html" aria-label="Search events">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg>
           </a>
-          <button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
+          <!-- Notifications kept as an affordance; tapping it logged-out routes to Sign In, and it
+               carries no unread badge because there is no account to count for. DESK-ONLY SINCE
+               2026-08-18, the same rung and the same reason as the heart above it: at 320 with the
+               touch floor on, this cluster asks for 213.72px against the 306 the row can give, and
+               the 44 + 8 this mark takes is what puts the Sign up button 1.81px past the edge and
+               eats the gutter. Below the rung the thumb bar carries Sign in in slot 4, so a bell
+               whose only job is a fourth route to the same sheet is the one control here that costs
+               more than it says. docs/backlog.md 205. -->
+          <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Notifications (sign in)">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
           </button>
           <div class="auth-btns">

@@ -249,7 +249,26 @@
    and nothing is lost there: How it works is not only in this row, every feed carries
    a second trigger for the same dialog and `how-it-works.html` is a page of its own.
    docs/backlog.md 149.
-   rung: DESK 40rem, 640px at the default root, and this is BELOW it. tokens.css, page frame. */
+   rung: DESK 40rem, 640px at the default root, and this is BELOW it. tokens.css, page frame.
+
+   AND THE WALK ABOVE WAS TAKEN WITH A FINE POINTER, SO IT MEASURED A ROW THAT IS 24px NARROWER
+   THAN THE ONE A THUMB GETS, 2026-08-18, docs/backlog.md 205. "0 of 105 from 358 up" is true for
+   a mouse. With `pointer:coarse` asserted in the page the two icon marks in this cluster go from
+   32 to 44 each, and at 320 the logged-out utility asks **213.72px against the 306 this row can
+   give**: 44 search + 8 + 44 bell + 8 + 109.72 auth. The pair was not merely overflowing, it was
+   being SHRUNK to pay for it - `Sign in` measured 49.27 and `Sign up` 52.45 against their natural
+   63.97 and 69.17 - so the visible symptom was a squeezed pair with the 14px gutter gone and 1.81px
+   of `Sign up` past the edge, on 36 painted documents and their 36 grey twins.
+   NO RULE WAS ADDED HERE AND THAT IS THE POINT. The answer was already in the row: the logged-out
+   heart has been `.desk-only` since it was written, because below the rung the thumb bar carries
+   Favorites in slot 3. The bell logged-out is the same kind of thing one control along - it shows
+   no badge, because there is no account to count for, and it routes to Sign In, which this row
+   already offers twice and the thumb bar a third time. So it takes the class its sibling wears,
+   `base.css` supplies the rule, and the cluster falls to 193.14 with the utility landing on 306
+   exactly. Walked 320 to 400 at 2px on Chromium and WebKit over all 36 logged-out documents with
+   the coarse pointer asserted and a positive control at every width: **0 over, at every width**,
+   and the auth pair is at its natural size again.
+   rung: the same DESK 40rem, which is the whole argument for using it rather than buying 358. */
 @media(max-width:39.99875rem){
   .hiw-btn{display:none}
 }

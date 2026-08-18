@@ -12,6 +12,59 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-18 - The last open row closed, and both halves of it as filed were the instrument
+
+**Backlog 205 said four documents and it said WebKit only.** Neither was true, and the way it was
+wrong is the same shape as everything else found today: the probe could not see what it was asked
+about, and nobody had asked the probe to prove it could.
+
+**`scrollLeft` is blind under Chromium mobile emulation.** This file's own rule says
+`scrollWidth > clientWidth` is not a page that scrolls sideways, and the correction was to set
+`document.scrollingElement.scrollLeft = 9999` and read it back. **Under `isMobile:true` Chromium
+widens the layout viewport instead of scrolling**: a control page with a box 120px past the edge
+reads back **0** while `innerWidth` reads 440 against a `clientWidth` of 320. WebKit reads 120
+either way. So "Chromium reads 0 either way, which is an emulated default being a value" named the
+right rule and pointed it at the wrong thing: **the default that was switched off was the
+instrument, not the page.**
+
+**Read with both signals, the engines agree exactly: 36 painted documents, every one of them
+logged-out, 2px over at 320 under mobile emulation.** 0 at 360, 0 without emulation, 0 grey. The
+grey tree reads 0 because the 44px floor is a painted rule that `wireframes/_conventions.md`
+deliberately does not copy, which is the layer boundary working rather than a disagreement.
+
+**The cause was neither engine nor emulation. It was the touch floor doing exactly its job.**
+`@media(pointer:coarse)` takes the two icon marks in the utility cluster from 32 to 44, so at 320
+the logged-out cluster asks **213.72px against the 306 the row can give**: 44 search, 8, 44 bell,
+8, 109.72 auth. **And the pair was not simply overflowing, it was being SHRUNK to pay for it** -
+`Sign in` measured 49.27 and `Sign up` 52.45 against their natural 63.97 and 69.17 - so what a
+reader actually saw was a squeezed pair with the 14px gutter gone and 1.81px of `Sign up` off the
+screen. `components/header.css` already carried the walk that missed this, **"0 of 105 from 358
+up"**, taken with a fine pointer on a row 24px narrower than the one a thumb gets. It is the
+`hasTouch` rule in `CLAUDE.md`, paid a second time, in the file that cites it.
+
+**No rule was added, and that is the fix.** The logged-out heart has been `.desk-only` since it was
+written, because below the rung the thumb bar carries Favorites in slot 3. **The bell logged-out is
+the same kind of control one along**: it shows no badge, because there is no account to count for,
+and it routes to Sign In, which this row already offers twice and the thumb bar a third time. So it
+takes the class its sibling already wears, `base.css` supplies the rule, and the cluster falls to
+193.14 with the utility landing on **306 exactly**, which is the gutter. **The alternative was a
+rung at 358, and this repository has already refused that once** for the same control cluster: the
+system holds three rungs and a fourth bought for one control is what the registry exists to stop.
+
+**Verified.** Walked 320 to 400 at 2px on Chromium and WebKit over all 36 logged-out documents,
+`pointer:coarse` asserted in the page and a positive control at every width: **0 over, at every
+width.** The rung is exact and identical in both engines and both trees, hidden at 639 and shown at
+640, with the logged-in bell untouched at every width because its badge is the retention anchor.
+The full sweep that found the defect, re-run: **1,832 renders over two engines, two emulation modes
+and two widths, 36 documents over before and none after**. The boxes still standing past the right
+edge on about 118 documents are the category rail's `.chip-nav` inside its own scrolling container,
+**0 of them with no scrolling ancestor**, which is this file's oldest rule about that predicate and
+not a defect.
+
+**The backlog reads Open: 0** for the first time since it was emptied.
+
+---
+
 ## 2026-08-18 - The state matrix read against the IA, and the only surface with no declaration was the one missing a state
 
 **Walked as research, then IA, then wireframes, then UI.** Research had nothing to add. The IA is
