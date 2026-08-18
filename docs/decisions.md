@@ -12,6 +12,59 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-18 - Six files carried the size of the trees, five were wrong, and three were wrong against themselves
+
+The rule that a fact written twice will drift has been in `CLAUDE.md` since the repository was
+reorganised, and it had never been measured over the set it is stated over. Measured: **six files
+carry a live count of the trees or the system, and five of them disagreed with the disk.**
+
+| file | said | disk, 2026-08-18 |
+|---|---|---|
+| `README.md` | `wireframes/` 105 pages, three times | **109** |
+| `README.md` | `ui-visual/` 106 documents, 105 screens | **110 and 109** |
+| `README.md` | `ui-kit/` 57 pages, twelve atoms, five foundations | **60, fourteen, six** |
+| `README.md` | 47 components, 5 substrate files, 12 atoms | **49, 7, 14** |
+| `README.md` | 37 width queries, 16 desk / 6 detail / 6 rail | **35, 16 / 5 / 8** |
+| `README.md` | patterns 59 declarations over 16 properties | **56 over 19, in 28 rules** |
+| `README.md` | 6 reports in `ui-kit/docs/` | **7** |
+| `STRUCTURE.md` | 105 grey, 106 painted, kit 55 of 55 | **109, 110, 60 of 60** |
+| `CLAUDE.md` | `ui-visual/` 109 documents, 108 screens | **110 and 109** |
+| `components/CLAUDE.md` | 109 documents, 108 screens, sweep reads 106 | **110 and 109** |
+| `ui-visual/CLAUDE.md` | 58 of 108 screens carry an `@graph` | **59 of 109** |
+| `ui-kit/_nav.js` | "the 57 it stands at now" | **60 rows in the array below it** |
+
+`ui-visual/CLAUDE.md` and `wireframes/CLAUDE.md` were the two that were right, because the pass that
+added `event-detail-bet-ready.html` on 2026-08-17 updated the folder that gained the file and no
+file above it.
+
+**Ownership does not protect a file from ITSELF, and that is the finding.** Three of the six
+contradicted their own text. `CLAUDE.md` says `110 of 110 in ui-visual/` in one bullet and `109
+documents, 108 of them screens` in another. `components/CLAUDE.md` gave **three tree sizes in five
+lines**: 109 in its first sentence, 108 in its second, 106 in its last. And `ui-kit/_nav.js`, whose
+header is an argument that a list written twice drifts and which notes that its own sentence has
+been corrected three times, typed **57** about the array of **60** three feet underneath it.
+
+**So a count is now either computed or dated, and never typed as a live fact.** The counts left
+`README.md` and `STRUCTURE.md` for the file that owns them; where a number is a reading from a
+particular day it keeps its number and says the day, which is why the 105s in the Responsive and
+Animation rows stand unchanged and the 16 `Stands on:` lines in `components/` are now labelled as
+dated placement readings rather than as exact ones. The kit's tally is the one the panel computes
+from `_nav.js`, and the header no longer states it in prose.
+
+**One drift was not a count.** `README.md`'s Responsive row still said container queries were refused
+on measurement, and the system has carried one since 2026-08-14: `.ed-main` declares the only
+`container-type` in the repository, from `patterns/detail-shell.css` because the shell is what knows
+the column is a context, and `event-detail.css` asks it at 460px. It is the 25th of the 25 selectors
+the refusal measured and the one where the window and the container move in opposite directions
+twice, `.ed-head` going 611 at a 640 window to 645 at 700 to **341 at 760** where the bet panel
+arrives and takes 322 of the row, and again at 1140 when the review sidebar docks.
+
+**Verified after the edit**: 16 claims re-read from disk, all 16 agreeing, including 109 grey, 110
+painted of which 109 screens, 60 kit pages matching 60 registry rows, 49 components with 7 substrate
+files, 56 stylesheets at 11,607 lines, 35 width queries splitting 32 and 3 with 0 in any painted
+document, 1 container query, 59 documents with structured data and 7 reports. 0 em dashes in the six
+files. Nothing in the product moved: this pass changed prose only.
+
 ## 2026-08-17 - The requirement is set by slot HEIGHT, and slot height grows as the card narrows
 
 Backlog 199 said the hero is 1400 wide where a 3x phone asks 1600. The originals came back from the

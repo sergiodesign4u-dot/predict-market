@@ -18,11 +18,16 @@
    own into 104, 1,247 KB. Neither has drifted, and neither could have stayed in
    step by hand: `_resync_sidebar.py` held them, and it was deleted too. The kit
    had seven pages when this was written, twelve on 2026-08-08 and nineteen by
-   the end of the same day, on the way to the 57 it stands at now.
+   the end of the same day, on the way to the number the panel below COMPUTES from
+   this array.
    Nineteen copies of one list would be nineteen edits for every row, and the root rule says
    a fact written twice will drift. So the list is written once, here, and no page
    of the stand declares any part of it. THE SENTENCE ABOVE HAS BEEN CORRECTED
-   THREE TIMES ALREADY, which is the argument standing up on its own.
+   FOUR TIMES NOW, which is the argument standing up on its own, and the fourth is
+   the one worth reading: it said "the 57 it stands at now" while 60 rows stood
+   underneath it in this same file, so the number typed into the paragraph about
+   not typing numbers had gone stale against the array three feet below. It is not
+   typed any more.
 
    THE STAND PAGE DECLARES NOTHING, not even its own name. It carries an empty
    `<aside class="sidebar" id="rmSidebar">` and loads this file.

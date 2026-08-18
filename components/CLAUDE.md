@@ -50,11 +50,14 @@ opposite of here for as long as both sentences stood. So **an edit here reaches 
 and every kit page at once and none of them can override it, and it reaches the grey tree not at
 all.** There is no build step and no gate: what you write is what ships.
 
-**109 and 108 are both right and they count different things, so every number below says which.**
-`ui-visual/` holds **109 documents**; **108 of them are screens** and `overview.html` is the index of
-the tree rather than a screen in it, which is why about twenty `Stands on:` lines in this folder read
-105 and are exact. A sweep over `ui-visual/*.html` reads 106. A statement about the product reads
-105.
+**110 and 109 are both right and they count different things, so every number below says which.**
+`ui-visual/` holds **110 documents**; **109 of them are screens** and `overview.html` is the index of
+the tree rather than a screen in it. It was 109 and 108 until 2026-08-17 and 106 and 105 until
+2026-08-16, and **this paragraph said 109 and 108 in its first line and 106 in its last**, which is
+three tree sizes in five lines of the file whose whole subject is a value written once. **The 16
+`Stands on:` lines here that read 105 are DATED readings, not live ones**: each was exact when the
+tree was 105 screens, and nothing has re-counted one since, so a placement figure in this folder is
+the product on the day somebody measured it and not the product today.
 
 ## The invariants
 
@@ -154,7 +157,11 @@ the tree rather than a screen in it, which is why about twenty `Stands on:` line
   paying a phone twice for the same rhythm, and to **34 on 2026-08-15**, both of them at the desk's
   narrow side and both of them a control that a desk sizes one way and a thumb another: the chart's
   range group drops its frame and the category chip drops from 48 to 44 with its padding. **Two
-  queries arriving on one day is the shape to watch**, and neither invented a number. The counterpart
+  queries arriving on one day is the shape to watch**, and neither invented a number. **Re-counted
+  2026-08-18 it is 35: 32 here and 3 in `patterns/`, 16 at the desk, 5 at the detail, 8 at the rail,
+  2 the 1140 harness and 4 one-offs, and 0 in any of the 110 documents in `ui-visual/`.** The
+  detail's 460px threshold is not among them because it is a CONTAINER query, and a container
+  threshold is counted apart for the reason the line above already gives. The counterpart
   reading used to say "35 of 43 components have no width behaviour of their own at all", **and that
   number was three numbers wearing one sentence, taken from a table with one placement per
   component.** Re-measured 2026-08-12 over every placement of all 47 components on the 105 painted

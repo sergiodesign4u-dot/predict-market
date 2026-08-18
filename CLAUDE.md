@@ -173,9 +173,12 @@ because it is a stance rather than a principle, and it is written once, here.
   not moving and is measuring nothing; only the browser's own default setting, CDP
   `Page.setFontSizes`, changes both the type and the rung. The 1140 harness stays in px, because a
   docked panel is 220 physical pixels whatever the reader's font is. **106 and 105 both name a
-  true thing and every number in this repository has to say which**: `ui-visual/` holds 109
-  documents, 108 of them screens, and `overview.html` is the index of the tree rather than a screen
-  in it. It was 106 and 105 until 2026-08-16, when the three search screens landed in both trees.
+  true thing and every number in this repository has to say which**: `ui-visual/` holds 110
+  documents, 109 of them screens, and `overview.html` is the index of the tree rather than a screen
+  in it. It was 106 and 105 until 2026-08-16, when the three search screens landed in both trees,
+  and 109 and 108 until 2026-08-17, when `event-detail-bet-ready.html` landed in both trees with
+  backlog 185. **This sentence said 109 and 108 while the bullet above it already said 110 of 110**,
+  which is what a count written twice does even inside one file that is loaded whole.
 - **A verdict about a component is a statement about the SET of its placements.** A reading taken on
   one placement and printed as a property of the component is a fact about a slot wearing a
   component's name: `navitem` was published FIXED at 258px, the width of the third of its three
@@ -317,11 +320,11 @@ because it is a stance rather than a principle, and it is written once, here.
 - **A FACT THE PAGE RESTATES BELONGS BESIDE THE PAGE; A FACT THE PAGE NEVER DERIVES BELONGS IN ONE
   PLACE.** `ia/docs/pages/seo.md` specifies a whole document head per page type and the trees carried
   **0 of the five metadata classes on 217 documents**. The layer split on 2026-08-16 and the line is
-  DRIFT rather than ownership. Meta tags are written once and never computed from the page, so 109
-  copies would be 109 places to drift, and they stay in the IA; `{ROOT}` is `[?]` besides, so a
+  DRIFT rather than ownership. Meta tags are written once and never computed from the page, so 110
+  copies would be 110 places to drift, and they stay in the IA; `{ROOT}` is `[?]` besides, so a
   canonical needs a domain nobody has chosen. **Structured data restates the visible page**, which
   makes it the one half that CAN disagree with what a reader sees, and disagreement is only
-  measurable where both halves stand together: 58 painted documents carry an `@graph` whose every
+  measurable where both halves stand together: 59 painted documents carry an `@graph` whose every
   node is checked against the render, `name` against the `h1`, `ItemList` against the cards in order,
   `FAQPage` against the `<dt>` / `<dd>` text, `dateModified` against the date the page prints. **And
   a state may show less, never something different**: an empty feed carries no `ItemList` and a
@@ -410,6 +413,18 @@ because it is a stance rather than a principle, and it is written once, here.
   nothing can carry, and it is read rather than run. **Name a region for its SUBJECT and put the
   count in it**; a name that records provenance tells the next reader nothing about what should be
   there.
+- **A COUNT THAT IS TYPED IS A LIVE CLAIM, AND OWNERSHIP DOES NOT PROTECT A FILE FROM ITSELF.** The
+  ownership rule above was stated and never measured over its own set. Measured 2026-08-18: **six
+  files carry a live count of the trees or the system and five disagreed with the disk.** `README.md`
+  was four documents short on the grey tree, four on the painted and three on the kit, and named 47
+  components where the `@import` groups of `index.css` give 49. **Three of the six contradicted their
+  own text.** This file said `110 of 110 in ui-visual/` in one bullet and `109 documents, 108 of them
+  screens` in another; `components/CLAUDE.md` gave **three tree sizes in five lines**; and
+  `ui-kit/_nav.js`, whose header is an argument that a list written twice drifts and which records
+  that its own sentence has been corrected three times, typed **57** about the array of **60** three
+  feet underneath it. **So a count is COMPUTED, or it is DATED and says the day; it is never typed as
+  a live fact.** The kit's tally is the one the panel computes from `_nav.js`, and a `Stands on:` line
+  is a reading of the product on the day somebody took it rather than a property of the component.
 - **No em dash**, anywhere, and **"anywhere" is the repository rather than the folders somebody
   remembered.** It was measured over six on 2026-08-16, read 0, and was published as "the only file
   that carries any" while `concept/brand-toolkit/` carried 35 across four files. Those are gone;
