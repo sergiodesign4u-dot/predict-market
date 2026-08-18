@@ -8,7 +8,7 @@ not `research/html/research.html`).
 ## The 12 stages
 
 Where each stage lives. **Which stage is done is recorded in the status table in `README.md` and
-nowhere else** - a second copy of a status is a copy that goes stale.
+nowhere else** - a second copy of a status is a copy that goes stale, **which is exactly what happened to the two REGISTRIES that render it**: `assets/_roadmap.js` printed SOON on Animation for three days after it shipped. They are not prose and cannot be deleted, so they are turned with the table.
 
 | # | Stage | Folder | HTML page |
 |---|---|---|---|

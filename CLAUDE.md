@@ -31,7 +31,7 @@ appears twice the copy here is the one to delete.
 | What the product is - JTBD, audience, market types, MVP scope, business model, compliance | `PRODUCT.md` |
 | What was done and why | `docs/decisions.md` - dated, newest first, never edited |
 | What is still open | `docs/backlog.md` |
-| Which stage is done | the status table in `README.md`, and nowhere else |
+| Which stage is done | the status table in `README.md`. Two REGISTRIES render it as well, `assets/_roadmap.js` on the 28 course documents and `ui-kit/_nav.js` on the 60 stand pages, and this row said "and nowhere else" while `_roadmap.js` printed SOON on a stage that had shipped three days before. **A rendered status is the one a reader sees, so it is the one to turn first** |
 | Where a file lives | `STRUCTURE.md` |
 | The shipped visual system (Vault) | `DESIGN.md` |
 | Screens, navigation, flows, SEO | `ia/docs/` |
@@ -425,6 +425,13 @@ because it is a stance rather than a principle, and it is written once, here.
   feet underneath it. **So a count is COMPUTED, or it is DATED and says the day; it is never typed as
   a live fact.** The kit's tally is the one the panel computes from `_nav.js`, and a `Stands on:` line
   is a reading of the product on the day somebody took it rather than a property of the component.
+  **AND A STATUS IS THE SAME SHAPE WITH A READER ATTACHED, 2026-08-18.** Three files said a stage
+  status lives in the README table and nowhere else, and the two places that RENDER it were
+  unowned: `assets/_roadmap.js` printed **SOON on Animation across all 28 course documents for the
+  three days after it shipped**, while `ui-kit/_nav.js` had its 60 flags right. **The claim
+  protected the copy nobody looks at and left the copy everybody looks at to go stale**, which is
+  the opposite of what it was for. A registry is not prose and cannot be deleted into one owner, so
+  it is TURNED with the table, and a status that renders is turned first.
 - **No em dash**, anywhere, and **"anywhere" is the repository rather than the folders somebody
   remembered.** It was measured over six on 2026-08-16, read 0, and was published as "the only file
   that carries any" while `concept/brand-toolkit/` carried 35 across four files. Those are gone;

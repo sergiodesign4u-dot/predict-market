@@ -12,6 +12,41 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-18 - Three files said a status lives in one place, and the two that RENDER it were unowned
+
+Asked by a reader looking at the sidebar: why does Animation still say SOON when we built it. It
+shipped on 2026-08-15 with `ui-kit/motion.html` as the sixth foundation, and `README.md` has said
+Done since that day.
+
+**`assets/_roadmap.js` carried `{ label: 'Animation', planned: true }`**, and `planned` is what the
+chrome turns into the SOON badge. So the roadmap printed SOON on a finished stage **across all 28
+course documents in `research/`, `user-research/`, `ia/`, `voice/` and `concept/`** for three days.
+
+**The rule that should have caught it is what let it through.** `README.md`, `CLAUDE.md` and
+`STRUCTURE.md` each say in so many words that a stage status lives in the README table AND NOWHERE
+ELSE. It lives in two more places, both of them registries rather than prose, and **both of them are
+what a reader actually SEES**: `assets/_roadmap.js` on the 28 course pages and `ui-kit/_nav.js` on
+the 60 stand pages. The claim protected the copy nobody looks at. Measured while fixing it,
+`ui-kit/_nav.js` was right: **67 rows with a `done` flag, 67 of them true, 0 targets missing from
+disk, 0 page rows without a flag**, and `motion.html` marked done. So one of the two registries had
+drifted and one had not, and nothing could tell you which.
+
+**And turning the row exposed a second thing, which is that the roadmap had no word for the stage
+you are standing in front of.** `course-chrome.css` has carried `.sidebar-page-link.planned.next`
+and its `content:'Next'` since the chrome was built, and **nothing in `_roadmap.js` ever wrote the
+`next` class**, so those two rules could not draw anywhere. A roadmap could say done or soon and
+nothing else. The renderer now marks the first planned row, which makes the pair live and makes
+Handoff read Next rather than Soon, and Next is the truer word for the only stage left.
+
+Verified over 6 course pages at two depths in Chromium and WebKit: Animation renders as an `<a>` to
+`ui-kit/motion.html` with no badge, Handoff renders `planned next` with the badge reading Next, 0
+page errors, and the computed href resolves **HTTP 200 from every depth** because the prefix is
+taken from the script's own `src` rather than declared by the page.
+
+**A registry cannot be deleted into a single owner the way a sentence can**, so the three claims are
+corrected rather than kept: a status lives in the README table and is RENDERED from two registries
+that are turned by hand with it, and the one that renders is turned first.
+
 ## 2026-08-18 - A class in the markup is a promise a selector answers it, and the white button was the browser's
 
 Asked by a reader looking at the response demo on `ui-kit/motion.html`: what is the white button

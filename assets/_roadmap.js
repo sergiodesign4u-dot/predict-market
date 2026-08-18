@@ -14,8 +14,13 @@
    1. THE ACTIVE ROW IS COMPUTED FROM THE PATH, never declared. A page cannot carry a stale copy
       of its own name, because the name IS the page. `ui-kit/_nav.js` records what a declared
       `KIT_ACTIVE` cost in the repository it came from.
-   2. A ROW WITH NO PAGE IS VISIBLE, as a `<span class="planned">`. Hiding Animation and Handoff
-      would make the roadmap look finished and lie about it.
+   2. A ROW WITH NO PAGE IS VISIBLE, as a `<span class="planned">`. Hiding a stage that is not
+      built would make the roadmap look finished and lie about it. It was Animation and Handoff
+      until 2026-08-18 and it is Handoff alone now, and THE ROW HAD TO BE TURNED BY HAND, which is
+      the defect this file was carrying: Animation shipped on 2026-08-15 with `ui-kit/motion.html`
+      and this registry went on printing SOON for it across all 28 pages for three days, while
+      `README.md`, `CLAUDE.md` and `STRUCTURE.md` each said in so many words that a status lives in
+      the README table AND NOWHERE ELSE. It lives here too, and here is the copy a reader SEES.
    3. NO CSS OF ITS OWN. Every class written below is `components/course-chrome.css`, which all 28
       pages already link.
 
@@ -97,7 +102,7 @@ window.COURSE_ROADMAP = [
   { label: 'UI + Visual',   page: 'ui-visual/event-feed.html' },
   { label: 'Design System', page: 'ui-kit/overview.html' },
   { label: 'Responsive',    page: 'ui-kit/responsive.html' },
-  { label: 'Animation', planned: true },
+  { label: 'Animation',    page: 'ui-kit/motion.html' },
   { label: 'Handoff',   planned: true }
 ];
 
@@ -148,6 +153,11 @@ window.COURSE_ROADMAP = [
     /* Which divider lights is a property of the ACTIVE stage's position in the list, not of the
        divider: the one above the active stage, and only if the stage does not raise a divider of
        its own. */
+    /* The first planned row is the stage the project is standing in front of. See the note at
+       the `planned` branch below. */
+    var firstPlanned = null;
+    for (var f = 0; f < list.length; f++) { if (list[f].planned) { firstPlanned = list[f]; break; } }
+
     var lit = null;
     if (stage) {
       var last = null;
@@ -163,7 +173,13 @@ window.COURSE_ROADMAP = [
         return;
       }
       if (s.planned) {
-        h += '<span class="sidebar-page-link planned">' + esc(s.label) + '</span>';
+        /* THE FIRST PLANNED ROW IS THE NEXT ONE, 2026-08-18, and this line is what makes two rules
+           in `course-chrome.css` able to draw at all. `.sidebar-page-link.planned.next` and its
+           `content:'Next'` had been written since the chrome was built and NOTHING here ever wrote
+           the class, so a roadmap could say done or soon and had no word for the stage somebody is
+           standing in front of. Found by turning Animation on and asking what the badge on the row
+           below it should now say. */
+        h += '<span class="sidebar-page-link planned' + (s === firstPlanned ? ' next' : '') + '">' + esc(s.label) + '</span>';
         return;
       }
       if (s !== stage) {

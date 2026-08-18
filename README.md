@@ -134,7 +134,7 @@ whoever writes it.
 Four files at the root, and each answers one question. **`CLAUDE.md` = the rules** that must act next
 time (it is loaded into every session, so it stays short). **`PRODUCT.md` = what the product is.**
 **`docs/decisions.md` = what was done and why**, dated, newest first. **`docs/backlog.md` = what is
-still open.** A status lives in the table above and nowhere else.
+still open.** A status lives in the table above, and it is RENDERED from two registries that are turned by hand with it: `assets/_roadmap.js` for the 28 course documents and `ui-kit/_nav.js` for the 60 stand pages. This line said "and nowhere else" until 2026-08-18, while `_roadmap.js` had been printing SOON on Animation since the day it shipped.
 
 - [CLAUDE.md](./CLAUDE.md) - **the rules**: how work is done here, what owns what, and the reason each rule exists now that no gate holds it
 - [PRODUCT.md](./PRODUCT.md) - **the product**: JTBD, audience, market types, MVP scope, business model, compliance
