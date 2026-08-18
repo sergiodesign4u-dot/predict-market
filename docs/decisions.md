@@ -12,6 +12,63 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-18 - A fade makes every z-index beneath it inert, and the one that failed was correct
+
+Reported by a reader on a screenshot: the feed's frequency menu opens **under** the first card and
+jumps on top a moment later. It is the fifth defect in five days that a person found and no
+instrument here did, and the reason is the same shape each time. **Every reading this repository
+takes of movement is a duration, a curve, or a computed value at rest. Paint order DURING a
+transition is none of the three.**
+
+`base.css` fades `details::details-content` from `opacity:0`, which is the connection job and is
+correct. **A box whose opacity is under 1 is a stacking context.** So for the whole arrival
+`.filter-panel`'s `z-index:var(--z-menu)` was resolved inside that group instead of against the
+page, and the group paints where the filter row stands in the flow, under `.card > *` at
+`--z-content`. The declaration was present, correct, and not applying, which is a class this file
+already carries twice.
+
+Measured with `elementFromPoint` at each panel's own centre, over the whole set of out-of-flow
+`<details>` panels on 6 screens, in Chromium and WebKit:
+
+| | before | after |
+|---|---|---|
+| `filter-menu` under on entry, Chromium | **14 of 14** | **0** |
+| `filter-menu` under on entry, WebKit | **14 of 14** | **0** |
+| `filter-menu` under on exit, Chromium | **14 of 14** | **0** |
+| `avatar-menu`, `notif-menu`, either direction | 0 of 5 each | 0 |
+
+**The two families that were already clean are where the fix came from.** `.app-header` is
+`position:sticky` at `--z-header`, so its dropdowns open inside a group that already stands above
+the feed. The filter row has no such group, so the menu had to become its own. The lift moved onto
+the `<details>` and **the panel's own number was deleted rather than moved**: inside a menu that is
+now a stacking context, any positive value and no value paint identically, and a value that cannot
+draw reads exactly like the value that decides.
+
+**Three decisions inside a two-declaration fix, each measured.**
+
+- **On `[open]` and not unconditionally.** A permanent lift raises the SUMMARY chip as well, and
+  the chip scrolls under the sticky header, so it would draw over it. With the lift on `[open]`,
+  the closed chip reads HEADER on top at a 35px overlap and the open panel still reads PANEL on top
+  at 66px, which is the order `tokens.css` ranks and the one the product already had.
+- **The drop waits for the fade it is leaving.** `[open]` goes the instant the reader closes while
+  `--dur-fast` still has to run, so the step carries `transition-delay:var(--dur-fast)` with the
+  duration left at its initial `0s`. It is a delay and not a duration, and it is the only such
+  declaration in the system.
+- **`transition-behavior:allow-discrete` is what makes it work at all.** `z-index` going to `auto`
+  is a discrete change and a discrete change does not transition without the keyword: without it
+  the drop was instant and the exit stayed broken, measured before the keyword was added. It is the
+  same keyword `base.css` uses one rule away for `content-visibility`.
+
+**WebKit's zero on the way out is a different zero from Chromium's**, and the first instrument could
+not tell them apart. WebKit runs no closing fade and hides the content at once, so all 14 read
+`checkVisibility()` false: an absent panel and a covered one both returned a card underneath. The
+discriminator is visibility, and it had to be added before the after-number could be believed.
+
+**Regression checked rather than assumed**: 8 screens at 390 and 1280 in both engines give 0 page
+errors and 0 documents that scroll sideways under `scrollLeft = 9999`, and the phone's filter sheet
+still puts all 8 of its menus in the flow at `position:static` with a drawn box, which is the branch
+the desk rule is scoped away from.
+
 ## 2026-08-18 - Six files carried the size of the trees, five were wrong, and three were wrong against themselves
 
 The rule that a fact written twice will drift has been in `CLAUDE.md` since the repository was

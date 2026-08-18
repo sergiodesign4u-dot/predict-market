@@ -1,4 +1,4 @@
-This folder IS the design system. **56 stylesheets, 11607 lines**: 50 here and 6 in `patterns/`,
+This folder IS the design system. **56 stylesheets, 11644 lines**: 50 here and 6 in `patterns/`,
 re-counted 2026-08-17 after the product's one bottom-sheet arrival stopped being two, and again the same day
 after sixteen files were given the response they had never carried, and again the
 same day after search stopped being a page you go to and became a control you use: the field
@@ -799,6 +799,29 @@ the product on the day somebody measured it and not the product today.
   clobber a `transform` an element carries for something else. **An `animation` naming a keyframes
   that does not exist produces no animation at all, so `getAnimations().length` is the proof the
   name resolves** and the only cheap one there is.
+
+- **A FADE MAKES EVERY `z-index` BENEATH IT INERT FOR AS LONG AS IT RUNS, SO THE LIFT BELONGS TO THE
+  BOX THE FADE TURNS INTO A CONTEXT.** `base.css` fades `::details-content` from `opacity:0`, and a
+  box whose opacity is under 1 is a stacking context. `.filter-panel` carried `z-index:var(--z-menu)`
+  and it was present, correct and **not applying** for the whole arrival, because it was being
+  resolved inside that group instead of against the page, and the group paints at the flow position
+  of the filter row, under `.card > *` at `--z-content`. Measured 2026-08-18 with `elementFromPoint`
+  at each panel's own centre: **14 of 14 panels on 6 screens opened under the first card in Chromium
+  AND WebKit**, and 14 of 14 closed under it in Chromium as well, the same defect mirrored. **The
+  header's two menus were clean at 0 of 5 each and that is where the fix came from**: `.app-header`
+  is sticky at `--z-header`, so its dropdowns open inside a group that already stands above the feed,
+  and the filter row has no such group. The lift went onto the `<details>` and the panel's number was
+  DELETED rather than moved, because inside a menu that is now a context any positive value and no
+  value paint the same. **Reported by a reader on a screenshot, and no instrument here would have
+  found it**: paint order during a transition is not a duration, not a computed value at rest, and
+  not a document height. **On `[open]` and not unconditionally, measured both ways**: a permanent lift
+  raises the SUMMARY chip too, and the chip scrolls under the sticky header, so it would draw over it.
+  **And the drop has to WAIT for the fade it is leaving**, `[open]` going the instant the reader
+  closes while `--dur-fast` still runs, which is a delay rather than a duration and needs
+  `transition-behavior:allow-discrete`, because `z-index` going to `auto` is a discrete change and a
+  discrete change does not transition without it. **The zero WebKit returns on the way out is a
+  different zero**: it runs no closing fade at all, so `checkVisibility()` is false on all 14 and the
+  first instrument called an absent panel a covered one.
 
 ## Where the record is
 

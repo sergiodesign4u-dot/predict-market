@@ -762,3 +762,51 @@ was read as a reachability problem. It was a **404**: the browse screens are
 `event-feed-politics.html` and its seven states. **A missing document and a missing control return
 the same word.** Re-read on the file that exists, the lane chip fades five properties in both
 engines. Check the response code before believing the census.
+
+---
+
+## 12. The fade that made a `z-index` inert, 2026-08-18, and the fifth defect a reader found first
+
+**Every instrument in this record reads a duration, a curve, or a computed value at rest. Paint order
+DURING a transition is none of the three.** A reader sent a screenshot of the feed's frequency menu
+sitting under the first card and jumping on top a moment later.
+
+`base.css` fades `details::details-content` from `opacity:0`, which is the connection job and is
+right. **A box whose opacity is under 1 is a stacking context**, so for the whole 160ms of the
+arrival `.filter-panel`'s `z-index:var(--z-menu)` was resolved inside that group rather than against
+the page, and the group paints where the filter row sits in the flow, under `.card > *` at
+`--z-content`. The declaration was present, correct and not applying.
+
+Measured with `elementFromPoint` at each panel's own centre, over the whole set:
+
+| | before | after |
+|---|---|---|
+| `filter-menu`, under on entry, Chromium | **14 of 14** | **0** |
+| `filter-menu`, under on entry, WebKit | **14 of 14** | **0** |
+| `filter-menu`, under on exit, Chromium | **14 of 14** | **0** |
+| `avatar-menu` and `notif-menu`, either direction | 0 of 5 each | 0 |
+
+**The two menus that were already clean are the fix.** `.app-header` is `position:sticky` at
+`--z-header`, so its dropdowns open inside a group that already stands above the feed. The filter row
+has no such group, so the menu had to become its own: the lift moved onto the `<details>` and the
+panel's own number was deleted, because inside a menu that is now a context any positive value and no
+value paint identically.
+
+**Three decisions inside the fix, each measured rather than assumed.**
+
+- **On `[open]`, not unconditionally.** A permanent lift raises the SUMMARY chip as well, and the
+  chip scrolls under the sticky header, so it would draw over it. With the lift on `[open]` the
+  closed chip reads HEADER on top at a 35px overlap and the open panel still reads PANEL on top at
+  66px, which is the order `tokens.css` ranks.
+- **The drop waits for the fade it is leaving.** `[open]` goes the instant the reader closes while
+  `--dur-fast` still has to run, so the step carries `transition-delay:var(--dur-fast)` with the
+  duration left at its initial `0s`. It is a delay, not a duration, and it is the only such
+  declaration in the system.
+- **`transition-behavior:allow-discrete` is what makes it work at all**, `z-index` going to `auto`
+  being a discrete change, and without the keyword the drop was instant and the exit stayed broken.
+  It is the same keyword `base.css` uses one rule away for `content-visibility`.
+
+**And WebKit's zero on the way out is a different zero from Chromium's.** WebKit runs no closing fade,
+hiding the content at once, so all 14 read `checkVisibility()` false. The first instrument could not
+tell an absent panel from a covered one and reported both as covered, which is this record's own rule
+about a zero having to say which zero it is, arriving one more time.

@@ -8,7 +8,39 @@
    Stands on: 105 ui-visual screens (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html, active-bets-error.html, ...)
    Colour goes through a role, geometry straight from a primitive. No em dash. */
 
-.filter-menu{position:relative}
+/* THE LIFT IS ON THE <details> AND NOT ON THE PANEL, 2026-08-18, AND THE PANEL'S OWN
+   `z-index` HAD BEEN PRESENT, CORRECT AND NOT APPLYING FOR THE LENGTH OF THE FADE.
+   `base.css` fades `::details-content` from `opacity:0`, and a box whose opacity is under 1
+   IS A STACKING CONTEXT. So for the whole arrival the panel's `z-index:var(--z-menu)` was
+   resolved INSIDE that group rather than against the page, and the group paints at the flow
+   position of the filter row, under `.card > *` at `--z-content`. Reported by a reader on a
+   screenshot: the menu appears under the first card and jumps on top when the fade lands.
+   Measured with `elementFromPoint` at the panel's own centre over 14 panels on 6 screens:
+   **14 of 14 under on the way in, in Chromium AND WebKit**, and 14 of 14 under on the way out
+   in Chromium too, which is the same defect mirrored. After: 0 and 0, with the settled control
+   passing on all 14 before either number was believed.
+   WHY THE HEADER'S TWO MENUS WERE ALREADY CLEAN, AND IT IS THE FIX. `.app-header` is
+   `position:sticky` at `--z-header`, so `.avatar-menu` and `.notif-menu` open inside a group
+   that already stands above the feed: 0 of 5 each, both engines. The filter row has no such
+   group, so the menu has to be its own.
+   ON `[open]` AND NOT UNCONDITIONALLY, MEASURED. A permanent `--z-menu` here lifts the SUMMARY
+   chip as well, and the chip scrolls under the sticky header, so it would draw over it. With
+   the lift on `[open]` the closed chip reads HEADER on top at a 35px overlap and the open panel
+   still reads PANEL on top at 66px, which is the order `tokens.css` ranks and the one the
+   product already had.
+   THE DELAY IS NOT A DURATION. `[open]` leaves the moment the reader closes the menu while the
+   fade still has `--dur-fast` to run, so the drop waits exactly that long. It is written as a
+   delay with the duration left at its initial `0s`, because nothing here interpolates. And a
+   discrete change does not transition at all without `transition-behavior:allow-discrete`,
+   `z-index` going to `auto` being exactly that: without the keyword the drop was instant and
+   the exit stayed broken, measured before the keyword was added. It is the same keyword
+   `base.css` uses one rule away for `content-visibility`.
+   WEBKIT NEVER HAD THE EXIT DEFECT, AND THAT ZERO HAS TO SAY WHICH ZERO IT IS: it runs no
+   closing fade and hides the content at once, so all 14 read `checkVisibility()` false on the
+   way out. The first instrument could not tell an absent panel from a covered one and called
+   both of them covered. */
+.filter-menu{position:relative;transition-property:z-index;transition-delay:var(--dur-fast);transition-behavior:allow-discrete}
+.filter-menu[open]{z-index:var(--z-menu);transition-delay:0s}
 /* THE REST GEOMETRY IS DECLARED ONCE NOW, AT THE CHIP RULE 30 LINES DOWN, AND IT WAS
    DECLARED TWICE UNTIL 2026-08-12. This rule also carried
    `padding:var(--space-4) var(--space-8)` and `gap:var(--space-4)`: the SAME selector at
@@ -52,7 +84,12 @@
    this file's containment is EMPTY and the level was therefore being answered by
    arithmetic with no information in it. See ui-kit/docs/defects.md row 63. */
 .lang-menu .filter-panel{top:auto;bottom:calc(100% + 4px);right:auto;left:0;min-width:150px}
-.filter-panel{background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;z-index:var(--z-menu);min-width:var(--menu-min)}
+/* NO `z-index` ON THIS RULE SINCE 2026-08-18, and it is a deletion rather than a move. The
+   menu above is a stacking context whenever it is open, and the panel is the only positioned
+   box inside it, so any positive value here and no value at all paint identically. The number
+   that used to stand here is the one the reader saw fail, and leaving it would leave a value
+   that cannot draw looking exactly like the value that decides. */
+.filter-panel{background:var(--bg-surface);border:var(--hairline) solid var(--border-hairline);border-radius:var(--radius-10);overflow:hidden;box-shadow:0 20px 50px -24px var(--shadow-ink);position:absolute;top:calc(100% + 6px);left:0;min-width:var(--menu-min)}
 /* ALL THREE STATES ARE HERE AND THEY REACH ALL 193 MENUS, 2026-08-08. These three rules were
    scoped to `.app-case`, and 105 of the 193 summaries in the product are the footer's language
    picker, which stands outside it: that one control had no rest face, no hover, and a press only

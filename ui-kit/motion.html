@@ -409,6 +409,15 @@
       <code>color</code> and <code>box-shadow</code>, because <b>a transition declaration replaces the
       one it out-specifies rather than extending it</b>. One declaration on the atom, carrying the
       union of everything any face changes.</span></li>
+      <li class="tk-rung"><b>9</b><span><b>A fade makes every z-index underneath it inert, and the
+      one that broke was present and correct, 2026-08-18.</b> <code>::details-content</code> fades
+      from <code>opacity:0</code>, and a box under full opacity IS a stacking context, so for the
+      length of the arrival the filter panel's <code>--z-menu</code> was resolved inside that group
+      instead of against the page. <b>14 of 14 panels on 6 screens opened UNDER the first card, in
+      Chromium and WebKit both</b>, and jumped on top when the fade landed. Reported by a person on
+      a screenshot, which is the fifth time. <b>The header's two menus were already clean and that is
+      the fix</b>: they open inside a sticky header that is its own lifted group, 0 of 5 each. The
+      lift belongs to the element the fade turns into a context, not to the panel inside it.</span></li>
     </ol>
   </section>
 
