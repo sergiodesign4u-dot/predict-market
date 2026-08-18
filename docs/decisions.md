@@ -12,6 +12,50 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-17 - The requirement is set by slot HEIGHT, and slot height grows as the card narrows
+
+Backlog 199 said the hero is 1400 wide where a 3x phone asks 1600. The originals came back from the
+account that generated them, so the masters are **1664 x 936** and that half is closed. **The row
+had asked the wrong question**, and re-measuring generically is what showed it: load each slot's own
+source, read its natural size, compute the cover scale, and assume nothing about which variant or
+which aspect ratio is in play.
+
+**`cover` from a landscape source into a narrow slot makes HEIGHT the governing axis**, and the card
+thumbnail is `align-self:stretch`, so its height is the card's height, and the card gets TALLER as
+the viewport gets NARROWER because the question wraps onto more lines. Measured on the feed:
+
+| viewport | tallest card thumbnail | source width it wants |
+|---|---|---|
+| 320 @3x | 107px css | **569** |
+| 360 / 390 / 430 @3x | 92px css | **490** |
+| 640 and above @2x | 88px css | 313 |
+
+So the 480px landscape file was short on **12 of 13 slots at every ordinary phone width**, and the
+number moves the wrong way from the one everybody measures. **The fix is not a bigger file.** A
+56px-wide slot rendering a 16:9 source with `cover` discards three quarters of every pixel it
+downloads. The small variant is now the **portrait column the card was already showing**:
+`-crop 800 0 960 1440` on the 2560 original, which is exactly the central 37.5 per cent that
+`background-position:center` displays, resized to 240 x 360. The square detail head takes the same
+file and crops it the other way, which is a tighter frame of the same subject and correct because
+the subject lives in the centre third by construction.
+
+**340 of 341 slots, over 11 widths and 5 screens, now upscale by nothing.** The one residue is named
+rather than chased: the hero at 320 css with a **3x** pointer wants 1926 and has 1664, a 1.157
+upscale of a photograph drawn at 42 per cent opacity under a veil, on a device class that does not
+ship. Buying it would cost every real phone about 40 per cent more on the largest file on the
+arrival screen.
+
+**And the byte reading was wrong three times before it was right**, which is the part worth keeping.
+First it said 16 KB per screen, because the response handler `await`s `r.body()` and resolved after
+the synchronous read that followed `goto`. Then the cache was blamed, and the control killed that:
+the same screen twice in one context read 833 and 833. Then `networkidle` plus an unawaited handler
+said 131 KB where the truth was 271. **Only the reading that collects the body promises and awaits
+them all before printing is a reading of the page**; the other three are readings of the order of
+statements. Final: feed **833 KB to 251**, event detail 282 to 41, category 365 to 50, favourites
+564 to 80.
+
+---
+
 ## 2026-08-17 - A 56px slot was being served a 1400px picture, and the first reading of that said 16 KB
 
 Twenty-five pictures went in an hour earlier, and none of the instruments in this repository had

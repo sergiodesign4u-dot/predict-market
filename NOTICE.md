@@ -39,18 +39,20 @@ crediting it. Backlog 31, and the account is in `docs/decisions.md`.
 
 ## The event pictures, and they are GENERATED rather than photographed
 
-- **What:** `assets/ev-*.webp`, 25 images, one per open market, **in two sizes**. The master is
-  1400 x 788, about 1.7 MB for the set, and it is what the feed hero draws. `-sm` is 480 x 270,
-  312 KB for the set, and it is what the card thumbnail, the related row and the event detail head
-  draw, because those slots paint 168, 138 and 216 device pixels wide and a 1400px file in a 56px
-  slot cost the feed **833 KB of pictures against 237**. The small variant is re-encoded from the
-  master rather than from the original, which is a small quality cost in a slot that oversamples it
-  three times over. They are the whole of what `DESIGN.md` used to call "real event photography".
-  **24 of the 25 masters have 0 live references** and are kept deliberately: they are the only copy
-  of each picture at a usable size, and a layout that wants a bigger slot has nowhere else to go.
+- **What:** `assets/ev-*.webp`, 25 images, one per open market, **in two cuts**. The master is
+  **1664 x 936**, 2,208 KB for the set, and the feed hero draws it. `-sm` is **240 x 360 and is a
+  PORTRAIT CROP**, 246 KB for the set, drawn by the card thumbnail, the related row and the event
+  detail head. It is not a scaled-down master: it is `-crop 800 0 960 1440` of the 2560 original,
+  the central 37.5 per cent that `background-position:center` was already showing in a 56px-wide
+  slot, so no pixel is downloaded to be discarded. Measured across 11 widths and 5 screens,
+  **340 of 341 slots upscale by nothing**, and the feed's pictures cost **251 KB against 833** when
+  one 1400px file served every slot. **24 of the 25 masters have 0 live references** and are kept
+  deliberately: they are the largest copy this repository holds, and the small cut is derived from
+  the original rather than from them.
+
 - **Where they came from:** generated on 2026-08-17 with **Seedream 5 Pro** through Magnific, from
   text prompts written here. No reference image, no photograph, no stock library, no person's
-  likeness. The prompts are recorded in `docs/decisions.md` under the entry for that date.
+  likeness. The prompts are recorded in `docs/decisions.md` under the entry for that date, and **the 2560 x 1440 originals are not in this repository**: they were re-fetched from the account once already, which is the supported way to re-cut them.
 - **What that requires:** nothing a licence asks for, and something this product asks for.
   **A prediction market is a claim about the world, so it must not illustrate one with a fabricated
   record of the world.** The rule these 25 were written under, and the rule any replacement has to
