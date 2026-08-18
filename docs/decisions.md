@@ -12,6 +12,50 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-18 - The system contract is written again, against the live tree, and writing it found two false promises
+
+`ui-kit/docs/architecture.md` existed only frozen in `docs/kit-archive/`, dated 2026-08-07, 1,034
+lines of which the second half describes 41 build gates, 54 generators and a state-capture
+instrument that were all deleted the day after it was written. The Handoff stage names it as one of
+its inputs and calls its rules-of-use section the most expensive knowledge in the system, and today
+those rules were scattered across the root `CLAUDE.md` and `components/CLAUDE.md`.
+
+**It is rewritten rather than unfrozen, at 413 lines, and the split with `CLAUDE.md` is stated in
+its first paragraph.** The two `CLAUDE.md` files are the ACCOUNT: what went wrong, what it cost,
+how it was measured, and the date, loaded by whoever edits the repository. `architecture.md` is the
+CONTRACT: the same rules once, short, imperative, in the order a person needs them, each pointing at
+where its evidence lives. Duplicating thirty prohibitions in full would have guaranteed the drift
+this repository measured two days ago.
+
+**Fifteen sections, and every number in it was measured today and checked by a script that had to
+pass on all 25 claims before the file was committed**: 109 grey documents, 110 painted of which 109
+screens and 109 of the 110 linking `components/index.css` and nothing else, 60 kit pages, 56
+stylesheets at 11,652 lines, 370 distinct custom properties in 470 declarations, 49 components with
+7 files that are not components, 14 / 16 / 13 / 6 by level, 35 width queries splitting 32 and 3 with
+0 in any painted document, 1 container query, 1 `pointer:coarse` block, 1 `:focus-visible` rule in
+`base.css` against 11 files carrying an exclusion, 6 `@keyframes` all inside the system, 0
+`transition: all`, 1 bare easing keyword, 1 `0s` delay, 11 steps of stacking order, and every scale
+with its steps.
+
+**Writing it found two false promises in the header contract**, which is the pattern the kit already
+records as eleven backlog rows found by writing pages. `Classes:` in a stylesheet header says the
+file STYLES those classes. `button.css` listed `.prov-google` and `filters.css` listed
+`.filters-close`, and **neither has a single selector in its own file**: the Google mark keeps its
+brand colours in the markup on purpose so no rule may set them, and the sheet's close control takes
+its whole face from `.icon-btn`. Both moved onto a `Script hooks:` line with the reason beside them,
+which is the allow-list the system already had in `chart.css` and `tabs.css`. **Re-read as an idle
+control afterwards: 0 files whose `Classes:` line names something they do not style.**
+
+**And a third, on the page that summarises the system**: `ui-kit/overview.html` carried a badge
+reading 4,884 declarations and the real figure counted from comment-stripped source is **4,809**.
+The badge says the day it was taken now, and the prose beside it says what it read before, because a
+number typed into prose is a number that goes stale.
+
+**The document has a reader**, which is the rule that every markdown file gets a visible place on an
+HTML page by the step that creates it: it is the first link in the hand-written jump row on
+`ui-kit/overview.html`, beside the screens, the archive and `DESIGN.md`. Verified in a browser: 0
+page errors and **0 broken of 77 links** on that page.
+
 ## 2026-08-18 - Three files said a status lives in one place, and the two that RENDER it were unowned
 
 Asked by a reader looking at the sidebar: why does Animation still say SOON when we built it. It

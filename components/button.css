@@ -1,5 +1,9 @@
 /* components/button.css
-   Component: button. Classes: .btn, .btn-bare, .btn-block, .btn-ghost, .btn-lg, .btn-md, .btn-primary, .btn-prompt, .btn-provider, .btn-secondary, .btn-sm, .btn-xs, .prov-apple, .prov-google, .prov-x.
+   Component: button. Classes: .btn, .btn-bare, .btn-block, .btn-ghost, .btn-lg, .btn-md, .btn-primary, .btn-prompt, .btn-provider, .btn-secondary, .btn-sm, .btn-xs, .prov-apple, .prov-x.
+   Script hooks: .prov-google. It carried NO rule and stood in the Classes line above until
+                 2026-08-18, which made that line promise a face this file does not give. The
+                 Google mark keeps its brand colours in the markup ON PURPOSE, so no rule here
+                 may set them, and the class is the name of that exception rather than a selector.
 
    Reads: --bg-brand-mark, --bg-control, --bg-control-hover, --bg-pressed, --bg-prompt-hover,
           --bg-well, --border-brass-hover, --border-hairline, --color-action,
