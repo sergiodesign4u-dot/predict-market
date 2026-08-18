@@ -1141,7 +1141,10 @@
   background:var(--bg-control);animation:tk-mo-pulse var(--pulse-period) var(--ease-standard) infinite}
 .tk-mo-pulse span:nth-child(2){width:70%}
 .tk-mo-pulse span:nth-child(3){width:40%}
-.tk-mo-still span{animation:none}
+/* `.tk-mo-still span{animation:none}` stood here and was worn by nothing on 61 pages, 2026-08-18.
+   It was a way to freeze this specimen that no page ever asked for, and the rule that DOES the
+   freezing is eight lines below, under the real setting, where it belongs. A stand rule with no
+   specimen is the stand teaching a face the stand does not show. docs/backlog.md 211. */
 /* AND THE DEMONSTRATION PULSE OBEYS THE REAL SETTING, not only the switch on the page. A cycle is
    replaced and never shortened, exactly as `skeleton.css` does it for the product's own marks:
    without this the page that explains reduced motion was the page still moving under it. */

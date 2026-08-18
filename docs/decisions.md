@@ -12,6 +12,78 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-18 - The roll-out was never a stage here, and running its checklist anyway found the thing three artefacts disagreed about
+
+**There is no roll-out row in `README.md` and none in `assets/_roadmap.js`.** The pipeline's stage 12
+exists for a project where the paint covers a sample of five to seven anchor screens and the rest is
+rolled out at the end. **This tree was never in that shape**: UI + Visual painted every family, and
+every stage after it kept the two trees in step screen for screen. So the roll-out happened, and it
+happened without ever being a stage. **The stage that remains is Handoff, and that is the whole
+answer to "what is left".**
+
+**Its closing checklist was run anyway, against the live tree, and it passes on every line but one.**
+
+| what the checklist asks | the reading |
+|---|---|
+| a twin for every screen | **114 grey, 114 painted, one name each**, symmetric difference empty |
+| one stylesheet, nothing else | **114 of 114** painted screens link exactly `../components/index.css`; `overview.html` adds `_page.css` because it is the kit's index of the tree |
+| the grey tree links none | **114 of 114** |
+| `@media`, `transition`, `animation`, `@keyframes`, `@container` in a screen file | **0 of every one of them** across 115 documents |
+| inline `<style>` in the paint | **0 of 115**; the grey tree carries exactly 1 each, which is what it is for |
+| `style=` on the element | **450 placements, all three allowed kinds**: 302 the event photograph, 128 written by the page script, 20 a datum. **0 other** |
+| the idle control, both ways | **the finding** |
+
+**A source grep cannot take that last one, and it had been the only instrument used for it.** A grep
+sees a class in the markup and a class in a selector, and it cannot tell a script hook from dead
+markup, cannot see the classes a page script writes at run time, and misparses a selector that sits
+inside a media block. Run as a grep it called five live hooks orphans and missed everything real.
+**Read from the browser's PARSED rules crossed with the rendered DOM over the paint and the kit
+together: 818 classes declared, 820 standing.**
+
+- **Five stand in the render with no rule, and all five are declared `Script hooks:`** in their
+  component's header, which is backlog 203's fix still holding a week later.
+- **Three are declared and worn by nothing, and all three are runtime state** the script writes:
+  `next`, `open`, `planned`, on the course chrome.
+- **The ninth was the finding.**
+
+**`.md-table`, `.md-row`, `.md-row-head`, `.md-bar`, `.md-amt`, `.md-price` and `.md-get` drew a
+three-row price-impact table** - Bet / Avg YES price / You receive if YES, $1,000 moving the price
+from 38 to 42 per cent - **on 0 of the component's 9 product placements and on the SHELF.** So
+`ui-kit/market.html` drew the sentence the product draws, `ui-kit/molecules.html` drew the ladder,
+and the market page's own hero text said "a table of what a bet of each size would cost" while the
+page under it showed the sentence. **Three artefacts, three stories about one block**, and each of
+them internally consistent, which is why nothing found it: this is the cross-document class again,
+the one that needed a SET read for the fixtures and needs one here.
+
+**It is not a face waiting for a placement. It is a face the product contradicts.** `PRODUCT.md`
+says **"NOT a trader terminal: no order books, leverage sliders, PNL ranks"**; the market is
+AMM-priced, so there is no book to be deep; and the sentence this block actually ships promises the
+opposite of a ladder in so many words: **"The price is locked when you confirm, so it cannot move
+against you between the panel and the bet."** A table showing the price moving against you at size
+is that guarantee denied on the same screen, in the same disclosure.
+
+**So the nine rules go, the way `account.css` went on 2026-08-08.** `.md-title` and `.md-sub` stay,
+because they are the sentence. The shelf now draws what the product draws, in both themes. The hero
+sentence says what the page shows and records what it used to say. Two rows in
+`ui-kit/docs/inventory.md` turn, including one width verdict, `.md-row CHANGES its share`, **which
+was a reading of the shelf published as a property of the component** - the same mistake the
+inventory already carries a rule about.
+
+**And one more, one line wide.** `.tk-mo-still span{animation:none}` in `ui-kit/_page.css` was worn
+by nothing across 61 pages: a way to freeze the motion specimen that no page ever asked for, while
+the rule that does the freezing sits eight lines below under the real setting, where it belongs.
+
+**Verified.** 1,160 renders over three trees on two engines at 390 and 1280: 0 sideways scroll, 0
+duplicate ids, 0 page errors. **The control page needed its own `<meta name="viewport">` before it
+could see anything** - without one, Chromium under `isMobile` gives the document a 980px layout
+viewport and a box 300px past a 390px window fits inside it, so the control reported blind and the
+sweep would have reported a clean zero. That is the second time in one day that mobile emulation
+turned an instrument off, and the first was backlog 205 this morning. Height and body width against a
+HEAD worktree on a second port: **4 of 352 rows moved, all four the two kit pages that were meant to
+move, and 0 of the 115 product documents**, with the instrument proved at 0 first.
+
+---
+
 ## 2026-08-18 - The last open row closed, and both halves of it as filed were the instrument
 
 **Backlog 205 said four documents and it said WebKit only.** Neither was true, and the way it was

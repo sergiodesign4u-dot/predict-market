@@ -1,5 +1,5 @@
 /* components/market.css
-   Component: market. Classes: .market-body, .market-box, .market-chevron, .market-depth, .market-head, .market-stats, .market-title, .md-amt, .md-bar, .md-get, .md-price, .md-row, .md-row-head, .md-sub, .md-table, .md-title, .ms-label, .ms-no, .ms-up, .ms-val, .ms-yes.
+   Component: market. Classes: .market-body, .market-box, .market-chevron, .market-depth, .market-head, .market-stats, .market-title, .md-sub, .md-title, .ms-label, .ms-no, .ms-up, .ms-val, .ms-yes.
 
    Reads: --bg-control, --bg-pressed, --edge-groove-dark, --outcome-no-figure,
           --outcome-yes-fill, --outcome-yes-text, --text-brass-lit, --text-muted,
@@ -46,12 +46,20 @@
 .ms-up{color:var(--outcome-yes-text)}
 .md-title{font-family:var(--font-body);font-size:var(--text-13);font-weight:var(--weight-bold);color:var(--text-primary)}
 .md-sub{display:block;font-size:var(--text-12);line-height:var(--leading-base);color:var(--text-muted);margin:var(--space-4) 0 var(--space-12)}
-.md-table{display:flex;flex-direction:column;gap:var(--space-2)}
-.md-row{position:relative;display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-8);align-items:center;padding:var(--space-8) var(--space-12);border-radius:var(--radius-10);overflow:clip;font-family:var(--font-mono);font-size:var(--text-12);color:var(--text-primary)}
-.md-row-head{padding:var(--space-2) var(--space-12);color:var(--text-muted);font-size:var(--text-10);text-transform:uppercase;letter-spacing:var(--track-label)}
-.md-bar{position:absolute;left:0;top:0;bottom:0;background:var(--outcome-yes-fill);z-index:var(--z-under)}
-.md-row > span:not(.md-bar){position:relative;z-index:var(--z-content)}
-.md-amt{font-weight:var(--weight-semibold)}
-.md-price{color:var(--outcome-yes-text);text-align:center}
-.md-row-head > span:nth-child(2){text-align:center}
-.md-get,.md-row-head > span:last-child{text-align:right}
+/* A SLIPPAGE LADDER STOOD HERE IN NINE RULES AND THE PRODUCT HAD RULED IT OUT BY NAME, 2026-08-18.
+   `.md-table`, `.md-row`, `.md-row-head`, `.md-bar`, `.md-amt`, `.md-price` and `.md-get` drew a
+   three-row price-impact table, Bet / Avg YES price / You receive if YES, with $1,000 moving the
+   price from 38 to 42 per cent. IT STOOD ON 0 OF THE 9 PRODUCT PLACEMENTS AND ON THE SHELF, so the
+   shelf and this component's own page disagreed about the same block: `market.html` drew the
+   sentence the product draws, `molecules.html` drew the ladder, and the page's hero text described
+   the ladder while the page under it showed the sentence. Three artefacts, three stories.
+   IT IS NOT A FACE WAITING FOR A PLACEMENT, IT IS A FACE THE PRODUCT CONTRADICTS. `PRODUCT.md` says
+   "NOT a trader terminal: no order books, leverage sliders, PNL ranks", the market is AMM-priced so
+   there is no book to be deep, and the sentence this block DOES ship promises the opposite of a
+   ladder in so many words: "The price is locked when you confirm, so it cannot move against you."
+   A table showing the price moving against you at size is that guarantee denied on the same screen.
+   So the rules are deleted rather than left for a day that will not come, the way `account.css`
+   went on 2026-08-08, and the shelf now draws what the product draws. `.md-title` and `.md-sub`
+   stay: they are the sentence. WHAT FOUND IT was the census that reads the browser's PARSED rules
+   against the rendered DOM, because a source grep cannot tell a script hook from dead markup and
+   had called five live hooks orphans in the same pass. docs/backlog.md 211. */

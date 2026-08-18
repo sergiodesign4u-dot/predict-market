@@ -466,6 +466,28 @@ because it is a stance rather than a principle, and it is written once, here.
   they already had, and believing it duplicated the block on all 109. **What caught that was
   reading the rendered panel.** A filed defect can be the same mistake: `ui-kit/betpanel.html` was
   on this list as a broken link for a string that stands inside `<code>` as escaped text.
+- **AN IDLE CONTROL TAKEN FROM THE SOURCE IS NOT AN IDLE CONTROL, AND IT IS THE ONE CHECK THIS
+  SYSTEM LEANS ON HARDEST.** Every folder here promises the same two-sided reading: no rule without a
+  placement, no markup without a rule. Taken as a grep it is **wrong in three directions at once**:
+  it cannot tell a declared script hook from dead markup, it cannot see the classes a page script
+  writes at run time, and it misparses a selector inside a media block. Run that way it called five
+  live hooks orphans and reported the real defect nowhere. **Read from the browser's PARSED rules
+  crossed with the rendered DOM, over the paint and the stand together: 818 declared, 820 standing,
+  and every zero on both sides says which zero it is** - five hooks declared as hooks, three runtime
+  state classes the script writes. **The ninth was a slippage ladder in seven classes standing on 0
+  of its component's 9 placements and on the SHELF**, so the component's page drew the sentence the
+  product draws, the shelf drew the ladder, and the page's hero text described the ladder while the
+  page under it showed the sentence: **three artefacts, three stories, each internally consistent.**
+  And it was not an unplaced face, it was a face `PRODUCT.md` rules out by name and that the block's
+  own shipped sentence contradicts, "the price is locked when you confirm, so it cannot move against
+  you". **Before placing a face nobody wears, read what the product says about it; before deleting
+  one, ask which zero it is.**
+- **A CONTROL PAGE IS A PAGE, SO IT NEEDS THE SAME HEAD THE PRODUCT HAS.** A positive control built
+  with `setContent` and no `<meta name="viewport">` gets a **980px layout viewport** from Chromium
+  under `isMobile`, so a box 300px past a 390px window fits inside it and the control reports blind.
+  The sweep behind it would have returned a clean zero over three trees. Mobile emulation turned an
+  instrument off twice in one day here, this and `scrollLeft`. **Build the control out of the same
+  material as the page, or it is measuring a different document.**
 - **No em dash**, anywhere, and **"anywhere" is the repository rather than the folders somebody
   remembered.** It was measured over six on 2026-08-16, read 0, and was published as "the only file
   that carries any" while `concept/brand-toolkit/` carried 35 across four files. Those are gone;
