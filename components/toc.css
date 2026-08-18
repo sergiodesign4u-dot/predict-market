@@ -92,5 +92,16 @@
        max-height:calc(100svh - 66px - var(--space-16));
        overflow-y:auto;overscroll-behavior:contain}
   .toc-head{display:none}
-  .toc-d::details-content{display:block;content-visibility:visible}
+  /* AND `opacity:1`, WHICH THIS RULE DID NOT CARRY UNTIL 2026-08-18, SO THE DESKTOP RAIL WAS
+     INVISIBLE ON EVERY DOCUMENT-PROFILE PAGE FOR THREE DAYS. Two correct rules made it: this
+     one turns a closed `<details>` into a permanent rail by forcing `::details-content` to
+     display, and `base.css` fades `::details-content` from `opacity:0` with `opacity:1` on
+     `details[open]`. A rail is never `[open]`, so the fade had no end state to reach and the
+     contents sat at zero. It arrived with the Animation stage on 2026-08-15 and nothing saw it:
+     the boxes are all there and correct, `.toc-list` measures 214x601 with fourteen 206x36
+     links in a readable bone, no error is thrown, no scroll is added, and
+     **`checkVisibility()` returns TRUE, because the opacity is on the PSEUDO-ELEMENT and not
+     on the element it is asked about**. Found by screenshotting the element rather than
+     measuring it, on the day four more pages were about to inherit it. */
+  .toc-d::details-content{display:block;content-visibility:visible;opacity:1}
 }

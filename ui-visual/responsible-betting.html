@@ -38,10 +38,53 @@ var f=document.getElementsByTagName('iframe');
 for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
 push();});})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UI Visual - Active</title>
+  <title>UI Visual - Responsible betting</title>
   <link rel="stylesheet" href="../components/index.css">
   <script src="../assets/icons.js"></script>
   <script src="../assets/search.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebPage",
+   "@id": "/legal/responsible-betting#page",
+   "name": "Responsible betting",
+   "url": "/legal/responsible-betting",
+   "breadcrumb": {
+    "@id": "/legal/responsible-betting#crumb"
+   },
+   "isPartOf": {
+    "@id": "/#website"
+   },
+   "dateModified": "2026-08-18"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "/legal/responsible-betting#crumb",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Legal"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Responsible betting",
+     "item": "/legal/responsible-betting"
+    }
+   ]
+  }
+ ]
+}
+</script>
 </head>
 <body>
 
@@ -140,10 +183,10 @@ push();});})();</script>
         <a href="event-detail-logged-out-loading.html" class="sidebar-sub-link">loading</a>
         <a href="event-detail-logged-out-error.html" class="sidebar-sub-link">error</a>
       </div>
-      <div class="sidebar-divider active">My Bets</div>
+      <div class="sidebar-divider">My Bets</div>
       <div class="sidebar-sub">
         <div class="sidebar-divider sub">Active</div>
-        <a href="active-bets.html" class="sidebar-sub-link active">success</a>
+        <a href="active-bets.html" class="sidebar-sub-link">success</a>
         <a href="active-bets-empty-new.html" class="sidebar-sub-link">empty (new)</a>
         <a href="active-bets-empty-resolved.html" class="sidebar-sub-link">empty (resolved)</a>
         <a href="active-bets-loading.html" class="sidebar-sub-link">loading</a>
@@ -202,16 +245,9 @@ push();});})();</script>
       <div class="sidebar-sub">
         <a href="how-it-works.html" class="sidebar-sub-link">success</a>
       </div>
-      <div class="sidebar-divider">Legal</div>
+      <div class="sidebar-divider active">Legal</div>
       <div class="sidebar-sub">
-        <a href="terms.html" class="sidebar-sub-link">Terms of Service</a>
-        <a href="privacy.html" class="sidebar-sub-link">Privacy Policy</a>
-        <a href="cookies.html" class="sidebar-sub-link">Cookie Policy</a>
-        <a href="responsible-betting.html" class="sidebar-sub-link">Responsible betting</a>
-      </div>
-      <div class="sidebar-divider">Company</div>
-      <div class="sidebar-sub">
-        <a href="about.html" class="sidebar-sub-link">About Yonder</a>
+        <a href="terms.html" class="sidebar-sub-link active">Terms of Service</a>
       </div>
       <div class="sidebar-divider">Sign In</div>
       <div class="sidebar-sub">
@@ -294,67 +330,26 @@ document.addEventListener('click', function (e) {
 
 
         <div class="utility">
-          <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
-          <div class="bal-toggle desk-only">
-            <span class="bal-figure"><span class="bal-label" id="balLabel">Portfolio</span> <span class="bal-amt" id="balAmt">$132.00</span></span>
-            <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Portfolio)">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-transfer-horizontal-b"/></svg>
-            </button>
-            <button type="button" class="icon-btn bal-add" data-open="deposit" aria-label="Add funds">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plus-b"/></svg>
-            </button>
-          </div>
-
-          <!-- Favorites: desktop header only (on mobile it is the bottom-bar slot). -->
-          <a class="icon-btn desk-only" href="favorites.html" aria-label="Favorites, see saved events">
+          <!-- Favorites kept as an affordance; tapping it logged-out routes to Sign In (saving needs an account). -->
+          <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Favorites (sign in to save)">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
-          </a>
+          </button>
 
-          <!-- Search: a utility on every screen, not a navigation slot. The IA defers search
-           "until catalog scale" and names where it goes when it arrives: the Events
-           destination, never a bottom slot. This is the way in from anywhere else. -->
+          <!-- Notifications kept as an affordance; tapping it logged-out routes to Sign In. No unread badge when logged out. -->
           <a class="icon-btn search-open" href="event-feed-search.html" aria-label="Search events">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg>
           </a>
-          <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
-          <details class="notif-menu">
-            <summary aria-label="Notifications, 3 unread">
-              <span class="bell-wrap">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
-                <span class="badge-dot">3</span>
-              </span>
-            </summary>
-            <div class="dropdown notif-drop" role="menu">
-              <ul>
-                <li><a class="nav-item nav-row nav-row-stack" href="win.html"><strong>Bet resolved</strong><span>US government shutdown before Jul 1, 2026 - YES won</span></a></li>
-                <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
-                <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
-              </ul>
-              <a class="notif-all" href="notifications.html">See all notifications</a>
-            </div>
-          </details>
+          <button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
+          </button>
 
-          <details class="avatar-menu">
-            <summary aria-label="Account menu">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-user-b"/></svg>
-              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-chevron-down"/></svg>
-            </summary>
-            <div class="dropdown" role="menu">
-              <ul>
-                <li><a class="nav-item nav-row" href="my-profile.html" role="menuitem">My Profile</a></li>
-                <li><a class="nav-item nav-row" href="active-bets.html" role="menuitem">My Bets</a></li>
-                <li><a class="nav-item nav-row" href="favorites.html" role="menuitem">Favorites</a></li>
-                <li><a class="nav-item nav-row" href="wallet.html" role="menuitem">Wallet</a></li>
-                <li><a class="nav-item nav-row" href="how-it-works.html" role="menuitem">How It Works</a></li>
-                <li><a class="nav-item nav-row" href="event-feed-logged-out.html" role="menuitem">Logout</a></li>
-              </ul>
-            </div>
-          </details>
+          <!-- Auth entries replace the balance figure and the avatar dropdown entirely. -->
+          <div class="auth-btns">
+            <button type="button" class="btn btn-secondary btn-sm" data-open="signin">Sign in</button>
+            <button type="button" class="btn btn-primary btn-sm" data-open="signin">Sign up</button>
+          </div>
         </div>
       </div>
-      <!-- Condensed category strip: hidden until you scroll past the full category
-           bar, then it slides into the sticky header so the tabs stay reachable.
-           Small, icon-less chips (the full bar below keeps its icons). -->
     </header>
 
     <!-- Second-level navigation moved onto the content plate (below) -->
@@ -364,80 +359,86 @@ document.addEventListener('click', function (e) {
     <main class="feed" id="main-content" tabindex="-1">
       <div class="feed-inner">
         <div class="cat-layout">
-        <div class="cat-main">
-        <div class="feed-head"><h1>My Bets</h1></div>
-        <nav class="tabs" aria-label="My Bets">
-          <a href="active-bets.html" aria-current="page">Active</a>
-          <a href="active-bets-history.html">History</a>
+        <nav class="toc" aria-label="On this page">
+          <details class="toc-d">
+            <summary class="toc-head">On this page</summary>
+            <ul class="toc-list">
+              <li><a class="toc-link" href="#what">What this document decides<span class="toc-n">01</span></a></li>
+              <li><a class="toc-link" href="#is-not">What a prediction market is, and what it is not<span class="toc-n">02</span></a></li>
+              <li><a class="toc-link" href="#signs">The signs worth watching for<span class="toc-n">03</span></a></li>
+              <li><a class="toc-link" href="#limits">The limits you can set<span class="toc-n">04</span></a></li>
+              <li><a class="toc-link" href="#break">Taking a break<span class="toc-n">05</span></a></li>
+              <li><a class="toc-link" href="#close">Closing your account<span class="toc-n">06</span></a></li>
+              <li><a class="toc-link" href="#help">Where to get help that is not us<span class="toc-n">07</span></a></li>
+              <li><a class="toc-link" href="#our-side">What we do on our side<span class="toc-n">08</span></a></li>
+              <li><a class="toc-link" href="#changes">Changes to this document<span class="toc-n">09</span></a></li>
+              <li><a class="toc-link" href="#reach">How to reach us about this document<span class="toc-n">10</span></a></li>
+            </ul>
+          </details>
         </nav>
-        <div class="pos-list">
+        <div class="cat-main read-col">
+            <nav class="crumb" aria-label="Breadcrumb"><ol>
+            <li><a href="event-feed.html">Home</a></li>
+            <li><span>Legal</span></li>
+            <li><span class="crumb-here" aria-current="page">Responsible betting</span></li>
+            </ol></nav>
+        <div class="feed-head"><h1>Responsible betting</h1></div>
 
-          <article class="pos">
-            <div class="pos-top">
-              <span class="pos-q">Will the US government shut down before March 1, 2027?</span>
-              <span class="pos-side pos-yes">YES</span>
-            </div>
-            <div class="pos-figures">
-              <span class="pos-fig">Stake<b>$5.00</b></span>
-              <span class="pos-fig">Avg price<b>38%</b></span>
-              <span class="pos-fig">Price now<b>41%</b></span>
-              <span class="pos-fig">Potential payout<b>$13.16</b></span>
-            </div>
-            <span class="pos-status">Open &middot; just placed</span>
-          </article>
+        <div class="quiet-box">Prototype page. The section headings, the structure and the dates are real; the body text describes what each section would decide and is not an operative legal term. Nothing on this page is in force.</div>
 
-          <article class="pos">
-            <div class="pos-top">
-              <span class="pos-q">Will Bitcoin close above $150,000 before October 1, 2026?</span>
-              <span class="pos-side pos-yes">YES</span>
-            </div>
-            <div class="pos-figures">
-              <span class="pos-fig">Stake<b>$25.00</b></span>
-              <span class="pos-fig">Avg price<b>61%</b></span>
-              <span class="pos-fig">Price now<b>78%</b></span>
-              <span class="pos-fig">Potential payout<b>$40.98</b></span>
-            </div>
-            <span class="pos-status">Open</span>
-          </article>
+        <div class="reconcile-box"><strong>Last updated 18 August 2026</strong><span>Effective immediately for accounts opened from this date. Effective 18 October 2026 for accounts opened before it.</span><span>What changed: this is the first version, so nothing changed and the date is the date it was published.</span><span>Every later version keeps the one it replaced available.</span></div>
 
-          <article class="pos">
-            <div class="pos-top">
-              <span class="pos-q">Which party will win the most seats in the next UK general election?</span>
-              <span class="pos-side pos-no">NO &middot; Conservatives</span>
-            </div>
-            <div class="pos-figures">
-              <span class="pos-fig">Stake<b>$10.00</b></span>
-              <span class="pos-fig">Avg price<b>67%</b></span>
-              <span class="pos-fig">Price now<b>54%</b></span>
-              <span class="pos-fig">Potential payout<b>$14.93</b></span>
-            </div>
-            <span class="pos-status">Open</span>
-          </article>
+<!-- The link stands outside the box, not inside the sentence: the system has
+             no inline link style for body prose, so an <a> in a paragraph renders in
+             the browser's own blue. Measured at 1.8:1 before this was moved. See
+             ui-kit/docs/backlog.md. -->
+        <a class="related-more" href="how-it-works.html">How a market resolves</a>
 
-        </div>
-        </div><!-- /cat-main --></div><!-- /cat-layout --></div><!-- /feed-inner -->
+        <section class="feed-seo" id="what" aria-label="1. What this document decides"><h2>1. What this document decides</h2><p>This section states what a person can do here and what we do on our side: the limits available on an account, how to take a break, how to close it, and where to get help that is not us.</p><p>It puts the tools first and the prose second, because a person who arrived here looking for a control should reach it in one screen rather than read an argument about moderation.</p></section>
+        <section class="feed-seo" id="is-not" aria-label="2. What a prediction market is, and what it is not"><h2>2. What a prediction market is, and what it is not</h2><p>This section states plainly that money placed on an outcome can be lost in full, and that a price is a probability rather than a recommendation.</p><p>It says what the product is designed to reward, which is a view about the world that turns out to be right, and what it is not designed to reward, which is frequency.</p></section>
+        <section class="feed-seo" id="signs" aria-label="3. The signs worth watching for"><h2>3. The signs worth watching for</h2><p>This section lists the behaviours that are worth noticing in yourself, written as observations rather than as accusations: betting to recover a loss, betting larger after a loss, and betting on markets you would not otherwise read.</p><p>It exists because the product already refuses to put a re-bet in front of a person who has just lost, and this is the same decision said out loud.</p></section>
+        <section class="feed-seo" id="limits" aria-label="4. The limits you can set"><h2>4. The limits you can set</h2><p>This section describes the limits an account can carry: a deposit ceiling per period and a loss ceiling per period, each taking effect at once and each taking a waiting period to loosen.</p><p>It states that tightening a limit is immediate and loosening one is not, which is the asymmetry that makes a limit worth setting.</p></section>
+        <section class="feed-seo" id="break" aria-label="5. Taking a break"><h2>5. Taking a break</h2><p>This section describes the cooldown: a period during which deposits and new positions are refused while existing positions still resolve and pay out.</p><p>It names the lengths available, states that a break cannot be cancelled early, and says what happens to a resolution that lands during one.</p></section>
+        <section class="feed-seo" id="close" aria-label="6. Closing your account"><h2>6. Closing your account</h2><p>This section describes self-exclusion, which is longer than a break and is not reversible within its period, and separates it from simply closing an account.</p><p>It states what happens to a balance and to open positions in each case, because those are the two questions that stop a person acting.</p></section>
+        <section class="feed-seo" id="help" aria-label="7. Where to get help that is not us"><h2>7. Where to get help that is not us</h2><p>This section lists independent organisations by jurisdiction, with a way to reach each one that does not go through this product.</p><p>It is deliberately not a form. A person at this point in the document needs a phone number and a link, not a field to fill in.</p></section>
+        <section class="feed-seo" id="our-side" aria-label="8. What we do on our side"><h2>8. What we do on our side</h2><p>This section states the product decisions already taken for this reason: a resolution note before any re-bet, no notification about a balance, and no reward for frequency.</p><p>It exists so the document is a description of the product rather than a request that the reader behave well.</p></section>
+        <section class="feed-seo" id="changes" aria-label="9. Changes to this document"><h2>9. Changes to this document</h2><p>This section states how a change is announced, how much notice is given, and that the previous version stays reachable.</p><p>It states that a limit already set is never loosened by a change to this document.</p></section>
+        <section class="feed-seo" id="reach" aria-label="10. How to reach us about this document"><h2>10. How to reach us about this document</h2><p>This section gives the single address for a question about the tools on this page, separate from product support, and states the period within which a reply is due.</p><p>It says which requests are answered by a person rather than by a process, because a request to close an account is not a support ticket.</p></section>
+
+        <div class="protect protect-page"><b>A question about this document</b> goes to legal@yonder.example, which is not product support. A reply is sent within five working days.</div>
+
+        <section class="related-events" aria-labelledby="sib-h">
+          <h2 id="sib-h">The other documents</h2>
+          <ul class="related-list">
+            <li><a href="terms.html"><span class="rel-q">Terms of Service</span><span class="rel-odds">read</span></a></li>
+            <li><a href="privacy.html"><span class="rel-q">Privacy Policy</span><span class="rel-odds">read</span></a></li>
+            <li><a href="cookies.html"><span class="rel-q">Cookie Policy</span><span class="rel-odds">read</span></a></li>
+            <li><a href="about.html"><span class="rel-q">About Yonder</span><span class="rel-odds">read</span></a></li>
+          </ul>
+        </section>
+</div><!-- /cat-main --></div><!-- /cat-layout --></div><!-- /feed-inner -->
     </main>
     </div><!-- /app-case -->
 
     <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
       <ul>
-        <li><a class="nav-item nav-slot" href="event-feed.html">
+        <li><a class="nav-item nav-slot" href="event-feed-logged-out.html">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-widget-b"/></svg>
           <span>Events</span>
         </a></li>
-        <li aria-current="page"><a class="nav-item nav-slot" href="active-bets.html">
+        <li><button class="nav-item nav-slot" type="button" data-open="signin">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-list-b"/></svg>
           <span>My Bets</span>
-        </a></li>
-        <li><a class="nav-item nav-slot" href="favorites.html">
+        </button></li>
+        <li><button class="nav-item nav-slot" type="button" data-open="signin">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
           <span>Favorites</span>
-        </a></li>
-        <li><a class="nav-item nav-slot" href="my-profile.html" aria-label="Portfolio, balance $142">
-          <span class="bn-bal">$142</span>
-          <span>Portfolio</span>
-        </a></li>
+        </button></li>
+        <li><button class="nav-item nav-slot" type="button" data-open="signin" aria-label="Sign in">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-login-3-b"/></svg>
+          <span>Sign in</span>
+        </button></li>
       </ul>
     </nav>
 

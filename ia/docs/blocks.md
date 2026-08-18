@@ -36,11 +36,17 @@ this sentence used to say all five had no screen in either tree:
 
 | Node | Robots | Body profile |
 |---|---|---|
-| Terms of Service | `index,follow` | DOCUMENT - **built 2026-08-03**, `ui-visual/terms.html`, the first use of this bank |
-| Privacy Policy | `index,follow` | DOCUMENT |
-| Cookie Policy | `index,follow` | DOCUMENT |
-| Responsible betting | `index,follow` | DOCUMENT |
-| About | `index,follow` | STATEMENT |
+| Terms of Service | `index,follow` | DOCUMENT - **built 2026-08-03**, the first use of this bank |
+| Privacy Policy | `index,follow` | DOCUMENT - **built 2026-08-18** |
+| Cookie Policy | `index,follow` | DOCUMENT - **built 2026-08-18** |
+| Responsible betting | `index,follow` | DOCUMENT - **built 2026-08-18** |
+| About | `index,follow` | STATEMENT - **built 2026-08-18**, and the people section is left out because this bank marks it LATER |
+
+**All five stand in both trees, `wireframes/` and `ui-visual/`, one name each.** The four that
+arrived on 2026-08-18 were built against `terms.html` rather than from this table, because a built
+precedent carrying all eleven blocks is a better source than a specification of them, and the body
+of each painted page is lifted from its grey twin so the two trees cannot disagree about what is on
+it.
 
 **The sixth node, Contact / Support, is NOT this type, and that is a decision with a reason.** It
 carries a form, and a form brings a field vocabulary, four states of its own (empty, validating,

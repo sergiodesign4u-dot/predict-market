@@ -20,13 +20,13 @@ There is no build step and no gate anywhere in this repository. **What you write
 
 | folder | what it is | links |
 |---|---|---|
-| `wireframes/` | 109 grey documents. Owns STRUCTURE and COPY. A block is decided here first | no stylesheet at all, an inline `<style>` each |
-| `ui-visual/` | 110 documents, 109 of them screens and `overview.html` the index of the tree | exactly `components/index.css` |
+| `wireframes/` | 113 grey documents. Owns STRUCTURE and COPY. A block is decided here first | no stylesheet at all, an inline `<style>` each |
+| `ui-visual/` | 114 documents, 113 of them screens and `overview.html` the index of the tree | exactly `components/index.css` |
 | `ui-kit/` | 61 pages. The vitrine: two entry pages, six foundations, a shelf per level, a page per component | `components/index.css` plus its own `_page.css` |
 | `components/` | the system. 56 stylesheets, 11,652 lines: 50 here and 6 in `patterns/` | is the thing being linked |
 
 **A painted screen carries no styles of its own.** Measured by reading every `<link rel=stylesheet>`
-in the tree: **109 of the 110 documents in `ui-visual/` link `../components/index.css` and nothing
+in the tree: **113 of the 114 documents in `ui-visual/` link `../components/index.css` and nothing
 else**, and the one that links a second file is `overview.html`, which is the index of the tree
 rather than a screen in it and borrows the stand's `_page.css` for its own furniture.
 
@@ -193,7 +193,7 @@ setting exists. **There is no blanket `*` net and there will not be one**: under
 net makes the check unable to fail.
 
 **Motion lives in a token, a component or a pattern.** Measured over the trees:
-`transition`, `animation` and `@keyframes` stand **0 times in the 110 painted screens** and 0 times
+`transition`, `animation` and `@keyframes` stand **0 times in the 114 painted screens** and 0 times
 on the 60 kit pages, all 6 `@keyframes` are in `components/`, `transition: all` is **0**, and there
 is **one** bare easing keyword, a deliberate `linear` on a longhand in `catnav.css`.
 

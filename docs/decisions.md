@@ -12,6 +12,70 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-18 - Four documents the IA had specified and nobody had built, and a rail invisible for three days
+
+**Walked as research, then IA, then wireframes, then UI**, checking currency at every stage that
+already had an artefact. Three stages had one.
+
+**Research is done and lives in `ia/docs/blocks.md`, not in `research/`**, which is right: it is
+research about a page TYPE and it belongs where it is used. Seven competitors read live on
+2026-08-03, Polymarket serving its Terms inside a `docs.google.com` iframe and Kalshi's privacy
+policy rendering no body at all, plus Refero at 1,364 screens under Terms & Conditions and 888 under
+About with five layout families named. **IA is done**: six nodes, eleven blocks with two profiles,
+A-E per profile in `seo.md` section 6.
+
+**Three currency defects, each of which the next builder would have read as an instruction.**
+`blocks.md` said `60-75ch` in four places and `ch` is the advance of a zero: the band is 60 to 75
+CHARACTERS, which is `--measure:46ch`, and `70ch` renders about 104. The first pass caught three of
+the four, which is the point about a unit written wrong. `seo.md` said 104 screens. `sitemap.md`
+said terms was the first screen with no grey twin, and it gained one on 2026-08-15.
+
+**And the decision that was genuinely open is taken.** `sitemap.md` said in so many words that which
+of the six ship at MVP was undecided, and it stood open for fifteen days while the footer of every
+screen promised four of them. Decided: **five ship**, and Contact / Support does not, because it
+carries a form and is a different page type.
+
+**The four are built**, `privacy`, `cookies`, `responsible-betting` and `about`, in both trees,
+which are **113 grey and 114 painted** now. Built from `terms.html` rather than from the bank, and
+**the body of each painted page is lifted from its grey twin**, so the two trees cannot disagree
+about what is on the page. Three take DOCUMENT, About takes STATEMENT with no contents, no effective
+date and no people section, because the bank marks it LATER.
+
+**The structured data restates the render and was checked against it**: `name` against the `h1`,
+`BreadcrumbList` against the rendered trail, `dateModified` against the date the page PRINTS. About
+prints no date and carries none. Its `Organization` has no `sameAs` and no `contactPoint`, and that
+is a refusal with a reason: backlog 144 took the social marks off the footer, so nothing is rendered
+for `sameAs` to restate, and the Contact node is post-MVP.
+
+**The first date check was the instrument**, comparing every page against 18 August and reporting
+`terms` failing all sixteen combinations because terms prints 3 August.
+
+**The footer stopped promising what did not exist.** Dead anchors go **502 to 96 in grey and 554 to
+113 in the paint**, all of them `Contact`. The legal strip gained `Cookie Policy`, because it had
+been naming three documents and a control, and `cookies.html` had been reachable from **6 of 114**
+painted documents against 114 for the other four.
+
+**The build found a three-day-old defect that four more pages were about to inherit.** The desktop
+contents rail was invisible on every DOCUMENT-profile page. `toc.css` forces `::details-content` to
+display so a closed `<details>` becomes a permanent rail above the RAIL rung; `base.css` fades
+`::details-content` from `opacity:0` and lands it at 1 on `details[open]`. **A rail is never
+`[open]`**, so the fade had no end state. Nothing saw it: the boxes are correct, `.toc-list`
+measures 214x601 with fourteen 206x36 links in a readable bone, nothing throws or scrolls, and
+**`checkVisibility()` returns TRUE because the opacity is on the PSEUDO-ELEMENT rather than on the
+element it is asked about**. Found by screenshotting the element instead of measuring it. One
+declaration, and the rung re-read at 899 and 900 in both engines.
+
+**Verified**: 5 documents at 320, 390, 760, 899, 900 and 1280, both themes, both engines, 120
+renders, 0 page errors, 0 sideways scroll, 0 duplicate ids, one `h1` each, 0 skipped heading levels,
+every contents anchor resolving, four live siblings each, one stylesheet each. Across the trees
+**20,426 grey references and 19,859 painted, 0 broken**.
+
+**Backlog 205 is left OPEN**, the first row this file has not been able to close the same day since
+the list was emptied: the logged-out header puts 2px past the right edge at 320 in WebKit under
+mobile emulation, on the four documents that render it and not on the eight that render the
+logged-in one. It is invisible without `isMobile`, and the fix is a decision about that header
+rather than about the pages that found it.
+
 ## 2026-08-18 - The stand had 60 pages about the system and none about why any of it is like that
 
 `ui-kit/why.html` is the second half of what the Handoff stage asks for, and it is the way IN: the

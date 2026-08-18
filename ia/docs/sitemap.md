@@ -552,11 +552,11 @@ profiles - DOCUMENT for the four legal pages and STATEMENT for About - and `ia/d
 section 6 carries their A-E. The bank is by TYPE, so one pass covered five nodes.
 
 ```
-Terms of Service         page       index,follow                legal; BUILT 2026-08-03, ui-visual/terms.html
-Privacy Policy           page       index,follow                legal; linked from the cookie banner
-Cookie Policy            page       index,follow                legal; linked from the cookie banner
-Responsible betting      page       index,follow                trust and legal
-About                    page       index,follow                company
+Terms of Service         page       index,follow                legal; BUILT 2026-08-03, both trees
+Privacy Policy           page       index,follow                legal; BUILT 2026-08-18, both trees
+Cookie Policy            page       index,follow                legal; BUILT 2026-08-18, both trees; linked from the cookie banner
+Responsible betting      page       index,follow                trust and legal; BUILT 2026-08-18, both trees
+About                    page       index,follow                company; BUILT 2026-08-18, both trees
 Contact / Support        page       [?]                         support entry; NOT type 1 (it carries a form); Help / FAQ stays [ORPHAN]
 ```
 

@@ -38,10 +38,53 @@ var f=document.getElementsByTagName('iframe');
 for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
 push();});})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UI Visual - Active</title>
+  <title>UI Visual - Cookie Policy</title>
   <link rel="stylesheet" href="../components/index.css">
   <script src="../assets/icons.js"></script>
   <script src="../assets/search.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebPage",
+   "@id": "/legal/cookies#page",
+   "name": "Cookie Policy",
+   "url": "/legal/cookies",
+   "breadcrumb": {
+    "@id": "/legal/cookies#crumb"
+   },
+   "isPartOf": {
+    "@id": "/#website"
+   },
+   "dateModified": "2026-08-18"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "/legal/cookies#crumb",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Legal"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Cookie Policy",
+     "item": "/legal/cookies"
+    }
+   ]
+  }
+ ]
+}
+</script>
 </head>
 <body>
 
@@ -140,10 +183,10 @@ push();});})();</script>
         <a href="event-detail-logged-out-loading.html" class="sidebar-sub-link">loading</a>
         <a href="event-detail-logged-out-error.html" class="sidebar-sub-link">error</a>
       </div>
-      <div class="sidebar-divider active">My Bets</div>
+      <div class="sidebar-divider">My Bets</div>
       <div class="sidebar-sub">
         <div class="sidebar-divider sub">Active</div>
-        <a href="active-bets.html" class="sidebar-sub-link active">success</a>
+        <a href="active-bets.html" class="sidebar-sub-link">success</a>
         <a href="active-bets-empty-new.html" class="sidebar-sub-link">empty (new)</a>
         <a href="active-bets-empty-resolved.html" class="sidebar-sub-link">empty (resolved)</a>
         <a href="active-bets-loading.html" class="sidebar-sub-link">loading</a>
@@ -202,16 +245,9 @@ push();});})();</script>
       <div class="sidebar-sub">
         <a href="how-it-works.html" class="sidebar-sub-link">success</a>
       </div>
-      <div class="sidebar-divider">Legal</div>
+      <div class="sidebar-divider active">Legal</div>
       <div class="sidebar-sub">
-        <a href="terms.html" class="sidebar-sub-link">Terms of Service</a>
-        <a href="privacy.html" class="sidebar-sub-link">Privacy Policy</a>
-        <a href="cookies.html" class="sidebar-sub-link">Cookie Policy</a>
-        <a href="responsible-betting.html" class="sidebar-sub-link">Responsible betting</a>
-      </div>
-      <div class="sidebar-divider">Company</div>
-      <div class="sidebar-sub">
-        <a href="about.html" class="sidebar-sub-link">About Yonder</a>
+        <a href="terms.html" class="sidebar-sub-link active">Terms of Service</a>
       </div>
       <div class="sidebar-divider">Sign In</div>
       <div class="sidebar-sub">
@@ -294,67 +330,26 @@ document.addEventListener('click', function (e) {
 
 
         <div class="utility">
-          <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
-          <div class="bal-toggle desk-only">
-            <span class="bal-figure"><span class="bal-label" id="balLabel">Portfolio</span> <span class="bal-amt" id="balAmt">$132.00</span></span>
-            <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Portfolio)">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-transfer-horizontal-b"/></svg>
-            </button>
-            <button type="button" class="icon-btn bal-add" data-open="deposit" aria-label="Add funds">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plus-b"/></svg>
-            </button>
-          </div>
-
-          <!-- Favorites: desktop header only (on mobile it is the bottom-bar slot). -->
-          <a class="icon-btn desk-only" href="favorites.html" aria-label="Favorites, see saved events">
+          <!-- Favorites kept as an affordance; tapping it logged-out routes to Sign In (saving needs an account). -->
+          <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Favorites (sign in to save)">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
-          </a>
+          </button>
 
-          <!-- Search: a utility on every screen, not a navigation slot. The IA defers search
-           "until catalog scale" and names where it goes when it arrives: the Events
-           destination, never a bottom slot. This is the way in from anywhere else. -->
+          <!-- Notifications kept as an affordance; tapping it logged-out routes to Sign In. No unread badge when logged out. -->
           <a class="icon-btn search-open" href="event-feed-search.html" aria-label="Search events">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg>
           </a>
-          <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
-          <details class="notif-menu">
-            <summary aria-label="Notifications, 3 unread">
-              <span class="bell-wrap">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
-                <span class="badge-dot">3</span>
-              </span>
-            </summary>
-            <div class="dropdown notif-drop" role="menu">
-              <ul>
-                <li><a class="nav-item nav-row nav-row-stack" href="win.html"><strong>Bet resolved</strong><span>US government shutdown before Jul 1, 2026 - YES won</span></a></li>
-                <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
-                <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
-              </ul>
-              <a class="notif-all" href="notifications.html">See all notifications</a>
-            </div>
-          </details>
+          <button type="button" class="icon-btn" data-open="signin" aria-label="Notifications (sign in)">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
+          </button>
 
-          <details class="avatar-menu">
-            <summary aria-label="Account menu">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-user-b"/></svg>
-              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-chevron-down"/></svg>
-            </summary>
-            <div class="dropdown" role="menu">
-              <ul>
-                <li><a class="nav-item nav-row" href="my-profile.html" role="menuitem">My Profile</a></li>
-                <li><a class="nav-item nav-row" href="active-bets.html" role="menuitem">My Bets</a></li>
-                <li><a class="nav-item nav-row" href="favorites.html" role="menuitem">Favorites</a></li>
-                <li><a class="nav-item nav-row" href="wallet.html" role="menuitem">Wallet</a></li>
-                <li><a class="nav-item nav-row" href="how-it-works.html" role="menuitem">How It Works</a></li>
-                <li><a class="nav-item nav-row" href="event-feed-logged-out.html" role="menuitem">Logout</a></li>
-              </ul>
-            </div>
-          </details>
+          <!-- Auth entries replace the balance figure and the avatar dropdown entirely. -->
+          <div class="auth-btns">
+            <button type="button" class="btn btn-secondary btn-sm" data-open="signin">Sign in</button>
+            <button type="button" class="btn btn-primary btn-sm" data-open="signin">Sign up</button>
+          </div>
         </div>
       </div>
-      <!-- Condensed category strip: hidden until you scroll past the full category
-           bar, then it slides into the sticky header so the tabs stay reachable.
-           Small, icon-less chips (the full bar below keeps its icons). -->
     </header>
 
     <!-- Second-level navigation moved onto the content plate (below) -->
@@ -364,80 +359,86 @@ document.addEventListener('click', function (e) {
     <main class="feed" id="main-content" tabindex="-1">
       <div class="feed-inner">
         <div class="cat-layout">
-        <div class="cat-main">
-        <div class="feed-head"><h1>My Bets</h1></div>
-        <nav class="tabs" aria-label="My Bets">
-          <a href="active-bets.html" aria-current="page">Active</a>
-          <a href="active-bets-history.html">History</a>
+        <nav class="toc" aria-label="On this page">
+          <details class="toc-d">
+            <summary class="toc-head">On this page</summary>
+            <ul class="toc-list">
+              <li><a class="toc-link" href="#what">What this document decides<span class="toc-n">01</span></a></li>
+              <li><a class="toc-link" href="#kind">What a cookie is here<span class="toc-n">02</span></a></li>
+              <li><a class="toc-link" href="#necessary">The ones that have to be set<span class="toc-n">03</span></a></li>
+              <li><a class="toc-link" href="#measure">The ones that measure how the product is used<span class="toc-n">04</span></a></li>
+              <li><a class="toc-link" href="#never">What we do not set<span class="toc-n">05</span></a></li>
+              <li><a class="toc-link" href="#choose">How to change your choice<span class="toc-n">06</span></a></li>
+              <li><a class="toc-link" href="#life">How long each kind lasts<span class="toc-n">07</span></a></li>
+              <li><a class="toc-link" href="#third">The ones a third party sets<span class="toc-n">08</span></a></li>
+              <li><a class="toc-link" href="#changes">Changes to this policy<span class="toc-n">09</span></a></li>
+              <li><a class="toc-link" href="#reach">How to reach us about this document<span class="toc-n">10</span></a></li>
+            </ul>
+          </details>
         </nav>
-        <div class="pos-list">
+        <div class="cat-main read-col">
+            <nav class="crumb" aria-label="Breadcrumb"><ol>
+            <li><a href="event-feed.html">Home</a></li>
+            <li><span>Legal</span></li>
+            <li><span class="crumb-here" aria-current="page">Cookie Policy</span></li>
+            </ol></nav>
+        <div class="feed-head"><h1>Cookie Policy</h1></div>
 
-          <article class="pos">
-            <div class="pos-top">
-              <span class="pos-q">Will the US government shut down before March 1, 2027?</span>
-              <span class="pos-side pos-yes">YES</span>
-            </div>
-            <div class="pos-figures">
-              <span class="pos-fig">Stake<b>$5.00</b></span>
-              <span class="pos-fig">Avg price<b>38%</b></span>
-              <span class="pos-fig">Price now<b>41%</b></span>
-              <span class="pos-fig">Potential payout<b>$13.16</b></span>
-            </div>
-            <span class="pos-status">Open &middot; just placed</span>
-          </article>
+        <div class="quiet-box">Prototype page. The section headings, the structure and the dates are real; the body text describes what each section would decide and is not an operative legal term. Nothing on this page is in force.</div>
 
-          <article class="pos">
-            <div class="pos-top">
-              <span class="pos-q">Will Bitcoin close above $150,000 before October 1, 2026?</span>
-              <span class="pos-side pos-yes">YES</span>
-            </div>
-            <div class="pos-figures">
-              <span class="pos-fig">Stake<b>$25.00</b></span>
-              <span class="pos-fig">Avg price<b>61%</b></span>
-              <span class="pos-fig">Price now<b>78%</b></span>
-              <span class="pos-fig">Potential payout<b>$40.98</b></span>
-            </div>
-            <span class="pos-status">Open</span>
-          </article>
+        <div class="reconcile-box"><strong>Last updated 18 August 2026</strong><span>Effective immediately for accounts opened from this date. Effective 18 October 2026 for accounts opened before it.</span><span>What changed: this is the first version, so nothing changed and the date is the date it was published.</span><span>Every later version keeps the one it replaced available.</span></div>
 
-          <article class="pos">
-            <div class="pos-top">
-              <span class="pos-q">Which party will win the most seats in the next UK general election?</span>
-              <span class="pos-side pos-no">NO &middot; Conservatives</span>
-            </div>
-            <div class="pos-figures">
-              <span class="pos-fig">Stake<b>$10.00</b></span>
-              <span class="pos-fig">Avg price<b>67%</b></span>
-              <span class="pos-fig">Price now<b>54%</b></span>
-              <span class="pos-fig">Potential payout<b>$14.93</b></span>
-            </div>
-            <span class="pos-status">Open</span>
-          </article>
+<!-- The link stands outside the box, not inside the sentence: the system has
+             no inline link style for body prose, so an <a> in a paragraph renders in
+             the browser's own blue. Measured at 1.8:1 before this was moved. See
+             ui-kit/docs/backlog.md. -->
+        <a class="related-more" href="cookie-consent.html">Change your cookie choice</a>
 
-        </div>
-        </div><!-- /cat-main --></div><!-- /cat-layout --></div><!-- /feed-inner -->
+        <section class="feed-seo" id="what" aria-label="1. What this document decides"><h2>1. What this document decides</h2><p>This section says which files the product asks a browser to keep, what each one is for, and which of them a person can refuse without the product breaking.</p><p>It states that the choice is made in one place and links to it, so a reader who came here to change something is not made to read the rest first.</p></section>
+        <section class="feed-seo" id="kind" aria-label="2. What a cookie is here"><h2>2. What a cookie is here</h2><p>This section describes the mechanism in the plainest terms that are still true, and names the two other things filed under the same word: local storage and a session value that never leaves the tab.</p><p>It exists because a policy that talks only about cookies while the product also uses local storage is describing half of what it does.</p></section>
+        <section class="feed-seo" id="necessary" aria-label="3. The ones that have to be set"><h2>3. The ones that have to be set</h2><p>This section lists the items without which a page cannot work: the session, the theme the reader chose, and the record of the cookie choice itself.</p><p>It states that these cannot be refused while using the product and gives the reason for each, because "necessary" with no reason beside it is a word doing the work of an argument.</p></section>
+        <section class="feed-seo" id="measure" aria-label="4. The ones that measure how the product is used"><h2>4. The ones that measure how the product is used</h2><p>This section lists what is set only after a person agrees: which screens are reached, where a flow is abandoned, and how long a page takes to draw.</p><p>It states what each measurement is used for and, more usefully, what it is not: no profile is built and nothing here follows a person to another site.</p></section>
+        <section class="feed-seo" id="never" aria-label="5. What we do not set"><h2>5. What we do not set</h2><p>This section names the categories the product does not use at all, advertising and cross-site tracking among them, and says so as a commitment rather than as a current state.</p><p>It exists because a list of what is set answers a narrower question than the one a person is actually asking.</p></section>
+        <section class="feed-seo" id="choose" aria-label="6. How to change your choice"><h2>6. How to change your choice</h2><p>This section states that the choice can be changed at any time, that changing it takes effect on the next page, and that refusing the measurement group leaves the product fully usable.</p><p>It links to the cookie preferences directly rather than describing where to find them, because a policy that describes a control is a policy that will go stale when the control moves.</p></section>
+        <section class="feed-seo" id="life" aria-label="7. How long each kind lasts"><h2>7. How long each kind lasts</h2><p>This section gives a lifetime per item rather than one lifetime for the page, because a session value and a year-long preference are different promises.</p><p>It states what happens on the day one expires, which is that it is set again only if the choice that allowed it is still in force.</p></section>
+        <section class="feed-seo" id="third" aria-label="8. The ones a third party sets"><h2>8. The ones a third party sets</h2><p>This section names every party outside the product able to set anything in a browser through our pages, which today is the fiat on-ramp inside the deposit flow and nobody else.</p><p>It says that the list is the whole list, and that adding to it is a change to this document with its own effective date.</p></section>
+        <section class="feed-seo" id="changes" aria-label="9. Changes to this policy"><h2>9. Changes to this policy</h2><p>This section states how a change is announced, how much notice is given, and that the previous version stays reachable.</p><p>It also states the one case that resets a choice rather than carrying it forward: a new category, which nobody has agreed to yet.</p></section>
+        <section class="feed-seo" id="reach" aria-label="10. How to reach us about this document"><h2>10. How to reach us about this document</h2><p>This section gives the single address for a question about cookies, separate from product support, and states the period within which a reply is due.</p><p>It links to the Privacy Policy for the wider question of what is held about a person, because a cookie question is usually the narrow end of that one.</p></section>
+
+        <div class="protect protect-page"><b>A question about this document</b> goes to legal@yonder.example, which is not product support. A reply is sent within five working days.</div>
+
+        <section class="related-events" aria-labelledby="sib-h">
+          <h2 id="sib-h">The other documents</h2>
+          <ul class="related-list">
+            <li><a href="terms.html"><span class="rel-q">Terms of Service</span><span class="rel-odds">read</span></a></li>
+            <li><a href="privacy.html"><span class="rel-q">Privacy Policy</span><span class="rel-odds">read</span></a></li>
+            <li><a href="responsible-betting.html"><span class="rel-q">Responsible betting</span><span class="rel-odds">read</span></a></li>
+            <li><a href="about.html"><span class="rel-q">About Yonder</span><span class="rel-odds">read</span></a></li>
+          </ul>
+        </section>
+</div><!-- /cat-main --></div><!-- /cat-layout --></div><!-- /feed-inner -->
     </main>
     </div><!-- /app-case -->
 
     <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
       <ul>
-        <li><a class="nav-item nav-slot" href="event-feed.html">
+        <li><a class="nav-item nav-slot" href="event-feed-logged-out.html">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-widget-b"/></svg>
           <span>Events</span>
         </a></li>
-        <li aria-current="page"><a class="nav-item nav-slot" href="active-bets.html">
+        <li><button class="nav-item nav-slot" type="button" data-open="signin">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-list-b"/></svg>
           <span>My Bets</span>
-        </a></li>
-        <li><a class="nav-item nav-slot" href="favorites.html">
+        </button></li>
+        <li><button class="nav-item nav-slot" type="button" data-open="signin">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
           <span>Favorites</span>
-        </a></li>
-        <li><a class="nav-item nav-slot" href="my-profile.html" aria-label="Portfolio, balance $142">
-          <span class="bn-bal">$142</span>
-          <span>Portfolio</span>
-        </a></li>
+        </button></li>
+        <li><button class="nav-item nav-slot" type="button" data-open="signin" aria-label="Sign in">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-login-3-b"/></svg>
+          <span>Sign in</span>
+        </button></li>
       </ul>
     </nav>
 

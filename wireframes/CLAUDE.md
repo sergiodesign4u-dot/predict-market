@@ -1,6 +1,6 @@
 # wireframes/ - the grey tree
 
-109 screens. This tree owns **structure and copy**. It decides what is on a page, in what order, and
+113 screens since 2026-08-18, when `privacy`, `cookies`, `responsible-betting` and `about` arrived together as the Type 1 documents the IA had registered and nobody had built. It was 109 before them. This tree owns **structure and copy**. It decides what is on a page, in what order, and
 what it says. The painted tree follows it. It said 105 until 2026-08-17, and it was 104 when it was
 written: `terms.html` arrived on 2026-08-15, the three search screens on 2026-08-16 and
 `event-detail-bet-ready.html` on 2026-08-17.
