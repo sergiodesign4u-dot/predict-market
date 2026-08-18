@@ -51,7 +51,7 @@ and every kit page at once and none of them can override it, and it reaches the 
 all.** There is no build step and no gate: what you write is what ships.
 
 **110 and 109 are both right and they count different things, so every number below says which.**
-`ui-visual/` holds **114 documents**; **113 of them are screens** and `overview.html` is the index of
+`ui-visual/` holds **115 documents**; **114 of them are screens** and `overview.html` is the index of
 the tree rather than a screen in it. It was 109 and 108 until 2026-08-17 and 106 and 105 until
 2026-08-16, and **this paragraph said 109 and 108 in its first line and 106 in its last**, which is
 three tree sizes in five lines of the file whose whole subject is a value written once. **The 16
@@ -159,7 +159,7 @@ the product on the day somebody measured it and not the product today.
   range group drops its frame and the category chip drops from 48 to 44 with its padding. **Two
   queries arriving on one day is the shape to watch**, and neither invented a number. **Re-counted
   2026-08-18 it is 35: 32 here and 3 in `patterns/`, 16 at the desk, 5 at the detail, 8 at the rail,
-  2 the 1140 harness and 4 one-offs, and 0 in any of the 114 documents in `ui-visual/`.** The
+  2 the 1140 harness and 4 one-offs, and 0 in any of the 115 documents in `ui-visual/`.** The
   detail's 460px threshold is not among them because it is a CONTAINER query, and a container
   threshold is counted apart for the reason the line above already gives. The counterpart
   reading used to say "35 of 43 components have no width behaviour of their own at all", **and that

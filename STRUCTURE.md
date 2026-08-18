@@ -17,10 +17,10 @@ nowhere else** - a second copy of a status is a copy that goes stale, **which is
 | 02+ | CJM (As-Is + To-Be) - inside User Research, not a stage of its own | `user-research/` | `cjm-as-is.html`, `cjm-to-be.html` |
 | 03a | Information Architecture, Basic layer | `ia/` | `flows.html`, `concept-map.html` |
 | 03b | Information Architecture, Detailed layer | `ia/` | `ia.html`, `sitemap.html`, `seo.html`, `system.html` |
-| 04 | Wireframes | `wireframes/` | 113 grey pages |
+| 04 | Wireframes | `wireframes/` | 114 grey pages |
 | 05 | Voice | `voice/` | `voice/voice.html` |
 | 06 | Concept | `concept/` | `concept.html` (+ `directions.html`) |
-| 07 | UI + Visual | `ui-visual/` | 113 painted screens in 114 documents, every family and every state |
+| 07 | UI + Visual | `ui-visual/` | 114 painted screens in 115 documents, every family and every state |
 | 08 | Tokens + Components | `components/` (the system) | `ui-kit/overview.html` |
 | 09 | Design System | `components/patterns/` (6 files) + `ui-kit/` (61 of 61 pages, rebuilt by hand 2026-08-07 to 2026-08-08: a shelf per level plus one page per component, every component in the system) | `ui-kit/overview.html` |
 | 10 | Responsive | | - |
@@ -66,7 +66,7 @@ had always called them and what `wireframes/_conventions.md` had always asked fo
 translation table stood between the trees, first as `_twins.py` and then as a paragraph read by a
 person, and **the table is what hid the hole**: pairing by filename cannot see an unpaired page, so
 32 grey category screens stood against 4 painted ones for two stages, in silence, behind five
-hand-written copies of the map. **113 grey against 114 painted now, one name each, and the single
+hand-written copies of the map. **114 grey against 115 painted now, one name each, and the single
 unpaired document is `ui-visual/overview.html`, which is the index of the tree rather than a screen
 in it.**
 

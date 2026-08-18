@@ -62,8 +62,8 @@ because it is a stance rather than a principle, and it is written once, here.
   `wireframes/_conventions.md`.
 - **One system.** `components/` holds `tokens.css` plus one file per component, reached through
   `components/index.css`. **Every PAINTED screen links that one file and nothing else, and the grey
-  tree links no stylesheet at all**: 114 of 114 in `ui-visual/` and 61 of 61 in `ui-kit/` link it,
-  **0 of the 113 in `wireframes/` do**, and those 113 carry an inline `<style>` block each. Counted
+  tree links no stylesheet at all**: 115 of 115 in `ui-visual/` and 61 of 61 in `ui-kit/` link it,
+  **0 of the 114 in `wireframes/` do**, and those 114 carry an inline `<style>` block each. Counted
   2026-08-12 at 104 and re-counted 2026-08-15, when `terms.html` was written and the grey tree
   stopped being one screen short of the tree it decides. The sentence here said "every screen" until then, and the folder file it contradicted
   is the one that had it right. The visual language is
@@ -173,8 +173,8 @@ because it is a stance rather than a principle, and it is written once, here.
   not moving and is measuring nothing; only the browser's own default setting, CDP
   `Page.setFontSizes`, changes both the type and the rung. The 1140 harness stays in px, because a
   docked panel is 220 physical pixels whatever the reader's font is. **106 and 105 both name a
-  true thing and every number in this repository has to say which**: `ui-visual/` holds 114
-  documents, 113 of them screens, and `overview.html` is the index of the tree rather than a screen
+  true thing and every number in this repository has to say which**: `ui-visual/` holds 115
+  documents, 114 of them screens, and `overview.html` is the index of the tree rather than a screen
   in it. It was 106 and 105 until 2026-08-16, when the three search screens landed in both trees,
   and 109 and 108 until 2026-08-17, when `event-detail-bet-ready.html` landed in both trees with
   backlog 185, and 110 and 109 until 2026-08-18, when the four static content pages the IA had

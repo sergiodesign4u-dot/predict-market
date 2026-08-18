@@ -1041,3 +1041,9 @@ the panel is off-canvas here, it adds no height, no sideways scroll and no
 duplicate id, and every sweep in this repository passed it. The check is one line
 and it is a SET read: the row a document marks current has to be the document.
 Both trees read 0 now.
+
+**And the tree moved again the same afternoon**, which is why the numbers above are dated and
+the headers are not: `favorites-error.html` closed the one state the Favorites view was missing,
+so the tree is **114** and every region header was recomputed a second time in one day. That is
+the whole argument for computing rather than typing. A count in a dated section is a record and
+stays as written; a count a document carries about itself is turned whenever the set moves.

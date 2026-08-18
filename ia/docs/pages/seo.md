@@ -25,7 +25,7 @@ written: both screen trees carried **0 of the five metadata classes** (descripti
 twitter, ld+json) across 217 documents, and both prove why in the same element. Their `<title>` names
 the ARTEFACT rather than the page: `UI Visual - Event Feed` and
 `Wireframe - Event Detail (logged in - state: success / binary)`. **Neither tree models a document
-head; each labels a drawing.** Copying the A-block meta tags into 109 painted files would also make
+head; each labels a drawing.** Copying the A-block meta tags into 115 painted files would also make
 109 copies of facts that live here once, which the root `CLAUDE.md` forbids by name, with drift as
 the stated cost. And `{ROOT}` is still `[?]`: a canonical or an `og:url` cannot be written without
 inventing a domain nobody has chosen.
@@ -37,7 +37,7 @@ measurable only where both halves stand together. `BreadcrumbList` must match th
 the page renders. That is this file's own rule, written under §6: "One date, two consumers: if the
 page shows a date the schema does not, the schema is wrong."
 
-**58 of 108 painted documents carry one `application/ld+json` block**, one `@graph` each, over **12
+**63 of 115 painted documents carry one `application/ld+json` block**, counted 2026-08-18, one `@graph` each, over **12
 distinct page `@id`s**: home (`WebSite`, `Organization`, `CollectionPage`, `ItemList`, `FAQPage`),
 the four categories (`CollectionPage`, `BreadcrumbList`, `ItemList`), the event detail (`WebPage`,
 `BreadcrumbList`), How It Works (`WebPage`, `BreadcrumbList`, `FAQPage`), the public profile
@@ -479,7 +479,7 @@ type in both files.
 - `meta description`: written per node, under 155, and it states what the document DECIDES rather than that it exists. Terms: `The rules you agree to when you back an event on Yonder: your account, your funds, how a market resolves, and how disputes are handled.` (144). About: `Who builds Yonder, how an event resolves, where your USDC sits, and how many events we have settled.` (107).
 - `canonical`: self-referential, one per node. **No `?print` or `?v=` parameter is ever canonical**, which matters because block B12 (download / print view) is banked as LATER.
 - `hreflang`: `en` only at MVP, with `pt-BR` reserved for the Brazil Phase 2 already named in `sitemap.md`. A jurisdiction variant of a legal page is a different document, not a translation, so a future geo split gets its own URL rather than an `hreflang` alternate.
-- `robots`: `index,follow`. These pages are a ranking surface for brand-plus-trust queries and the destination of every footer link on 109 painted screens and 92 grey ones, re-counted 2026-08-18; it said 104 while the trees were 109 and 110.
+- `robots`: `index,follow`. These pages are a ranking surface for brand-plus-trust queries and the destination of every footer link on 114 painted screens and 97 grey ones, MEASURED 2026-08-18 by counting the documents that carry a `<footer>` (the grey shortfall is the 17 invoked-overlay screens, which carry none). It read 109 and 92 earlier the same day, which was the tree of the day before wearing the new date; it said 104 while the trees were 109 and 110.
 - Open Graph: `og:type` = `website` for About, `article` for the four legal pages, because a legal document has an `article:modified_time` and that is the field block B4 already carries on the page.
 - `og:image`: the shared brand card, not a screenshot. A legal page has no image of its own and inventing one is the one place this type would grow decoration.
 

@@ -12,6 +12,66 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-18 - The state matrix read against the IA, and the only surface with no declaration was the one missing a state
+
+**Walked as research, then IA, then wireframes, then UI.** Research had nothing to add. The IA is
+where the answer was, and reading it against the disk is what turned four suspicions into one
+defect and three deliberate zeros.
+
+**The method was a SET read, not a symmetry check.** "Win has an error and Loss does not" is an
+observation about two files; it is only a defect if the IA says Loss should have one. So every
+`States:` line in `ia/docs/sitemap.md` was extracted and matched against the families on disk.
+**13 screens declare a state set and 13 match it exactly.**
+
+**The three asymmetries are DECLARED, and each has a reason worth keeping:**
+
+- **The Loss Screen has loading and no error, and that is right.** The Win Screen's error is Share
+  Card generation failing (T11 in FJ5), and the Loss Screen has no Share Card, so there is no
+  moment for the state to describe.
+- **The Wallet has loading and error and no empty.** A wallet with no transactions still has a
+  balance, an Add funds control and the funds-safety line, so the screen has something to say.
+- **Search is "page + 2 states"** in `ia/docs/pages/system.md` and it has exactly two. It filters
+  an open set the page already holds, so it has no fetch of its own to be pending or to fail.
+
+**The one real hole was the surface with no declaration at all.** The Favorites view is the only
+screen in `sitemap.md` with no `States:` line, because it is described as a view over the Event
+Feed rather than a screen. The feed has loading, empty and error; Favorites had loading and empty
+and **no error, for as long as the view has existed**. Nothing could report it: a state that is
+declared nowhere cannot be compared to what stands, which is the twin of the count rule - an
+undeclared set is the same failure as a typed one, and it fails silently instead of drifting.
+
+**Written both ways round.** `sitemap.md` now carries the rule and the set: **a view over the
+Event Feed carries the Event Feed's state set, because it fetches from the same place and fails
+the same way.** And `favorites-error.html` ships in both trees, taking the register the microcopy
+inventory already calls the standard - load-error headings are uniformly `Couldn't load ...` and
+retry is uniformly `Try again` - as **"Couldn't load your favorites"**, `your` for the same reason
+as `Couldn't load your bets` and `Couldn't load your wallet`, where the feed's own
+`Couldn't load events` is about the catalog rather than about you. Three rows added to
+`voice/docs/microcopy.md` before the screens shipped.
+
+**A second find, and it was 114 documents telling the reader something untrue.** The grey panel's
+note under Event Detail said the bet-panel states are **"states to come"** and listed
+`event-closed` among them. All five bet-panel states shipped, the last on 2026-08-17, and
+**`event-closed` is not a bet-panel state at all**: `sitemap.md` names it
+`resolved-while-reading / event-closed` at PAGE level and it ships as
+`event-detail-resolved.html`. One state under two names in two places, which is the identity rule
+that cost this repository six fixture contradictions, appearing again in a note nobody re-read.
+
+**Verified.** 916 renders over two engines at 390 and 1280 with a positive control: 0 sideways
+scroll, 0 duplicate ids, 0 page errors. The new state at **seven widths including the 639 / 640
+rung pair** on both engines: 112 renders, one `h1`, 0 skipped heading levels, the block visible
+with `checkVisibility` and carrying `state-block state-problem` with an `h2` title in both trees.
+Both themes with a theme control - the page ground differs, `rgb(15,16,19)` against
+`rgb(252,250,244)`, so it is two themes rather than one measured twice - and the title reads
+**12.01 in the Vault and 15.78 in Daylight**, identical to its sibling `active-bets-error`.
+Document height and body width against a HEAD worktree on a second port, the new file excluded
+because it has no before: **0 of 454 rows moved**, instrument proved at 0 first. Both registries
+name the same **114** screens with 0 documents marking a row that is not themselves, and every
+region header in the grey tree was recomputed a second time in one day, which is the argument for
+computing rather than typing, made twice before dinner.
+
+---
+
 ## 2026-08-18 - Two panels that named the wrong page, and the job the whole browse layer serves had no flow
 
 **Walked as research, then IA, then wireframes, then UI.** Research had nothing to add: the

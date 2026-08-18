@@ -616,11 +616,14 @@ _9 state page(s): active-bets-empty-new.html, active-bets-empty-resolved.html, a
 
 ### Favorites
 
-_3 state page(s): favorites-empty.html, favorites-loading.html, favorites.html_
+_4 state page(s): favorites-empty.html, favorites-error.html, favorites-loading.html, favorites.html_
 
 | Zone | Type | Line | Flag |
 |---|---|---|---|
 | Main | Heading | Favorites | **same-thing / Bookmark vs save vs Favorites** |
+| Main | Heading | Couldn't load your favorites | Error state, written 2026-08-18. Takes the register the inventory already calls the standard: load-error headings are uniformly **Couldn't load ...** and the retry is uniformly **Try again**. `your favorites` and not `favorites` for the same reason as `Couldn't load your bets` and `Couldn't load your wallet`: the thing that failed is yours, and the feed's own `Couldn't load events` is about the catalog |
+| Main | Text | We couldn't load your saved events. Check your connection and try again. | Error state, written 2026-08-18. `saved events` and not `favorites` twice in two lines: the heading names the place, the message names the thing. It is the same shape as My Bets, whose message repeats the noun of its heading, and it does not promise a cause the product cannot know |
+| Main | Button | Try again | Error state, written 2026-08-18. Points at `favorites.html`, not at the feed: a retry returns to what failed |
 | Main | Heading | Filters | Below DESK 640 only, and it is the SHEET's title rather than the button's label: the control that opens it is a mark with no text. It is `Filters` and not `Filter` because the sheet holds more than one, and not `Sort` because sort is one of them |
 | Main | Label (hidden) | Show filters | The accessible name of the checkbox behind the mark. A `<label>` is not focusable and this one has no text, so the name has to sit on the control that is |
 | Main | Button | Show results | Below DESK 640 only, the sheet's way out. `Show results` and not `Apply`: every radio in the sheet is live, so the list behind the scrim has already changed and `Apply` would name a step that does not exist |
