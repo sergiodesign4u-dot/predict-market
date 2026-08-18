@@ -315,6 +315,31 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
   a pointer and a Tab. Each `.tk-theme-fig` carries its own `data-theme`, so both themes resolve in
   one document with no screenshots and no switching.
 
+- **A CLASS IN THE MARKUP IS A PROMISE THAT A SELECTOR ANSWERS IT, AND A SPECIMEN WEARING A FACE
+  THE SYSTEM DOES NOT HAVE FALLS BACK TO THE BROWSER'S.** Asked by a reader looking at the response
+  demo on `motion.html`: what is the white button. It was `btn-quiet`, and **`components/` contains
+  no such selector**, so the specimen took the user agent's own button ground, **239 grey in
+  Chromium and 192 in WebKit**, in a dark product, on the one page whose caption says the control
+  takes its face from the system. **It answered nothing**: rest, hover and press read identical on
+  background, colour, border and shadow, while the primary beside it moved on both. **And no
+  instrument here could have seen it**, because `.btn` supplies the transition: five properties at
+  .16s, a perfectly healthy row in every motion census this repository has taken. **A transition
+  with nothing to transition is the twin of a control with no transition at all**, which was
+  finding 8 the day before. The second case on the same shelf was `odds-bar` for `oddsbar` on
+  `organisms.html`, two specimens computing **0x0 track and 0x0 fill** where the component draws
+  960x4 with a 38 per cent green.
+  **The sweep that finds this is the INVERSE of the consistency report**, which read the system
+  against the product and found selectors nothing wears. This reads the markup against the system
+  and finds classes nothing draws: **506 distinct in `ui-visual/` with 7 unanswered and 793 in
+  `ui-kit/` with 7**. **The system already has the allow-list and it passed its idle control**:
+  `bets-table.css`, `filters.css`, `tabs.css` and `chart.css` each name their script hooks in the
+  header, and `prov-google`, `filters-close`, `rules-panel`, `ed-chart` and `ed-chart-multi` are
+  exactly those. **Two of the fourteen were the instrument**: a `class="..."` inside a JS template
+  string, and `class="hiw-glow"` inside a `<code>` block that is prose about a deleted class. So the
+  real yield was 2 and both were on the stand. **A class with no rule is legal only where the owning
+  stylesheet says so in its header**, and the grey tree's 58 are the layer boundary rather than a
+  list, because a wireframe carries the painted copy's class names on purpose.
+
 ## The plan, in order
 
 1. **Census.** Five anchor screens with their states, walked in a browser at 390 and 1280 in both

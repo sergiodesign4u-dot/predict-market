@@ -12,6 +12,58 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-18 - A class in the markup is a promise a selector answers it, and the white button was the browser's
+
+Asked by a reader looking at the response demo on `ui-kit/motion.html`: what is the white button
+doing there. The answer is that it is not a button of this product at all.
+
+The specimen was `class="btn btn-quiet btn-md"` and **`components/` contains no `.btn-quiet`
+selector**, anywhere. So it took the **user agent's own button ground: `rgb(239,239,239)` in
+Chromium and `rgb(192,192,192)` in WebKit**, which are exactly the values a bare `<button>` computes
+in each engine. A white control in a graphite product, and a different white in each browser.
+
+**It answered nothing.** Measured at rest, on hover and held down: background, colour, border and
+shadow identical on all three, while the `btn-primary` beside it took a brass shadow on hover and
+dropped it on press.
+
+**And no instrument here could have found it, for the opposite reason to yesterday's.** `.btn`
+supplies the response transition, five properties at `.16s`, so the element contributes a perfectly
+healthy row to every motion census this repository has ever taken. **A transition with nothing to
+transition is the twin of a control with no transition at all**, which was the whole finding of the
+day before. The face was missing and the movement was present, so the reading that looks for a
+missing movement passes.
+
+**The sweep is the INVERSE of `consistency.md`.** That report read the system against the product
+and found selectors nothing wears. This reads the markup against the system and asks which classes
+nothing draws:
+
+| tree | distinct classes | answered by no selector | of those, real |
+|---|---|---|---|
+| `ui-visual/` | 506 | 7 | **0** |
+| `ui-kit/` | 793 | 7 | **2** |
+
+**The system already carries the allow-list and it passed its idle control.** `bets-table.css`,
+`filters.css`, `tabs.css` and `chart.css` each name their script hooks in their own header, and
+`prov-google`, `filters-close`, `rules-panel`, `ed-chart` and `ed-chart-multi` are exactly those
+five, standing 111, 44, 20, 10 and 2 times. **Two of the fourteen were the instrument**: a
+`class="..."` living inside a JS template string, and a `class="hiw-glow"` inside a `<code>` block
+that is prose about a class deleted long ago.
+
+**So the real yield was two, and both were on the stand rather than in the product.** The second was
+`odds-bar` for `oddsbar` on `organisms.html`, twice: the specimens computed a **0x0 track and a 0x0
+fill** where the component draws 960x4 with a red track and a 38 per cent green. The organisms shelf
+gives each component one specimen and one rule, and this one had been giving the odds bar a blank.
+
+Both fixed by the class they should have carried. Verified in both engines: the Cancel button now
+rests on `rgb(36,40,47)` with `rgb(237,231,218)` ink and a `rgb(43,47,56)` edge, moves to a darker
+ground with white ink and a brass edge at 45 per cent on hover, and darkens again on press; both
+odds bars draw 960x4 with the fill at 365. 0 page errors.
+
+**The rule that comes out of it**: a class with no rule is legal only where the owning stylesheet
+says so in its header. The grey tree's 58 unanswered classes are not on this list and are not a
+defect: a wireframe carries the painted copy's class names on purpose, and that is the layer
+boundary doing its job.
+
 ## 2026-08-18 - A fade makes every z-index beneath it inert, and the one that failed was correct
 
 Reported by a reader on a screenshot: the feed's frequency menu opens **under** the first card and
