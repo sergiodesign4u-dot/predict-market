@@ -560,20 +560,28 @@ About                    page       index,follow                company
 Contact / Support        page       [?]                         support entry; NOT type 1 (it carries a form); Help / FAQ stays [ORPHAN]
 ```
 
-**Terms of Service is the first screen in this product with no grey twin**, and that is a result
-rather than an omission: IA gave the node, the block bank gave the composition, `voice/` gave the
-register and `components/` gave every class, so a grey pass would have transcribed decisions
-already made. The exception is declared in `_twins.SYSTEM_BUILT` in its own category, apart from
-`NOT_A_SCREEN`, so the two facts never share a bucket.
+**Terms of Service shipped without a grey twin on 2026-08-03 and GAINED one on 2026-08-15**, and
+this paragraph said it was the first screen in the product with none until 2026-08-18. The original
+argument was a real one and it is kept because the next four documents are built against it: IA gave
+the node, the block bank gave the composition, `voice/` gave the register and `components/` gave
+every class, so a grey pass would have transcribed decisions already made. **What the twin proved is
+that the argument was about COST rather than about correctness**: the grey page took an afternoon
+and the tree stopped being one screen short of the tree it decides. So the four documents that
+follow get their grey twin FIRST, in the ordinary order, and the exception is closed rather than
+extended.
 
 The URL in `seo.md` is `/legal/terms`; the file is `ui-visual/terms.html` because the painted tree
 is flat by convention (`STRUCTURE.md`). The slug is the production answer and the filename is the
 prototype's.
 
-**Still open for IA, and named here rather than assumed:** which of the six ship at MVP. This block
-says "post-MVP where marked" and marks only Contact, which leaves the other five undecided rather
-than decided. See `docs/backlog.md` item 27 for the eight footer destinations that are on no map at
-all.
+**DECIDED 2026-08-18: FIVE SHIP AT MVP AND CONTACT / SUPPORT DOES NOT.** Terms of Service, Privacy
+Policy, Cookie Policy, Responsible betting and About are the MVP set; Contact / Support stays
+post-MVP because it carries a form, which is a different page TYPE with a field vocabulary, four
+states of its own and a job trace to support rather than to trust. It gets its own section of
+`blocks.md` when its screen comes up. **This paragraph read "which of the six ship at MVP is still
+open" for fifteen days while the footer of every screen promised four of them**, which is what an
+open decision costs when the thing waiting on it is already rendered 218 times. See
+`docs/backlog.md` item 27 for the eight footer destinations that are on no map at all.
 
 ---
 

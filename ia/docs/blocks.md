@@ -30,8 +30,9 @@ where a row comes from and not about what it says.
 
 ### Which nodes it covers
 
-Five of the six page nodes `ia/docs/sitemap.md` registers under SYSTEM AND GLOBAL and which have no
-screen in either tree:
+Five of the six page nodes `ia/docs/sitemap.md` registers under SYSTEM AND GLOBAL, and **all five
+ship at MVP by the decision of 2026-08-18** recorded there. The `Built` column is the live state and
+this sentence used to say all five had no screen in either tree:
 
 | Node | Robots | Body profile |
 |---|---|---|
@@ -114,7 +115,7 @@ observation with its date rather than replaced by a guess.
 | B5 | **Table of contents, anchored**, sticky on desktop and collapsed above the body on mobile | DOC | MVP | SEO (the H2 list is decided in IA and the anchors are its internal-linking plane); FJ1 scanning behaviour | Families 2 and 3: Maze, Slack, Craft, GoFundMe, Leonardo, Instacart | Futuur ships **16,739 words behind one anchor**. That is the measured failure this block exists against, and the threshold is stated in the bank rather than left to taste: over 1,500 words the contents is not optional |
 | B6 | **The document body**: H2 sections, no skipped levels, numbered, section titles written as the reader's own question | DOC | MVP | `voice/docs/voice.md`; `CLAUDE.md` heading rule (one H1, no skipped level, in both trees) | Revolut: "Can I open an Account?", "How is my money protected?", "How do I close my Account?" | Revolut is alone in doing this and it does it in a bank's register. Ours carries the same question form into a spectator product, and the lexicon is already fixed in `microcopy.md`, so the phrasing does not drift between five documents |
 | B7 | **The money answer, lifted to the top** of Terms and Privacy: one plain provable sentence about custody, linked to How It Works | DOC | MVP | FJ4, EJ2, GZ3; benchmark C2, where Polymarket and Futuur both score 1 of 5 | Revolut buries the same answer at section 7 ("How is my money protected?"); Polymarket has no such sentence anywhere | **This is the differentiator on this page type.** The benchmark says our two closest competitors score 1/5 on the funds question. Putting the answer above the fold of the legal page costs one paragraph and closes the gap the whole product is positioned on |
-| B8 | **Reading aids**: 60-75ch column, the `seo-plate` type scale, anchor links on every H2 | DOC | MVP | `DESIGN.md` section 3 (body prose at 13-14px and 60-75ch) | Bet365 and Futuur both sit at a 720px column; Revolut at 1000px | All three exceed our own rule. 720px at 16px is roughly 90 characters and 1000px is well past 120. We already decided 60-75ch and measured it; here it simply gets enforced on a page that is nothing but prose |
+| B8 | **Reading aids**: a 60 to 75 CHARACTER column, which is `--measure:46ch`, the `seo-plate` type scale, anchor links on every H2 | DOC | MVP | `DESIGN.md` section 3 (body prose at 13-14px and 60 to 75 characters). **This cell and the two above it said `60-75ch` until 2026-08-18, which is the mistake `tokens.css` records against this very unit**: `ch` is the advance of a zero, not of a character, so `70ch` renders about 104 characters and the number would have been wrong on all four documents this bank is about to build | Bet365 and Futuur both sit at a 720px column; Revolut at 1000px | All three exceed our own rule. 720px at 16px is roughly 90 characters and 1000px is well past 120. We already decided 60 to 75 characters and measured it; here it simply gets enforced on a page that is nothing but prose. **This was the FOURTH `60-75ch` in this row and the first pass caught three**, which is the point about a unit written wrong: it does not appear once, it appears everywhere the number is repeated |
 | B9 | **Sibling documents block**: the other four, named, at the foot of the body | BOTH | MVP | Backlog item 27 (the footer promises destinations the map omits); GZ5 | Family 4: Square, Expedia, ManyChat | The five nodes are a SET and every source treats each as an island. A reader who reached Cookie Policy from the cookie banner has no path to Privacy on any page we read except through a footer they have to hunt |
 | B10 | **Contact line**: the one address for a question about this document | BOTH | MVP | `ia/docs/sitemap.md` Contact / Support node; EJ2 | Futuur closes with support@; Mocha exposes a copyable legal address | Both bury it in the last paragraph. Ours is a block, because a person who has a question about a term has already decided not to finish reading |
 | B11 | **Footer + bottom nav**, unchanged | BOTH | MVP | R9 (the bottom nav stands on every screen); "a screen is never a dead end" | Kalshi and Revolut keep the footer; Futuur's Notion page and Bet365's help article have none | Two of the seven pages we read have no way back into the product except the browser's back button. Our own rule already forbids that, and this is the first page type where it would have been tempting to make an exception |
@@ -158,7 +159,7 @@ B7 stands above the contents on purpose. On mobile the contents is a collapsed c
 below it is below a closed door; the one sentence that answers the money question is the last thing
 that may sit there.
 
-Desktop (min-width 760px) promotes B5 to a sticky left column and the body keeps its 60-75ch measure
+Desktop (min-width 760px) promotes B5 to a sticky left column and the body keeps its 60 to 75 character measure
 rather than filling the remaining width. That is family 2, chosen over family 3 because our side
 panel vocabulary already puts navigation on the left in all three trees and a right-hand contents
 would be a second answer to a question the system has answered.

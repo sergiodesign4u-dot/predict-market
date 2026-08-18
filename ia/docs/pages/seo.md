@@ -479,7 +479,7 @@ type in both files.
 - `meta description`: written per node, under 155, and it states what the document DECIDES rather than that it exists. Terms: `The rules you agree to when you back an event on Yonder: your account, your funds, how a market resolves, and how disputes are handled.` (144). About: `Who builds Yonder, how an event resolves, where your USDC sits, and how many events we have settled.` (107).
 - `canonical`: self-referential, one per node. **No `?print` or `?v=` parameter is ever canonical**, which matters because block B12 (download / print view) is banked as LATER.
 - `hreflang`: `en` only at MVP, with `pt-BR` reserved for the Brazil Phase 2 already named in `sitemap.md`. A jurisdiction variant of a legal page is a different document, not a translation, so a future geo split gets its own URL rather than an `hreflang` alternate.
-- `robots`: `index,follow`. These pages are a ranking surface for brand-plus-trust queries and the destination of every footer link on 104 screens.
+- `robots`: `index,follow`. These pages are a ranking surface for brand-plus-trust queries and the destination of every footer link on 109 painted screens and 92 grey ones, re-counted 2026-08-18; it said 104 while the trees were 109 and 110.
 - Open Graph: `og:type` = `website` for About, `article` for the four legal pages, because a legal document has an `article:modified_time` and that is the field block B4 already carries on the page.
 - `og:image`: the shared brand card, not a screenshot. A legal page has no image of its own and inventing one is the one place this type would grow decoration.
 
