@@ -12,6 +12,49 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-18 - The stand had 60 pages about the system and none about why any of it is like that
+
+`ui-kit/why.html` is the second half of what the Handoff stage asks for, and it is the way IN: the
+page a developer opens first. The vitrine had a page for every component, a shelf for every level
+and six foundations, and **not one of the 60 answered what this is, why it is built this way, or
+where to start**. A stand made entirely of parts has no room to be that.
+
+**Six sections, and the shape is a Read surface rather than a reference.** What you are looking at,
+three trees and one system. **Five decisions that explain the rest**, each with its consequence
+rather than its rule. The five minute path, six steps, each ending in something you can look at.
+What will bite you, six traps stated as what you will do and what then happens. How a thing is
+checked when there is no build. And where everything lives, because a fact written twice drifts.
+
+**Two of the five decisions are shown rather than described**, which is the whole argument for a
+vitrine over a document. The outcome-semantics rule is a live YES / NO pair beside a brass primary
+and a graphite amount chip, in both themes in one document, so the sentence "green means YES and
+brass is the brand" is a thing a reader sees rather than a claim. The level rule is the four counts
+with what each one contains. Both use the markup the screens ship.
+
+**Registering it changed the registry's arithmetic, and that was the better half of the edit.**
+`_nav.js` rendered `Overview` as a hardcoded row and its tally started at `var total = 1, done = 1`
+to account for it: correct, and **the one number in that panel a person had to remember to change**.
+`why.html` arriving as the second such page would have made it a typed `2`. The pages that belong to
+no group are a list now and the tally counts them like every other row, so nothing in the tally is
+typed. The panel reads **61 of 61** on all 61 pages without anybody writing 61.
+
+`docs/architecture.md` joined the reports group in the same edit, first of eight, so the contract
+written this morning is reachable from the panel on every page of the stand rather than only from
+the jump row on the overview.
+
+**And updating the enumerations found the drift they always carry.** `ui-kit/CLAUDE.md` said
+**thirteen atom pages and listed thirteen names, and there are fourteen**: `crumb` was missing from
+the list the number was added up from, which is the third time this repository has caught exactly
+that mechanism, and this file's own text already argues against it two paragraphs above where it
+happened. The registry has fifteen rows in the Atoms group, one shelf and fourteen atoms, and it was
+right the whole time.
+
+Verified in Chromium and WebKit at **320, 390, 640, 760, 900 and 1280**: 0 page errors, 0 documents
+scrolling sideways under `scrollLeft = 9999`, 0 figures whose specimens all measure zero, 0
+duplicate ids, and the two-theme figure resolving both themes in one document with YES at
+`rgb(119,209,155)`, NO at `rgb(231,144,135)` and the primary carrying its brass gradient. **102
+distinct links across six kit pages, 0 broken**, and 84 of them are on the new page alone.
+
 ## 2026-08-18 - The system contract is written again, against the live tree, and writing it found two false promises
 
 `ui-kit/docs/architecture.md` existed only frozen in `docs/kit-archive/`, dated 2026-08-07, 1,034

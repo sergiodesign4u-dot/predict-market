@@ -62,7 +62,7 @@ because it is a stance rather than a principle, and it is written once, here.
   `wireframes/_conventions.md`.
 - **One system.** `components/` holds `tokens.css` plus one file per component, reached through
   `components/index.css`. **Every PAINTED screen links that one file and nothing else, and the grey
-  tree links no stylesheet at all**: 110 of 110 in `ui-visual/` and 60 of 60 in `ui-kit/` link it,
+  tree links no stylesheet at all**: 110 of 110 in `ui-visual/` and 61 of 61 in `ui-kit/` link it,
   **0 of the 109 in `wireframes/` do**, and those 109 carry an inline `<style>` block each. Counted
   2026-08-12 at 104 and re-counted 2026-08-15, when `terms.html` was written and the grey tree
   stopped being one screen short of the tree it decides. The sentence here said "every screen" until then, and the folder file it contradicted
@@ -76,7 +76,7 @@ because it is a stance rather than a principle, and it is written once, here.
   job, and taking one apart needs room a shelf does not have, because a shelf gives every component
   one specimen and one rule. **The threshold is not a placement count** - `toast` has four and
   `toggle` has three, and four of the toggle's five faces have no placement in the product at all, so
-  a stand built by walking screens would show one grey oval and call it the component. **60 of 60 pages written**, one route in `_nav.js`, 0 generators and 0 gates. **The panel computes the tally from `_nav.js` and this line was typed by hand, which is why it said 55 while 57 files stood on disk**: 1 overview, 6 foundations, 4 shelves, 14 atoms, 16 molecules, 13 organisms, 6 patterns, re-counted 2026-08-16 by listing `ui-kit/*.html` and by parsing the registry, and the two agree. It was 57 and five foundations until then: `motion.html` arrived with the Animation stage on 2026-08-15 as the SIXTH foundation and this line went on saying five, and `search.html` is the thirteenth atom, written 2026-08-16 for a control the IA had deferred, with `crumb.html` the FOURTEENTH later the same day for the opposite reason: the IA had DECIDED a trail on six page types and the product rendered none, and the component went onto three of the six because the other three already carry their trail as the category nav and a fourth control made of the same five words is what the critique had just counted three of. It was 54 until 2026-08-11, when three pages landed the same day: `logo` with the rename to Yonder, `platehead` by backlog 108, and `responsive.html`, the FIFTH foundation, which is the page every enumeration in this repository was still leaving out. And it had been 55 before that until `account` was deleted on 2026-08-08, a component whose whole stylesheet was a face nothing wore.
+  a stand built by walking screens would show one grey oval and call it the component. **61 of 61 pages written**, one route in `_nav.js`, 0 generators and 0 gates. **The panel computes the tally from `_nav.js` and this line was typed by hand, which is why it said 55 while 57 files stood on disk**: 2 entry pages, 6 foundations, 4 shelves, 14 atoms, 16 molecules, 13 organisms, 6 patterns, re-counted 2026-08-18 when `why.html` joined `overview.html` as the second page belonging to no group and the registry stopped starting its tally at a typed 1, and before that 2026-08-16 by listing `ui-kit/*.html` and by parsing the registry, and the two agree. It was 57 and five foundations until then: `motion.html` arrived with the Animation stage on 2026-08-15 as the SIXTH foundation and this line went on saying five, and `search.html` is the thirteenth atom, written 2026-08-16 for a control the IA had deferred, with `crumb.html` the FOURTEENTH later the same day for the opposite reason: the IA had DECIDED a trail on six page types and the product rendered none, and the component went onto three of the six because the other three already carry their trail as the category nav and a fourth control made of the same five words is what the critique had just counted three of. It was 54 until 2026-08-11, when three pages landed the same day: `logo` with the rename to Yonder, `platehead` by backlog 108, and `responsive.html`, the FIFTH foundation, which is the page every enumeration in this repository was still leaving out. And it had been 55 before that until `account` was deleted on 2026-08-08, a component whose whole stylesheet was a face nothing wore.
 
 ---
 
@@ -428,7 +428,7 @@ because it is a stance rather than a principle, and it is written once, here.
   **AND A STATUS IS THE SAME SHAPE WITH A READER ATTACHED, 2026-08-18.** Three files said a stage
   status lives in the README table and nowhere else, and the two places that RENDER it were
   unowned: `assets/_roadmap.js` printed **SOON on Animation across all 28 course documents for the
-  three days after it shipped**, while `ui-kit/_nav.js` had its 60 flags right. **The claim
+  three days after it shipped**, while `ui-kit/_nav.js` had every one of its flags right, 67 rows carrying one on the day and 69 today. **The claim
   protected the copy nobody looks at and left the copy everybody looks at to go stale**, which is
   the opposite of what it was for. A registry is not prose and cannot be deleted into one owner, so
   it is TURNED with the table, and a status that renders is turned first.

@@ -1,7 +1,11 @@
 # ui-kit/ - the vitrine, rebuilt by hand 2026-08-07 to 2026-08-08
 
 **All five steps are done and the plan below is the record of how, not a to-do list.** What is on the
-stand today: **60 pages** since 2026-08-16, when `crumb.html` was written as the FOURTEENTH atom and `search.html` as the thirteenth,
+stand today: **61 pages** since 2026-08-18, when `why.html` was written as the way IN: the page a
+developer opens first, which is what the Handoff stage asks for and what a stand of 60 component and
+foundation pages had no room to be. It joined `overview.html` as the second page that belongs to no
+group, and **the registry stopped starting its tally at a typed `1` in the same edit**, because the
+count of the exceptions is a count like any other. It was **60** from 2026-08-16, when `crumb.html` was written as the FOURTEENTH atom and `search.html` as the thirteenth,
 for a control the IA had deferred rather than for one it had specified. It was **58** from
 2026-08-15, when the Animation stage added `motion.html` as the SIXTH
 foundation, after `responsive`. It is the one page here that cannot be printed: every specimen on it
@@ -64,14 +68,16 @@ rendered**, and the six that read 0x0 at 390 stand in a panel that is `display:n
 `toggle.html` found the four faces above. None of these was visible from a level page, because a
 level page shows one specimen and every one of them is a fact about a set.
 
-The kit shows the system to a person and it holds no product code. It holds 60 pages plus its
-stylesheet and its registry: `overview.html`, which says what is happening, **all six foundation
-pages** (`icons.html`, `colour.html`, `typography.html`, `geometry.html`, `responsive.html`,
+The kit shows the system to a person and it holds no product code. It holds 61 pages plus its
+stylesheet and its registry: `why.html`, which says why any of it is like this, `overview.html`,
+which says what is happening, **all six foundation pages** (`icons.html`, `colour.html`, `typography.html`, `geometry.html`, `responsive.html`,
 `motion.html`), **a
-shelf per rung, all four** (`vitrine.html` for the thirteen atoms, `molecules.html` for the sixteen at level 2,
+shelf per rung, all four** (`vitrine.html` for the fourteen atoms, `molecules.html` for the sixteen at level 2,
 `organisms.html` for the thirteen at level 3 and `patterns.html` for the six on the fourth rung), and
-**thirteen atom pages, one per atom** (`button`, `iconbtn`, `chip`, `navitem`, `oddsbar`, `input`,
-`search`, `yesno`, `toast`, `skeleton`, `toggle`, `logo`, `platehead`) and **sixteen molecule pages** (`trustbar`, `market`,
+**fourteen atom pages, one per atom** (`button`, `iconbtn`, `chip`, `navitem`, `oddsbar`, `input`,
+`search`, `crumb`, `yesno`, `toast`, `skeleton`, `toggle`, `logo`, `platehead`) - **this list said
+thirteen and left `crumb` out until 2026-08-18**, which is this file's own argument about a count
+added up from a list arriving for the third time - and **sixteen molecule pages** (`trustbar`, `market`,
 `comments`, `notice`, `filters`, `bottomnav`, `catnav`, `related`, `state-block`, `position`,
 `quick`, `options`, `seo-plate`, `loadmore`, `cookie-consent`, `toc`) and **thirteen organism pages**
 (`header`, `footer`, `dialog`, `hiw`, `tabs`, `event-detail`, `betpanel`, `bets-table`,
@@ -81,7 +87,7 @@ shelf per rung, all four** (`vitrine.html` for the thirteen atoms, `molecules.ht
 
 **Every component has a ROW whether or not it has a page.** `_nav.js` groups by level, the level page
 is the first row of its own group (`All atoms`, `All molecules`), and a row with no page renders as a
-`<span>` with a badge. There are no rows waiting any more, so the panel says **60 of 60** and drops its own
+`<span>` with a badge. There are no rows waiting any more, so the panel says **61 of 61** and drops its own
 sentence about rows with no page: that sentence only exists while there IS one.
 
 **The route is written once, in `_nav.js`, and a page declares no part of it**, not even its own

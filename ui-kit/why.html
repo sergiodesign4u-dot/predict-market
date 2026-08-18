@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Start here: why it is built this way</title>
+<link rel="stylesheet" href="../components/index.css">
+<link rel="stylesheet" href="_page.css">
+<script src="_nav.js"></script>
+  <script src="../assets/icons.js"></script>
+</head>
+<body class="app-case">
+<button type="button" class="rm-toggle" id="rmToggle" aria-label="Open the design system panel"><span></span><span></span><span></span></button>
+<div class="rm-overlay" id="rmOverlay"></div>
+<aside class="sidebar" id="rmSidebar"></aside>
+<div class="tk-wrap">
+
+  <div class="tk-hero">
+    <h1>Why it is built this way</h1>
+    <p><b>This is not a component library. It is a product with its system taken out of it.</b>
+    Every rule here was paid for by something that shipped wrong, and each one is written down
+    beside the measurement that produced it. There is <b>no build step and no gate</b>: what you
+    write is what ships, and nothing will stop you doing the wrong thing. That is deliberate, and
+    this page is the trade you get instead.</p>
+    <p>Five minutes gets you the shape. The contract is
+    <a href="docs/architecture.md">docs/architecture.md</a> and the account of what each rule cost
+    is in the two <code>CLAUDE.md</code> files.</p>
+    <div class="tk-badges">
+      <span class="tk-badge">49 components</span>
+      <span class="tk-badge">1 stylesheet per screen</span>
+      <span class="tk-badge">0 generators</span>
+      <span class="tk-badge">0 gates</span>
+    </div>
+    <div class="tk-jump">
+      <a href="overview.html">What is on the stand</a>
+      <a href="docs/architecture.md">The contract</a>
+      <a href="../ui-visual/event-feed.html">A finished screen</a>
+      <a href="../DESIGN.md">Vault, the visual language</a>
+    </div>
+  </div>
+
+  <!-- ============================================================ what --><section class="tk-sec" id="what">
+    <h2 data-n="01">What you are looking at</h2>
+    <p class="tk-note">Three trees and one system. The trees are the same product drawn three
+    times, and each one owns a different half of the truth, which is why a change often belongs in
+    a folder you were not editing.</p>
+
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>folder</th><th>what it owns</th><th>what it links</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>wireframes/</td>
+            <td>structure and copy, in grey. A block is decided here first and the colour copy
+                follows</td>
+            <td>no stylesheet at all</td>
+          </tr>
+          <tr>
+            <td>ui-visual/</td>
+            <td>the visual layer only. 109 screens plus an index, one per state</td>
+            <td><b>exactly <code>components/index.css</code></b></td>
+          </tr>
+          <tr>
+            <td>ui-kit/</td>
+            <td>the vitrine. A shelf per level, a page per component, six foundations</td>
+            <td>the system, plus its own stand furniture</td>
+          </tr>
+          <tr>
+            <td>components/</td>
+            <td>the system. 56 stylesheets, one per component plus the substrate</td>
+            <td>is the thing being linked</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="tk-note"><b>A screen carries no styles of its own, and that is the load-bearing
+    one.</b> Measured by reading every stylesheet link in the painted tree: <b>109 of 110 documents
+    link <code>../components/index.css</code> and nothing else</b>, and the one exception is the
+    index of the tree rather than a screen in it. No <code>@media</code>, no
+    <code>@keyframes</code>, no <code>style=</code> except a datum, the event photograph, or a
+    value a script writes at run time. <b>If you find yourself opening a screen file to change how
+    something looks, the change belongs somewhere else.</b></p>
+
+    <p class="tk-note"><b>A state is a page.</b> Loading, empty, error, logged out, chosen: each is
+    its own document in both trees. That is why there are 109 screens and not fifteen, and it is the
+    only reason a state can be measured at all. <b>A rule that cannot be rendered cannot be
+    checked</b>, and it will be wrong the day it first draws.</p>
+  </section>
+
+  <!-- ======================================================== decisions --><section class="tk-sec" id="decisions">
+    <h2 data-n="02">Five decisions that explain the rest</h2>
+    <p class="tk-note">Almost every rule further down is a consequence of one of these. If a rule
+    looks arbitrary, it is usually the fifth or sixth step of one of them.</p>
+
+    <p class="tk-subh">1. Two token levels, and the second theme is the proof</p>
+    <p class="tk-note">A raw value is a <b>primitive</b>. A colour is a <b>role</b>. A component
+    reads a role and never a colour primitive, and there is no third level. The proof that the
+    second level is real is that a whole second theme can be written by re-declaring roles alone.
+    <b>A component that reaches past a role into a primitive cannot be re-themed, and it fails
+    silently</b>: it simply keeps its dark colour on a pale ground. Every specimen on this stand is
+    drawn in both themes side by side for exactly that reason.</p>
+
+    <p class="tk-subh">2. Green and red are outcome semantics. Brass is the brand</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig" data-theme="dark">
+        <div class="yesno"><a href="../ui-visual/event-detail.html?side=yes" class="yes">YES</a><a href="../ui-visual/event-detail.html?side=no" class="no">NO</a></div>
+        <button type="button" class="btn btn-primary btn-md">Place bet</button>
+        <button type="button" class="chip chip-amount">$10</button>
+      </div>
+      <div class="tk-theme-fig" data-theme="light">
+        <div class="yesno"><a href="../ui-visual/event-detail.html?side=yes" class="yes">YES</a><a href="../ui-visual/event-detail.html?side=no" class="no">NO</a></div>
+        <button type="button" class="btn btn-primary btn-md">Place bet</button>
+        <button type="button" class="chip chip-amount">$10</button>
+      </div>
+    </div>
+    <p class="tk-note">Green means YES and red means NO, on a market outcome, and nowhere else. A
+    success message is not green here and a validation error is not red. <b>The brass is the only
+    thing in this product that is the brand</b>, and it carries every primary action, which is why
+    the button beside the pair is not green. Borrow an outcome colour for an accent and you have
+    taught a reader that a saved form is a winning bet.</p>
+
+    <p class="tk-subh">3. A level is containment, not importance</p>
+    <p class="tk-note">An <b>atom</b> holds nothing from the system. A <b>molecule</b> holds atoms
+    or its own named parts. An <b>organism</b> holds molecules or is a screen shell, and that is the
+    ceiling. A <b>pattern</b> is a composition standing on three screens or more, carries
+    arrangement only, and holds no colour, face, border or surface at all.</p>
+    <div class="tk-rungs">
+      <div class="tk-rung"><b>14</b><span>atoms<i>a control that contains nothing</i></span></div>
+      <div class="tk-rung"><b>16</b><span>molecules<i>they hold atoms, or their own parts</i></span></div>
+      <div class="tk-rung"><b>13</b><span>organisms<i>they hold molecules, or they are a shell</i></span></div>
+      <div class="tk-rung"><b>6</b><span>patterns<i>arrangement only, three screens or more</i></span></div>
+    </div>
+    <p class="tk-note">The level is not a label on a page, it is <b>the order of
+    <code>@import</code> in <code>components/index.css</code></b>: a part is imported before the
+    whole that holds it, so a later rule can out-specify an earlier one without either raising
+    specificity. <b>Moving a file between groups is a level decision, not a tidy-up.</b> Two screens
+    is a candidate, not a pattern, and it stays markup.</p>
+
+    <p class="tk-subh">4. Three rungs, in rem, named by what arrives at them</p>
+    <div class="tk-rungs">
+      <div class="tk-rung"><b>40rem</b><span>DESK<i>640px at the default browser font</i></span></div>
+      <div class="tk-rung"><b>47.5rem</b><span>DETAIL<i>760px, where the bet panel arrives</i></span></div>
+      <div class="tk-rung"><b>56.25rem</b><span>RAIL<i>900px, where the rail arrives</i></span></div>
+    </div>
+    <p class="tk-note">They are in <code>rem</code>, so a reader who set a 24px default reaches the
+    desk at 960 and keeps one column until then. <b>The registry in <code>tokens.css</code> is the
+    instrument, because <code>@media</code> cannot read a <code>var()</code></b>: the literal in
+    every query has to be a number on the list, and a number that is not on the list is a rung
+    somebody invented quietly. Counted today: <b>35 width queries in the system and 0 in any painted
+    screen</b>. Read the whole argument on <a href="responsive.html">responsive</a>.</p>
+
+    <p class="tk-subh">5. Movement names its job before it is written, and there are three</p>
+    <div class="tk-rungs">
+      <div class="tk-rung"><b>response</b><span><code>--dur-fast</code>, .16s<i>a control answering a finger</i></span></div>
+      <div class="tk-rung"><b>arrival</b><span><code>--dur-slow</code>, .25s<i>an element saying it is here</i></span></div>
+      <div class="tk-rung"><b>status</b><span><code>--pulse-period</code>, 1.4s<i>a process still running. A period, not a rung</i></span></div>
+    </div>
+    <p class="tk-note">A moment for which none of the three can be named does not enter the register
+    and never gets a movement. Under <code>prefers-reduced-motion</code> the tokens themselves are
+    re-declared, so a component that reads them obeys without knowing the setting exists, and
+    <b>there is no blanket <code>*</code> net and will not be one</b>: under it a component that
+    reads no token is indistinguishable from one that reads every token, so the check can no longer
+    fail. Operate the specimens on <a href="motion.html">motion</a>, because a screenshot shows a
+    frame and never a movement.</p>
+  </section>
+
+  <!-- ============================================================ path --><section class="tk-sec" id="path">
+    <h2 data-n="03">The five minute path</h2>
+    <p class="tk-note">In this order. Each step ends in something you can look at rather than
+    something you have to take on trust.</p>
+    <ol class="tk-steps">
+      <li><b>1</b><span>Open <a href="../ui-visual/event-feed.html">a finished screen</a> and view
+      its source. <b>One stylesheet link, and no rules of its own.</b> That is the whole boundary
+      between the product and the system, and everything else follows from it.</span></li>
+      <li><b>2</b><span>Open <a href="../wireframes/event-feed.html">its grey twin</a> in another
+      tab. Same blocks, same words, no colour. <b>The grey tree decides what is on the page and the
+      painted tree decides what it looks like</b>, so a disagreement between them is always a
+      defect in the paint.</span></li>
+      <li><b>3</b><span>Pick one thing on that screen, say a card, and open
+      <a href="card.html">its page</a>. Every component has one: what it IS, its anatomy, every
+      state in both themes, its rule and its <b>anti-rule</b>, which is the component you should
+      have used instead.</span></li>
+      <li><b>4</b><span>Open <code>components/card.css</code> and read only the header. It names
+      every class the file styles, <b>every token it reads</b>, its page on this stand, and how many
+      screens carry it. <b>That header is a contract</b>: if a class is listed there and the file
+      does not style it, that is a defect, and the sweep for it runs to zero today.</span></li>
+      <li><b>5</b><span>Read <a href="docs/architecture.md">docs/architecture.md</a>, sections 10
+      to 13: the fifteen prohibitions, how to add a component, how to add a pattern, and where a
+      change goes. <b>That is the part you actually need before touching anything.</b></span></li>
+      <li><b>6</b><span>When something behaves strangely, read
+      <code>components/CLAUDE.md</code> before debugging. It is a list of things that were true and
+      looked fine, and there is a real chance yours is already in it.</span></li>
+    </ol>
+  </section>
+
+  <!-- =========================================================== bites --><section class="tk-sec" id="bites">
+    <h2 data-n="04">What will bite you</h2>
+    <p class="tk-note">Four of these cost this repository days rather than hours. They share one
+    shape: <b>a rule that was present, correct, and not applying</b>, which is the failure no test
+    reports because nothing throws.</p>
+
+    <div class="tk-cards">
+      <div class="tk-card">
+        <h3>A declaration replaces, it does not extend</h3>
+        <p>Write <code>transition</code> on a face and it <b>replaces</b> the list the atom
+        declared, silently dropping every property the atom named. Sign-in buttons lost
+        <code>color</code> and <code>box-shadow</code> that way. <b>The response belongs to the
+        control</b>: one declaration on the atom, carrying the union of what any face changes.</p>
+      </div>
+      <div class="tk-card">
+        <h3>A fade is a stacking context</h3>
+        <p>A box whose <code>opacity</code> is under 1 is a stacking context, so a panel fading in
+        has its own <code>z-index</code> resolved <b>inside that group</b> for as long as the fade
+        runs. Menus opened under the first card for 160ms and then jumped on top. <b>The lift
+        belongs to the box the fade turns into a context</b>, not to the panel inside it.</p>
+      </div>
+      <div class="tk-card">
+        <h3>A missing value is a value</h3>
+        <p>An SVG with no <code>fill</code> is black. A link with no colour is the browser's blue. A
+        class the system does not define takes the user agent's own button, which is <b>grey 239 in
+        Chromium and 192 in WebKit</b>. Reading the source cannot see any of it. <b>Read the
+        computed page, in a browser, in both engines.</b></p>
+      </div>
+      <div class="tk-card">
+        <h3>A count is right and the thing is wrong</h3>
+        <p>A component page said "242 placements" and drew one glyph; the 242 are three different
+        marks, one of which does not exist on a phone. <b>A verdict about a component is a statement
+        about the SET of its placements</b>, and where placements disagree you say so rather than
+        picking one.</p>
+      </div>
+      <div class="tk-card">
+        <h3>An id is a promise a component stands once</h3>
+        <p>Nine declarations were keyed to a document-unique id, so two of the components could not
+        be placed twice in one document by anybody. Nothing was broken until a stand tried to show
+        one component twice. <b>No component in a design system may make that promise.</b></p>
+      </div>
+      <div class="tk-card">
+        <h3>A class with no rule looks exactly like a class with one</h3>
+        <p>The markup renders either way. The only licence a class has to draw nothing is a
+        <code>Script hooks:</code> line in the owning stylesheet's header, and four files carry one.
+        <b>Anything else that answers to no selector is a defect wearing a component's name.</b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================== check --><section class="tk-sec" id="check">
+    <h2 data-n="05">There is no build, so this is how a thing is checked</h2>
+    <p class="tk-note">The vitrine that stood here had 41 gates, 54 generators and 145 MB of
+    screenshots, and it was deleted in one commit without the product moving a pixel. <b>The
+    measurement had become a machine that was re-paid on every edit.</b> So every check is an ACT:
+    write the script in a scratch folder, run it, write down what it said, and delete it. What
+    stays is the report and the reason.</p>
+    <ol class="tk-steps">
+      <li><b>1</b><span><b>Read the instrument before the finding.</b> Measure the same thing twice
+      unchanged and the difference has to be zero. Throw the first pass away: a cold pass resolves
+      fonts and stylesheets for the first time and differs from every pass after it. <b>A number
+      that moves when nothing moved is a reading of the instrument.</b></span></li>
+      <li><b>2</b><span><b>Give it something it must see.</b> A reading that cannot come back red is
+      a reading of the guard. Inject a box wider than the window, or a rule that disobeys, and
+      confirm the probe reports it <b>before</b> you believe a zero.</span></li>
+      <li><b>3</b><span><b>Assert the branch you are measuring is on.</b> A headless browser is
+      <code>pointer:fine</code>, so a tap-target sweep without touch emulation measures a product
+      with the 44px floor switched off, and every number it prints is about a page that does not
+      exist.</span></li>
+      <li><b>4</b><span><b>Two engines, and disk as well as server.</b> Chromium has agreed with a
+      visibly broken page three times here. Over <code>file://</code> every document has its own
+      opaque origin, so anything fetched in CORS mode never arrives.</span></li>
+      <li><b>5</b><span><b>Measure at the rungs and one pixel either side</b>, not at 390 and 1280.
+      A defect can live entirely between the two widths everybody reads, and one did: 73 documents
+      scrolled sideways at exactly one width while every sweep reported zero.</span></li>
+      <li><b>6</b><span><b>Read the set, not the document.</b> Every instrument here reads one page,
+      so a fact that stands on two pages is owned by neither. Three markets were Open on one tab and
+      WON on the tab beside it, and 868 renders reported nothing.</span></li>
+    </ol>
+    <p class="tk-note">All six are in <a href="../CLAUDE.md">the root <code>CLAUDE.md</code></a>
+    with the measurement that produced each, and section 14 of
+    <a href="docs/architecture.md">the contract</a> is the short form.</p>
+  </section>
+
+  <!-- ============================================================ what --><section class="tk-sec" id="where">
+    <h2 data-n="06">Where everything lives</h2>
+    <p class="tk-note">A fact written twice is a fact that will drift, so each of these is written
+    in one place and referred to from everywhere else. If you find the same number in two files,
+    one of them is already wrong.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>question</th><th>owner</th></tr></thead>
+        <tbody>
+          <tr><td>how the system is entered, and what you may not do</td><td><a href="docs/architecture.md">ui-kit/docs/architecture.md</a></td></tr>
+          <tr><td>what each rule cost, dated, with the measurement</td><td><a href="../CLAUDE.md">CLAUDE.md</a> and <a href="../components/CLAUDE.md">components/CLAUDE.md</a></td></tr>
+          <tr><td>the visual language and why each choice was made</td><td><a href="../DESIGN.md">DESIGN.md</a></td></tr>
+          <tr><td>what the product is, and the market catalog</td><td><a href="../PRODUCT.md">PRODUCT.md</a></td></tr>
+          <tr><td>every component's level, placements and behaviour on width</td><td><a href="docs/inventory.md">docs/inventory.md</a></td></tr>
+          <tr><td>the ladder, and the audit for every screen</td><td><a href="docs/responsive.md">docs/responsive.md</a></td></tr>
+          <tr><td>the motion transcript, the moments and the rulings</td><td><a href="docs/motion.md">docs/motion.md</a></td></tr>
+          <tr><td>the system read against the product</td><td><a href="docs/consistency.md">docs/consistency.md</a></td></tr>
+          <tr><td>every string the product says</td><td><a href="../voice/docs/microcopy.md">voice/docs/microcopy.md</a></td></tr>
+          <tr><td>where a reader can go, and the SEO layer</td><td><a href="../ia/docs/sitemap.md">ia/docs/</a></td></tr>
+          <tr><td>what was done and why, newest first</td><td><a href="../docs/decisions.md">docs/decisions.md</a></td></tr>
+          <tr><td>what is still open</td><td><a href="../docs/backlog.md">docs/backlog.md</a></td></tr>
+          <tr><td>which stage is done</td><td><a href="../README.md">the status table in README.md</a></td></tr>
+          <tr><td>where a file lives</td><td><a href="../STRUCTURE.md">STRUCTURE.md</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-note"><b>One last thing, and it is the habit rather than a rule.</b> Every number
+    on this page was measured on the day it was written and says so. A count typed into prose is a
+    count that goes stale, and this repository has caught itself doing it often enough to stop
+    trusting any figure that does not name the day it was taken. <b>When a number here disagrees
+    with the repository, the repository is right.</b></p>
+    <div class="tk-jump">
+      <a href="overview.html">What is on the stand</a>
+      <a href="vitrine.html">All atoms</a>
+      <a href="patterns.html">All patterns</a>
+      <a href="docs/architecture.md">The contract</a>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

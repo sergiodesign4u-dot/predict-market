@@ -208,6 +208,7 @@ window.KIT_NAV = [
     label: 'The reports',
     kind: 'doc',
     items: [
+      { label: 'Architecture',  page: 'docs/architecture.md',  done: true },
       { label: 'Census',        page: 'docs/census.md',        done: true },
       { label: 'Inventory',     page: 'docs/inventory.md',     done: true },
       { label: 'Consolidation', page: 'docs/consolidation.md', done: true },
@@ -232,6 +233,14 @@ window.KIT_NAV = [
 
   function lit() { return root.getAttribute('data-theme') === 'light'; }
 
+  /* The stand pages that are not a row of any group: the hub and the way in. Both are pages
+     like every other, so they are counted like every other; they are only out of the groups
+     because neither is a level, a foundation or a component. */
+  var TOP = [
+    { label: 'Overview',   page: 'overview.html', done: true },
+    { label: 'Start here', page: 'why.html',      done: true }
+  ];
+
   function render() {
     var nav = document.getElementById('rmSidebar');
     if (!nav) return;
@@ -244,7 +253,14 @@ window.KIT_NAV = [
        the same number to both sides. Both numbers are computed and neither is
        typed anywhere; the two in this sentence are the arithmetic, not a copy the
        panel reads. */
-    var total = 1, done = 1;
+    /* THE PAGES THAT BELONG TO NO GROUP LIVE IN A LIST NOW, 2026-08-18, AND THE TALLY
+       COUNTS THEM RATHER THAN STARTING AT A TYPED NUMBER. It read `var total = 1, done = 1`
+       while `overview.html` was the only one, which was correct and was also the one number in
+       this panel that a person had to remember to change. `why.html` arrived as the second and
+       would have made it a 2. The rule this file exists to keep says a count is computed or it
+       goes stale, and the count of the exceptions is a count like any other. */
+    var total = 0, done = 0;
+    TOP.forEach(function (i) { total++; if (i.done) done++; });
     window.KIT_NAV.forEach(function (g) {
       if (g.kind === 'doc') return;
       g.items.forEach(function (i) { total++; if (i.done) done++; });
@@ -259,7 +275,7 @@ window.KIT_NAV = [
           '<span class="ts-sw ts-dark"></span><span class="ts-sw ts-light"></span></span>' +
         '<span class="ts-label">Vault</span></button>' +
       '<nav class="sidebar-nav" aria-label="The design system">' +
-      row({ label: 'Overview', page: 'overview.html', done: true }, file, 'page');
+      TOP.map(function (i) { return row(i, file, 'page'); }).join('');
 
     window.KIT_NAV.forEach(function (g) {
       var here = g.items.some(function (i) { return i.page === file; });

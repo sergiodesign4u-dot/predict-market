@@ -22,7 +22,7 @@ nowhere else** - a second copy of a status is a copy that goes stale, **which is
 | 06 | Concept | `concept/` | `concept.html` (+ `directions.html`) |
 | 07 | UI + Visual | `ui-visual/` | 109 painted screens in 110 documents, every family and every state |
 | 08 | Tokens + Components | `components/` (the system) | `ui-kit/overview.html` |
-| 09 | Design System | `components/patterns/` (6 files) + `ui-kit/` (60 of 60 pages, rebuilt by hand 2026-08-07 to 2026-08-08: a shelf per level plus one page per component, every component in the system) | `ui-kit/overview.html` |
+| 09 | Design System | `components/patterns/` (6 files) + `ui-kit/` (61 of 61 pages, rebuilt by hand 2026-08-07 to 2026-08-08: a shelf per level plus one page per component, every component in the system) | `ui-kit/overview.html` |
 | 10 | Responsive | | - |
 | 11 | Animation | | - |
 | 12 | Handoff | | - |

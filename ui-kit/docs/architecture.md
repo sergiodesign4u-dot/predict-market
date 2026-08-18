@@ -22,7 +22,7 @@ There is no build step and no gate anywhere in this repository. **What you write
 |---|---|---|
 | `wireframes/` | 109 grey documents. Owns STRUCTURE and COPY. A block is decided here first | no stylesheet at all, an inline `<style>` each |
 | `ui-visual/` | 110 documents, 109 of them screens and `overview.html` the index of the tree | exactly `components/index.css` |
-| `ui-kit/` | 60 pages. The vitrine: a shelf per level, a page per component, six foundations | `components/index.css` plus its own `_page.css` |
+| `ui-kit/` | 61 pages. The vitrine: two entry pages, six foundations, a shelf per level, a page per component | `components/index.css` plus its own `_page.css` |
 | `components/` | the system. 56 stylesheets, 11,652 lines: 50 here and 6 in `patterns/` | is the thing being linked |
 
 **A painted screen carries no styles of its own.** Measured by reading every `<link rel=stylesheet>`
