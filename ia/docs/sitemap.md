@@ -446,6 +446,17 @@ stands on three, so it is rendered from the Resolution record and never retyped 
 `manual` market the same slot carries the person's written evidence, in the same shape, so a reader
 never has to learn two formats to check two markets.
 
+**BUILT THE SAME DAY, IN BOTH TREES, AND THE FIXTURES DECIDED WHICH WORDING EACH SCREEN DRAWS.**
+`win.html` and `event-detail-resolved.html` both carry the shutdown, a market only a person can
+settle, so both read *read by the Yonder team*; `loss.html` carries a spot ETH ETF approval, which a
+program settles from a public record, and reads *read automatically*. **Both wordings are placed on
+purpose**, because a face the system styles and the product never places is covered by no instrument
+here, which is what five rules in `yesno.css` cost when `.sel` and `.no` had never once stood on the
+same element. **The third wording, a figure against a threshold, has no placement and says so**: the
+fixture set's one settled numeric market is *Did Bitcoin close above $100,000 in the first half of
+2026?* and it stands on `active-bets-history.html`, which is not one of the three surfaces above.
+Adding it is a placement decision rather than a missing face, and it is `docs/backlog.md` 221.
+
 ---
 
 ### MY BETS - follow active positions and history

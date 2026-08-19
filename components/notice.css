@@ -1,7 +1,8 @@
 /* components/notice.css
-   Component: notice. Classes: .inline-error, .protect, .protect-page, .push-actions, .push-banner, .push-msg, .rec-lost, .rec-won, .qb-working, .quiet-box, .reconcile-box, .widget-box.
+   Component: notice. Classes: .inline-error, .protect, .protect-page, .push-actions, .push-banner, .push-msg, .reading, .reading-line, .reading-src, .rec-lost, .rec-won, .qb-working, .quiet-box, .reconcile-box, .widget-box.
 
    Reads: --bg-control, --bg-surface, --border-hairline, --border-notice, --color-trust,
+          --font-mono, --hairline, --leading-base, --radius-10, --text-11, --text-12,
           --outcome-no-text,
           --outcome-yes-text, --result-won, --text-brass, --text-muted, --text-primary,
           --tint-brass-06, --tint-brass-09, --tint-brass-30, --tint-brass-45
@@ -227,3 +228,47 @@
 @media(prefers-reduced-motion:reduce){
   .quiet-box.qb-working::before{animation:none;width:100%}
 }
+
+/* ============================================================================
+   THE READING, 2026-08-19. A FACE OF THIS COMPONENT AND NOT A COMPONENT, because
+   what it adds is a CONTENT SHAPE and not a drawing: one box, one sentence, one
+   record line, and this file already owns every quiet statement box the product
+   has. `ia/docs/sitemap.md` gave the Resolution entity a Reading field the same
+   day and named the three surfaces it stands on; a stylesheet of its own would
+   have bought a second header, a second stand page and a second inventory row
+   for four declarations, and `CLAUDE.md` reserves a component for css plus an
+   import plus a page plus a row precisely so that the price is paid when there is
+   something to pay it for.
+
+   IT IS THE NEUTRAL BOX AND NOT THE TRUST BOX, AND THAT IS THE WHOLE ARGUMENT.
+   `.protect` is tinted with `--color-trust` because it makes a PROMISE about what
+   we will do with your money. A Reading makes no promise: it reports what was
+   read, from where, and when, and the reader checks it themselves by opening the
+   source. Tinting it would borrow the authority the sentence is there to avoid
+   needing, which is `voice/docs/voice.md` principle 5 read as colour.
+
+   TWO FACES, AND BOTH ARE DRAWN, which is the rule this repository paid for with
+   the chosen NO: five rules in `yesno.css` drew a state that had never once stood
+   on an element. The record line says who read it, and the two readers are not the
+   same claim. `win.html` and `event-detail-resolved.html` carry a market only a
+   person can settle (a shutdown, against OMB notices) and read "read by the Yonder
+   team"; `loss.html` carries one a program settles from a public record (an ETF
+   approval, against SEC EDGAR) and reads "read automatically". Neither face is
+   styled differently, and that is deliberate: a reader should not have to learn
+   two shapes to check two markets, so only the words differ.
+
+   THE FIGURE-AGAINST-THRESHOLD FORM HAS 0 PLACEMENTS AND SAYS WHICH ZERO IT IS.
+   The sharpest Reading is a number against a number, and the fixture set's one
+   settled numeric market ("Did Bitcoin close above $100,000 in the first half of
+   2026?") stands on `active-bets-history.html`, which the IA does not list among
+   the three surfaces. The markup is identical and the sentence carries two figures
+   instead of a date; it is a placement that has not been made rather than a face
+   that does not exist. `docs/backlog.md` 221. */
+
+.reading{padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-4);
+  border:var(--hairline) solid var(--border-hairline);
+  border-radius:var(--radius-10);
+  background:var(--bg-control);color:var(--text-primary)}
+.reading .reading-line{margin:0;font-size:var(--text-12);line-height:var(--leading-base)}
+.reading .reading-src{margin:0;font-family:var(--font-mono);font-size:var(--text-11);
+  line-height:var(--leading-base);color:var(--text-muted)}

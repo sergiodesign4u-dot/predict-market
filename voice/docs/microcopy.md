@@ -916,7 +916,7 @@ where that is written is in `docs/decisions.md`. Every line below is in the dial
 | Step 2 | Button | Next |  |
 | Step 3 | Label | Step 3 of 3 |  |
 | Step 3 | Heading | Get paid when it resolves |  |
-| Step 3 | Text | It resolves against the source it named and the result is written on-chain. Until then your money is held 1:1, never lent and never moved. |  |
+| Step 3 | Text | It resolves against the source it named, and what was read is published with the result. Until then your money is held 1:1, never lent and never moved. | **REWRITTEN 2026-08-19, 211 placements over 114 painted and 97 grey documents, the largest single string in this product.** It said `the result is written on-chain`, and the half of the sentence carrying a RESOLUTION claim was resting on the wrong proof: a hash proves that a decision was recorded and cannot say what the decision was made FROM, which is the only question a person who suspects the platform is actually asking. The Resolution entity gained a **Reading** the same day (`ia/docs/sitemap.md`), so the sentence now points at something a reader can open. **The custody half of the same sentence is untouched and the chain stays wherever it does real work**: a segregated balance you can check, a settlement that is pending, a bet that failed to register. 217 placements moved and about 364 kept the word, and the line between them is claim against mechanism, not vocabulary |
 | Step 3 | Button | Create account | goes to `sign-in.html`, whose own heading is "Sign in or create account" |
 | Step 3 | Link | Browse events first | the quiet way out, and it is the product's own stance: you can build a bet before you connect a wallet |
 | Stage | Label | Step 1 / Step 2 / Step 3 | the accessible names of the three dots |
@@ -941,7 +941,7 @@ _1 state page(s): how-it-works.html_
 | Main | Text | Your USDC is held 1:1. We never lend it, invest it, or move it. It is yours until you place a bet or withdraw - deposits, payouts and withdrawals are all recorded in your Wallet. |  |
 | Main | Heading | How events resolve |  |
 | Main | Text | Each event has clear resolution conditions, written before betting opens. When the event happens, the platform team resolves it against public evidence (official sources, on-chain data, named references). |  |
-| Main | Text | Every resolution is recorded on-chain, so the outcome and the payout are verifiable and cannot be changed after the fact. |  |
+| Main | Text | Every resolution is published with what was read, the source and the time it was read, so you can check the outcome yourself instead of taking our word for it. | **REWRITTEN 2026-08-19, 2 placements.** The same correction as Step 3 and the sharper case, because this sentence is the whole resolution promise on the page that exists to make it. `cannot be changed after the fact` was the hash's argument and it answered tamper-proofing, which nobody had accused us of; `you can check the outcome yourself` answers the fear `PRODUCT.md` documents |
 | Main | Heading | How pricing and payouts work |  |
 | Main | Text | Prices move as people bet. You buy YES or NO at the price on screen, and that price is locked when you confirm. A winning share pays one dollar, so a lower price buys more shares and a larger payout. The amount, the fee and the payout are all shown before you confirm. | Rewritten 2026-08-16. The old line framed the payout as depending on WHEN you bet, which is the model `docs/backlog.md` 10 replaced on 2026-08-10 with shares at a locked price. The bet panel took that decision the same day (the row further up says so); How It Works did not, and kept the retired mechanic for six days. |
 | Main | Text | There is no subscription. The fee is 1.5% of your bet, added when you confirm, and the panel shows it in cents before you commit. It is the same whether you win or lose. | Rewritten 2026-08-16. The old sentence promised a fee only on a win while the panel beside it charged 1.5% of the stake at Confirm and the wallet ledger charged 3% of the payout: three surfaces, three fee models, on a product whose number one churn driver is platform betrayal. `docs/backlog.md` 6 decided 1.5% of the stake. |
@@ -980,6 +980,9 @@ _4 state page(s): win-error.html, win-loading.html, win-payout-pending.html, win
 | Main | Button | Share |  |
 | Main | Field label | What happened |  |
 | Main | Text | The federal government entered a shutdown on Jun 26, 2026 after Congress missed the funding deadline. The market resolved YES on Jun 27, the side you held. |  |
+| Main | Field label | How this was decided | **NEW 2026-08-19.** Labels the Reading block on Win, Loss and `event-detail-resolved`. Deliberately not `Proof` and not `Verification`: both borrow authority, which principle 5 forbids, and both promise more than one sentence and a link can carry. It names what the block is and lets the reader decide whether it satisfies them |
+| Main | Text | Resolved YES on Jun 27, 2026 at 09:14 ET. A federal funding gap began before the Jul 1 deadline the rules named. | **NEW 2026-08-19**, `.reading-line`. Carries the outcome, the instant and the condition in the words the rules used, so the reader compares two sentences rather than a sentence and a hash |
+| Main | Text | Source: OMB notice of Jun 26, 2026. Read by the Yonder team at 09:14 ET. | **NEW 2026-08-19**, `.reading-src`, and the source is a LINK. **This is the face for a market only a person can settle**, and the Loss screen carries the other |
 | Main | Text | One moment, then move on - no confetti loop. Share is the primary action; "see next events" is deliberately secondary (research F5: the first win, not loss, drives overconfidence and escalation). | **leftover spec-note (internal codes)** |
 
 ### Loss Screen
@@ -994,6 +997,9 @@ _2 state page(s): loss-loading.html, loss.html_
 | Main | Label | Fetching what resolved and why. |  |
 | Main | Field label | What happened |  |
 | Main | Text | The first spot ETH ETFs were approved on Jun 10, 2026, inside the window the market named. It resolved YES on Jun 12. You held NO. |  |
+| Main | Field label | How this was decided | **NEW 2026-08-19**, the same label as the Win screen |
+| Main | Text | Resolved YES on Jun 12, 2026 at 14:02 ET. A spot ETH ETF approval was published on Jun 10, inside the window the rules named. | **NEW 2026-08-19**, `.reading-line` |
+| Main | Text | Source: SEC EDGAR. Read automatically at 14:02 ET. | **NEW 2026-08-19**, `.reading-src`, **the machine-read face, and it is placed on purpose.** Five rules in `yesno.css` once drew a chosen NO that had never stood on an element, so a face the system styles gets a placement or the styling is a claim nobody can test. The words differ from the Win screen's and the drawing does not: a reader should not learn two shapes to check two markets |
 | Main | Field label | Result |  |
 | Main | Label | $0.00 |  |
 | Main | Label | Your $5.00 stake on NO did not return. Avg price 62%. |  |
@@ -1513,7 +1519,7 @@ against `voice.md` when it shipped, and the two lines that were not are marked.
 | `Rules` / `Market Context` | `.rules-tab` | two tabs, because what decides the outcome and what explains the odds are different promises. See the note below |
 | `Background from the Yonder team to explain the odds. It plays no role in how this market resolves.` | `.rules-note` | the sharpest line of the redesign: it exists so the context tab can never be mistaken for the resolution rule |
 | `Not just news.` / `Opinions have value.` / `The market decides.` | `.brand-tile` | principle 5: three specific claims, no superlative |
-| `Every outcome is public and verifiable.` / `1,284 events resolved on-chain` | `.hero-trust` | principle 2: one plain sentence of trust, with a number that can be checked |
+| `Every outcome is public and verifiable.` / `1,284 events resolved against a named source` | `.hero-trust` | principle 2: one plain sentence of trust, with a number that can be checked. **The second half read `resolved on-chain` until 2026-08-19, 4 placements**, and it named the ledger the record sits in rather than the thing the record is checked against. The row below records that this figure was already corrected once for giving a number without saying where; this is the same correction applied to WHERE |
 | `Back YES` / `Back NO` | `.hf-btn`, the featured hero | the hero is the one place the verb is written out; the cards keep bare `YES` / `NO` |
 | `Hot right now` / `See all hot events` | `.hh-head`, `.hh-all` | a heading and its exit, per the empty-state rule that every block gives a way out |
 | `YES probability, last 30 days &middot; volume below, no scale` | `.hf-chart-cap` | says what the chart is measuring, over what window, and what the second series is NOT. It read `Live odds &amp; volume &middot; last 30 days` until 2026-08-16, which named both series and gave the reader no way to tell that only one of them has an axis |

@@ -380,6 +380,14 @@
       justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 8px; }
     .protect { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 11px; }
 
+    /* ---- SHARED (3 of 114, 3 rules): the resolution reading ----
+       A record and not a promise, so it is the neutral box rather than the trust box;
+       the colour half of that argument is in components/notice.css and this tree has no
+       colour. ia/docs/sitemap.md, Resolution entity, Reading. */
+    .reading { border: 1px solid #999; background: #f2f2f2; padding: 8px; display: flex; flex-direction: column; gap: 4px; }
+    .reading .reading-line { margin: 0; font-size: 12px; line-height: 1.5; }
+    .reading .reading-src { margin: 0; font-family: monospace; font-size: 11px; line-height: 1.5; color: #555; }
+
     /* ---- SHARED (98 of 114, 14 rules): active bets ---- */
     .tabs { display: flex; gap: 0; margin: 0 0 10px; }
     .tabs :is(a,button) { border: 1px solid #888; border-bottom: 1px solid #bbb; background: #dcdcdc; padding: 8px 14px; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-align: center; text-decoration: none; }
@@ -808,6 +816,13 @@
           <div>
             <span class="field-label">What happened</span>
             <p class="protect">The first spot ETH ETFs were approved on Jun 10, 2026, inside the window the market named. It resolved YES on Jun 12. You held NO.</p>
+          </div>
+          <div>
+            <span class="field-label">How this was decided</span>
+            <div class="reading">
+              <p class="reading-line">Resolved YES on Jun 12, 2026 at 14:02 ET. A spot ETH ETF approval was published on Jun 10, inside the window the rules named.</p>
+              <p class="reading-src">Source: <a href="#">SEC EDGAR</a>. Read automatically at 14:02 ET.</p>
+            </div>
           </div>
           <div class="reconcile-box rec-lost">
             <span class="field-label">Result</span>

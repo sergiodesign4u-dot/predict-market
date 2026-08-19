@@ -12,6 +12,73 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-19 - The proof moved from the ledger to the reading, and the backlog row that asked for it was the wrong shape
+
+**The IA gave the Resolution entity a Reading in the morning and this pass built it**, in both trees,
+and closed the vocabulary row beside it. The row was `docs/backlog.md` 217 and **it was filed as
+"delete the word", which is not what the defect was.**
+
+**THE LINE IS CLAIM AGAINST MECHANISM, NOT VOCABULARY.** Counted over both trees: **217 placements
+moved and about 364 kept `on-chain`.** Every RESOLUTION claim now points at the Reading, and every
+custody or settlement mechanic keeps the chain, because a segregated balance you can check, a payout
+that is settling and a bet that failed to register are all things a chain genuinely does. **The
+correction does not depend on the first release having no chain**: a hash proves that a decision was
+RECORDED and cannot say what the decision was made FROM, which is true with a chain or without one,
+and the second is the only question a person who suspects the platform is actually asking. So 217 is
+struck as done and its own framing is recorded as wrong.
+
+**THE LARGEST SINGLE STRING IN THIS PRODUCT MOVED WITH IT.** `hiw-step-b`, the third How It Works
+step, stands on **114 painted and 97 grey documents, 211 placements**, and it carried a resolution
+claim and a custody claim in one sentence. Only the first half moved. The other two are the trust
+strip's `1,284 events resolved on-chain`, which named the ledger the record sits in rather than the
+thing the record is checked against, and the How It Works resolution promise, whose old ending,
+`cannot be changed after the fact`, answered tamper-proofing that nobody had accused us of.
+
+**BOTH FACES OF THE READING ARE PLACED, AND THE FIXTURES DECIDED WHICH GOES WHERE.** `.reading` is a
+face of `notice` rather than a component, because what it adds is a content shape and not a drawing.
+`win.html` and `event-detail-resolved.html` carry the shutdown, a market only a person can settle, so
+they read *read by the Yonder team*; `loss.html` carries a spot ETH ETF approval, which a program
+settles from a public record, and reads *read automatically*. **The two are not styled differently
+and that is deliberate**: a reader should not learn two shapes to check two markets, so only the
+words differ. **The third wording, a figure against a threshold, has 0 placements and says which zero
+it is** and is filed as 221: the fixture set's one settled numeric market stands on
+`active-bets-history.html`, which the IA does not list among the three surfaces, so it is a placement
+nobody has decided rather than a face that does not exist.
+
+**AND THE COLOUR IS AN ARGUMENT.** Every other box in `notice.css` is tinted with `--color-trust` or
+brass because it makes a PROMISE. A Reading reports what was read, from where and when, for the
+reader to check themselves, so it is the neutral box: tinting it would borrow the authority the
+sentence exists to avoid needing, which is `voice/docs/voice.md` principle 5 read as colour. It is
+the only untinted face in the file.
+
+**WHAT THE VERIFICATION FOUND ABOUT THE INSTRUMENT, WHICH IS THE REASON TO WRITE IT DOWN.**
+`CLAUDE.md` added document height on 2026-08-18 after an 844px sheet stood after the footer on 108
+documents, and **that instrument cannot see this block at all in the painted tree**: the outcome
+sheet is a real `<dialog>` opened with `showModal()`, so it is in the TOP LAYER and out of document
+flow, and `ui-visual/win.html` reads **1,411 before and 1,411 after** with the block rendering at
+348x91 inside it. The grey twin has no dialog element and draws the same sheet in flow, where
+`.sheet-body` grows **669 to 792**. **A height sweep over the paint would have reported this pass as
+having changed nothing**, and the disagreement between the two trees is again what makes it visible,
+exactly as it was for the missing `[open]`. The block was confirmed by `checkVisibility()` and
+computed style instead.
+
+**Verified.** 28 renders over 7 documents, two engines and two themes with the ground proving the
+theme (`rgb(15,16,19)` against `rgb(252,250,244)` on both engines), transitions frozen before
+reading: **32 `.reading` elements, 0 defective renders, 0 page errors, 0 duplicate ids**, the box
+painting a real ground and a real edge in both themes and the record line resolving to IBM Plex Mono
+in the paint. **14 widths including every rung and one pixel either side, 0 sideways scroll, positive
+overflow control seen on each engine.** Document height over both whole trees: **instrument control 0
+of 229**, and **7 of 229 moved, all 7 intended** (two reading blocks in flow, and five documents
+where a turned sentence is longer than the one it replaced).
+
+**Files:** `components/notice.css` (the face and its argument), the three surfaces in both trees,
+`voice/docs/microcopy.md` (the label, both wordings, and the three turned rows),
+`voice/voice.html` (the principle-5 example had been teaching the hash), `ui-kit/notice.html` and
+`ui-kit/docs/inventory.md`, `ia/docs/sitemap.md` (what was built and which wording each screen
+draws), `docs/backlog.md` (217 and 220 struck, 221 filed).
+
+---
+
 ## 2026-08-19 - Automating the markets is a constraint on CREATION, not a script for resolution, and the resolution record is the answer to two open questions at once
 
 **The question was how markets appear and close without a person doing it every day.** The answer

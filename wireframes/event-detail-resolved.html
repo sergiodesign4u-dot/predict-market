@@ -432,6 +432,14 @@
       justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 8px; }
     .protect { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 11px; }
 
+    /* ---- SHARED (3 of 114, 3 rules): the resolution reading ----
+       A record and not a promise, so it is the neutral box rather than the trust box;
+       the colour half of that argument is in components/notice.css and this tree has no
+       colour. ia/docs/sitemap.md, Resolution entity, Reading. */
+    .reading { border: 1px solid #999; background: #f2f2f2; padding: 8px; display: flex; flex-direction: column; gap: 4px; }
+    .reading .reading-line { margin: 0; font-size: 12px; line-height: 1.5; }
+    .reading .reading-src { margin: 0; font-family: monospace; font-size: 11px; line-height: 1.5; color: #555; }
+
     /* ---- SHARED (98 of 114, 14 rules): active bets ---- */
     .tabs { display: flex; gap: 0; margin: 0 0 10px; }
     .tabs :is(a,button) { border: 1px solid #888; border-bottom: 1px solid #bbb; background: #dcdcdc; padding: 8px 14px; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-align: center; text-decoration: none; }
@@ -1285,7 +1293,11 @@
           <section class="ed-section ed-rules">
             <div class="rules-tabs" role="tablist"><button type="button" class="rules-tab sel" role="tab" aria-selected="true">Rules</button><button type="button" class="rules-tab" role="tab" aria-selected="false">Background</button></div>
             <div class="rules-panel" role="tabpanel"><p class="resolution"><strong>Resolved YES</strong> on Jun 27, 2026: a federal funding gap caused a shutdown beginning before 00:00 ET on July 1, 2026. It would have <strong>resolved NO</strong> had funding held through that date.<br>
-            <strong>Source:</strong> official US Office of Management and Budget notices. Resolved by the Yonder team.</p></div>
+            <strong>Source:</strong> official US Office of Management and Budget notices. Resolved by the Yonder team.</p>
+            <div class="reading">
+              <p class="reading-line">Resolved YES on Jun 27, 2026 at 09:14 ET. A federal funding gap began before the Jul 1 deadline the rules named.</p>
+              <p class="reading-src">Source: <a href="#">OMB notice of Jun 26, 2026</a>. Read by the Yonder team at 09:14 ET.</p>
+            </div></div>
             <div class="rules-panel" role="tabpanel" hidden><p class="resolution">YES closed at 38%. Funding talks had stalled twice that quarter, and the three deadlines before it were settled at the last minute. What was moving the number:</p>
             <div class="args">
               <div class="arg-col">
@@ -1762,7 +1774,7 @@
         <div class="hiw-step-txt">
           <p class="hiw-step-n">Step 3 of 3</p>
           <h2 class="hiw-step-t">Get paid when it resolves</h2>
-          <p class="hiw-step-b">It resolves against the source it named and the result is written on-chain. Until then your money is held 1:1, never lent and never moved.</p>
+          <p class="hiw-step-b">It resolves against the source it named, and what was read is published with the result. Until then your money is held 1:1, never lent and never moved.</p>
         </div>
         <div class="hiw-nav">
           <a class="btn btn-primary btn-md btn-block" href="sign-in.html">Create account</a>
