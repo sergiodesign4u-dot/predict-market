@@ -12,6 +12,86 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-19 - The word AMM was in four places and the screens had already decided against it, and the number that blocks a real-money launch is arithmetic rather than a licence
+
+**The question was how to actually launch this, alone.** What the pass found first is that the
+mechanism had been decided three times in three files and nobody had told the fourth.
+
+**AMM STOOD IN SIX PLACES AND ON ZERO SCREENS.** Counted 2026-08-19: `PRODUCT.md` x4, `DESIGN.md` x2,
+`research/docs/competitors.md` in an open question, and **0 of the 229 documents in the three trees**.
+The voice pass of 2026-08-16 had already taken it off the nine screens per tree that carried it,
+recorded as "a sentence with no reader" in `voice/docs/microcopy.md`, and it had taken the parenthesis
+`(AMM)` out from under Confirm on four screens. **So the product had stopped saying the word and the
+prose had not**, which is the same shape as the count drift of 2026-08-18 and the same fix: the file
+that owns the fact keeps it, the summary that restates it gets turned.
+
+**AND THE SCREENS HAD DECIDED SOMETHING STRONGER THAN A VOCABULARY.** Read from both trees:
+**18 placements over 18 documents print `A YES share costs 38 cents ... $5.00 buys 13.16 shares`, and
+13.16 is `5 / 0.38` to four figures. 0 of the 18 carry any slippage at all**, and the sentence beside
+them says the price is locked at Confirm so it cannot move against you. **Every automated market
+maker fills a bet along its curve**, so under an AMM that $5 buys fewer than 13.16 shares and the
+sentence under it is false. The trees had been drawing a third mechanism for months: a QUOTED price,
+filled whole at the quote, moved between bets. **`research/docs/competitors.md` had this as an open
+`[?]` framed as CLOB against AMM, and both branches of that question assume the mechanism prices the
+bet.** A question left open long enough is answered by the build, and nothing in the research reads
+the build. It is closed against the trees rather than against more research.
+
+**THE PARAMETER IS `b` AND TWO SHIPPED PROMISES PULL IT IN OPPOSITE DIRECTIONS. THIS IS THE FINDING.**
+Under a logarithmic scoring rule `b` is what it costs to move the number, and the earlier advice this
+pass was checking had proposed `b = $1,000` on a $17,329 exposure. Computed from a 50 / 50 book:
+three $5 bets one side reach **63.0% at `b = $50`, 52.4% at $300 and 50.7% at $1,000**. So at the
+proposed value a person betting the product's own default moves the price by a quarter of a point,
+and the number on screen is the opening quote wearing a crowd's clothes. **`b` was sized for a $50
+bet and this product's bet is $5**, which `PRODUCT.md` decided on 2026-08-10.
+
+**But small `b` is what the locked-price promise cannot afford**, because filling the whole bet at
+the quote hands the buyer the slippage, and that give-away shrinks as `b` grows. The two cross at a
+closed form, and it is exact rather than fitted: at a fee `f` on the stake, a bet of `S` filled at the
+quote breaks even at **`b = S / (2f)`**, which at 1.5% is **33.3 x the bet**. $167 for a $5 bet, $833
+for $25, $3,333 for $100. **And `PRODUCT.md` decided on 2026-08-10 that there is no maximum bet**, so
+at every `b` there is a size above which the product has promised to sell its own promise at a loss.
+Filed as `docs/backlog.md` 216 rather than repaired, because the repair is a product decision.
+
+**THE NUMBER THAT DECIDES THE LAUNCH IS NOT A LICENCE.** At 1.5% of the stake a $5 bet earns 7.5
+cents. To net $1,000 a month takes **$66,667 of stake, 13,333 bets, 444 a day, 17.8 per market per
+day across 25**; to earn back the worst-case subsidy at `b = $1,000` once takes **$1,155,245 of stake
+volume**. Every compliance route priced in the same session sits above the founder either way, but
+**the fee arithmetic blocks the real-money version before any regulator does**, and nothing in this
+repository had written it down. It is in `PRODUCT.md` now, under a section that did not exist:
+**Liquidity and risk**, and its absence is exactly what let four files answer the mechanism question
+differently.
+
+**SO THE FIRST LAUNCH CARRIES NO MONEY, AND THAT IS WHAT MAKES THE MECHANISM FREE.** The only real
+cost in the whole model is the subsidy, and the subsidy is a row in a table when the currency is
+points. **The play-money build is not a smaller product, it is the same product with its one risk
+parameter priced at zero**, which is the only condition under which `b` gets LEARNED from live flow
+rather than guessed. Launch scope is **7 events, one-time only, no commission, no chain**: 25 stays as
+the number the navigation model is designed against, and 7 is what one person can source, write a
+resolution rule for, watch, close on time and resolve. **The month-two failure is not the mechanism,
+it is the newsroom**, and this file's own decision of 2026-08-10 multiplies it, since every cadence
+instance is its own event and five weekly series are 260 resolutions a year on their own.
+
+**WHAT WAS REJECTED.** A peer-to-peer order book, on the ground that a book with no flow is an empty
+book and `Audience` defines this reader as not a trader; a parimutuel pool, because it cannot quote
+before the pool exists and would break the locked price the Win and Loss screens are written on; and
+**setting the price by hand with no curve at all**, which was the second opinion's recommendation and
+which contradicts the shipped How It Works line "price set by what people bet". The curve is kept and
+demoted: it decides where the quote goes next, it does not price the bet in front of you.
+
+**WHAT WAS FOUND AND NOT FIXED HERE.** `on-chain` stands on **114 painted screens** in the funds line
+and twice as `1,284 events resolved on-chain`. A points launch makes those unprovable, and principle 5
+of `voice/docs/voice.md` is that the specific provable thing gets said. **The promise survives and the
+mechanism word does not**: a published, append-only resolution record with its source and its
+timestamp is what the product actually offers. That is a voice pass over `voice/docs/microcopy.md`
+and it is `docs/backlog.md` 217, not this entry.
+
+**Files turned:** `PRODUCT.md` (4 AMM lines plus the new Liquidity and risk section), `DESIGN.md` (the
+featured chart and the odds panel, the second of which described a pool and a curve the tree stopped
+drawing on 2026-08-16), `research/docs/competitors.md` (open question 1 closed, and its Polymarket
+rows confirmed right against the summary that was wrong), `docs/backlog.md` (216, 217, 218).
+
+---
+
 ## 2026-08-19 - The five document pages were reading at the feed's blurb size, and a slot with one placement is a slot nobody can disagree with
 
 **Reported by the user, on a screenshot, and the report was right.** The question was why the

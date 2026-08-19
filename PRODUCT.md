@@ -7,7 +7,7 @@ the record of what was built is in `docs/decisions.md`; what is still open is in
 product (app UI - design serves the product, not the other way around). Mobile-first web, later responsive desktop. Web3 / blockchain.
 
 ## What it is
-A mobile-first prediction market where users bet YES / NO on real-world events (Politics, Crypto, Culture, General). Users stake stablecoins (USDC/USDT) on whether an event will happen; payout depends on the AMM price when the bet was placed, not only the outcome. Platform team creates and resolves events (MVP).
+A mobile-first prediction market where users bet YES / NO on real-world events (Politics, Crypto, Culture, General). Users stake stablecoins (USDC/USDT) on whether an event will happen; you buy shares at the price quoted on screen and a winning share pays $1, so **what changes with timing is the PRICE and not the payout rule**. This sentence said "payout depends on the AMM price when the bet was placed" until 2026-08-19, which the Event resolution section of this same file had replaced on 2026-08-10: a fact written twice in one file is a fact that drifts, and the copy that drifted is the one that is not the owner. Platform team creates and resolves events (MVP).
 
 ## Primary job (JTBD)
 "When I follow events that matter to me, I want real skin in the game, so it's not just news but my personal stake with a real outcome." Secondary: "If I understand the situation better than others, I want that to convert into money, simply, without the complexity of trading."
@@ -95,7 +95,7 @@ Sharpened by the CJM To-Be backlog (`user-research/docs/cjm-to-be.md`, Alex x ma
 - User account via social login (Google, X)
 - Fiat on-ramp (card -> stablecoin); a crypto wallet stays available for crypto-native users but is not required until Confirm
 - One plain funds-safety line before deposit ("USDC held 1:1, we never lend it") + the fee shown before Confirm
-- Confirm with AMM price reconcile if the price moved (S5)
+- Confirm with a price reconcile if the price moved (S5)
 - Binary YES/NO and multi-outcome markets (multi is product scope, not CJM-derived)
 - $1 / $5 bet sizing (low min, $5 default); the size that feels "real but not scary" is a `[?]` to test
 - Active Bets + outcome / position notifications (retention anchor)
@@ -119,6 +119,90 @@ Sharpened by the CJM To-Be backlog (`user-research/docs/cjm-to-be.md`, Alex x ma
   scope already names. The deposit minimum stays $10, which is a few bets of headroom rather than
   one.
 
+## Liquidity and risk
+**Who is on the other side of the bet, what that costs, and what it is worth.** Decided 2026-08-19.
+This section did not exist until then, and its absence is what let four places in this file go on
+saying AMM after the mechanism had been decided elsewhere: **a question nobody owns is a question
+every file answers differently.**
+
+**COUNTERPARTY: THE PLATFORM IS THE ONLY MARKET MAKER.** There is no peer to match against. A book
+needs two-sided flow and this product has 25 curated events, a $1 minimum, a $5 default and an
+audience `Audience` above defines as explicitly not traders; an order book under that load is an
+empty book, and a parimutuel pool cannot quote a price before the pool exists, which would break the
+locked price the Event resolution section decided and the Win and Loss screens are written on. So the
+platform quotes both sides and takes the other side of every bet. **This is the one structural cost
+of the model and it is stated rather than hidden**: when a person loses, the house is the winner, and
+`voice/docs/voice.md` principle 5 says the provable thing gets said. The published form is the
+subsidy cap below, which is a number no order book has.
+
+**THE SCREENS HAD ALREADY DECIDED THE FILL, AND IT IS NOT AN AMM's.** Measured over both trees on
+2026-08-19: **18 placements over 18 documents print `shares = stake / price` exactly, 0 of them with
+any slippage**, and the sentence under them says the price is locked at Confirm so it cannot move
+against you. Every automated market maker fills a bet ALONG its curve, so a $5 bet at 38 cents buys
+fewer than 13.16 shares. **The product therefore quotes a price, fills the whole bet at the quote,
+and moves the quote between bets.** The curve still exists, as the rule that decides where the quote
+goes next; what it does not do is price the bet you are placing.
+
+**THE PARAMETER IS `b`, AND TWO SHIPPED PROMISES PULL IT IN OPPOSITE DIRECTIONS.** Under a logarithmic
+market scoring rule, `b` is how much money it takes to move the number. Measured 2026-08-19, from a
+50 / 50 book:
+
+| `b` | three $5 bets one side | forty $5 bets one side | worst-case subsidy per binary market, `b x ln 2` |
+|---|---|---|---|
+| $50 | 63.0% | 99.9% | $34.66 |
+| $167 | 54.4% | 85.1% | $115.61 |
+| $300 | 52.4% | 71.1% | $207.94 |
+| $1,000 | 50.7% | 56.7% | $693.15 |
+
+Small `b` is what makes the number a market: at $1,000 a person betting $5 moves it by a quarter of a
+point and the price on screen is the opening quote wearing a crowd's clothes. **But filling at the
+quote costs the house the slippage it just gave away, and that cost falls as `b` rises**, so the
+locked-price promise wants `b` LARGE and price discovery wants it SMALL. The two cross at a closed
+form: at a fee of `f` on the stake, a bet of `S` filled at the quote breaks even at
+
+> **`b = S / (2f)`**, which at `f = 1.5%` is **`b = 33.3 x S`**: $167 for a $5 bet, $833 for a $25
+> bet, $3,333 for a $100 bet.
+
+**AND `Bet limits` ABOVE DECIDED THERE IS NO MAXIMUM**, so at any `b` there is a bet size above which
+the locked-price promise is sold at a loss, and the product has promised to accept it. That is an
+open row rather than a repair: `docs/backlog.md` 216.
+
+**WHAT THE COMMISSION HAS TO CARRY.** At 1.5% of the stake and a $5 bet, one bet earns 7.5 cents.
+Computed 2026-08-19:
+
+| to net | stake volume per month | bets of $5 | per day | **per market per day, over 25** |
+|---|---|---|---|---|
+| $500 | $33,333 | 6,667 | 222 | 8.9 |
+| $1,000 | $66,667 | 13,333 | 444 | **17.8** |
+| $3,000 | $200,000 | 40,000 | 1,333 | 53.3 |
+
+And to earn back the worst-case subsidy once, at `b = $1,000` across 25 markets ($17,329), takes
+**$1,155,245 of stake volume**. **This is the number that decides the launch, and it is arithmetic
+rather than an opinion**: the real-money version is not blocked by a licence first, it is blocked by
+needing eighteen bets per market every day before it pays one person a salary.
+
+**SO THE FIRST LAUNCH CARRIES NO MONEY, AND THAT IS WHAT MAKES THE MECHANISM FREE.** The only real
+cost in everything above is the subsidy, and the subsidy is a number in a table when the currency is
+points. **The play-money build is therefore not a smaller product, it is the same product with its
+one risk parameter priced at zero**, which is the only condition under which `b` can be LEARNED from
+live flow instead of guessed: start it small enough that a person's bet visibly moves the number, and
+raise it as flow arrives. Commission is 0 while the currency is points, because a fee on play money
+buys nothing and costs the trust line that says what the fee is for. The business model above is what
+turns on with real money, not what ships first.
+
+**Launch scope: 7 events, one-time only, no commission, no chain.** The 25 in `Catalog size` is what
+the navigation model is DESIGNED against and it stays; 7 is what one person can source, write a
+resolution rule for, watch, close on time and resolve without the catalog going stale, which is the
+failure this product cannot survive because a late or disputed resolution is the #1 churn driver in
+`Audience`. Recurring markets are out of the first release for the same reason and by this file's own
+rule: `Market types` decided that every cadence instance is its own event, so five weekly series are
+260 resolutions a year on their own.
+
+**Jurisdiction: `[?]`.** `Financials and compliance` below says global with geo-restrictions, which
+names who is kept out and not what the product operates under. A points product with no deposit, no
+withdrawal and no cash redemption is the one form of this that needs no answer, and the answer is
+required before the first real dollar, not before the first user. *Not legal advice.*
+
 ## Financials and compliance
 - **All transactions in crypto** - stablecoins (USDC, USDT) as primary
 - Fiat on-ramp supported (user converts fiat -> crypto on platform)
@@ -140,10 +224,17 @@ Sharpened by the CJM To-Be backlog (`user-research/docs/cjm-to-be.md`, Alex x ma
   first release. Polygon is the proven alternative and is what Polymarket runs on, but its USDC is
   bridged; Ethereum mainnet is out on fees alone at a $1 minimum.
 - Wallet connection: WalletConnect / MetaMask + social login
-- Smart contracts: AMM-based market resolution
+- **Pricing and counterparty: see Liquidity and risk below.** This line said "Smart contracts: AMM-based market resolution" until 2026-08-19 and it was wrong in two ways at once: resolution is not what an AMM does, and **the arithmetic the screens print is not an AMM's**. Measured over both trees on 2026-08-19: **18 placements over 18 documents compute `shares = stake / price` to the cent and 0 of them carry any slippage**, beside a line that says the price cannot move against you between the panel and the bet. An AMM fills a bet along a curve; these screens fill it at the quote
 
 ## Timeline and team
-~3 months to MVP. Solo - product, design and development.
+Solo: product, design and development. **~3 months was the estimate for `MVP feature scope` above, and
+that scope is not what ships first.** Measured 2026-08-19: the repository holds 509 commits, 115
+painted documents, 114 grey, 61 kit pages, 49 components, and **0 lines of product code**. Against the
+launch scope in `Liquidity and risk` (7 one-time events, points, no chain, no fiat rail, no KYC, and a
+slice of feed, event detail, sign-in, balance, confirm, my bets and one admin page) the estimate holds
+at roughly 8 to 12 weeks of evenings. Against the full list above it does not, and the difference is
+every line of that list that touches a wallet, a chain, a fiat rail or a regulator. The stage that
+would own this does not exist in the README table: `docs/backlog.md` 218.
 
 ## Competitors
-Full comparison in `research/docs/competitors.md` (HARD / SOFT / ASPIRATIONAL groups, matrix, patterns, open questions); the trust benchmark in `research/docs/benchmark.md`. Short version: Polymarket (AMM, good mobile UX, 3-level nav complex for newcomers), Kalshi (US-regulated, fiat), Manifold (play money, social), Metaculus (forecasting community, no real money).
+Full comparison in `research/docs/competitors.md` (HARD / SOFT / ASPIRATIONAL groups, matrix, patterns, open questions); the trust benchmark in `research/docs/benchmark.md`. Short version: Polymarket (**CLOB on Polygon**, good mobile UX, 3-level nav complex for newcomers), Kalshi (US-regulated, fiat, order book), Manifold (play money, social), Metaculus (forecasting community, no real money). **This line called Polymarket an AMM until 2026-08-19 while `research/docs/competitors.md` said CLOB on Polygon in four places**: the research was right and the summary was the copy that drifted, which is the same shape as the What it is line above. Polymarket left its AMM for a central limit order book in late 2022.
