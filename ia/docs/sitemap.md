@@ -91,11 +91,12 @@ Without it, no job is closable.
 | Current probability (%) | The "price" - primary display number on every card |
 | Probability chart | History of odds movement over time |
 | Context / narrative | Why this event matters, what drives the odds, key arguments for YES and NO ← **our differentiator (FJ2)** |
-| Resolution conditions | What counts as YES, what source is authoritative |
-| Status | Active · Resolved · Cancelled |
-| Resolution deadline | When the event closes for new bets |
+| Resolution conditions | What counts as YES, what source is authoritative. **This is the half a READER reads, and until 2026-08-19 it was the only half there was.** |
+| **Resolver** | **NEW 2026-08-19.** The half a PROGRAM reads: `source` (which endpoint), `query` (what to ask it), `test` (what comparison decides YES). **An Event is not created without one**, and `manual` is a legal value that has to be typed rather than defaulted to, so a hand-resolved market is a choice on the record instead of the absence of a field. This is the whole of the automation answer: **the constraint goes on CREATION, not on resolution**, because automating the closing of an arbitrary question is impossible and only creating answerable questions is easy. Measured against the shipped catalog of 25 on 2026-08-19: **6 machine-resolvable from a free public source, 5 borderline, 14 `manual`.** The reader half and the machine half must agree, and they are the one place in this product where a claim and its proof stand together, so they are checked as a pair the way the structured data of `pages/seo.md` is checked against the render. |
+| Status | **Active · Closed · Resolved · Needs review · Cancelled.** It was `Active · Resolved · Cancelled` until 2026-08-19, and it was missing the two states an automated closing actually produces. **Closed** is trading stopped and the outcome not yet known, which the Resolution deadline row below already implies and no status could express. **Needs review** is the resolver failing, timing out or returning something ambiguous, and it exists so that **silence is never read as NO**: a failed read routes to a human, never to an outcome. A market that resolves because nothing answered is the single cheapest way to lose the trust this product is built on. |
+| Resolution deadline | When the event closes for new bets. Distinct from the moment the outcome is READABLE, which for most sources is later: a monthly climate figure or an economic print lands days after the window shuts. The gap between the two is exactly what `Closed` names. |
 | Volume | Total USDC staked across all positions |
-| Created by | Platform team (MVP) |
+| Created by | Platform team (MVP), and **as of 2026-08-19 that means one of two things said out loud**: instantiated from a template by the scheduled job (question pattern + resolver + horizon, with the numeric threshold SOLVED so the market opens near 50 per cent rather than guessed), or written by a person and approved. Both carry a resolver; only the second may carry `manual`. |
 
 **Related to:** Bet · Resolution · Notification · User (a user can save / follow this event, a bookmark, see Saved events)
 
@@ -188,10 +189,11 @@ This is the moment that triggers payouts, post-resolution screens, and share car
 | Field | Notes |
 |---|---|
 | Outcome | YES · NO (or which option in multi-outcome) |
-| Evidence / source | URL or description of what determined the outcome |
-| Resolved by | Team multisig (MVP) → oracle (post-MVP) |
-| On-chain transaction hash | Public verifiability |
-| Timestamp | - |
+| **Reading** | **NEW 2026-08-19, and it is the evidence.** What the resolver returned: the endpoint called, the raw response stored verbatim, the value extracted, the threshold it was compared against, and the instant of the read. It renders as one sentence a reader can check without leaving the page: *Resolved NO on Mar 1, 2027 at 00:00 ET. BTC/USD was $138,204 against a threshold of $150,000. Source: CoinGecko, read at 00:00:04 ET.* |
+| Evidence / source | URL or description of what determined the outcome. For a `manual` resolution this is the whole of the evidence and it is written by a person; for every other market it is the Reading above, and the row exists so the two never live in different shapes. |
+| Resolved by | **The resolver, named, or a person, named.** It said `Team multisig (MVP) → oracle (post-MVP)` until 2026-08-19, which described a mechanism the first release does not carry and skipped the one it does. |
+| ~~On-chain transaction hash~~ | **LATER, 2026-08-19.** Public verifiability was the answer while the first release was going to carry a chain, and it is not. **A hash proves that a decision was recorded; a Reading proves what the decision was made FROM**, which is the stronger of the two for the fear this product is built against, and it is the one a reader can check by opening the source themselves. The hash returns with the chain. `docs/backlog.md` 217 carries the copy debt this creates across 114 painted screens. |
+| Timestamp | Two of them, and they differ: when trading closed, and when the outcome was read. |
 | Resolution note | Plain-language explanation of what happened and why ← FJ5 "what happened" |
 
 **Related to:** Event (one-to-one) · Bet (triggers status + payout for all positions on this event)
@@ -267,6 +269,7 @@ Objects mentioned in product docs but not mapped to a confirmed job. Included he
 | **Category** | Events are grouped by Politics / Crypto / Culture / General | RESOLVED in the wireframe build pass (#1): Category is promoted to a navigation screen - each category opens its own page with a sub-category rail, sort/frequency, and the auth axis + states. It is both an Event field and a browse screen. Sub-category was added as a new Event attribute. |
 | **Leaderboard** | Listed in CLAUDE.md MVP features | No explicit job in jtbd.md. SJ2 (public track record) is served by Profile. Leaderboard is a view over Profiles - a feature, not a distinct entity. Revisit if social competition mechanics are confirmed. |
 | **Odds Chart** | Every competitor has it; part of Event detail | Attribute of Event (probability history), not a standalone entity. Lives inside Event. |
+| **Operator console** | The scheduled job needs a place for a `Needs review` market, an approval queue for generated questions, and a manual resolve. Named 2026-08-19 with the Resolver field. | **NOT A NODE OF THIS MAP, and that is the answer rather than a deferral.** This document maps where the USER can go; its reader is Alex. An operator console has a different reader, a different job list and no entry in `jtbd.md`, so putting it on this map would make the map answer two questions and the `[ORPHAN]` rule exists precisely to stop that. It is registered here for the same reason the footer's eight cut labels were: **so that nothing promises a destination the map omits, and so the next person does not read its absence as an oversight.** It gets its own small map when it is built, and its screens never enter the counts of the three trees. |
 | **Fiat Transaction** | Deposit/withdrawal via Transak/MoonPay | Currently modeled as sub-object of Wallet. Promote to standalone entity only if on-ramp flow reveals complexity that can't fit inside Wallet (e.g., multi-step KYC state machine per transaction). |
 
 ---
@@ -429,6 +432,19 @@ States: loading (Share Card generation in progress) - error (Share Card not gene
 Design rationale: the resolution note is the default beat before any re-bet (intervention against loss-chasing, per product strategy O1 trust over O4 volume). Friction is calm, non-punitive, and non-blocking - the user can always proceed. The escalation branch in ia/docs/flows.md FJ5 routes through an explicit pause node before reaching Bet Screen. Reserved: session-aware chasing check (C-logic), post-MVP, not built in this pass.
 States: loading (resolution note fetching).
 Note: Cancelled-event refund flow is deferred to post-MVP, so no refund/payout state exists on this screen at MVP.
+
+**THE READING RENDERS IN THREE PLACES AND IT IS THE SAME SENTENCE IN ALL THREE, 2026-08-19.** The
+Resolution entity's new Reading field is what a person checks when they want to know whether they
+were dealt with fairly, so it stands wherever an outcome is stated: on **Win Screen** and **Loss
+Screen** beside the resolution note, and on **`event-detail-resolved`**, which is the page a reader
+reaches later, from their own history or from a link, when the screens above are gone. It is one
+sentence carrying the value, the threshold, the source and the read time, and **the source is a link
+the reader can open**, which is the difference between a claim and a proof and the reason this
+replaces the on-chain hash rather than merely standing in for it. **The three copies are the risk**:
+`CLAUDE.md` already records that a fact standing on two documents is owned by neither, and this one
+stands on three, so it is rendered from the Resolution record and never retyped per screen. For a
+`manual` market the same slot carries the person's written evidence, in the same shape, so a reader
+never has to learn two formats to check two markets.
 
 ---
 

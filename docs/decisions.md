@@ -12,6 +12,83 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-19 - Automating the markets is a constraint on CREATION, not a script for resolution, and the resolution record is the answer to two open questions at once
+
+**The question was how markets appear and close without a person doing it every day.** The answer
+splits the problem in half and only one half is automatable, which is why the constraint lands
+somewhere other than where it was asked for.
+
+**CLOSING AUTOMATES ONLY IF THE SOURCE IS MACHINE-READABLE, SO THE RULE GOES ON CREATION.** An
+Event is not created without a **Resolver**: `source`, `query`, `test`. Automating the resolution of
+an arbitrary question is impossible; creating only answerable questions is easy, and it turns a daily
+newsroom into a scheduled job. `manual` stays a legal value and it has to be TYPED, so a
+hand-resolved market is a decision on the record rather than the absence of a field, which is the
+same shape as this repository's rule that a zero has to say which zero it is.
+
+**MEASURED AGAINST THE CATALOG THE PRODUCT ALREADY SHIPS, THE RULE INDICTS IT.** Classified by hand
+over the 25 questions in `assets/search.js`: **6 are machine-resolvable from a free public source**
+(two crypto thresholds, two climate records, an Atlantic hurricane category, stablecoin supply by
+chain), **5 are borderline** and **14 are human-only** (Senate control, a shutdown, two ETF
+approvals, Eurovision, a UK election, a nomination, a budget, EU accession, a French snap election,
+a box-office genre, a Bond actor, a console launch, a chart-topping album). And the whole painted
+tree names **2 distinct resolution sources**, both ending "Resolved by the Yonder team". **So the
+catalog is designed as a newsroom**, and the automation answer is not a script bolted to it, it is a
+different catalog. `docs/backlog.md` 219.
+
+**THE STATUS FIELD WAS MISSING THE TWO STATES AN AUTOMATED CLOSING PRODUCES.** It read `Active ·
+Resolved · Cancelled`, and the Resolution deadline row beside it already implied a third: trading
+stops when the window shuts, and for most sources the outcome is READABLE later, because a monthly
+climate figure or an economic print lands days after. That gap is **Closed**. The fifth is **Needs
+review**, and it exists for one rule: **silence is never read as NO.** A failed read, a timeout or an
+ambiguous answer routes to a human, never to an outcome. A market that resolves because nothing
+answered is the cheapest possible way to lose the one thing `PRODUCT.md` names as the #1 churn
+driver.
+
+**AND THE THING THAT MAKES IT WORTH DOING IS NOT THE LABOUR SAVED.** Because the outcome is machine
+read, the record can print what `voice/docs/voice.md` principle 5 asks for and no competitor prints:
+*Resolved NO on Mar 1, 2027 at 00:00 ET. BTC/USD was $138,204 against a threshold of $150,000.
+Source: CoinGecko, read at 00:00:04 ET*, with the raw response stored and the source a link the
+reader opens. **This closes two open questions with one field.** `research/docs/competitors.md`
+question 2 asked how resolution trust is built with no regulator and no track record and answered
+"on-chain transparency", which the launch decision removed; **a hash proves that a decision was
+recorded and a Reading proves what the decision was made FROM**, which is the stronger of the two for
+the fear this product is built against. And `docs/backlog.md` 217, the `on-chain` vocabulary standing
+on 114 painted screens, now has something provable to be replaced BY rather than merely a word to
+delete.
+
+**THE OPERATOR CONSOLE IS REGISTERED AS NOT BEING ON THIS MAP, AND THAT IS THE ANSWER RATHER THAN A
+DEFERRAL.** `ia/docs/sitemap.md` maps where the USER can go and its reader is Alex. A console has a
+different reader, a different job list and no entry in `jtbd.md`, so putting it on the map would make
+one document answer two questions, which is what the `[ORPHAN]` rule exists to prevent. It goes in
+**Under Question** for the same reason the footer's eight cut labels went there: so nothing promises
+a destination the map omits and nobody later reads its absence as an oversight. It gets its own map
+when it is built and its screens never enter the counts of the three trees.
+
+**WHAT WAS REJECTED.** Mirroring an existing venue's markets through the public Manifold or
+Polymarket APIs, which makes this a derivative product priced by someone else; **it is kept in one
+narrow role**, as an opening-price oracle where a matching market exists, beside the other
+cold-start answer, which is arithmetic rather than a dependency: for a numeric market the threshold
+is SOLVED so the market opens near 50 per cent, `K = S x exp(-o^2 T / 2)`, instead of the question
+being written first and the price guessed after. At a spot of $110,000, 60 per cent volatility and a
+90-day horizon that is 4.3 per cent below spot, and the band that keeps a market interesting at all
+runs from 25.6 per cent below to 22.9 per cent above. An LLM writing candidate questions for the
+categories with no endpoint is kept and bounded: **it proposes, a person approves, and it never
+resolves.**
+
+**FILES TURNED, AND THE RENDERED COPY FIRST.** `ia/docs/sitemap.md` (Event gains Resolver, Status
+gains two values, Created by says which of two ways, Resolution gains Reading and loses the hash to
+LATER, Under Question gains the console, the RESOLUTION screens name the three places the Reading
+stands) and **`ia/sitemap.html`, which renders those two entity tables and is the copy a reader
+actually sees**, turned in the same pass by the rule this repository wrote on 2026-08-18 after a
+roadmap printed SOON on a shipped stage for three days. `research/docs/competitors.md` question 2 is
+half answered and says which half. `docs/backlog.md` 219 and 220.
+
+**Stages walked, per the missing-page order.** Research: the artefact exists and was checked, and it
+had a live `[?]` on exactly this, now turned. IA: produced, and it is this entry. Wireframes and UI:
+**not started, and that is `docs/backlog.md` 220** rather than a silent skip.
+
+---
+
 ## 2026-08-19 - The word AMM was in four places and the screens had already decided against it, and the number that blocks a real-money launch is arithmetic rather than a licence
 
 **The question was how to actually launch this, alone.** What the pass found first is that the

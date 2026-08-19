@@ -221,11 +221,12 @@
           <tr><td class="label">Current probability (%)</td><td>The "price" - primary display number on every card</td></tr>
           <tr><td class="label">Probability chart</td><td>History of odds movement over time</td></tr>
           <tr><td class="label">Context / narrative</td><td>Why this event matters, what drives the odds, key arguments for YES and NO - <strong>our differentiator (FJ2)</strong></td></tr>
-          <tr><td class="label">Resolution conditions</td><td>What counts as YES, what source is authoritative</td></tr>
-          <tr><td class="label">Status</td><td>Active &middot; Resolved &middot; Cancelled</td></tr>
+          <tr><td class="label">Resolution conditions</td><td>What counts as YES, what source is authoritative. The half a <strong>reader</strong> reads</td></tr>
+          <tr><td class="label">Resolver</td><td><strong>NEW 2026-08-19.</strong> The half a <strong>program</strong> reads: <code>source</code>, <code>query</code>, <code>test</code>. An Event is not created without one, and <code>manual</code> is a value that must be typed rather than defaulted to. Of the 25 events the product ships: 6 machine-resolvable, 5 borderline, 14 <code>manual</code></td></tr>
+          <tr><td class="label">Status</td><td>Active &middot; <strong>Closed</strong> &middot; Resolved &middot; <strong>Needs review</strong> &middot; Cancelled. <strong>Closed</strong> is trading stopped with the outcome not yet readable; <strong>Needs review</strong> is a resolver that failed or answered ambiguously, and it exists so that silence is never read as NO</td></tr>
           <tr><td class="label">Resolution deadline</td><td>When the event closes for new bets</td></tr>
           <tr><td class="label">Volume</td><td>Total USDC staked across all positions</td></tr>
-          <tr><td class="label">Created by</td><td>Platform team (MVP)</td></tr>
+          <tr><td class="label">Created by</td><td>Platform team (MVP): either instantiated from a template by the scheduled job, with the numeric threshold solved so the market opens near 50 per cent, or written by a person and approved</td></tr>
         </tbody>
       </table>
     </div>
@@ -308,10 +309,11 @@
         <thead><tr><th>Field</th><th>Notes</th></tr></thead>
         <tbody>
           <tr><td class="label">Outcome</td><td>YES &middot; NO (or which option in multi-outcome)</td></tr>
-          <tr><td class="label">Evidence / source</td><td>URL or description of what determined the outcome</td></tr>
-          <tr><td class="label">Resolved by</td><td>Team multisig (MVP) - oracle (post-MVP)</td></tr>
-          <tr><td class="label">On-chain transaction hash</td><td>Public verifiability</td></tr>
-          <tr><td class="label">Timestamp</td><td>-</td></tr>
+          <tr><td class="label">Reading</td><td><strong>NEW 2026-08-19, and it is the evidence.</strong> The endpoint called, the raw response stored verbatim, the value extracted, the threshold compared against, and the instant of the read. Renders as one checkable sentence: <em>Resolved NO on Mar 1, 2027 at 00:00 ET. BTC/USD was $138,204 against a threshold of $150,000. Source: CoinGecko, read at 00:00:04 ET.</em> The source is a link the reader can open</td></tr>
+          <tr><td class="label">Evidence / source</td><td>URL or description of what determined the outcome. For a <code>manual</code> market this is the whole of the evidence and a person writes it; everywhere else it is the Reading above, in the same shape, so a reader never learns two formats</td></tr>
+          <tr><td class="label">Resolved by</td><td>The resolver, named, or a person, named. It read <em>Team multisig (MVP) - oracle (post-MVP)</em> until 2026-08-19, which described a mechanism the first release does not carry and skipped the one it does</td></tr>
+          <tr><td class="label"><s>On-chain transaction hash</s></td><td><strong>LATER, 2026-08-19.</strong> A hash proves that a decision was recorded; a Reading proves what the decision was made <strong>from</strong>. The hash returns with the chain</td></tr>
+          <tr><td class="label">Timestamp</td><td>Two of them, and they differ: when trading closed, and when the outcome was read</td></tr>
           <tr><td class="label">Resolution note</td><td>Plain-language explanation of what happened and why - FJ5 "what happened"</td></tr>
         </tbody>
       </table>
