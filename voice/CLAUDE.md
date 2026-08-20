@@ -7,9 +7,15 @@ it. `docs/microcopy.md` is the inventory: every UI string in the product, with i
 
 ## The invariants
 
-- **A UI string gets a row in `docs/microcopy.md` before it ships**, then goes into both screen
-  trees. That table is the source of truth for copy, and for one whole stage it was not: 43 shipped
-  lines had no row in it, which means the table said the product was smaller than it was.
+- **A UI string gets a row in `docs/microcopy.md` before it ships**, then goes into all THREE trees
+  that carry it. That table is the source of truth for copy, and for one whole stage it was not: 43
+  shipped lines had no row in it, which means the table said the product was smaller than it was.
+  **THIS LINE SAID "both screen trees" UNTIL 2026-08-20 AND THAT SENTENCE IS WHY THE STAND WENT
+  STALE.** `ui-kit/` carries the product's markup by the two-places rule, so it carries the product's
+  STRINGS, and no voice pass has ever been measured over it: backlog 217 turned 217 placements over
+  `ui-visual/` and `wireframes/` on 2026-08-19 and **0 in the kit**, which left the stand promising a
+  mechanism the product had stopped claiming. Measured across all 61 kit pages against the paint,
+  **31 strings on 19 pages** disagreed. A pass that names two trees will be run over two trees.
 - **User-written content is never rewritten.** Event questions, comments, usernames and sample
   figures are the product's content, not its interface. Editing them makes the prototype lie about
   what a user would see.

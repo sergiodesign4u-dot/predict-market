@@ -245,6 +245,25 @@ regeneration, a re-capture, 41 gates, 525 snapshots and an audit.** The full acc
   primary figure the split gives**. Nothing failed; it just looked right. The stylesheet is the thing
   being demonstrated, so using it as the source of the demonstration proves only that the file agrees
   with itself.
+  **AND THE COPY IS TRUE ON THE DAY IT IS COPIED AND NEVER CHECKED AGAIN, 2026-08-20.** A specimen
+  holds two kinds of string and the difference decides everything. **A QUOTATION** is the product's
+  own words in the product's own markup, and it must equal what the screens ship, because a reader
+  comes here to learn what the component SAYS. **A DEMONSTRATION** is a string chosen to show a
+  property, a headline at three lengths on `typography.html` or a query highlighted on
+  `search.html`, and it may say anything. **31 quotations on 19 of the 61 pages had drifted**, and
+  the worst of them was not a wording: `hiw`, `dialog` and `organisms` told the third step of the
+  how-it-works sheet in **three different sentences**, one of them the on-chain resolution claim
+  `docs/backlog.md` 217 retired across 217 placements the day before, so the stand promised a
+  mechanism the product does not have. `seo-plate.html` drew a **five-question FAQ where the product
+  ships three**, and `toc.html` and `molecules.html` kept a draft that said `service` and `market`
+  where the product settled on `document` and `event`. **A stand drawing MORE than the product
+  ships is the shape this kit has been caught in before**, and copy is where it is invisible: a
+  wrong word renders perfectly.
+  **The check is a SET READ and it is cheap**: harvest every text node in the kit that sits under a
+  PRODUCT class, and any string with no exact twin in `ui-visual/` is either drift or a
+  demonstration. Run it on a voice pass, not on every edit. **Read the instrument first**: 4 of the
+  10 that survived the repair are `<mark>` splitting one sentence into three text nodes, and 3 are
+  the kit's own sidebar, which wears product classes and is not a specimen at all.
 - **A specimen drawn twice brings its ids twice.** Nine declarations in this system are keyed to a
   document-unique id, and every cell here is drawn once per theme, so the product's own markup
   arriving on 22 pages produced **16 duplicate ids over 8 pages**: on `event-detail` and `tabs` that

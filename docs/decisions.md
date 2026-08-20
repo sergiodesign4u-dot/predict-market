@@ -12,6 +12,66 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-20 - A voice pass that names two trees is run over two trees, and the stand had been left behind by every one of them
+
+**`docs/backlog.md` 225 was filed the same day as three strings on one page and closed as 31 strings
+on 19 of the 61 kit pages.** The row asked one question, whether a specimen quotes the screen or
+`voice/docs/microcopy.md`, and the answer turned out to be a different distinction: **a specimen
+holds a QUOTATION or a DEMONSTRATION.** A quotation is the product's words in the product's markup
+and must equal what the screens ship, because a reader comes to the stand to learn what the
+component SAYS. A demonstration is a string chosen to show a property, a headline at three lengths
+on `typography.html` or a query highlighted on `search.html`, and it may say anything.
+
+**THE MECHANISM WAS ONE SENTENCE.** `voice/CLAUDE.md` said a UI string "goes into both screen trees",
+and every sweep obeyed it exactly. `ui-kit/` is the THIRD tree that carries those strings, by this
+repository's own rule that markup goes to two places and one of them is the component's page, and
+**backlog 217 turned the on-chain resolution claim over 217 placements in `ui-visual/` and
+`wireframes/` on 2026-08-19 and 0 in the kit.**
+
+### What the read found
+
+Every text node in the kit that sits under a PRODUCT class, harvested from the rendered DOM over all
+61 pages and diffed against `ui-visual/`: **8,800 kit strings, 774 product strings, and after
+filtering the kit's own prose about its components, 31 quotations had drifted.**
+
+| what | where | the shape of it |
+|---|---|---|
+| the third how-it-works step told **three different ways** | `hiw`, `dialog`, `organisms` | one of them the retired on-chain claim, so the stand promised a mechanism the product does not have |
+| a **five-question FAQ where the product ships three** | `seo-plate` | with a heading and a body no screen has: "Politics markets" against the product's "About Politics events" |
+| `service` and `market` where the product settled on `document` and `event` | `toc`, `molecules` | a whole leftover draft, with its row numbers one digit instead of two |
+| `1,284 events resolved on-chain` | `feed`, `hero` | the exact string 217 turned |
+| `YES pre-selected` after the product settled on `YES selected` | four pages | found on a third and a fourth page after two rounds of repair, which is why the sweep was re-run each time |
+| `See all 3 results` | `search` | the seam the root `CLAUDE.md` already records as fixed, fixed in one tree |
+| five fixture rows missing the year and the `net` column | `position`, `tabs`, `profile` | the identity pass of 2026-08-20 landed in the trees and not here |
+
+**And one was a FACE rather than a word.** `vitrine.html` drew the notification row with `<b>` and
+`<br>`, because `.nav-row-stack` only stacks inside `.notif-drop`, so the front door of the kit
+showed as one line at 44px what the product shows as two at 49. The workaround was in the markup and
+the correct copy could not be dropped in without it: fixing the words exposed the face.
+
+### Read the instrument before the finding, twice
+
+**The residue is 10 and every one says which kind it is.** 4 are the instrument: `<mark>` around a
+matched query splits one sentence into three text nodes, so `search.html` reported three truncated
+questions and a fragment beginning "ion be called in France". 3 are the kit's own sidebar, which
+wears product classes and is not a specimen at all. 2 are demonstrations, a bare `Sub-categories`
+and a `Sort:` prefix the control itself writes. **1 is a real question left open**: a France market
+that `ia/`'s `@graph` names and no screen prices, shown at 29 per cent by a kit suggestion row.
+
+**A wrong word renders perfectly**, which is why no instrument in this repository could have found
+any of it. Every sweep here reads a computed value and copy has none. This is the cross-document set
+read arriving in the one layer with nothing to compute.
+
+### Written where it acts
+
+The rule is in three files because it is three different obligations: `voice/CLAUDE.md` owns the
+count of trees, `ui-kit/CLAUDE.md` owns the quotation-against-demonstration split and the set read
+that finds it, and the root `CLAUDE.md` owns the cross-folder fact that a string ships in three
+places. 244 renders over 61 pages on two engines at two widths after the repair: 0 sideways scroll,
+0 duplicate ids, 0 page errors.
+
+---
+
 ## 2026-08-20 - A step that cannot be in the layout cannot move, and two comments said the floors already held
 
 **Asked for by the user**: the how-it-works sheet should change its picture and slide its text

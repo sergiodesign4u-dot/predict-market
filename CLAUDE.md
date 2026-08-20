@@ -547,6 +547,21 @@ because it is a stance rather than a principle, and it is written once, here.
   with no rail, which is the one thing the sentence beside it forbids. RAIL 900 is the first width at
   which both halves of the declaration are true at once. **A declaration has two halves and a build
   can satisfy one of them.**
+- **A STRING IS SHIPPED IN THREE TREES AND EVERY VOICE PASS HERE HAS BEEN RUN OVER TWO.** The rule
+  above says markup goes to two places, the component's page in `ui-kit/` and the screens in
+  `ui-visual/`, which means the STAND carries the product's strings and not a paraphrase.
+  `voice/CLAUDE.md` said a string "goes into both screen trees" and every sweep obeyed it: backlog
+  217 turned the on-chain resolution claim over **217 placements in `ui-visual/` and `wireframes/`
+  and 0 in the kit**, so the stand went on promising a mechanism the product had dropped. Harvested
+  2026-08-20 over all 61 kit pages, every text node under a product class against the paint:
+  **31 strings on 19 pages had drifted**, including three different tellings of one how-it-works
+  step across `hiw`, `dialog` and `organisms`, a five-question FAQ where the product ships three,
+  and a contents list still saying `service` and `market` where the product settled on `document`
+  and `event`. **A specimen holds a QUOTATION or a DEMONSTRATION and the difference is the whole
+  rule**: a quotation must equal the screen, a demonstration may say anything because it is showing
+  a property rather than a placement. **A wrong word renders perfectly**, so no instrument in this
+  file could ever have seen it: this is the cross-document set read arriving in the one layer that
+  has no computed value to compare.
 - **No em dash**, anywhere, and **"anywhere" is the repository rather than the folders somebody
   remembered.** It was measured over six on 2026-08-16, read 0, and was published as "the only file
   that carries any" while `concept/brand-toolkit/` carried 35 across four files. Those are gone;
