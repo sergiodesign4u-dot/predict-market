@@ -12,6 +12,95 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-20 - The one rule set nobody had ever measured, and the two biggest hits were a word the lexicon bans and the rule three lines above it
+
+**Every instrument in this repository reads a computed value. `voice/docs/voice.md` is a claim about
+the WORDS a person meets, and nothing had ever read them.** Three findings this week came out of
+WRITING rather than checking, which is the tell: *settle* under a heading reading *resolves*, a
+`docs/backlog.md` reference inside a rendered paragraph, and `Weekly Volume: $46,300`. No sweep here
+can see a wrong word.
+
+**The instrument is a render of every text node with two things attached.** Whether the reader is
+**ACTING** - a control, a heading, a figure read to decide - or being explained to, because that
+lexicon's own invariant is that **the ban is about PLACE and not about the word**. And an exclusion
+list for what is not product copy: the grey tree's declared annotation faces and the comments a user
+wrote, which `voice/docs/microcopy.md` marks *do not touch*. Proved against a planted
+`Oops, buy shares in this market (T2)`, caught by all four rule families, before any number was
+believed.
+
+**239 documents, 38,748 text nodes, six distinct acting strings and 67 explaining ones.**
+
+### The two biggest are the two nobody finds by reading a screen
+
+**`Portfolio`, 296 placements.** The lexicon bans it by name two rows into its own table, and it was
+the label on the desktop money pill, the mobile bottom slot, the profile summary, the swap control's
+accessible name and the script that swaps them. `ia/docs/sitemap.md` had DECIDED it in the wireframe
+pass and the two files were never read against each other. It is `Balance` now, which is the sum of
+`Cash` and `In-play` - both already the product's own words, so only their total ever wore the
+trader's. The bottom slot is `Profile`, because the three beside it name destinations and this one
+named a figure while routing to `my-profile.html`.
+
+**`crypto-only users`, 240 placements.** The address rule is stated three lines above the lexicon:
+always **you**, never **users**. It stood in the fine print under Add funds on every deposit surface
+in both trees.
+
+### What that leaves, and what is kept on purpose
+
+`settles` became `resolves` on 239 placements where it meant resolution, including the second largest
+string in the product, *Your payout settles at the price you took*. Four more were slips written the
+SAME DAY by the pass that then found them: `paid $1.00 a share`, `paid one dollar a share`,
+`a separate market with its own threshold`, `swept between markets`, plus `How a market resolves` on
+a chip two blocks under a heading that says *event*. **That the instrument caught its author's own
+copy from an hour earlier is the argument for building it.**
+
+**Three classes came back and are KEPT with the reason written beside them.** *A prediction market*
+is the category naming itself and the ban is on `market` for the EVENT. *A YES share costs 38 cents
+and pays $1 if the event happens* is the exemption working exactly as written: a mechanism block
+that glosses the term in the same sentence it uses it, which is the condition that exemption carries
+and which `voice/docs/voice.md` itself records was never met before. And *past deadlines settled
+late* is ordinary English about politics. **A sweep that re-opens a settled judgement every time is a
+sweep nobody runs twice.**
+
+### And one thing the sweep found that is not a word
+
+`[Regulatory / licensing line - placeholder, to be set...]` stood on **100 grey documents and 0
+painted ones**, directly beneath the line that replaced it. So the two trees said different things
+in one slot and the grey one said both, which `wireframes/_conventions.md` forbids by its own
+definition of which tree owns copy. Deleted; what it carried that the shipped line does not is in
+`PRODUCT.md` and in `terms.html` section 8.
+
+### The second candidate came back a clean zero, and that is worth as much
+
+`ia/docs/flows.md` had never been read against the screens. Parsed into its Mermaid node shapes:
+**25 screen boxes, 57 decisions and terminals.** Fourteen boxes name a document directly; the other
+eleven are states and surfaces under other names - the History tab, the category page, the search
+sheet, three loading states, and a `pause` that is a beat rather than a screen. **No flow step names
+a screen that does not exist and no screen sits outside the flows.** Recorded as a dated zero rather
+than as nothing, because the next person to wonder should find the reading and not the gap.
+
+### And the `[?]` that four pages now show
+
+`PRODUCT.md` has carried **Jurisdiction: `[?]`** since 2026-08-19, and the legal drafts of the day
+before made it visible: Terms 2, Terms 8, Terms 13 and half of Privacy 8 all stop at it. **A `[?]` in
+a product file is an open question; the same `[?]` on a page a reader reads is a promise with a hole
+in it.** This repository cannot choose a jurisdiction and says so. What it can do is stop the blank
+being unowned, so the section now carries a **trigger** (the first real dollar, not the first user
+and not the launch), a **decider** (counsel, and the one open item in that file whose owner is not in
+this repository), and a **criterion in the order the product cares**: can a prediction market be
+operated for money there, can a person be paid in USDC without the payout becoming a regulated
+instrument, is a named public source read at a stated time enough to stay out of the gambling frame,
+and can the excluded list be enforced at sign-up rather than at withdrawal, which Terms 8 has already
+committed to in writing. **The four clauses now say when the answer arrives rather than only that it
+is missing**, and the points build's own narrower version of the question - a free-entry contest that
+keeps a public ranking - is named as the one that arrives first.
+
+**Measured after: 300 documents, 33,158 internal links, 0 page errors, 0 duplicate ids, 0 broken
+links, 0 wrong current-markers, and the lexicon sweep re-run to two acting strings, both of them the
+category naming itself.**
+
+---
+
+
 ## 2026-08-20 - The row was right about the document and wrong about the finding beside it, because it was written from one comment in a file that carried two
 
 **`docs/backlog.md` 229 carried two things and only one of them was a defect.**

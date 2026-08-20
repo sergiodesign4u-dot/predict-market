@@ -597,6 +597,21 @@ because it is a stance rather than a principle, and it is written once, here.
   the page, the way the sub-category rail has been built from the cards since backlog 173. **An
   option that returns an empty grid is a control that lies about the catalog**, and the sweeps pass
   either way, because this is the "ask what a control is FOR" rule arriving one layer down.
+- **A WRONG WORD RENDERS PERFECTLY, SO THE VOICE CONTRACT IS THE ONE RULE SET IN THIS REPOSITORY THAT
+  HAD NEVER BEEN MEASURED, AND IT IS MEASURABLE.** Every instrument here reads a computed value;
+  `voice/docs/voice.md` is a claim about the WORDS a person meets, and until 2026-08-20 nothing had
+  read them. The instrument is a render of every text node with two things attached: whether the
+  reader is **ACTING** (a control, a heading, a figure read to decide) or being explained to, because
+  the ban is about PLACE and not about the word; and an exclusion list for what is not product copy,
+  the grey tree's declared annotation faces and the comments a user wrote. Over 239 documents and
+  **38,748 text nodes** it returned **six acting strings and 67 explaining ones**, and the two
+  largest were the two nobody finds by reading a screen: **`Portfolio` on 296 placements**, a word
+  that lexicon bans by name, and **`crypto-only users` on 240**, against the address rule three lines
+  above it. **A rule stated over a set is measured over the set, and here the set is every rendered
+  word rather than every file somebody remembered.** Three classes came back and are KEPT with the
+  reason written beside them, because a sweep that re-opens a settled judgement every time is a
+  sweep nobody runs twice. **And the same pass found four slips written that same day by the person
+  running it**, which is the argument for the instrument rather than against it.
 - **No em dash**, anywhere, and **"anywhere" is the repository rather than the folders somebody
   remembered.** It was measured over six on 2026-08-16, read 0, and was published as "the only file
   that carries any" while `concept/brand-toolkit/` carried 35 across four files. Those are gone;

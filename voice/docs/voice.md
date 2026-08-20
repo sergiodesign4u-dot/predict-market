@@ -203,6 +203,8 @@ persona's own language, not in bureaucratic register.
 | Keeping an event to watch it | **Save** (action) into **Favorites** (the shelf) | Bookmark, save event, watchlist | The user "follows" events they care about (`jtbd.md` FJ1: "an event you follow"); "save" is the plain everyday verb, "bookmark" is browser jargon. "Favorites" is the settled shelf name (the IA entity is "Saved events"). |
 | Entering the account | **Sign in** (returning) / **Sign up** or **Create account** (new) | Log in, Login, Register (as a button) | The primary surface already frames it this way - "Sign in or create account", "Continue with Google". One pair, used on every screen. |
 | Going to the feed | **Browse events** | Find events, See next events, Go to events, Back to feed, markets | One label for one action. The object is always **events** (never "feed" or "markets"), so the same button reads the same on the win screen, the empty state and the profile. |
+| The money in your account | **Balance** (Cash + In-play), **Cash** (what you can bet now), **In-play** (locked in open bets) | Portfolio | **Added 2026-08-20 after the first sweep of this table against the RENDER.** `Portfolio` was banned two rows above as a name for the bets collection and was standing on **296 placements** as the name of the money: the desktop balance pill, the mobile bottom slot, the profile summary and the swap control's own accessible name. It is the word a brokerage uses, and `PRODUCT.md` opens with *NOT a trader terminal*. `Cash` and `In-play` were already the product's own; only their sum had the trader's word on it. |
+| The fourth bottom-nav slot | **Profile** | Portfolio | The other three slots name a destination, Events, My Bets, Favorites, and this one named a figure while routing to `my-profile.html`. `ia/docs/sitemap.md` decided the slot in the wireframe pass and never read it against this table. |
 | Placing the bet (the commit) | heading **"Place your bet"**, button **"Confirm bet"** | bare "Bet", "Buy", "Submit" | Verb + object that shows the result (Button rule); "Confirm" marks it as the real, consequential step (MJ: "a real stake ... with real consequences"). |
 
 **How we address the user.** Always **"you" / "your"**, second person, direct, the
@@ -250,6 +252,25 @@ crypto vocabulary; the rule is spectator-legible, not trader-fluent (P3).
   than re-derived case by case. It is written because it was re-derived, once,
   by `voice/docs/microcopy.md` Step 24, which applied it correctly to four lines
   and logged the result instead of adding the rule.
+
+**AND THE WHOLE TABLE WAS MEASURED FOR THE FIRST TIME ON 2026-08-20, FROM THE RENDER.** Every rule
+on this page is a claim about words a person MEETS, and until that day nothing had read the words a
+person meets. Rendered over 239 product documents, **38,748 text nodes**, with the grey tree's
+declared annotation faces and user-written comments excluded and every hit classified by whether
+the reader is ACTING or being explained to: **six distinct strings where a person is acting and 67
+in explaining blocks**, from a probe proved against a planted `Oops, buy shares in this market (T2)`.
+
+**The two biggest were the two nobody would have found by reading one screen**: `Portfolio` on 296
+placements and `crypto-only users` on 240, one a banned word from this very table and the other the
+address rule three lines above it. **A rule stated over a set is measured over the set**, and the set
+here is every rendered word rather than every file somebody remembered.
+
+**Three classes came back and are KEPT, with the reason, so the next sweep does not re-open them.**
+*A prediction market* is the category naming itself and the ban is on `market` for the EVENT.
+*A YES share costs 38 cents* is the exemption working exactly as written: a mechanism block that
+glosses the term in the same sentence it uses it, which is the condition the exemption carries and
+which nothing had ever met before. And *past deadlines settled late* is ordinary English about
+politics rather than this product's resolution. `docs/decisions.md` 2026-08-20.
 
 ---
 

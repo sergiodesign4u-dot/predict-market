@@ -2029,3 +2029,44 @@ offered a toggle for cookies this product does not set, that `PRODUCT.md` has no
 no pre-ticked, reopen from footer* and never as three groups. **A choice about a thing that does not
 exist is a choice about nothing.** It returns as a NEW category, which section 9 of the same policy
 says resets the reader's answer rather than carrying it forward.
+
+### 2026-08-20 - the lexicon read against the render for the first time, and the two biggest hits were a word this file bans and a rule three lines above it
+
+**Every rule in `voice/docs/voice.md` is a claim about words a person MEETS, and nothing had ever
+read the words a person meets.** Rendered over 239 product documents, **38,748 text nodes**, the grey
+tree's declared annotation faces and user-written comments excluded, every hit classified by whether
+the reader is ACTING (a control, a heading, a figure read to decide) or being explained to, with the
+probe proved against a planted `Oops, buy shares in this market (T2)` before any number was believed.
+
+**Six distinct strings where a person is acting. Two remain and both are the category naming itself.**
+
+| was | is | placements | why |
+|---|---|---|---|
+| `Portfolio` | **`Balance`** | 296 | The lexicon bans it by name and it was the label on the desktop money pill, the profile summary, the swap control's accessible name and the script that swaps them. `Cash` and `In-play` were already the product's own words; only their SUM wore the trader's. |
+| `Portfolio` (bottom-nav slot 4) | **`Profile`** | included above | The other three slots name a destination. This one named a figure and routed to `my-profile.html`. |
+| `Portfolio total` | **`Balance`** | 4 | On the profile, beside `Cash` and `In-play`, which stay. |
+| `Your payout settles at the price you took` | **`Your payout is fixed at the price you took`** | 219 | `resolve / resolution` is the allowed word; *settles* reads as the event resolving when it means the payout is computed. The largest string in the product after the how-it-works step. |
+| `All your bets are settled` | **`All your bets have resolved`** | 2 | |
+| `Your settled bets are in the History tab` / `will appear here` / `Loading your settled bets` | **`resolved`** | 6 | |
+| `Settled` (market stats) / `How it settled` | **`Resolved`** / **`How it resolved`** | 8 | |
+| `It settles on its own, and when it closes...` | **`It resolves on its own...`** | 4 | Written on 2026-08-20 and turned the same day. |
+| `KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.` | **`...; if you fund only with crypto you can connect a USDC wallet instead.`** | 240 | The address rule: always **you**, never **users**. It is stated three lines above the lexicon and had never been measured. |
+| `paid $1.00 a share` | **`paid in full`** | 2 | `shares` and `cents` pricing are the desk's words. Written the same day and caught by the sweep that followed it. |
+| `Ethereum paid one dollar a share and the other two paid nothing` | **`Ethereum paid in full and the other two paid nothing`** | 4 | |
+| `How a market resolves` (About) | **`How an event resolves`** | 2 | `market` for the EVENT, on a chip, two blocks below a heading that says *event*. |
+| `a separate market with its own threshold` / `swept between markets` | **`event`** / **`events`** | 8 | Same slip, same day, mine. |
+| `the card on-ramp inside the deposit flow` | **`inside Add funds`** | 4 | `Add funds` is the lexicon's word and it is what the screen is called. |
+
+**And the grey footer carried a placeholder standing directly under the line that replaced it.**
+`[Regulatory / licensing line - placeholder, to be set...]` stood on **100 grey documents and 0
+painted ones**, below `Prediction markets involve risk of loss. Not available in restricted regions.`
+So the two trees said different things in one slot and the grey one said both. What it carried that
+the shipped line does not is in `PRODUCT.md` Financials and compliance and in `terms.html` section 8,
+and its own words were *to be set*, which `PRODUCT.md` now answers with a decider and a trigger.
+
+**Three classes came back and are KEPT with the reason, so the next sweep does not re-open them.**
+*A prediction market* is the category naming itself, and the ban is on `market` for the EVENT.
+*A YES share costs 38 cents and pays $1 if the event happens* is the exemption working exactly as
+written: a mechanism block that glosses the term in the same sentence it uses it, which is the
+condition that exemption carries and which nothing had ever satisfied before. And *past deadlines
+settled late* is ordinary English about politics rather than this product's resolution.

@@ -162,7 +162,7 @@ The user's financial state on the platform. Separate from User because it has it
 **Display labels (UI framing, not new fields):**
 - **Portfolio** = all money on the platform = Available (Cash) + In-play. The total value, including funds in active events.
 - **Cash** = Available balance = the amount ready for new entries.
-Competitors show both at once; we show one figure at a time with a swap control on desktop (Portfolio default), and surface the Portfolio figure in the mobile Portfolio bottom slot. See Desktop layer D-desktop-4 and the Navigation bottom-nav table.
+Competitors show both at once; we show one figure at a time with a swap control on desktop (**Balance** default, renamed from `Portfolio` on 2026-08-20), and surface that figure in the mobile bottom slot, which is labelled **Profile** for the destination it goes to. **`Portfolio` was banned by `voice/docs/voice.md` and decided here, and the two were never read against each other**: it stood on 296 placements across both trees until the first sweep of that lexicon against the render. See Desktop layer D-desktop-4 and the Navigation bottom-nav table.
 
 **Transaction sub-object:**
 
@@ -710,7 +710,7 @@ open decision costs when the thing waiting on it is already rendered 218 times. 
 ## Navigation
 
 > Desktop note: the mobile navigation below is the source of truth and keeps all
-> 4 bottom-nav slots (slot 4 is Portfolio after the wireframe pass, see the
+> 4 bottom-nav slots (slot 4 is Profile, renamed from `Portfolio` 2026-08-20, see the
 > bottom-nav table). Its desktop mapping is a lean header (Events as the logo,
 > My Bets and Profile in the avatar dropdown, Notifications and Favorites as icons
 > in the utility cluster, a Portfolio / Cash balance swap, a reserved hamburger,

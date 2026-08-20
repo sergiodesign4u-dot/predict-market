@@ -152,7 +152,7 @@
     .app-header .left { display: flex; align-items: center; gap: 8px; }
     .logo-btn { border: 1px solid #888; background: #cfcfcf; padding: 6px 10px; font-size: 13px; font-weight: bold; cursor: pointer; }
     .utility { display: flex; align-items: center; gap: 6px; }
-    /* balance toggle (desktop only): one figure + swap icon Portfolio <-> Cash */
+    /* balance toggle (desktop only): one figure + swap icon Balance <-> Cash */
     .bal-toggle { display: inline-flex; align-items: center; gap: 4px; border: 1px solid #888; background: #d9d9d9; padding: 3px 4px 3px 8px; white-space: nowrap; }
     .bal-figure { font-size: 11px; }
     .bal-figure .bal-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.03em; }
@@ -977,10 +977,10 @@
 
 
         <div class="utility">
-          <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
+          <!-- Balance: one figure + swap icon (Balance <-> Cash). Desktop only. -->
           <div class="bal-toggle desk-only">
-            <span class="bal-figure"><span class="bal-label" id="balLabel">Portfolio</span> <span class="bal-amt" id="balAmt">$132.00</span></span>
-            <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Portfolio)">
+            <span class="bal-figure"><span class="bal-label" id="balLabel">Balance</span> <span class="bal-amt" id="balAmt">$132.00</span></span>
+            <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Balance)">
               <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg>
             </button>
             <button type="button" class="icon-btn bal-add" data-open="deposit" aria-label="Add funds">
@@ -1071,9 +1071,9 @@
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></svg>
           <span>Favorites</span>
         </a></li>
-        <li><a class="nav-item nav-slot" href="my-profile.html" aria-label="Portfolio, balance $142">
+        <li><a class="nav-item nav-slot" href="my-profile.html" aria-label="Profile, balance $142">
           <span class="bn-bal">$142</span>
-          <span>Portfolio</span>
+          <span>Profile</span>
         </a></li>
       </ul>
     </nav>
@@ -1190,7 +1190,12 @@
             </ul>
           </nav>
           <p>Prediction markets involve risk of loss. Not available in restricted regions.</p>
-          <p class="placeholder-line">[Regulatory / licensing line - placeholder, to be set. No US real-money markets; geo-restrictions and KYC per regulatory requirements.]</p>
+          <!-- THE REGULATORY PLACEHOLDER IS GONE, 2026-08-20. It stood directly under the line
+               that replaced it, on 100 of these documents and on 0 in the paint, so the two trees
+               said different things in one slot and the grey one said both. What it carried that
+               the shipped line does not, no US real-money markets and KYC per regulatory
+               requirements, is in PRODUCT.md Financials and compliance and in terms.html section
+               8. Its own words were "to be set", and PRODUCT.md now says by whom and when. -->
           <p>Copyright (c) Yonder. Sample wireframe content.</p>
         </div>
 
@@ -1202,7 +1207,7 @@
   <script>
     (function () {
       var states = [
-        { label: 'Portfolio', amount: '$132.00' },
+        { label: 'Balance', amount: '$132.00' },
         { label: 'Cash', amount: '$42.00' }
       ];
       var i = 0;
@@ -1320,7 +1325,7 @@
         <svg class="ic prov-apple" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.05 12.54c-.03-2.7 2.2-3.99 2.3-4.06-1.26-1.84-3.21-2.09-3.9-2.12-1.66-.17-3.24.98-4.09.98-.84 0-2.13-.96-3.51-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.27-.48 8.1 1.35 10.76.9 1.3 1.96 2.76 3.37 2.71 1.35-.05 1.86-.87 3.5-.87 1.63 0 2.09.87 3.52.85 1.45-.03 2.37-1.33 3.26-2.63 1.03-1.51 1.45-2.97 1.47-3.05-.03-.01-2.82-1.08-2.85-4.29zM14.4 4.6c.74-.9 1.24-2.16 1.11-3.41-1.07.04-2.38.72-3.15 1.62-.68.8-1.28 2.07-1.12 3.29 1.19.09 2.41-.61 3.16-1.5z"/></svg>
         Continue with Apple
       </button>
-      <p class="fine">By continuing you agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>. Adding funds by card requires KYC; crypto-only accounts can connect a wallet instead.</p>
+      <p class="fine">By continuing you agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>. Adding funds by card requires KYC; if you fund only with crypto you can connect a wallet instead.</p>
     </div>
   </dialog>
 
@@ -1339,7 +1344,7 @@
       <div><span class="field-label">Pay with</span>
       <div class="widget-box">The payment widget loads here (card to USDC)</div></div>
       <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
-      <p class="fine">Minimum $10. Card payments are converted to USDC via Transak. KYC is required to add funds by card; crypto-only users can connect a USDC wallet instead.</p>
+      <p class="fine">Minimum $10. Card payments are converted to USDC via Transak. KYC is required to add funds by card; if you fund only with crypto you can connect a USDC wallet instead.</p>
       <button type="button" class="btn btn-secondary btn-md btn-block" data-open="howitworks">How it works</button>
       <button type="button" class="btn btn-primary btn-md btn-block" data-close-dialog>Add funds</button>
     </div>
@@ -1376,7 +1381,7 @@
         <div class="hiw-step-txt">
           <p class="hiw-step-n">Step 2 of 3</p>
           <h2 class="hiw-step-t">Back YES or NO</h2>
-          <p class="hiw-step-b">The odds are a live price set by what people bet. Your payout settles at the price you took, so being early and right is worth more. One dollar minimum.</p>
+          <p class="hiw-step-b">The odds are a live price set by what people bet. Your payout is fixed at the price you took, so being early and right is worth more. One dollar minimum.</p>
         </div>
         <div class="hiw-nav">
           <label class="btn btn-primary btn-md btn-block hiw-next" for="hiwstep-3">Next</label>

@@ -257,10 +257,42 @@ in the first month and then a gap, and a resolution is this product's only trust
 notification. **Recurring is in, on one condition: a recurring market must be machine-resolved.** A
 hand-resolved series is the newsroom the whole exercise exists to avoid.
 
-**Jurisdiction: `[?]`.** `Financials and compliance` below says global with geo-restrictions, which
-names who is kept out and not what the product operates under. A points product with no deposit, no
-withdrawal and no cash redemption is the one form of this that needs no answer, and the answer is
-required before the first real dollar, not before the first user. *Not legal advice.*
+**Jurisdiction: `[?]`, and 2026-08-20 is when it stopped being a blank and became a DECISION WITH A
+TRIGGER.** `Financials and compliance` below says global with geo-restrictions, which names who is
+kept out and not what the product operates under. A points product with no deposit, no withdrawal and
+no cash redemption is the one form of this that needs no answer, and the answer is required before
+the first real dollar, not before the first user. *Not legal advice, and nothing below is a choice
+this repository is entitled to make.*
+
+**WHAT CHANGED IS THAT IT IS NOW VISIBLE FROM FOUR PAGES.** The legal drafts of 2026-08-20 could not
+be written past it in three places: Terms 2 (the operating entity and its registered address),
+Terms 8 (the list of excluded regions), Terms 13 (the governing law and the forum), and half of
+Privacy 8 (where data is stored and under which transfer mechanism). **A `[?]` in a product file is
+an open question; the same `[?]` on a page a reader reads is a promise with a hole in it**, so it
+gets a trigger, a decider and a criterion rather than a shrug.
+
+- **Trigger.** The first real dollar. Not the first user, not the launch, not the first market: the
+  moment the product accepts value that a person could ask back. Everything before that is points,
+  and `Liquidity and risk` already shows that the points build is the same product with its one risk
+  parameter priced at zero.
+- **Decider.** Counsel, on retainer, before that dollar. This is the one open item in this file whose
+  owner is not in this repository, and saying so is the point.
+- **Criterion, in the order the product actually cares.** Can a prediction market be operated for
+  money there at all; can a person be paid out in USDC without the payout becoming a regulated
+  instrument; is the resolution rule this product ships, a named public source read at a stated time,
+  enough to keep it out of the gambling frame; and can the excluded list be enforced at sign-up
+  rather than at withdrawal, which is a product requirement Terms 8 has already committed to in
+  writing.
+- **What is decided already and does not wait.** No US for real-money prediction markets, which
+  `Financials and compliance` has carried since it was written. KYC on the fiat rail only. And
+  Brazil Phase 2 brings its own requirement with it: `ia/docs/sitemap.md` marks the Responsible-play
+  slot mandatory there under Law 14.790, which is the one place a jurisdiction has already reached
+  back into the build and asked for a screen.
+
+**AND THE POINTS BUILD HAS ITS OWN SMALLER VERSION OF THE SAME QUESTION.** A product with no prize is
+not automatically a product with no rules: some places regulate a free-entry contest that keeps a
+public ranking, and this one keeps a public track record by design. That is a narrower question than
+the one above, it has the same decider, and it is the one that arrives first.
 
 ## Financials and compliance
 - **All transactions in crypto** - stablecoins (USDC, USDT) as primary

@@ -10,6 +10,18 @@
 >
 > **Traces to the CJM To-Be** (`user-research/docs/cjm-to-be.md`, Alex x MJ). The 7 To-Be steps: 1. arrive on a live event, not a signup; 2. understand the market before any account; 3. tap YES/NO and see the bet intent before signing in; 4. sign in and fund with one funds-safety line; 5. confirm with the price reconciled; 6. follow your bet with live context; 7. resolution designed both ways. Per-flow mapping is under each diagram.
 
+> **READ AGAINST THE SCREEN TREE FOR THE FIRST TIME, 2026-08-20, AND IT CAME BACK ZERO.** Every node
+> here is a claim that a surface exists, and nothing had ever checked one. Parsed by Mermaid SHAPE,
+> which is what tells a screen from a question: **25 screen boxes, 57 decisions and terminals.**
+> Fourteen boxes name a document directly. The other eleven are states or surfaces under another
+> name and each one is accounted for: `ABhistory` is the History tab of `active-bets-history`, `CAT`
+> is the four `event-feed-{category}` pages, `BS2` is the bet panel rather than a page, `SH` / `SP` /
+> `SE` / `FLD` are the four faces of search, three are `-loading` states, and `pause` is a beat
+> before a re-bet rather than a screen. **No flow step names a screen that does not exist, and no
+> screen in either tree sits outside these flows.** Recorded as a dated zero rather than as nothing,
+> because the next person to wonder should find the reading instead of the gap.
+> `docs/decisions.md` 2026-08-20.
+
 ---
 
 ## Terminal map
