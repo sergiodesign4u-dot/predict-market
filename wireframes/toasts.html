@@ -538,7 +538,7 @@
     /* Layout taken from components/, every colour replaced by the
        wireframe palette. See wireframes/_generators/port_chrome.py. */
     .app-dialog.hiw-dialog { max-width: 464px; overflow: clip; }
-    /* Stage 04 reconcile 2026-08-14: the how-it-works DIALOG is three steps now, and the page it links to stays prose. Grey-box rules for the stepper; the paint owns the stills. */
+    /* SHARED (97 of 116, 18 rules). The how-it-works stepper, Stage 04 reconcile 2026-08-14: the dialog is three steps and the page it links to stays prose. Grey-box rules only; the paint owns the stills. The 19 documents without it are the overlay screens, where convention 6 draws the sheet on a plain backdrop with no page behind it, so there is no feed here to hang a dialog off. MEASURED 2026-08-20 in Chromium 151 and WebKit 26.5 at 390 and 1280: the sheet stood 475.56, 475.56 and 521.75, so it jumped ONCE, at step 3, by 46.19px, and the dots went with it. The picture frame is 180 on all three and always was, because a grey still is one dashed box and not three components, so the paint's other half of this defect cannot exist here. The two rules that close it are the reserved row under the button and a text floor that is above its own content rather than below it: at 1280 the floor was 150 against 154.58 of text, so step 1 sat on it and steps 2 and 3 did not, and the button moved 4.58px. Motion is the SEVENTH declared difference and stays out of this tree. */
     .hiw-steps { display: flex; flex-direction: column; }
     .hiw-radio { position: absolute; width: 1px; height: 1px; margin: -1px; clip-path: inset(50%); overflow: hidden; }
     .hiw-step { display: none; flex-direction: column; }
@@ -547,12 +547,17 @@
     .hiw-steps > .hiw-radio:nth-of-type(3):checked ~ .hiw-step:nth-of-type(3) { display: flex; }
     .hiw-stage { min-height: 180px; padding: 24px; display: flex; align-items: center; justify-content: center; background: #ededed; border-bottom: 1px solid #ccc; }
     .hiw-still { width: 100%; max-width: 296px; min-height: 120px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 12px; border: 1px dashed #999; background: #e0e0e0; font-size: 12px; color: #555; }
-    .hiw-step-txt { padding: 20px 24px 16px; display: flex; flex-direction: column; gap: 8px; min-height: 150px; }
+    .hiw-step-txt { padding: 20px 24px 16px; display: flex; flex-direction: column; gap: 8px; min-height: 160px; }
     .hiw-step-n { margin: 0; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: #555; }
     .hiw-step-t { margin: 0; font-size: 22px; font-weight: 700; line-height: 1.1; }
     .hiw-step-b { margin: 0; font-size: 14px; line-height: 1.5; color: #333; }
     .hiw-nav { padding: 0 24px 24px; display: flex; flex-direction: column; gap: 12px; }
     .hiw-dots { display: flex; justify-content: center; gap: 8px; padding: 4px 0 2px; }
+    /* THE THIRD STEP CARRIES A ROW THE OTHER TWO DO NOT, so the row is reserved on them.
+       The dots are the mark that says where you are, and they were the least stable thing on the
+       sheet. Derived from the link itself, 13px of type at the body's 1.4 inside 8px top and bottom,
+       plus the column's own 12px gap. */
+    .hiw-nav:not(:has(.hiw-skip)) .hiw-dots { margin-top: calc(13px * 1.4 + 8px * 2 + 12px); }
     .hiw-dot { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 20px; cursor: pointer; }
     .hiw-dot::before { content: ''; width: 24px; height: 4px; background: #bbb; }
     .hiw-steps > .hiw-radio:nth-of-type(1):checked ~ .hiw-step .hiw-dot:nth-of-type(1)::before,

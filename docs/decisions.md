@@ -12,6 +12,57 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-20 - The geometry a movement needed splits in two, and the half that could not exist in the grey tree is the half that stayed in the paint
+
+**`docs/backlog.md` 226 asked whether the constant sheet the paint gained on 2026-08-20 is a
+consequence of the seventh declared difference, which would make it paint's, or a structural
+decision, which would make it both trees'.** The answer is both, and the line between them was
+measured rather than drawn.
+
+**THE ROW AS FILED WAS HALF WRONG, IN THE WAY A ROW WRITTEN FROM THE OTHER TREE ALWAYS IS.** It said
+the grey twin "still jumps 47.5px", which is the paint's number carried into a tree nobody had put a
+probe on. Measured in Chromium 151 and WebKit 26.5 at 390 and 1280: grey stood **475.56, 475.56 and
+521.75**, so it jumped **once** and by **46.19px**. And the picture frame, which cost the paint a
+`min-height:19rem` to fix, **was 180 on all three steps and always had been**, because a grey still
+is one dashed box with a label in it rather than three real components. **The defect could not exist
+in this tree.** That is the plate-wrapper row of `wireframes/_conventions.md` showing its consequence
+one more time: a difference that follows from a difference already declared.
+
+### The split
+
+| the change | goes to | why, measured |
+|---|---|---|
+| three panes stacked in one grid cell | paint only | its only job is to give the movement two states to move between, and movement is the seventh difference |
+| the picture frame at `19rem` | paint only | the grey stage is already 180 on all three. Nothing here for it to fix |
+| the reserved row under the button | **both trees** | the third step carries a way out the other two do not, which is a fact about the step's CONTENT, and this tree owns where a control sits |
+| the text block's floor | **both trees** | a floor stops a sheet resizing under a thumb, which is behaviour. Grey's was 150 against 154.58 of text, so it sat BELOW its own content and the button moved 4.58px at 1280 |
+
+### The sweep was safe because the block is genuinely shared, and that was checked first
+
+97 grey documents carry the stepper. Extracted from every one of them and hashed: **97 of 97
+byte-identical, 17 rules each.** Its region header named `port_chrome.py` and said "nothing here is
+promised to another file" while being promised to 96 others, which is the exact defect the root
+`CLAUDE.md` records about a region named for the tool that wrote it. It carries its own numbers now,
+`SHARED (97 of 116, 18 rules)`, so a reduced copy will contradict its own header.
+
+**And the 19 documents that do NOT carry it were checked rather than assumed.** 116 painted
+documents have the sheet and 97 grey ones do, which is the kind of gap worth a look. They are
+exactly the overlay screens, seven deposit states, four sign-in, five win and three loss, and each
+has **0 headers, 0 feeds and 0 footers**: convention 5 draws the sheet on a plain backdrop, so
+there is no feed here for a how-it-works dialog to hang off. The gap is the boundary working.
+
+### After
+
+**527.17 in Chromium and 526.97 in WebKit on all three steps, frame 180, text 160, nav 153.78,
+button at 340, dots at 443.78, every number identical at 390 and at 1280.** 232 renders over the
+116 grey documents against HEAD: **0 document heights moved**, 0 sideways scroll, 0 duplicate ids,
+0 page errors, because a `<dialog>` with no `[open]` draws nothing on a static page.
+
+**Both sheets are one height on all three steps now, and they get there by different routes because
+one of them moves.**
+
+---
+
 ## 2026-08-20 - A voice pass that names two trees is run over two trees, and the stand had been left behind by every one of them
 
 **`docs/backlog.md` 225 was filed the same day as three strings on one page and closed as 31 strings

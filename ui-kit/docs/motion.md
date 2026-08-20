@@ -896,7 +896,10 @@ scroll, 0 duplicate ids.
 The sheet is **634.5 tall at 390 on every step**, against a previous tallest of 610.5, so 24px is
 the price of a frame that cannot resize and a control that cannot move. 23.5 of it is the picture
 frame taking the height its tallest still already needed, and the rest is the reserved row under the
-button. **The grey tree does not follow**, because motion is the seventh declared difference between
-the trees and `wireframes/` links no stylesheet; the geometry half is a different question and it is
-filed rather than assumed.
+button. **The grey tree does not follow on the movement**, because motion is the seventh declared difference
+between the trees and `wireframes/` links no stylesheet. **The geometry half was filed rather than
+assumed, and answering it the same day split it in two**: the reserved row and the text floor are
+structure and went into all 97 grey documents that carry the stepper, and the frame did not, because
+a grey still is one dashed box and the grey stage was **already 180 on all three steps**. The table
+is in `wireframes/_conventions.md` beside the seventh difference.
 

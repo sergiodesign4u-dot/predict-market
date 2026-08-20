@@ -798,6 +798,32 @@ A person who has asked their operating system for less movement still gets a sli
 grey tree, and that is a known and accepted cost of the tree linking nothing, not an oversight. The
 record is `../ui-kit/docs/motion.md`, under what the token override does not reach.
 
+**AND THE SEVENTH DIFFERENCE HAS A GEOMETRY BEHIND IT, WHICH SPLITS IN TWO, 2026-08-20.** The paint
+gave the how-it-works stepper a movement on that date, and a movement needs both steps in the
+layout, so the three panes went into one grid cell and the sheet gained a frame that cannot resize
+and a reserved row under its button. The question this raises is not answerable by taste: **is that
+geometry a consequence of a declared difference, which makes it paint's, or a structural decision,
+which makes it both trees'?** It is both, and the line between them was measured rather than drawn.
+
+| the change | goes to | measured reason |
+|---|---|---|
+| the three panes stacked in one grid cell | **paint only** | its only job is to give the movement two states to move between, and movement is the seventh difference. A tree that does not animate does not need it |
+| the picture frame fixed at `19rem` | **paint only, and not by decree** | the grey still is ONE dashed box with a label in it, so the grey stage measures **180 on all three steps and always did**. The paint's frame moved 280 / 303.5 / 280 because its stills are three real components. **The defect cannot exist in this tree**, which is the plate-wrapper row's shape one more time: a difference that is the consequence of a difference already declared |
+| the reserved row under the button | **both trees** | the third step carries a way out that the other two do not, and that is a fact about the CONTENT of the step. Grey jumped **46.19px at step 3**, sheet and dots together, and this tree owns where a control sits |
+| the text block's floor | **both trees** | a floor is there to stop a sheet resizing under a thumb, which is behaviour and not paint. Grey's floor was **150 against 154.58 of text**, so it was below its own content: step 1 sat on it at 1280 and steps 2 and 3 did not, and the button moved 4.58px. It is 160 now |
+
+**Measured after, Chromium 151 and WebKit 26.5 at 390 and 1280, all three steps**: sheet 527.17 and
+526.97, picture frame 180, text 160, nav 153.78, the button at 340 and the dots at 443.78, every
+number identical. The grey sheet does not resize and the paint's does not either, and they arrive
+there by different routes because one of them moves.
+
+**AND THE 19 DOCUMENTS THAT DO NOT CARRY THE STEPPER ARE THIS TABLE'S SIXTH ROW, CHECKED RATHER
+THAN ASSUMED.** 116 painted documents carry the sheet and 97 grey ones do. The 19 are exactly the
+overlay screens, the seven deposit states, four sign-in, five win and three loss, and each of them
+has **0 headers, 0 feeds and 0 footers**: convention 5 draws the sheet on a plain backdrop, so
+there is no feed here for a how-it-works dialog to hang off. A count that differs between the trees
+is worth a look and this one is the boundary working.
+
 ## All four regions are compared (2026-07-28, Stage 09 step 7e)
 
 Step 7d compared `<main>` and nothing else, which left the header, the bottom nav
