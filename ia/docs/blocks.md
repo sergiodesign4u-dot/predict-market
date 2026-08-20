@@ -133,7 +133,7 @@ observation with its date rather than replaced by a guess.
 | B17 | **Numbers block**: events resolved, USDC held, markets live | STATEMENT | MVP | SJ2, EJ2; `aarrr.md` social proof | Teal, Clearful, Homerun all ship a stats band; Polymarket uses volume as its entire trust case | Volume as social proof is the competitor default and it says nothing about whether you get paid. Ours counts **resolutions**, which is the only figure that answers the question a new user is actually asking |
 | B18 | **People**, named, with what each is accountable for | STATEMENT | LATER | EJ2 | Kalshi (Tarek & Luana), Dropbox, Fable, Craft | LATER because the team is not public yet. Named so the About layout reserves the slot instead of being redrawn |
 | B19 | **Closing action back into the product** | STATEMENT | MVP | MJ; the "never a dead end" rule | Kalshi ends About with "Create your account"; Pastel, Bezi, Limitless all end a legal page with a CTA | The competitors' CTA is a signup button on a page about the company. Ours routes to the feed, not to signup: this stage's own rule is that a bet panel does not stand where a person has not chosen an event, and a signup gate is the same mistake one step earlier |
-| B21 | **Prototype notice**: on the four legal pages, the structure and dates are real and the body is not an operative term; **on About, since 2026-08-20, the structure AND the copy are real and the FIGURES are sample data** | BOTH | **SCAFFOLDING** | nothing, and that is the point | nothing: no shipped product carries one | **BANKED 2026-08-19, AFTER IT HAD BEEN BUILT ON ALL FIVE PAGES AND DECLARED ON NONE.** It is the first block in the DOM after the H1 on every one of the five, in both trees, and no row here described it, so a reader of this bank would have found a composition the pages do not have. It is SCAFFOLDING rather than MVP, the same rank as the wireframe's `TBD` chip: it exists because the copy under it is a description of what each section would decide rather than the clause itself, and **it leaves the day real legal copy lands**. Banked rather than deleted because a page that carries prototype copy and does not say so is the worse of the two failures |
+| B21 | **Prototype notice.** On About the structure and copy are real and the FIGURES are sample data. On the four legal pages, since 2026-08-20, the copy is a **first draft written from what the product has decided, not through legal review and not in force**, and where a fact is unsettled the section that needs it says so. It said the body "describes what each section would decide" until then, which stopped being true the day those sections said something | BOTH | **SCAFFOLDING** | nothing, and that is the point | nothing: no shipped product carries one | **BANKED 2026-08-19, AFTER IT HAD BEEN BUILT ON ALL FIVE PAGES AND DECLARED ON NONE.** It is the first block in the DOM after the H1 on every one of the five, in both trees, and no row here described it, so a reader of this bank would have found a composition the pages do not have. It is SCAFFOLDING rather than MVP, the same rank as the wireframe's `TBD` chip: it exists because the copy under it is a description of what each section would decide rather than the clause itself, and **it leaves the day real legal copy lands**. Banked rather than deleted because a page that carries prototype copy and does not say so is the worse of the two failures |
 | B20 | **Logo wall of investors / partners** | STATEMENT | **NOT BANKED** | nothing | Maze, Teal, Fable, Krisp, Nothing, Kalshi ("Our Backers") | Six of the ten statement pages ship one and it traces to no job. Rule 1 keeps it out. Recorded here so that the next person who notices its absence finds the decision instead of the gap |
 
 ### What the sources offered and the bank refused
@@ -226,6 +226,33 @@ was paid, and it is not on the page.
 
 **B19 routes to the feed and its label is the lexicon's.** `voice/docs/voice.md` gives one label for
 going to the feed, **Browse events**, so the closing action is not a fifth way of saying it.
+
+**THE FOUR LEGAL PAGES SAY SOMETHING NOW, 2026-08-20, AND WRITING THEM FOUND TWO PLACES WHERE THE
+PRODUCT AND ITS OWN DOCUMENTS DISAGREED.** `docs/backlog.md` 228. Every section of `terms`,
+`privacy`, `cookies` and `responsible-betting` was *"This section describes X"* followed by *"It
+would also state Y"*, which is a specification of the copy standing where the copy goes. 47 sections
+are written, from what this repository has already decided and from nothing else, and B21 changed
+with them because its old wording became false the moment they said something.
+
+**Three facts are genuinely open and they are named in the sections that need them rather than
+invented**: the operating entity, the law that governs a dispute, and the list of excluded regions.
+`PRODUCT.md` carries **Jurisdiction: `[?]`** and this is what that costs downstream.
+
+**`responsible-betting` was promising three controls the IA had already ruled out.** Sections 4, 5
+and 6 described a deposit ceiling, a loss ceiling, a cooldown and self-exclusion as if a reader could
+reach them; `ia/docs/sitemap.md` marks the whole Responsible-play slot **reserved, post-MVP, not
+built**. A page about self-protection listing controls that do not exist is the worst version of that
+page, so section 4 now opens with *Account limits are not built yet*, says what the asymmetry will be
+when they are, and gives the two things a person can do today. **Two headings changed with it**, and
+a heading is in three places on these pages: the `h2`, the section's `aria-label` and the contents
+row. The first pass reached two of the three.
+
+**And `cookies` could not be written truthfully while the banner contradicted it.** Section 5 commits
+that no advertising or cross-site cookie is set, and `cookie-consent` offered a **Marketing** toggle
+for cookies the product does not set, that `PRODUCT.md` has no surface for, and that this map never
+specified: the banner is *prior opt-in, reject as easy as accept, no pre-ticked, reopen from footer*
+and never three groups. The category is off, and it returns as a NEW one, which the policy's own
+section 9 says resets the reader's answer rather than carrying it forward.
 
 ### States
 

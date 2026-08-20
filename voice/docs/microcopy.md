@@ -1969,3 +1969,57 @@ quick chips offer, in both trees: `Your price 39%`, `Fee $0.38`, `Total to pay $
 `If YES wins, your side $64.10`. **Every figure divides**, because the quote is rounded to the
 displayed whole per cent first and the payout is the stake over that: 25 / 0.39 = 64.10. A number that
 does not divide is a number that was not explained, which is `voice/docs/voice.md` principle 1.
+
+### 2026-08-20 - the four legal pages stop describing themselves, and two of the product's own surfaces had to move first
+
+`docs/backlog.md` 228. Every section of `terms`, `privacy`, `cookies` and `responsible-betting` read
+*"This section describes X"* and then *"It would also state Y"*: a specification of the copy standing
+where the copy goes. **47 sections are written**, from what this repository has already decided and
+from nothing else. 2,168 words on Terms, 1,505 on Privacy, 925 on Cookies, 1,284 on Responsible
+betting.
+
+**This is a draft for review, and B21 says so rather than pretending otherwise.** The wording had to
+change because the old one became false the day the sections said something.
+
+| was | is |
+|---|---|
+| Prototype page. The section headings, the structure and the dates are real; the body text describes what each section would decide and is not an operative legal term. Nothing on this page is in force. | Draft for review. The structure, the headings and the dates are real, and the wording below is a first draft written from what this product has already decided rather than an operative term: it has not been through legal review and nothing here is in force. Where a fact is not settled yet, the section that needs it says so. |
+
+**Three facts are open and the sections that need them say so** rather than inventing an answer: the
+operating entity and its registered address (Terms 2), the law that governs a dispute (Terms 13), and
+the list of excluded regions (Terms 8). `PRODUCT.md` carries **Jurisdiction: `[?]`**, and this is what
+that costs on the page a reader actually reads.
+
+**Two headings changed, and a heading on these pages is in THREE places.**
+
+| was | is |
+|---|---|
+| `4. The limits you can set` | `4. Limits, and what to do while there are none` |
+| `6. Closing your account` | `6. Closing your account, and self-exclusion` |
+
+`responsible-betting` sections 4, 5 and 6 described a deposit ceiling, a loss ceiling, a cooldown and
+self-exclusion as if a reader could reach them. **`ia/docs/sitemap.md` marks the whole Responsible-play
+slot reserved, post-MVP, not built.** A page about self-protection that lists controls nobody can
+reach is the worst version of that page, so section 4 opens with **Account limits are not built yet**,
+says what the asymmetry will be when they are, and gives the two things a person can do today: a limit
+at the bank, or a freeze by writing to us that we will not lift early. The lede changed with it, from
+*The limits you can set on yourself* to *What this can cost you*.
+
+**The heading lives in the `h2`, the section's `aria-label` and the contents row, and the first pass
+reached two of the three.** `ia/docs/pages/seo.md` said a section in the body and not in the contents
+is impossible BY CONSTRUCTION; both lists are hand-written and nothing reads one against the other.
+Rendered and compared: **94 contents rows against 94 headings over four documents and two trees, 0
+disagreeing.**
+
+**And the Cookie Policy could not be written truthfully while the banner contradicted it.**
+
+| where | was | is |
+|---|---|---|
+| `cookie-consent.html`, both trees | a third category, **Marketing**, *Used to show you relevant campaigns. Off unless you turn it on.* | removed |
+
+Section 5 of that policy commits that **no advertising and no cross-site cookie is set**. The banner
+offered a toggle for cookies this product does not set, that `PRODUCT.md` has no surface for, and that
+`ia/docs/sitemap.md` never specified: it banks the banner as *prior opt-in, reject as easy as accept,
+no pre-ticked, reopen from footer* and never as three groups. **A choice about a thing that does not
+exist is a choice about nothing.** It returns as a NEW category, which section 9 of the same policy
+says resets the reader's answer rather than carrying it forward.

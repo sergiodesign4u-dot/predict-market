@@ -488,7 +488,7 @@ type in both files.
 DOCUMENT profile, in the mobile-first block order from `blocks.md`:
 
 - `H1` - the document name, exactly once (B3).
-- `H2` - one per document section (B6), numbered, written as the reader's own question. The H2 list IS the table of contents (B5); the anchors are generated from it, so a section added to the body and not to the contents is impossible by construction.
+- `H2` - one per document section (B6), numbered, written as the reader's own question. The H2 list IS the table of contents (B5) and the anchors match it. **The claim that stood here until 2026-08-20, that a section in the body and not in the contents is impossible BY CONSTRUCTION, was false**: both lists are written by hand, they carry different text (the H2 is numbered and the contents row is not, with the number in its own `.toc-n` span), and nothing reads one against the other. Renaming two sections of `responsible-betting` reached the `h2` and the section's `aria-label` and **not the contents**, and only rendering the two lists side by side found it. The check is one line and it is cheap: **94 contents rows against 94 headings over the four documents and the two trees, 0 disagreeing**. `docs/backlog.md` 228.
 - `H3` - only where a section has genuinely subordinate parts. No skipped levels, in both trees, which gate 15 already reads.
 - The effective-date block (B4) and the money answer (B7) are **not** headings. They stand between the H1 and the first H2 as content, so the outline stays the document's own.
 

@@ -1082,13 +1082,14 @@
                   </label>
                   <p class="cc-cat-desc">Helps us measure and improve the site. Off unless you turn it on.</p>
                 </li>
-                <li class="cc-cat">
-                  <label class="cc-cat-main">
-                    <span class="cc-cat-name">Marketing</span>
-                    <input type="checkbox" aria-label="Marketing cookies, off by default">
-                  </label>
-                  <p class="cc-cat-desc">Used to show you relevant campaigns. Off unless you turn it on.</p>
-                </li>
+                <!-- MARKETING CAME OFF, 2026-08-20, docs/backlog.md 228. The banner offered three
+                     categories and the product sets no advertising or cross-site cookie anywhere:
+                     PRODUCT.md has no advertising surface at MVP and the Cookie Policy section 5
+                     commits to setting none. A toggle for a thing that does not exist is a choice
+                     about nothing, and the IA specifies this banner as `prior opt-in, reject as
+                     easy as accept, no pre-ticked, reopen from footer` and never as three groups.
+                     It returns as a NEW category, which section 9 of that policy says resets the
+                     reader's answer rather than carrying it forward. -->
               </ul>
             </div>
           </div>

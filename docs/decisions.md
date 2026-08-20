@@ -12,6 +12,75 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-20 - Writing four documents that had only described themselves found two places where the product contradicted its own map, and neither was in the documents
+
+**`docs/backlog.md` 228 was filed by the pass that wrote About, naming what it did not write**, and
+its own text said the owner is whoever has legal counsel. **That is still true and the output says
+so on the page**: every one of the four carries B21, and B21 now reads *draft for review, written
+from what this product has already decided, not through legal review, nothing here is in force*. Its
+old wording, that the body describes what each section WOULD decide, became false the day the
+sections said something, so it had to move with them.
+
+**47 sections, from the repository and from nothing else.** 2,168 words on Terms, 1,505 on Privacy,
+925 on Cookies, 1,284 on Responsible betting, identical in both trees. Every number in them is one
+the product already ships: 1.5 per cent of the stake, $1 minimum and no maximum, $10 deposit
+minimum, USDC one to one in a segregated balance, the 72-hour challenge window that the
+effective-date block at the top of Terms has been printing since it was written, and the two-month
+notice period that block's own dates already implied.
+
+**Three facts are open and the sections that need them name the gap rather than filling it**: the
+operating entity and its registered address, the law that governs a dispute, and the list of excluded
+regions. `PRODUCT.md` carries **Jurisdiction: `[?]`**, and this is what that costs on a page a reader
+actually reads: three clauses that stop mid-sentence and say why.
+
+### The two findings, and neither is in the documents
+
+**`responsible-betting` was promising three controls the IA had already ruled out.** Sections 4, 5
+and 6 described a deposit ceiling, a loss ceiling, a cooldown and self-exclusion as things a reader
+could reach. `ia/docs/sitemap.md` marks the whole Responsible-play slot **reserved, post-MVP, not
+built**, and adds *do not discover this late*. **A page about self-protection that lists controls
+nobody can reach is the worst version of that page**, and it is the same class as the magnifier that
+linked to the page it stood on: everything renders, nothing is wrong on screen, and the surface is
+lying about what the product is. Section 4 opens with **Account limits are not built yet**, says what
+the asymmetry will be when they are built, and gives the two things a person can do today: a limit at
+the bank, which this product cannot undo, or a freeze by writing to us that we will not lift early.
+
+**And `cookies` could not be written truthfully while the banner contradicted it.** Section 5 of that
+policy commits that no advertising and no cross-site cookie is set. `cookie-consent` offered a
+**Marketing** toggle, *used to show you relevant campaigns*, for cookies this product does not set,
+that `PRODUCT.md` has no surface for at MVP, and that the IA never specified: it banks the banner as
+*prior opt-in, reject as easy as accept, no pre-ticked, reopen from footer* and never as three
+groups. **A choice about a thing that does not exist is a choice about nothing**, and it is worse
+than not offering one, because a reader who leaves it off believes they have refused something. The
+category is off in both trees, and it returns as a NEW one, which section 9 of the same policy says
+resets the reader's answer rather than carrying it forward.
+
+### A heading is in three places, and the claim that made that safe was wrong
+
+Renaming two sections of `responsible-betting` reached the `h2` and the section's `aria-label` and
+**not the contents row**, so the page carried *The limits you can set* in its own table of contents
+above a section headed *Limits, and what to do while there are none*.
+`ia/docs/pages/seo.md` said the H2 list IS the contents and the anchors are generated from it, so a
+divergence is **impossible by construction**. Both lists are written by hand, they carry deliberately
+different text (the H2 is numbered, the contents row keeps its number in a separate `.toc-n` span),
+and nothing reads one against the other. **What found it was rendering the two lists side by side**,
+which is one line and is now the check: **94 contents rows against 94 headings, four documents, two
+trees, 0 disagreeing.**
+
+**One thing the documents now say that the product cannot yet draw, and it is deliberate.** Terms
+section 5 states that a cancelled event returns every stake in full and keeps no fee.
+`ia/docs/sitemap.md` defers the cancelled-event refund FLOW to post-MVP, so there is no screen for
+it. A document describing what happens is not the same artefact as a screen for it happening, and the
+policy is decidable now where the screen is not. It is recorded here rather than left for somebody to
+find as a contradiction.
+
+**Measured after, both engines, at 320, 360, 390, the three rungs and one pixel either side, 1280,
+1440 and 1600: 0 page errors, 0 duplicate ids, 0 sideways scroll on the eight rewritten documents,
+the two banners and the kit page that quotes one of them.**
+
+---
+
+
 ## 2026-08-20 - The Event Detail family is two axes crossed, and building the fourth corner found that a record needs a destination before it can be a list
 
 **`docs/backlog.md` 227 was filed by the pass that closed 224, naming what that pass did not build.**
