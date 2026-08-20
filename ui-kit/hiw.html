@@ -114,6 +114,26 @@
     cells sharing one would be one group and the light cell's checked step would uncheck the dark
     cell's. The rules are keyed to <code>:nth-of-type</code> and never to an id, so nothing here
     depends on the suffixing except the <code>&lt;label for&gt;</code> that needs it.</p>
+    <p class="tk-note"><b>The three steps are STACKED and not switched, 2026-08-20, and that is what
+    let them move.</b> They were <code>display:none</code> on two and <code>display:flex</code> on
+    the third, and an element that is not in the layout has no state to leave from. They share one
+    grid cell now, so the cell is the tallest of the three at every moment and the sheet cannot
+    resize: measured in both engines at 390 and 1280, <b>634.5 and 635.5 on all three steps, the
+    button at 476 and the dots at 583.5</b>, against 563 / 586.5 / 610.5 and a Next button that
+    moved 23.5px down and back. The picture frame is <code>min-height:19rem</code> because the
+    bet-panel still asked 303.5 of a floor written at 280, and the third step's quiet way out is
+    reserved as an empty row on the other two, because the dots are the mark that says where you
+    are and they were the least stable thing on the sheet.</p>
+    <p class="tk-note"><b>The movement is an ARRIVAL and the nav is deliberately not in it.</b> The
+    text travels <code>--space-32</code> and the still four tenths of that, both from one inherited
+    <code>--hiw-shift</code> that is <code>+travel</code> ahead, <code>0</code> here and
+    <code>-travel</code> behind, multiplied by <code>--motion</code> so reduced motion keeps the
+    step and loses the travel. <b>The step itself carries no <code>opacity</code></b>: it would have
+    taken the Next button with it, and two brass buttons crossing at half opacity composite to 75
+    per cent, so the one control a thumb is aimed at would dim on every press. <code>.hiw-nav</code>
+    is switched by <code>visibility</code> with no transition on it at all, so the leaving nav drops
+    and the arriving one raises in the same frame. No new duration and no new curve: the register
+    still holds two of each.</p>
     <div class="tk-pair2">
       <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
       <div class="tk-theme-fig tk-stack" data-theme="dark"><div class="tk-dlg">

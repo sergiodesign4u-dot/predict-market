@@ -12,6 +12,76 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-20 - A step that cannot be in the layout cannot move, and two comments said the floors already held
+
+**Asked for by the user**: the how-it-works sheet should change its picture and slide its text
+rather than swap the whole dialog, and the dialog itself must not jump.
+
+**The block could not have moved as it stood.** `.hiw-step` was `display:none` on two steps and
+`display:flex` on the third, and an element that is not in the layout has no state to leave from.
+The Animation stage's register holds one row per moving element and has never asked which moments
+have no element to move: this is the same shape as the census of 2026-08-17, one level deeper.
+
+**MEASURED FIRST, Chromium 151 and WebKit 26.5 at 390 and at 1280, agreeing to the hundredth**: the
+sheet stood **563, 586.5 and 610.5**, so it jumped twice; the picture frame stood **280, 303.5 and
+280**; **Next moved 452 to 475.5 and back**; the dots slid 512 to 559.5 down the flow.
+
+**TWO COMMENTS IN `components/hiw.css` SAID BOTH OF THOSE WERE ALREADY HANDLED, AND THAT IS THE
+FINDING WORTH KEEPING.** The stage said "280 is the tallest of the three stills plus its shadow,
+measured, so no still is ever clipped by its own floor", and the bet panel asks 303.5. The step text
+said "the button that moves is not the one a thumb is already aimed at: it is Next on one step and
+Create account on the other", and it was Next against Next. Both arguments are sound and both were
+made about the wrong half: **a `min-height` stops a box getting smaller and neither of these was
+stopping one getting bigger.** The numbers inside them, 552 / 641 / 506 and 39px, were true of a
+tree that had since moved. **The count rule was measured over six prose files on 2026-08-18 and
+never over the comments in `components/`**, where a number is written beside the rule it justifies
+and nothing re-reads it when the thing above it changes.
+
+**The build, and no markup moved.** The three panes share one grid cell, so the cell is the tallest
+of the three at every moment and the sheet cannot resize; the three radios are `position:absolute`
+and therefore not grid items, `nth-of-type` counts what it counted, and **219 placements over three
+trees are untouched**. The frame is `min-height:19rem`, in `rem` because the type inside the still
+is. The third step's quiet way out is reserved as an empty row on the other two, derived from the
+link's own type and padding rather than chosen, because the dots are the mark that says where you
+are and they were the least stable thing on the sheet.
+
+**The movement's job is ARRIVAL and it adds no number to the register.** `--hiw-shift` is one
+inherited length with three values, `+travel` ahead, `0` here, `-travel` behind, and `--hiw-travel`
+is `calc(var(--space-32) * var(--motion))`. The text travels the whole distance and the still four
+tenths of it, which is what tells a reader they are two planes of one surface. Two durations and two
+curves, unchanged.
+
+**THE NAV IS THE ONE PART THAT DOES NOT FADE, AND THAT IS WHY THE PANE CARRIES NO `opacity`.** An
+opacity on the step would have taken the Next button with it, and **two brass buttons crossing at
+half opacity composite to 75 per cent**, so the one control a thumb is aimed at would dim on every
+press. `.hiw-nav` is switched by `visibility` with no transition at all: measured through the flight
+in both engines, the leaving nav is hidden on the first frame and the arriving one visible on the
+same frame. `visibility` rather than `display` on the pane for the other half of the same argument:
+it is the one value that keeps an element out of the tab order and out of hit testing while still
+letting it animate, and the sheet offers 1 focusable control on steps 1 and 2 and 3 on step 3, which
+is exactly the live pane's own.
+
+**Result, both engines, both widths**: 634.5 at 390 and 635.5 at 1280 on **all three steps**, frame
+304, button 476, dots 583.5, every one identical. Reduced motion asserted in the page gives
+`calc(32px * 0)` on every pane and the step still arrives. Mid-flight sampling proves the travel
+runs 0 to -32 and 32 to 0, **because a probe that reads only the settled state cannot tell a
+movement from a swap**. Height against HEAD over both trees, 356 renders on 178 documents: **6 rows
+moved and all six are the three kit pages that stand the stepper open**, 0 of the 116 painted
+screens, 0 sideways scroll, 0 duplicate ids. **And the control caught itself twice**: under reduced
+motion the freeze was deliberately not injected, so a 1ms `visibility` transition was still in
+flight one frame later and Chromium reported the previous pane.
+
+**The cost is named**: 24px, the price of a frame that cannot resize and a control that cannot move.
+23.5 of it is the picture frame taking the height its tallest still already needed.
+
+**Two rows filed rather than swept.** 225, the stand tells the three steps in words the product
+stopped using and one of them is the on-chain claim retired the day before, which is a rule question
+about whether a specimen quotes the screen or `microcopy.md`. 226, the grey twin still switches and
+still jumps: motion is the seventh declared difference and correctly paint-only, the geometry is not
+on that list, and 97 inline stylesheets is the cost of guessing wrong.
+
+---
+
 ## 2026-08-20 - 116 painted documents are six routes, and that is what turned the build from a wish into a plan
 
 **`docs/backlog.md` 218 named a missing Build stage, not missing files**, so it closes as a plan:

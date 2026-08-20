@@ -169,21 +169,84 @@
    cells sharing a radio name are one group and the second cell's checked radio
    unchecks the first's.
    ============================================================================ */
-.hiw-steps{display:flex;flex-direction:column;min-height:0}
+/* ============================================================================
+   THE STEPS ARE STACKED NOW AND NOT SWITCHED, 2026-08-20. The rule under this one
+   used to be `display:none` on two steps and `display:flex` on the third, which
+   means the sheet was re-laid-out from scratch on every press and NOTHING COULD
+   MOVE: an element that is not in the layout has no state to leave from.
+   MEASURED BEFORE THE CHANGE, Chromium 151 and WebKit 26.5 agreeing to the
+   hundredth at 390 and at 1280:
+
+     step        1        2        3
+     sheet     563    586.5    610.5      the sheet jumped TWICE, 47.5px in all
+     picture   280    303.5      280      the frame was not one size
+     Next      452    475.5      452      the control moved under the thumb
+     dots      512    535.5    559.5      the progress mark slid 47.5 down the flow
+
+   TWO SENTENCES ALREADY IN THIS FILE WERE FALSE WHEN THEY WERE READ AGAIN. The
+   stage says "280 is the tallest of the three stills plus its shadow, measured, so
+   no still is ever clipped by its own floor": the bet panel on step 2 asks 303.5
+   and pushed the floor 23.5px open. And the step text says "the button that moves
+   is not the one a thumb is already aimed at: it is Next on one step and Create
+   account on the other": it was Next on BOTH, at 452 and 475.5, because the frame
+   under it had grown. A floor that is a `min-height` is not a frame, it is a
+   suggestion, and the number in the comment beside it went stale the day the still
+   above it changed.
+
+   THE THREE PANES SHARE ONE GRID CELL, so the cell is the tallest of the three at
+   every moment and the sheet cannot resize at all. The three radios are
+   `position:absolute` and therefore not grid items, so the stack is exactly three
+   cells deep. `nth-of-type` still counts what it counted, and NO MARKUP MOVES:
+   219 placements over three trees carry this block with 3 steps and 3 radios each,
+   and not one of them is edited by this change.
+   ============================================================================ */
+.hiw-steps{display:grid;grid-template-columns:minmax(0,1fr);min-height:0}
 /* The radio is the state and the label is the control, so the radio is taken out
    of the picture without being taken out of the tab order: `clip` rather than
    `display:none`, which would remove it from the keyboard as well. */
 .hiw-radio{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
-.hiw-step{display:none;flex-direction:column;min-height:0}
+/* THE MOVEMENT'S JOB IS ARRIVAL, which is why it is `--dur-slow` and `--ease-enter`
+   and not the fast pair: an element saying it is here, not a control answering a
+   finger. The distance is `--space-32` multiplied by `--motion`, which is the
+   switch `tokens.css` declares for exactly this, so under `prefers-reduced-motion`
+   the travel is 0px and the step still ARRIVES. Reduced motion removes the
+   movement, never the state.
+   `--hiw-shift` is the whole mechanism and it is one inherited length with three
+   values: `+travel` for a step that has not been reached, `0` for the one being
+   read, `-travel` for one already passed. The text reads it at full distance and
+   the still at four tenths of it, so the picture and the words leave together and
+   the picture leaves less, which is what tells a reader they are two planes of one
+   surface rather than two animations that happened at once.
+   Only `transform`, `opacity` and `visibility` are written here. No layout property
+   is in any transition below. */
+.hiw-step{grid-area:1/1;display:flex;flex-direction:column;min-height:0;overflow-x:clip;
+  --hiw-travel:calc(var(--space-32) * var(--motion));
+  --hiw-shift:var(--hiw-travel);
+  visibility:hidden;pointer-events:none;z-index:var(--z-under);
+  transition:visibility var(--dur-slow) var(--ease-standard)}
+/* A STEP ALREADY PASSED LEAVES TO THE LEFT AND ONE NOT YET REACHED WAITS ON THE
+   RIGHT, and the direction is the only thing these three selectors carry. Written
+   out per pair for the reason `tabs.css` gives about `:checked`: a selector that
+   said "any step after a checked radio" would send all of them the same way, and
+   then Back would look exactly like Next. */
+.hiw-steps > .hiw-radio:nth-of-type(2):checked ~ .hiw-step:nth-of-type(1),
+.hiw-steps > .hiw-radio:nth-of-type(3):checked ~ .hiw-step:nth-of-type(1),
+.hiw-steps > .hiw-radio:nth-of-type(3):checked ~ .hiw-step:nth-of-type(2){--hiw-shift:calc(-1 * var(--hiw-travel))}
 .hiw-steps > .hiw-radio:nth-of-type(1):checked ~ .hiw-step:nth-of-type(1),
 .hiw-steps > .hiw-radio:nth-of-type(2):checked ~ .hiw-step:nth-of-type(2),
-.hiw-steps > .hiw-radio:nth-of-type(3):checked ~ .hiw-step:nth-of-type(3){display:flex}
+.hiw-steps > .hiw-radio:nth-of-type(3):checked ~ .hiw-step:nth-of-type(3){--hiw-shift:0px;visibility:visible;pointer-events:auto;z-index:var(--z-content)}
+/* `visibility` rather than `display`, and it is not a preference. It is the one
+   value that keeps an element out of the tab order and out of hit testing while
+   still letting it animate, and its interpolation is the exact shape this needs:
+   arriving, it is visible on the first frame; leaving, it stays visible until the
+   last one. Three panes are in the layout at all times and only one of them is
+   reachable by a finger or by Tab. */
 
 /* THE STAGE BLEEDS AND THE BODY DOES NOT, which is why the padding is on the text
    and not on the step. A picture that stops 24px short of the sheet edge reads as
    an illustration pasted into a document; one that reaches the edge reads as the
    product seen through a window, and the window is the sheet's own clipped corner. */
-.hiw-stage{position:relative;overflow:clip;min-height:280px;padding:var(--space-24) var(--space-32);display:flex;align-items:center;justify-content:center;background-color:var(--bg-canvas);background-image:var(--surface-grain),radial-gradient(120% 90% at 50% 0%,var(--bg-plate-from),var(--bg-canvas) 72%);background-blend-mode:overlay,normal;border-bottom:var(--hairline) solid var(--shadow-ink-45)}
+.hiw-stage{position:relative;overflow:clip;min-height:19rem;padding:var(--space-24) var(--space-32);display:flex;align-items:center;justify-content:center;background-color:var(--bg-canvas);background-image:var(--surface-grain),radial-gradient(120% 90% at 50% 0%,var(--bg-plate-from),var(--bg-canvas) 72%);background-blend-mode:overlay,normal;border-bottom:var(--hairline) solid var(--shadow-ink-45);opacity:0;transition:opacity var(--dur-slow) var(--ease-standard)}
 /* The floor under the still, so the plate has something to sit on rather than
    floating in a box. It is the same brass wash the plate heads use, at a sixth of
    the opacity, and it is a pseudo because a floor is not content. */
@@ -193,7 +256,7 @@
    is expected to press. Turned two degrees off, with a shadow under it, it reads as
    a photograph of one. The rotation is the smallest angle that still reads as
    deliberate at 390px: under 2 it looks like a bug. */
-.hiw-still{position:relative;z-index:var(--z-content);width:100%;max-width:296px;pointer-events:none;transform:rotate(-2.2deg);filter:drop-shadow(0 18px 28px var(--shadow-ink-85)) drop-shadow(0 4px 10px var(--shadow-ink-72))}
+.hiw-still{position:relative;z-index:var(--z-content);width:100%;max-width:296px;pointer-events:none;transform:translateX(calc(var(--hiw-shift) * .4)) rotate(-2.2deg);transition:transform var(--dur-slow) var(--ease-enter);filter:drop-shadow(0 18px 28px var(--shadow-ink-85)) drop-shadow(0 4px 10px var(--shadow-ink-72))}
 .hiw-still > *{margin:0}
 /* A still is a picture at ONE size, so the type inside it does not ride the
    product's ramp: it rides the still's own, three steps down, and the three
@@ -222,20 +285,59 @@
    the Next button 89px down and then 135 up. The still is CENTRED in the stage
    rather than stretched to it, because three pictures of three different
    components are three different shapes and it is the frame that has to be
-   constant, not the picture. 280 is the tallest of the three stills plus its
-   shadow, measured, so no still is ever clipped by its own floor.
-   WHAT IS LEFT IS 39px AND IT IS NOT A DEFECT: step 3 is 603 against 564 because
-   it carries one more control, the quiet way out under the primary one. Reserving
-   that row on the first two steps would buy an identical height with 39px of
-   empty sheet on two screens out of three, and the button that moves is not the
-   one a thumb is already aimed at: it is Next on one step and Create account on
-   the other, which is the moment the reader is meant to stop and read. */
-.hiw-step-txt{padding:var(--space-20) var(--space-24) var(--space-16);display:flex;flex-direction:column;gap:var(--space-8);min-height:172px;overflow:auto}
+   constant, not the picture.
+   NEITHER FLOOR FINISHED ITS JOB AND THE TWO PARAGRAPHS THAT USED TO END HERE
+   SAID THEY BOTH HAD. The first read "280 is the tallest of the three stills plus
+   its shadow, measured, so no still is ever clipped by its own floor": the bet
+   panel on step 2 lays out at 255.5 and asks 303.5 with the padding, so the frame
+   the reader watched was 280, 303.5, 280 and it grew and shrank under the
+   picture. The second read "what is left is 39px and it is not a defect", and
+   argued the only control that moved was Next on one step against Create account
+   on the other. Re-measured on 2026-08-20 in both engines at both widths: what
+   was left was 47.5px, the sheet moved TWICE rather than once, and the control
+   that moved between step 1 and step 2 was Next against Next, 452 to 475.5, which
+   is the exact case that paragraph said could not arise. A floor stops a box
+   getting SMALLER and neither of these was stopping one getting bigger, so both
+   arguments were sound and both were made about the wrong half.
+   THE FRAME IS `min-height:19rem` NOW, 304 at the default root and half a pixel
+   clear of the tallest still, and it is in `rem` because the type inside the still
+   is: a reader at a 24px default gets a taller still and a frame that grew with
+   it. It stays a `min-height` rather than a `height` for the one case a fixed
+   height would lose, which is a still that outgrows the frame: it should push it,
+   not be cut by it. The dots are held by a reserved row, written beside them. */
+.hiw-step-txt{padding:var(--space-20) var(--space-24) var(--space-16);display:flex;flex-direction:column;gap:var(--space-8);min-height:172px;overflow:auto;opacity:0;transform:translateX(var(--hiw-shift));transition:opacity var(--dur-slow) var(--ease-standard),transform var(--dur-slow) var(--ease-enter)}
 .hiw-step-n{margin:0;font-family:var(--font-mono);font-size:var(--text-11);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-brass)}
 .hiw-step-t{margin:0;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:var(--display-step);line-height:var(--leading-tight);letter-spacing:var(--track-question);color:var(--text-primary);text-wrap:balance}
 .hiw-step-b{margin:0;font-size:var(--text-14);line-height:var(--leading-base);color:var(--text-muted)}
 
-.hiw-nav{padding:0 var(--space-24) var(--space-24);display:flex;flex-direction:column;gap:var(--space-12)}
+/* THE PICTURE AND THE WORDS FADE, THE CONTROL DOES NOT, and that asymmetry is the
+   whole reason the pane itself carries no `opacity`. An opacity on the step would
+   have taken the Next button with it, and two buttons crossing at half opacity
+   composite to 75 per cent, so the one element a thumb is aimed at would dip in
+   brightness every time it was pressed. `.hiw-nav` is switched by `visibility`
+   with no transition on it at all: the leaving step drops its nav on the first
+   frame and the arriving step raises its own in the same frame, so the button and
+   the three dots are the fixed thing the rest of the sheet moves against. */
+.hiw-steps > .hiw-radio:nth-of-type(1):checked ~ .hiw-step:nth-of-type(1) :is(.hiw-stage,.hiw-step-txt),
+.hiw-steps > .hiw-radio:nth-of-type(2):checked ~ .hiw-step:nth-of-type(2) :is(.hiw-stage,.hiw-step-txt),
+.hiw-steps > .hiw-radio:nth-of-type(3):checked ~ .hiw-step:nth-of-type(3) :is(.hiw-stage,.hiw-step-txt){opacity:1}
+.hiw-nav{padding:0 var(--space-24) var(--space-24);display:flex;flex-direction:column;gap:var(--space-12);visibility:hidden}
+.hiw-steps > .hiw-radio:nth-of-type(1):checked ~ .hiw-step:nth-of-type(1) .hiw-nav,
+.hiw-steps > .hiw-radio:nth-of-type(2):checked ~ .hiw-step:nth-of-type(2) .hiw-nav,
+.hiw-steps > .hiw-radio:nth-of-type(3):checked ~ .hiw-step:nth-of-type(3) .hiw-nav{visibility:visible}
+/* THE THIRD STEP CARRIES A ROW THE OTHER TWO DO NOT, and the row is reserved on
+   them rather than removed from it. Measured: the nav is 110 tall with a Next
+   button and 157.5 with a way out under it, so the dots stood at 512, 535.5 and
+   559.5 and the mark that says WHERE YOU ARE was the least stable thing on the
+   sheet. The reserve is derived and not chosen: a `.hiw-skip` is 13px of type at
+   `--leading-base` inside `--space-8` top and bottom, plus the column's own
+   `--space-12` gap, which is 47.5 at the default root and moves with the reader's
+   font the way the link itself does.
+   The note this replaces argued the other way, that reserving would buy an
+   identical height with 39px of empty sheet on two steps of three. It was right
+   about the cost and wrong about what was being bought: the height was never the
+   point, the DOTS were, and 39 was 47.5 by the time anybody measured it. */
+.hiw-nav:not(:has(.hiw-skip)) .hiw-dots{margin-top:calc(var(--text-13) * var(--leading-base) + var(--space-8) * 2 + var(--space-12))}
 .hiw-dots{display:flex;justify-content:center;gap:var(--space-8);padding:var(--space-4) 0 var(--space-2)}
 /* A DOT IS A TARGET AND THE TARGET IS NOT THE DOT. The mark is 6px and no floor in
    this system would ever be met by it, so the label carries the 44px box and the

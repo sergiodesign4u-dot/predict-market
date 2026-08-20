@@ -810,3 +810,93 @@ value paint identically.
 hiding the content at once, so all 14 read `checkVisibility()` false. The first instrument could not
 tell an absent panel from a covered one and reported both as covered, which is this record's own rule
 about a zero having to say which zero it is, arriving one more time.
+
+---
+
+## 11. The step that could not move, 2026-08-20, and the two floors that said they held
+
+Reported by the user, who asked for the how-it-works sheet to change its picture and slide its text
+instead of swapping the whole dialog. **The block could not have moved as it stood**, and the reason
+is one declaration: `.hiw-step` was `display:none` on two steps and `display:flex` on the third, and
+an element that is not in the layout has no state to leave from. This register has one entry per
+moving element and it has never once asked which moments have no element to move.
+
+### What the measurement found before anything was written
+
+Chromium 151 and WebKit 26.5, at 390 and at 1280, agreeing to the hundredth:
+
+| | step 1 | step 2 | step 3 |
+|---|---|---|---|
+| sheet height | 563 | 586.5 | 610.5 |
+| picture frame | 280 | **303.5** | 280 |
+| Next, from the top of the step | 452 | **475.5** | 452 |
+| dots | 512 | 535.5 | 559.5 |
+
+**Two sentences in `components/hiw.css` said both of those were already handled.** The stage said
+"280 is the tallest of the three stills plus its shadow, measured, so no still is ever clipped by
+its own floor", and the bet panel on step 2 asks 303.5. The text said "the button that moves is not
+the one a thumb is already aimed at: it is Next on one step and Create account on the other", and it
+was Next against Next. **A `min-height` stops a box getting smaller and neither of these was
+stopping one getting bigger**, so both arguments were sound and both were made about the wrong half.
+The numbers in them, 552 / 641 / 506 and 39px, were true of a tree that had since moved: this is the
+count rule from the root `CLAUDE.md` arriving inside a comment.
+
+### The movement, and the job is ARRIVAL
+
+| what | job | how |
+|---|---|---|
+| `.hiw-step-txt` | ARRIVAL | `opacity` `--dur-slow` `--ease-standard`, `transform:translateX(var(--hiw-shift))` `--dur-slow` `--ease-enter` |
+| `.hiw-still` | ARRIVAL | the same transform at four tenths of the distance |
+| `.hiw-stage` | ARRIVAL | `opacity` only, its own ground occluding the picture it replaces |
+| `.hiw-nav` | none | `visibility`, switched with no transition at all |
+
+`--hiw-shift` is one inherited length with three values, `+travel` for a step not yet reached, `0`
+for the one being read, `-travel` for one already passed, and `--hiw-travel` is
+`calc(var(--space-32) * var(--motion))`. **No new duration and no new curve**: the register still
+holds two of each.
+
+**The nav does not fade, and that asymmetry is why the pane itself carries no `opacity`.** An
+opacity on the step would have taken the Next button with it, and two brass buttons crossing at half
+opacity composite to 75 per cent, so the one element a thumb is aimed at would dim on every press.
+Measured through the flight in both engines: the leaving nav is `hidden` on the first frame and the
+arriving one `visible` on the same frame, so the button and the three dots are the fixed thing the
+rest of the sheet moves against.
+
+**`visibility` rather than `display`, and it is not a preference.** It is the one value that keeps an
+element out of the tab order and out of hit testing while still letting it animate, and its
+interpolation is the shape this needs: arriving, visible on the first frame; leaving, visible until
+the last. Three panes are in the layout at all times and one is reachable: measured, the sheet
+offers 1 focusable anchor or button on steps 1 and 2 and 3 on step 3, which is exactly the live
+pane's own.
+
+### Reduction removes the movement and keeps the state, measured rather than assumed
+
+With `prefers-reduced-motion: reduce` asserted in the page, `--hiw-travel` computes to
+`calc(32px * 0)` on all three panes and every transform reads `matrix(1, 0, 0, 1, 0, 0)`, while
+`--dur-slow` is 1ms and the arriving step still arrives: `visibility:visible`, `opacity:1`, and the
+geometry unchanged. That is the stage's rule holding one more time.
+
+### The instrument, and what it caught
+
+Mid-flight sampling on both engines, every frame for 300ms: the leaving text runs 0 to -32 and 1.00
+to 0.00, the arriving text 32 to 0 and 0.00 to 1.00. **The travel was proved before the geometry was
+believed**, because a probe that reads only the settled state cannot tell a movement from a swap.
+The control read each step twice unchanged and differed on 0 rows in both engines with transitions
+frozen, and **the two rows where it did differ were the instrument**: under reduced motion the freeze
+was deliberately not injected, so a 1ms `visibility` transition was still in flight one frame later
+and Chromium reported the previous pane. The geometry was constant in those rows too.
+
+Height over both trees against HEAD, 356 renders on 178 documents at two widths: **6 rows moved and
+all six are the three kit pages that stand the stepper open**, which are the three that had to.
+**0 of the 116 painted screens**, because a `<dialog>` with no `[open]` draws nothing. 0 sideways
+scroll, 0 duplicate ids.
+
+### What it cost
+
+The sheet is **634.5 tall at 390 on every step**, against a previous tallest of 610.5, so 24px is
+the price of a frame that cannot resize and a control that cannot move. 23.5 of it is the picture
+frame taking the height its tallest still already needed, and the rest is the reserved row under the
+button. **The grey tree does not follow**, because motion is the seventh declared difference between
+the trees and `wireframes/` links no stylesheet; the geometry half is a different question and it is
+filed rather than assumed.
+

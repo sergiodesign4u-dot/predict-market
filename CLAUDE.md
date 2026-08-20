@@ -430,6 +430,14 @@ because it is a stance rather than a principle, and it is written once, here.
   feet underneath it. **So a count is COMPUTED, or it is DATED and says the day; it is never typed as
   a live fact.** The kit's tally is the one the panel computes from `_nav.js`, and a `Stands on:` line
   is a reading of the product on the day somebody took it rather than a property of the component.
+  **AND THE SET WAS THE PROSE FILES, WHICH IS NOT WHERE THE WORST ONES LIVE, 2026-08-20.** A number
+  written beside the rule it justifies is the same live claim and nothing re-reads it: `hiw.css`
+  carried two, and both said a defect was already handled. "280 is the tallest of the three stills
+  plus its shadow, measured" stood over a still asking 303.5, and "the button that moves is not the
+  one a thumb is already aimed at" stood over Next moving 23.5px between steps 1 and 2. **Both
+  arguments were sound and both were made about the wrong half**, because a `min-height` stops a box
+  getting SMALLER and neither was stopping one getting bigger. A comment that cites a measurement
+  carries its date, or it is an argument about a tree that has moved.
   **AND A STATUS IS THE SAME SHAPE WITH A READER ATTACHED, 2026-08-18.** Three files said a stage
   status lives in the README table and nowhere else, and the two places that RENDER it were
   unowned: `assets/_roadmap.js` printed **SOON on Animation across all 28 course documents for the
