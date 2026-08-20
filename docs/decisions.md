@@ -12,6 +12,60 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-20 - 116 painted documents are six routes, and that is what turned the build from a wish into a plan
+
+**`docs/backlog.md` 218 named a missing Build stage, not missing files**, so it closes as a plan:
+`docs/build-plan.md`, registered in the ownership table of `CLAUDE.md`, carrying the stack with its
+prices, the schema, the resolver job, seven phases and what is deliberately not built.
+
+**THE NUMBER THAT MAKES IT BUILDABLE.** A static tree needs a document per combination of category,
+auth state and load state; a running app gets all three from data. Counted 2026-08-20: **the feed is
+44 documents and one route**, the event page 14 and one, my bets 9 and one, and **91 of the 116
+painted documents live inside six routes**. The remaining 25 are the families v1 does not open plus
+the static and system pages. **The build is not 116 screens and it never was**, and nobody had done
+that arithmetic, which is why the row read as if the work were the size of the tree.
+
+**THE ONLY SURFACE WITH NO DRAWING IS `/admin`**, and it does not get one from these trees. Its
+reader is the operator rather than Alex, which is exactly why `ia/docs/sitemap.md` registers it in
+Under Question as not a node of that map. Three lists and two buttons; it may look like a table with
+no brand on it and that is correct.
+
+**THE STACK IS CHOSEN AGAINST THE TREE RATHER THAN AGAINST A PREFERENCE.** Astro, because an
+`.astro` file is HTML with a fenced script, so the markup pastes in and the loops go around it, and
+because it imposes no client framework: this system's discipline is one stylesheet and no per-screen
+CSS, and a component framework would create a second component system whose boundaries disagree with
+`components/`. Supabase for Postgres, the two sign-in providers `PRODUCT.md` names, row-level
+security and the cron. **$0 a month to start and $25 when the database has to stop pausing**, which
+is the whole capital requirement because the currency is points. `PRODUCT.md`'s Tech stack heading
+said `(TBD)` until today and now points here, with its own rows marked as the real-money product.
+
+**THREE RULES GO IN THE SCHEMA RATHER THAN THE CODE**, because the code is one person writing in the
+evening: `bet.idempotency_key` is unique so a double-tapped Confirm is one bet, `ledger` is
+append-only and the balance is a sum rather than a column, and `resolution` is one row per event so a
+market cannot resolve twice. Double entry from day one even though the currency is points, because a
+balance computed from a sum can be audited and a balance stored in a column drifts.
+
+**AND TWO CONSTRAINTS DISAPPEAR THE MOMENT THIS IS SERVED RATHER THAN OPENED FROM DISK**, both of
+which cost this repository days: `file://` gives every document its own opaque origin, which is why
+the icon sprite is a script, and the theme has to boot from `localStorage` before first paint. On a
+server the sprite can be a fetched SVG and the theme can be a cookie read server-side. **Neither is a
+reason to change anything now**; they are recorded as savings to collect, not as work.
+
+**PHASE 5 IS THE ONE THAT DECIDES WHETHER THIS IS A PRODUCT.** Seven phases, 8 to 10 weeks of
+evenings, and each ends with something a person can open. Phase 5 is resolution: the cron, the three
+states, settlement, the reading, the admin. **It is the only phase whose output happens while nobody
+is looking**, and it carries the rule that everything else rests on, that silence is never read as
+NO. A resolver that has never failed in testing is a resolver whose failure path does not exist, so
+one gets broken on purpose before launch.
+
+**Files:** `docs/build-plan.md` (new), `CLAUDE.md` (ownership table), `PRODUCT.md` (Tech stack no
+longer TBD), `docs/backlog.md` (218 struck, Open 6 to 5). **No screen changed and no design
+decision was taken**, which is the test this plan had to pass: every screen, string, component and
+entity it needs already exists, and a question that turns out to need a new drawing stops and goes
+through `ia/` then `wireframes/` then `ui-visual/` in order.
+
+---
+
 ## 2026-08-20 - A launch catalog is picked by HORIZON, and that overturned a rule written the day before
 
 **`docs/backlog.md` 219 said the shipped catalog is a newsroom: 14 of its 25 questions can only be

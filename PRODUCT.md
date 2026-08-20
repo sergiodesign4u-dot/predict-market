@@ -223,7 +223,12 @@ required before the first real dollar, not before the first user. *Not legal adv
   decision with a legal component: this is the design default, and it is not legal advice.*
 - **Geo**: global, with geo-restrictions per regulatory requirements (no US for real-money prediction markets)
 
-## Tech stack (TBD)
+## Tech stack
+**The v1 build is specified in `docs/build-plan.md`**: Astro over the existing tree, Supabase for
+Postgres, Google and X sign-in and the resolver job, Cloudflare Pages, **$0 a month to start and $25
+when the database has to stop pausing**. The rows below are the REAL-MONEY product and they turn on
+with it, not before. This heading said `(TBD)` until 2026-08-20.
+
 - Frontend: web (mobile-first)
 - **Blockchain: Base** (decided 2026-08-10, `docs/backlog.md` #9). Chosen on the three things this
   product actually needs from a chain: **native USDC issued by Circle** rather than a bridged

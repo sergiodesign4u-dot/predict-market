@@ -32,6 +32,7 @@ appears twice the copy here is the one to delete.
 | What was done and why | `docs/decisions.md` - dated, newest first, never edited |
 | What is still open | `docs/backlog.md` |
 | Which markets the first release actually opens, and the resolver for each | `docs/launch-catalog.md` |
+| How the thing gets BUILT: stack, schema, routes, order of work | `docs/build-plan.md` |
 | Which stage is done | the status table in `README.md`. Two REGISTRIES render it as well, `assets/_roadmap.js` on the 28 course documents and `ui-kit/_nav.js` on the 60 stand pages, and this row said "and nowhere else" while `_roadmap.js` printed SOON on a stage that had shipped three days before. **A rendered status is the one a reader sees, so it is the one to turn first** |
 | Where a file lives | `STRUCTURE.md` |
 | The shipped visual system (Vault) | `DESIGN.md` |
