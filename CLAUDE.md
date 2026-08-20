@@ -547,6 +547,18 @@ because it is a stance rather than a principle, and it is written once, here.
   with no rail, which is the one thing the sentence beside it forbids. RAIL 900 is the first width at
   which both halves of the declaration are true at once. **A declaration has two halves and a build
   can satisfy one of them.**
+- **THE RECORD HAS A RENDERER TOO, AND IN 516 COMMITS NOBODY HAD EVER RUN IT.** Every instrument in
+  this file renders an HTML page; the markdown that carries the decisions, the backlog and the
+  inventory is published through GitHub's renderer and had only ever been read as source. Put a
+  control table through the markdown API and the two failures are **not symmetrical**: a row with
+  FEWER cells than its header is padded with blanks and loses nothing, a row with MORE **has its
+  excess dropped in silence**. `docs/backlog.md` 223 was filed on the first and the damage was
+  entirely the second: **11 rows, each losing its whole last column**, the longest cell in the row,
+  and **six of them were a row QUOTING ITS OWN ORIGINAL ROW**, whose pipes stopped being prose and
+  became delimiters. A quoted row is prose about a row, so its pipes are escaped. **Render the record
+  before believing a claim about how it reads**, and give it a control: the five repaired rows show
+  their recovered text and the same five from HEAD show that text absent. 342 tables and 2,708 body
+  rows now agree with their headers in both directions.
 - **A STRING IS SHIPPED IN THREE TREES AND EVERY VOICE PASS HERE HAS BEEN RUN OVER TWO.** The rule
   above says markup goes to two places, the component's page in `ui-kit/` and the screens in
   `ui-visual/`, which means the STAND carries the product's strings and not a paraphrase.

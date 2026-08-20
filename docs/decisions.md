@@ -12,6 +12,54 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-20 - The record has a renderer, and the eleven rows that were losing text were the opposite of the fifty-one that were filed
+
+**`docs/backlog.md` 223 said 51 rows disagreed with their header and that on GitHub "those columns
+are simply gone".** It was filed from the source. Put through **GitHub's own markdown API** on a
+control table built for it, the two failures turn out not to be symmetrical:
+
+| the row | what the renderer does | what it costs |
+|---|---|---|
+| FEWER cells than the header | pads with blank cells | nothing. The row reads ragged and every word survives |
+| MORE cells than the header | **drops the excess in silence** | the whole last cell, which in this file is the longest one in the row |
+
+So the 38 folded rows were harmless and the defect was **11 rows carrying one cell too many**, 10 in
+`docs/backlog.md` and 1 in `ui-kit/docs/inventory.md`.
+
+### What the eleven actually were, and no two were the same
+
+**Six were a row QUOTING ITS OWN ORIGINAL ROW.** A struck row here often ends "The original row:"
+and then reproduces it, and the quote's pipes stop being prose the moment they are on a table line.
+A quoted row is prose ABOUT a row and not a row, so its pipes are escaped now. **Two** carried a
+trailing `Owner:` cell that belongs at the end of the Note. **One** had its struck title and its
+closure sentence as two separate cells. **One** carried a **truncated duplicate of its own Source**,
+`ui-kit/, measured 2026-08-09` standing beside `ui-kit/, measured 2026-08-09 across all 38
+components with a page`. And the eleventh was **in the wrong table**: the `search` row stood in
+`Component / Uses / Declaration` wearing the four-cell shape of `Component / Its own width query /
+Placements / What it does with width`, which is a table in the same file three feet further down.
+
+### The decision the row asked for
+
+**A struck row keeps its header's cells.** The Item cell carries the strike and the closure, Source
+and Note keep whatever they had, and **a cell with nothing left in it stays empty rather than being
+folded away**, because the renderer is going to draw it either way and the source may as well say
+so. 38 rows were padded explicitly. It is in this file's own preamble, where the next person to
+strike a row will read it.
+
+### Proved on the renderer, with a control
+
+The five repaired rows render four cells with their recovered text present. **The same five taken
+from HEAD render four cells with that text absent**, which is the positive control: an instrument
+that cannot come back red is a reading of the guard. Re-measured over every markdown file in the
+repository with code spans stripped and escaped pipes handled: **342 tables, 2,708 body rows, 0
+disagreeing with their header in either direction.**
+
+**In 516 commits nobody had rendered the record.** Every instrument in `CLAUDE.md` reads a computed
+HTML page, and the markdown that carries the decisions, the backlog and the inventory had only ever
+been read as source. That is the line added to the root file.
+
+---
+
 ## 2026-08-20 - The geometry a movement needed splits in two, and the half that could not exist in the grey tree is the half that stayed in the paint
 
 **`docs/backlog.md` 226 asked whether the constant sheet the paint gained on 2026-08-20 is a
