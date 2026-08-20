@@ -12,6 +12,101 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-20 - Two of the three blocks a page was missing were missing from the specification instead, and the one real gap was on all five pages rather than on the one that was audited
+
+**`docs/backlog.md` 214 said `about.html` runs the DOCUMENT body shape where the bank gives it
+STATEMENT**, and named three things: B15 hero and B19 closing action declared and not built, B16 and
+B17 built as prose, and a B2 breadcrumb the bank gives to DOC only. **Two of the three were
+`ia/docs/blocks.md` being wrong about a page that was right.**
+
+**The breadcrumb.** `ia/docs/pages/seo.md` section 6D says in one sentence that the four legal pages
+carry `Home > Legal > {document}` and **About sits at `Home > About`**. Both trees have rendered
+exactly that since the day they were built, and both schemas carry the matching `BreadcrumbList`,
+verified by parsing: About is `Home > About Yonder`, Terms is `Home > Legal > Terms of Service`. So
+`DOC` on that row was the error. B2 is BOTH.
+
+**The order line.** The STATEMENT block order omitted B9 siblings and B10 contact while the table
+three inches above gives both to `BOTH`, and the page has carried both since it was built. **A bank
+whose order contradicts its own table will report a page as wrong for holding what the table
+banked**, and that is exactly what the audit of 2026-08-19 did. Both are in the line now.
+
+### The gap that was real was not on the page the row was about
+
+B15 and B19 were genuinely missing. Measuring for them found the thing no row had: **B3 is
+`H1 + one-line lede`, banked MVP for BOTH body profiles, and it stood on 0 of the 5 pages.** All five
+went from the H1 straight into the prototype notice. The row was filed against one page and the
+defect was the set, which is the same shape as the convention nineteen auth pairs of twenty obeyed:
+**19 of 20 and 0 of 5 both look like nothing from inside a single file.**
+
+**B15 is built as the STATEMENT wording of that lede rather than as a second block.** B3 gives one
+line saying what this document decides; B15 asks for what the product is, in one sentence. On the
+page whose subject IS the product those are one sentence, and two of the same rank stacked under one
+H1 is what rule 1 of that bank throws out. **The content rule survives the merge whole**, and it is
+the whole of B15: a sentence about the reader's job, not a mission statement about the company.
+*Yonder is where an opinion about what happens next becomes a bet you can be paid for.*
+
+### The body was a page about a page
+
+Five sections, every paragraph beginning *This section states* or *It exists because*. Four now say
+the thing: what a prediction market is and who it is for, how an event resolves and what happens when
+the source fails or is silent, where the balance sits and what is never done with it, and the three
+numbers.
+
+**`#regulation` is deleted and it is the only section that was in NEITHER source.** Not in the block
+bank, not in the STATEMENT heading list of `ia/docs/pages/seo.md`; B14 puts a region note on the
+DOCUMENT profile and marks it LATER; and `PRODUCT.md` carries **Jurisdiction: `[?]`**. A section
+whose subject is undecided can only ever be the placeholder it was, so it is removed rather than
+rewritten, and the removal is recorded in three files so the next reader finds the decision.
+
+**B17 had to be the BREAKDOWN, and what forced that was reading the whole page rather than the
+block.** `trustbar` prints `1,284 events resolved` in the footer of this same document, so a stats
+band leading on that figure would have said one thing twice on one screen. The three are **1,284
+resolved since launch, 25 open right now, 2 challenged and re-read**: what has happened, what is
+available, and what happened when somebody disagreed. The block's own argument is now said to the
+reader too, that volume is what this category leads with and it says nothing about whether anyone was
+paid.
+
+**B19 routes to the feed and its label came from the lexicon**, which gives one label for going to
+the feed: `Browse events`. The bank rules out the competitors' account CTA on a page about the
+company, on the same ground that a bet panel does not stand where a person has not chosen an event.
+
+### Three things the writing found that no instrument here reads
+
+**One concept, one word, and the person holding the lexicon broke it.** The first draft said *settle*
+eleven times under a heading reading *How an event resolves*. `voice/docs/voice.md` allows
+**resolve / resolution** and does not list *settle*. **12 placements turned.** A wrong word renders
+perfectly; this is the same class as the 31 kit strings of `docs/backlog.md` 225, produced fresh.
+
+**The last on-chain resolution claim in the product, on 223 placements.** `docs/backlog.md` 217
+closed on 2026-08-19 having moved every resolution claim off the chain and onto the published
+Reading. The footer trust strip's third tile read **`1,284 events resolved` / `On-chain,
+verifiable.`** and it survived, because 217 grepped for the word and this tile makes the claim in a
+PAIR: the count in one element and the proof in the one beside it. It could not stand while About
+states the mechanism at length two blocks above it. It reads `Every reading is published.` now, which
+is also the one thing the two tiles beside it do not already say. `On-chain, verifiable.` survives
+only in the frozen `ui-visual/old/`. **And `ui-kit/hiw.html` still carried the pre-217 sentence
+twice**, *Every resolution is recorded on-chain*, where both trees carry the published-reading one:
+another survivor of the same row, found by comparing the specimen with the screen it quotes.
+
+**The stand was drawing the reading column at twice its width, on the page about that width.**
+`ui-kit/_page.css` has `.tk-theme-fig>*{max-width:100%}` as a guard against a specimen overflowing
+its cell, and on `.read-col` it was also OVERWRITING the subject: the column declares
+`max-width:var(--measure)`, 46ch at its own 16px, which is **503 in the product and rendered 1046 in
+the kit at 1440**. On a page whose own prose says *a column measured in a table on a page that never
+drew it is a number with no subject*. A cap narrower than the cell cannot overflow it, so the guard
+had nothing to do there. Both specimens read 503 now. **Found by measuring the specimen against the
+screen it quotes**, which is the only way this class shows: it renders, it throws no error, and it is
+confidently the wrong number.
+
+**Measured after, both engines, at 320, 360, 390, the three rungs and one pixel either side, 1280,
+1440 and 1600: 0 page errors, 0 duplicate ids, 0 sideways scroll on all ten document pages and the
+four kit pages, and the lede resolves to 20px on 10 of 10.** What is NOT done is
+`docs/backlog.md` 228: the four legal pages still describe themselves, and that is legal review
+first and copy second, which the bank already says by name.
+
+---
+
+
 ## 2026-08-20 - A cadence is not a Type, and the question that decides whether a document is owed is not what the thing IS but what the existing page can SAY
 
 **`docs/backlog.md` 224 read as one defect and was two, and the half it named was the smaller one.**

@@ -40,7 +40,7 @@ this sentence used to say all five had no screen in either tree:
 | Privacy Policy | `index,follow` | DOCUMENT - **built 2026-08-18** |
 | Cookie Policy | `index,follow` | DOCUMENT - **built 2026-08-18** |
 | Responsible betting | `index,follow` | DOCUMENT - **built 2026-08-18** |
-| About | `index,follow` | STATEMENT - **built 2026-08-18**, and the people section is left out because this bank marks it LATER |
+| About | `index,follow` | STATEMENT - built 2026-08-18 and **finished 2026-08-20**, `docs/backlog.md` 214. The people section is left out because this bank marks it LATER |
 
 **All five stand in both trees, `wireframes/` and `ui-visual/`, one name each.** The four that
 arrived on 2026-08-18 were built against `terms.html` rather than from this table, because a built
@@ -115,7 +115,7 @@ observation with its date rather than replaced by a guess.
 | # | Block | Profile | Phase | Traces to | Reference input | Where we are better |
 |---|---|---|---|---|---|---|
 | B1 | **App header** in its logged-out or logged-in variant, unchanged | BOTH | MVP | R6 (usage rule: the logged-out header carries no account); FJ1 return path | Kalshi and Revolut keep full product chrome; Futuur and Polymarket do not | Futuur's terms live on a Notion subdomain with no header at all. Ours is the same header component as every other screen, so the reader never leaves the product to read what binds them |
-| B2 | **Breadcrumb**: Legal > *this document* | DOC | MVP | SEO structural layer (breadcrumb + `BreadcrumbList` schema is decided in IA); GZ5 betrayal fear, which is partly not knowing where you are | Revolut (Terms & Policies > Personal terms), Bet365 (Home / My Account) | Neither Polymarket nor Futuur has one, and a document with no breadcrumb is a document with no siblings. Ours names the set, which is what makes B9 findable |
+| B2 | **Breadcrumb**: `Legal > this document` on the four, `Home > About` on About | **BOTH** | MVP | SEO structural layer (breadcrumb + `BreadcrumbList` schema is decided in IA); GZ5 betrayal fear, which is partly not knowing where you are | Revolut (Terms & Policies > Personal terms), Bet365 (Home / My Account) | Neither Polymarket nor Futuur has one, and a document with no breadcrumb is a document with no siblings. Ours names the set, which is what makes B9 findable |
 | B3 | **H1 + one-line lede in the product voice**, saying what this document decides for the reader | BOTH | MVP | `voice/docs/voice.md` (a plain provable sentence, spectator language); GZ2, the "explain the number" instinct applied to prose | Revolut's "Why this document is important" is the only lede found in seven live pages | Six of the seven sources open with the legal text itself. Ours opens by telling a person whether they need to read it, which is the same move the feed makes with the story line |
 | B4 | **Effective-date block**, not a line: last updated, effective for new readers, effective for existing readers, and a link to the previous version | DOC | **MVP** | GZ5 (betrayal fear: a term that changed under you is the betrayal); FJ4 funds safety | Revolut's dual effective date is the best single pattern found. Futuur has the date and only the date. ManyChat and Fingerprint keep a previous version | Revolut gives two dates; **we add the one-line "what changed"**, which no source has. A version link answers "was it different", a changed-line answers "did it matter", and only the second is a question a person actually has |
 | B5 | **Table of contents, anchored**, sticky on desktop and collapsed above the body on mobile | DOC | MVP | SEO (the H2 list is decided in IA and the anchors are its internal-linking plane); FJ1 scanning behaviour | Families 2 and 3: Maze, Slack, Craft, GoFundMe, Leonardo, Instacart | Futuur ships **16,739 words behind one anchor**. That is the measured failure this block exists against, and the threshold is stated in the bank rather than left to taste: over 1,500 words the contents is not optional |
@@ -128,12 +128,12 @@ observation with its date rather than replaced by a guess.
 | B12 | **Download / print view** | DOC | LATER | GZ5; a legal document a person can keep is a legal document they can hold you to | Revolut (Download PDF), Mocha (print via the browser) | LATER because a print stylesheet is a Stage 10 answer and a PDF is a build artefact, neither of which exists yet. Named now so the layout does not make it impossible |
 | B13 | **"Was this helpful"** | DOC | LATER | No confirmed job. Kept as a candidate, not banked | Bet365 | Deliberately LATER **and flagged**: it traces to nothing in `jtbd.md`, so by rule 1 it does not enter MVP. It is recorded because Bet365 is the Crossover Bettor's reference frame and its absence will be noticed |
 | B14 | **Region / jurisdiction note** | DOC | LATER | Geo restrictions (backlog item 27 names it as promised by the footer and absent from the map); compliance scope in `PRODUCT.md` | Revolut's country switcher is the first element on the page | LATER only because the geo policy is an open IA question, not because it is optional. When item 27 resolves, this block is where its answer lands |
-| B15 | **Statement hero**: what the product is, in one sentence, over the shared plate | STATEMENT | MVP | EJ2 trust; MJ | Kalshi About, Maze, Homerun, Dropbox, Craft | Every About hero read is a mission sentence about the company. Ours is a sentence about the reader's job, which is the same discipline the event card's story line follows |
+| B15 | **Statement hero**: what the product is, in one sentence. **BUILT 2026-08-20 AS THE STATEMENT WORDING OF B3'S LEDE, NOT AS A SECOND BLOCK.** B3 gives the reader one line under the H1 saying what this document decides; on the page whose subject IS the product, that line and this one are the same sentence, and two of the same rank stacked under one H1 is what rule 1 above throws out. The content rule is untouched and it is the whole of this row | STATEMENT | MVP | EJ2 trust; MJ | Kalshi About, Maze, Homerun, Dropbox, Craft | Every About hero read is a mission sentence about the company. Ours is a sentence about the reader's job, which is the same discipline the event card's story line follows |
 | B16 | **Resolution and custody, as a section of About** | STATEMENT | MVP | FJ4, EJ2, GZ5; benchmark C8 (resolution clarity) | Kalshi files "Certification, Regulation & Compliance" as a top-level About section | Kalshi can point at the CFTC. We cannot, so the section has to carry the mechanism itself: who resolves, against which public source, and the resolved count. That is the trust principle stated rather than borrowed |
 | B17 | **Numbers block**: events resolved, USDC held, markets live | STATEMENT | MVP | SJ2, EJ2; `aarrr.md` social proof | Teal, Clearful, Homerun all ship a stats band; Polymarket uses volume as its entire trust case | Volume as social proof is the competitor default and it says nothing about whether you get paid. Ours counts **resolutions**, which is the only figure that answers the question a new user is actually asking |
 | B18 | **People**, named, with what each is accountable for | STATEMENT | LATER | EJ2 | Kalshi (Tarek & Luana), Dropbox, Fable, Craft | LATER because the team is not public yet. Named so the About layout reserves the slot instead of being redrawn |
 | B19 | **Closing action back into the product** | STATEMENT | MVP | MJ; the "never a dead end" rule | Kalshi ends About with "Create your account"; Pastel, Bezi, Limitless all end a legal page with a CTA | The competitors' CTA is a signup button on a page about the company. Ours routes to the feed, not to signup: this stage's own rule is that a bet panel does not stand where a person has not chosen an event, and a signup gate is the same mistake one step earlier |
-| B21 | **Prototype notice**: this page's structure, headings and dates are real and its body text is not an operative term | BOTH | **SCAFFOLDING** | nothing, and that is the point | nothing: no shipped product carries one | **BANKED 2026-08-19, AFTER IT HAD BEEN BUILT ON ALL FIVE PAGES AND DECLARED ON NONE.** It is the first block in the DOM after the H1 on every one of the five, in both trees, and no row here described it, so a reader of this bank would have found a composition the pages do not have. It is SCAFFOLDING rather than MVP, the same rank as the wireframe's `TBD` chip: it exists because the copy under it is a description of what each section would decide rather than the clause itself, and **it leaves the day real legal copy lands**. Banked rather than deleted because a page that carries prototype copy and does not say so is the worse of the two failures |
+| B21 | **Prototype notice**: on the four legal pages, the structure and dates are real and the body is not an operative term; **on About, since 2026-08-20, the structure AND the copy are real and the FIGURES are sample data** | BOTH | **SCAFFOLDING** | nothing, and that is the point | nothing: no shipped product carries one | **BANKED 2026-08-19, AFTER IT HAD BEEN BUILT ON ALL FIVE PAGES AND DECLARED ON NONE.** It is the first block in the DOM after the H1 on every one of the five, in both trees, and no row here described it, so a reader of this bank would have found a composition the pages do not have. It is SCAFFOLDING rather than MVP, the same rank as the wireframe's `TBD` chip: it exists because the copy under it is a description of what each section would decide rather than the clause itself, and **it leaves the day real legal copy lands**. Banked rather than deleted because a page that carries prototype copy and does not say so is the worse of the two failures |
 | B20 | **Logo wall of investors / partners** | STATEMENT | **NOT BANKED** | nothing | Maze, Teal, Fable, Krisp, Nothing, Kalshi ("Our Backers") | Six of the ten statement pages ship one and it traces to no job. Rule 1 keeps it out. Recorded here so that the next person who notices its absence finds the decision instead of the gap |
 
 ### What the sources offered and the bank refused
@@ -190,20 +190,42 @@ them and 153px of nothing to the right, and about.html ran 600 of 1140. The plat
 now, in both trees. A declaration that a space will not be filled is also a declaration that nothing
 should be drawn around it.
 
-STATEMENT: B1, B3, **B21 prototype notice**, B15 hero, B16 resolution and custody, B17 numbers,
-B18 people (LATER), B19 closing action, B11.
+STATEMENT: B1, **B2 breadcrumb**, B3 H1 + lede (which is B15 on this profile), **B21 prototype
+notice**, B7 money answer, B16 resolution and custody, B17 numbers, B18 people (LATER), B19 closing
+action, **B10 contact**, **B9 siblings**, B11.
 
-**WHAT `about.html` ACTUALLY HOLDS, READ FROM THE DOM 2026-08-19, AND IT IS NOT THIS ORDER.** The
-page runs the DOCUMENT body shape: a breadcrumb, the H1, B21, the money answer, a link to How It
-Works, then **five `feed-seo` sections** (`#what`, `#resolution`, `#money`, `#numbers`,
-`#regulation`), a contact box and B9 siblings. So **B16 and B17 are built as prose sections rather
-than as a custody block and a stats band**, which is a fair rendering of both; **B15 hero and B19
-closing action are declared and not built at all**; and the page carries **B2, a breadcrumb this
-bank gives to DOC only**. Recorded rather than quietly corrected, because two of the three are
-product decisions and not layout ones: a numbers band needs numbers and a closing action needs a
-destination chosen. The order above is what the bank decides, this paragraph is what the disk holds,
-and `docs/backlog.md` carries the row. It is the same class as `blocks.md` line 45: the four
-documents were built against `terms.html` rather than from this table.
+**THIS LINE WAS MISSING B9 AND B10 UNTIL 2026-08-20 AND THE TABLE ABOVE GIVES BOTH TO `BOTH`.** The
+page has carried them since it was built, so the order line was the only thing that disagreed, and it
+is the line the audit of 2026-08-19 measured About against: a block bank whose order contradicts its
+own table will report a page as wrong for holding what the table banked. B2 joined the same day, from
+the other direction: `ia/docs/pages/seo.md` D says in one sentence that the four legal pages carry
+`Home > Legal > {document}` and **About sits at `Home > About`**, which is what both trees have
+rendered from the day they were built, so `DOC` on that row was the error and not the page.
+
+**BUILT OUT 2026-08-20, AND THE ROW HAD READ ONE PAGE WHERE TWO OF THE THREE DEFECTS WERE THE SET.**
+`docs/backlog.md` 214 said About runs the DOCUMENT body shape: a breadcrumb, the H1, B21, the money
+answer, a link to How It Works, five `feed-seo` sections, a contact box and B9. Of the three things
+it named, **the breadcrumb and the order line were this file's errors** and are corrected above.
+What was genuinely missing was B15 and B19, and measuring for them found **B3's lede standing on 0
+of the 5 pages**, which no row had noticed because the audit was pointed at one page.
+
+**The body was five sections describing what each section would say**, every paragraph beginning
+"This section states" or "It exists because". Four now say the thing. **`#regulation` is deleted**,
+and it is the only section on the page that appeared in NEITHER source: not in this table, not in the
+STATEMENT H2 list of `ia/docs/pages/seo.md`, with B14 putting a region note on the DOCUMENT profile
+and marking it LATER, and `PRODUCT.md` carrying **Jurisdiction: `[?]`**. A section whose subject is
+undecided can only ever be the placeholder it was.
+
+**B17 is a band of three figures and it had to be the BREAKDOWN rather than the headline repeated.**
+`trustbar` prints `1,284 events resolved` in the footer of this same document, so a stats band
+leading on that number would have said one thing twice on one page. The three are `1,284` resolved
+since launch, `25` open right now, `2` challenged and re-read: what has happened, what is available,
+and what happened when someone disagreed. This row's own argument is now said to the reader as well:
+volume is what the category leads with, it says how much money moved and nothing about whether anyone
+was paid, and it is not on the page.
+
+**B19 routes to the feed and its label is the lexicon's.** `voice/docs/voice.md` gives one label for
+going to the feed, **Browse events**, so the closing action is not a fifth way of saying it.
 
 ### States
 

@@ -1593,7 +1593,7 @@ when they shipped.
 | (nothing) | `Built on trust, not on your balance` | principle 5: the specific provable thing. It says what the section is about and refuses the obvious pun about money |
 | `Your USDC is held 1:1, we never lend it.` | `Your USDC is held 1:1` + `We never lend it.` | principle 2: one plain sentence of trust. Splitting the claim from its guarantee lets the eye take the claim and the sentence answer it |
 | `Every event resolves against a public source.` | `Every event resolves against a public source` + `You can check it.` | same split. The second line is the one that makes it a promise rather than a policy |
-| `1,284 events resolved` | `1,284 events resolved` + `On-chain, verifiable.` | principle 5 again: the number was already checkable and never said where |
+| `1,284 events resolved` | `1,284 events resolved` + ~~`On-chain, verifiable.`~~ `Every reading is published.` | principle 5 again: the number was already checkable and never said where. **The qualifier was turned 2026-08-20**, on 223 placements: `docs/backlog.md` 217 moved every resolution claim off the chain and onto the Reading, and this tile was the one it did not reach, because it proves a RESOLUTION count with a chain on the same page About now states the mechanism at length. `On-chain, verifiable.` survives only in the frozen `ui-visual/old/`. The tile beside it already says *against a public source*, so the new qualifier had to be the thing neither of the other two says |
 
 Not new copy, but new to this table for the same reason: `No notifications yet. We will let you know
 when an event you follow moves or resolves.` has stood in three grey wireframes since they were
@@ -1870,3 +1870,62 @@ sentence is the caption of that column and the old one was a footnote about the 
 `order book` now read **0 in `ui-visual/`, 0 in `wireframes/`**, and in `ui-kit/` only inside
 `market.html`'s prose about this decision. `ia/docs/` keeps its 9: those are the spec naming the
 mechanic to its own writers, which is what a mechanics document is for.
+
+### 2026-08-20 - the five document pages get the lede they were banked with, and About stops describing itself
+
+`ia/docs/blocks.md` B3 is **H1 + a one-line lede in the product voice, saying what this document
+decides for the reader**, banked MVP for BOTH body profiles. **It stood on 0 of the 5.** All five
+went H1 straight into the prototype notice, so the row filed against `about.html` was reading one
+page where the defect was the set, which is the same shape as the auth convention nineteen pairs of
+twenty obeyed. `docs/backlog.md` 214.
+
+| page | lede |
+|---|---|
+| About Yonder | Yonder is where an opinion about what happens next becomes a bet you can be paid for. |
+| Terms of Service | What you agree to when you back an event here: your account, your funds, how an event resolves, and what happens when something goes wrong. |
+| Privacy Policy | What we collect, why we collect it, who else sees it, and how you get it back or have it deleted. |
+| Cookie Policy | Which cookies this site sets, what each one is for, and how to turn off the ones it does not need to run. |
+| Responsible betting | The limits you can set on yourself, the signs worth watching for, and where to get help that is not us. |
+
+**On About that line is also B15, the statement hero.** The bank asks B15 for "what the product is,
+in one sentence", and B3 for what the document decides; on the page whose subject IS the product
+those are one sentence, and two of the same rank stacked under one H1 is what rule 1 of that bank
+throws out. The content rule survives the merge intact: **a sentence about the reader's job and not
+a mission statement about the company**, which is the discipline the event card's story line already
+follows.
+
+**The body was five sections describing what each section would say.** Every paragraph began "This
+section states" or "It exists because", which is a page about a page. The four that stayed say the
+thing: what a prediction market is and who it is for, how an event resolves and what happens when the
+source fails, where the balance sits and what is never done with it, and the three numbers.
+
+**`#regulation` came off, and it is the only section here that was in neither source.** It is not in
+the block bank and not in the STATEMENT H2 list of `ia/docs/pages/seo.md`; B14 puts a region note on
+the DOCUMENT profile and marks it LATER; and `PRODUCT.md` carries **Jurisdiction: `[?]`**, so a
+section stating which jurisdictions the service is offered in could only ever have been the
+placeholder it was. Removed rather than rewritten, and recorded so the next reader finds the decision.
+
+| block | line |
+|---|---|
+| B17 figure | `1,284` events resolved since launch |
+| B17 figure | `25` events open right now |
+| B17 figure | `2` challenged and re-read |
+| B17 | Volume is the number this category leads with. It says how much money moved and nothing about whether anyone was paid, so it is not here. |
+| B19 | **Browse events** - the lexicon's one label for going to the feed. It routes to the feed and not to signup, which the bank rules out by name on a page about the company |
+| B21 | Prototype page. The structure and the copy here are real; the figures are sample data from this prototype's own catalog and are not a record of anything that happened. |
+| B10 | A question about Yonder goes to hello@yonder.example, which is not product support. A reply is sent within five working days. |
+
+**B21's wording had to change because the old one was now false.** It said the body text "describes
+what each section would decide and is not an operative legal term", which is still exactly right on
+the four legal pages and wrong on About the moment About says something. The four keep it; About
+carries the version above, and what is unproven there is named precisely: the figures.
+
+**B10's address changed with it.** `legal@yonder.example` is right for a question about a term and
+wrong for a question about the company, and B10 is "the one address for a question about THIS
+document".
+
+**One concept, one word, checked after writing rather than assumed.** The first draft of this copy
+said *settle* eleven times beside a heading reading *How an event resolves*. The Lexicon in
+`voice/docs/voice.md` allows **resolve / resolution** and does not list *settle*, so 12 placements
+were turned. It is the same-thing flag this file exists to catch, produced by the person holding the
+file.

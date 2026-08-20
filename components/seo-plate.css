@@ -1,5 +1,5 @@
 /* components/seo-plate.css
-   Component: seo-plate. Classes: .feed-seo, .feed-seo-wrap, .seo-brand, .seo-by, .seo-h-ic, .seo-tagline, .seo-text, .seo-tick.
+   Component: seo-plate. Classes: .feed-seo, .feed-seo-wrap, .seo-brand, .seo-by, .seo-fig, .seo-figures, .seo-h-ic, .seo-tagline, .seo-text, .seo-tick.
 
    Reads: --bevel-faint, --bevel-hi, --bevel-lo, --bg-plate, --bg-plate-from, --bg-plate-to,
           --border-brass, --border-hairline, --color-trust, --edge-groove-dark,
@@ -83,6 +83,19 @@
    ends. */
 
 .feed-seo dt{color:var(--text-primary)}
+/* B17, THE NUMBERS BLOCK, 2026-08-20. `ia/docs/blocks.md` banks it MVP for the STATEMENT profile and
+   it shipped as two paragraphs describing what the figures would be. It is a face of this component
+   rather than a new one because the figures stand INSIDE a `.feed-seo` section, which is the block
+   the About body is made of. The figure takes the mono face for the reason every other figure in
+   this product does: a number a reader is meant to check is set in the face that lines up.
+   ONE PLACEMENT, ON PURPOSE, AND IT IS NOT THE FOOTER STRIP SAID TWICE. `trustbar` already prints
+   `1,284 events resolved` in the footer of this same document, so these three had to be the
+   breakdown rather than the headline repeated: what is open, what has settled, and what was
+   challenged. docs/backlog.md 214. */
+.seo-figures{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:var(--space-16);margin-bottom:var(--space-4)}
+.seo-fig{display:flex;flex-direction:column;gap:var(--space-2)}
+.seo-fig b{font-family:var(--font-mono);font-size:var(--text-30);font-weight:var(--weight-semibold);line-height:var(--leading-flat);letter-spacing:var(--track-head);color:var(--text-primary)}
+.seo-fig span{font-family:var(--font-body);font-size:var(--text-12);line-height:var(--leading-base);color:var(--text-muted);max-width:none}
 .feed-inner>.feed-seo-wrap{background-color:var(--bg-plate);background-image:var(--surface-grain),linear-gradient(162deg,var(--bg-plate-from),var(--bg-plate-to));background-blend-mode:overlay,normal;border:var(--hairline) solid var(--shadow-ink-45);border-radius:var(--radius-10);box-shadow:inset 0 1px 0 var(--bevel-hi),inset 0 3px 9px -5px var(--bevel-lo),
     inset 1px 0 0 var(--bevel-faint),
     inset -1px 0 0 var(--scrim),inset 0 -1px 0 var(--shadow-ink-60),

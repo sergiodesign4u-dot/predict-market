@@ -81,10 +81,13 @@ would be the only way in and the navigation model of `ia/docs/sitemap.md` would 
 Two things follow and both are already true in the trees. **Search indexes the OPEN set only** -
 a settled market is reached from your own history, never from the field - which is why the
 catalog in `assets/search.js` can be kept by hand at this size. And **a market is open or
-settled, never both**: the settled examples the product ships are four markets that stand
-outside the open set, three of them prior instances of markets it still runs, because a
-recurring market settling and reopening is the real shape of this. `docs/decisions.md`
-2026-08-17.
+settled, never both**: the settled examples the product ships stand outside the open set, and
+several are prior instances of markets it still runs, because a recurring market settling and
+reopening is the real shape of this. **Counted from the render 2026-08-20: eight**, the five
+rows of `active-bets-history.html` plus the three earlier weeks the recurring detail lists.
+This sentence said `four` from 2026-08-17, when the history held four rows, and it was a live
+count typed as a fact: `CLAUDE.md` says a count is computed, or it is dated and says the day.
+`docs/decisions.md` 2026-08-17 and 2026-08-20.
 
 ## MVP feature scope
 Sharpened by the CJM To-Be backlog (`user-research/docs/cjm-to-be.md`, Alex x main job). One list, ordered by the To-Be path. The motivation features (story-led entry, explain the number) are co-equal MVP with the friction fixes, since the riskiest assumption "the barrier is friction, not motivation" was substantially refuted (research section 9, F4).

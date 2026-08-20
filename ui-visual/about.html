@@ -386,8 +386,13 @@ document.addEventListener('click', function (e) {
             <li><span class="crumb-here" aria-current="page">About Yonder</span></li>
             </ol></nav>
         <div class="feed-head"><h1>About Yonder</h1></div>
+              <!-- B3, the one-line lede, built 2026-08-20 on all five: ia/docs/blocks.md banks it
+                   MVP for both profiles and it stood on none of them. On About it is also B15, the
+                   statement hero, because two sentences of the same rank under one H1 is what rule 1
+                   of that bank throws out. docs/backlog.md 214. -->
+        <p class="doc-lede">Yonder is where an opinion about what happens next becomes a bet you can be paid for.</p>
 
-        <div class="quiet-box">Prototype page. The section headings, the structure and the dates are real; the body text describes what each section would decide and is not an operative legal term. Nothing on this page is in force.</div>
+        <div class="quiet-box">Prototype page. The structure and the copy here are real; the figures are sample data from this prototype's own catalog and are not a record of anything that happened.</div>
 
         <div class="protect protect-page"><b>Your USDC is held 1:1 and we never lend it.</b> It sits in a segregated balance you can check on-chain at any time. It is not lent, staked, or used as working capital. Every event resolves against a named public source and the resolution is recorded where anyone can read it.</div>
 
@@ -396,14 +401,16 @@ document.addEventListener('click', function (e) {
              the browser's own blue. Measured at 1.8:1 before this was moved. See
              ui-kit/docs/backlog.md. -->
         <a class="related-more" href="how-it-works.html">How resolution works</a>
-
-        <section class="feed-seo" id="what" aria-label="What Yonder is"><h2>What Yonder is</h2><p>This section says what the product does in the fewest sentences that are still true: you take a side on a real event, the price is what the market thinks the odds are, and the outcome is decided by what actually happened.</p><p>It states who it is for and, as usefully, who it is not for. This is a place to have a view about the world, not a place to trade frequently.</p></section>
-        <section class="feed-seo" id="resolution" aria-label="How an event resolves"><h2>How an event resolves</h2><p>This section names the mechanism rather than describing it in general terms: every market carries the public source that decides it, chosen before the market opens and printed on the event.</p><p>It states what happens when a source is unavailable or disagrees with itself, because a resolution rule that only covers the easy case is not a rule.</p></section>
-        <section class="feed-seo" id="money" aria-label="Where your money sits"><h2>Where your money sits</h2><p>This section is the same sentence the footer of every screen carries, said once at length in the place a person came looking for it.</p><p>It states where the balance is, that it is not lent or staked, and how a person can check that for themselves without asking us.</p></section>
-        <section class="feed-seo" id="numbers" aria-label="The numbers"><h2>The numbers</h2><p>This section carries the counts that can be checked: events resolved, markets open, and the share of resolutions that were disputed.</p><p>It exists because a trust claim with no number beside it is an adjective, and every number here has a source a reader can reach.</p></section>
-        <section class="feed-seo" id="regulation" aria-label="Where the service is available"><h2>Where the service is available</h2><p>This section states which jurisdictions the service is offered in and which it is not, and names the reason rather than leaving it to be inferred.</p><p>It is a section rather than a footnote because the reference frame for this category treats it as one, and a person deciding whether to open an account is asking it early.</p></section>
-
-        <div class="protect protect-page"><b>A question about this document</b> goes to legal@yonder.example, which is not product support. A reply is sent within five working days.</div>
+          <section class="feed-seo" id="what" aria-label="What Yonder is"><h2>What Yonder is</h2><p>A prediction market is a simple thing usually described badly. You take YES or NO on a question that has a date and a written rule. The price is the share of the money currently on YES, so 38 per cent is what the market thinks rather than what we think, and when the date arrives one side is paid a dollar a share and the other is paid nothing.</p><p>It is built for someone who follows the news and has an opinion about it, not for someone who trades for a living. That is why every event carries the reason its number moved, in plain words, and why a dollar is enough to take a side.</p><p>The fee is 1.5 per cent of what you bet, shown before you confirm. It is the only thing we take.</p></section>
+          <section class="feed-seo" id="resolution" aria-label="How an event resolves"><h2>How an event resolves</h2><p>Every event names its source before it opens, and the source is a public record you can go and read: a price feed, an official notice, a published figure. The rule is written as a comparison rather than a judgement, so the question has one answer instead of an argument.</p><p>Most events resolve without a person. A program reads the source at the stated time and applies the test. Where a question needs a person to read it, the event says so before you bet, and the reading is published beside the outcome.</p><p>When a source is late, missing, or says something the rule did not anticipate, the event goes to review and stays open. Silence is never read as NO. An event that resolves because nothing answered is the cheapest way to lose the only thing this product has.</p></section>
+          <section class="feed-seo" id="money" aria-label="Where your money sits"><h2>Where your money sits</h2><p>Your balance is USDC, held one to one in a segregated account. It is not lent, not staked, and not used as working capital, so there is no version of this in which a bad quarter for us is a bad quarter for your balance.</p><p>A bet is held against the event it was placed on until that event resolves. Nothing is swept between markets. Anything not inside an open bet can be withdrawn, and a withdrawal is not a favour we grant.</p></section>
+          <section class="feed-seo" id="numbers" aria-label="The numbers"><h2>The numbers</h2><div class="seo-figures"><span class="seo-fig"><b>1,284</b><span>events resolved since launch</span></span><span class="seo-fig"><b>25</b><span>events open right now</span></span><span class="seo-fig"><b>2</b><span>challenged and re-read</span></span></div><p>A trust claim with no number beside it is an adjective. These three answer the question a new reader is actually asking, which is whether the thing pays and how soon you find out.</p><p>Volume is the number this category leads with. It says how much money moved and nothing about whether anyone was paid, so it is not here.</p><p>The fastest way to check any of it is to open an event. The rule and the source are on it before you bet.</p></section>
+          <!-- B19, the closing action, built 2026-08-20. It routes to the FEED and not to signup:
+               ia/docs/blocks.md B19 rules out the competitors' account CTA on a page about the
+               company, on the same ground that a bet panel does not stand where a person has not
+               chosen an event. docs/backlog.md 214. -->
+          <a class="related-more" href="event-feed.html">Browse events</a>
+        <div class="protect protect-page"><b>A question about Yonder</b> goes to hello@yonder.example, which is not product support. A reply is sent within five working days.</div>
 
         <section class="related-events" aria-labelledby="sib-h">
           <h2 id="sib-h">The other documents</h2>
@@ -458,7 +465,7 @@ document.addEventListener('click', function (e) {
             </span>
             <span class="trust-item">
               <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check-circle-b"/></svg>
-              <span class="tr-txt"><b>1,284 events resolved</b><i>On-chain, verifiable.</i></span>
+              <span class="tr-txt"><b>1,284 events resolved</b><i>Every reading is published.</i></span>
             </span>
           </div>
         </div>

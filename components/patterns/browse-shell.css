@@ -1,5 +1,5 @@
 /* components/patterns/browse-shell.css
-   Pattern: the browse shell. A sub-category rail beside a content column. Classes: .cat-layout, .cat-main, .feed-seo, .read-col, .subcat, .toc.
+   Pattern: the browse shell. A sub-category rail beside a content column. Classes: .cat-layout, .cat-main, .doc-lede, .feed-seo, .read-col, .subcat, .toc.
 
    Assembled from: catnav (the .subcat rail), state-block, loadmore, tabs.
    It owns none of them and paints none of them; it says where they stand.
@@ -190,3 +190,12 @@
    column they are the document's own blocks and they take the document's own edge. */
 .read-col .quiet-box{text-align:start}
 .read-col .related-more{max-width:none;margin-inline:0}
+/* B3'S LEDE, BUILT 2026-08-20, AND IT WAS BANKED FOR BOTH PROFILES AND STOOD ON NONE OF THE FIVE.
+   `ia/docs/blocks.md` B3 is "H1 + one-line lede saying what this document decides for the reader",
+   MVP, BOTH, and the five pages carried an H1 and went straight into the prototype notice. It is one
+   rule and it lives here rather than in a component because the reading column is where it stands
+   and a lede on five screens is a composition rather than a part. On About it is also B15, the
+   statement hero: that block asks for "what the product is, in one sentence, over the shared plate",
+   and two sentences of the same rank stacked under one H1 is what rule 1 of that bank throws out.
+   So B15 is the STATEMENT wording of this block, not a second block. docs/backlog.md 214. */
+.read-col .doc-lede{margin:0;font-family:var(--font-display);font-size:var(--text-20);font-weight:var(--weight-semibold);line-height:var(--leading-snug);letter-spacing:var(--track-head);color:var(--text-primary);max-width:none}

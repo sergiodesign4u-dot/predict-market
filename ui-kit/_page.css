@@ -218,6 +218,17 @@
    moved the WIDTH and left the height at 68. */
 .tk-theme-fig.tk-stack{flex-direction:column;align-items:stretch;flex-wrap:nowrap}
 .tk-theme-fig>*{max-width:100%}
+/* AND A CAP THAT IS THE SUBJECT OF THE PAGE MUST SURVIVE THE CELL IT IS SHOWN IN, 2026-08-20.
+   The rule above is a guard against a specimen overflowing its cell, and on `.read-col` it was
+   ALSO overwriting the thing being shown: the reading column declares `max-width:var(--measure)`,
+   46ch at its own 16px, which is 503 in the product, and the guard replaced it with 100 per cent
+   of the cell, so `ui-kit/browse-shell.html` drew the document column at **1046 at 1440** on the
+   page whose own prose says a column measured in a table on a page that never drew it is a number
+   with no subject. A cap narrower than the cell cannot overflow it, so the guard has nothing to do
+   here. Found by measuring the specimen against the screen it quotes, which is the only way this
+   class of defect shows: it renders, it is not an error, and it is confidently the wrong number.
+   docs/backlog.md 214. */
+.tk-theme-fig>.read-col{max-width:var(--measure)}
 /* A COMPONENT THAT SPANS THE WINDOW CANNOT BE SHOWN IN A CELL THAT HAS MARGINS, AND THE
    STAND WAS 62px SHORT OF THE PRODUCT AT EVERY WIDTH. Backlog 158, 2026-08-15. The header
    and the bet dock are the two things here that are as wide as the window; this cell has
