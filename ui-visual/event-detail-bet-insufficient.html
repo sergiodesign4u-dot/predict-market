@@ -167,6 +167,7 @@ push();});})();</script>
         <div class="sidebar-divider sub">Logged in</div>
         <a href="event-detail.html" class="sidebar-sub-link">binary</a>
         <a href="event-detail-multi.html" class="sidebar-sub-link">multi</a>
+        <a href="event-detail-recurring.html" class="sidebar-sub-link">recurring</a>
         <a href="event-detail-resolved.html" class="sidebar-sub-link">resolved</a>
         <a href="event-detail-loading.html" class="sidebar-sub-link">loading</a>
         <a href="event-detail-error.html" class="sidebar-sub-link">error</a>
@@ -828,8 +829,46 @@ document.addEventListener('click', function (e) {
       });
     })();
 
+    /* THE GRID HAS TWO NARROWERS AND ONE ANSWER, 2026-08-20. The sub-category rail and the
+       cadence menu both hide cards, and two independent hiders FIGHT: whichever ran last
+       clears the other's decision, so a reader who picks Bitcoin and then Weekly gets every
+       weekly market in the category back. One state, one pass. A card with no data-subcat is
+       a skeleton and is not a result, which is the predicate the rail already used, and a card
+       with no data-freq is read as One-time, which is what every market in the tree was until
+       today. docs/backlog.md 224. */
+    var feedFilter = { subcat: 'all', freq: 'Any' };
+    function applyFeedFilter() {
+      var cards = document.querySelectorAll('.cat-main .grid .card');
+      for (var i = 0; i < cards.length; i++) {
+        var sc = cards[i].getAttribute('data-subcat');
+        if (!sc) continue;
+        var fq = cards[i].getAttribute('data-freq') || 'One-time';
+        cards[i].toggleAttribute('hidden',
+          (feedFilter.subcat !== 'all' && sc !== feedFilter.subcat) ||
+          (feedFilter.freq !== 'Any' && fq !== feedFilter.freq));
+      }
+    }
+
+    /* The menu is narrowed to the cadences that stand on THIS page, the same rule that builds
+       the sub-category rail from the cards (docs/backlog.md 173): a category legitimately has
+       no weekly market, and an option that returns an empty grid is a control that lies about
+       the catalog. The panel is inside a closed <details>, so nothing flashes. */
+    (function () {
+      var menu = document.getElementById('freqMenu');
+      if (!menu) return;
+      var cards = document.querySelectorAll('.cat-main .grid .card'), have = {}, i;
+      for (i = 0; i < cards.length; i++) {
+        if (!cards[i].getAttribute('data-subcat')) continue;
+        have[cards[i].getAttribute('data-freq') || 'One-time'] = 1;
+      }
+      menu.querySelectorAll('input[name="freq"]').forEach(function (r) {
+        if (r.value === 'Any' || have[r.value]) return;
+        var li = r.closest('li'); if (li) li.remove();
+      });
+    })();
+
     // How often (the Frequency attribute; the label is the reader's word, the field is the model's).
-    wireFilter('freqMenu', 'freqCurrent', 'freq');
+    wireFilter('freqMenu', 'freqCurrent', 'freq', function (v) { feedFilter.freq = v; applyFeedFilter(); });
 
     // Footer language selector (placeholder: updates label, English-only at MVP).
     wireFilter('langMenu', 'langCurrent', 'lang');
@@ -904,13 +943,8 @@ document.addEventListener('click', function (e) {
           var li = b.closest('li'); if (!li) return;
           rail.querySelectorAll('li[aria-current]').forEach(function (x) { x.removeAttribute('aria-current'); });
           li.setAttribute('aria-current', 'page');
-          var want = b.getAttribute('data-subcat');
-          var cards = document.querySelectorAll('.cat-main .grid .card');
-          for (var i = 0; i < cards.length; i++) {
-            var has = cards[i].getAttribute('data-subcat');
-            if (!has) continue;   /* a skeleton has no sub-category and is not a result */
-            cards[i].toggleAttribute('hidden', want !== 'all' && has !== want);
-          }
+          feedFilter.subcat = b.getAttribute('data-subcat');
+          applyFeedFilter();
         });
       }
       wireFilter('catMenu', 'catCurrent', 'catf', activate);
@@ -1022,7 +1056,7 @@ document.addEventListener('click', function (e) {
       <div class="hiw-step">
         <div class="hiw-stage" aria-hidden="true">
           <div class="hiw-still">
-            <article class="card" data-subcat="Government Shutdown">
+            <article class="card" data-subcat="Government Shutdown" data-freq="One-time">
               <div class="card-body">
                 <div class="top">
                   <span class="thumb" style="background-image:url(../assets/ev-gov-shutdown-sm.webp)"></span>

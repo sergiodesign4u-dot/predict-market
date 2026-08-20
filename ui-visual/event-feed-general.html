@@ -92,8 +92,8 @@ push();});})();</script>
     {
      "@type": "ListItem",
      "position": 2,
-     "name": "Will a new monthly global temperature record be set before September 1, 2026?",
-     "url": "/event/will-a-new-monthly-global-temperature-record-be-set-before-september-1-2026"
+     "name": "Will a new monthly global temperature record be set in September 2026?",
+     "url": "/event/will-a-new-monthly-global-temperature-record-be-set-in-september-2026"
     },
     {
      "@type": "ListItem",
@@ -207,6 +207,7 @@ push();});})();</script>
         <div class="sidebar-divider sub">Logged in</div>
         <a href="event-detail.html" class="sidebar-sub-link">binary</a>
         <a href="event-detail-multi.html" class="sidebar-sub-link">multi</a>
+        <a href="event-detail-recurring.html" class="sidebar-sub-link">recurring</a>
         <a href="event-detail-resolved.html" class="sidebar-sub-link">resolved</a>
         <a href="event-detail-loading.html" class="sidebar-sub-link">loading</a>
         <a href="event-detail-error.html" class="sidebar-sub-link">error</a>
@@ -517,11 +518,15 @@ document.addEventListener('click', function (e) {
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-chevron-down"/></svg>
               </summary>
               <div class="filter-panel">
+                <!-- THE MENU OFFERS THE CADENCES THE CATALOG OPENS, 2026-08-20, on 45 of 116
+                     documents in this tree. Hourly and Daily are Event vocabulary (ia/docs/sitemap.md,
+                     Frequency) and release 1 opens no market at either (docs/launch-catalog.md: two
+                     Weekly and two Monthly), so they were two values that could never match. This list
+                     is the no-script floor; the script narrows it further to the cadences standing on
+                     THIS page, the way the sub-category rail is built from the cards. docs/backlog.md 224. -->
                 <ul role="radiogroup" aria-label="How often">
                   <li><label><input type="radio" name="freq" value="Any" data-default checked> Any</label></li>
                   <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
-                  <li><label><input type="radio" name="freq" value="Hourly"> Hourly</label></li>
-                  <li><label><input type="radio" name="freq" value="Daily"> Daily</label></li>
                   <li><label><input type="radio" name="freq" value="Weekly"> Weekly</label></li>
                   <li><label><input type="radio" name="freq" value="Monthly"> Monthly</label></li>
                 </ul>
@@ -542,7 +547,7 @@ document.addEventListener('click', function (e) {
 
         <div class="grid">
 
-          <article class="card" data-subcat="Climate">
+          <article class="card" data-subcat="Climate" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/ev-warmest-years-sm.webp);background-position:22% center"></span>
@@ -559,16 +564,16 @@ document.addEventListener('click', function (e) {
             </div>
           </article>
 
-          <article class="card" data-subcat="Climate">
+          <article class="card" data-subcat="Climate" data-freq="Monthly">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/ev-temp-record-sm.webp);background-position:62% center"></span>
-                <div class="top-txt"><a class="q" href="event-detail.html" id="q-2">Will a new monthly global temperature record be set before September 1, 2026?</a><p class="why">Recent months have run close to prior highs.</p></div>
+                <div class="top-txt"><a class="q" href="event-detail-recurring.html" id="q-2">Will a new monthly global temperature record be set in September 2026?</a><p class="why">Recent months have run close to prior highs.</p></div>
               </div>
               <p class="prob-line">YES <span class="prob">48%</span></p>
-              <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="q-2-yes" aria-labelledby="q-2 q-2-yes">YES</a><a href="event-detail.html?side=no" class="no" id="q-2-no" aria-labelledby="q-2 q-2-no">NO</a></div>
+              <div class="yesno"><a href="event-detail-recurring.html?side=yes" class="yes" id="q-2-yes" aria-labelledby="q-2 q-2-yes">YES</a><a href="event-detail-recurring.html?side=no" class="no" id="q-2-no" aria-labelledby="q-2 q-2-no">NO</a></div>
               <p class="meta">
-                <span class="meta-txt"><span>Volume: $17,600</span><span>Closes: Sep 1, 2026</span></span>
+                <span class="meta-txt"><span>Repeats: Monthly</span><span>Volume: $17,600</span><span>Closes: Sep 30, 2026</span></span>
                 <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
                   <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
                 </button>
@@ -576,7 +581,7 @@ document.addEventListener('click', function (e) {
             </div>
           </article>
 
-          <article class="card" data-subcat="Space">
+          <article class="card" data-subcat="Space" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/ev-lunar-return-sm.webp);background-position:40% 30%"></span>
@@ -593,7 +598,7 @@ document.addEventListener('click', function (e) {
             </div>
           </article>
 
-          <article class="card" data-subcat="Climate">
+          <article class="card" data-subcat="Climate" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/ev-atlantic-hurricane-sm.webp);background-position:80% center"></span>
@@ -610,7 +615,7 @@ document.addEventListener('click', function (e) {
             </div>
           </article>
 
-          <article class="card" data-subcat="Climate">
+          <article class="card" data-subcat="Climate" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/ev-renewable-record-sm.webp);background-position:50% 70%"></span>
@@ -627,7 +632,7 @@ document.addEventListener('click', function (e) {
             </div>
           </article>
 
-          <article class="card" data-full="3" data-subcat="Business">
+          <article class="card" data-full="3" data-subcat="Business" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb" style="background-image:url(../assets/ev-energy-capacity-sm.webp);background-position:12% center"></span>
@@ -874,8 +879,46 @@ document.addEventListener('click', function (e) {
       });
     })();
 
+    /* THE GRID HAS TWO NARROWERS AND ONE ANSWER, 2026-08-20. The sub-category rail and the
+       cadence menu both hide cards, and two independent hiders FIGHT: whichever ran last
+       clears the other's decision, so a reader who picks Bitcoin and then Weekly gets every
+       weekly market in the category back. One state, one pass. A card with no data-subcat is
+       a skeleton and is not a result, which is the predicate the rail already used, and a card
+       with no data-freq is read as One-time, which is what every market in the tree was until
+       today. docs/backlog.md 224. */
+    var feedFilter = { subcat: 'all', freq: 'Any' };
+    function applyFeedFilter() {
+      var cards = document.querySelectorAll('.cat-main .grid .card');
+      for (var i = 0; i < cards.length; i++) {
+        var sc = cards[i].getAttribute('data-subcat');
+        if (!sc) continue;
+        var fq = cards[i].getAttribute('data-freq') || 'One-time';
+        cards[i].toggleAttribute('hidden',
+          (feedFilter.subcat !== 'all' && sc !== feedFilter.subcat) ||
+          (feedFilter.freq !== 'Any' && fq !== feedFilter.freq));
+      }
+    }
+
+    /* The menu is narrowed to the cadences that stand on THIS page, the same rule that builds
+       the sub-category rail from the cards (docs/backlog.md 173): a category legitimately has
+       no weekly market, and an option that returns an empty grid is a control that lies about
+       the catalog. The panel is inside a closed <details>, so nothing flashes. */
+    (function () {
+      var menu = document.getElementById('freqMenu');
+      if (!menu) return;
+      var cards = document.querySelectorAll('.cat-main .grid .card'), have = {}, i;
+      for (i = 0; i < cards.length; i++) {
+        if (!cards[i].getAttribute('data-subcat')) continue;
+        have[cards[i].getAttribute('data-freq') || 'One-time'] = 1;
+      }
+      menu.querySelectorAll('input[name="freq"]').forEach(function (r) {
+        if (r.value === 'Any' || have[r.value]) return;
+        var li = r.closest('li'); if (li) li.remove();
+      });
+    })();
+
     // How often (the Frequency attribute; the label is the reader's word, the field is the model's).
-    wireFilter('freqMenu', 'freqCurrent', 'freq');
+    wireFilter('freqMenu', 'freqCurrent', 'freq', function (v) { feedFilter.freq = v; applyFeedFilter(); });
 
     // Footer language selector (placeholder: updates label, English-only at MVP).
     wireFilter('langMenu', 'langCurrent', 'lang');
@@ -950,13 +993,8 @@ document.addEventListener('click', function (e) {
           var li = b.closest('li'); if (!li) return;
           rail.querySelectorAll('li[aria-current]').forEach(function (x) { x.removeAttribute('aria-current'); });
           li.setAttribute('aria-current', 'page');
-          var want = b.getAttribute('data-subcat');
-          var cards = document.querySelectorAll('.cat-main .grid .card');
-          for (var i = 0; i < cards.length; i++) {
-            var has = cards[i].getAttribute('data-subcat');
-            if (!has) continue;   /* a skeleton has no sub-category and is not a result */
-            cards[i].toggleAttribute('hidden', want !== 'all' && has !== want);
-          }
+          feedFilter.subcat = b.getAttribute('data-subcat');
+          applyFeedFilter();
         });
       }
       wireFilter('catMenu', 'catCurrent', 'catf', activate);
@@ -1071,7 +1109,7 @@ document.addEventListener('click', function (e) {
       <div class="hiw-step">
         <div class="hiw-stage" aria-hidden="true">
           <div class="hiw-still">
-            <article class="card" data-subcat="Government Shutdown">
+            <article class="card" data-subcat="Government Shutdown" data-freq="One-time">
               <div class="card-body">
                 <div class="top">
                   <span class="thumb" style="background-image:url(../assets/ev-gov-shutdown-sm.webp)"></span>

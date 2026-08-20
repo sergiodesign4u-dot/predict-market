@@ -607,6 +607,7 @@
           <li class="wf-substate">Logged in</li>
           <li><a href="event-detail.html">success / binary</a></li>
           <li><a href="event-detail-multi.html">success / multi-outcome</a></li>
+          <li><a href="event-detail-recurring.html">success / recurring</a></li>
           <li><a href="event-detail-error.html">error</a></li>
           <li><a href="event-detail-loading.html">loading</a></li>
           <li><a href="event-detail-resolved.html">resolved-while-reading</a></li>
@@ -1038,11 +1039,15 @@
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
               </summary>
               <div class="filter-panel">
+                <!-- THE MENU OFFERS THE CADENCES THE CATALOG OPENS, 2026-08-20, on 45 of 116
+                     documents in this tree. Hourly and Daily are Event vocabulary (ia/docs/sitemap.md,
+                     Frequency) and release 1 opens no market at either (docs/launch-catalog.md: two
+                     Weekly and two Monthly), so they were two values that could never match. This list
+                     is the no-script floor; the script narrows it further to the cadences standing on
+                     THIS page, the way the sub-category rail is built from the cards. docs/backlog.md 224. -->
                 <ul role="radiogroup" aria-label="How often">
                   <li><label><input type="radio" name="freq" value="Any" data-default checked> Any</label></li>
                   <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
-                  <li><label><input type="radio" name="freq" value="Hourly"> Hourly</label></li>
-                  <li><label><input type="radio" name="freq" value="Daily"> Daily</label></li>
                   <li><label><input type="radio" name="freq" value="Weekly"> Weekly</label></li>
                   <li><label><input type="radio" name="freq" value="Monthly"> Monthly</label></li>
                 </ul>
@@ -1064,7 +1069,7 @@
         <div class="grid">
 
           <!-- Binary card 1 -->
-          <article class="card" data-subcat="Government Shutdown">
+          <article class="card" data-subcat="Government Shutdown" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
@@ -1082,7 +1087,7 @@
           </article>
 
           <!-- Binary card 2 (bookmarked) -->
-          <article class="card" data-subcat="Bitcoin">
+          <article class="card" data-subcat="Bitcoin" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
@@ -1100,7 +1105,7 @@
           </article>
 
           <!-- Multi-outcome card 1 -->
-          <article class="card" data-full="4" data-subcat="Awards">
+          <article class="card" data-full="4" data-subcat="Awards" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
@@ -1120,7 +1125,7 @@
           </article>
 
           <!-- Binary card 3 -->
-          <article class="card" data-subcat="Ethereum">
+          <article class="card" data-subcat="Ethereum" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
@@ -1138,7 +1143,7 @@
           </article>
 
           <!-- Binary card 4 -->
-          <article class="card" data-subcat="Movies">
+          <article class="card" data-subcat="Movies" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
@@ -1156,7 +1161,7 @@
           </article>
 
           <!-- Multi-outcome card 2 -->
-          <article class="card" data-full="4" data-subcat="Global Elections">
+          <article class="card" data-full="4" data-subcat="Global Elections" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
@@ -1176,7 +1181,7 @@
           </article>
 
           <!-- Binary card 5 -->
-          <article class="card" data-subcat="Europe">
+          <article class="card" data-subcat="Europe" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
@@ -1194,7 +1199,7 @@
           </article>
 
           <!-- Binary card 6 -->
-          <article class="card" data-subcat="Climate">
+          <article class="card" data-subcat="Climate" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>

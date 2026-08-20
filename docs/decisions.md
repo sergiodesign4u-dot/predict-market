@@ -12,6 +12,111 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-20 - A cadence is not a Type, and the question that decides whether a document is owed is not what the thing IS but what the existing page can SAY
+
+**`docs/backlog.md` 224 read as one defect and was two, and the half it named was the smaller one.**
+It said the How often filter offers five cadences and the product draws exactly one. True: 20 of 20
+rendered frequency words said One-time and **0 cards carried a cadence attribute at all**.
+What the row did not say is that `docs/launch-catalog.md` opens **two Weekly and two Monthly** series
+in release 1 and **no Hourly and no Daily**, so two of the five values could never match anything the
+product would ever hold. **A filter has two ways to lie and this one was doing both**: filtering
+nothing, and offering a catalog nobody was going to open.
+
+**The model needed no decision and that was the trap.** `ia/docs/sitemap.md` settled Frequency on
+2026-08-10: every cadence instance is its own Event with its own window, price and resolution, the
+cadence is a SERIES the instances belong to, and no new entity is created. Everything was decided
+except the drawing, which is exactly the state in which a pass talks itself into believing there is
+nothing to do.
+
+### The filter, and the reason it is one pass and not two
+
+`wireFilter('freqMenu','freqCurrent','freq')` was called with no `onChange`, so it relabelled the
+summary and closed the menu. The mechanism was already proven beside it: the sub-category rail hides
+cards by `data-subcat`. **Wiring the second one the same way would have been a defect**, because two
+independent writers of `hidden` fight and the last one clears the other's decision: pick Bitcoin,
+then Weekly, and every weekly market in the category comes back. So there is one state and one pass.
+Measured on `event-feed-crypto.html`: **Any 8, One-time 6, Weekly 2, and Weekly then Bitcoin 1.**
+
+**And the menu narrows to the page, which is `docs/backlog.md` 173 applied a second time.** That row
+made the rail render only the sub-categories the cards actually carry, because rendering the taxonomy
+whole showed eleven chips against six events. The same argument holds here and is stronger, because a
+cadence with no card returns an EMPTY grid rather than a short one: Politics offers two rows,
+Crypto three, General three, and nobody is offered a value that answers with nothing. The static
+markup keeps the catalog's four as the no-script floor.
+
+**Hourly and Daily come off the control and stay in the entity.** They are the vocabulary
+`ia/docs/sitemap.md` gives Frequency, and an option returns the day a market opens at one, which is
+the shape `.icon-btn-lift` already has in this repository: rules whole, placements away, and the
+difference between the two zeros written down beside them.
+
+### The drawing, and the one rule it turned out to need
+
+Three binary recurring markets are drawn: **two weekly**, Bitcoin and Ethereum, added to the Crypto
+and Trending feeds, and **the monthly temperature record**, which was already in both trees in the
+ONE-TIME phrasing the catalog had superseded and is now the instance the catalog describes.
+`assets/search.js` is re-taken at 27 events, because that file says in its own header that an event
+the tree grows and it does not is an event search cannot find.
+
+**`event-detail-recurring.html` exists in both trees, and the argument for it is not that recurring
+is a new type.** It is not: Frequency is orthogonal to Type, so a weekly binary market is the same
+TYPE as a one-time one, and the routing convention measured on 2026-08-20 sends a card to the
+specimen of its type. That would have put a card reading `Repeats: Weekly` in front of a document
+whose header reads **One-time event**, which is the fixture contradiction that cost this repository
+six findings on one fixture set, manufactured deliberately. **So the test for whether a document is
+owed is not "is this a new type" but "can the existing specimen say what this card says".** It could
+not, and it is one line in the header that proves it.
+
+**What the recurring detail carries is entirely existing components, which is the system-first rule
+holding rather than being invoked**: the cadence in `.ed-cat` and in the `How often` fact; a
+resolution rule naming the program that reads the close, because the catalog admits a recurring
+market only if it is machine-resolved; the sentence a one-time reader never asks for, that this week
+settles on its own and the next week opens as a separate market with its own threshold and a bet here
+does not carry over; and **Earlier in this series**, a second placement of the related component
+listing the resolved instances with their outcomes. **No new CSS was written for any of it.**
+
+**A series gets no surface.** Four series at launch do not earn a page, the IA's own decision says no
+new entity, and what a reader actually wants from a series is the RECORD, which is a short list of
+events they can reach, which is what the related component already is.
+
+**The chart is a control and a four-day-old market has no month.** The range chips were `1d 1w 1m
+all`; on a weekly instance `1m` and `all` would draw the same week twice, so the recurring detail
+offers `1d` and `all`, and `all` is the life of the market: Mon, Tue, Wed, Thu, now.
+
+### Two things the drawing changed that the row never mentioned
+
+**An instance carries its window in its TITLE.** The first pass wrote `Will Bitcoin close above
+$119,500 this week?`, which is unambiguous on a card that prints `Closes` beside it and meaningless
+in a list of four past weeks, and which would have to CHANGE when the market resolved. A title that
+changes with the market's state is the same defect as one market wearing three names, which is what
+made a market unfindable by search on 2026-08-20. So the title is fixed for the life of the instance:
+**`in the week to Aug 28`**, `in September 2026`.
+
+**The card meta row has a grammar and a bare word broke it.** `Volume: $46,300` and
+`Closes: Aug 28, 2026` are `Label: value`, and the cadence went in as a bare `Weekly`. At 390 the row
+rendered **`Weekly Volume: $46,300`**, which names a figure this product does not have. It is
+`Repeats: Weekly` now. **Seen on a screenshot, not in the source**, which is the fourth time in this
+file that the thing that renders perfectly and reads wrong was caught by looking.
+
+**The word is on recurring cards only and the attribute is on 425 of them.** `data-freq` is what the
+filter reads. Printing `Repeats: One-time` on every card would be a default restated on every row,
+which is the activity feed `PRODUCT.md` refuses by name: a cadence is news only when there is one.
+
+### What was not built, and why that is the row rather than a silence
+
+`docs/launch-catalog.md` row 4, the monthly stablecoin series, is **multi-outcome**. Its card would
+route to `event-detail-multi.html`, which reads One-time, so drawing it would reproduce the exact
+mechanism this pass was closing. It stays in its one-time phrasing in both trees and the missing
+document is **`docs/backlog.md` 227**. Monthly is therefore carried by one market rather than two, and
+that is stated rather than left to be discovered.
+
+**Measured after, on both engines, over the two new documents and the ten changed ones: 0 page
+errors, 0 duplicate ids, 0 sideways scroll at 320, 360, 390, the three rungs and one pixel either
+side, 1280 and 1440, with a positive control that saw a 900px box in a 390px window on both.** The
+recurring detail is 4,681px tall against the one-time detail's 4,277, and the 404 is the series list.
+
+---
+
+
 ## 2026-08-20 - A face is a legal difference between the trees and a length is not, and the row was filed under the wrong noun
 
 **`docs/backlog.md` 215 had been open since 2026-08-19 because it could not be decided as written.**

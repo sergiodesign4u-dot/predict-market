@@ -714,6 +714,7 @@
           <li class="wf-substate">Logged in</li>
           <li><a href="event-detail.html">success / binary</a></li>
           <li><a href="event-detail-multi.html">success / multi-outcome</a></li>
+          <li><a href="event-detail-recurring.html">success / recurring</a></li>
           <li><a href="event-detail-error.html">error</a></li>
           <li><a href="event-detail-loading.html">loading</a></li>
           <li><a href="event-detail-resolved.html">resolved-while-reading</a></li>
@@ -1202,11 +1203,15 @@
                 <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
               </summary>
               <div class="filter-panel">
+                <!-- THE MENU OFFERS THE CADENCES THE CATALOG OPENS, 2026-08-20, on 45 of 116
+                     documents in this tree. Hourly and Daily are Event vocabulary (ia/docs/sitemap.md,
+                     Frequency) and release 1 opens no market at either (docs/launch-catalog.md: two
+                     Weekly and two Monthly), so they were two values that could never match. This list
+                     is the no-script floor; the script narrows it further to the cadences standing on
+                     THIS page, the way the sub-category rail is built from the cards. docs/backlog.md 224. -->
                 <ul role="radiogroup" aria-label="How often">
                   <li><label><input type="radio" name="freq" value="Any" data-default checked> Any</label></li>
                   <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
-                  <li><label><input type="radio" name="freq" value="Hourly"> Hourly</label></li>
-                  <li><label><input type="radio" name="freq" value="Daily"> Daily</label></li>
                   <li><label><input type="radio" name="freq" value="Weekly"> Weekly</label></li>
                   <li><label><input type="radio" name="freq" value="Monthly"> Monthly</label></li>
                 </ul>
@@ -1230,7 +1235,7 @@
         <div class="grid">
 
           <!-- Binary card 1 -->
-          <article class="card" data-cat="politics" data-subcat="Government Shutdown">
+          <article class="card" data-cat="politics" data-subcat="Government Shutdown" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
@@ -1248,7 +1253,7 @@
           </article>
 
           <!-- Binary card 2 (bookmarked) -->
-          <article class="card" data-cat="crypto" data-subcat="Bitcoin">
+          <article class="card" data-cat="crypto" data-subcat="Bitcoin" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
@@ -1266,7 +1271,7 @@
           </article>
 
           <!-- Multi-outcome card 1 -->
-          <article class="card" data-full="4" data-cat="culture" data-subcat="Awards">
+          <article class="card" data-full="4" data-cat="culture" data-subcat="Awards" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
@@ -1286,7 +1291,7 @@
           </article>
 
           <!-- Binary card 3 -->
-          <article class="card" data-cat="crypto" data-subcat="Ethereum">
+          <article class="card" data-cat="crypto" data-subcat="Ethereum" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
@@ -1304,7 +1309,7 @@
           </article>
 
           <!-- Binary card 4 -->
-          <article class="card" data-cat="culture" data-subcat="Movies">
+          <article class="card" data-cat="culture" data-subcat="Movies" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
@@ -1322,7 +1327,7 @@
           </article>
 
           <!-- Multi-outcome card 2 -->
-          <article class="card" data-full="4" data-cat="politics" data-subcat="Global Elections">
+          <article class="card" data-full="4" data-cat="politics" data-subcat="Global Elections" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
@@ -1342,7 +1347,7 @@
           </article>
 
           <!-- Binary card 5 -->
-          <article class="card" data-cat="politics" data-subcat="Europe">
+          <article class="card" data-cat="politics" data-subcat="Europe" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
@@ -1360,7 +1365,7 @@
           </article>
 
           <!-- Binary card 6 -->
-          <article class="card" data-cat="general" data-subcat="Climate">
+          <article class="card" data-cat="general" data-subcat="Climate" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
@@ -1378,7 +1383,7 @@
           </article>
 
           <!-- Binary card 7 -->
-          <article class="card" data-cat="crypto" data-subcat="ETFs">
+          <article class="card" data-cat="crypto" data-subcat="ETFs" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
@@ -1396,7 +1401,7 @@
           </article>
 
           <!-- Binary card 8 -->
-          <article class="card" data-cat="politics" data-subcat="Congress">
+          <article class="card" data-cat="politics" data-subcat="Congress" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
@@ -1414,7 +1419,7 @@
           </article>
 
           <!-- Multi-outcome card 3 -->
-          <article class="card" data-cat="politics" data-subcat="Midterm Elections">
+          <article class="card" data-cat="politics" data-subcat="Midterm Elections" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
@@ -1434,7 +1439,7 @@
           </article>
 
           <!-- Binary card 9 -->
-          <article class="card" data-cat="culture" data-subcat="Gaming">
+          <article class="card" data-cat="culture" data-subcat="Gaming" data-freq="One-time">
             <div class="card-body">
               <div class="top">
                 <span class="thumb">thumbnail placeholder</span>
@@ -1444,6 +1449,23 @@
               <div class="yesno"><a href="event-detail.html?side=yes" class="yes" id="q-9-yes" aria-labelledby="q-9 q-9-yes">YES</a><a href="event-detail.html?side=no" class="no" id="q-9-no" aria-labelledby="q-9 q-9-no">NO</a></div>
               <p class="meta">
                 <span class="meta-txt"><span>Volume: $18,900</span><span>Closes: Nov 1, 2026</span></span>
+                <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></svg>
+                </button>
+              </p>
+            </div>
+          </article>
+
+          <article class="card" data-cat="crypto" data-subcat="Bitcoin" data-freq="Weekly">
+            <div class="card-body">
+              <div class="top">
+                <span class="thumb">thumbnail placeholder</span>
+                <div class="top-txt"><a class="q" href="event-detail-recurring.html" id="q-10">Will Bitcoin close above $119,500 in the week to Aug 28?</a><p class="why">The threshold opened at this week's price, so Friday's close decides it.</p></div>
+              </div>
+              <p class="prob-line">YES <span class="prob">54%</span></p>
+              <div class="yesno"><a href="event-detail-recurring.html?side=yes" class="yes" id="q-10-yes" aria-labelledby="q-10 q-10-yes">YES</a><a href="event-detail-recurring.html?side=no" class="no" id="q-10-no" aria-labelledby="q-10 q-10-no">NO</a></div>
+              <p class="meta">
+                <span class="meta-txt"><span>Repeats: Weekly</span><span>Volume: $46,300</span><span>Closes: Aug 28, 2026</span></span>
                 <button type="button" class="icon-btn icon-btn-bare bookmark-btn" aria-pressed="false" aria-label="Save">
                   <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></svg>
                 </button>

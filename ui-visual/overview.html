@@ -28,7 +28,7 @@ if(!d||(d.pmTheme!=='light'&&d.pmTheme!=='dark'))return;
 set(d.pmTheme==='light');paint();});
 document.addEventListener('DOMContentLoaded',function(){wire();
 /* Wired once more on the next tick, for a .theme-switch that is not in the
-   markup when this fires. All 106 painted screens carry one in static
+   markup when this fires. Every painted screen carries one in static
    markup, and the panel that used to arrive late was the kit's, which now
    builds itself in ui-kit/_nav.js and never loads beside this script. So
    this line is a guard today and not a fix, and wire() is idempotent. */
@@ -117,6 +117,7 @@ push();});})();</script>
         <div class="sidebar-divider sub">Logged in</div>
         <a href="event-detail.html" class="sidebar-sub-link">binary</a>
         <a href="event-detail-multi.html" class="sidebar-sub-link">multi</a>
+        <a href="event-detail-recurring.html" class="sidebar-sub-link">recurring</a>
         <a href="event-detail-resolved.html" class="sidebar-sub-link">resolved</a>
         <a href="event-detail-loading.html" class="sidebar-sub-link">loading</a>
         <a href="event-detail-error.html" class="sidebar-sub-link">error</a>
@@ -260,12 +261,12 @@ document.addEventListener('click', function (e) {
 <main class="tk-wrap">
   <header class="tk-hero">
     <h1>The painted screens</h1>
-    <p>Every screen of the product in the Vault visual system: 15 families, 105 pages,
+    <p>Every screen of the product in the Vault visual system: 15 families, 117 pages, counted 2026-08-20,
     one page per state. Structure, copy and the state set are owned by the grey wireframes in
     <code>wireframes/</code>; this layer owns colour, type and surface only, which is why a screen
     here reads the same as the grey one beside it.</p>
     <div class="tk-badges">
-      <span class="tk-badge">105 screens</span>
+      <span class="tk-badge">117 screens, 2026-08-20</span>
       <span class="tk-badge">15 families</span>
       <span class="tk-badge">one page per state</span>
       <span class="tk-badge">mobile first</span>
@@ -360,6 +361,7 @@ document.addEventListener('click', function (e) {
     <div class="tk-jump">
       <a href="event-detail.html" title="event-detail.html">binary</a>
       <a href="event-detail-multi.html" title="event-detail-multi.html">multi</a>
+      <a href="event-detail-recurring.html" title="event-detail-recurring.html">recurring</a>
       <a href="event-detail-resolved.html" title="event-detail-resolved.html">resolved</a>
       <a href="event-detail-loading.html" title="event-detail-loading.html">loading</a>
       <a href="event-detail-error.html" title="event-detail-error.html">error</a>

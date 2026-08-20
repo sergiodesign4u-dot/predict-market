@@ -64,8 +64,8 @@ because it is a stance rather than a principle, and it is written once, here.
   `wireframes/_conventions.md`.
 - **One system.** `components/` holds `tokens.css` plus one file per component, reached through
   `components/index.css`. **Every PAINTED screen links that one file and nothing else, and the grey
-  tree links no stylesheet at all**: 117 of 117 in `ui-visual/` and 61 of 61 in `ui-kit/` link it,
-  **0 of the 116 in `wireframes/` do**, and those 116 carry an inline `<style>` block each. Counted
+  tree links no stylesheet at all**: 118 of 118 in `ui-visual/` and 61 of 61 in `ui-kit/` link it,
+  **0 of the 117 in `wireframes/` do**, and those 117 carry an inline `<style>` block each. Counted 2026-08-20 and before that
   2026-08-12 at 104 and re-counted 2026-08-15, when `terms.html` was written and the grey tree
   stopped being one screen short of the tree it decides. The sentence here said "every screen" until then, and the folder file it contradicted
   is the one that had it right. The visual language is
@@ -175,11 +175,13 @@ because it is a stance rather than a principle, and it is written once, here.
   not moving and is measuring nothing; only the browser's own default setting, CDP
   `Page.setFontSizes`, changes both the type and the rung. The 1140 harness stays in px, because a
   docked panel is 220 physical pixels whatever the reader's font is. **106 and 105 both name a
-  true thing and every number in this repository has to say which**: `ui-visual/` holds 117
-  documents, 116 of them screens, and `overview.html` is the index of the tree rather than a screen
-  in it. **Re-counted 2026-08-20**, when `win-multi` and `loss-multi` landed in both trees and the
-  outcome family stopped being binary-only: the grey tree is 116 as well, so the two now differ by
-  exactly the index. It was 106 and 105 until 2026-08-16, when the three search screens landed in both trees,
+  true thing and every number in this repository has to say which**: `ui-visual/` holds 118
+  documents, 117 of them screens, and `overview.html` is the index of the tree rather than a screen
+  in it. **Re-counted 2026-08-20 twice in one day**, first when `win-multi` and `loss-multi` landed
+  in both trees and the outcome family stopped being binary-only, then when
+  `event-detail-recurring.html` did and the Frequency attribute stopped being a filter with nothing
+  to filter: the grey tree is 117, so the two still differ by exactly the index. It was 117 and 116
+  between the two. It was 106 and 105 until 2026-08-16, when the three search screens landed in both trees,
   and 109 and 108 until 2026-08-17, when `event-detail-bet-ready.html` landed in both trees with
   backlog 185, and 110 and 109 until 2026-08-18, when the four static content pages the IA had
   registered and nobody had built arrived in both trees at once. **This sentence said 109 and 108 while the bullet above it already said 110 of 110**,
@@ -574,6 +576,20 @@ because it is a stance rather than a principle, and it is written once, here.
   a property rather than a placement. **A wrong word renders perfectly**, so no instrument in this
   file could ever have seen it: this is the cross-document set read arriving in the one layer that
   has no computed value to compare.
+- **A DOCUMENT IS OWED WHEN THE EXISTING SPECIMEN CANNOT SAY WHAT THE CARD SAYS, AND "IS THIS A NEW
+  TYPE" IS THE WRONG QUESTION.** A card here routes to the specimen of its TYPE, 148 cards and 0 to
+  their own market, and that convention was read as licence: Frequency is orthogonal to Type, so a
+  weekly binary market is the same type as a one-time one and needs no page. Obeying that would have
+  put a card reading `Repeats: Weekly` in front of a document whose header reads **One-time event**,
+  which is this repository's own fixture contradiction manufactured on purpose. **One line in the
+  destination's header is what decides it**, not a taxonomy. The same test answers the other way for
+  the monthly MULTI series: no recurring multi document exists, so that market is NOT drawn and the
+  gap is a backlog row rather than a card pointing at a page that contradicts it. **And the twin
+  holds for the FILTER**: a control offers what the catalog opens, so the cadence menu lost Hourly
+  and Daily, which release 1 opens no market at, and then narrows again to the cadences standing on
+  the page, the way the sub-category rail has been built from the cards since backlog 173. **An
+  option that returns an empty grid is a control that lies about the catalog**, and the sweeps pass
+  either way, because this is the "ask what a control is FOR" rule arriving one layer down.
 - **No em dash**, anywhere, and **"anywhere" is the repository rather than the folders somebody
   remembered.** It was measured over six on 2026-08-16, read 0, and was published as "the only file
   that carries any" while `concept/brand-toolkit/` carried 35 across four files. Those are gone;

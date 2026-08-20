@@ -78,7 +78,7 @@ re-measures this table should re-derive the sample first.
 | `filters` | 91 | **HOLDS** its own panel, its list and the labelled options |
 | `bottomnav` | 75 | **HOLDS** `navitem`, 164 readings of it. Filed as an organism in `index.css` |
 | `catnav` | 64 | **HOLDS** `chip` |
-| `related` | 50 | **HOLDS its own list.** Reads 1, filed as a molecule already, and the file is right. 15 documents and 50 rows, re-counted 2026-08-19; it said 48 on 10 |
+| `related` | 56 | **HOLDS its own list.** Reads 1, filed as a molecule already, and the file is right. **16 documents, 17 lists and 56 rows, re-counted from the rendered DOM 2026-08-20**: `event-detail-recurring.html` is the first document to carry TWO, `Earlier in this series` above `Related events`, because a cadence series has no page and its record IS a short list of events. It read 15 documents and 50 rows on 2026-08-19, and 48 on 10 before that |
 | `state-block` | 48 | **HOLDS** `button`. Filed as an organism |
 | `quick` | 41 | **HOLDS** `chip` |
 | `options` | 34 | **HOLDS** `yesno`. Filed as an organism. **The whole field is in the markup since 2026-08-17** and the phone is the only place any of it is hidden, so `.opt-more` counts what the LAYOUT hides rather than what the DATA omits, which is the difference between a fact a sweep can check and arithmetic on percentages |
@@ -286,7 +286,7 @@ the 105 screens.
 | `position-list` | none | 13 on 13 | **FILLS** `.cat-main` and the profile tab panel |
 | `profile` | none | 13 on 2 | `.who` FILLS; `.idrow` CHANGES its share, 72 to 234 at 320. Thirteen placements on two screens is the whole of it |
 | `quick` | none | 120 on 105 | **FILLS** both slots: the sheet's row at 378 and the panel's at 288-520 |
-| `related` | none | 15 documents | `.related-events` and `.feed-inner` FILL; the list's anchors are INTRINSIC, 46 to 1,145.4. **On the five document pages `.related-more` stopped being the exception on 2026-08-19**: it is `width:100%;max-width:300px;margin-inline:auto` because on the feed it is Load more under a card grid, and in a reading column that is a centred block in a left-aligned document. `.read-col .related-more{max-width:none;margin-inline:0}` puts it on the column's own edge, so it reads 258 / 298 / 328 / 503.4 like every other block in the stack |
+| `related` | none | 16 documents, 17 lists | `.related-events` and `.feed-inner` FILL; the list's anchors are INTRINSIC, 46 to 1,145.4. **On the five document pages `.related-more` stopped being the exception on 2026-08-19**: it is `width:100%;max-width:300px;margin-inline:auto` because on the feed it is Load more under a card grid, and in a reading column that is a centred block in a left-aligned document. `.read-col .related-more{max-width:none;margin-inline:0}` puts it on the column's own edge, so it reads 258 / 298 / 328 / 503.4 like every other block in the stack |
 | `seo-plate` | 760 | 73 on 9 | `.seo-brand` and `.feed-inner` FILL; **`.feed-seo-wrap` CHANGES its share at 760**, where one column becomes two; the heading FIXED 22 |
 | `skeleton` | none | 614 on 19 | **CONSTANT shares, which is not the same as changing one.** `.sk-head` 80 per cent, `.sk-row` 49, `.pos.skeleton` 40, `.ed-section` 80; the card body FILLS; `.top` CHANGES its share; one slot is GONE below 760. The published "CHANGES its share" named the one slot of nine that does |
 | `state-block` | none | 156 on 40 | Three slots FILL; **the block itself CHANGES its share and caps at 380**: 79.5-250 at 320, 79.5-380 from 639 up |

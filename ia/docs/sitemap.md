@@ -331,7 +331,16 @@ Two card layouts, both built (Event.Type already supports this, no new field):
 
 Controls placement (revised in the wireframe pass): categories are second-level navigation in a sub-nav band directly under the header (Trending default, then Politics, Crypto, Culture, General). The feed heading echoes the active category (for example "Trending"), not a generic "Live events" label, and updates when another category is chosen. The heading row carries a Kalshi-style filter cluster (feed controls, not navigation), each a dropdown whose label shows the current value:
 - **Sort:** Trending, Volatile, New, Closing soon, Volume, 50-50, plus a Reverse sort toggle.
-- **How often:** Any, One-time, Hourly, Daily, Weekly, Monthly (filters by the Event **Frequency** attribute, recurring markets). **The control was labelled `Frequency:` with a default of `All` until 2026-08-14**, when voice principle 3 was applied to it: we use the words a news-follower already owns, and `frequency` is the vocabulary of whoever built the market. **The entity keeps its name and the reader gets theirs**, which is the same split this map already makes between a screen and the field behind it.
+- **How often:** Any, One-time, Hourly, Daily, Weekly, Monthly (filters by the Event **Frequency** attribute, recurring markets). **The control was labelled `Frequency:` with a default of `All` until 2026-08-14**, when voice principle 3 was applied to it: we use the words a news-follower already owns, and `frequency` is the vocabulary of whoever built the market. **The entity keeps its name and the reader gets theirs**, which is the same split this map already makes between a screen and the field behind it. **AND THE CONTROL OFFERS WHAT THE CATALOG OPENS, 2026-08-20.** It offered five cadences and the
+  product drew ONE of them: 20 of 20 rendered frequency words said One-time and no card carried a
+  cadence at all, so four of the five values matched nothing anywhere. `docs/launch-catalog.md` opens
+  **two Weekly and two Monthly** series in release 1 and no Hourly and no Daily, so the menu is
+  **Any, One-time, Weekly, Monthly** and the two undrawn values come off. They are not deleted from
+  the ENTITY: Frequency keeps all four cadences above, and an option returns the day a market opens
+  at it, the same way `.icon-btn-lift` keeps its rules while its placements are away. **And the menu
+  narrows again to the page**: the sub-category rail has been built from the cards since
+  `docs/backlog.md` 173, and the same rule applies here, so Politics offers two rows and Crypto three
+  and no reader is ever offered a value that returns an empty grid. `docs/backlog.md` 224.
 - **Category:** the full category list. This is redundant-by-design with the second-level chip nav: the chips are quick access to the main categories, the dropdown is the full list that scales as categories grow. The dropdown, the chips, and the heading stay in sync (selecting in one updates the others).
 
 Exact sort and filter labels are a wireframe detail. Categories stay the locked four for MVP; the category mechanism is built to scale to more categories later without rework. Do not add empty categories now.
@@ -471,6 +480,45 @@ same element. **The third wording, a figure against a threshold, has no placemen
 fixture set's one settled numeric market is *Did Bitcoin close above $100,000 in the first half of
 2026?* and it stands on `active-bets-history.html`, which is not one of the three surfaces above.
 Adding it is a placement decision rather than a missing face, and it is `docs/backlog.md` 221.
+
+**A CADENCE IS NOT A TYPE, AND IT STILL NEEDS A SPECIMEN, 2026-08-20.** Frequency above is
+orthogonal to Type, so a weekly binary market is the same TYPE as a one-time binary one and the
+routing convention would send its card to `event-detail.html`. That page says **One-time event** in
+its own header, so obeying the convention would have put a card reading `Repeats: Weekly` in front of
+a document reading `One-time`: the fixture contradiction this map already paid for, manufactured on
+purpose. So the third specimen is **`event-detail-recurring.html`**, in both trees, and the rule that
+decides when a document is owed is not "is this a new type" but **"can the existing specimen say what
+this card says"**.
+
+**What it carries that a one-time detail cannot**, and all of it is existing components: the cadence
+in `.ed-cat` and in the `How often` fact; a resolution rule naming the machine that reads it, because
+`docs/launch-catalog.md` admits a recurring market only if it is machine-resolved; the sentence a
+recurring reader needs and a one-time reader never asks, that **this week settles on its own and the
+next week opens as a separate market with its own threshold**; and **Earlier in this series**, a
+second placement of the related component listing the resolved instances with their outcomes. There
+is **no series page and no series entity**: the decision of 2026-08-10 above says every instance is
+its own Event, and four series at launch do not earn a surface. The record is what a reader wants and
+a short list of events is what the related component already is.
+
+**AN INSTANCE CARRIES ITS WINDOW IN ITS TITLE.** The first drawing said `Will Bitcoin close above
+$119,500 this week?`, which is unambiguous on a card that also prints `Closes` and meaningless in a
+list of four past weeks. A title that changes when the market resolves is the same defect as one
+market wearing three names, which is what made a market unfindable by search on 2026-08-20, so the
+title is fixed for the life of the instance: **`in the week to Aug 28`**, `in September 2026`.
+
+**The cadence WORD is on recurring cards only; the cadence ATTRIBUTE is on every card.** `data-freq`
+is what the filter reads and it stands on **425 cards in the two trees**, One-time by default,
+counted from the rendered DOM 2026-08-20: 271 in the paint and 154 in the grey. The trees hold 583
+`article.card` between them and the other 158 are two kinds of zero, which is why the number has to
+say which it is: **136 skeletons**, which are not results and which the filter already skips, and
+**22 event-detail header cards**, which are the event itself rather than a row in a grid.
+Printing `Repeats: One-time` on every card would be the activity feed `PRODUCT.md` refuses by name:
+a default restated is noise, and a cadence is news only when there is one.
+
+**The MULTI recurring face is not built and says so.** `docs/launch-catalog.md` row 4, the monthly
+stablecoin series, is multi-outcome, and its card would route to `event-detail-multi.html`, which
+reads One-time. It ships in the trees in its one-time form and stays there until
+`event-detail-recurring-multi.html` exists. `docs/backlog.md` 227.
 
 **221 IS STRUCK ON 2026-08-20 AND THE ANSWER WAS IN THE ROUTING, NOT IN THE SLOT.** A card or a row
 in these trees goes to the specimen of its TYPE: **148 feed cards over 15 painted documents, 111 to

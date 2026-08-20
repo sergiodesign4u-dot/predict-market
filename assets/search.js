@@ -14,9 +14,10 @@
    THE CATALOG IS EXTRACTED, NOT WRITTEN. Taken 2026-08-17 from the painted tree
    by walking every `<article class="card">` in `ui-visual/*.html` for its `.q`,
    its `data-cat`, its `data-subcat`, its lead figure and its volume, plus the
-   one question that is only ever an `<h1 class="ed-q">`. 25 events, which is the
-   number `ia/docs/sitemap.md` cites for this catalog and the number that
-   overturned the IA's deferral of search in the first place. If the tree grows
+   one question that is only ever an `<h1 class="ed-q">`. 27 events, re-taken
+   2026-08-20 when the first two recurring markets landed (`docs/backlog.md` 224);
+   25 until then, the number `ia/docs/sitemap.md` cites for this catalog and the
+   number that overturned the IA's deferral of search in the first place. If the tree grows
    an event and this file is not re-taken, search will not find it: that is the
    cost of a second copy and it is written here rather than discovered later.
 
@@ -34,6 +35,8 @@
   {q:"Will the US government shut down before March 1, 2027?",h:"event-detail.html",c:"Politics",s:"Government Shutdown",p:"38% YES"},
   {q:"Will a spot Solana ETF be approved before September 1, 2027?",h:"event-detail.html",c:"Crypto",s:"ETFs",p:"44% YES"},
   {q:"Will Ethereum stay above $4,000 through the end of 2026?",h:"event-detail.html",c:"Crypto",s:"Ethereum",p:"54% YES"},
+  {q:"Will Bitcoin close above $119,500 in the week to Aug 28?",h:"event-detail-recurring.html",c:"Crypto",s:"Bitcoin",p:"54% YES"},
+  {q:"Will Ethereum close above $4,200 in the week to Aug 28?",h:"event-detail-recurring.html",c:"Crypto",s:"Ethereum",p:"47% YES"},
   {q:"Who will win the 2027 Eurovision final?",h:"event-detail-multi.html",c:"Culture",s:"Awards",p:"Sweden 34%"},
   {q:"Which party will win the most seats in the next UK general election?",h:"event-detail-multi.html",c:"Politics",s:"Global Elections",p:"Labour 44%"},
   {q:"Who will win the 2028 Republican presidential nomination?",h:"event-detail-multi.html",c:"Politics",s:"Nomination",p:"DeSantis 31%"},
@@ -50,7 +53,7 @@
   {q:"Which energy source will add the most new capacity in 2026?",h:"event-detail-multi.html",c:"General",s:"Business",p:"Solar 51%"},
   {q:"Will the next lead actor for the Bond film be announced before December 31, 2026?",h:"event-detail.html",c:"Culture",s:"Movies",p:"47% YES"},
   {q:"Will the next major game console launch before the 2026 holiday season?",h:"event-detail.html",c:"Culture",s:"Gaming",p:"58% YES"},
-  {q:"Will a new monthly global temperature record be set before September 1, 2026?",h:"event-detail.html",c:"General",s:"Climate",p:"48% YES"},
+  {q:"Will a new monthly global temperature record be set in September 2026?",h:"event-detail-recurring.html",c:"General",s:"Climate",p:"48% YES"},
   {q:"Will global renewable capacity set a new annual record in 2026?",h:"event-detail.html",c:"General",s:"Climate",p:"74% YES"},
   {q:"Will a debut album top the 2026 year-end chart?",h:"event-detail.html",c:"Culture",s:"Music",p:"35% YES"}
   ];

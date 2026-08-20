@@ -84,7 +84,14 @@ from **25.6 per cent below spot to 22.9 per cent above**. `docs/decisions.md` 20
 
 - **`b` per market.** `PRODUCT.md`, Liquidity and risk: it is free while the currency is points, and
   it should start small enough that a $5 bet visibly moves the number and rise with flow.
-- **What a recurring series looks like in the feed.** The Frequency filter offers One-time, Hourly,
-  Daily, Weekly and Monthly, and **20 of 20 frequency words in the painted tree say One-time**, with
-  no cadence attribute on any card. Four of the five values match nothing the product draws.
-  `docs/backlog.md` 224.
+- ~~**What a recurring series looks like in the feed.**~~ **ANSWERED 2026-08-20**, `docs/decisions.md`
+  same date. Three of the four series are drawn: rows 1 and 2 as `in the week to Aug 28` on the Crypto
+  and Trending feeds, and row 3 converted from the one-time phrasing the trees were still carrying.
+  **An instance carries its window in its title** so the title never changes when the market resolves,
+  the card prints `Repeats: Weekly` in its meta row, the detail is **`event-detail-recurring.html`**
+  in both trees, and the series itself gets no surface: `Earlier in this series` is a second placement
+  of the related component and there is no series page and no series entity. The filter is real and
+  offers **Any, One-time, Weekly, Monthly**, narrowed again per page to the cadences standing on it.
+  **Row 4 is the exception and it is a row**: it is multi-outcome, and there is no recurring multi
+  document, so it keeps its one-time phrasing and Monthly is carried by row 3 alone.
+  `docs/backlog.md` 227.

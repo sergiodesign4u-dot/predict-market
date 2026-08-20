@@ -7,6 +7,12 @@
           --shadow-ink-60, --shadow-ink-72, --shadow-ink-85, --surface-grain, --text-brass,
           --text-chip-hover, --text-muted, --text-primary, --text-strong
    Stand:  ui-kit/related.html, and ui-kit/molecules.html#related-lt for the level and its reason (the -lt is the shelf's own id suffix and not a variant of this component: ui-kit/CLAUDE.md)
+   TWO LISTS ON ONE DOCUMENT SINCE 2026-08-20, and it is the same component doing the same job.
+     event-detail-recurring.html carries Earlier in this series above Related events: every cadence
+     instance is its own Event (ia/docs/sitemap.md, Frequency), so a series has no page and no entity,
+     and what a reader wants from one is the RECORD, which is a short list of events they can reach.
+     The .rel-odds slot carries Resolved YES where a live row carries YES 61%, in the same muted mono:
+     an outcome colour there would make the slot mean two things. docs/backlog.md 224.
    Stands on: 15 documents in ui-visual/ and 15 in wireframes/, one list each, 50 rows in the
      paint, re-counted from the rendered DOM 2026-08-19: the ten event-detail screens and the
      five documents about, cookies, privacy, responsible-betting and terms. It said 10 with a

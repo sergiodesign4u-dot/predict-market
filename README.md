@@ -79,11 +79,13 @@ browser; a left screen-tree panel navigates the whole set.
 main-flow entry (the Event Feed). From there the journey is clickable end to end:
 Event Feed -> Event Detail -> sign-in / deposit gate -> Active Bets.
 
-- **Coverage:** 109 pages - every screen in the IA screen tree, each state its own
-  page. Event Feed, Event Detail (binary + multi, inline bet panel), 4 Category
+- **Coverage:** 117 pages, counted 2026-08-20 - every screen in the IA screen tree, each state its own
+  page. Event Feed, Event Detail (binary + multi + **recurring**, inline bet panel), 4 Category
   pages, Favorites view (Favorites), Sign In / Deposit (shared in-page dialogs), Win /
   Loss, Notifications, Wallet, My Profile / Public Profile, How It Works, Active
-  Bets / Bet History.
+  Bets / Bet History. **This line was 109 while 117 stood on disk**, which is the count rule in
+  [`CLAUDE.md`](./CLAUDE.md) breaking in the file that states it: a count is computed, or it is
+  dated and says the day.
 - **Auth axis:** browse screens have logged-in and logged-out variants.
 - **Flow-linked:** the main flow is clickable end to end (Event Feed -> Event
   Detail -> gate -> Active Bets), with branch exits and no dead-ends, wired and

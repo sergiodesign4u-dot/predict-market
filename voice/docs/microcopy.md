@@ -260,8 +260,8 @@ _9 state page(s): event-feed-empty.html, event-feed-error.html, event-feed-loadi
 | Main | Label | How often: | **Renamed from `Frequency:` on 2026-08-14.** Voice principle 3: we use the words a news-follower already owns, and `frequency` is the vocabulary of whoever built the market. The Event attribute is still called Frequency in `PRODUCT.md` and `ia/docs/sitemap.md`: **the model keeps its word and the reader gets theirs** |
 | Main | Option | Any | The default of `How often`, renamed from `All` the same day: `How often: All` is not a sentence and `How often: Any` is |
 | Main | Option | One-time |  |
-| Main | Option | Hourly |  |
-| Main | Option | Daily |  |
+| Main | Option | ~~Hourly~~ | **Struck 2026-08-20, `docs/backlog.md` 224.** Off the CONTROL, not out of the vocabulary: `ia/docs/sitemap.md` keeps all four cadences on Event.Frequency and `docs/launch-catalog.md` opens no market at either, so these were two options that could never match. They return with the first hourly market |
+| Main | Option | ~~Daily~~ | Struck with the row above, same date, same reason |
 | Main | Option | Weekly |  |
 | Main | Option | Monthly |  |
 | Main | Label | Category: |  |
@@ -303,7 +303,7 @@ _9 state page(s): event-feed-empty.html, event-feed-error.html, event-feed-loadi
 
 ### Event Detail
 
-_13 state page(s): event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-error.html, event-detail-loading.html, event-detail-logged-out-error.html, event-detail-logged-out-loading.html, event-detail-logged-out-multi.html, event-detail-logged-out.html, event-detail-multi.html, event-detail-resolved.html, event-detail.html_
+_14 state page(s), re-counted 2026-08-20 when the recurring specimen landed: event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-error.html, event-detail-loading.html, event-detail-logged-out-error.html, event-detail-logged-out-loading.html, event-detail-logged-out-multi.html, event-detail-logged-out.html, event-detail-multi.html, event-detail-recurring.html, event-detail-resolved.html, event-detail.html_
 
 | Zone | Type | Line | Flag |
 |---|---|---|---|
@@ -436,6 +436,16 @@ _13 state page(s): event-detail-bet-error.html, event-detail-bet-insufficient.ht
 | Main | Button | See your position |  |
 | Main | Label | Politics · One-time market · Trading closed |  |
 | Main | Label | YES 38% at close, resolved YES |  |
+| Main | Label | Repeats: Weekly | **New 2026-08-20, `docs/backlog.md` 224.** On recurring cards only. It went in as a bare `Weekly` and at 390 the meta row rendered `Weekly Volume: $46,300`, naming a figure this product does not have: every other span in that row is `Label: value` and a bare word joins the next label. The ATTRIBUTE `data-freq` is on all 432 cards; the WORD is news only when there is one |
+| Main | Label | Repeats: Monthly | With the row above, same date |
+| Main | Label | Crypto · Weekly series | **New 2026-08-20.** The `.ed-cat` line of `event-detail-recurring.html`. `series` and not `event`, because the reader is on one week of a run |
+| Main | Label | Weekly | The `How often` fact on the recurring detail, beside `One-time` on the others |
+| Main | Text | Resolves YES if the BTC-USD daily close on Friday, August 28, 2026 at 16:00 ET is above $119,500. Resolves NO if it is at or below that figure. | **New 2026-08-20.** The rule half a READER reads; `ia/docs/sitemap.md` Resolver is the half a program reads, and they have to agree |
+| Main | Text | Source: CoinGecko BTC-USD daily close. Read automatically at 16:05 ET, so no person decides it. | **New 2026-08-20.** `docs/launch-catalog.md` admits a recurring market only if it is machine-resolved, so the detail says which machine |
+| Main | Text | This is one week of a weekly series. It settles on its own, and when it closes the next week opens as a separate market with its own threshold. A bet here does not carry over. | **New 2026-08-20.** The one question a recurring reader has and a one-time reader never asks. It is the model of `ia/docs/sitemap.md` Frequency said in the reader's words |
+| Main | Heading | Earlier in this series | **New 2026-08-20.** A second placement of the related component. There is no series page: the record IS the list |
+| Main | Label | Resolved YES / Resolved NO | **New 2026-08-20.** The `.rel-odds` slot on a past instance, where a live row carries `YES 61%` |
+| Main | Text | The threshold opened at this week's price, so Friday's close decides it. | **New 2026-08-20.** The card's `why`. It said `The strike opened at this week's spot`: voice principle 3, `strike` and `spot` are the desk's words and `threshold` and `price` are the reader's |
 
 ### Category Page
 
@@ -471,8 +481,8 @@ _32 state page(s): event-feed-crypto-empty.html, event-feed-crypto-error.html, e
 | Main | Label | Reverse sort |  |
 | Main | Label | How often: | **Renamed from `Frequency:` on 2026-08-14.** Voice principle 3: we use the words a news-follower already owns, and `frequency` is the vocabulary of whoever built the market. The Event attribute is still called Frequency in `PRODUCT.md` and `ia/docs/sitemap.md`: **the model keeps its word and the reader gets theirs** |
 | Main | Option | One-time |  |
-| Main | Option | Hourly |  |
-| Main | Option | Daily |  |
+| Main | Option | ~~Hourly~~ | **Struck 2026-08-20, `docs/backlog.md` 224.** Off the CONTROL, not out of the vocabulary: `ia/docs/sitemap.md` keeps all four cadences on Event.Frequency and `docs/launch-catalog.md` opens no market at either, so these were two options that could never match. They return with the first hourly market |
+| Main | Option | ~~Daily~~ | Struck with the row above, same date, same reason |
 | Main | Option | Weekly |  |
 | Main | Option | Monthly |  |
 | Main | Heading | No events match these filters |  |
@@ -640,8 +650,8 @@ _4 state page(s): favorites-empty.html, favorites-error.html, favorites-loading.
 | Main | Label | How often: | **Renamed from `Frequency:` on 2026-08-14.** Voice principle 3: we use the words a news-follower already owns, and `frequency` is the vocabulary of whoever built the market. The Event attribute is still called Frequency in `PRODUCT.md` and `ia/docs/sitemap.md`: **the model keeps its word and the reader gets theirs** |
 | Main | Option | Any | The default of `How often`, renamed from `All` the same day: `How often: All` is not a sentence and `How often: Any` is |
 | Main | Option | One-time |  |
-| Main | Option | Hourly |  |
-| Main | Option | Daily |  |
+| Main | Option | ~~Hourly~~ | **Struck 2026-08-20, `docs/backlog.md` 224.** Off the CONTROL, not out of the vocabulary: `ia/docs/sitemap.md` keeps all four cadences on Event.Frequency and `docs/launch-catalog.md` opens no market at either, so these were two options that could never match. They return with the first hourly market |
+| Main | Option | ~~Daily~~ | Struck with the row above, same date, same reason |
 | Main | Option | Weekly |  |
 | Main | Option | Monthly |  |
 | Main | Label | Category: |  |
