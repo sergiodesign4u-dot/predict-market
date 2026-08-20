@@ -25,7 +25,7 @@
     arrives at it. <b>Twelve distinct widths were counted in the product</b> before a single one of
     them was called a decision, and three of the twelve turned out to have no name at all.</p>
     <div class="tk-badges">
-      <span class="tk-badge">3 rungs in rem, 33 width queries</span>
+      <span class="tk-badge">3 rungs in rem, 36 width queries</span>
       <span class="tk-badge">0 in a screen file</span>
       <span class="tk-badge">104 screens audited</span>
       <span class="tk-badge">new behaviour: 0</span>
@@ -236,9 +236,11 @@
     <h2 data-n="05">What each component does with width</h2>
     <p class="tk-note"><b>The registry holds, and it was checked rather than trusted.</b> Every
     <code>@media</code> in <code>components/</code> read and every number compared against the
-    ladder: <b>33 width queries, every number on the registry, and 0 in any of the 106 screen
-    files</b>. Three are named one-offs, 560, 620 and 980, and each carries beside it what
-    collapsing it to the nearest rung would cost in pixels.</p>
+    ladder: <b>36 width queries on 2026-08-21, every number on the registry, and 0 in any of the 120
+    documents in <code>ui-visual/</code></b>. Three are named one-offs, 560, 620 and 980, and each
+    carries beside it what collapsing it to the nearest rung would cost in pixels. <b>The total
+    read 33 on this page for eight days while the source moved four times</b>, to 35, back to 33,
+    to 37 and down to 36, which is what a number typed on a page nothing recomputes does.</p>
     <div class="tk-tblwrap">
       <table class="tk-tbl">
         <thead><tr><th>the measure, at 1440 over 106 screens</th><th>before</th><th>after</th></tr></thead>
@@ -286,7 +288,7 @@
     was the wrong test.</b> One component in two columns of different widths is NECESSARY and was read
     as sufficient: 35 of 45 components fill their container and have no width behaviour at all, and a
     component with no rule has no branch that can fire wrongly. So the population was taken instead
-    from the queries themselves - <b>52 selectors inside 33 width queries: 14 are the page frame, the
+    from the queries themselves - <b>52 selectors inside the 33 width queries of 2026-08-13: 14 are the page frame, the
     shell or the harness, 2 set a positioning context, 36 are a component in a slot</b> - and the 25
     that stand on both sides of their own rung were tested for SEPARABILITY: does any container width
     divide the placements the way the rung does. <b>24 of 25 did</b>, so a container query would have
@@ -404,7 +406,7 @@
   </section>
 
   <!-- ===================================================================== rem --><section class="tk-sec" id="rem">
-    <h2 data-n="08">Why the rungs are in px, measured rather than assumed</h2>
+    <h2 data-n="08">Why the rungs were in px, and the day the argument ran out</h2>
     <p class="tk-note">The argument for <code>rem</code> is real and it is not the one that decides
     here. A rung in px reads the window only, so a person who has enlarged their browser font sits at
     a desk width with a phone's worth of text in the line. <b>It was measured before it was
@@ -429,7 +431,7 @@
     breakpoint answering a question the product does not ask anywhere else <b>looks like
     accessibility and does nothing</b>. The rungs stay px, and the real finding is filed rather than
     dressed up: <code>docs/backlog.md</code> item 115.</p>
-    <p class="tk-why tk-bad"><b>AND IT WAS ACTED ON, 2026-08-12, SO THIS SECTION IS THE ARGUMENT AND
+    <p class="tk-why"><b>AND IT WAS ACTED ON, 2026-08-12, SO THIS SECTION IS THE ARGUMENT AND
     NOT THE TREE.</b> The type is in <code>rem</code>: ten <code>--text-*</code> steps and eight
     <code>--display-*</code> clamps are ratios to the root, the root is the reader's own setting
     because nothing sets <code>font-size</code> on <code>html</code>, <code>:root</code> or
@@ -439,6 +441,44 @@
     <b>The rungs stayed px on a different ground than the one above</b>, which is now spent: a rung in
     rem finally means what it is meant to mean, and whether it should is a decision nobody has taken,
     filed as item 135 rather than smuggled in with the type.</p>
+    <p class="tk-why"><b>ITEM 135 WAS ANSWERED THE NEXT DAY, 2026-08-13: THE RUNGS ARE IN
+    <code>rem</code> AND THIS PAGE WENT ON SAYING OTHERWISE FOR EIGHT DAYS.</b> The badge at the top
+    of this page has read <b>3 rungs in rem</b> since that day, and the heading of this section read
+    <b>the rungs are in px</b> underneath it: one document, two answers, and the reader who scrolls
+    meets them in that order. They are <b>40rem</b>, <b>47.5rem</b> and <b>56.25rem</b>, with the
+    narrow sides written exactly as <b>39.99875rem</b> and <b>47.49875rem</b> so the pair rule still
+    holds, and the 1140 harness stays in px because a docked panel is 220 physical pixels whatever
+    the reader's font is. <b>A length in a media query resolves against the INITIAL font size</b>, so
+    the first instrument built for this measured nothing: it wrote <code>html{font-size:24px}</code>
+    and reported the rungs not moving. Only the browser's own default setting moves them, and at a
+    24px default the desk arrives at 960.</p>
+    <p class="tk-note"><b>Re-run over the whole tree 2026-08-21, and the sweep that closed 135 had
+    measured 105 screens at the default only.</b> 2,880 renders, 120 documents, three browser
+    defaults at eight widths each, with the rungs read at their MOVED positions and
+    <code>pointer:coarse</code> asserted in the page. Four controls first: <code>10rem</code> gives
+    160 / 200 / 240, <code>(min-width:56.25rem)</code> is true at 16px and false at 20px in the same
+    1000px window, the same root twice differs in 0 of 40, and a planted 2000px box takes the
+    overflow from 0 to 1610.</p>
+    <div class="tk-tblwrap">
+      <table class="tk-tbl">
+        <thead><tr><th>at 320, logged out</th><th>root 16</th><th>root 20</th><th>root 24</th></tr></thead>
+        <tbody>
+          <tr><td>documents scrolling sideways, of 120</td><td><b>0</b></td><td><b>0</b></td><td><b>36</b></td></tr>
+          <tr><td><code>.left</code>, the wordmark</td><td>86.09</td><td>103.61</td><td><b>121.14</b></td></tr>
+          <tr><td><code>.utility</code>, the cluster</td><td>193.14</td><td>180.39</td><td>186.64</td></tr>
+          <tr><td>its right edge, against 306</td><td>306.00</td><td>306.00</td><td><b>329.72</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tk-why"><b>The cause is the wordmark, and the row's own record says the opposite.</b>
+    <code>header.css</code> closes its longest comment with <i>the utility landing on 306 exactly</i>
+    as the proof the fix worked, and it is exact at 16px and at 20px. <b>A row measured to land
+    exactly on its container has zero slack</b>, and <code>.logo</code> is
+    <code>--logo-size:var(--text-16)</code>, a rem token since backlog 115: the wordmark takes 35px
+    across the range while the two icon marks sit on the 44px touch floor, which is px and does not
+    move. <b>The branch that was asserted was the pointer and the one that was not was the root.</b>
+    Filed as <code>docs/backlog.md</code> 230 and not fixed: choosing what gives way at 320 on a
+    24px default is a product decision.</p>
   </section>
 
   <!-- ================================================================== sweep --><section class="tk-sec" id="sweep">

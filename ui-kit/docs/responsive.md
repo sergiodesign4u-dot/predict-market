@@ -225,7 +225,12 @@ no other width. That cost this repository 73 screens for a day.
 repeated in every rule, and the only possible check is to read every `@media` in the product and ask
 whether its number is on the list above. No number may appear in a product media query that is not.
 
-### Why the rungs are in px and not in rem
+### Why the rungs were in px and not in rem, and why that lasted one day
+
+**This section is the stage's argument and it was overturned on 2026-08-12.** It is kept because it
+is the reason the TYPE moved; the answer is 400 lines down under backlog 135. A heading is the part
+of a document a reader takes on trust, so a heading that states a settled position has to say when
+it stopped being one.
 
 The argument for rem is real: a rung in px reads the window only, so a person who has enlarged their
 browser font sits at a desk width with a phone's worth of text in the line. It was measured before it
@@ -399,13 +404,15 @@ Every `@media` in `components/` read and every number compared against the ladde
 | number | rules | verdict |
 |---|---|---|
 | 639.98 / 640 | 10 / 6 | DESK, both sides |
-| 759.98 / 760 | 3 / 3 | DETAIL, both sides |
-| 900 | 6 | RAIL |
+| 759.98 / 760 | 2 / 3 | DETAIL, both sides |
+| 900 | 9 | RAIL |
 | 560, 620, 980 | 2, 1, 1 | **named one-offs**, and each carries its own measurement beside it, closed by backlog 72 |
 | 1140 | 2 | HARNESS, not the product |
 
-**34 width queries, every number on the registry, and 0 `@media` in any of the 106 screen files.**
-It read 33 when this table was drawn, 35 from 2026-08-12 when `options.css` and `yesno.css` each
+**36 width queries on 2026-08-21, every number on the registry, and 0 `@media` in any of the 120
+documents in `ui-visual/`.** The table above is re-taken from the comment-stripped source with the
+total, because the two disagreed for a week: it said 6 at the rail while the rail held 9, and 3 at
+the detail's narrow side while the file held 2. It read 33 when this table was drawn, 35 from 2026-08-12 when `options.css` and `yesno.css` each
 took one at the desk rung so the outcome row could wrap, and 33 again from 2026-08-13, when backlog
 129 deleted the one in `tokens.css` and the one in `card.css`.
 **Then 32 on 2026-08-14 and 34 on 2026-08-15, and the table above WAS edited this time.** It had
@@ -699,8 +706,9 @@ one may belong to it more.
 
 **No `@media` in a screen file, ever.** It is in `components/CLAUDE.md` and in `ui-visual/CLAUDE.md`
 both, because a rule kept in one place is a rule half the hands never meet, and this tree is
-assembled by many hands at once. Measured: 34 width queries in the system as of 2026-08-15, **0 in
-any of the 106 painted screens**.
+assembled by many hands at once. Measured: **36 width queries in the system on 2026-08-21, 0 in any of
+the 120 documents in `ui-visual/`**. It was 34 on 2026-08-15 and 35 on 2026-08-18, and the ban has
+read 0 at every count.
 
 ### Backlog 43, and the answer is no
 
@@ -771,7 +779,11 @@ and only then was the 0 worth reporting.
 
 `docs/backlog.md` items 115 and 116, opened by this stage.
 
-## 2026-08-17 - the registry is 37, it was 33 and it said 34
+## 2026-08-17 - the registry went to 37, it was 33 and it said 34
+
+**And 37 was itself wrong the following day**: re-counted 2026-08-18 from the source the system held
+35, with `README.md` printing the 37 from this heading. It is 36 on 2026-08-21. The heading keeps
+the number it was written with, dated, because this file is the record of what each day believed.
 
 Search stopped being a page and became a control, and the inline field enters at **56.25rem, the
 RAIL rung**, so `components/search.css` carries **two** new width queries: one that swaps the mark
@@ -810,3 +822,57 @@ stylesheet at all.
 760, 761, 899, 900, 901, 1000, 1140, 1280, 1600. The swap is clean at exactly 900 on Chromium and
 WebKit, there is **exactly one way in at every width**, `scrollLeft` reads back 0 everywhere, and
 the field is fluid from **281 at 900 to 761 at 1600** with no second rung to widen it.
+
+---
+
+## 2026-08-21 - the root-font sweep re-run over the whole tree, and a row with no slack
+
+Backlog 135 put the rungs in `rem` and the sweep that proved it inert ran **at the browser default
+only, on 105 screens, before the five document pages existed**. The tree is 120 documents now and
+the five prose surfaces moved from `--text-13` to `--text-16` on 2026-08-19, which is the change a
+reader's font setting compounds hardest. So it was re-run: **2,880 renders, 120 documents, three
+browser defaults at eight widths each.**
+
+**The rungs are read at their moved positions, not at 640 / 760 / 900.** A rung in `rem` is a
+fraction of the reader's default, so DESK is 640 at 16px, 800 at 20px and **960 at 24px**, and a
+sweep that keeps reading 640 at every root is measuring the wrong pixel three times. Only the
+browser's own setting moves them, through CDP `Page.setFontSizes`; `html{font-size:24px}` moves the
+type and leaves every query where it was, which is how the first instrument for this measured
+nothing.
+
+**Four controls before any number was believed.** `10rem` measures 160 / 200 / 240 across the three
+roots, so the root responds. `matchMedia('(min-width:56.25rem)')` is **true at 16px and false at
+20px in the same 1000px window**, so the rungs move with it. The same root read twice over 40
+readings differs in **0**. A 2000px box planted in the page takes the overflow from 0 to 1610, so
+the probe is not blind. And `pointer:coarse` is asserted **in the page** on the second pass, because
+a headless browser is `pointer:fine` and the touch floor is the half of this row that does not grow.
+
+| | root 16 | root 20 | root 24 |
+|---|---|---|---|
+| documents scrolling sideways, of 120 | **0** | **0** | **36, at 320 only** |
+| `.left`, the wordmark, at 320 | 86.09 | 103.61 | **121.14** |
+| `.utility`, the logged-out cluster | 193.14 | 180.39 | 186.64 |
+| its right edge against a 306 content box | 306.00 | 306.00 | **329.72** |
+| `Sign in` / `Sign up` | 63.97 / 69.17 | 57.98 / 62.42 | 60.94 / 65.72 |
+| page height at 390, median of 120 | - | - | **+20.0 per cent** |
+| `terms.html` height at 390 | 12,158 | - | **22,811, +87.6 per cent** |
+
+**The cause is the wordmark and not the auth pair, which is the opposite of what the row's own
+record says.** `components/header.css` closes its longest comment with *the cluster falls to 193.14
+with the utility landing on 306 exactly*, and that is exact: the right edge is 306.00 at a 16px
+default and 306.00 at 20px. **A row measured to land exactly on its container has zero slack, and
+`.logo` is `--logo-size:var(--text-16)`, a rem token since backlog 115.** The wordmark takes 35px
+between the two ends of the range while the two icon marks stay on the 44px touch floor, which is
+px and does not move, so the pair absorbs the difference until 24px, where it cannot. **A proof
+taken at one setting is a proof about that setting**, which is this file's own instrument rule
+arriving one layer up: the branch that was asserted was the pointer, and the one that was not was
+the root.
+
+**The other 84 documents pass at every root, and the five document pages are the finding that is not
+a defect.** They grow 60 to 88 per cent taller at a 24px default against a 20 per cent median,
+because they are the only surfaces in this product that are nothing but prose read end to end, and
+every word of them is carried. That is the type scale doing exactly what backlog 115 bought.
+
+Filed as `docs/backlog.md` 230 with the three answers it could take, and **not fixed**: the sweep
+was run to produce a number and choosing what gives way at 320 on a 24px default is a product
+decision, not a mechanical one.

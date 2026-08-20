@@ -1272,8 +1272,10 @@
    with a fluid value and a query that overrides it is a token with two answers, and the
    query was the half that asked the wrong question: it took 76px out of the content column
    at the pixel where the window got wider. `docs/backlog.md` 129 and `decisions.md`
-   2026-08-13. The registry is 34 width queries in the system now, not 35, and this file
-   holds none of them. */
+   2026-08-13. The registry was 34 width queries that day, not 35, and this file holds none
+   of them. **It reads 36 on 2026-08-21**, and the sentence above is dated for the reason
+   this repository already wrote down: a count typed as a live fact is a live claim, and
+   nothing re-reads it. This one was typed in five files and disagreed in four. */
 
 /* WHEN TWO ROLES HOLD THE SAME VALUE. Twenty-seven groups below resolve to one
    colour in both themes: --outcome-yes and --result-won are both #4fa96b,

@@ -268,7 +268,19 @@
    exactly. Walked 320 to 400 at 2px on Chromium and WebKit over all 36 logged-out documents with
    the coarse pointer asserted and a positive control at every width: **0 over, at every width**,
    and the auth pair is at its natural size again.
-   rung: the same DESK 40rem, which is the whole argument for using it rather than buying 358. */
+   rung: the same DESK 40rem, which is the whole argument for using it rather than buying 358.
+
+   AND `LANDING ON 306 EXACTLY` IS A PROOF ABOUT ONE BROWSER SETTING, 2026-08-21, backlog 230.
+   The sentence above is true at a 16px default and true at 20px: the utility's right edge reads
+   306.00 at both. It reads 329.72 at 24px, and 36 painted documents scroll sideways at 320 there.
+   A row tuned to land EXACTLY on its container has zero slack, and one thing in this row grows
+   with the reader: `.logo` is `--logo-size:var(--text-16)`, a rem token since backlog 115, so
+   `.left` goes 86.09 -> 103.61 -> 121.14 across the three roots while the two icon marks stay on
+   the 44px touch floor, which is px. The pair pays the difference and then cannot: `Sign in` and
+   `Sign up` measure 63.97 / 69.17, then 57.98 / 62.42, then 60.94 / 65.72. THE BRANCH THAT WAS
+   ASSERTED WHEN THIS BLOCK WAS WRITTEN WAS THE POINTER AND THE ONE THAT WAS NOT WAS THE ROOT,
+   which is the same class of error as the fine-pointer walk this block already corrects above.
+   Not fixed here: what gives way at 320 on a 24px default is a product decision and it is filed. */
 @media(max-width:39.99875rem){
   .hiw-btn{display:none}
 }

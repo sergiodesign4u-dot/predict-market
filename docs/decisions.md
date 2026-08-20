@@ -12,6 +12,63 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-21 - Five files printed four different registry counts and none was the disk, and a header tuned to land EXACTLY on its container met a reader who enlarges type
+
+**The registry is 36 width queries, measured from the comment-stripped source of all 56 stylesheets.**
+Five live files were printing **33, 34, 35 and 37** on the same day. `ui-kit/responsive.html`, the
+page whose whole subject is the ladder, had the badge `3 rungs in rem, 33 width queries` at the top
+and a section heading `Why the rungs are in px` four screens below it: **one rendered document, two
+answers, and the reader who scrolls meets them in that order.** Backlog 135 put the rungs in `rem`
+on 2026-08-13 and that page said otherwise for eight days.
+
+**The total barely moved and that is what hid two edits.** 37 on 2026-08-17, 35 on 2026-08-18, 36
+today: `options.css` gave up **two** at the desk on 2026-08-20 when the slippage ladder that stood
+on 0 placements went with them, and `patterns/browse-shell.css` took **one** at the rail for the
+document reading column. The two moves nearly cancelled, so nothing about the total looked wrong. A
+per-file diff against the tree of four days ago is what named them. **A count that changes by one is
+harder to see than a count that changes by four**, and this repository's rule is already the answer:
+a count is COMPUTED, or it is DATED and says the day.
+
+**The compound check the name-level idle control cannot run.** `ui-kit/_page.css` declares 310 `tk-`
+classes and the kit markup stands 310, both sides zero, which is what every idle control here reads.
+**Thirteen of those classes are styled only inside a COMPOUND selector**, and `.tk-bad` is one:
+`.tk-lab.tk-bad` is the whole of its styling. Two paragraphs in two pages carried it alone,
+`navitem.html` as `tk-note tk-bad` and `responsive.html` as `tk-why tk-bad`, so each asked for the
+warning colour and rendered as ordinary prose. Both are the exact failure `_page.css` documents nine
+lines above them, which it thought it had closed by fixing the descendant form. Read over all 61
+pages with a planted control: two, and they are the whole harvest. Both deleted rather than promoted,
+because the rule three lines up already says prose marks its defect in the sentence.
+
+**The root-font sweep, re-run because the tree outgrew it.** The sweep that closed backlog 135 ran at
+the browser default over 105 screens, before the five document pages existed and before they moved
+to `--text-16` on 2026-08-19. Re-run at **2,880 renders, 120 documents, three defaults at eight
+widths each**, with the rungs read at their MOVED positions - DESK is 640 at 16px and **960 at 24px**
+- and four controls proved first: `10rem` gives 160 / 200 / 240; `(min-width:56.25rem)` is true at
+16px and **false at 20px in the same 1000px window**; the same root twice differs in 0 of 40; a
+planted 2000px box takes the overflow from 0 to 1610. `pointer:coarse` asserted in the page on the
+second pass, and the two passes name **different culprit families** on the same 36 documents.
+
+**0 sideways at root 16 and root 20 at every width. 36 of 120 at root 24, at 320 alone**, by 10px on
+24 documents and 23px on 12. All 36 are logged out. **The cause is the wordmark and the row's own
+record says the opposite**: `components/header.css` closes its longest comment with *the cluster
+falls to 193.14 with the utility landing on 306 exactly*, which is exact at 16px and exact at 20px.
+`.logo` is `--logo-size:var(--text-16)`, a rem token since backlog 115, so `.left` goes **86.09 to
+103.61 to 121.14** while the two icon marks stay on the 44px touch floor, which is px and does not
+move; the auth pair absorbs the difference until it cannot. **A row measured to land EXACTLY on its
+container has zero slack, and a proof taken at one setting is a proof about that setting.** The
+branch that block asserted was the pointer and the one it did not was the root, which is the same
+class of error as the fine-pointer walk the block itself corrects three paragraphs earlier.
+
+**The five document pages are the finding that is not a defect**: 60 to 88 per cent taller at a 24px
+default against a 20 per cent median across the tree, `terms.html` from 12,158 to 22,811 at 390, and
+every word carried. They are the only surfaces here that are nothing but prose read end to end, so
+they are where the type scale earns what backlog 115 bought.
+
+Filed as `docs/backlog.md` 230 with three answers and **not fixed**: the sweep was run to produce a
+number, and what gives way at 320 on a 24px default is a product decision.
+
+---
+
 ## 2026-08-20 - The one rule set nobody had ever measured, and the two biggest hits were a word the lexicon bans and the rule three lines above it
 
 **Every instrument in this repository reads a computed value. `voice/docs/voice.md` is a claim about

@@ -21,8 +21,8 @@ carries no schema at all. `docs/backlog.md` 171.
   `components/CLAUDE.md` because the day it breaks is not the day it is written: this tree is
   assembled by many hands at once, and twenty hands each adding one honest little breakpoint is how
   the adaptive layer ends up scattered across twenty files that no rung and no registry can see, the
-  same way inline CSS scattered across this tree once before. Measured at Responsive step 4, over all
-  106 screens: **0**. The registry that makes the check possible is in `components/tokens.css`, page
+  same way inline CSS scattered across this tree once before. Measured at Responsive step 4 and re-measured 2026-08-21, over all
+  120 documents: **0**, against 36 width queries in `components/`. The registry that makes the check possible is in `components/tokens.css`, page
   frame, and the reason a query cannot simply read a token is that `@media` resolves before the
   variable cascade and fails silently.
   A `<style>` block or a `style=` attribute is a rule in the one place the system cannot see. Three

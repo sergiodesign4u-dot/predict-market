@@ -147,8 +147,9 @@ the product on the day somebody measured it and not the product today.
   panel. A container threshold is not a token and is registered in `../ui-kit/docs/responsive.md`.
 - **A MEDIA QUERY MAY NOT STAND IN A SCREEN FILE, EVER**, and it is written here and in
   `ui-visual/CLAUDE.md` both, because a rule kept in one place is a rule half the hands never meet.
-  Adaptation lives in a token, a component, a pattern or the shell. Measured at Responsive step 4:
-  **34 width queries in this folder, 0 in any of the 106 documents in `ui-visual/`.** It was 33, then
+  Adaptation lives in a token, a component, a pattern or the shell. Measured 2026-08-21:
+  **36 width queries in this folder, 0 in any of the 120 documents in `ui-visual/`.** It was 34 at
+  Responsive step 4, and 33 before that, then
   35 on 2026-08-12 when the outcome row and the outcome pair each took one at the desk rung, and 33
   again on 2026-08-13 when backlog 129 deleted the one in `tokens.css` and the one in `card.css`
   **and put nothing in either place**: the two page insets ramp with a `clamp()` now and the bookmark
@@ -158,8 +159,15 @@ the product on the day somebody measured it and not the product today.
   narrow side and both of them a control that a desk sizes one way and a thumb another: the chart's
   range group drops its frame and the category chip drops from 48 to 44 with its padding. **Two
   queries arriving on one day is the shape to watch**, and neither invented a number. **Re-counted
-  2026-08-18 it is 35: 32 here and 3 in `patterns/`, 16 at the desk, 5 at the detail, 8 at the rail,
-  2 the 1140 harness and 4 one-offs, and 0 in any of the 115 documents in `ui-visual/`.** The
+  2026-08-18 it was 35: 32 here and 3 in `patterns/`, 16 at the desk, 5 at the detail, 8 at the rail,
+  2 the 1140 harness and 4 one-offs, and 0 in any of the 115 documents in `ui-visual/`.**
+  **AND 36 ON 2026-08-21, WHICH IS THE FIRST RE-COUNT WHERE THE TOTAL WENT DOWN AS WELL AS UP.**
+  33 here and 3 in `patterns/`: 16 at the desk in 13 files, 5 at the detail in 5, **9** at the rail
+  in 6, 2 the harness, 4 one-offs. `options.css` gave up TWO at the desk on 2026-08-20 when the
+  slippage ladder that stood on 0 placements went with them, and `patterns/browse-shell.css` took
+  one at the rail for the document column, so 37 became 36 and the two moves nearly cancelled.
+  **A total that barely moves is the shape that hides two edits**, and the day it was measured, five
+  live files were printing 33, 34, 35 and 37 and the disk was printing none of those. The
   detail's 460px threshold is not among them because it is a CONTAINER query, and a container
   threshold is counted apart for the reason the line above already gives. The counterpart
   reading used to say "35 of 43 components have no width behaviour of their own at all", **and that

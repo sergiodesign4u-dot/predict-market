@@ -477,7 +477,18 @@
    with something wrong with it. Deleted 2026-08-12, worn by none of the 52. The
    page says what is wrong with a glyph in the sentence under the grid, where the
    reader is already reading, and `.tk-lab.tk-bad` is the family that does this on
-   a cell. Two ways to mark a defect is one way and a hole. */
+   a cell. Two ways to mark a defect is one way and a hole.
+   AND THE HOLE OPENED ANYWAY, FOUND 2026-08-21. `tk-bad` is styled ONLY as a
+   compound with `.tk-lab`, and two paragraphs in two pages carried it alone -
+   `navitem.html` as `tk-note tk-bad` and `responsive.html` as `tk-why tk-bad` -
+   so each one asked for the warning colour and rendered as ordinary prose. The
+   name-level idle control cannot see this: it reads 310 tk- classes declared and
+   310 standing and both of those placements are a declared name. A CLASS THAT IS
+   NEVER STYLED ALONE NEEDS ITS PARTNER ON THE ELEMENT, and that is a different
+   question from whether the name exists. Thirteen classes here are in that
+   position; the check ran over all 61 pages with a planted control and the two
+   above were the whole harvest. Both are deleted rather than promoted, because
+   the rule three lines up already says prose marks its defect in the sentence. */
 .tk-row{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end;margin:0 0 8px}
 .tk-anat{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:start;
   margin:0 0 8px}
