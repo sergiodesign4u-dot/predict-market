@@ -12,6 +12,82 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-21 - Reading every page as a reader, which is the one instrument this repository had never built, and the first thing it found was the last line of every page
+
+Every check here renders a page and asks whether it is CORRECT. None of them reads it. So: **120
+painted documents rendered with every `<details>` and `<dialog>` forced open, every visible text node
+taken in reading order, 1,727 blocks, 339 distinct once the repeated chrome collapses.** Six
+findings, and **every one of them renders perfectly**, which is why 600 renders over two engines pass
+them all.
+
+**`Copyright (c) Yonder. Sample wireframe content.` stood on 221 documents** - 119 painted, 100 grey,
+2 in the kit - as the last sentence a reader meets. `voice/docs/microcopy.md` had decided to keep the
+footer placeholders because *they are honest grey-box stand-ins for content that is genuinely not set
+yet*, and **that reason holds for two of the three and not for this one**: the copyright holder IS
+set, the line already names Yonder, and `Sample wireframe content` stands in for nothing. It is a
+label about the ARTEFACT fused to the product's own legal sentence. The regulatory strip directly
+above it left 100 grey documents on 2026-08-20 for the same reason and this one was not looked at.
+`about.html` already carries the honest version, as its own labelled sentence.
+
+**The reader's balance renders as two numbers and the wrong one outnumbers the right one 149 to 5.**
+`wallet.html` derives it - *Balance = Cash + In-play*, `$92.00 + $40.00 = $132.00` - and the three
+open stakes on `active-bets.html` sum to exactly `$40.00`. The thumb bar printed **`$142`** in its
+Profile slot and in its `aria-label`, visible on **149 documents at 390** against `$132.00` on 5. The
+header pill was corrected on 2026-08-20; the bar three inches below it was not. **A fact corrected
+where somebody remembered instead of over its set is a fact that now disagrees with itself in one
+more place than before.**
+
+**Three open positions, three `Price now` figures, and all three contradicted the rest of the tree.**
+The shutdown market reads 38 per cent on the feed, on Favorites, on the detail hero and in the
+chart's `now` label, and My Bets said **41**. Bitcoin reads 61 everywhere and My Bets said **78** -
+and `notifications.html` states in words that it *moved from 58% to 61%*, so the product told the
+reader the price in a notification and contradicted itself on the next screen. The UK card puts
+Conservatives at 33, which is NO at 67, and My Bets said **54**. Every `Potential payout` was
+correct, computed off the average price, so the arithmetic was right and only the current price was
+wrong. **Bitcoin's average moved to 58 rather than its `Price now` moving to 61**, because the
+notification is a witness to what the reader paid: that notification only exists because they held
+the bet before the move.
+
+**`On-chain proofs 100%` survived backlog 217 by sitting in a figure band.** 217's rule is exact -
+every resolution claim points at the Reading, every custody or settlement mechanic keeps the chain -
+and a figure headed *Proven, not promised*, between *Events resolved 1,284* and *USDC held 1:1*, is a
+resolution proof. **Its own heading says `Every figure here is a count you can check`, and two of the
+three figures were `100%` and `always`.** The band now carries the set `about.html` already
+publishes: 1,284 resolved, 25 open right now, 2 challenged and re-read. Three counts, two documents,
+one answer.
+
+**A notification named an event that exists in 0 other documents**: `New in Crypto: "Will ETH flip
+BTC by 2027?"`, on 6 placements, in no catalog, no feed, no search index. It names a real Crypto
+event now. **Its sibling could not be fixed and is filed as backlog 231**: `Closing soon ... closes
+in 6 hours` on 4 documents against `Closes: Jul 1, 2027` on 13. The fixture's today is about Jul 1
+2026 and **the soonest close in the entire catalog is Aug 28 2026**, so no event exists that this
+notification could name and stay true. Either a catalog event gets a near date or the type's firing
+horizon is a product decision nobody has written down.
+
+**And then the set read, which found four more that reading alone would have missed.** Every `.pos`
+row in all three trees, grouped by its question, requiring one distinct reading:
+`ui-kit/position.html` - the component's OWN page - carried a `$10.00` stake at a `45%` price that
+appears nowhere in the product, a WON Bitcoin row wearing **the shutdown market's `+$13.16`** where
+the history says `$31.80`, and two rows labelling `Your side` twice where every sibling labels side
+and result. `position-list.html` and `patterns.html` put one product row, the UK election NO on
+Conservatives, under **two different market names, neither of them the UK election**, and flipped a
+YES to a NO. **A specimen holds a quotation or a demonstration**, and a row naming a real market with
+real money is a quotation. Every value in the position set now agrees across the three trees; the two
+groups that still read as two are a compact face carrying FEWER figures, not different ones.
+
+**One false positive, caught by the rule this file already carries.** The first pass reported `No
+events match ` with no term on 119 documents, and it is a template with an empty `<b>` that the page
+script fills, `hidden` until a query returns nothing. `getBoundingClientRect` is not a visibility
+test and neither is a DOM walk: re-read with `checkVisibility()` the string is visible on 23
+documents and every one of them has its term. **A pass that reads more than the reader sees
+manufactures defects at exactly the rate it finds them.**
+
+Verified after: 600 renders over Chromium and WebKit at 390 with the coarse pointer, **0 page errors,
+0 duplicate ids, 0 sideways scroll**, and 51,605 hrefs with 0 unresolvable ones, the single flagged
+string being the escaped `<code>` example this repository has already filed once.
+
+---
+
 ## 2026-08-21 - Five files printed four different registry counts and none was the disk, and a header tuned to land EXACTLY on its container met a reader who enlarges type
 
 **The registry is 36 width queries, measured from the comment-stripped source of all 56 stylesheets.**

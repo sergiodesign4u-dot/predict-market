@@ -612,6 +612,33 @@ because it is a stance rather than a principle, and it is written once, here.
   reason written beside them, because a sweep that re-opens a settled judgement every time is a
   sweep nobody runs twice. **And the same pass found four slips written that same day by the person
   running it**, which is the argument for the instrument rather than against it.
+- **EVERY INSTRUMENT HERE ASKS WHETHER A PAGE IS CORRECT, AND READING IT IS A DIFFERENT ACT.** The
+  rule above says the voice contract is measurable and was measured; this is its twin and it is
+  wider, because a lexicon check knows which words to look for. Reading does not. **120 painted
+  documents rendered with every `<details>` and `<dialog>` open, every visible text node in reading
+  order, 1,727 blocks and 339 distinct once the repeated chrome collapses**, gave six findings on
+  2026-08-21 and **not one is visible to a renderer**. `Copyright (c) Yonder. Sample wireframe
+  content.` was the last line a reader met on **221 documents**, kept by a written decision whose
+  reason - an honest stand-in for content not yet set - is true of two footer placeholders and false
+  of this one, because the copyright holder IS set and the phrase stands in for nothing. **The
+  reader's balance rendered as two numbers and the wrong one outnumbered the right one 149 to 5**:
+  `wallet.html` DERIVES `$132.00` as Cash plus In-play and the three open stakes sum to the In-play
+  exactly, while the thumb bar printed `$142` in its slot and its `aria-label`. The header pill had
+  been corrected the day before and the bar three inches under it had not, which is what a fact
+  corrected where somebody remembered instead of over its SET does. **Three `Price now` figures
+  contradicted the feed, the detail, the chart and a notification that states the price in words.**
+  `On-chain proofs 100%` survived the claim-against-mechanism pass by sitting in a figure band whose
+  own heading promises counts, beside `always`. A notification named an event held by **0** other
+  documents, and its sibling announces a deadline in 6 hours against a catalog whose soonest close is
+  58 days out, which no edit to the string can fix. **AND THE SET READ FOUND FOUR MORE THAT READING
+  ALONE MISSES**: grouping every `.pos` row in all three trees by its question, the component's OWN
+  kit page carried a stake and a price that appear nowhere in the product, a WON row wearing another
+  market's payout, and two rows labelling `Your side` twice; two other kit pages put one product row
+  under two different market names. **Read the pages, then read the set, and do neither instead of
+  the other.** **The pass also manufactured one defect and the file's own rule caught it**: a DOM
+  walk reported an empty search template on 119 documents, and `checkVisibility()` says it is
+  `hidden` on every one. **A pass that reads more than the reader sees invents defects at the rate it
+  finds them.**
 - **No em dash**, anywhere, and **"anywhere" is the repository rather than the folders somebody
   remembered.** It was measured over six on 2026-08-16, read 0, and was published as "the only file
   that carries any" while `concept/brand-toolkit/` carried 35 across four files. Those are gone;

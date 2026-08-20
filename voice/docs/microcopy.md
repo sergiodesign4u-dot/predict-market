@@ -207,7 +207,7 @@ version of it costs them the recognition without buying anything.
 | Footer | Link | Geo restrictions |  |
 | Footer | Text | Prediction markets involve risk of loss. Not available in restricted regions. |  |
 | Footer | Text | [Regulatory / licensing line - placeholder, to be set. No US real-money markets; geo-restrictions and KYC per regulatory requirements.] | **placeholder** |
-| Footer | Text | Copyright (c) Yonder. Sample wireframe content. | **placeholder** |
+| Footer | Text | Copyright (c) Yonder. | shipped 2026-08-21, was `Copyright (c) Yonder. Sample wireframe content.` |
 
 ### Sign-in dialog
 
@@ -1120,6 +1120,14 @@ so they stay identical on all 99 pages.
 - **Card bookmark "Bookmark" / "Bookmarked" (aria) and Event Detail `Bookmark / save event` -> "Save" / "Saved"**: a shared *card* component + the Event Detail control; done with the card / Event Detail pass.
 - **Leaked dev-notes - DONE (removed 2026-07-03).** The dialog `dlg-note` ("Opens over the current page ... see reference pages ...") and the overlay `dim-note` ("underlying screen dimmed ...") were deleted: 198 dlg-note lines across 99 pages + 17 dim-note lines across 17 pages. These were spec-notes, not shippable copy (Forbidden). Dialog / overlay structure verified intact; the now-unused `.dlg-note` / `.dim-note` CSS rules are left in place (invisible, harmless).
 - **Footer wireframe placeholders** ("logo placeholder", "Tagline placeholder", the "[Regulatory / licensing line ...]" strip, "Sample wireframe content", and the TBD / post-MVP / dynamic roadmap tags): kept on purpose - they are honest grey-box stand-ins for content that is genuinely not set yet, not copy to invent (P5).
+  **THE REASON HELD FOR TWO OF THEM AND NOT FOR THE THIRD, 2026-08-21.** A stand-in is honest when it stands in for content that is not set. The
+  copyright holder IS set: the line already reads `Copyright (c) Yonder.` and `Sample wireframe content` stood in for nothing - it is a label about
+  the ARTEFACT, fused to the product's own legal sentence, and it rendered as the last line a reader meets on **221 documents: 119 painted, 100
+  grey and 2 in the kit**. The painted tree is not a wireframe, and `wireframes/_conventions.md` declares the differences between the two trees;
+  a divergent copyright line is not one of them, so the string leaves both. `about.html` already carries the honest version of what it was trying
+  to say, labelled as its own sentence rather than smuggled into the copyright: *"Prototype page. The structure and the copy here are real; the
+  figures are sample data from this prototype's own catalog."* The regulatory strip went the same way on 2026-08-20 for the same reason, off 100
+  grey documents, and it stood directly ABOVE this one.
 
 ### Step 06 - Event Detail (13 state pages: binary / multi / resolved / loading / error / bet-processing / -reconcile / -insufficient / -error, + logged-out variants)
 
@@ -2070,3 +2078,39 @@ and its own words were *to be set*, which `PRODUCT.md` now answers with a decide
 written: a mechanism block that glosses the term in the same sentence it uses it, which is the
 condition that exemption carries and which nothing had ever satisfied before. And *past deadlines
 settled late* is ordinary English about politics rather than this product's resolution.
+
+---
+
+## 2026-08-21 - reading every page as a reader, which is the one instrument that had never been built
+
+Every check in this repository renders a page and asks whether it is CORRECT. This pass asked what a
+person reads, straight through, in reading order, across the whole product: **120 painted documents
+rendered with every `<details>` and `<dialog>` opened, 1,727 text blocks, 339 of them distinct once
+the repeated chrome is collapsed.** Six findings, and **not one of them is visible to any renderer**,
+because every one of them renders perfectly.
+
+| what a reader met | where | fixed to |
+|---|---|---|
+| `Copyright (c) Yonder. Sample wireframe content.` | **221 documents**, the last line of every page | `Copyright (c) Yonder.` |
+| the thumb bar's balance `$132`, formerly `$142` | **149 documents** at 390, against `$132.00` on 5 | `$132`, which is what Wallet derives |
+| `Price now 41% / 78% / 54%` on My Bets | 1 painted, 1 grey, 6 kit specimens | `38% / 61% / 67%`, the prices the rest of the tree prints |
+| `On-chain proofs 100%` under *every figure here is a count* | `how-it-works` in three trees | `Open right now 25`, the set `about.html` already publishes |
+| `New in Crypto: "Will ETH flip BTC by 2027?"` | 6 placements, an event held by 0 other documents | a Crypto event the catalog actually opens |
+| `Closing soon ... closes in 6 hours` against `Closes: Jul 1, 2027` | 4 documents against 13 | **not fixable as copy**, filed as `docs/backlog.md` 231 |
+
+**The balance is the sharpest of the six and it is the repository's own rule arriving again.** A
+reader's balance is one entity, and `wallet.html` derives it: *Balance = Cash + In-play*, `$92.00 +
+$40.00`, and the three open stakes on `active-bets.html` sum to exactly `$40.00`. **The derived
+number stood on 5 documents and the undecided one on 149.** The header pill was corrected to
+`$132.00` on 2026-08-20 and the thumb bar three inches below it was not, which is what happens when a
+fact is corrected where somebody remembered rather than over its set.
+
+**And the set read found four more that reading alone would have missed.** Every `.pos` row in all
+three trees, keyed on its question: **`ui-kit/position.html` carried a `$10.00` stake at a `45%`
+price that appears nowhere in the product, a WON Bitcoin row wearing the SHUTDOWN market's `+$13.16`,
+and two rows labelling `Your side` twice where every sibling labels side and result.**
+`position-list.html` and `patterns.html` put one product row - the UK election, NO on Conservatives -
+under **two different market names, neither of them the UK election**, and flipped a YES to a NO.
+**Every value in the position set now agrees across the three trees**, checked by grouping every row
+by its question and requiring one distinct reading, with the two surviving groups being a compact
+face that carries fewer figures rather than different ones.
