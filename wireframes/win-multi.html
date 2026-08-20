@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wireframe - Bet History (logged in - state: success (resolved bets))</title>
+  <title>Wireframe - Win Screen (state: success / multi-outcome (amount won + Share Card))</title>
 <style>
     /* ================================================================================
        ONE OF 114 COPIES. This tree links no stylesheet, so every rule below stands in
@@ -380,6 +380,14 @@
       justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 8px; }
     .protect { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 11px; }
 
+    /* ---- SHARED (3 of 114, 3 rules): the resolution reading ----
+       A record and not a promise, so it is the neutral box rather than the trust box;
+       the colour half of that argument is in components/notice.css and this tree has no
+       colour. ia/docs/sitemap.md, Resolution entity, Reading. */
+    .reading { border: 1px solid #999; background: #f2f2f2; padding: 8px; display: flex; flex-direction: column; gap: 4px; }
+    .reading .reading-line { margin: 0; font-size: 12px; line-height: 1.5; }
+    .reading .reading-src { margin: 0; font-family: monospace; font-size: 11px; line-height: 1.5; color: #555; }
+
     /* ---- SHARED (98 of 114, 14 rules): active bets ---- */
     .tabs { display: flex; gap: 0; margin: 0 0 10px; }
     .tabs :is(a,button) { border: 1px solid #888; border-bottom: 1px solid #bbb; background: #dcdcdc; padding: 8px 14px; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-align: center; text-decoration: none; }
@@ -485,159 +493,14 @@
     dialog.app-dialog { width: 92%; max-width: 420px; border: 1px solid #999; background: #f0f0f0; color: #222; padding: 0; }
     dialog.app-dialog::backdrop { background: rgba(0,0,0,.4); }
 
-    /* ---- SHARED (67 of 114, 13 rules): how it works, header button + quick-explainer dialog ---- */
-    .hiw-btn { border: 1px solid #999; background: #e0e0e0; padding: 5px 10px; font-size: 12px; cursor: pointer; }
-    /* rung: DETAIL 760, and this is BELOW it. The paint hides this 88px control there
-       because the desk row asks 694px without it: components/header.css. */
-    @media (max-width: 759.98px) { .hiw-btn { display: none; } }
-    dialog.app-dialog .hiw-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
-    dialog.app-dialog .hiw-head h2 { font-size: 14px; margin: 0; }
-    dialog.app-dialog .hiw-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
-    dialog.app-dialog .hiw-label { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
-    dialog.app-dialog .hiw-sec p { font-size: 13px; color: #333; line-height: 1.5; margin: 4px 0 0; }
-    dialog.app-dialog .hiw-sec dl { margin: 0; }
-    dialog.app-dialog .hiw-sec dt { font-size: 13px; font-weight: bold; margin: 8px 0 2px; }
-    dialog.app-dialog .hiw-sec dd { font-size: 13px; color: #333; line-height: 1.5; margin: 0; }
-    dialog.app-dialog .hiw-full { display: block; box-sizing: border-box; border: 1px solid #888; background: #c4c4c4; padding: 12px; font-size: 14px; font-weight: bold; text-align: center; text-decoration: none; color: #222; }
+    /* ---- THIS PAGE ---- */
     dialog.app-dialog .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
     .dlg-note { font-size: 10px; color: #555; padding: 6px 10px; border-top: 1px dashed #bbb; margin: 0; }
-
-    /* ---- SHARED (66 of 114, 12 rules): notification bell dropdown ---- */
-    .notif-menu { position: relative; }
-    .notif-menu summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; }
-    .notif-menu summary::-webkit-details-marker { display: none; }
-    .notif-menu .dropdown { position: absolute; right: 0; top: calc(100% + 4px); width: 260px; max-width: 80vw; border: 1px solid #888; background: #e6e6e6; z-index: 10; }
-    .notif-menu .dropdown .zone-tag { background: #cdcdcd; }
-    .notif-drop ul { list-style: none; margin: 0; padding: 0; }
-    .notif-drop li { border-top: 1px solid #ccc; }
-    .notif-drop li:first-child { border-top: none; }
-    .notif-drop li a { display: block; padding: 8px 10px; text-decoration: none; color: #222; }
-    .notif-drop li a strong { display: block; font-size: 12px; }
-    .notif-drop li a span { display: block; font-size: 10px; color: #555; }
-    .notif-all { display: block; text-align: center; padding: 8px; border-top: 1px solid #999; font-size: 11px; text-decoration: none; color: #222; background: #dcdcdc; }
-
-    /* ---- THIS PAGE ---- */
-    .bal-add { padding: 3px; }
-
-    /* ---- SHARED (97 of 114, 6 rules): footer trust strip + SEO popular-links ---- */
-    .footer-trust { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; padding: 10px 12px; border-bottom: 1px solid #ccc; font-size: 12px; color: #444; }
-    .footer-trust .trust-item { display: inline-block; }
-    .footer-popular { padding: 10px 12px; border-top: 1px solid #ccc; }
-    .footer-popular h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; margin: 0 0 6px; }
-    .popular-links { display: flex; flex-wrap: wrap; gap: 6px 14px; list-style: none; padding: 0; margin: 0; font-size: 12px; }
-    .popular-links a { color: #444; }
 
     /* ---- THIS PAGE: what the chrome port brought with the markup, and nothing here is promised to another file ---- */
     /* Layout taken from components/, every colour replaced by the
        wireframe palette. See wireframes/_generators/port_chrome.py. */
-    .app-dialog.hiw-dialog { max-width: 464px; overflow: clip; }
-    /* Stage 04 reconcile 2026-08-14: the how-it-works DIALOG is three steps now, and the page it links to stays prose. Grey-box rules for the stepper; the paint owns the stills. */
-    .hiw-steps { display: flex; flex-direction: column; }
-    .hiw-radio { position: absolute; width: 1px; height: 1px; margin: -1px; clip-path: inset(50%); overflow: hidden; }
-    .hiw-step { display: none; flex-direction: column; }
-    .hiw-steps > .hiw-radio:nth-of-type(1):checked ~ .hiw-step:nth-of-type(1),
-    .hiw-steps > .hiw-radio:nth-of-type(2):checked ~ .hiw-step:nth-of-type(2),
-    .hiw-steps > .hiw-radio:nth-of-type(3):checked ~ .hiw-step:nth-of-type(3) { display: flex; }
-    .hiw-stage { min-height: 180px; padding: 24px; display: flex; align-items: center; justify-content: center; background: #ededed; border-bottom: 1px solid #ccc; }
-    .hiw-still { width: 100%; max-width: 296px; min-height: 120px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 12px; border: 1px dashed #999; background: #e0e0e0; font-size: 12px; color: #555; }
-    .hiw-step-txt { padding: 20px 24px 16px; display: flex; flex-direction: column; gap: 8px; min-height: 150px; }
-    .hiw-step-n { margin: 0; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: #555; }
-    .hiw-step-t { margin: 0; font-size: 22px; font-weight: 700; line-height: 1.1; }
-    .hiw-step-b { margin: 0; font-size: 14px; line-height: 1.5; color: #333; }
-    .hiw-nav { padding: 0 24px 24px; display: flex; flex-direction: column; gap: 12px; }
-    .hiw-dots { display: flex; justify-content: center; gap: 8px; padding: 4px 0 2px; }
-    .hiw-dot { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 20px; cursor: pointer; }
-    .hiw-dot::before { content: ''; width: 24px; height: 4px; background: #bbb; }
-    .hiw-steps > .hiw-radio:nth-of-type(1):checked ~ .hiw-step .hiw-dot:nth-of-type(1)::before,
-    .hiw-steps > .hiw-radio:nth-of-type(2):checked ~ .hiw-step .hiw-dot:nth-of-type(2)::before,
-    .hiw-steps > .hiw-radio:nth-of-type(3):checked ~ .hiw-step .hiw-dot:nth-of-type(3)::before { background: #555; }
-    .hiw-next { cursor: pointer; }
-    .hiw-skip { display: block; text-align: center; font-size: 13px; color: #555; text-decoration: none; padding: 8px; }
-    dialog.app-dialog.hiw-dialog:modal .hiw-body { overflow: auto; min-height: 0; }
-    .hiw-hero { position: relative; overflow: clip; padding: 32px 24px 28px; }
-    .hiw-hero-inner { position: relative; }
-    .hiw-hero :is(h1,h2) { font-weight: 700; line-height: 1.05; letter-spacing: -.03em; margin: 0; }
-    .hiw-tagline { margin: 8px 0 0; font-size: 14px; line-height: 1.5; max-width: 32ch; }
-    .hiw-ic { flex: 0 0 32px; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
-    .hiw-sec-txt { flex: 1; min-width: 0; }
-    .hiw-faq { flex-direction: column; gap: 0; padding-top: 16px; }
-    .hiw-faq dl { margin: 8px 0 0; }
-    .hiw-faq dt { font-size: 13px; font-weight: 600; margin: 12px 0 4px; }
-    .hiw-faq dt:first-of-type { margin-top: 2px; }
-    .hiw-faq dd { font-size: 13px; line-height: 1.5; margin: 0; }
-    .app-dialog.hiw-dialog .hiw-arrow { width: 18px; height: 18px; }
-    .app-header .cat-condensed { max-height: 0; overflow: clip; visibility: hidden; }
-    .app-header.scrolled .cat-condensed { max-height: 54px; visibility: visible; }
-    .app-header .cat-condensed ul { list-style: none; margin: 0; display: flex; flex-wrap: nowrap; gap: 8px; padding: 8px 14px; overflow-x: auto; }
-    .app-header .cat-condensed li { flex: 0 0 auto; }
-    .app-header .cat-condensed a { display: inline-flex; align-items: center; min-height: 0; font-weight: 600; font-size: 13px; padding: 8px 12px; }
-    .trust-head { font-size: 14px; font-weight: 700; letter-spacing: -.02em; margin: 0 0 12px; }
-    .trust-items { display: flex; flex-wrap: wrap; gap: 12px; }
-    .footer-trust .tr-txt { display: flex; flex-direction: column; gap: 2px; }
-    .footer-trust .tr-txt b { font-size: 14px; font-weight: 600; }
-    .footer-trust .tr-txt i { font-size: 12px; font-style: normal; }
-    .footer-trust .trust-items { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-    .footer-trust .tr-ic { width: 22px; height: 22px; flex: 0 0 22px; padding: 8px; box-sizing: content-box; position: relative; }
-    .footer-trust .tr-txt { position: relative; }
     dialog.app-dialog.signin-dialog { max-width: 410px; }
-    @media(pointer:coarse) {
-      .app-header .cat-condensed a { min-height: 44px; }
-    }
-    @media(max-width:759.98px) {
-      .footer-trust .trust-items { grid-template-columns: 1fr; }
-    }
-
-    /* ---- SHARED (97 of 114, 2 rules): skip link ---- */
-    /* Skip link (WCAG 2.4.1 Bypass Blocks). The first focusable element on the page, clipped to
-       a 1x1 box until it takes focus, because display:none and visibility:hidden are the two ways
-       of hiding that also remove a control from the tab order, which is the whole point of it.
-       clip-path clips hit testing too, so the parked box cannot swallow a click. Grey, like the
-       rest of this tree; the colour copy takes its look from components/base.css. */
-    .skip-link { position: fixed; top: 8px; left: 8px; z-index: 10; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-    .skip-link:focus { width: auto; height: auto; min-height: 44px; overflow: visible; clip-path: none;
-      display: inline-flex; align-items: center; padding: 0 16px; font-size: 14px; text-decoration: none;
-      background: #e2e2e2; color: #333; border: 1px solid #999; border-radius: 4px; }
-
-    /* ---- SHARED (94 of 114, 7 rules): search, the field itself, where the mark used to be a trip to a page ---- */
-    .search { margin: 0 0 16px; }
-    .search-field { position: relative; display: flex; align-items: center; }
-    .search-ic { position: absolute; left: 12px; width: 18px; height: 18px; }
-    .search-input { flex: 1; box-sizing: border-box; width: 100%; min-height: 44px; padding: 8px 40px; border: 1px solid #888; background: #fff; font-size: 14px; font-family: inherit; }
-    .search-clear { position: absolute; right: 4px; }
-    .search-count { font-size: 12px; color: #555; margin: 0 0 10px; }
-    .search-count b { color: #111; }
-
-    /* ---- SHARED (97 of 114, 20 rules): search, the two ways in: the sheet below the RAIL rung, the header field at and above it ---- */
-    /* The rung is 900px and it is a measurement: the free middle of the header row
-       is 69px at 640 and 277 at 900, so a field cannot enter at DESK. */
-    .search-inline { display: none; }
-    .search-bar { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border-bottom: 1px solid #ccc; }
-    .search-bar .search { flex: 1; min-width: 0; margin: 0; }
-    dialog.app-dialog.search-sheet { width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; display: flex; flex-direction: column; }
-    dialog.app-dialog.search-sheet[open] { position: fixed; inset: 0; z-index: 60; }
-    .search-body { display: flex; flex-direction: column; gap: 18px; min-height: 0; padding: 14px; overflow: auto; }
-    .search-group { display: flex; flex-direction: column; gap: 8px; }
-    .search-group-label { margin: 0; font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
-    .search-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; list-style: none; margin: 0; padding: 0; }
-    .search-tiles li { display: flex; min-width: 0; }
-    .search-tiles li > * { flex: 1; min-width: 0; justify-content: flex-start; text-align: left; }
-    /* the tiles are outside .cat-nav, so the grey chip face is restated for them here:
-       in the painted tree this is one .chip-nav and the container only sizes the cell. */
-    .search-tiles a { display: flex; align-items: center; gap: 8px; box-sizing: border-box; min-height: 44px; border: 1px solid #888; background: #d6d6d6; padding: 8px 10px; font-size: 12px; text-decoration: none; }
-    .search-tiles svg { width: 18px; height: 18px; flex: 0 0 auto; }
-    .search-rows { list-style: none; margin: 0 -10px; padding: 0; display: flex; flex-direction: column; gap: 2px; }
-    .search-rows a { display: block; padding: 8px 10px; text-decoration: none; }
-    .search-rows strong { display: block; font-size: 13px; }
-    .search-rows span { display: block; margin-top: 2px; font-size: 11px; color: #555; }
-    .search-seeall { display: flex; align-items: center; justify-content: space-between; box-sizing: border-box; margin: 0 -10px; padding: 10px; min-height: 44px; border-top: 1px solid #ccc; font-size: 12px; font-weight: bold; text-decoration: none; }
-    .search-none { margin: 0; padding: 14px 10px; font-size: 12px; color: #555; text-align: center; }
-    @media (min-width: 900px) {
-      .search-open { display: none; }
-      .search-inline { display: flex; position: relative; flex: 1 1 auto; min-width: 0; margin: 0 12px; }
-      .search-inline .search { flex: 1; min-width: 0; margin: 0; }
-      /* the page's own field goes when the header carries one: one query, one field */
-      .search-page { display: none; }
-    }
 
     </style>
 </head>
@@ -791,10 +654,10 @@
       </li>
       <li class="wf-sec">Resolution</li>
       <li class="wf-screen">
-        <a href="win.html">Win Screen</a>
+        <a href="win.html" class="active" aria-current="page">Win Screen</a>
         <ul class="wf-states">
           <li><a href="win.html">success / binary</a></li>
-          <li><a href="win-multi.html">success / multi-outcome</a></li>
+          <li class="cur"><a href="win-multi.html">success / multi-outcome (this page)</a></li>
           <li><a href="win-loading.html">loading (share card)</a></li>
           <li><a href="win-error.html">error (card not generated, T11)</a></li>
           <li><a href="win-payout-pending.html">payout-pending</a></li>
@@ -820,9 +683,9 @@
         </ul>
       </li>
       <li class="wf-screen">
-        <a href="active-bets-history.html" class="active" aria-current="page">Bet History (History tab)</a>
+        <a href="active-bets-history.html">Bet History (History tab)</a>
         <ul class="wf-states">
-          <li class="cur"><a href="active-bets-history.html">success (this page)</a></li>
+          <li><a href="active-bets-history.html">success</a></li>
           <li><a href="active-bets-history-empty.html">empty</a></li>
           <li><a href="active-bets-history-error.html">error</a></li>
           <li><a href="active-bets-history-loading.html">loading</a></li>
@@ -943,322 +806,44 @@
   </nav>
 
   <div class="device">
-
-    <!-- Bypass block, WCAG 2.4.1: the first focusable thing in the document, clipped to 1x1
-         until it takes focus. Structure lives here; the painted twin takes its look from
-         components/base.css. -->
-    <a class="skip-link" href="#main-content">Skip to main content</a>
-    <!-- Header (lean: logo = Events/home, right icon cluster) -->
-    <header class="app-header">
-      <div class="row">
-        <div class="left">
-          <button type="button" class="logo-btn" aria-label="Yonder - go to Events home">Yonder</button>
-          <button type="button" class="btn btn-ghost btn-xs hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
+    <div class="backdrop">
+      <section class="sheet" aria-label="You were right">
+        <div class="grab"></div>
+        <div class="sheet-head">
+          <h1>You were right</h1>
+          <a href="active-bets.html" class="icon-btn icon-btn-photo sheet-close" aria-label="Back to My Bets"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
         </div>
-        <!-- Search, the inline face: the field itself, from the RAIL rung up. Below the rung
-             this is display:none and the mark in the utility cluster is the way in. -->
-        <form class="search-inline" role="search" action="event-feed-search-results.html">
-          <div class="search">
-            <div class="search-field">
-              <svg class="search-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 16l5 5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-              <input class="search-input" type="search" name="q" value="" placeholder="Search events"
-                     aria-label="Search events" autocomplete="off" enterkeyhint="search">
+        <div class="sheet-body">
+          <p class="fine">Which genre led the 2026 spring box office?</p>
+          <div class="reconcile-box rec-won">
+            <span class="field-label">You were right - you won</span>
+            <strong>+$21.10</strong>
+            <span class="fine">$10.00 stake returned + $11.10 winnings. You held NO on Action, avg price 53%.</span>
+          </div>
+          <div>
+            <span class="field-label">What happened</span>
+            <p class="protect">Animation led the 2026 spring box office. You bet that Action would not lead. Action did not lead, so your side paid.</p>
+          </div>
+          <div>
+            <span class="field-label">How this was decided</span>
+            <div class="reading">
+              <p class="reading-line">Resolved Animation on Jun 2, 2026 at 11:00 ET. Animation took $412.6M of the spring window against Action at $308.1M, so Action did not lead and NO on Action paid.</p>
+              <p class="reading-src">Source: <a href="#">Box Office Mojo spring grosses</a>. Read by the Yonder team at 11:00 ET.</p>
             </div>
           </div>
-        </form>
-
-
-        <div class="utility">
-          <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
-          <div class="bal-toggle desk-only">
-            <span class="bal-figure"><span class="bal-label" id="balLabel">Portfolio</span> <span class="bal-amt" id="balAmt">$132.00</span></span>
-            <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Portfolio)">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg>
-            </button>
-            <button type="button" class="icon-btn bal-add" data-open="deposit" aria-label="Add funds">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-            </button>
+          <div>
+            <span class="field-label">Share Card (auto-generated)</span>
+            <div class="widget-box">Share card image, generated here: "Called it - Action would not lead the spring box office. Paid out $21.10 on Yonder."</div>
           </div>
-
-          <!-- Favorites: desktop header only (on mobile it is the bottom-bar slot). -->
-          <a class="icon-btn desk-only" href="favorites.html" aria-label="Favorites, see saved events">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></svg>
-          </a>
-
-          <!-- Search: a utility on every screen, not a navigation slot. -->
-          <a class="icon-btn search-open" href="event-feed-search.html" aria-label="Search events">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><g transform="translate(0.8472 0.8472) scale(0.9294)"><path fill="currentColor" fill-rule="evenodd" d="M11.5 2.75a8.75 8.75 0 1 0 0 17.5a8.75 8.75 0 0 0 0-17.5M1.25 11.5c0-5.66 4.59-10.25 10.25-10.25S21.75 5.84 21.75 11.5c0 2.56-.939 4.902-2.491 6.698l3.271 3.272a.75.75 0 1 1-1.06 1.06l-3.272-3.271A10.2 10.2 0 0 1 11.5 21.75c-5.66 0-10.25-4.59-10.25-10.25" clip-rule="evenodd"/></g></svg>
-          </a>
-          <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
-          <details class="notif-menu">
-            <summary aria-label="Notifications, 3 unread">
-              <span class="bell-wrap">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.75 9.71v-.705C18.75 5.136 15.726 2 12 2S5.25 5.136 5.25 9.005v.705a4.4 4.4 0 0 1-.692 2.375L3.45 13.81c-1.011 1.575.062 3.68 1.966 3.843a51 51 0 0 0 13.167 0c1.904-.163 2.977-2.268 1.966-3.843l-1.108-1.725a4.4 4.4 0 0 1-.692-2.375"/><path fill="currentColor" d="M7.243 18.545a5.002 5.002 0 0 0 9.513 0c-3.145.28-6.367.281-9.513 0"/></svg>
-                <span class="badge-dot">3</span>
-              </span>
-            </summary>
-            <div class="dropdown notif-drop" role="menu">
-              <ul>
-                <li><a class="nav-item nav-row nav-row-stack" href="win.html"><strong>Bet resolved</strong><span>US government shutdown before Jul 1, 2026 - YES won</span></a></li>
-                <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
-                <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
-              </ul>
-              <a class="notif-all" href="notifications.html">See all notifications</a>
-            </div>
-          </details>
-
-          <details class="avatar-menu">
-            <summary aria-label="Account menu">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
-              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-            </summary>
-            <div class="dropdown" role="menu">
-              <ul>
-                <li><a class="nav-item nav-row" href="my-profile.html" role="menuitem">My Profile</a></li>
-                <li><a class="nav-item nav-row" href="active-bets.html" role="menuitem">My Bets</a></li>
-                <li><a class="nav-item nav-row" href="favorites.html" role="menuitem">Favorites</a></li>
-                <li><a class="nav-item nav-row" href="wallet.html" role="menuitem">Wallet</a></li>
-                <li><a class="nav-item nav-row" href="how-it-works.html" role="menuitem">How It Works</a></li>
-                <li><a class="nav-item nav-row" href="event-feed-logged-out.html" role="menuitem">Logout</a></li>
-              </ul>
-            </div>
-          </details>
-        </div>
-      </div>
-      <!-- Condensed category strip: hidden until you scroll past the full category
-           bar, then it slides into the sticky header so the tabs stay reachable.
-           Small, icon-less chips (the full bar below keeps its icons). -->
-    </header>
-    <main class="feed" id="main-content" tabindex="-1">
-      
-        
-        
-        <div class="cat-layout">
-        <div class="cat-main">
-        <div class="feed-head"><h1>My Bets</h1></div>
-        <nav class="tabs" aria-label="My Bets">
-          <a href="active-bets.html">Active</a>
-          <a href="active-bets-history.html" aria-current="page">History</a>
-        </nav>
-        <div class="pos-list">
-          <a href="loss-multi.html">
-            <article class="pos">
-              <div class="pos-top">
-                <span class="pos-q">Which chain held the largest stablecoin supply at the end of H1 2026?</span>
-                <span class="pos-side">LOST</span>
-              </div>
-              <div class="pos-figures">
-                <span class="pos-fig">Stake<b>$8.00</b></span>
-                <span class="pos-fig">Paid out<b>$0.00</b></span>
-                <span class="pos-fig">Your side<b>YES &middot; Solana</b></span>
-                <span class="pos-fig">Result<b>Ethereum</b></span>
-              </div>
-              <span class="pos-status">Resolved Jul 1, 2026 &middot; tap to see what happened</span>
-            </article>
-          </a>
-          <a href="win.html">
-            <article class="pos">
-              <div class="pos-top">
-                <span class="pos-q">Did the US government shut down before July 1, 2026?</span>
-                <span class="pos-side">WON</span>
-              </div>
-              <div class="pos-figures">
-                <span class="pos-fig">Stake<b>$5.00</b></span>
-                <span class="pos-fig">Paid out<b>$13.16</b></span>
-                <span class="pos-fig">Your side<b>YES</b></span>
-                <span class="pos-fig">Result<b>YES</b></span>
-              </div>
-              <span class="pos-status">Resolved Jun 27, 2026 &middot; tap to see your win</span>
-            </article>
-          </a>
-          <a href="win.html">
-            <article class="pos">
-              <div class="pos-top">
-                <span class="pos-q">Did Bitcoin close above $100,000 in the first half of 2026?</span>
-                <span class="pos-side">WON</span>
-              </div>
-              <div class="pos-figures">
-                <span class="pos-fig">Stake<b>$25.00</b></span>
-                <span class="pos-fig">Paid out<b>$31.80</b></span>
-                <span class="pos-fig">Your side<b>YES</b></span>
-                <span class="pos-fig">Result<b>YES</b></span>
-              </div>
-              <span class="pos-status">Resolved Jun 20, 2026 &middot; tap to see your win</span>
-            </article>
-          </a>
-          <a href="loss.html">
-            <article class="pos">
-              <div class="pos-top">
-                <span class="pos-q">Was a spot ETH ETF approved before July 1, 2026?</span>
-                <span class="pos-side">LOST</span>
-              </div>
-              <div class="pos-figures">
-                <span class="pos-fig">Stake<b>$5.00</b></span>
-                <span class="pos-fig">Paid out<b>$0.00</b></span>
-                <span class="pos-fig">Your side<b>NO</b></span>
-                <span class="pos-fig">Result<b>YES</b></span>
-              </div>
-              <span class="pos-status">Resolved Jun 12, 2026 &middot; tap to see what happened</span>
-            </article>
-          </a>
-          <a href="win-multi.html">
-            <article class="pos">
-              <div class="pos-top">
-                <span class="pos-q">Which genre led the 2026 spring box office?</span>
-                <span class="pos-side">WON</span>
-              </div>
-              <div class="pos-figures">
-                <span class="pos-fig">Stake<b>$10.00</b></span>
-                <span class="pos-fig">Paid out<b>$21.10</b></span>
-                <span class="pos-fig">Your side<b>NO &middot; Action</b></span>
-                <span class="pos-fig">Result<b>Animation</b></span>
-              </div>
-              <span class="pos-status">Resolved Jun 2, 2026 &middot; tap to see your win</span>
-            </article>
-          </a>
-        </div>
-        <!-- /cat-main --><!-- /cat-layout --><!-- /feed-inner -->
-    </main>
-    <!-- Bottom navigation (mobile only) -->
-    <nav class="bottom-nav" aria-label="Primary (mobile)">
-      <ul>
-        <li><a class="nav-item nav-slot" href="event-feed.html">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
-          <span>Events</span>
-        </a></li>
-        <li aria-current="page"><a class="nav-item nav-slot" href="active-bets.html">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
-          <span>My Bets</span>
-        </a></li>
-        <li><a class="nav-item nav-slot" href="favorites.html">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></svg>
-          <span>Favorites</span>
-        </a></li>
-        <li><a class="nav-item nav-slot" href="my-profile.html" aria-label="Portfolio, balance $142">
-          <span class="bn-bal">$142</span>
-          <span>Portfolio</span>
-        </a></li>
-      </ul>
-    </nav>
-    <!-- Footer (global element) -->
-    <footer class="app-footer">
-      <div class="footer-inner">
-
-        <!-- Trust strip (persistent funds-safety + resolution signal, WF reconcile) -->
-        <div class="footer-trust">
-          <h2 class="trust-head">Built on trust, not on your balance</h2>
-          <div class="trust-items">
-            <span class="trust-item">
-              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M8.8 12l2.2 2.2L15.4 10"/></svg>
-              <span class="tr-txt"><b>Your USDC is held 1:1</b><i>We never lend it.</i></span>
-            </span>
-            <span class="trust-item">
-              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg>
-              <span class="tr-txt"><b>Every event resolves against a public source</b><i>You can check it.</i></span>
-            </span>
-            <span class="trust-item">
-              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13l4 4L20 5"/></svg>
-              <span class="tr-txt"><b>1,284 events resolved</b><i>On-chain, verifiable.</i></span>
-            </span>
+          <button type="button" class="btn btn-primary btn-md btn-block">Share</button>
+          <div>
+            <span class="field-label">Before the next one</span>
+            <p class="protect">One right call is not a streak. The next event has its own odds, and this win does not change them. Read the next one on its own terms.</p>
           </div>
+          <a href="event-feed.html" class="btn btn-secondary btn-md btn-block">Browse events</a>
         </div>
-
-        <div class="footer-top">
-
-          <!-- Brand block: logo, tagline, social, language -->
-          <div class="footer-brand">
-            <span class="footer-logo">logo placeholder</span>
-            <p class="footer-tagline">Tagline placeholder <span class="tbd">TBD</span></p>
-            <details class="filter-menu lang-menu" id="langMenu">
-              <summary aria-label="Language">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.4 2.5 2.4 13 0 16M12 4c-2.4 2.5-2.4 13 0 16"/></svg>
-                <span id="langCurrent">English</span>
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-                <span class="tbd">TBD</span>
-              </summary>
-              <div class="filter-panel">
-                <ul>
-                  <li><label><input type="radio" name="lang" value="English" checked> English</label></li>
-                  <li><label><input type="radio" name="lang" value="Spanish"> Spanish</label></li>
-                  <li><label><input type="radio" name="lang" value="Portuguese"> Portuguese</label></li>
-                  <li><label><input type="radio" name="lang" value="German"> German</label></li>
-                  <li><label><input type="radio" name="lang" value="French"> French</label></li>
-                </ul>
-              </div>
-            </details>
-          </div>
-
-          <!-- Link columns -->
-          <div class="footer-cols">
-
-            <nav class="footer-col" aria-label="Events">
-              <h2>Events</h2>
-              <p class="sub-label">By category</p>
-              <ul>
-                <li><a href="event-feed-politics.html">Politics</a></li>
-                <li><a href="event-feed-crypto.html">Crypto</a></li>
-                <li><a href="event-feed-culture.html">Culture</a></li>
-                <li><a href="event-feed-general.html">General</a></li>
-                <li><a href="event-feed.html">View all events</a></li>
-              </ul>
-            </nav>
-
-            <nav class="footer-col" aria-label="Product">
-              <h2>Product</h2>
-              <ul>
-                <li><a href="how-it-works.html">How It Works</a></li>
-                <li><span class="footer-soon">Leaderboard</span></li>
-                <li><a href="wallet.html">Wallet</a></li>
-                <li><a href="active-bets.html">My Bets</a></li>
-              </ul>
-            </nav>
-
-            <nav class="footer-col" aria-label="Support">
-              <h2>Support</h2>
-              <ul>
-                <li><span class="footer-soon">Help Center</span> <span class="tbd">TBD</span></li>
-                <li><span class="footer-soon">FAQ</span> <span class="tbd">TBD</span></li>
-                <li><a href="#">Contact</a> <span class="tbd">TBD</span></li>
-                <li><a href="how-it-works.html">How It Works</a></li>
-                <li><a href="about.html">About</a></li>
-              </ul>
-            </nav>
-
-          </div>
-        </div>
-
-        <!-- SEO popular-links block (second internal-linking plane, WF reconcile) -->
-        <div class="footer-popular">
-          <h2>Popular right now</h2>
-          <ul class="popular-links">
-            <li><a href="event-feed-politics.html">Politics events</a></li>
-            <li><a href="event-feed-crypto.html">Crypto events</a></li>
-            <li><a href="event-feed-culture.html">Culture events</a></li>
-            <li><a href="event-feed-general.html">General events</a></li>
-            <li><a href="event-feed.html">Trending events</a></li>
-            <li><a href="event-feed.html">Ending soon</a></li>
-            <li><a href="how-it-works.html">How it works</a></li>
-          </ul>
-        </div>
-
-        <!-- Legal strip -->
-        <div class="footer-legal">
-          <nav aria-label="Legal">
-            <ul class="legal-links">
-              <li><a href="terms.html">Terms</a></li>
-              <li><a href="privacy.html">Privacy</a></li>
-              <li><a href="responsible-betting.html">Responsible play</a></li>
-              <li><a href="cookies.html">Cookie Policy</a></li>
-              <li><a href="cookie-consent.html">Cookie preferences</a></li>
-            </ul>
-          </nav>
-          <p>Prediction markets involve risk of loss. Not available in restricted regions.</p>
-          <p class="placeholder-line">[Regulatory / licensing line - placeholder, to be set. No US real-money markets; geo-restrictions and KYC per regulatory requirements.]</p>
-          <p>Copyright (c) Yonder. Sample wireframe content.</p>
-        </div>
-
-      </div>
-    </footer>
+      </section>
+    </div>
 
   </div>
 
@@ -1408,69 +993,6 @@
     </div>
   </dialog>
 
-  <dialog id="howitworksDialog" class="app-dialog hiw-dialog" aria-label="How it works">
-    <button type="button" class="icon-btn icon-btn-photo sheet-close" data-close-dialog aria-label="Close">
-      <svg class="ic" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
-    <div class="hiw-steps">
-      <input class="hiw-radio" type="radio" name="hiwstep" id="hiwstep-1" checked aria-label="Step 1 of 3, pick an event">
-      <input class="hiw-radio" type="radio" name="hiwstep" id="hiwstep-2" aria-label="Step 2 of 3, back YES or NO">
-      <input class="hiw-radio" type="radio" name="hiwstep" id="hiwstep-3" aria-label="Step 3 of 3, get paid when it resolves">
-
-      <div class="hiw-step">
-        <div class="hiw-stage" aria-hidden="true"><div class="hiw-still">still: an event card with its question, its one-line why and its YES / NO pair</div></div>
-        <div class="hiw-step-txt">
-          <p class="hiw-step-n">Step 1 of 3</p>
-          <h2 class="hiw-step-t">Pick an event you follow</h2>
-          <p class="hiw-step-b">Every event asks one question, with a date and a named source. You see the odds, the one-line why and how it resolves before you put in a cent.</p>
-        </div>
-        <div class="hiw-nav">
-          <label class="btn btn-primary btn-md btn-block hiw-next" for="hiwstep-2">Next</label>
-          <div class="hiw-dots">
-            <label class="hiw-dot" for="hiwstep-1" aria-label="Step 1"></label>
-            <label class="hiw-dot" for="hiwstep-2" aria-label="Step 2"></label>
-            <label class="hiw-dot" for="hiwstep-3" aria-label="Step 3"></label>
-          </div>
-        </div>
-      </div>
-
-      <div class="hiw-step">
-        <div class="hiw-stage" aria-hidden="true"><div class="hiw-still">still: the bet panel with the YES / NO pick, the stake and the potential payout</div></div>
-        <div class="hiw-step-txt">
-          <p class="hiw-step-n">Step 2 of 3</p>
-          <h2 class="hiw-step-t">Back YES or NO</h2>
-          <p class="hiw-step-b">The odds are a live price set by what people bet. Your payout settles at the price you took, so being early and right is worth more. One dollar minimum.</p>
-        </div>
-        <div class="hiw-nav">
-          <label class="btn btn-primary btn-md btn-block hiw-next" for="hiwstep-3">Next</label>
-          <div class="hiw-dots">
-            <label class="hiw-dot" for="hiwstep-1" aria-label="Step 1"></label>
-            <label class="hiw-dot" for="hiwstep-2" aria-label="Step 2"></label>
-            <label class="hiw-dot" for="hiwstep-3" aria-label="Step 3"></label>
-          </div>
-        </div>
-      </div>
-
-      <div class="hiw-step">
-        <div class="hiw-stage" aria-hidden="true"><div class="hiw-still">still: a resolved position, won, with the stake and the amount paid out</div></div>
-        <div class="hiw-step-txt">
-          <p class="hiw-step-n">Step 3 of 3</p>
-          <h2 class="hiw-step-t">Get paid when it resolves</h2>
-          <p class="hiw-step-b">It resolves against the source it named, and what was read is published with the result. Until then your money is held 1:1, never lent and never moved.</p>
-        </div>
-        <div class="hiw-nav">
-          <a class="btn btn-primary btn-md btn-block" href="sign-in.html">Create account</a>
-          <a class="hiw-skip" href="event-feed.html">Browse events first</a>
-          <div class="hiw-dots">
-            <label class="hiw-dot" for="hiwstep-1" aria-label="Step 1"></label>
-            <label class="hiw-dot" for="hiwstep-2" aria-label="Step 2"></label>
-            <label class="hiw-dot" for="hiwstep-3" aria-label="Step 3"></label>
-          </div>
-        </div>
-      </div>
-    </div>
-  </dialog>
-
   <script>
     // Shared dialogs: open over the current page. On logged-out pages, completing
     // sign-in then closing / funding the deposit lands on the logged-in counterpart
@@ -1483,32 +1005,18 @@
       var signedIn = false;
       document.addEventListener('click', function (e) {
         var o = e.target.closest('[data-open]');
-        if (o) { e.preventDefault(); var dv = o.getAttribute('data-open'); open(dv === 'deposit' ? 'depositDialog' : dv === 'howitworks' ? 'howitworksDialog' : 'signinDialog'); return; }
+        if (o) { e.preventDefault(); open(o.getAttribute('data-open') === 'deposit' ? 'depositDialog' : 'signinDialog'); return; }
         var f = e.target.closest('[data-flow="signin-to-deposit"]');
         if (f) { e.preventDefault(); signedIn = true; close(dlg('signinDialog')); open('depositDialog'); return; }
         var c = e.target.closest('[data-close-dialog]');
         if (c) { close(c.closest('dialog')); return; }
       });
-      ['signinDialog', 'depositDialog', 'howitworksDialog'].forEach(function (id) {
+      ['signinDialog', 'depositDialog'].forEach(function (id) {
         var d = dlg(id); if (!d) return;
         d.addEventListener('click', function (e) { if (e.target === d) close(d); });
       });
       var dep = dlg('depositDialog');
       if (dep) dep.addEventListener('close', function () { if (target && signedIn) window.location.href = target; });
     })();
-  </script>
-  <script id="wf-catstrip">
-    // Reveals the condensed category strip in the sticky header once the full
-    // category bar has scrolled up under it. Ported from the painted twin; the
-    // selector drops .feed-inner, which is a plate the wireframe does not draw.
-    (function () {
-      var header = document.querySelector('.app-header');
-      var fullNav = document.querySelector('.cat-nav');
-      if (!header || !fullNav || !('IntersectionObserver' in window)) return;
-      new IntersectionObserver(function (e) {
-        header.classList.toggle('scrolled', !e[0].isIntersecting);
-      }, { rootMargin: '-60px 0px 0px 0px', threshold: 0 }).observe(fullNav);
-    })();
-  </script>
-</body>
+  </script></body>
 </html>

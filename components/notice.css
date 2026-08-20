@@ -7,7 +7,7 @@
           --outcome-yes-text, --result-won, --text-brass, --text-muted, --text-primary,
           --tint-brass-06, --tint-brass-09, --tint-brass-30, --tint-brass-45
    Stand:  ui-kit/notice.html, and ui-kit/molecules.html#notice-lt for the level and its reason (the -lt is the shelf's own id suffix and not a variant of this component: ui-kit/CLAUDE.md)
-   Stands on: 114 documents in ui-visual/ and 114 in wireframes/, 131 .protect elements in the
+   Stands on: 116 documents in ui-visual/ and 116 in wireframes/, 136 .protect elements in the
      paint, re-counted from the rendered DOM 2026-08-19. It said 105 with a truncated roster
      after it (404.html, 500.html, active-bets-empty-new.html, active-bets-empty-resolved.html,
      active-bets-error.html, ...), which was exact when the painted tree was 105 screens and

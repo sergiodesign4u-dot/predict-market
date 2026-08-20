@@ -957,7 +957,7 @@ _1 state page(s): how-it-works.html_
 
 ### Win Screen
 
-_4 state page(s): win-error.html, win-loading.html, win-payout-pending.html, win.html_
+_5 state page(s): win-error.html, win-loading.html, win-multi.html, win-payout-pending.html, win.html_
 
 | Zone | Type | Line | Flag |
 |---|---|---|---|
@@ -984,10 +984,16 @@ _4 state page(s): win-error.html, win-loading.html, win-payout-pending.html, win
 | Main | Text | Resolved YES on Jun 27, 2026 at 09:14 ET. A federal funding gap began before the Jul 1 deadline the rules named. | **NEW 2026-08-19**, `.reading-line`. Carries the outcome, the instant and the condition in the words the rules used, so the reader compares two sentences rather than a sentence and a hash |
 | Main | Text | Source: OMB notice of Jun 26, 2026. Read by the Yonder team at 09:14 ET. | **NEW 2026-08-19**, `.reading-src`, and the source is a LINK. **This is the face for a market only a person can settle**, and the Loss screen carries the other |
 | Main | Text | One moment, then move on - no confetti loop. Share is the primary action; "see next events" is deliberately secondary (research F5: the first win, not loss, drives overconfidence and escalation). | **leftover spec-note (internal codes)** |
+| Main | Text | Which genre led the 2026 spring box office? | **NEW 2026-08-20**, `win-multi.html`, the multi-outcome win. **The binary screen's sentence cannot be written here**: it says `the market resolved YES, the side you held`, and this market resolved **Animation**, an option the reader never touched, while they won because the option they DID take lost |
+| Main | Label | $10.00 stake returned + $11.10 winnings. You held NO on Action, avg price 53%. | **NEW 2026-08-20.** A multi position is an option AND a side, so the figure line names both. `active-bets-history.html` has printed `NO &middot; Action` in its Your side column since the row was written |
+| Main | Text | Animation led the 2026 spring box office. You bet that Action would not lead. Action did not lead, so your side paid. | **NEW 2026-08-20**, and the ORDER is the whole design. Winner first, then what you backed, then the conclusion, so the reader is never asked to carry a double negative themselves. Principle 1 (explain the number) and principle 3 (a spectator, not a trader): the trader's version is `NO on Action resolved in the money`, and nobody outside a desk reads that |
+| Main | Text | Resolved Animation on Jun 2, 2026 at 11:00 ET. Animation took $412.6M of the spring window against Action at $308.1M, so Action did not lead and NO on Action paid. | **NEW 2026-08-20**, `.reading-line`. A multi reading names the winning OPTION where a binary one names a side, and it carries the reader's option too, because the outcome alone does not say why they were paid |
+| Main | Text | Source: Box Office Mojo spring grosses. Read by the Yonder team at 11:00 ET. | **NEW 2026-08-20**, `.reading-src` |
+| Main | Text | Share card image, generated here: "Called it - Action would not lead the spring box office. Paid out $21.10 on Yonder." | **NEW 2026-08-20.** The share line says what was CALLED rather than which option won, because the call is the thing the reader got right |
 
 ### Loss Screen
 
-_2 state page(s): loss-loading.html, loss.html_
+_3 state page(s): loss-loading.html, loss-multi.html, loss.html_
 
 | Zone | Type | Line | Flag |
 |---|---|---|---|
@@ -1006,6 +1012,11 @@ _2 state page(s): loss-loading.html, loss.html_
 | Main | Button | Back to your bets | **same-action / go-to-events button varies** |
 | Main | Button | Browse events | **same-action / go-to-events button varies** |
 | Main | Text | One clear next step, and no "bet again" prompt. The resolution note is shown first so the outcome is understood before any new bet (FJ5 + EJ3: a conscious exit, no impulse to chase). | **leftover spec-note (internal codes)** |
+| Main | Text | Which chain held the largest stablecoin supply at the end of H1 2026? | **NEW 2026-08-20**, `loss-multi.html`, the multi-outcome loss, and it exists because principle 4 is `design the loss, mark the win`. Drawing only the winning half of a symmetric control is the mistake the chosen NO cost this repository |
+| Main | Text | Ethereum held the largest stablecoin supply when the window closed on Jul 1. You bet on Solana, which finished third, so your side did not pay. | **NEW 2026-08-20.** `which finished third` is the sentence a binary loss never needs: on a multi market the reader wants to know not only that they were wrong but by how far |
+| Main | Label | Your $8.00 stake on YES for Solana did not return. Avg price 24%. | **NEW 2026-08-20**, and the phrasing is `YES for Solana` rather than `YES on Solana` so the option reads as the thing backed and not as a venue |
+| Main | Text | Resolved Ethereum on Jul 1, 2026 at 00:05 ET. Ethereum held $73.4B in stablecoins against Tron at $61.2B and Solana at $12.8B, so YES for Solana did not pay. | **NEW 2026-08-20**, `.reading-line`, **and this is the Reading's third sentence shape**, the one `docs/backlog.md` 221 filed as an unmade placement before the routing measurement showed it was data rather than a face. A multi machine read compares figures ACROSS options, which a binary read has no way to do |
+| Main | Text | Source: DefiLlama stablecoin supply by chain. Read automatically at 00:05 ET. | **NEW 2026-08-20**, `.reading-src`, the automatic face on a multi market. Stablecoin supply by chain is one of the 6 machine-resolvable questions in the catalog census of 2026-08-19 |
 
 ## User-written content (do NOT rewrite)
 

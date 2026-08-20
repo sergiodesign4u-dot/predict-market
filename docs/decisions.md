@@ -12,6 +12,82 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-20 - The outcome family was binary on both halves, and the sentence a multi resolution needs cannot be written on a binary screen
+
+**`docs/backlog.md` 222, filed the same day by the routing measurement that closed 221.** The outcome
+family was six documents, `win`, `win-payout-pending`, `win-loading`, `win-error`, `loss`,
+`loss-loading`, and **0 of them multi**, while multi-outcome is a first-class type everywhere else in
+the product: **7 of the 25 catalog markets**, **37 painted cards**, a YES and a NO control on every
+option row, an `event-detail-multi` specimen from the start, and `ia/docs/flows.md` carrying the chosen
+option all the way to Confirm. **The resolution was the one place the option stopped existing**, and
+the Outcome field of the Resolution entity has said `YES · NO (or which option in multi-outcome)`
+since that entity was written. A declared state that was never placed, which is the class the chosen
+NO cost this repository.
+
+**THE PROOF THAT IT IS A TYPE AND NOT DATA IS THAT THE BINARY SENTENCE CANNOT BE WRITTEN.** `win.html`
+says *the market resolved YES on Jun 27, **the side you held***. The shipped multi fixture is a bet of
+**NO on Action** in a market where **Animation** led: the reader is paid because the option they DID
+take lost, and the option that won is one they never touched. **There is no "side you held" in that
+story at all.** Binary has two outcome combinations; multi has four, and the two involving NO are the
+ones no drawing in either tree explained.
+
+**BOTH HALVES ARE DRAWN, AND THAT WAS A DECISION RATHER THAN THOROUGHNESS.** `voice/docs/voice.md`
+principle 4 is *design the loss, mark the win*, and drawing only the winning half of a symmetric
+control is precisely what cost this repository the chosen NO. So `loss-multi` exists too, and it
+needed a market: the fifth settled bet is **YES for Solana on which chain held the largest stablecoin
+supply at the end of H1 2026**, resolved **Ethereum**, and it stands in `active-bets-history.html` and
+in the profile's Resolved tab in both trees. **The fixture set was checked before it was extended, not
+after**: the profile aggregate reads Total bets 23, Win rate 61 per cent, Resolved 18, and the four
+listed rows were a sample of eighteen, so a fifth costs the aggregate nothing and the visible split
+becomes 3 won and 2 lost, which is 60 against a stated 61.
+
+**AND THE READING GAINED ITS THIRD SENTENCE SHAPE AS A SIDE EFFECT.** `docs/backlog.md` 221 filed that
+shape as an unmade placement and the routing measurement said it was data rather than a face. It
+arrived the next day exactly as data: `loss-multi` reads **Ethereum held $73.4B in stablecoins against
+Tron at $61.2B and Solana at $12.8B**, which compares figures ACROSS options and is a thing a binary
+read has no way to do. Same drawing, same two classes, a sentence a binary market cannot produce. **The
+measurement was right and the row was right about there being something missing; they disagreed only
+about what kind of thing it was.**
+
+**NO NEW CSS.** The screens are the binary ones with a multi-shaped sentence and a multi-shaped
+reading, and that is the correct answer rather than a shortcut: what differs is the CONTENT SHAPE, and
+`.reading` was already built as a face for exactly that reason on 2026-08-19. A resolved options table
+with the winner marked was considered and left out: the sentence already names the winner, the reader's
+option and both figures, and a table would have needed new faces in `options.css` for one placement
+each.
+
+**THE PANEL LABELS WERE TURNED WITH THE PAIR, AND THE OLD ONES WERE ON THE WRONG AXIS.** The painted
+panel said `you were right` and `what happened` where the Event Detail group beside it says `binary`
+and `multi`; a type and a mood are not the same axis, and a group that mixes them cannot show that a
+type is missing. Both trees now read `binary` / `multi` in the same shape Event Detail uses, in **117
+painted and 116 grey** documents.
+
+**Verified.** Instrument control **0 of 229** documents read twice. **2 of 229 moved and both are
+intended**, the two `active-bets-history` files carrying the fifth row; the profile did not move
+because its Resolved tab is a CSS-only panel that is not the active one, and all five rows read
+identically to each other there. The four new documents: **0 duplicate ids, 0 page errors, the Reading
+visible, no sideways scroll at 14 widths including every rung and one pixel either side, positive
+overflow control seen**, and **each marks itself as the current page**, which is a set read over both
+whole trees, clean on 116 painted screens and 116 grey with `overview.html` the only document carrying
+no marker because it is the index rather than a screen. **0 dead internal links across both trees.**
+**The theme control failed on its first run and the failure was the instrument**: it read
+`document.body` after the loop had ended on a grey document and reported one ground for four
+documents. Re-run per document it gives **`rgb(15,16,19)` against `rgb(252,250,244)`** with
+`data-theme` absent in the Vault and `light` in daylight, exactly as the boot script behaves. **And the
+ground that matters is not the page**: these screens are a modal over the feed, so the Reading was
+re-measured against the sheet it stands in, **36,40,47 on 18,20,23 in the Vault and 252,250,244 on
+248,246,240 in daylight**, separating by ground and edge in one theme and mostly by edge in the other,
+which is `--bg-control` behaving as it does for `.reconcile-box.rec-lost` and not something this pass
+introduced.
+
+**Counts re-taken from the disk and the DOM, not incremented**: `ui-visual/` is **117 documents, 116
+screens**, `wireframes/` **116**, `.protect` **136 elements**, `.reading` **10 on 10**. Turned in
+`CLAUDE.md`, `STRUCTURE.md`, `components/CLAUDE.md`, `components/notice.css`,
+`ui-kit/docs/architecture.md`, `ui-kit/docs/inventory.md`, `ui-kit/notice.html`. `components/seo-plate.css`
+keeps its number because it is DATED and says the day it was taken, which is what that rule is for.
+
+---
+
 ## 2026-08-20 - A row is a route and not a surface, and the measurement that said so found the state nobody had ever drawn
 
 **`docs/backlog.md` 221 asked two questions and I had filed it half wrong.** It asked whether a

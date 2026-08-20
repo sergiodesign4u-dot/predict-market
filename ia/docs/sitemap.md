@@ -424,6 +424,21 @@ Win Screen                                   (EJ1 · SJ1)    ⭐ PRIMARY + 🥈 
 Loss Screen                                  (FJ5 · EJ3)    ⭐ PRIMARY + 🥈 SECONDARY
 ```
 
+**EACH OF THE TWO HAS A BINARY AND A MULTI SPECIMEN SINCE 2026-08-20, AND THE MULTI HALF HAD BEEN
+DECLARED HERE SINCE THE RESOLUTION ENTITY WAS WRITTEN.** The Outcome field above says `YES · NO (or
+which option in multi-outcome)`, `ia/docs/flows.md` carries the chosen option through to Confirm, the
+feed ships **37 multi cards** and Event Detail has had a multi specimen from the start, and the
+resolution was the one place where the option stopped existing: the outcome family was six documents
+with 0 multi among them, so a resolved multi row routed to the BINARY win screen. **A multi outcome
+is not a state of a binary one, it is the other TYPE**, which is why it is a specimen and not a state:
+the same distinction Event Detail already draws between `event-detail.html` and
+`event-detail-multi.html`, and the routing convention measured on 2026-08-20 (**148 feed cards, 111
+binary and 37 multi, 0 to their own market**) is what makes a document per type the right unit.
+**What the multi screens must say and a binary one cannot** is that the result is an OPTION rather
+than a side, and that a position is an option AND a side: the shipped win is `NO on Action` while
+**Animation** led, so the reader is paid because the option they took LOST, and no binary sentence
+reaches that. `docs/decisions.md` 2026-08-20.
+
 **Win Screen** - "You were right." Amount won, resolution summary (what happened and why), Share Card auto-generated. CTA: Share · See next events. Design rationale: no confetti loop, no persistent celebration animation. Research finding F5 (research.md): first WIN is the trigger for overconfidence and escalation, not loss. The win screen must celebrate the outcome without feeding the loop. Celebratory but measured - one moment, then move on.
 Per F5, the first win is the stronger escalation trigger (overconfidence). Share / mark the moment is the default next action; "see next events" is a deliberate secondary CTA, not the primary. Symmetric with the Loss intervention, shaped for overconfidence rather than impulse. Modeled in ia/docs/flows.md SJ1: share path is the primary edge, secondary "see next events" edge is labeled with the overconfidence risk.
 States: loading (Share Card generation in progress) - error (Share Card not generated, SJ1 blocked - T11 in flows) - payout-pending (your payout will arrive in a few minutes, on-chain settlement delay).

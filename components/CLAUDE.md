@@ -51,7 +51,7 @@ and every kit page at once and none of them can override it, and it reaches the 
 all.** There is no build step and no gate: what you write is what ships.
 
 **110 and 109 are both right and they count different things, so every number below says which.**
-`ui-visual/` holds **115 documents**; **114 of them are screens** and `overview.html` is the index of
+`ui-visual/` holds **117 documents**; **116 of them are screens** and `overview.html` is the index of
 the tree rather than a screen in it. It was 109 and 108 until 2026-08-17 and 106 and 105 until
 2026-08-16, and **this paragraph said 109 and 108 in its first line and 106 in its last**, which is
 three tree sizes in five lines of the file whose whole subject is a value written once. **The 16
