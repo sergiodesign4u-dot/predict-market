@@ -12,6 +12,67 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-20 - A launch catalog is picked by HORIZON, and that overturned a rule written the day before
+
+**`docs/backlog.md` 219 said the shipped catalog is a newsroom: 14 of its 25 questions can only be
+resolved by a person.** That was true and it was the wrong axis to pick a launch catalog on.
+
+**THE AXIS THAT DECIDES IS HOW SOON SOMETHING RESOLVES.** Measured over the 25 shipped questions on
+2026-08-20: **2 resolve within a month and 1 of those two is machine-resolvable**, six weeks reaches
+four of them, and eleven are longer than six months. So a launch assembled from the shipped catalog
+alone gives a reader **one resolution in the first month and then a gap**. A resolution is this
+product's only trust event and its only notification, and `PRODUCT.md` says retention is a
+notification about the event you bet on, so a catalog with nothing resolving has no retention loop at
+all, not a weak one. **The 25 were written to be interesting to READ. A launch catalog has to be
+interesting to WAIT FOR**, and nothing in this repository had asked that question of them.
+
+**AND IT OVERTURNED A RULE THIS FILE RECORDED THE DAY BEFORE.** `PRODUCT.md` said the first release is
+one-time markets only, because every cadence instance is its own event and five weekly series are 260
+resolutions a year. **That is an argument against 260 HAND resolutions**, and the automation decision
+of 2026-08-19, taken hours earlier and written into the same file, makes a machine-read series cost
+one template and zero manual resolutions. **Two decisions taken the same day and only one of them was
+still true by the end of it.** Recurring is in, on one condition that keeps the original fear
+answered: **a recurring market must be machine-resolved.** A hand-resolved series is exactly the
+newsroom the whole exercise exists to avoid.
+
+**THE SEVEN.** Four recurring machine series for the heartbeat, three one-time markets for depth,
+**six automated and one editorial**, which is the ratio the automation pass proposed before the
+catalog had been measured. Weekly BTC and ETH thresholds with the strike SOLVED for a 50 per cent
+open rather than chosen; a monthly global temperature record; the monthly stablecoin-supply leader by
+chain, which is deliberately the **multi** one because the outcome family gained its multi half the
+same day and a face with no placement is what this repository keeps paying for; and from the shipped
+catalog unchanged, BTC above $150,000 before Oct 1, the Atlantic Category 5, and the government
+shutdown as the single hand-resolved market. `docs/launch-catalog.md`, a new file, registered in the
+ownership table of `CLAUDE.md`.
+
+**ONE EDITORIAL MARKET IS A CAPACITY STATEMENT AND IT IS THE FIGURE WORTH ARGUING ABOUT.** Everything
+else in that file follows from a resolver or from arithmetic; the number 1 follows from what one
+person can watch, write and defend while also building the thing.
+
+**WHAT THE PASS FOUND ON THE WAY.** The How often filter offers Any, One-time, Hourly, Daily, Weekly
+and Monthly, and **20 of 20 frequency words in the painted tree say One-time, with 0 cards carrying a
+cadence attribute at all**. **Read the instrument before the finding**: `wireFilter` is called for
+that menu with no `onChange`, so it relabels and closes and does not filter, the same as the language
+selector whose comment says so. **It is not a broken filter, it is a control promising a cut of the
+catalog that does not exist**, which is the class this week has struck three of. Putting four
+recurring series in the first release makes the cut real and the product still draws none of it.
+`docs/backlog.md` 224.
+
+**AND THE BACKLOG HEADER WAS REWRITTEN, WHICH IS A SMALL FIX FOR A REAL FAILURE.** It had become a
+chronological paragraph: accurate, and a reader had to parse eleven clauses to learn which six rows
+are open. It is a table now, and the six names in it are checked against the six rows on disk.
+**The week filed eleven rows and struck five within a day, and four of the five were half wrong in
+the row and right that something was there**: 217 was "delete a word" and was claim against mechanism,
+219 was a classification problem and was a horizon problem, 221 was an unmade placement and was a
+routing convention nobody had measured, 220 and 222 were declared states no tree had drawn.
+
+**Files:** `docs/launch-catalog.md` (new), `PRODUCT.md` (the launch scope, and the one-time rule
+reversed with its reason), `CLAUDE.md` (ownership table), `docs/backlog.md` (219 struck, 224 filed,
+header rebuilt as a table). **No screen changed**, and that is correct: the 25 in both trees are the
+designed catalog and this is which of them the first release opens.
+
+---
+
 ## 2026-08-20 - The outcome family was binary on both halves, and the sentence a multi resolution needs cannot be written on a binary screen
 
 **`docs/backlog.md` 222, filed the same day by the routing measurement that closed 221.** The outcome

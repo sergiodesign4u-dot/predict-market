@@ -190,13 +190,22 @@ raise it as flow arrives. Commission is 0 while the currency is points, because 
 buys nothing and costs the trust line that says what the fee is for. The business model above is what
 turns on with real money, not what ships first.
 
-**Launch scope: 7 events, one-time only, no commission, no chain.** The 25 in `Catalog size` is what
-the navigation model is DESIGNED against and it stays; 7 is what one person can source, write a
-resolution rule for, watch, close on time and resolve without the catalog going stale, which is the
-failure this product cannot survive because a late or disputed resolution is the #1 churn driver in
-`Audience`. Recurring markets are out of the first release for the same reason and by this file's own
-rule: `Market types` decided that every cadence instance is its own event, so five weekly series are
-260 resolutions a year on their own.
+**Launch scope: 7 events, no commission, no chain. The seven are named, with their resolvers, in
+`docs/launch-catalog.md`.** The 25 in `Catalog size` is what the navigation model is DESIGNED against
+and it stays; 7 is what one person can source, write a resolution rule for, watch, close on time and
+resolve without the catalog going stale, which is the failure this product cannot survive because a
+late or disputed resolution is the #1 churn driver in `Audience`.
+
+**THIS LINE SAID `one-time only` UNTIL 2026-08-20 AND ITS REASON HAD BEEN REMOVED THE DAY IT WAS
+WRITTEN.** The argument was this file's own `Market types` rule, that every cadence instance is its
+own event, so five weekly series are 260 resolutions a year. **That is an argument against 260 HAND
+resolutions**, and the automation decision taken hours earlier on the same day makes a machine-read
+series cost one template and zero. What actually forced the reversal is a second axis the resolver
+classification had missed: **2 of the 25 shipped markets resolve within a month and 1 of those is
+machine-resolvable**, so a launch built from the shipped catalog alone gives a reader one resolution
+in the first month and then a gap, and a resolution is this product's only trust event and its only
+notification. **Recurring is in, on one condition: a recurring market must be machine-resolved.** A
+hand-resolved series is the newsroom the whole exercise exists to avoid.
 
 **Jurisdiction: `[?]`.** `Financials and compliance` below says global with geo-restrictions, which
 names who is kept out and not what the product operates under. A points product with no deposit, no
