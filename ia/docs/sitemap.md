@@ -457,6 +457,18 @@ fixture set's one settled numeric market is *Did Bitcoin close above $100,000 in
 2026?* and it stands on `active-bets-history.html`, which is not one of the three surfaces above.
 Adding it is a placement decision rather than a missing face, and it is `docs/backlog.md` 221.
 
+**221 IS STRUCK ON 2026-08-20 AND THE ANSWER WAS IN THE ROUTING, NOT IN THE SLOT.** A card or a row
+in these trees goes to the specimen of its TYPE: **148 feed cards over 15 painted documents, 111 to
+`event-detail.html` and 37 to `event-detail-multi.html`, and 0 of the 148 to their own market.** So
+a resolved row is a ROUTE and not a fourth surface, a numeric market gets no document of its own, and
+the wording it would carry is data inside the same drawing rather than a face. It must not carry a
+source link either: four rows of citations is the activity feed `PRODUCT.md` refuses by name, and the
+fact already stands on the surface the row leads to. **What the measurement did find is a row that
+CANNOT obey the convention.** `Which genre led the 2026 spring box office?` is multi-outcome, and the
+outcome family is six documents with no multi among them, so a multi resolution lands on the BINARY
+win screen while the Outcome field above has said `or which option in multi-outcome` since the entity
+was written. `docs/backlog.md` 222.
+
 ---
 
 ### MY BETS - follow active positions and history

@@ -257,13 +257,21 @@
    styled differently, and that is deliberate: a reader should not have to learn
    two shapes to check two markets, so only the words differ.
 
-   THE FIGURE-AGAINST-THRESHOLD FORM HAS 0 PLACEMENTS AND SAYS WHICH ZERO IT IS.
-   The sharpest Reading is a number against a number, and the fixture set's one
-   settled numeric market ("Did Bitcoin close above $100,000 in the first half of
-   2026?") stands on `active-bets-history.html`, which the IA does not list among
-   the three surfaces. The markup is identical and the sentence carries two figures
-   instead of a date; it is a placement that has not been made rather than a face
-   that does not exist. `docs/backlog.md` 221. */
+   THE FIGURE-AGAINST-THRESHOLD FORM IS NOT A THIRD FACE, AND 2026-08-20 SETTLED IT
+   BY MEASURING THE TREE INSTEAD OF ARGUING ABOUT THE SLOT. It was filed as a
+   placement nobody had made. It is neither: this tree ships a document per TYPE and
+   per STATE and never per market, which is what **148 feed cards over 15 painted
+   documents** say with one voice, 111 routing to `event-detail.html` and 37 to
+   `event-detail-multi.html` and **0 of the 148 to their own market**. So the
+   sentence a numeric market would carry is DATA in the same drawing, the settled
+   numeric market on `active-bets-history.html` is reached by a ROUTE rather than
+   standing on a surface, and there is nothing here left unplaced. `docs/backlog.md`
+   221, struck.
+
+   WHAT THE SAME MEASUREMENT DID FIND is one row that cannot obey the convention:
+   the box-office market is MULTI-outcome and the outcome family is six documents
+   with no multi among them, so a multi resolution lands on the binary win. The
+   Reading is not what that row needs. `docs/backlog.md` 222. */
 
 .reading{padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-4);
   border:var(--hairline) solid var(--border-hairline);

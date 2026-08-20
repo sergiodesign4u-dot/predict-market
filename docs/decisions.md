@@ -12,6 +12,64 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-20 - A row is a route and not a surface, and the measurement that said so found the state nobody had ever drawn
+
+**`docs/backlog.md` 221 asked two questions and I had filed it half wrong.** It asked whether a
+resolved ROW in the history is a fourth surface for the Reading, and whether a row can carry a source
+link. It assumed the answer was a placement somebody had not made. **The answer was in the routing,
+and it took one number.**
+
+**148 FEED CARDS OVER 15 PAINTED DOCUMENTS, 111 TO `event-detail.html` AND 37 TO
+`event-detail-multi.html`, AND 0 OF THE 148 TO THEIR OWN MARKET.** A card or a row in these trees goes
+to the specimen of its TYPE. So this tree ships a document per type and per state and **never per
+market**, which means a numeric market gets no document, the figure-against-threshold wording is DATA
+inside the same drawing rather than a face nobody wears, and a resolved row is a ROUTE. And a row must
+not carry a source link: four rows of citations is the activity feed `PRODUCT.md` refuses by name, and
+the fact already stands on the surface the row leads to. 221 is struck with nothing built, which is
+the right outcome for a row whose premise was the thing to check.
+
+**AND I NEARLY FILED THE CONVENTION AS A DEFECT.** The first read of the history said **2 of 4 rows
+route to another market's outcome screen**, the BTC row and the box-office row both landing on
+`win.html`, which draws a government shutdown at +$13.16. That looks exactly like the fixture
+contradictions of 2026-08-17, and it is not: 148 cards say the tree has always routed to the
+specimen. **`CLAUDE.md` already carries this exact warning from the day `ui-kit/betpanel.html` was
+filed as a broken link for a string standing inside `<code>`**, and the cost of ignoring it here would
+have been a repaint of two trees to fix a convention. Measure the convention before calling a case a
+violation of it.
+
+**WHAT THE SAME MEASUREMENT DID FIND IS ONE ROW THAT CANNOT OBEY THE CONVENTION.** Three of the four
+resolved rows obey it exactly. The fourth is `Which genre led the 2026 spring box office?`, which is
+**multi-outcome**, and the outcome family is **six documents with 0 multi among them**. So a multi
+resolution has nowhere type-correct to go and lands on the binary win. **This is a DECLARED state that
+was never placed**, the class the chosen NO cost this repository: `ia/docs/sitemap.md` has said
+`Outcome: YES / NO (or which option in multi-outcome)` since the Resolution entity was written,
+`ia/docs/flows.md` carries the option through to Confirm, and the feed already ships **37 multi cards**
+and an `event-detail-multi` specimen. The resolution is where the option stops existing.
+
+**It is filed rather than built, and the reason is that the shape is genuinely new.** A multi win says
+WHICH OPTION won rather than which side, and this market's bet was **NO on Action while Animation
+led**, so the screen has to explain a win on an option the reader bet AGAINST, which no drawing in
+either tree does. Costed in the row: one document per tree, a panel row in **115 painted and 114 grey**
+documents with the current-page marker rule, the Reading in its third wording, microcopy, and the tree
+counts in six files. `docs/backlog.md` 222.
+
+**AND THE PASS FOUND A DEFECT I HAD WRITTEN THE DAY BEFORE.** The `notice` row of
+`ui-kit/docs/inventory.md` carried its new addendum TWICE and had lost the pipe between its second and
+third cells, because the script that appended it applied the text inside a loop and again after it. Two
+things follow. The row is rebuilt from the pristine cell structure and carries the text once. And
+reading the same question across every prose document gives **51 rows of 2,251, over 250 tables, whose
+cell count disagrees with their own header**: 47 in `docs/backlog.md`, 2 in the inventory, 2 in
+`voice/docs/microcopy.md`, so their last columns vanish wherever this repository is rendered. **Read the
+instrument first**: a naive counter said 48 by counting every `|` including those inside code spans and
+by carrying a header across a table boundary, and 51 is what a counter gives that strips code spans and
+requires a header plus its separator. `docs/backlog.md` 223.
+
+**Files:** `components/notice.css`, `ui-kit/docs/inventory.md` (turned, de-duplicated and its cell
+structure restored), `ia/docs/sitemap.md`, `docs/backlog.md` (221 struck, 222 and 223 filed).
+**Nothing was built, and that is the finding**: the placement 221 asked for does not exist to be made.
+
+---
+
 ## 2026-08-19 - The proof moved from the ledger to the reading, and the backlog row that asked for it was the wrong shape
 
 **The IA gave the Resolution entity a Reading in the morning and this pass built it**, in both trees,
