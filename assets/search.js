@@ -41,7 +41,7 @@
   {q:"Which party will win the most seats in the next UK general election?",h:"event-detail-multi.html",c:"Politics",s:"Global Elections",p:"Labour 44%"},
   {q:"Who will win the 2028 Republican presidential nomination?",h:"event-detail-multi.html",c:"Politics",s:"Nomination",p:"DeSantis 31%"},
   {q:"Will the next US federal budget pass before the October deadline?",h:"event-detail.html",c:"Politics",s:"Congress",p:"41% YES"},
-  {q:"Which chain will hold the largest stablecoin supply at the end of 2026?",h:"event-detail-multi.html",c:"Crypto",s:"Stablecoins",p:"Ethereum 58%"},
+  {q:"Which chain will hold the largest stablecoin supply at the end of September 2026?",h:"event-detail-recurring-multi.html",c:"Crypto",s:"Stablecoins",p:"Ethereum 58%"},
   {q:"Will a US spot XRP ETF be approved before June 1, 2027?",h:"event-detail.html",c:"Crypto",s:"ETFs",p:"31% YES"},
   {q:"Will the EU formally admit a new member state before January 1, 2028?",h:"event-detail.html",c:"Politics",s:"Europe",p:"23% YES"},
   {q:"Will a crewed mission return from lunar orbit before January 1, 2028?",h:"event-detail.html",c:"General",s:"Space",p:"39% YES"},

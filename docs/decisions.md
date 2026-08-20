@@ -12,6 +12,66 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-20 - The Event Detail family is two axes crossed, and building the fourth corner found that a record needs a destination before it can be a list
+
+**`docs/backlog.md` 227 was filed by the pass that closed 224, naming what that pass did not build.**
+The monthly stablecoin series is multi-outcome, its card would have routed to
+`event-detail-multi.html`, and that document reads **One-time event** in its own header: the
+manufactured fixture contradiction the binary recurring specimen exists to avoid, one axis over.
+
+**`event-detail-recurring-multi.html` stands in both trees now, and the family is a GRID rather than
+a list of special cases**: binary and multi against one-time and recurring, four documents per tree.
+That is the smallest set in which no card in the product has to point at a page that contradicts it,
+and it is a better answer than four unrelated specimens because the next attribute that wants a
+document can be tested against it: **can an existing corner say what this card says.**
+
+The series is drawn. The card converted from *at the end of 2026* to **at the end of September
+2026**, `data-freq="Monthly"`, `Repeats: Monthly`, closing Sep 30, on the four documents per tree
+that carry it, with the search catalog re-taken and every `ItemList` re-checked against its cards in
+order. **Monthly is carried by two markets now rather than by the temperature record alone.**
+
+### What building it found, and it is the thing the binary corner never had to face
+
+`Earlier in this series` is a **list of resolved events**, and a resolved MULTI event has no page.
+The outcome family gained `win-multi` and `loss-multi` on 2026-08-20, closing `docs/backlog.md` 222
+on exactly this ground - *a multi outcome is not a state of a binary one, it is the other TYPE* - and
+the DETAIL half of that was never taken: `event-detail-resolved.html` is still binary. So every row
+of that list would be a multi row landing on a binary specimen, which is the defect 222 closed.
+
+**The record is a sentence in the resolution panel instead**: *the series has run twice, for July and
+for August 2026, and Ethereum held the largest supply on both.* It is prose because its destination
+does not exist, and it says so, which is the honest form of a block that cannot obey the convention.
+`docs/backlog.md` 229.
+
+**The H1 market was left alone and that was a decision.** `Which chain held the largest stablecoin
+supply at the end of H1 2026?` stands on `active-bets-history` and `loss-multi` in both trees, and it
+is tempting to read it as the June instance of this series. It is not: its window is January to June,
+so it is a one-time half-year market that happens to end where the monthly series begins. Renaming it
+would have invented a series membership the fixture does not have, which is the identity defect this
+repository already pays for. **The series therefore starts in July, and that is legible rather than
+arbitrary.**
+
+**The chart is three lines and its ranges are `1d`, `1w`, `all`**, because a four-week-old instance
+has no year to draw, the same reading that gave the weekly one `1d` and `all`. The grey tree draws
+the polylines statically and the paint computes them, which is the layer split holding.
+
+### And a third thing, found in passing and filed rather than fixed
+
+`ui-kit/card.html` says in a `tk-note` that the last option row **names the remainder and links to
+the event**, and that 18 cards in each tree carry it. **0 of the 21 multi cards render one.** The
+class is not in `components/options.css`, `data-full` is declared on every multi card and read by
+nothing, and the page's own specimen shows two rows and no remainder. It is the
+hero-text-against-specimen shape `docs/backlog.md` 211 found on `market.html`, in the page that
+records that finding. It goes in 229 with the resolved specimen, because both are about what a
+multi-outcome event is allowed to say.
+
+**Measured after: 298 documents, 0 page errors, 0 duplicate ids, 0 broken links, 0 documents marking
+a row that is not themselves, and 0 of the painted documents with an `ItemList` disagreeing with its
+own cards in order or in count.**
+
+---
+
+
 ## 2026-08-20 - The row offered three answers and its own arithmetic rejects all three, because the formula it was built on holds at one price and the product does not sit at that price
 
 **`docs/backlog.md` 216 said there is no maximum bet and the locked-price promise gets more expensive

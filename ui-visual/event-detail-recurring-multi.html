@@ -38,7 +38,7 @@ var f=document.getElementsByTagName('iframe');
 for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
 push();});})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UI Visual - Event Detail (logged out)</title>
+  <title>UI Visual - Event Detail (recurring, multi-outcome)</title>
   <link rel="stylesheet" href="../components/index.css">
   <script src="../assets/icons.js"></script>
   <script src="../assets/search.js"></script>
@@ -48,11 +48,11 @@ push();});})();</script>
  "@graph": [
   {
    "@type": "WebPage",
-   "@id": "/event/will-the-us-government-shut-down-before-march-1-2027#page",
-   "name": "Will the US government shut down before March 1, 2027?",
-   "url": "/event/will-the-us-government-shut-down-before-march-1-2027",
+   "@id": "/event/which-chain-will-hold-the-largest-stablecoin-supply-at-the-end-of-september-2026#page",
+   "name": "Which chain will hold the largest stablecoin supply at the end of September 2026?",
+   "url": "/event/which-chain-will-hold-the-largest-stablecoin-supply-at-the-end-of-september-2026",
    "breadcrumb": {
-    "@id": "/event/will-the-us-government-shut-down-before-march-1-2027#crumb"
+    "@id": "/event/which-chain-will-hold-the-largest-stablecoin-supply-at-the-end-of-september-2026#crumb"
    },
    "isPartOf": {
     "@id": "/#website"
@@ -60,7 +60,7 @@ push();});})();</script>
   },
   {
    "@type": "BreadcrumbList",
-   "@id": "/event/will-the-us-government-shut-down-before-march-1-2027#crumb",
+   "@id": "/event/which-chain-will-hold-the-largest-stablecoin-supply-at-the-end-of-september-2026#crumb",
    "itemListElement": [
     {
      "@type": "ListItem",
@@ -71,13 +71,13 @@ push();});})();</script>
     {
      "@type": "ListItem",
      "position": 2,
-     "name": "Politics",
-     "item": "/c/politics"
+     "name": "Crypto",
+     "item": "/c/crypto"
     },
     {
      "@type": "ListItem",
      "position": 3,
-     "name": "Will the US government shut down before March 1, 2027?"
+     "name": "Which chain will hold the largest stablecoin supply at the end of September 2026?"
     }
    ]
   }
@@ -168,7 +168,7 @@ push();});})();</script>
         <a href="event-detail.html" class="sidebar-sub-link">binary</a>
         <a href="event-detail-multi.html" class="sidebar-sub-link">multi</a>
         <a href="event-detail-recurring.html" class="sidebar-sub-link">recurring</a>
-        <a href="event-detail-recurring-multi.html" class="sidebar-sub-link">recurring multi</a>
+        <a href="event-detail-recurring-multi.html" class="sidebar-sub-link active">recurring multi</a>
         <a href="event-detail-resolved.html" class="sidebar-sub-link">resolved</a>
         <a href="event-detail-loading.html" class="sidebar-sub-link">loading</a>
         <a href="event-detail-error.html" class="sidebar-sub-link">error</a>
@@ -179,7 +179,7 @@ push();});})();</script>
         <a href="event-detail-bet-processing.html" class="sidebar-sub-link">processing</a>
         <a href="event-detail-bet-error.html" class="sidebar-sub-link">on-chain error</a>
         <div class="sidebar-divider sub">Logged out</div>
-        <a href="event-detail-logged-out.html" class="sidebar-sub-link active">binary</a>
+        <a href="event-detail-logged-out.html" class="sidebar-sub-link">binary</a>
         <a href="event-detail-logged-out-multi.html" class="sidebar-sub-link">multi</a>
         <a href="event-detail-logged-out-loading.html" class="sidebar-sub-link">loading</a>
         <a href="event-detail-logged-out-error.html" class="sidebar-sub-link">error</a>
@@ -339,35 +339,74 @@ document.addEventListener('click', function (e) {
           <div class="search-panel" hidden></div>
         </form>
 
+
         <div class="utility">
-          <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Favorites (sign in to save)">
+          <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
+          <div class="bal-toggle desk-only">
+            <span class="bal-figure"><span class="bal-label" id="balLabel">Portfolio</span> <span class="bal-amt" id="balAmt">$132.00</span></span>
+            <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Portfolio)">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-transfer-horizontal-b"/></svg>
+            </button>
+            <button type="button" class="icon-btn bal-add" data-open="deposit" aria-label="Add funds">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plus-b"/></svg>
+            </button>
+          </div>
+
+          <!-- Favorites: desktop header only (on mobile it is the bottom-bar slot). -->
+          <a class="icon-btn desk-only" href="favorites.html" aria-label="Favorites, see saved events">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
-          </button>
+          </a>
+
+          <!-- Search: a utility on every screen, not a navigation slot. The IA defers search
+           "until catalog scale" and names where it goes when it arrives: the Events
+           destination, never a bottom slot. This is the way in from anywhere else. -->
           <a class="icon-btn search-open" href="event-feed-search.html" aria-label="Search events">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg>
           </a>
-          <!-- Notifications kept as an affordance; tapping it logged-out routes to Sign In, and it
-               carries no unread badge because there is no account to count for. DESK-ONLY SINCE
-               2026-08-18, the same rung and the same reason as the heart above it: at 320 with the
-               touch floor on, this cluster asks for 213.72px against the 306 the row can give, and
-               the 44 + 8 this mark takes is what puts the Sign up button 1.81px past the edge and
-               eats the gutter. Below the rung the thumb bar carries Sign in in slot 4, so a bell
-               whose only job is a fourth route to the same sheet is the one control here that costs
-               more than it says. docs/backlog.md 205. -->
-          <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Notifications (sign in)">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
-          </button>
-          <div class="auth-btns">
-            <button type="button" class="btn btn-secondary btn-sm" data-open="signin">Sign in</button>
-            <button type="button" class="btn btn-primary btn-sm" data-open="signin">Sign up</button>
-          </div>
+          <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
+          <details class="notif-menu">
+            <summary aria-label="Notifications, 3 unread">
+              <span class="bell-wrap">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
+                <span class="badge-dot">3</span>
+              </span>
+            </summary>
+            <div class="dropdown notif-drop" role="menu">
+              <ul>
+                <li><a class="nav-item nav-row nav-row-stack" href="win.html"><strong>Bet resolved</strong><span>US government shutdown before Jul 1, 2026 - YES won</span></a></li>
+                <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
+                <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
+              </ul>
+              <a class="notif-all" href="notifications.html">See all notifications</a>
+            </div>
+          </details>
+
+          <details class="avatar-menu">
+            <summary aria-label="Account menu">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-user-b"/></svg>
+              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-chevron-down"/></svg>
+            </summary>
+            <div class="dropdown" role="menu">
+              <ul>
+                <li><a class="nav-item nav-row" href="my-profile.html" role="menuitem">My Profile</a></li>
+                <li><a class="nav-item nav-row" href="active-bets.html" role="menuitem">My Bets</a></li>
+                <li><a class="nav-item nav-row" href="favorites.html" role="menuitem">Favorites</a></li>
+                <li><a class="nav-item nav-row" href="wallet.html" role="menuitem">Wallet</a></li>
+                <li><a class="nav-item nav-row" href="how-it-works.html" role="menuitem">How It Works</a></li>
+                <li><a class="nav-item nav-row" href="event-feed-logged-out.html" role="menuitem">Logout</a></li>
+              </ul>
+            </div>
+          </details>
         </div>
       </div>
-    <nav class="cat-condensed" aria-label="Categories (sticky header)">
+      <!-- Condensed category strip: hidden until you scroll past the full category
+           bar, then it slides into the sticky header so the tabs stay reachable.
+           Small, icon-less chips (the full bar below keeps its icons). -->
+      <nav class="cat-condensed" aria-label="Categories (sticky header)">
         <ul>
           <li><a class="chip chip-quiet" href="event-feed.html">Trending</a></li>
-          <li aria-current="location"><a class="chip chip-quiet" href="event-feed-politics.html">Politics</a></li>
-          <li><a class="chip chip-quiet" href="event-feed-crypto.html">Crypto</a></li>
+          <li><a class="chip chip-quiet" href="event-feed-politics.html">Politics</a></li>
+          <li aria-current="location"><a class="chip chip-quiet" href="event-feed-crypto.html">Crypto</a></li>
           <li><a class="chip chip-quiet" href="event-feed-culture.html">Culture</a></li>
           <li><a class="chip chip-quiet" href="event-feed-general.html">General</a></li>
         </ul>
@@ -383,8 +422,8 @@ document.addEventListener('click', function (e) {
         <nav class="cat-nav" aria-label="Categories (second level)">
           <ul>
             <li><a class="chip chip-nav" href="event-feed.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><span>Trending</span></a></li>
-            <li aria-current="location"><a class="chip chip-nav" href="event-feed-politics.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg><span>Politics</span></a></li>
-            <li><a class="chip chip-nav" href="event-feed-crypto.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg><span>Crypto</span></a></li>
+            <li><a class="chip chip-nav" href="event-feed-politics.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg><span>Politics</span></a></li>
+            <li aria-current="location"><a class="chip chip-nav" href="event-feed-crypto.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg><span>Crypto</span></a></li>
             <li><a class="chip chip-nav" href="event-feed-culture.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-culture"/></svg><span>Culture</span></a></li>
             <li><a class="chip chip-nav" href="event-feed-general.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg><span>General</span></a></li>
           </ul>
@@ -393,29 +432,39 @@ document.addEventListener('click', function (e) {
         <div class="ed-main">
           <article class="card">
             <div class="ed-head"><div class="ed-actions"><button type="button" class="icon-btn icon-btn-tile" data-comments aria-label="Jump to comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat-b"/></svg></button><button type="button" class="icon-btn icon-btn-tile" aria-label="Share this event"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-share-b"/></svg></button><button type="button" class="icon-btn icon-btn-tile" data-fav aria-pressed="false" aria-label="Save into Favorites"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg></button></div>
-              <span class="ed-thumb" style="background-image:url(../assets/ev-gov-shutdown-sm.webp)"></span>
+              <span class="ed-thumb" style="background-image:url(../assets/ev-stablecoin-supply-sm.webp);background-position:12% center"></span>
               <div class="ed-head-txt">
-                <span class="ed-cat">Politics &middot; One-time event</span>
-                <h1 class="ed-q">Will the US government shut down before March 1, 2027?</h1>
-                <p class="ed-prob-big">YES <span class="prob">38%</span> &nbsp; NO <span class="prob">62%</span></p>
-                <div class="ed-oddsbar" aria-hidden="true"><span class="track"><span class="fill" style="width:38%"></span></span></div>
+                <span class="ed-cat">Crypto &middot; Monthly series &middot; 3 outcomes</span>
+                <h1 class="ed-q">Which chain will hold the largest stablecoin supply at the end of September 2026?</h1>
+                <p class="ed-prob-big">Leading: Ethereum <span class="prob">58%</span></p>
+                <div class="ed-oddsbar" aria-hidden="true"><span class="track"><span class="fill" style="width:58%"></span></span></div>
               </div>
             </div>
           </article>
-          <section class="ed-section ed-chart">
-            <div class="ed-chart-head"><h2>Price chart</h2><span class="ed-chart-now">YES 38% now</span></div>
+          <section class="ed-section ed-chart ed-chart-multi">
+            <div class="ed-chart-head"><h2>Price chart</h2><span class="ed-chart-now">Ethereum 58% now</span></div>
             <div class="ed-chart-area">
               <div class="ed-yaxis"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div>
-              <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="edyes" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--outcome-yes)" stop-opacity=".22"/><stop offset="1" stop-color="var(--outcome-yes)" stop-opacity="0"/></linearGradient></defs><line class="ed-even" x1="0" y1="50" x2="300" y2="50"/><path class="ed-area" fill="url(#edyes)" d=""/><polyline points=""/></svg><span class="ed-now-dot" aria-hidden="true" style="--v:38"></span></div>
+              <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><line class="ed-even" x1="0" y1="50" x2="300" y2="50"/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/><polyline class="ml-line" points=""/></svg></div>
             </div>
             <div class="ed-xaxis" aria-hidden="true"></div>
-            <div class="ed-chart-foot"><div class="ed-range" role="group" aria-label="Time range"><button class="chip chip-rail" type="button">1d</button><button class="chip chip-rail" type="button">1w</button><button class="chip chip-rail" type="button">1m</button><button type="button" class="chip chip-rail sel">all</button></div></div>
+            <div class="ed-legend" aria-hidden="true"></div><div class="ed-chart-foot"><div class="ed-range" role="group" aria-label="Time range"><button class="chip chip-rail" type="button">1d</button><button class="chip chip-rail" type="button">1w</button><button type="button" class="chip chip-rail sel">all</button></div></div>
           </section>
+          <section class="ed-section" id="edOutcomes">
+            <h3>Outcomes</h3>
+            <div class="options opt-list">
+              <div class="opt-row sel" aria-current="true"><span class="opt-name" id="opt-ethereum-sel">Ethereum <span class="opt-sel-tag">selected</span></span><span class="opt-prob">58%</span><span class="yesno compact"><button type="button" class="sel yes" id="opt-ethereum-sel-yes" aria-labelledby="opt-ethereum-sel opt-ethereum-sel-yes">YES</button><button type="button" class="no" id="opt-ethereum-sel-no" aria-labelledby="opt-ethereum-sel opt-ethereum-sel-no">NO</button></span></div>
+              <div class="opt-row"><span class="opt-name" id="opt-tron-1">Tron</span><span class="opt-prob">34%</span><span class="yesno compact"><button type="button" class="yes" id="opt-tron-1-yes" aria-labelledby="opt-tron-1 opt-tron-1-yes">YES</button><button type="button" class="no" id="opt-tron-1-no" aria-labelledby="opt-tron-1 opt-tron-1-no">NO</button></span></div>
+              <div class="opt-row"><span class="opt-name" id="opt-solana-2">Solana</span><span class="opt-prob">8%</span><span class="yesno compact"><button type="button" class="yes" id="opt-solana-2-yes" aria-labelledby="opt-solana-2 opt-solana-2-yes">YES</button><button type="button" class="no" id="opt-solana-2-no" aria-labelledby="opt-solana-2 opt-solana-2-no">NO</button></span></div>
+                                        </div>
+            <p class="fine">Tap YES or NO on an outcome to load it into the bet panel. The panel stays focused on the one you picked, however long this list gets.</p>
+          </section>
+          
           <div class="ed-facts">
-            <span>Volume<b>$84,200</b></span>
-            <span>Open to bet<b>$31,500</b></span>
-            <span>Closes<b>Mar 1, 2027</b></span>
-            <span>How often<b>One-time</b></span>
+            <span>Volume<b>$44,100</b></span>
+            <span>Open to bet<b>$16,800</b></span>
+            <span>Closes<b>Wed, Sep 30, 2026</b></span>
+            <span>How often<b>Monthly</b></span>
           </div>
           <section class="ed-section">
             <details class="market-box" open>
@@ -428,22 +477,30 @@ document.addEventListener('click', function (e) {
           </section>
           <section class="ed-section ed-rules">
             <div class="rules-tabs" role="tablist"><button type="button" class="rules-tab sel" role="tab" aria-selected="true">Rules</button><button type="button" class="rules-tab" role="tab" aria-selected="false">Background</button></div>
-            <div class="rules-panel" role="tabpanel"><p class="resolution"><strong>Resolves YES</strong> if a federal funding gap causes a shutdown beginning before 00:00 ET on March 1, 2027. <strong>Resolves NO</strong> if funding is in place through that date.<br>
-            <strong>Source:</strong> official US Office of Management and Budget notices. Resolved by the Yonder team.</p></div>
-            <div class="rules-panel" role="tabpanel" hidden><p class="resolution">YES is priced at 38%. Funding talks have stalled twice this quarter, but the last three deadlines were settled at the last minute. What is moving the number:</p>
+            <div class="rules-panel" role="tabpanel"><p class="resolution"><strong>Resolves to the chain</strong> holding the largest stablecoin supply when the reading is taken at 00:00 UTC on October 1, 2026. All other outcomes resolve NO.<br>
+            <strong>Source:</strong> DefiLlama, stablecoin supply by chain. Read automatically, so no person decides it.<br>
+            <strong>This is one month of a monthly series.</strong> It settles on its own, and when it closes the next month opens as a separate market with its own reading. A bet here does not carry over.<br>
+            <!-- THE RECORD IS A SENTENCE HERE AND A LIST ON THE BINARY TWIN, 2026-08-20. `Earlier in this
+                 series` is a list of resolved events and a resolved MULTI event has no page: the outcome
+                 family took win-multi and loss-multi on 2026-08-20 and event-detail-resolved is still
+                 binary, so every row would be a multi row landing on a binary specimen, which is what
+                 docs/backlog.md 222 closed for the win and loss screens. A record whose destination does
+                 not exist is prose. docs/backlog.md 229. -->
+                 <strong>The series has run twice</strong>, for July and for August 2026, and Ethereum held the largest supply on both.</p></div>
+            <div class="rules-panel" role="tabpanel" hidden><p class="resolution">Ethereum leads at 58% and has held the largest supply every month the series has run. What is moving the field:</p>
             <div class="args">
               <div class="arg-col">
-                <h3>For YES</h3>
+                <h3>For the leader (Ethereum)</h3>
                 <ul>
-                  <li>Budget talks stalled in committee, no scheduled vote.</li>
-                  <li>A bloc has committed to opposing the stopgap bill.</li>
+                  <li>Its lead has not been under ten points in any month of the series.</li>
+                  <li>The largest issuers still mint there first.</li>
                 </ul>
               </div>
               <div class="arg-col">
-                <h3>For NO</h3>
+                <h3>Against / for the field</h3>
                 <ul>
-                  <li>Last three deadlines met with short-term funding.</li>
-                  <li>Both parties signalled willingness to extend.</li>
+                  <li>Tron has taken share in four of the last six months on transfer volume.</li>
+                  <li>A single large issuer moving chains would close the gap in one week.</li>
                 </ul>
               </div>
             </div><p class="rules-note">Background from the Yonder team to explain the odds. It plays no role in how this market resolves.</p></div>
@@ -465,12 +522,16 @@ document.addEventListener('click', function (e) {
                 <span>128 comments</span>
                 <span class="seg"><button type="button" class="chip chip-rail sel">Newest</button><button class="chip chip-rail" type="button">Top</button><button class="chip chip-rail" type="button">Bettors</button></span>
               </div>
-              <button type="button" class="btn btn-prompt btn-lg btn-block cmt-signin" data-open="signin">Sign in to join the discussion</button>
+              <div class="cmt-compose">
+                <span class="cmt-av">you</span>
+                <span class="cmt-input">Add a comment...</span>
+                <button type="button" class="btn btn-primary btn-sm">Post</button>
+              </div>
               <div class="cmt-list">
                 <div class="cmt">
                   <span class="cmt-av">mm</span>
                   <div class="cmt-body">
-                    <div class="cmt-meta"><span class="cmt-user">marketmaven</span><span class="cmt-badge">Holds 320 YES</span><span>2h ago</span></div>
+                    <div class="cmt-meta"><span class="cmt-user">marketmaven</span><span class="cmt-badge">Holds 320 Ethereum</span><span>2h ago</span></div>
                     <p class="cmt-text">These always go to the wire. I am holding my position and adding if it dips.</p>
                     <div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg>24</button><button class="btn btn-bare" type="button">Reply</button></div>
                   </div>
@@ -486,7 +547,7 @@ document.addEventListener('click', function (e) {
                 <div class="cmt">
                   <span class="cmt-av">pp</span>
                   <div class="cmt-body">
-                    <div class="cmt-meta"><span class="cmt-user">polly_predicts</span><span class="cmt-badge">Holds 150 NO</span><span>5h ago</span></div>
+                    <div class="cmt-meta"><span class="cmt-user">polly_predicts</span><span class="cmt-badge">Holds 150 Tron</span><span>5h ago</span></div>
                     <p class="cmt-text">Volume jumped right after the headline. Watching how it settles.</p>
                     <div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart-b"/></svg>11</button><button class="btn btn-bare" type="button">Reply</button></div>
                   </div>
@@ -503,42 +564,38 @@ document.addEventListener('click', function (e) {
             </div>
             <div class="ed-tabpanel ed-panel-holders" role="group" aria-label="Biggest bets">
               <div class="hold-cols">
-              <div class="hold-col">
-                <h3>Biggest YES bets</h3>
-                <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">wh</span><span class="hold-name">whale_07</span><span class="hold-amt">$1,240</span></div>
-                <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">ma</span><span class="hold-name">marketmaven</span><span class="hold-amt">$320</span></div>
-                <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">al</span><span class="hold-name">alpha_ape</span><span class="hold-amt">$280</span></div>
-                <div class="hold-row"><span class="hold-rank">4</span><span class="cmt-av">sa</span><span class="hold-name">satoshi_jr</span><span class="hold-amt">$150</span></div>
-              </div>
-              <div class="hold-col">
-                <h3>Biggest NO bets</h3>
-                <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">he</span><span class="hold-name">hedge_hannah</span><span class="hold-amt">$980</span></div>
-                <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">po</span><span class="hold-name">polly_predicts</span><span class="hold-amt">$150</span></div>
-                <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">ca</span><span class="hold-name">caut_carl</span><span class="hold-amt">$120</span></div>
-                <div class="hold-row"><span class="hold-rank">4</span><span class="cmt-av">ri</span><span class="hold-name">riskoff</span><span class="hold-amt">$90</span></div>
-              </div>
+                <div class="hold-col">
+                  <h3>Biggest bets by outcome</h3>
+                <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">wh</span><span class="hold-name">whale_07 <span class="hold-out">Ethereum</span></span><span class="hold-amt">$1,240</span></div>
+                <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">he</span><span class="hold-name">hedge_hannah <span class="hold-out">Tron</span></span><span class="hold-amt">$980</span></div>
+                <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">ma</span><span class="hold-name">marketmaven <span class="hold-out">Ethereum</span></span><span class="hold-amt">$620</span></div>
+                <div class="hold-row"><span class="hold-rank">4</span><span class="cmt-av">al</span><span class="hold-name">alpha_ape <span class="hold-out">Solana</span></span><span class="hold-amt">$410</span></div>
+                <div class="hold-row"><span class="hold-rank">5</span><span class="cmt-av">sa</span><span class="hold-name">satoshi_jr <span class="hold-out">Solana</span></span><span class="hold-amt">$250</span></div>
+                <div class="hold-row"><span class="hold-rank">6</span><span class="cmt-av">ri</span><span class="hold-name">riskoff <span class="hold-out">Solana</span></span><span class="hold-amt">$180</span></div>
+                </div>
               </div>
             </div>
             <div class="ed-tabpanel ed-panel-positions" role="group" aria-label="Bets">
               <table class="ptable">
-                <thead><tr><th>Bettor</th><th>Side</th><th>Amount</th></tr></thead>
+                <thead><tr><th>Bettor</th><th>Outcome</th><th>Amount</th></tr></thead>
                 <tbody>
-                <tr><td>whale_07</td><td><span class="pos-side">YES</span></td><td>$471</td></tr>
-                <tr><td>hedge_hannah</td><td><span class="pos-side">NO</span></td><td>$588</td></tr>
-                <tr><td>marketmaven</td><td><span class="pos-side">YES</span></td><td>$121</td></tr>
-                <tr><td>polly_predicts</td><td><span class="pos-side">NO</span></td><td>$87</td></tr>
+                <tr class="you"><td>You</td><td><span class="pos-side">Ethereum</span></td><td>$5.33</td></tr>
+                <tr><td>whale_07</td><td><span class="pos-side">Ethereum</span></td><td>$434</td></tr>
+                <tr><td>hedge_hannah</td><td><span class="pos-side">Tron</span></td><td>$196</td></tr>
+                <tr><td>marketmaven</td><td><span class="pos-side">Ethereum</span></td><td>$254</td></tr>
+                <tr><td>polly_predicts</td><td><span class="pos-side">Solana</span></td><td>$21</td></tr>
                 </tbody>
               </table>
-              <button type="button" class="btn btn-prompt btn-lg btn-block cmt-signin" data-open="signin">Sign in to place and track your bet</button>
+              <p class="pos-note">Your bet is highlighted. Bets update as the odds move.</p>
             </div>
             <div class="ed-tabpanel ed-panel-activity" role="group" aria-label="Activity">
               <p class="pos-note">Recent bets, largest first. Filter: over $5.</p>
               <div class="act-list">
-              <div class="act-row"><span class="cmt-av">wh</span><span class="act-txt"><b>whale_07</b> bet <b>$175</b> on YES</span><span class="act-time">2m ago</span></div>
-              <div class="act-row"><span class="cmt-av">hh</span><span class="act-txt"><b>hedge_hannah</b> bet <b>$180</b> on NO</span><span class="act-time">14m ago</span></div>
-              <div class="act-row"><span class="cmt-av">mm</span><span class="act-txt"><b>marketmaven</b> cashed out <b>$31</b> on YES</span><span class="act-time">1h ago</span></div>
-              <div class="act-row"><span class="cmt-av">pp</span><span class="act-txt"><b>polly_predicts</b> bet <b>$87</b> on NO</span><span class="act-time">3h ago</span></div>
-              <div class="act-row"><span class="cmt-av">nh</span><span class="act-txt"><b>newhere</b> bet <b>$4.94</b> on YES</span><span class="act-time">5h ago</span></div>
+              <div class="act-row"><span class="cmt-av">wh</span><span class="act-txt"><b>whale_07</b> bet <b>$205</b> on Ethereum</span><span class="act-time">2m ago</span></div>
+              <div class="act-row"><span class="cmt-av">hh</span><span class="act-txt"><b>hedge_hannah</b> bet <b>$66</b> on Tron</span><span class="act-time">14m ago</span></div>
+              <div class="act-row"><span class="cmt-av">mm</span><span class="act-txt"><b>marketmaven</b> cashed out <b>$33</b> on Ethereum</span><span class="act-time">1h ago</span></div>
+              <div class="act-row"><span class="cmt-av">po</span><span class="act-txt"><b>polly_predicts</b> bet <b>$21</b> on Solana</span><span class="act-time">3h ago</span></div>
+              <div class="act-row"><span class="cmt-av">nh</span><span class="act-txt"><b>newhere</b> bet <b>$1.60</b> on Solana</span><span class="act-time">5h ago</span></div>
               </div>
             </div>
             </div>
@@ -547,9 +604,14 @@ document.addEventListener('click', function (e) {
           <aside class="bet-panel" data-liquidity="1000">
             <div class="bp-inner">
               <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">Pick a side</span></div>
+              <span class="field-label">Your outcome</span>
+              <div class="bp-selected">
+                <span class="bp-sel-name">Ethereum <span class="opt-prob">41%</span></span>
+                <a href="#edOutcomes" class="bp-change">Change</a>
+              </div>
               <div class="bp-dir">
-                <button type="button" class="yesno-pick bp-side yes" aria-pressed="false">YES <span class="bp-pct">38%</span></button>
-                <button type="button" class="yesno-pick bp-side no" aria-pressed="false">NO <span class="bp-pct">62%</span></button>
+                <button type="button" class="yesno-pick bp-side yes" aria-pressed="false">YES <span class="bp-pct">41%</span></button>
+                <button type="button" class="yesno-pick bp-side no" aria-pressed="false">NO <span class="bp-pct">59%</span></button>
               </div>
               <div>
                 <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$92.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="1" value="5.00" aria-label="Bet amount"></div>
@@ -559,7 +621,7 @@ document.addEventListener('click', function (e) {
                 <p class="bp-pick" id="bp-pick-panel">Pick a side to see what each outcome pays.</p>
                 <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.08</span></div><div class="line due"><span>Total to pay</span><span>$5.08</span></div>
               </div>
-              <button type="button" class="btn btn-primary btn-md btn-block" data-open="signin">Confirm bet</button>
+              <button type="button" class="btn btn-primary btn-md btn-block" aria-disabled="true" aria-describedby="bp-pick-panel">Confirm bet</button>
               <p class="fine">$1 minimum, no maximum. The price you see is the price you get.</p>
             </div>
           </aside>
@@ -577,15 +639,17 @@ document.addEventListener('click', function (e) {
     </div><!-- /feed-inner -->
     </main>
       <div class="bet-dock" aria-label="Place your bet">
-        <button type="button" class="yesno-pick yesno-pick-bar bp-side yes" data-open-sheet="yes" aria-pressed="false">YES <span class="bp-pct">38%</span></button>
-        <button type="button" class="yesno-pick yesno-pick-bar bp-side no" data-open-sheet="no" aria-pressed="false">NO <span class="bp-pct">62%</span></button>
+        <button type="button" class="yesno-pick yesno-pick-bar bp-side yes" data-open-sheet="yes" aria-pressed="false">Ethereum YES <span class="bp-pct">41%</span></button>
+        <button type="button" class="yesno-pick yesno-pick-bar bp-side no" data-open-sheet="no" aria-pressed="false">NO <span class="bp-pct">59%</span></button>
       </div>
     
       <dialog class="app-dialog bet-sheet" id="betSheet" aria-label="Place your bet" data-liquidity="1000">
         <button type="button" class="sheet-grab" data-close-sheet aria-label="Close"></button>
         <div class="bp-inner">
           <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">Pick a side</span></div>
-          <div class="bp-dir"><button type="button" class="yesno-pick bp-side yes" aria-pressed="false">YES <span class="bp-pct">38%</span></button><button type="button" class="yesno-pick bp-side no" aria-pressed="false">NO <span class="bp-pct">62%</span></button></div>
+          <span class="field-label">Your outcome</span>
+          <div class="bp-selected"><span class="bp-sel-name">Ethereum <span class="opt-prob">41%</span></span><a href="#edOutcomes" class="bp-change" data-close-sheet>Change</a></div>
+          <div class="bp-dir"><button type="button" class="yesno-pick bp-side yes" aria-pressed="false">YES <span class="bp-pct">41%</span></button><button type="button" class="yesno-pick bp-side no" aria-pressed="false">NO <span class="bp-pct">59%</span></button></div>
           <div>
             <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$92.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="1" value="5.00" aria-label="Bet amount"></div>
             <div class="quick"><button type="button" class="chip chip-amount">$1</button><button class="chip chip-amount sel" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button></div>
@@ -603,22 +667,22 @@ document.addEventListener('click', function (e) {
     <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
       <ul>
-        <li aria-current="location"><a class="nav-item nav-slot" href="event-feed-logged-out.html">
+        <li aria-current="location"><a class="nav-item nav-slot" href="event-feed.html">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-widget-b"/></svg>
           <span>Events</span>
         </a></li>
-        <li><button class="nav-item nav-slot" type="button" data-open="signin">
+        <li><a class="nav-item nav-slot" href="active-bets.html">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-list-b"/></svg>
           <span>My Bets</span>
-        </button></li>
-        <li><button class="nav-item nav-slot" type="button" data-open="signin">
+        </a></li>
+        <li><a class="nav-item nav-slot" href="favorites.html">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
           <span>Favorites</span>
-        </button></li>
-        <li><button class="nav-item nav-slot" type="button" data-open="signin" aria-label="Sign in">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-login-3-b"/></svg>
-          <span>Sign in</span>
-        </button></li>
+        </a></li>
+        <li><a class="nav-item nav-slot" href="my-profile.html" aria-label="Portfolio, balance $142">
+          <span class="bn-bal">$142</span>
+          <span>Portfolio</span>
+        </a></li>
       </ul>
     </nav>
 
@@ -1364,17 +1428,17 @@ document.addEventListener('click', function (e) {
   });
   /* multi-outcome chart: ALL outcome lines + legend; range switch + highlight */
   document.querySelectorAll('.ed-chart-multi').forEach(function(chart){
-    var NAMES=['JD Vance','Donald Trump','Ron DeSantis','Nikki Haley','Other'];
+    var NAMES=['Ethereum','Tron','Solana'];
     var COLORS=['var(--series-1)','var(--series-2)','var(--series-3)','var(--series-4)','var(--series-5)'];
     var DATA=[
-      [38,40,37,41,39,43,40,44,42,47,44,49,41],
-      [26,24,27,25,23,22,24,21,23,20,22,21,22],
-      [16,17,15,16,14,15,13,14,13,15,14,13,14],
-      [10,9,11,8,10,9,10,8,9,7,9,8,8],
-      [10,10,10,10,14,11,13,13,13,11,11,9,15]
+      [52,54,53,55,54,56,55,57,56,58,57,59,58],
+      [38,37,38,36,37,35,36,34,35,33,34,32,34],
+      [10,9,9,9,9,9,9,9,9,9,9,9,8]
     ];
-    var XL={'1d':['24h','18h','12h','6h','now'],'1w':['7d','5d','3d','1d','now'],'1m':['30d','3w','2w','1w','now'],'all':['Jul','Sep','Nov','Jan','now']};
-    var NPTS={'1d':5,'1w':7,'1m':10,'all':13};
+    /* This instance is four weeks old, so `all` is the month and there is no year to draw.
+       docs/backlog.md 227. */
+    var XL={'1d':['24h','18h','12h','6h','now'],'1w':['7d','5d','3d','1d','now'],'all':['Sep 1','Sep 8','Sep 15','Sep 22','now']};
+    var NPTS={'1d':5,'1w':7,'all':13};
     var lines=chart.querySelectorAll('.ml-line');
     var xaxis=chart.querySelector('.ed-xaxis');
     var legend=chart.querySelector('.ed-legend');
@@ -1586,11 +1650,10 @@ document.addEventListener('click', function (e) {
   sheet.querySelectorAll('[data-close-sheet]').forEach(function(c){c.addEventListener('click',function(e){e.preventDefault();closeSheet();});});
   var cf=sheet.querySelector('[data-sheet-confirm]');
   if(cf)cf.addEventListener('click',function(){
-    /* Logged out, so Confirm is the gate, which is what the dock's own button
-       says with data-open="signin". backlog 87, 2026-08-11. */
+    /* Signed in, so the bet is placed rather than gated: the same destination the
+       dock carried before the drawer replaced it. backlog 87, 2026-08-11. */
     closeSheet();
-    var s=document.getElementById('signinDialog');
-    if(s){if(s.showModal)s.showModal();else s.setAttribute('open','');}
+    location.href='event-detail-bet-processing.html';
   });
   recompute();
 })();

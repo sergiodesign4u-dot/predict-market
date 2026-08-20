@@ -79,8 +79,8 @@ browser; a left screen-tree panel navigates the whole set.
 main-flow entry (the Event Feed). From there the journey is clickable end to end:
 Event Feed -> Event Detail -> sign-in / deposit gate -> Active Bets.
 
-- **Coverage:** 117 pages, counted 2026-08-20 - every screen in the IA screen tree, each state its own
-  page. Event Feed, Event Detail (binary + multi + **recurring**, inline bet panel), 4 Category
+- **Coverage:** 118 pages, counted 2026-08-20 - every screen in the IA screen tree, each state its own
+  page. Event Feed, Event Detail (**binary and multi against one-time and recurring**, inline bet panel), 4 Category
   pages, Favorites view (Favorites), Sign In / Deposit (shared in-page dialogs), Win /
   Loss, Notifications, Wallet, My Profile / Public Profile, How It Works, Active
   Bets / Bet History. **This line was 109 while 117 stood on disk**, which is the count rule in

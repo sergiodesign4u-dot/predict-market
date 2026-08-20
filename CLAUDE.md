@@ -64,8 +64,8 @@ because it is a stance rather than a principle, and it is written once, here.
   `wireframes/_conventions.md`.
 - **One system.** `components/` holds `tokens.css` plus one file per component, reached through
   `components/index.css`. **Every PAINTED screen links that one file and nothing else, and the grey
-  tree links no stylesheet at all**: 118 of 118 in `ui-visual/` and 61 of 61 in `ui-kit/` link it,
-  **0 of the 117 in `wireframes/` do**, and those 117 carry an inline `<style>` block each. Counted 2026-08-20 and before that
+  tree links no stylesheet at all**: 119 of 119 in `ui-visual/` and 61 of 61 in `ui-kit/` link it,
+  **0 of the 118 in `wireframes/` do**, and those 118 carry an inline `<style>` block each. Counted 2026-08-20 and before that
   2026-08-12 at 104 and re-counted 2026-08-15, when `terms.html` was written and the grey tree
   stopped being one screen short of the tree it decides. The sentence here said "every screen" until then, and the folder file it contradicted
   is the one that had it right. The visual language is
@@ -180,8 +180,9 @@ because it is a stance rather than a principle, and it is written once, here.
   in it. **Re-counted 2026-08-20 twice in one day**, first when `win-multi` and `loss-multi` landed
   in both trees and the outcome family stopped being binary-only, then when
   `event-detail-recurring.html` did and the Frequency attribute stopped being a filter with nothing
-  to filter: the grey tree is 117, so the two still differ by exactly the index. It was 117 and 116
-  between the two. It was 106 and 105 until 2026-08-16, when the three search screens landed in both trees,
+  to filter, and last when `event-detail-recurring-multi.html` closed the fourth corner of Event
+  Detail, binary and multi against one-time and recurring: the grey tree is 118, so the two still
+  differ by exactly the index. It was 117 and 116, then 118 and 117, between the three. It was 106 and 105 until 2026-08-16, when the three search screens landed in both trees,
   and 109 and 108 until 2026-08-17, when `event-detail-bet-ready.html` landed in both trees with
   backlog 185, and 110 and 109 until 2026-08-18, when the four static content pages the IA had
   registered and nobody had built arrived in both trees at once. **This sentence said 109 and 108 while the bullet above it already said 110 of 110**,

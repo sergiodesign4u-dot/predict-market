@@ -303,7 +303,7 @@ _9 state page(s): event-feed-empty.html, event-feed-error.html, event-feed-loadi
 
 ### Event Detail
 
-_14 state page(s), re-counted 2026-08-20 when the recurring specimen landed: event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-error.html, event-detail-loading.html, event-detail-logged-out-error.html, event-detail-logged-out-loading.html, event-detail-logged-out-multi.html, event-detail-logged-out.html, event-detail-multi.html, event-detail-recurring.html, event-detail-resolved.html, event-detail.html_
+_15 state page(s), re-counted 2026-08-20 when the two recurring specimens landed: event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-error.html, event-detail-loading.html, event-detail-logged-out-error.html, event-detail-logged-out-loading.html, event-detail-logged-out-multi.html, event-detail-logged-out.html, event-detail-multi.html, event-detail-recurring.html, event-detail-recurring-multi.html, event-detail-resolved.html, event-detail.html_
 
 | Zone | Type | Line | Flag |
 |---|---|---|---|
@@ -446,6 +446,11 @@ _14 state page(s), re-counted 2026-08-20 when the recurring specimen landed: eve
 | Main | Heading | Earlier in this series | **New 2026-08-20.** A second placement of the related component. There is no series page: the record IS the list |
 | Main | Label | Resolved YES / Resolved NO | **New 2026-08-20.** The `.rel-odds` slot on a past instance, where a live row carries `YES 61%` |
 | Main | Text | The threshold opened at this week's price, so Friday's close decides it. | **New 2026-08-20.** The card's `why`. It said `The strike opened at this week's spot`: voice principle 3, `strike` and `spot` are the desk's words and `threshold` and `price` are the reader's |
+| Main | Label | Crypto · Monthly series · 3 outcomes | **New 2026-08-20.** The `.ed-cat` of `event-detail-recurring-multi.html`. The two axes cross here: the cadence and the outcome count in one line |
+| Main | Text | Resolves to the chain holding the largest stablecoin supply when the reading is taken at 00:00 UTC on October 1, 2026. All other outcomes resolve NO. | **New 2026-08-20.** A multi rule resolves to an OPTION and every other option resolves NO, which is the sentence a binary rule cannot say |
+| Main | Text | This is one month of a monthly series. It settles on its own, and when it closes the next month opens as a separate market with its own reading. A bet here does not carry over. | **New 2026-08-20.** The monthly twin of the weekly sentence |
+| Main | Text | The series has run twice, for July and for August 2026, and Ethereum held the largest supply on both. | **New 2026-08-20, and it is prose because it cannot be a list.** The binary recurring detail carries its record as `Earlier in this series`, a list of resolved events. A resolved MULTI event has no page of its own, so linking these months would put a multi row on the binary resolved specimen, which is what `docs/backlog.md` 222 closed for the win and loss screens. `docs/backlog.md` 229 |
+| Main | Label | Repeats: Monthly | The card that leads here, converted the same day from `at the end of 2026` to `at the end of September 2026` |
 
 ### Category Page
 

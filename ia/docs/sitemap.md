@@ -515,10 +515,21 @@ say which it is: **136 skeletons**, which are not results and which the filter a
 Printing `Repeats: One-time` on every card would be the activity feed `PRODUCT.md` refuses by name:
 a default restated is noise, and a cadence is news only when there is one.
 
-**The MULTI recurring face is not built and says so.** `docs/launch-catalog.md` row 4, the monthly
-stablecoin series, is multi-outcome, and its card would route to `event-detail-multi.html`, which
-reads One-time. It ships in the trees in its one-time form and stays there until
-`event-detail-recurring-multi.html` exists. `docs/backlog.md` 227.
+**BUILT 2026-08-20, AND THE FOURTH SPECIMEN IS `event-detail-recurring-multi.html`.**
+`docs/launch-catalog.md` row 4, the monthly stablecoin series, is multi-outcome, and its card would
+have routed to `event-detail-multi.html`, which reads One-time: the same manufactured contradiction
+the binary specimen exists to avoid, one axis over. The Event Detail family is now the two axes
+crossed, **binary and multi against one-time and recurring**, which is four documents per tree and
+the smallest set in which no card has to point at a page that contradicts it.
+
+**And the one thing the binary specimen has that this one cannot carry is the RECORD.** `Earlier in
+this series` is a list of resolved events, and a resolved MULTI event has no page of its own: the
+outcome family gained `win-multi` and `loss-multi` on 2026-08-20 and `event-detail-resolved` is still
+binary. Linking the months to it would put a multi row on a binary specimen, which is exactly what
+`docs/backlog.md` 222 closed for the win and loss screens. **So the record is a SENTENCE in the
+resolution panel** - *the series has run twice, for July and for August 2026, and Ethereum held the
+largest supply on both* - and the missing document is `docs/backlog.md` 229. A record that has to be
+prose because its destination does not exist is a record that says so.
 
 **221 IS STRUCK ON 2026-08-20 AND THE ANSWER WAS IN THE ROUTING, NOT IN THE SLOT.** A card or a row
 in these trees goes to the specimen of its TYPE: **148 feed cards over 15 painted documents, 111 to
