@@ -379,6 +379,12 @@
     .widget-box { border: 1px dashed #999; background: #ededed; min-height: 160px; display: flex; align-items: center;
       justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 8px; }
     .protect { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 11px; }
+    /* The PAGE face of the notice, the same one the five document pages carry. It is here for the
+       cap and not for the padding: this sentence stands in `.cat-main`, a column sized for cards,
+       so uncapped it ran 117 characters on ONE line from 900px up while its painted twin ran 61.
+       Line length is not among the differences _conventions.md declares, which is what backlog 215
+       asked and what the measurement answered. */
+    .protect-page { padding: 12px; font-size: 12px; line-height: 1.5; max-width: 56ch; }
 
     /* ---- SHARED (98 of 114, 14 rules): active bets ---- */
     .tabs { display: flex; gap: 0; margin: 0 0 10px; }
@@ -1078,7 +1084,7 @@
           <button class="btn btn-primary btn-md" type="button" data-open="deposit">Add funds</button>
           <button class="btn btn-secondary btn-md" type="button" data-open="withdraw">Withdraw</button>
         </div>
-        <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds. Added funds, payouts and withdrawals are recorded below.</p>
+        <p class="protect protect-page">Your USDC is held 1:1 - we do not lend or invest your funds. Added funds, payouts and withdrawals are recorded below.</p>
         <p class="pos-status">Transaction history</p>
         <div class="pos-list">
           <article class="pos">

@@ -12,6 +12,60 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-20 - A face is a legal difference between the trees and a length is not, and the row was filed under the wrong noun
+
+**`docs/backlog.md` 215 had been open since 2026-08-19 because it could not be decided as written.**
+It said grey `wallet.html` lacks the `.protect-page` class its painted twin carries, that this
+"renders as a smaller box and nothing else", and that a component's FACE is not among the
+differences `wireframes/_conventions.md` declares, so somebody had to rule on faces first.
+
+**Measured in Chromium 151 and WebKit 26.5 at 390, 900, 1280 and 1600, it is not a face. It is a
+length.**
+
+| | 390 | 900 | 1280 | 1600 |
+|---|---|---|---|---|
+| paint, `.protect.protect-page` | 61 chars at 328px | 61 at 346 | 61 at 346 | 61 at 346 |
+| grey, `.protect` | 74 at 386 | **117 at 896** | **117 at 1026** | **117 at 1346** |
+
+The class carries three things and **only the first is paint**: a brass tint, which the grey tree
+cannot have under convention 1; a padding and type step, which grey's own `.protect-page` rule
+already had; and `max-width`, which decides how many characters a reader gets. In `.cat-main`, a
+column sized for cards, uncapped means the sentence takes the column: **117 characters on one line.**
+Line length is precisely what the `.read-col` finding of 2026-08-19 established is not a declared
+difference, so this was drift by `_conventions.md`'s own definition.
+
+### The tell was already in the grey tree and nobody had read it
+
+Its five document pages carry `.read-col .protect{max-width:none}` and there was **no cap anywhere
+for it to cancel**. That is the `text-transform:none` shape from `hiw.css` arriving again: a rule
+only cancels what something else is doing, so an override with nothing under it is half a port. It
+has something to cancel now, and the five document pages did not move by a pixel.
+
+### The number is measured rather than borrowed
+
+`ch` is the advance of a zero, which this repository learned once already when `--measure` went from
+66ch to 46ch. **The two trees have different faces, so a `ch` value does not travel**: `46ch` is
+346px in DM Sans at 11px and 276px in the grey system face at 12px, and dropping the paint's number
+in gave the grey notice **49 characters instead of 61**. Swept eight values from 46ch to 62ch and
+took **56ch**, the middle of the 54-to-58 plateau where the line reads **61 characters over two
+lines**, the same count the paint gives. **Match the reading, not the pixel.**
+
+### The rule, written where the next case will be read
+
+`wireframes/_conventions.md`, beside the seventh difference and yesterday's geometry split, which
+this arrives at from the other side: there the difference could NOT exist in the grey tree, here it
+could and did. **The test is one question. Take the colour off and ask whether the box changed.**
+Tint, ground, shadow, corner, bevel and ink are paint. Padding, type step, box width and **line
+length** are both trees, because how much a reader gets in a line is a decision about reading, and
+the grey tree decides reading.
+
+**After**: grey wallet 61 characters at 336px, the five document pages untouched at 503px. 48
+renders over the six documents on two engines at four widths: heights moved on the wallet only,
+**+15 at 390 and +30 above it**, which is the notice becoming two lines, and 0 sideways scroll, 0
+duplicate ids, 0 page errors.
+
+---
+
 ## 2026-08-20 - The record has a renderer, and the eleven rows that were losing text were the opposite of the fifty-one that were filed
 
 **`docs/backlog.md` 223 said 51 rows disagreed with their header and that on GitHub "those columns

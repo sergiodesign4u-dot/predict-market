@@ -824,6 +824,34 @@ has **0 headers, 0 feeds and 0 footers**: convention 5 draws the sheet on a plai
 there is no feed here for a how-it-works dialog to hang off. A count that differs between the trees
 is worth a look and this one is the boundary working.
 
+**AND A FACE IS A LEGAL DIFFERENCE WHILE A LENGTH IS NOT, 2026-08-20.** `docs/backlog.md` 215 asked
+the general question the row above answers for one case: a class stood on 6 painted documents and 5
+grey ones, and it was filed as a FACE, which is arguably the paint's business. **Measured, it was a
+length.** `.protect-page` carries three things and only the first is paint: a brass tint, which this
+tree cannot have under convention 1; a padding and type step, which grey's own rule already had; and
+a `max-width`, which decides how many characters a reader gets. Uncapped, the grey wallet's trust
+sentence ran **117 characters on one line at every width from 900 up** against its painted twin's 61
+over two, in both engines.
+
+**So the test is one question and it is cheap: take the colour off and ask whether the BOX changed.**
+
+| what a class does | whose | why |
+|---|---|---|
+| tint, ground, shadow, corner, bevel, ink | **paint only** | convention 1. This tree is grey and cannot state them |
+| padding, type step, box width, **line length** | **both trees** | how much a reader gets in a line is a decision about reading, and this tree decides reading |
+
+That is the same cut this document already makes above for the how-it-works frame, arrived at from
+the other side: there the difference could not exist in this tree, here it could and did. **The tell
+was already sitting in the grey tree and nobody had read it**: the five document pages carry
+`.read-col .protect{max-width:none}`, an override for a cap that had never been written. A rule only
+cancels what something else is doing, so an override with nothing under it is a ported half.
+
+**And a `ch` value does not travel between the trees**, because `ch` is the advance of a zero and
+the two have different faces: `46ch` is 346px in the paint and 276px here, which would have given
+the notice 49 characters instead of 61. The grey cap is `56ch`, chosen from a sweep of eight values
+as the middle of the plateau where the line reads **61 characters over two**, the same count the
+paint gives. **Match the reading, not the pixel.**
+
 ## All four regions are compared (2026-07-28, Stage 09 step 7e)
 
 Step 7d compared `<main>` and nothing else, which left the header, the bottom nav
