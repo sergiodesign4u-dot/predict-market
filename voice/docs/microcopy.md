@@ -1929,3 +1929,38 @@ said *settle* eleven times beside a heading reading *How an event resolves*. The
 `voice/docs/voice.md` allows **resolve / resolution** and does not list *settle*, so 12 placements
 were turned. It is the same-thing flag this file exists to catch, produced by the person holding the
 file.
+
+### 2026-08-20 - the panel prices the bet in the box, and one line appears only when it moved
+
+`docs/backlog.md` 216 said there is no maximum bet and the locked-price promise gets more expensive
+with every dollar of one. Both halves are answered by the same change and neither answer is a limit:
+**the price offered is the price of the bet being placed**, so there is no size at which the promise
+costs anything and nothing depends on a ceiling. `PRODUCT.md` Liquidity and risk, `docs/decisions.md`
+2026-08-20.
+
+| zone | type | line | note |
+|---|---|---|---|
+| Bet panel | Label | Your price | **New 2026-08-20.** One `.line` above `Fee`, written by the script and removed by it. It stands ONLY where the amount moved the quote, because a row restating the number on the button three inches above it is a second answer to a question already answered. At the $5 default it never appears: measured at `b = 1000` against every price the shipped catalog carries, the size-adjusted quote rounds to the same whole per cent as the market quote on **19 of 19**, and it first differs at $25 by one point |
+
+**No string was retired and that is the finding.** `$1 minimum, no maximum. The price you see is the
+price you get.` stands on 24 placements and stays true word for word, and so does the market block's
+`The price is locked when you confirm, so it cannot move against you between the panel and the bet.`
+**`docs/backlog.md` 211 quoted that sentence without its last clause** and deleted a face on the
+reading, and the clause it dropped is the one that scopes the promise to an INTERVAL rather than to
+size. A price computed for your stake, shown to you and then held is exactly what the line
+guarantees.
+
+| was | is |
+|---|---|
+| `The price is locked when you confirm, so it cannot move against you between the panel and the bet.` | ...unchanged, **plus** `Your own bet moves the price, so the panel quotes the amount in the box and locks THAT number, not this one.` |
+
+**26 placements, both trees plus the stand.** It is the same idea the deleted ladder's own caption
+carried, *Your own bet moves it, so a bigger bet buys at a worse average price*, said in the block
+that ships rather than in a table that did not, and now the panel actually does it.
+
+**One screen draws the line and it is the one whose job is what you are about to pay.**
+`event-detail-bet-ready.html` went from the $5 default to **$25**, the largest amount the panel's own
+quick chips offer, in both trees: `Your price 39%`, `Fee $0.38`, `Total to pay $25.38`,
+`If YES wins, your side $64.10`. **Every figure divides**, because the quote is rounded to the
+displayed whole per cent first and the payout is the stake over that: 25 / 0.39 = 64.10. A number that
+does not divide is a number that was not explained, which is `voice/docs/voice.md` principle 1.

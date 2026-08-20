@@ -1292,7 +1292,7 @@
               <summary class="market-head"><span class="market-title">How the odds are set <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></span><svg class="market-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
               <div class="market-body">
                 <div class="market-stats"><div><span class="ms-label">Yes price</span><span class="ms-val ms-yes">38%</span></div><div><span class="ms-label">No price</span><span class="ms-val ms-no">62%</span></div><div><span class="ms-label">24h</span><span class="ms-val ms-up">+2 pts</span></div><div><span class="ms-label">Volume</span><span class="ms-val">$84,200</span></div><div><span class="ms-label">Available to bet</span><span class="ms-val">$31,500</span></div></div>
-                <div class="market-depth"><span class="md-title">What 38% means</span><span class="md-sub">A YES share costs 38 cents and pays $1 if the event happens. $5.00 buys 13.16 shares, so YES returns $13.16 and NO returns nothing. <b>The price is locked when you confirm</b>, so it cannot move against you between the panel and the bet.</span></div>
+                <div class="market-depth"><span class="md-title">What 38% means</span><span class="md-sub">A YES share costs 38 cents and pays $1 if the event happens. $5.00 buys 13.16 shares, so YES returns $13.16 and NO returns nothing. <b>The price is locked when you confirm</b>, so it cannot move against you between the panel and the bet. Your own bet moves the price, so the panel quotes the amount in the box and locks THAT number, not this one.</span></div>
               </div>
             </details>
           </section>
@@ -1427,12 +1427,12 @@
                 <button type="button" class="yesno-pick bp-side no" aria-pressed="false">NO <span class="bp-pct">62%</span></button>
               </div>
               <div>
-                <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$92.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="1" value="5.00" aria-label="Bet amount"></div>
-                <div class="quick"><button type="button" class="chip chip-amount">$1</button><button class="chip chip-amount sel" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button></div>
+                <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$92.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="1" value="25.00" aria-label="Bet amount"></div>
+                <div class="quick"><button type="button" class="chip chip-amount">$1</button><button class="chip chip-amount" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount sel" type="button">$25</button></div>
               </div>
               <div>
-                <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.08</span></div><div class="line due"><span>Total to pay</span><span>$5.08</span></div>
-                <div class="bp-outcomes"><div class="bp-outcome"><span>If YES wins, your side</span><b>$13.16</b></div><div class="bp-outcome"><span>If NO wins</span><b>$0.00</b></div></div>
+                <div class="line"><span>Your price</span><span>39%</span></div><div class="line"><span>Fee (1.5% of your bet)</span><span>$0.38</span></div><div class="line due"><span>Total to pay</span><span>$25.38</span></div>
+                <div class="bp-outcomes"><div class="bp-outcome"><span>If YES wins, your side</span><b>$64.10</b></div><div class="bp-outcome"><span>If NO wins</span><b>$0.00</b></div></div>
               </div>
               <a href="event-detail-bet-processing.html" class="btn btn-primary btn-md btn-block">Confirm bet</a>
               <p class="fine">$1 minimum, no maximum. The price you see is the price you get.</p>
@@ -1453,7 +1453,7 @@
     </main>
       <!-- Mobile sticky bet dock (above the bottom nav; taps expand to a confirm sheet) -->
       <div class="bet-dock" aria-label="Place your bet">
-        <span class="dock-meta">$5.00 on YES<b>Returns $13.16</b></span>
+        <span class="dock-meta">$25.00 on YES<b>Returns $64.10</b></span>
         <button type="button" class="yesno-pick yesno-pick-bar bp-side sel yes" data-open-sheet="yes" aria-pressed="true">YES <span class="bp-pct">38%</span></button>
         <button type="button" class="yesno-pick yesno-pick-bar bp-side no" data-open-sheet="no" aria-pressed="false">NO <span class="bp-pct">62%</span></button>
       </div>
@@ -1470,12 +1470,12 @@
             <button type="button" class="yesno-pick bp-side no" aria-pressed="false">NO <span class="bp-pct">62%</span></button>
           </div>
           <div>
-            <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$92.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="1" value="5.00" aria-label="Bet amount"></div>
-            <div class="quick"><button type="button" class="chip chip-amount">$1</button><button class="chip chip-amount sel" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button></div>
+            <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$92.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="1" value="25.00" aria-label="Bet amount"></div>
+            <div class="quick"><button type="button" class="chip chip-amount">$1</button><button class="chip chip-amount" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount sel" type="button">$25</button></div>
           </div>
           <div>
-            <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.08</span></div><div class="line due"><span>Total to pay</span><span>$5.08</span></div>
-                <div class="bp-outcomes"><div class="bp-outcome"><span>If YES wins, your side</span><b>$13.16</b></div><div class="bp-outcome"><span>If NO wins</span><b>$0.00</b></div></div>
+            <div class="line"><span>Your price</span><span>39%</span></div><div class="line"><span>Fee (1.5% of your bet)</span><span>$0.38</span></div><div class="line due"><span>Total to pay</span><span>$25.38</span></div>
+                <div class="bp-outcomes"><div class="bp-outcome"><span>If YES wins, your side</span><b>$64.10</b></div><div class="bp-outcome"><span>If NO wins</span><b>$0.00</b></div></div>
           </div>
           <a href="event-detail-bet-processing.html" class="btn btn-primary btn-lg btn-block">Confirm bet</a>
           <p class="fine">$1 minimum, no maximum. The price you see is the price you get.</p>

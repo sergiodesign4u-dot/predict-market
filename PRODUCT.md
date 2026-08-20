@@ -120,7 +120,12 @@ Sharpened by the CJM To-Be backlog (`user-research/docs/cjm-to-be.md`, Alex x ma
 - **Bet limits: $1 minimum, no maximum** (decided 2026-08-10, `docs/backlog.md` #7). The minimum
   exists so that the fee line is never absurd against the stake, and $1 is the "try it" size the MVP
   scope already names. The deposit minimum stays $10, which is a few bets of headroom rather than
-  one.
+  one. **RE-EXAMINED AND KEPT 2026-08-20**, `docs/backlog.md` 216: the row asked for a
+  maximum on the ground that the locked-price promise is sold at a loss above some size, and the
+  answer was to price the bet rather than to cap it, so nothing about the limit depends on a ceiling
+  any more. **A maximum would have had to be $9** at the `b` that makes the number a market, which is
+  under the panel's own $10 chip: a cap that bites at the default is not a limit, it is a different
+  product. See `Liquidity and risk`.
 
 ## Liquidity and risk
 **Who is on the other side of the bet, what that costs, and what it is worth.** Decided 2026-08-19.
@@ -166,9 +171,51 @@ form: at a fee of `f` on the stake, a bet of `S` filled at the quote breaks even
 > **`b = S / (2f)`**, which at `f = 1.5%` is **`b = 33.3 x S`**: $167 for a $5 bet, $833 for a $25
 > bet, $3,333 for a $100 bet.
 
-**AND `Bet limits` ABOVE DECIDED THERE IS NO MAXIMUM**, so at any `b` there is a bet size above which
-the locked-price promise is sold at a loss, and the product has promised to accept it. That is an
-open row rather than a repair: `docs/backlog.md` 216.
+**THAT FORM HOLDS AT A PRICE OF ONE HALF AND NOWHERE ELSE, AND THE GENERAL ONE DECIDES THE ROW,
+2026-08-20.** The give-away on a stake `S` filled at a quote of `p` is `S^2(1-p) / (2bp)`, so the
+break-even is
+
+> **`b = S(1-p) / (2fp)`**
+
+and the `S / (2f)` above is its cheapest point. Solved exactly against the cost function rather than
+from the expansion, at `f = 1.5%` and a $5 bet: **$167 at 50 per cent, $273 at 38, $672 at 20, $1,513
+at 10**. The give-away grows without bound as the quote approaches either end, which is the half the
+row missed and it inverts the finding. **`b = $167` is not the break-even for a $5 bet, it is the
+break-even for a $5 bet at exactly 50/50**: at $167 the product's own default stake is under water at
+every price except the midpoint, which is a price a market occupies for an instant. Inverted, the
+largest bet fillable at the quote is `S_max = 2fb x p/(1-p)`, which at `b = $300`, the row of this
+table that makes the number a market, is **$9 at 50 per cent and $2.25 at 20**: below the panel's own
+$10 chip and below the $5 default.
+
+**SO THE THREE ANSWERS `docs/backlog.md` 216 OFFERED ALL FAIL, AND THE FOURTH IS THE ONE THE SCREENS
+ALREADY ALMOST DRAW.** Capping the bet fails because at any `b` small enough for the number to move,
+the affordable cap is smaller than the default stake. Capping the zero-slippage fill by size is the
+slippage ladder this file rules out and `docs/backlog.md` 211 deleted. Setting `b` from the largest
+bet accepted is not a solvable equation while `Bet limits` says there is no maximum and `b` has to
+grow without bound as the quote approaches either end. **And all three fail absolutely at launch,
+where the commission is 0: at `f = 0` there is no `b` at which filling at the quote breaks even, so
+the give-away is unbounded whatever the parameter is.**
+
+**THE DECISION: THE QUOTE IS COMPUTED FOR THE SIZE IN THE BOX, SHOWN, AND LOCKED AT CONFIRM.** The
+price a reader is offered is the price of the bet they are actually placing, not of an infinitesimal
+one, so there is nothing given away and no size at which the promise costs the house money. **Every
+shipped sentence survives word for word**, and the one that was read as forbidding this is the one
+that permits it: `docs/backlog.md` 211 quoted *"The price is locked when you confirm, so it cannot
+move against you"* and the shipped line ends **"between the panel and the bet"**. That clause scopes
+the promise to an INTERVAL, not to size. A price that is computed for your stake, shown to you, and
+then held is exactly what it guarantees.
+
+**WHAT IT COSTS TO DRAW IS NOTHING, AND THAT IS A MEASUREMENT.** At `b = $1,000` and the product's $5
+default, the size-adjusted quote rounds to the same whole per cent as the market quote on **all 19
+prices the shipped catalog carries**, from 22 to 74. It first differs at $25, by one point. So the
+mechanic changes no rendered number on any screen that draws the default, and `Bet limits` keeps its
+**no maximum** because nothing now depends on there being one.
+
+**The figure shown is what the figures are computed from.** The quote is rounded to the displayed
+whole per cent and the payout is `stake / that`, so every number on the panel divides for a reader
+doing the arithmetic by hand. The residual the rounding leaves is below the fee at every size the
+product accepts, which is the check that keeps `voice/docs/voice.md` principle 1 true: a number that
+does not divide is a number that was not explained. `docs/backlog.md` 216.
 
 **WHAT THE COMMISSION HAS TO CARRY.** At 1.5% of the stake and a $5 bet, one bet earns 7.5 cents.
 Computed 2026-08-19:

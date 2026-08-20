@@ -12,6 +12,84 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-20 - The row offered three answers and its own arithmetic rejects all three, because the formula it was built on holds at one price and the product does not sit at that price
+
+**`docs/backlog.md` 216 said there is no maximum bet and the locked-price promise gets more expensive
+with every dollar of one.** The give-away from filling a whole bet at the market's quote breaks even
+against a fee `f` on a stake `S` at `b = S / (2f)`, which at 1.5 per cent is 33.3 times the bet, and
+`PRODUCT.md` had decided there is no maximum, so at every `b` there is a size the product has
+promised to accept at a loss.
+
+**THE FORMULA IS THE `p = 1/2` CASE AND NOTHING SAID SO.** The give-away on a stake `S` at a quote of
+`p` is `S^2(1-p)/(2bp)`, so the break-even is **`b = S(1-p)/(2fp)`** and `S/(2f)` is its cheapest
+point. Solved exactly against the cost function rather than from the expansion, at `f = 1.5%` and the
+product's own $5 default: **$167 at 50 per cent, $273 at 38, $672 at 20, $1,513 at 10.** The
+expansion agrees within half a per cent everywhere and is always the optimistic side of the exact
+answer.
+
+**So the table in `PRODUCT.md` was reading its own number backwards.** `b = $167` is not the
+break-even for a $5 bet; it is the break-even for a $5 bet at exactly 50/50, a price a market occupies
+for an instant. At `b = $167` the default stake is under water at every price except the midpoint,
+and the shipped catalog carries markets at 22, 23, 29 and 31 per cent.
+
+### All three answers fail, and the third fails twice
+
+Inverted, the largest bet fillable at the quote is `S_max = 2fb x p/(1-p)`. At `b = $300`, the row of
+that table which actually makes the number a market, it is **$9 at 50 per cent and $2.25 at 20**:
+below the panel's own $10 chip and below the $5 default. **A cap that bites at the default is not a
+limit, it is a different product.** Capping the zero-slippage fill by size is the slippage ladder
+`PRODUCT.md` rules out and `docs/backlog.md` 211 deleted. Setting `b` from the largest bet accepted is
+not a solvable equation while `Bet limits` says there is no maximum, and it is not solvable in the
+other direction either, because `b` must grow without bound as the quote approaches either end.
+
+**AND ALL THREE FAIL ABSOLUTELY AT LAUNCH.** The first release ships points and **no commission**. At
+`f = 0` there is no `b` at which filling at the quote breaks even: the give-away is unbounded whatever
+the parameter is. A row whose three answers all divide by the fee cannot be closed by choosing one of
+them.
+
+### The fourth answer is to price the bet instead of the book
+
+The quote is computed for the amount in the box, shown, and locked at Confirm. There is nothing given
+away, so there is no size at which the promise costs anything and nothing depends on a ceiling. The
+closed form is the cost function inverted: with `u = p/(1-p)`, `n = b ln(((u+1)e^(S/b) - 1)/u)`.
+
+**Every shipped sentence survives word for word, and the sentence that was read as forbidding this is
+the sentence that permits it.** `docs/backlog.md` 211 deleted the price-impact ladder on 2026-08-18
+quoting *"The price is locked when you confirm, so it cannot move against you"* - and the shipped line
+ends **"between the panel and the bet"**. That clause scopes the promise to an INTERVAL, not to size.
+A price computed for your stake, shown to you and then held is exactly what it guarantees. **Half a
+sentence deleted a face and the other half was the answer to the row that face's absence created.**
+`$1 minimum, no maximum. The price you see is the price you get.` stands unchanged on 24 placements.
+
+**IT COSTS NOTHING TO DRAW, AND THAT IS A MEASUREMENT RATHER THAN A HOPE.** At `b = 1000` and the $5
+default, the size-adjusted quote rounds to the same whole per cent as the market quote on **all 19
+prices `assets/search.js` carries**, from 22 to 74. It first differs at $25, by one point. So the
+mechanic changes no rendered number on any screen that draws the default, and it needed no new CSS:
+the row is a placement of `.line`, which the breakdown already had two of.
+
+**The figure shown is what the figures are computed from.** The quote is rounded to the displayed
+whole per cent and the payout is the stake over THAT, so $25 at 39 is $64.10 and a reader dividing by
+hand gets the number on the screen. A number that does not divide is a number that was not explained,
+which is `voice/docs/voice.md` principle 1. Read live from the panel after the change: $1 and $5 draw
+no row and pay $2.63 and $13.16, unchanged; $25 draws `Your price 39%` and pays $64.10; $100 draws
+`41%` and pays $243.90.
+
+**And the mechanic has a placement, because a rule that cannot be rendered will be wrong the day it
+first draws.** `event-detail-bet-ready.html` moved from the $5 default to **$25**, the largest amount
+the panel's own quick chips offer, in both trees. It is the screen whose whole job is what you are
+about to pay, and it is now the only document in the product where the market quote and the reader's
+quote differ on screen: 38 on the card and the header, 39 in the panel.
+
+**The parameter is a DATUM and it is on the element.** `data-liquidity="1000"` on the ten live panels
+and the ten sheets, which is one of the three things `CLAUDE.md` allows on an element. **It went onto
+129 first**, because `.bet-panel` also names the still picture inside the how-it-works dialog on 119
+documents: a photograph of a panel with no input and `aria-hidden`, which the same sweep then handed a
+market parameter. Restricted to the panels that contain an `.amount-input`, and the still that had
+picked up a $64.10 payout for its $5 bet was put back.
+
+---
+
+
 ## 2026-08-20 - Two of the three blocks a page was missing were missing from the specification instead, and the one real gap was on all five pages rather than on the one that was audited
 
 **`docs/backlog.md` 214 said `about.html` runs the DOCUMENT body shape where the bank gives it

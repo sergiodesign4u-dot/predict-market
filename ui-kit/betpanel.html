@@ -427,8 +427,35 @@
     <p class="tk-note"><b>Its own width query: 760 DETAIL.</b> This is the component the DETAIL rung is named for. Below 760 the panel does not exist and the dock does; at 760 the panel becomes a <code>flex:0 0 322px</code> sticky column beside the content, with its own scroll and a height of the viewport less the header. <b>322px is a fixed basis in a row, which is why the specimen has to stand in a row</b>: in a column that same basis is a HEIGHT, and the stand drew it 353 x 322 with the rest clipped off before that was understood.</p>
   </section>
 
+  <section class="tk-sec" id="sized">
+    <h2 data-n="9">A fourth line that is there only when the bet moved the price</h2>
+    <p class="tk-note"><b>The panel quotes the amount in the box, not an infinitesimal bet.</b>
+    Filling a whole bet at the market's quote hands the buyer the slippage, and that give-away breaks
+    even at <code>b = S(1-p)/(2fp)</code>, so it is unbounded as the quote nears either end and
+    unbounded at any <code>b</code> while the commission is 0, which is what the first release ships.
+    <code>PRODUCT.md</code> Liquidity and risk, <code>docs/backlog.md</code> 216.</p>
+    <div class="tk-pair2">
+      <div class="tk-ph"><span>Vault, dark</span><span>Daylight, light</span></div>
+      <div class="tk-theme-fig tk-stack" data-theme="dark"><aside class="bet-panel"><div class="bp-inner"><div class="bp-dir"><button type="button" class="yesno-pick bp-side sel yes">YES <span class="bp-pct">38%</span></button><button type="button" class="yesno-pick bp-side no">NO <span class="bp-pct">62%</span></button></div><div><div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$92.00 cash</span></div><span class="amount-cur">$</span><span class="amount-input">25.00</span></div><div class="quick"><button type="button" class="chip chip-amount">$1</button><button class="chip chip-amount" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount sel" type="button">$25</button></div></div><div><div class="line"><span>Your price</span><span>39%</span></div><div class="line"><span>Fee (1.5% of your bet)</span><span>$0.38</span></div><div class="line due"><span>Total to pay</span><span>$25.38</span></div><div class="bp-outcomes"><div class="bp-outcome"><span>If YES wins, your side</span><b>$64.10</b></div><div class="bp-outcome"><span>If NO wins</span><b>$0.00</b></div></div></div></div></aside></div>
+      <div class="tk-theme-fig tk-stack" data-theme="light"><aside class="bet-panel"><div class="bp-inner"><div class="bp-dir"><button type="button" class="yesno-pick bp-side sel yes">YES <span class="bp-pct">38%</span></button><button type="button" class="yesno-pick bp-side no">NO <span class="bp-pct">62%</span></button></div><div><div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$92.00 cash</span></div><span class="amount-cur">$</span><span class="amount-input">25.00</span></div><div class="quick"><button type="button" class="chip chip-amount">$1</button><button class="chip chip-amount" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount sel" type="button">$25</button></div></div><div><div class="line"><span>Your price</span><span>39%</span></div><div class="line"><span>Fee (1.5% of your bet)</span><span>$0.38</span></div><div class="line due"><span>Total to pay</span><span>$25.38</span></div><div class="bp-outcomes"><div class="bp-outcome"><span>If YES wins, your side</span><b>$64.10</b></div><div class="bp-outcome"><span>If NO wins</span><b>$0.00</b></div></div></div></div></aside></div>
+    </div>
+    <p class="tk-note"><b>The row is written by the script and removed by it</b>, because a line
+    restating the number on the button three inches above it is a second answer to a question already
+    answered. <b>At the product's $5 default it never appears</b>: measured at <code>b = 1000</code>
+    against every price the shipped catalog carries, the size-adjusted quote rounds to the same whole
+    per cent as the market quote on <b>19 of 19</b>. It first differs at $25, by one point, which is
+    the specimen above and the only screen in the product that draws it,
+    <code>event-detail-bet-ready.html</code>.</p>
+    <p class="tk-why"><b>The figure shown is what the figures are computed from.</b> The quote is
+    rounded to the displayed whole per cent and the payout is the stake divided by THAT, so $25 at 39
+    is $64.10 and a reader doing the arithmetic by hand gets the number on the screen. The residual
+    the rounding leaves is smaller than the fee at every size the product accepts. <b>And the sentence
+    that was read as forbidding this is the one that permits it</b>: the shipped line ends "between
+    the panel and the bet", which scopes the promise to an interval and not to size.</p>
+  </section>
+
   <section class="tk-sec" id="rule">
-    <h2 data-n="9">The rule</h2>
+    <h2 data-n="10">The rule</h2>
     <p class="tk-note"><b>A pinned box is capped to the window.</b> Especially this one, where what
     falls off the bottom is the action.</p>
     <p class="tk-note"><b>A role means what its name says.</b> A lip is not an edge, and the two are
@@ -438,7 +465,7 @@
   </section>
 
   <section class="tk-sec" id="antirule">
-    <h2 data-n="10">The anti-rule</h2>
+    <h2 data-n="11">The anti-rule</h2>
     <p class="tk-lab tk-bad"><b>Never pin the control that places the bet without capping it.</b>
     <i>676px of window, and below that Confirm is unreachable.</i></p>
     <p class="tk-lab tk-bad"><b>Never take a hover colour from a role built for depth.</b> <i>1.02:1
@@ -448,7 +475,7 @@
   </section>
 
   <section class="tk-sec" id="closing">
-    <h2 data-n="11">Where the rest of it is</h2>
+    <h2 data-n="12">Where the rest of it is</h2>
     <p class="tk-note">The level and its reason: <a href="organisms.html#betpanel">the organisms
     page</a>. The stylesheet: <code>components/betpanel.css</code>. The two sides:
     <a href="yesno.html">yes / no</a>. The field: <a href="input.html">input</a>. The chips beside

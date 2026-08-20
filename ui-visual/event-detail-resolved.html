@@ -758,6 +758,43 @@ document.addEventListener('click', function (e) {
 
   <!-- Minimal interaction: desktop balance swap Portfolio <-> Cash (wireframe behavior, no styling) -->
   <script>
+    /* THE QUOTE IS FOR THE SIZE IN THE BOX, 2026-08-20, docs/backlog.md 216 and PRODUCT.md
+       Liquidity and risk. The panel used to divide the stake by the market quote, which fills the
+       whole bet at a price only an infinitesimal bet could get, and hands the buyer the slippage.
+       That give-away breaks even at b = S(1-p)/(2fp), so it grows without bound as the quote nears
+       either end and is unbounded at ANY b while the commission is 0, which is what the first
+       launch ships. So the price offered is the price of the bet being placed. The closed form is
+       the cost function inverted: with u = p/(1-p), n = b*ln(((u+1)*e^(S/b) - 1)/u).
+       IT IS ROUNDED TO THE DISPLAYED WHOLE PER CENT AND EVERYTHING ELSE IS COMPUTED FROM THAT, so
+       a reader dividing the stake by the number on screen gets the payout on screen. At b = 1000
+       and the $5 default it equals the market quote on all 19 prices the catalog carries, so no
+       screen drawing the default changes; it first differs at $25, by one point. */
+    function liq(el){ var n = el && el.closest('[data-liquidity]'); return n ? (parseFloat(n.getAttribute('data-liquidity')) || 0) : 0; }
+    function sizedPrice(p, A, b){
+      if(!(p > 0 && p < 1) || !(A > 0) || !(b > 0)) return p;
+      var u = p / (1 - p);
+      var n = b * Math.log(((u + 1) * Math.exp(A / b) - 1) / u);
+      return n > 0 ? Math.round((A / n) * 100) / 100 : p;
+    }
+    /* The row appears only where the size moved the price, because a row restating the quote is a
+       second answer to a question already answered three inches above it. */
+    function setYourPrice(scope, p, shown){
+      var rows = scope.querySelectorAll('.line'), row = null, fee = null, i;
+      for(i = 0; i < rows.length; i++){
+        var lbl = rows[i].querySelector('span');
+        if(!lbl) continue;
+        if(lbl.textContent.indexOf('Your price') === 0) row = rows[i];
+        if(lbl.textContent.indexOf('Fee') === 0 && !fee) fee = rows[i];
+      }
+      if(shown === p || !(shown > 0)){ if(row) row.parentNode.removeChild(row); return; }
+      if(!row){
+        if(!fee) return;
+        row = document.createElement('div'); row.className = 'line';
+        row.innerHTML = '<span>Your price</span><span></span>';
+        fee.parentNode.insertBefore(row, fee);
+      }
+      row.querySelectorAll('span')[1].textContent = Math.round(shown * 100) + '%';
+    }
     (function () {
       var states = [
         { label: 'Portfolio', amount: '$132.00' },
@@ -1253,7 +1290,9 @@ document.addEventListener('click', function (e) {
       var side = btn ? (btn.textContent || '').trim().split(/\s+/)[0].toUpperCase() : '';
       var pctEl = btn && btn.querySelector('.bp-pct');
       var p = pctEl ? num(pctEl.textContent) / 100 : 0;
-      var win = p > 0 ? A / p : 0;
+      var q = sizedPrice(p, A, liq(panel));
+      setYourPrice(panel, p, q);
+      var win = q > 0 ? A / q : 0;
       box.querySelectorAll('.bp-outcome').forEach(function(row){
         var lbl = row.querySelector('span'), fig = row.querySelector('b');
         if(!lbl || !fig) return;

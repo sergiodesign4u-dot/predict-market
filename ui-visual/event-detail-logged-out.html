@@ -421,7 +421,7 @@ document.addEventListener('click', function (e) {
               <summary class="market-head"><span class="market-title">How the odds are set <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-info-circle-b"/></svg></span><svg class="market-chevron" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-chevron-down"/></svg></summary>
               <div class="market-body">
                 <div class="market-stats"><div><span class="ms-label">Yes price</span><span class="ms-val ms-yes">38%</span></div><div><span class="ms-label">No price</span><span class="ms-val ms-no">62%</span></div><div><span class="ms-label">24h</span><span class="ms-val ms-up">+2 pts</span></div><div><span class="ms-label">Volume</span><span class="ms-val">$84,200</span></div><div><span class="ms-label">Available to bet</span><span class="ms-val">$31,500</span></div></div>
-                <div class="market-depth"><span class="md-title">What 38% means</span><span class="md-sub">A YES share costs 38 cents and pays $1 if the event happens. $5.00 buys 13.16 shares, so YES returns $13.16 and NO returns nothing. <b>The price is locked when you confirm</b>, so it cannot move against you between the panel and the bet.</span></div>
+                <div class="market-depth"><span class="md-title">What 38% means</span><span class="md-sub">A YES share costs 38 cents and pays $1 if the event happens. $5.00 buys 13.16 shares, so YES returns $13.16 and NO returns nothing. <b>The price is locked when you confirm</b>, so it cannot move against you between the panel and the bet. Your own bet moves the price, so the panel quotes the amount in the box and locks THAT number, not this one.</span></div>
               </div>
             </details>
           </section>
@@ -543,7 +543,7 @@ document.addEventListener('click', function (e) {
             </div>
           </section>
         </div>
-          <aside class="bet-panel">
+          <aside class="bet-panel" data-liquidity="1000">
             <div class="bp-inner">
               <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">Pick a side</span></div>
               <div class="bp-dir">
@@ -580,7 +580,7 @@ document.addEventListener('click', function (e) {
         <button type="button" class="yesno-pick yesno-pick-bar bp-side no" data-open-sheet="no" aria-pressed="false">NO <span class="bp-pct">62%</span></button>
       </div>
     
-      <dialog class="app-dialog bet-sheet" id="betSheet" aria-label="Place your bet">
+      <dialog class="app-dialog bet-sheet" id="betSheet" aria-label="Place your bet" data-liquidity="1000">
         <button type="button" class="sheet-grab" data-close-sheet aria-label="Close"></button>
         <div class="bp-inner">
           <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">Pick a side</span></div>
@@ -743,6 +743,43 @@ document.addEventListener('click', function (e) {
 
   <!-- Minimal interaction: desktop balance swap Portfolio <-> Cash (wireframe behavior, no styling) -->
   <script>
+    /* THE QUOTE IS FOR THE SIZE IN THE BOX, 2026-08-20, docs/backlog.md 216 and PRODUCT.md
+       Liquidity and risk. The panel used to divide the stake by the market quote, which fills the
+       whole bet at a price only an infinitesimal bet could get, and hands the buyer the slippage.
+       That give-away breaks even at b = S(1-p)/(2fp), so it grows without bound as the quote nears
+       either end and is unbounded at ANY b while the commission is 0, which is what the first
+       launch ships. So the price offered is the price of the bet being placed. The closed form is
+       the cost function inverted: with u = p/(1-p), n = b*ln(((u+1)*e^(S/b) - 1)/u).
+       IT IS ROUNDED TO THE DISPLAYED WHOLE PER CENT AND EVERYTHING ELSE IS COMPUTED FROM THAT, so
+       a reader dividing the stake by the number on screen gets the payout on screen. At b = 1000
+       and the $5 default it equals the market quote on all 19 prices the catalog carries, so no
+       screen drawing the default changes; it first differs at $25, by one point. */
+    function liq(el){ var n = el && el.closest('[data-liquidity]'); return n ? (parseFloat(n.getAttribute('data-liquidity')) || 0) : 0; }
+    function sizedPrice(p, A, b){
+      if(!(p > 0 && p < 1) || !(A > 0) || !(b > 0)) return p;
+      var u = p / (1 - p);
+      var n = b * Math.log(((u + 1) * Math.exp(A / b) - 1) / u);
+      return n > 0 ? Math.round((A / n) * 100) / 100 : p;
+    }
+    /* The row appears only where the size moved the price, because a row restating the quote is a
+       second answer to a question already answered three inches above it. */
+    function setYourPrice(scope, p, shown){
+      var rows = scope.querySelectorAll('.line'), row = null, fee = null, i;
+      for(i = 0; i < rows.length; i++){
+        var lbl = rows[i].querySelector('span');
+        if(!lbl) continue;
+        if(lbl.textContent.indexOf('Your price') === 0) row = rows[i];
+        if(lbl.textContent.indexOf('Fee') === 0 && !fee) fee = rows[i];
+      }
+      if(shown === p || !(shown > 0)){ if(row) row.parentNode.removeChild(row); return; }
+      if(!row){
+        if(!fee) return;
+        row = document.createElement('div'); row.className = 'line';
+        row.innerHTML = '<span>Your price</span><span></span>';
+        fee.parentNode.insertBefore(row, fee);
+      }
+      row.querySelectorAll('span')[1].textContent = Math.round(shown * 100) + '%';
+    }
     (function () {
       var states = [
         { label: 'Portfolio', amount: '$132.00' },
@@ -1238,7 +1275,9 @@ document.addEventListener('click', function (e) {
       var side = btn ? (btn.textContent || '').trim().split(/\s+/)[0].toUpperCase() : '';
       var pctEl = btn && btn.querySelector('.bp-pct');
       var p = pctEl ? num(pctEl.textContent) / 100 : 0;
-      var win = p > 0 ? A / p : 0;
+      var q = sizedPrice(p, A, liq(panel));
+      setYourPrice(panel, p, q);
+      var win = q > 0 ? A / q : 0;
       box.querySelectorAll('.bp-outcome').forEach(function(row){
         var lbl = row.querySelector('span'), fig = row.querySelector('b');
         if(!lbl || !fig) return;
@@ -1490,7 +1529,8 @@ document.addEventListener('click', function (e) {
     var inp=sheet.querySelector('.amount-input'); if(!inp)return;
     var A=num(inp.value), b=side();
     var pe=b&&b.querySelector('.bp-pct'), p=pe?num(pe.textContent)/100:0;
-    var win=p>0?A/p:0, fee=Math.round(A*1.5)/100;
+    var q=sizedPrice(p,A,liq(sheet)); setYourPrice(sheet,p,q);
+    var win=q>0?A/q:0, fee=Math.round(A*1.5)/100;
     sheet.querySelectorAll('.line').forEach(function(l){
       var s=l.querySelectorAll('span'); if(s.length<2)return;
       var t=s[0].textContent;
@@ -1711,7 +1751,9 @@ document.addEventListener('click', function (e) {
       var A = input ? (parseFloat(String(input.value).replace(/[^0-9.]/g, '')) || 0) : 0;
       var pctEl = btn && btn.querySelector('.bp-pct');
       var p = pctEl ? (parseFloat(pctEl.textContent) || 0) / 100 : 0;
-      var win = p > 0 ? A / p : 0;
+      var q = sizedPrice(p, A, liq(scope));
+      setYourPrice(scope, p, q);
+      var win = q > 0 ? A / q : 0;
       ['YES', 'NO'].forEach(function(which, i){
         var mine = which.toLowerCase() === want;
         rows[i].querySelector('span').textContent = 'If ' + which + ' wins' + (mine ? ', your side' : '');
