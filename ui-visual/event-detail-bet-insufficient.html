@@ -170,6 +170,7 @@ push();});})();</script>
         <a href="event-detail-recurring.html" class="sidebar-sub-link">recurring</a>
         <a href="event-detail-recurring-multi.html" class="sidebar-sub-link">recurring multi</a>
         <a href="event-detail-resolved.html" class="sidebar-sub-link">resolved</a>
+        <a href="event-detail-resolved-multi.html" class="sidebar-sub-link">resolved multi</a>
         <a href="event-detail-loading.html" class="sidebar-sub-link">loading</a>
         <a href="event-detail-error.html" class="sidebar-sub-link">error</a>
         <div class="sidebar-divider sub">Placing a bet</div>
@@ -1434,7 +1435,16 @@ document.addEventListener('click', function (e) {
       if(xaxis){ xaxis.innerHTML=(XL[key]||XL.all).map(function(t){ return '<span>'+t+'</span>'; }).join(''); }
     }
     function legendHTML(){ if(legend){ legend.innerHTML=NAMES.map(function(nm,i){ return '<span class="lg-item'+(i===sel?' sel':'')+'"><i style="background:'+COLORS[i]+'"></i>'+nm+'</span>'; }).join(''); } }
-    function nowHTML(){ if(nowEl){ nowEl.textContent=NAMES[sel]+' '+DATA[sel][DATA[sel].length-1]+'% now'; nowEl.style.color=COLORS[sel]; } }
+    /* A CLOSED MARKET HAS NO `now`, 2026-08-20, docs/backlog.md 229. This label is the one thing
+       the multi chart writes over its own markup, so on a resolved page it replaced
+       `62% at close, resolved Ethereum` with `62% now` on every load. The single line chart never
+       had the bug because it never writes this element. The page says it is resolved in its own
+       `.ed-result`, so that is what is read, and the guard travels with the script rather than
+       standing in the one document that needed it. */
+    var edRes=document.querySelector('.ed-result b');
+    function nowHTML(){ if(nowEl){ var v=DATA[sel][DATA[sel].length-1];
+      nowEl.textContent=NAMES[sel]+' '+v+(edRes?'% at close, resolved '+edRes.textContent:'% now');
+      nowEl.style.color=COLORS[sel]; } }
     chart.selectOutcome=function(i){ sel=i; draw(); legendHTML(); nowHTML(); };
     chart.querySelectorAll('.ed-range button').forEach(function(b){ b.addEventListener('click',function(){ chart.querySelectorAll('.ed-range button').forEach(function(x){ x.classList.remove('sel'); }); b.classList.add('sel'); draw(); }); });
     draw(); legendHTML(); nowHTML();

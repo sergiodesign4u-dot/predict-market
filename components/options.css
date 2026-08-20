@@ -23,7 +23,12 @@
    between them rather than in the middle of it. With the boxes gone the rows are two lines in one
    list, so the space between them is their own padding and the divider lands at its midpoint. */
 .card .options{margin-top:auto;gap:0}
-/* THE CARD IS A SHORTLIST AND UNTIL 2026-08-10 IT NEVER SAID SO (docs/backlog.md 81).
+/* THIS BLOCK IS HISTORY AND THE RULE IT ARGUES FOR IS GONE. READ THE 2026-08-17 BLOCK BELOW
+   FIRST. It is kept because the reasoning is the record of how the count was decided, and
+   deleting it would leave `data-full` on 30 cards per tree with nothing anywhere saying what
+   the number ever meant. Nothing in it describes the shipped card. Checked 2026-08-20,
+   docs/backlog.md 229.
+   THE CARD IS A SHORTLIST AND UNTIL 2026-08-10 IT NEVER SAID SO (docs/backlog.md 81).
    Every multi-outcome card in this product shows exactly two rows, 21 of 21 in both
    trees, and the two do not add up to the market: Sweden and Italy leave 39 per cent
    unaccounted, Labour and the Conservatives 23. So a person on the feed could not tell

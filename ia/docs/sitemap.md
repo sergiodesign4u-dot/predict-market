@@ -522,14 +522,20 @@ the binary specimen exists to avoid, one axis over. The Event Detail family is n
 crossed, **binary and multi against one-time and recurring**, which is four documents per tree and
 the smallest set in which no card has to point at a page that contradicts it.
 
-**And the one thing the binary specimen has that this one cannot carry is the RECORD.** `Earlier in
-this series` is a list of resolved events, and a resolved MULTI event has no page of its own: the
-outcome family gained `win-multi` and `loss-multi` on 2026-08-20 and `event-detail-resolved` is still
-binary. Linking the months to it would put a multi row on a binary specimen, which is exactly what
-`docs/backlog.md` 222 closed for the win and loss screens. **So the record is a SENTENCE in the
-resolution panel** - *the series has run twice, for July and for August 2026, and Ethereum held the
-largest supply on both* - and the missing document is `docs/backlog.md` 229. A record that has to be
-prose because its destination does not exist is a record that says so.
+**THE RECORD WAS PROSE FOR ONE COMMIT AND IS A LIST AGAIN, 2026-08-20.** `Earlier in this series`
+is a list of RESOLVED events, and a resolved MULTI event had no page: the outcome family gained
+`win-multi` and `loss-multi` that same day, closing `docs/backlog.md` 222 on exactly this ground, and
+the DETAIL half of it had never been taken. Every row would have been a multi row landing on a binary
+specimen. **`event-detail-resolved-multi.html` closed that**, `docs/backlog.md` 229, so Event Detail
+is five documents per tree now: binary, multi, recurring, recurring multi, resolved, and resolved
+multi, which is the two axes crossed plus the state that ends both. The record is the same block the
+binary twin carries, and its outcome slot holds an OPTION rather than a side.
+
+**The resolved multi is the one document where three surfaces have to agree about one market.**
+`active-bets-history` prints the row, `loss-multi` prints the outcome screen, and the detail is where
+a reader arrives later from either. All three carry `Which chain held the largest stablecoin supply
+at the end of H1 2026?`, Ethereum on Jul 1 2026 at 00:05 ET, Ethereum $73.4B against Tron $61.2B and
+Solana $12.8B, and a reader who held YES on Solana at an average of 24 per cent and was not paid.
 
 **221 IS STRUCK ON 2026-08-20 AND THE ANSWER WAS IN THE ROUTING, NOT IN THE SLOT.** A card or a row
 in these trees goes to the specimen of its TYPE: **148 feed cards over 15 painted documents, 111 to

@@ -120,29 +120,28 @@
     odds bar</b>: the script skips any card holding <code>.options</code>, because a bar answers one
     question and this card asks one per row. That is the whole structural difference between the
     two, and it is why the card is one component and not two.</p>
-    <p class="tk-why"><b>Two rows is a shortlist, not the field, and until 2026-08-10 the card never
-    said so. Until 2026-08-17 it said so at every width, and that was the second half of the same
-    defect.</b> Sweden and Italy summed to 61%, Labour and the Conservatives to 77%, and on a desk
-    the card is two columns wide and was asking a person to navigate for a fact that would have
-    fitted underneath. <b>Measured with animation frozen: showing the whole field takes the affected
-    grid row from 317 to 407 and the feed from 1,756 to 1,936 at 1280, plus 10.3 per cent</b>, and
-    the column beside it was already being stretched to match. At 390 the same card would go 386 to
-    546, which is <b>65 per cent of an 844px viewport for ONE card</b> in a single-column scroll, and
-    that is the whole reason the phone keeps two. The rung is DESK, 40rem;
-    <a href="options.html#wholefield">the outcome list</a> carries the table and the reason it is not the
-    744 where the grid gains a column.</p>
-    <p class="tk-why"><b>One card in the set was COMPLETE and now all six are</b>, so the difference
-    a person had to be able to tell apart has moved: it used to be "does this market have more
-    outcomes than it shows", which nothing on the screen could answer, and it is now "does this
-    WIDTH show all of them", which the link answers and a sweep can check.</p>
-    <p class="tk-note"><b>The last row names the remainder and links to the event.</b> The word is
-    <code>outcome</code> because that is the product's own: the detail head prints <i>5 outcomes</i>
-    and the section is headed Outcomes. <b>The number counts what the LAYOUT hides, and that is new on 2026-08-17</b>: it used to be
-    the smallest the arithmetic forced, the
-    remainder over the smallest percentage already shown, rounded up: Eurovision leaves 39 against
-    Italy's 27, so two; the stablecoin market leaves 8, so one. <b>A card whose rows sum to 100 gets
-    no row at all</b>, because nothing is hidden and a label saying so would be noise. 18 cards in
-    each tree carry it and 3 do not.</p>
+    <p class="tk-why"><b>Two rows is a shortlist and the card no longer says so, which was decided
+    twice on two screenshots and re-checked here on 2026-08-20.</b> Three paragraphs stood in this
+    place describing a card that grows to its whole field at DESK and a <code>+N more outcomes</code>
+    link naming the remainder, with a count rule, an override and the sentence <i>18 cards in each
+    tree carry it and 3 do not</i>. <b>None of it is true and none of it has been since
+    2026-08-17.</b> <code>docs/backlog.md</code> 188 took the full field back off the desk and 189
+    deleted the link: <b>68 links removed across 33 documents in all three trees</b>, the rules out of
+    <code>components/options.css</code> and <code>.opt-more</code> off its class list. Measured from
+    the rendered DOM at 1280 on 2026-08-20: <b>30 multi cards per tree and every one of them shows
+    exactly two rows</b>.</p>
+    <p class="tk-note"><b>The reason the link went is the reason worth keeping.</b> It was
+    <code>--text-muted</code> at 12px, the same ink as the <code>Volume</code> and <code>Closes</code>
+    line beneath it, on a card being deliberately made smaller. <b>A card is where a person decides
+    whether to LOOK</b>, the question does that, and a grey caption counting what is missing was a
+    fourth thing to read. The whole field is one tap away on the title.</p>
+    <p class="tk-note"><b><code>data-full</code> is still on the markup and nothing reads it, and
+    that zero has a name.</b> It carries the market's outcome count, which is the number the detail
+    head prints, and its reader was the link that was deleted on purpose rather than a rule nobody
+    wrote. It is kept as a datum rather than swept, because the fact is true and the next surface
+    that wants it will not have to re-derive it: <b>30 cards per tree declare it and the three
+    complete markets do not</b>, which is the same switch it always was. <code>docs/backlog.md</code>
+    229.</p>
     <p class="tk-note">The Related list said <i>4 options</i> in 24 places for the same idea. <b>One
     word for one thing</b>: it says <i>4 outcomes</i> now.</p>
     <p class="tk-note"><b>The meta row is a grammar and it holds a third span since 2026-08-20.</b>

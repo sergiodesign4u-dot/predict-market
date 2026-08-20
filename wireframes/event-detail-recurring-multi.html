@@ -893,6 +893,7 @@
           <li><a href="event-detail-error.html">error</a></li>
           <li><a href="event-detail-loading.html">loading</a></li>
           <li><a href="event-detail-resolved.html">resolved-while-reading</a></li>
+          <li><a href="event-detail-resolved-multi.html">resolved / multi-outcome</a></li>
           <li><a href="event-detail-bet-ready.html">bet panel: ready to confirm</a></li>
             <li><a href="event-detail-bet-insufficient.html">bet panel: insufficient-balance</a></li>
           <li><a href="event-detail-bet-reconcile.html">bet panel: S5 reconcile</a></li>
@@ -1313,13 +1314,11 @@
             <div class="rules-panel" role="tabpanel"><p class="resolution"><strong>Resolves to the chain</strong> holding the largest stablecoin supply when the reading is taken at 00:00 UTC on October 1, 2026. All other outcomes resolve NO.<br>
             <strong>Source:</strong> DefiLlama, stablecoin supply by chain. Read automatically, so no person decides it.<br>
             <strong>This is one month of a monthly series.</strong> It settles on its own, and when it closes the next month opens as a separate market with its own reading. A bet here does not carry over.<br>
-            <!-- THE RECORD IS A SENTENCE HERE AND A LIST ON THE BINARY TWIN, 2026-08-20. `Earlier in this
-                 series` is a list of resolved events and a resolved MULTI event has no page: the outcome
-                 family took win-multi and loss-multi on 2026-08-20 and event-detail-resolved is still
-                 binary, so every row would be a multi row landing on a binary specimen, which is what
-                 docs/backlog.md 222 closed for the win and loss screens. A record whose destination does
-                 not exist is prose. docs/backlog.md 229. -->
-                 <strong>The series has run twice</strong>, for July and for August 2026, and Ethereum held the largest supply on both.</p></div>
+            <!-- THE RECORD IS A LIST AGAIN, 2026-08-20, docs/backlog.md 229. It stood here as one
+                 sentence for as long as a resolved MULTI event had no page: every row would have been
+                 a multi row landing on the binary resolved specimen, which is what backlog 222 closed
+                 for the win and loss screens. event-detail-resolved-multi.html exists now, so the
+                 record is `Earlier in this series` below, the same block the binary twin carries. --></p></div>
             <div class="rules-panel" role="tabpanel" hidden><p class="resolution">Ethereum leads at 58% and has held the largest supply every month the series has run. What is moving the field:</p>
             <div class="args">
               <div class="arg-col">
@@ -1459,6 +1458,18 @@
             </div>
           </aside>
       </div>
+      <!-- EARLIER IN THIS SERIES, 2026-08-20. A second placement of the related component, the
+           same block the binary recurring twin carries. Each row names its own month, which is why
+           the live instance names its own too, and the outcome slot carries an OPTION rather than a
+           side because that is what a multi resolution is. docs/backlog.md 227, 229. -->
+      <section class="related-events" aria-label="Earlier in this series">
+        <h2>Earlier in this series</h2>
+        <ul class="related-list">
+          <li><a href="event-detail-resolved-multi.html"><span class="rel-thumb">thumb</span><span class="rel-q">Which chain held the largest stablecoin supply at the end of August 2026?</span><span class="rel-odds">Resolved: Ethereum</span></a></li>
+          <li><a href="event-detail-resolved-multi.html"><span class="rel-thumb">thumb</span><span class="rel-q">Which chain held the largest stablecoin supply at the end of July 2026?</span><span class="rel-odds">Resolved: Ethereum</span></a></li>
+        </ul>
+      </section>
+
       <!-- Related events (crawlable internal-linking block, WF reconcile) -->
       <section class="related-events" aria-label="Related events">
         <h2>Related events</h2>

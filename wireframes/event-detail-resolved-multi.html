@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wireframe - Event Feed (base / success, registered, responsive)</title>
-  <style>
+  <title>Wireframe - Event Detail (logged in - state: resolved / multi-outcome)</title>
+<style>
     /* ================================================================================
        ONE OF 114 COPIES. This tree links no stylesheet, so every rule below stands in
        this file alone, and 113 other documents carry their own copy of the shared part.
@@ -196,7 +196,7 @@
     .cat-nav a { border: 1px solid #888; background: #d6d6d6; padding: 5px 10px; font-size: 11px; cursor: pointer; white-space: nowrap; }
     .cat-nav li[aria-current="page"] a, .cat-nav li[aria-current="location"] a, .cat-condensed li[aria-current="page"] a, .cat-condensed li[aria-current="location"] a { background: #b8b8b8; border-width: 2px; font-weight: bold; }
 
-    /* ---- SHARED BASE (58 of 114, 40 rules): feed ---- */
+    /* ---- SHARED (56 of 114, 40 rules): feed ---- */
     .feed { background: #f4f4f4; margin: 0; flex: 1; }
     .feed-inner { padding: 8px; }
     .feed-head {
@@ -213,27 +213,6 @@
     .filter-panel .zone-tag { background: #cdcdcd; }
     .filter-panel ul { list-style: none; margin: 0; padding: 4px 0; }
     .filter-panel li label { display: flex; align-items: center; gap: 8px; padding: 6px 10px; font-size: 11px; cursor: pointer; }
-    .filters-toggle { position: absolute; width: 1px; height: 1px; opacity: 0; margin: 0; pointer-events: none; }
-    .filters-btn, .filters-scrim, .filters-head, .filters-foot { display: none; }
-    @media(max-width:639.98px) {
-      .filters-btn { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid #888; background: #d6d6d6; cursor: pointer; }
-      .feed-head > .feed-controls { display: none; }
-      .filters-toggle:checked ~ .filters-scrim { display: block; position: fixed; inset: 0; z-index: 40; background: rgba(0,0,0,.45); cursor: pointer; }
-      .filters-toggle:checked ~ .feed-controls { display: flex; flex-direction: column; flex-wrap: nowrap; gap: 0; position: fixed; inset: auto 0 0 0; z-index: 40; padding: 0 0 20px; max-height: 92svh; overflow: auto; background: #e6e6e6; border-top: 1px solid #888; }
-      .filters-toggle:checked ~ .feed-controls .filters-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 12px; border-bottom: 1px solid #888; }
-      .filters-head h2 { margin: 0; font-size: 14px; }
-      .filters-toggle:checked ~ .feed-controls .filter-menu { width: 100%; }
-      .filters-toggle:checked ~ .feed-controls .filter-menu + .filter-menu { border-top: 1px solid #888; }
-      .filters-toggle:checked ~ .feed-controls .filter-menu summary { width: 100%; gap: 10px; padding: 10px 12px; font-size: 13px; background: transparent; border: 0; }
-      .filters-toggle:checked ~ .feed-controls .filter-menu summary > span { display: flex; flex: 1 1 auto; justify-content: space-between; align-items: baseline; gap: 16px; }
-      .filters-toggle:checked ~ .feed-controls .filter-panel { position: static; min-width: 0; border: 0; background: transparent; padding: 0 12px 6px; }
-      .filters-toggle:checked ~ .feed-controls .filters-foot { display: flex; align-items: center; gap: 8px; margin-top: 8px; padding: 12px 12px 0; border-top: 1px solid #888; }
-      .filters-foot .filters-done { flex: 1 1 auto; justify-content: center; text-align: center; border: 1px solid #666; background: #cfcfcf; padding: 10px 12px; font-size: 13px; cursor: pointer; }
-      .filters-foot .filters-reset { display: none; flex: 0 0 auto; border: 1px solid #888; background: transparent; padding: 10px 12px; font-size: 13px; cursor: pointer; }
-      .feed-head:has(.filter-panel input[name=sort]:checked:not([data-default])) .filters-reset,
-      .feed-head:has(.filter-panel input[name=freq]:checked:not([data-default])) .filters-reset { display: inline-flex; }
-      :root:has(.filters-toggle:checked) { overflow: hidden; }
-    }
     .reverse-row { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #ccc; padding: 7px 10px; font-size: 11px; }
     .toggle { border: 1px solid #888; background: #cfcfcf; font-size: 10px; padding: 2px 8px; cursor: pointer; }
     .toggle[aria-checked="true"] { background: #b8b8b8; font-weight: bold; }
@@ -376,6 +355,263 @@
     dialog.app-dialog .protect { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 11px; }
     .dlg-note { font-size: 10px; color: #555; padding: 6px 10px; border-top: 1px dashed #bbb; margin: 0; }
 
+    /* ---- SHARED (66 of 114, 12 rules): notification bell dropdown ---- */
+    .notif-menu { position: relative; }
+    .notif-menu summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; }
+    .notif-menu summary::-webkit-details-marker { display: none; }
+    .notif-menu .dropdown { position: absolute; right: 0; top: calc(100% + 4px); width: 260px; max-width: 80vw; border: 1px solid #888; background: #e6e6e6; z-index: 10; }
+    .notif-menu .dropdown .zone-tag { background: #cdcdcd; }
+    .notif-drop ul { list-style: none; margin: 0; padding: 0; }
+    .notif-drop li { border-top: 1px solid #ccc; }
+    .notif-drop li:first-child { border-top: none; }
+    .notif-drop li a { display: block; padding: 8px 10px; text-decoration: none; color: #222; }
+    .notif-drop li a strong { display: block; font-size: 12px; }
+    .notif-drop li a span { display: block; font-size: 10px; color: #555; }
+    .notif-all { display: block; text-align: center; padding: 8px; border-top: 1px solid #999; font-size: 11px; text-decoration: none; color: #222; background: #dcdcdc; }
+
+    /* ---- THIS PAGE ---- */
+    .bal-add { padding: 3px; }
+
+    /* ---- SHARED BASE (98 of 114, 17 rules): event detail ---- */
+    .ed-head { display: flex; gap: 10px; padding: 10px; align-items: flex-start; }
+    .ed-thumb { width: 72px; height: 72px; flex: 0 0 72px; border: 1px solid #999; background: #d2d2d2;
+      display: flex; align-items: center; justify-content: center; font-size: 8px; text-align: center; padding: 2px; }
+    .ed-cat { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: #555; }
+    .ed-q { font-size: 16px; font-weight: bold; margin: 4px 0 6px; }
+    .ed-prob-big { font-size: 13px; margin: 0; }
+    .ed-prob-big .prob { font-weight: bold; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; font-size: 14px; }
+    .ed-section { padding: 10px; border-top: 1px solid #ccc; }
+    .ed-section h2, .ed-section h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; margin: 0 0 6px; }
+    .chart-box { border: 1px dashed #999; background: #ededed; height: 120px; display: flex; align-items: center;
+      justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 6px; }
+    .args { display: flex; flex-direction: column; gap: 12px; }
+    .arg-col h3 { margin: 0 0 4px; font-size: 11px; }
+    .arg-col ul { margin: 0; padding-left: 16px; font-size: 12px; }
+    .arg-col li { margin-bottom: 4px; }
+    .resolution { font-size: 12px; line-height: 1.5; }
+    .opt-list { display: flex; flex-direction: column; }
+    .preselect-note { border: 1px solid #999; background: #e0e0e0; padding: 6px 8px; font-size: 11px; margin: 0 10px 0; }
+    .cta-bar { background: #e2e2e2; border: 1px solid #999; padding: 8px 0 0; display: flex; gap: 8px; }
+    .cta-bar :is(a,button) { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-align: center; text-decoration: none; }
+    @media (min-width: 640px) { .args { flex-direction: row; } .arg-col { flex: 1; } }
+
+    /* ---- SHARED (98 of 114, 28 rules): invoked overlays (Bet / Sign In / Deposit), modal on desktop and bottom sheet on mobile ---- */
+    .backdrop { background: #cfcfcf; flex: 1; position: relative; min-height: 70vh; display: flex;
+      align-items: flex-end; justify-content: center; }
+    .dim-note { position: absolute; top: 8px; left: 8px; font-size: 10px; color: #555; background: #dcdcdc; border: 1px solid #aaa; padding: 2px 6px; }
+    .sheet { width: 100%; background: #f0f0f0; border: 1px solid #999; border-bottom: none; }
+    .grab { width: 36px; height: 4px; background: #bbb; border-radius: 2px; margin: 6px auto 0; }
+    .sheet-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
+    .sheet-head :is(h1,h2) { font-size: 14px; margin: 0; }
+    .sheet-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; text-decoration: none; }
+    .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+    @media (min-width: 640px) { .backdrop { align-items: center; padding: 24px; } .sheet { max-width: 420px; border-bottom: 1px solid #999; } }
+
+    .dir-pill { border: 1px solid #888; background: #dcdcdc; padding: 4px 10px; font-weight: bold; font-size: 12px; display: inline-block; }
+    .field-label { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
+    .amount-row { display: flex; align-items: center; gap: 8px; }
+    .amount-input { flex: 1; border: 1px solid #888; background: #fff; padding: 10px; font-size: 18px; }
+    .quick { display: flex; gap: 6px; flex-wrap: wrap; }
+    .quick button { border: 1px solid #888; background: #d6d6d6; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+    .quick button.sel { background: #b8b8b8; font-weight: bold; }
+    .line { display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0; border-top: 1px solid #ddd; }
+    /* the payout was one bold line and it is a PAIR now: both outcomes, same weight, one of
+       them zero. docs/backlog.md 180, components/betpanel.css carries the argument. */
+    .bp-outcomes { display: flex; flex-direction: column; }
+    .bp-outcome { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; padding: 4px 0; border-top: 1px solid #ddd; }
+    .bp-outcome b { font-weight: 600; }
+    .bp-pick { margin: 0; font-size: 13px; line-height: 1.5; }
+    .inline-error { display: flex; align-items: flex-start; gap: 8px; border: 1px solid #666; background: #e0e0e0; padding: 8px; font-size: 12px; font-weight: 600; }
+    .inline-error .ic { width: 22px; height: 22px; flex: 0 0 22px; }
+    .reconcile-box { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 12px; display: flex; flex-direction: column; gap: 4px; }
+    .quiet-box { border: 1px dashed #999; background: #ededed; padding: 24px; text-align: center; font-size: 12px; color: #555; }
+    .fine { font-size: 11px; color: #555; line-height: 1.5; }
+    .widget-box { border: 1px dashed #999; background: #ededed; min-height: 160px; display: flex; align-items: center;
+      justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 8px; }
+    .protect { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 11px; }
+
+    /* ---- SHARED (98 of 114, 14 rules): active bets ---- */
+    .tabs { display: flex; gap: 0; margin: 0 0 10px; }
+    .tabs :is(a,button) { border: 1px solid #888; border-bottom: 1px solid #bbb; background: #dcdcdc; padding: 8px 14px; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-align: center; text-decoration: none; }
+    .tabs [aria-current="page"] { background: #f4f4f4; font-weight: bold; border-bottom-color: #f4f4f4; }
+    .pos-list { display: flex; flex-direction: column; gap: 8px; }
+    .pos { border: 1px solid #bbb; background: #ededed; padding: 8px 10px; display: flex; flex-direction: column; gap: 6px; }
+    .pos-top { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+    .pos-q { font-size: 13px; font-weight: bold; }
+    .pos-side { font-size: 11px; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; height: max-content; white-space: nowrap; }
+    .pos-figures { display: flex; gap: 16px; font-size: 10px; flex-wrap: wrap; color: #555; }
+    .pos-fig b { display: block; font-size: 12px; color: #222; }
+    .pos.skeleton .sk-line { height: 10px; background: #d8d8d8; margin: 6px 0; }
+    .pos.skeleton .w70 { width: 70%; } .pos.skeleton .w40 { width: 40%; }
+    .pos-status { font-size: 10px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
+
+    /* ---- SHARED (98 of 114, 34 rules): event detail two-column, scrolling content + sticky bet panel ---- */
+    .ed-layout { display: flex; flex-direction: column; }
+    .ed-main { flex: 1; min-width: 0; }
+    /* schematic probability chart (raised fidelity per design call: a drawn grey line, still no color) */
+    .chart-wrap { padding: 0; }
+    .chart-svg { width: 100%; height: 160px; display: block; border: 1px solid #bbb; background: #ededed; }
+    /* rung: DETAIL 760. The paint steps this chart 160 -> 280 there: components/chart.css. */
+    @media (min-width: 760px) { .chart-svg { height: 280px; } }
+    .chart-svg polyline { fill: none; stroke: #777; stroke-width: 1.5; }
+    .chart-svg .ed-area { fill: #cfcfcf; stroke: none; }
+    .chart-svg .ed-even { stroke: #888; stroke-width: 1; stroke-dasharray: 2 4; }
+    .ed-now-dot { position: absolute; right: 1px; bottom: calc(1px + (100% - 2px) * var(--v) / 100); width: 8px; height: 8px; margin: 0; transform: translate(50%, 50%); border-radius: 50%; background: #444; box-shadow: 0 0 0 2px #e6e6e6; }
+    .chart-svg .grid-l { stroke: #d2d2d2; stroke-width: 1; }
+    .chart-svg .nowline { stroke: #999; stroke-width: 1; stroke-dasharray: 3 3; }
+    .chart-svg text { fill: #777; font-size: 7px; }
+    .chart-cap { font-size: 10px; color: #555; margin: 4px 0 0; display: flex; justify-content: space-between; }
+    .ed-facts { display: flex; flex-wrap: wrap; gap: 16px; font-size: 10px; color: #555; padding: 8px 10px; border-top: 1px solid #ccc; }
+    .ed-facts b { display: block; font-size: 12px; color: #222; }
+
+    /* bet panel (desktop sticky sidebar) */
+    .bet-panel { display: none; }
+    .bet-panel .bp-inner { padding: 10px; display: flex; flex-direction: column; gap: 9px; }
+    .bp-head { display: flex; align-items: center; justify-content: space-between; }
+    .bp-head h3 { font-size: 13px; margin: 0; }
+    .bp-hint { font-size: 10px; color: #555; }
+    .bp-dir { display: flex; gap: 6px; }
+    .bp-side { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 10px 6px; font-size: 12px; font-weight: bold; cursor: pointer; }
+    .bp-side.sel { background: #b8b8b8; border-width: 2px; }
+    .bp-side .bp-pct { display: block; font-size: 11px; font-weight: normal; }
+    .bp-opts { display: flex; flex-direction: column; gap: 0; border: 1px solid #ccc; max-height: 168px; overflow: auto; }
+    .bp-opt { display: flex; align-items: center; gap: 8px; padding: 7px 8px; border-top: 1px solid #ddd; font-size: 12px; cursor: pointer; }
+    .bp-opt:first-child { border-top: none; }
+    .bp-opt.sel { background: #dcdcdc; font-weight: bold; }
+    .bp-opt .bp-opt-pct { margin-left: auto; border: 1px solid #999; background: #e0e0e0; padding: 0 5px; font-size: 11px; }
+
+    /* mobile sticky bet dock (collapsed bar above the bottom nav; taps expand to a sheet) */
+    .bet-dock { position: sticky; bottom: 52px; z-index: 4; background: #e2e2e2; border: 1px solid #999; border-bottom: none;
+      display: flex; align-items: center; gap: 6px; padding: 8px; }
+    .bet-dock .bp-side { padding: 11px 6px; }
+    .bet-dock .dock-meta { font-size: 9px; color: #555; flex: 0 0 auto; text-align: center; }
+    .bet-dock .dock-meta b { display: block; font-size: 12px; color: #222; }
+
+    /* rung: DETAIL 760, the detail's second column, and it was 640 here until
+       2026-08-11 while the paint has always said 760. Backlog 107: for 120px of
+       width this tree drew a second column the product does not have, and halved
+       its own content column to do it, 635 to 322.73 in one pixel of viewport.
+       The WHOLE block moves and not just the dock, because moving the dock alone
+       is what would create the hole the row was filed about. DESIGN.md decides
+       the number by name. */
+    @media (min-width: 760px) {
+      .ed-layout { flex-direction: row; align-items: flex-start; }
+      .ed-main { border-right: 1px solid #999; }
+      .bet-panel { display: block; flex: 0 0 300px; position: sticky; top: 8px; align-self: flex-start; }
+      .bet-dock { display: none; }
+    }
+
+    /* ---- SHARED (98 of 114, 12 rules): category page, side sub-category panel + filtered feed ---- */
+    .cat-main { flex: 1; min-width: 0; }
+    .subcat { background: #ededed; }
+    .subcat .zone-tag { background: #d2d2d2; }
+    .subcat-head { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: #555; padding: 8px 10px 0; }
+    .subcat ul { list-style: none; margin: 0; padding: 8px; display: flex; gap: 6px; overflow-x: auto; flex-wrap: nowrap; }
+    .subcat li { flex: 0 0 auto; }
+    .subcat button { border: 1px solid #888; background: #d6d6d6; padding: 5px 9px; font-size: 11px; cursor: pointer;
+      white-space: nowrap; display: inline-flex; gap: 6px; align-items: center; }
+    .subcat li[aria-current="page"] button { background: #b8b8b8; border-width: 2px; font-weight: bold; }
+    .subcat .cnt { font-size: 9px; color: #555; border: 1px solid #bbb; background: #e8e8e8; padding: 0 4px; }
+    /* THE WRAPPER CAME BACK ON 2026-08-13, docs/backlog.md 113, AND THIS BLOCK IS THE PROOF THAT
+       THE GREY TREE LOST IT RATHER THAN THE PAINT INVENTING IT. `.cat-main { flex: 1 }` and
+       `.subcat { flex: 0 0 210px }` are written here and BOTH NEED A FLEX PARENT, and the parent
+       was `.cat-layout`, which 76 files still carried the closing comment for and 0 carried the
+       opening tag for. So the rail has never once stood beside the content in this tree at any
+       width: two flex children of a block box. A closing comment with no opening tag is evidence;
+       a stylesheet written against the missing element is the proof.
+       rung: RAIL 900, a rail beside the content. The paint pins it there: components/catnav.css
+       and components/patterns/browse-shell.css. This block said 640 in 92 files and 900 in one. */
+    .cat-layout { display: flex; flex-direction: column; gap: 12px; }
+    @media (min-width: 900px) {
+      .cat-layout { flex-direction: row; align-items: flex-start; gap: 16px; }
+      .subcat { flex: 0 0 210px; position: sticky; top: 8px; border: 1px solid #999; }
+      .subcat ul { flex-direction: column; overflow: visible; flex-wrap: nowrap; }
+      .subcat button { width: 100%; justify-content: space-between; }
+    }
+    /* Category grid adapts to the width left by the sub-category rail (no fixed 4-col overflow). */
+    .cat-main .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+
+    /* ---- SHARED (98 of 114, 2 rules): in-page dialogs (native <dialog>, opened over the current page) ---- */
+    dialog.app-dialog { width: 92%; max-width: 420px; border: 1px solid #999; background: #f0f0f0; color: #222; padding: 0; }
+    dialog.app-dialog::backdrop { background: rgba(0,0,0,.4); }
+
+    /* ---- THIS PAGE ---- */
+    dialog.app-dialog .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+    .dlg-note { font-size: 10px; color: #555; padding: 6px 10px; border-top: 1px dashed #bbb; margin: 0; }
+
+        .bal-add { padding: 3px; }
+
+    /* ---- SHARED (10 of 114, 55 rules): event detail content tabs (Comments / Top Holders / Positions / Activity) ---- */
+    .ed-tabs { padding: 0; }
+    .ed-tabwrap { border-top: 1px solid #ccc; }
+    /* Not parked off-canvas: an off-canvas radio keeps its box and its hit test, so 36 native
+       13x13 controls sat outside the page and answered a pointer. Same three declarations the
+       painted tree uses (components/tabs.css), and the label is the target. 2026-08-12. */
+    .ed-tabradio { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+    .ed-tabbar { display: flex; gap: 0; overflow-x: auto; border-bottom: 1px solid #999; background: #ededed; }
+    .ed-tablabel { flex: 0 0 auto; padding: 9px 12px; font-size: 12px; cursor: pointer; border-right: 1px solid #ccc; white-space: nowrap; color: #555; }
+    .ed-tab-count { font-size: 10px; color: #777; }
+    .ed-tabpanel { display: none; padding: 10px; }
+    #edtab-comments:checked ~ .ed-tabbar label[for="edtab-comments"],
+    #edtab-holders:checked ~ .ed-tabbar label[for="edtab-holders"],
+    #edtab-positions:checked ~ .ed-tabbar label[for="edtab-positions"],
+    #edtab-activity:checked ~ .ed-tabbar label[for="edtab-activity"] { background: #f4f4f4; color: #111; font-weight: bold; box-shadow: inset 0 -2px 0 #777; }
+    #edtab-comments:checked ~ .ed-panel-comments,
+    #edtab-holders:checked ~ .ed-panel-holders,
+    #edtab-positions:checked ~ .ed-panel-positions,
+    #edtab-activity:checked ~ .ed-panel-activity { display: block; }
+    .cmt-controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; font-size: 11px; color: #555; }
+    .cmt-controls .seg { display: inline-flex; border: 1px solid #999; }
+    .cmt-controls .seg button { border: none; border-right: 1px solid #999; background: #e2e2e2; padding: 4px 8px; font-size: 11px; cursor: pointer; }
+    .cmt-controls .seg button:last-child { border-right: none; }
+    .cmt-controls .seg button.sel { background: #c4c4c4; font-weight: bold; }
+    .cmt-compose { display: flex; gap: 8px; align-items: center; border: 1px solid #bbb; background: #ededed; padding: 8px; margin-bottom: 10px; }
+    .cmt-av { width: 28px; height: 28px; flex: 0 0 28px; border: 1px solid #999; background: #d2d2d2; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 8px; color: #555; }
+    .cmt-input { flex: 1; border: 1px solid #888; background: #fff; padding: 8px; font-size: 12px; color: #777; }
+    .cmt-post { border: 1px solid #888; background: #c4c4c4; padding: 8px 12px; font-size: 12px; font-weight: bold; cursor: pointer; }
+    .cmt-signin { width: 100%; border: 1px dashed #999; background: #ededed; padding: 12px; font-size: 12px; text-align: center; cursor: pointer; }
+    .cmt-list { display: flex; flex-direction: column; gap: 12px; }
+    .cmt { display: flex; gap: 8px; }
+    .cmt.reply { margin-left: 32px; }
+    .cmt-body { flex: 1; min-width: 0; }
+    .cmt-meta { font-size: 11px; color: #555; display: flex; gap: 6px; flex-wrap: wrap; align-items: baseline; }
+    .cmt-user { font-weight: bold; color: #222; font-size: 12px; }
+    .cmt-badge { border: 1px solid #bbb; background: #e6e6e6; font-size: 9px; padding: 0 5px; }
+    .cmt-text { font-size: 12px; margin: 3px 0; }
+    .cmt-actions { display: flex; gap: 14px; font-size: 11px; color: #555; }
+    .cmt-actions button { border: none; background: transparent; padding: 0; font-size: 11px; color: #555; cursor: pointer; display: inline-flex; gap: 4px; align-items: center; }
+    .cmt-actions .ic { width: 13px; height: 13px; }
+    .hold-cols { display: flex; flex-direction: column; gap: 12px; }
+    .hold-col h3 { font-size: 12px; margin: 0 0 4px; }
+    .hold-row { display: flex; align-items: center; gap: 8px; font-size: 12px; padding: 5px 0; border-top: 1px solid #e0e0e0; }
+    .hold-row:first-of-type { border-top: none; }
+    .hold-rank { width: 14px; color: #777; font-size: 11px; }
+    .hold-name { flex: 1; }
+    .hold-out { border: 1px solid #bbb; background: #e6e6e6; font-size: 9px; padding: 0 5px; white-space: nowrap; }
+    .hold-amt { color: #555; font-size: 11px; white-space: nowrap; }
+    .ptable { width: 100%; font-size: 11px; border-collapse: collapse; }
+    .ptable th, .ptable td { text-align: left; padding: 6px 6px; border-bottom: 1px solid #e0e0e0; }
+    .ptable th { color: #555; font-size: 10px; text-transform: uppercase; letter-spacing: .03em; }
+    .ptable tr.you td { background: #e6e6e6; font-weight: bold; }
+    .pos-side { border: 1px solid #999; background: #dcdcdc; padding: 0 5px; font-size: 10px; }
+    .pos-note { font-size: 11px; color: #555; margin: 8px 0 0; }
+    .act-list { display: flex; flex-direction: column; }
+    .act-row { display: flex; gap: 8px; align-items: center; font-size: 12px; padding: 7px 0; border-top: 1px solid #e0e0e0; }
+    .act-row:first-child { border-top: none; }
+    .act-txt { flex: 1; min-width: 0; }
+    .act-time { color: #777; font-size: 10px; white-space: nowrap; }
+    /* multi: left list marks the selected outcome; right panel focuses on it */
+    .opt-row.sel { background: #e6e6e6; border-left: 3px solid #777; padding-left: 6px; }
+    .opt-sel-tag { font-size: 9px; border: 1px solid #999; background: #dcdcdc; padding: 0 5px; }
+    .bp-selected { display: flex; align-items: center; justify-content: space-between; gap: 8px; border: 1px solid #888; background: #dcdcdc; padding: 8px; }
+    .bp-sel-name { font-size: 13px; font-weight: bold; display: flex; align-items: center; gap: 6px; }
+    .bp-change { font-size: 10px; color: #333; text-decoration: underline; white-space: nowrap; }
+    @media (min-width: 640px) {
+      .hold-cols { flex-direction: row; }
+      .hold-col { flex: 1; }
+      .hold-col:first-child { border-right: 1px solid #ddd; padding-right: 12px; }
+    }
+
     /* ---- SHARED (97 of 114, 6 rules): footer trust strip + SEO popular-links ---- */
     .footer-trust { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; padding: 10px 12px; border-bottom: 1px solid #ccc; font-size: 12px; color: #444; }
     .footer-trust .trust-item { display: inline-block; }
@@ -384,9 +620,46 @@
     .popular-links { display: flex; flex-wrap: wrap; gap: 6px 14px; list-style: none; padding: 0; margin: 0; font-size: 12px; }
     .popular-links a { color: #444; }
 
+    /* ---- SHARED (10 of 114, 6 rules): event detail related events block ---- */
+    .related-events { border-top: 1px solid #ccc; margin: 14px 0 0; padding: 12px 0 4px; }
+    .related-events h2 { font-size: 14px; margin: 0 0 8px; }
+    .related-list { list-style: none; padding: 0; margin: 0; }
+    .related-list li { border-bottom: 1px solid #e2e2e2; }
+    .related-list a { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; color: #333; font-size: 13px; }
+    .rel-odds { color: #555; white-space: nowrap; }
+
     /* ---- THIS PAGE: what the structure port brought with the markup, and nothing here is promised to another file ---- */
     /* Layout taken from components/, every colour replaced by the
        wireframe palette. See wireframes/_generators/port_structure.py. */
+    .oddsbar .track { overflow: hidden; display: flex; }
+    .oddsbar .track { height: 4px; }
+    .ed-oddsbar { margin: 12px 0 4px; }
+    .ed-oddsbar .track { display: block; height: 8px; overflow: hidden; }
+    .ed-oddsbar .fill { display: block; height: 100%; }
+    .market-box { padding: 0; }
+    .market-head { display: flex; align-items: center; justify-content: space-between; list-style: none; }
+    .market-title { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .market-chevron { width: 16px; height: 16px; }
+    .market-body { margin-top: 16px; }
+    .market-stats { display: flex; flex-wrap: wrap; gap: 16px 24px; padding-bottom: 16px; }
+    .market-stats > div { display: flex; flex-direction: column; gap: 4px; }
+    .market-depth { margin-top: 16px; }
+    .ms-label { font-size: 10px; letter-spacing: .03em; text-transform: uppercase; }
+    .ms-val { font-size: 16px; font-weight: 700; }
+    .md-title { font-size: 13px; font-weight: 700; }
+    .md-sub { display: block; font-size: 12px; line-height: 1.5; margin: 4px 0 12px; }
+    .md-table { display: flex; flex-direction: column; gap: 2px; }
+    .md-row { position: relative; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; align-items: center; padding: 8px 12px; overflow: clip; font-size: 12px; }
+    .md-row-head { padding: 2px 12px; font-size: 10px; text-transform: uppercase; letter-spacing: .03em; }
+    .md-bar { position: absolute; left: 0; top: 0; bottom: 0; }
+    .md-row > span:not(.md-bar) { position: relative; }
+    .md-amt { font-weight: 600; }
+    .md-price { text-align: center; }
+    .md-row-head > span:nth-child(2) { text-align: center; }
+    .md-get, .md-row-head > span:last-child { text-align: right; }
+    .rules-note { margin: 12px 0 0; font-size: 12px; line-height: 1.5; }
+    .ed-actions { position: absolute; top: 16px; right: 18px; display: flex; gap: 8px; }
+    .ed-actions button { width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; }
     .cat-nav { margin: 0; }
     .cat-nav ul { list-style: none; margin: 0; padding: 8px 8px; display: flex; gap: 8px; overflow-x: auto; flex-wrap: nowrap; }
     .cat-nav a { padding: 4px 8px; font-size: 11px; white-space: nowrap; }
@@ -399,12 +672,43 @@
     .cat-nav li { flex: 0 0 auto; }
     .cat-ic { width: 18px; height: 18px; flex: 0 0 auto; }
     .cat-nav a { display: inline-flex; align-items: center; gap: 12px; min-height: 0; font-weight: 600; font-size: 14px; padding: 12px 20px; }
+    .rel-thumb { width: 46px; height: 46px; flex: 0 0 46px; }
+    .rel-q { flex: 1; min-width: 0; font-weight: 600; font-size: 14px; line-height: 1.3; letter-spacing: -.01em; display: -webkit-box; overflow: hidden; }
+    .related-more { display: flex; align-items: center; justify-content: center; margin: 16px auto 2px; width: 100%; max-width: 300px; min-height: 44px; padding: 12px 24px; font-weight: 600; font-size: 14px; letter-spacing: .01em; }
+    .bp-amount-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin: 8px 0 20px; }
+    .bp-amount-lbl { display: flex; flex-direction: column; gap: 4px; }
+    .bp-cash { font-size: 11px; }
+    .bet-sheet .bp-amount-row { margin: 0 0 12px; }
+    /* The mobile bet sheet the dock raises. Grey owns the structure; the rule
+       above stood here with no element wearing it since the sheet was specified
+       and never drawn. */
+    dialog.app-dialog.bet-sheet { position: fixed; left: 0; right: 0; bottom: 0; top: auto; margin: 0 auto; width: 100%; max-width: 560px; max-height: 92vh; border: 1px solid #999; overflow-y: auto; }
+    .bet-sheet .sheet-grab { display: block; width: 100%; border: 0; background: transparent; padding: 12px 0 8px; cursor: pointer; }
+    .bet-sheet .sheet-grab::before { content: ''; display: block; width: 40px; height: 4px; background: #b8b8b8; border-radius: 2px; margin: 0 auto; }
+    .bet-sheet .bp-inner { display: flex; flex-direction: column; padding: 12px 20px 24px; gap: 20px; }
+    .ed-chart-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px 16px; flex-wrap: wrap; margin: 0 0 12px; }
+    .ed-chart-head :is(h2,h3) { margin: 0; }
+    .ed-chart-now { font-size: 13px; font-weight: 600; }
+    .ed-chart-area { display: grid; grid-template-columns: 1fr 34px; gap: 8px; align-items: stretch; }
+    .ed-plot { order: 1; position: relative; min-width: 0; }
+    .ed-yaxis { order: 2; display: flex; flex-direction: column; justify-content: space-between; padding: 2px 0 2px 2px; font-size: 10px; line-height: 1; text-align: left; }
+    .ed-xaxis { display: flex; justify-content: space-between; padding-right: 40px; margin-top: 8px; font-size: 10px; }
+    .ed-chart-foot { display: flex; justify-content: flex-end; margin-top: 12px; }
+    .ed-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 12px; padding-left: 2px; }
+    .ed-rules .rules-tabs { display: flex; gap: 20px; margin: 0 0 16px; }
+    .rules-tab { font-weight: 600; font-size: 14px; padding: 0 0 8px; margin-bottom: -2px; }
+    .ed-range { display: inline-flex; gap: 4px; padding: 4px; }
+    .ed-range button { padding: 4px 12px; font-size: 12px; }
     @media(pointer:coarse) {
       .cat-nav a { min-height: 44px; }
     }
     @media(max-width:639.98px) {
       .cat-nav a { position: relative; }
       .cat-nav { margin-bottom: 16px; }
+    }
+    @media(max-width:560px) {
+      .ed-actions { top: 12px; right: 12px; gap: 4px; }
+      .ed-actions button { width: 28px; height: 28px; }
     }
     .ed-oddsbar .track, .md-bar { background: #dcdcdc; }
     .ed-oddsbar .fill { background: #555; }
@@ -545,8 +849,7 @@
 
     </style>
 </head>
-<body data-loggedin-target="event-feed-error.html">
-
+<body>
   <!-- ===== Wireframe screen-tree nav (meta navigation, identical on every wireframe page) ===== -->
   <button type="button" class="wf-toggle" id="wfToggle" aria-label="Open screen tree" aria-expanded="false">
     <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -561,7 +864,7 @@
     <ul class="wf-tree">
       <li class="wf-sec">Events</li>
       <li class="wf-screen">
-        <a href="event-feed.html" class="active" aria-current="page">Event Feed</a>
+        <a href="event-feed.html">Event Feed</a>
         <ul class="wf-states">
           <li class="wf-substate">Logged in</li>
           <li><a href="event-feed.html">success</a></li>
@@ -575,12 +878,12 @@
           <li class="wf-substate">Logged out</li>
           <li><a href="event-feed-logged-out.html">success</a></li>
           <li><a href="event-feed-logged-out-empty.html">empty</a></li>
-          <li class="cur"><a href="event-feed-logged-out-error.html">error (this page)</a></li>
+          <li><a href="event-feed-logged-out-error.html">error</a></li>
           <li><a href="event-feed-logged-out-loading.html">loading</a></li>
         </ul>
       </li>
       <li class="wf-screen">
-        <a href="event-detail.html">Event Detail</a>
+        <a href="event-detail.html" class="active" aria-current="page">Event Detail</a>
         <ul class="wf-states">
           <li class="wf-substate">Logged in</li>
           <li><a href="event-detail.html">success / binary</a></li>
@@ -590,7 +893,7 @@
           <li><a href="event-detail-error.html">error</a></li>
           <li><a href="event-detail-loading.html">loading</a></li>
           <li><a href="event-detail-resolved.html">resolved-while-reading</a></li>
-          <li><a href="event-detail-resolved-multi.html">resolved / multi-outcome</a></li>
+          <li class="cur"><a href="event-detail-resolved-multi.html">resolved / multi-outcome (this page)</a></li>
           <li><a href="event-detail-bet-ready.html">bet panel: ready to confirm</a></li>
             <li><a href="event-detail-bet-insufficient.html">bet panel: insufficient-balance</a></li>
           <li><a href="event-detail-bet-reconcile.html">bet panel: S5 reconcile</a></li>
@@ -850,14 +1153,12 @@
     </ul>
   </nav>
 
-  <!-- ============ THE RESPONSIVE PRODUCT SCREEN ============ -->
   <div class="device">
 
     <!-- Bypass block, WCAG 2.4.1: the first focusable thing in the document, clipped to 1x1
          until it takes focus. Structure lives here; the painted twin takes its look from
          components/base.css. -->
     <a class="skip-link" href="#main-content">Skip to main content</a>
-
     <!-- Header (lean: logo = Events/home, right icon cluster) -->
     <header class="app-header">
       <div class="row">
@@ -879,164 +1180,335 @@
 
 
         <div class="utility">
-          <!-- Favorites kept as an affordance; tapping it logged-out routes to Sign In (saving needs an account). -->
-          <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Favorites (sign in to save)">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-          </button>
+          <!-- Balance: one figure + swap icon (Portfolio <-> Cash). Desktop only. -->
+          <div class="bal-toggle desk-only">
+            <span class="bal-figure"><span class="bal-label" id="balLabel">Portfolio</span> <span class="bal-amt" id="balAmt">$132.00</span></span>
+            <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Portfolio)">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg>
+            </button>
+            <button type="button" class="icon-btn bal-add" data-open="deposit" aria-label="Add funds">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
 
-          <!-- Search: the way in from anywhere, at every width. It is the one mark in this
-               cluster that goes somewhere of its own. -->
+          <!-- Favorites: desktop header only (on mobile it is the bottom-bar slot). -->
+          <a class="icon-btn desk-only" href="favorites.html" aria-label="Favorites, see saved events">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></svg>
+          </a>
+
+          <!-- Search: a utility on every screen, not a navigation slot. -->
           <a class="icon-btn search-open" href="event-feed-search.html" aria-label="Search events">
             <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><g transform="translate(0.8472 0.8472) scale(0.9294)"><path fill="currentColor" fill-rule="evenodd" d="M11.5 2.75a8.75 8.75 0 1 0 0 17.5a8.75 8.75 0 0 0 0-17.5M1.25 11.5c0-5.66 4.59-10.25 10.25-10.25S21.75 5.84 21.75 11.5c0 2.56-.939 4.902-2.491 6.698l3.271 3.272a.75.75 0 1 1-1.06 1.06l-3.272-3.271A10.2 10.2 0 0 1 11.5 21.75c-5.66 0-10.25-4.59-10.25-10.25" clip-rule="evenodd"/></g></svg>
           </a>
-          <!-- Notifications kept as an affordance; tapping it logged-out routes to Sign In, and it
-               carries no unread badge because there is no account to count for. DESK-ONLY SINCE
-               2026-08-18, the same rung and the same reason as the heart above it: at 320 with the
-               touch floor on, this cluster asks for 213.72px against the 306 the row can give, and
-               the 44 + 8 this mark takes is what puts the Sign up button 1.81px past the edge and
-               eats the gutter. Below the rung the thumb bar carries Sign in in slot 4, so a bell
-               whose only job is a fourth route to the same sheet is the one control here that costs
-               more than it says. docs/backlog.md 205. -->
-          <button type="button" class="icon-btn desk-only" data-open="signin" aria-label="Notifications (sign in)">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
-          </button>
+          <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
+          <details class="notif-menu">
+            <summary aria-label="Notifications, 3 unread">
+              <span class="bell-wrap">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.75 9.71v-.705C18.75 5.136 15.726 2 12 2S5.25 5.136 5.25 9.005v.705a4.4 4.4 0 0 1-.692 2.375L3.45 13.81c-1.011 1.575.062 3.68 1.966 3.843a51 51 0 0 0 13.167 0c1.904-.163 2.977-2.268 1.966-3.843l-1.108-1.725a4.4 4.4 0 0 1-.692-2.375"/><path fill="currentColor" d="M7.243 18.545a5.002 5.002 0 0 0 9.513 0c-3.145.28-6.367.281-9.513 0"/></svg>
+                <span class="badge-dot">3</span>
+              </span>
+            </summary>
+            <div class="dropdown notif-drop" role="menu">
+              <ul>
+                <li><a class="nav-item nav-row nav-row-stack" href="win.html"><strong>Bet resolved</strong><span>US government shutdown before Jul 1, 2026 - YES won</span></a></li>
+                <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
+                <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
+              </ul>
+              <a class="notif-all" href="notifications.html">See all notifications</a>
+            </div>
+          </details>
 
-          <!-- Auth entries replace the balance figure and the avatar dropdown entirely. -->
-          <div class="auth-btns">
-            <button type="button" class="btn btn-secondary btn-sm" data-open="signin">Sign in</button>
-            <button type="button" class="btn btn-primary btn-sm" data-open="signin">Sign up</button>
-          </div>
+          <details class="avatar-menu">
+            <summary aria-label="Account menu">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="dropdown" role="menu">
+              <ul>
+                <li><a class="nav-item nav-row" href="my-profile.html" role="menuitem">My Profile</a></li>
+                <li><a class="nav-item nav-row" href="active-bets.html" role="menuitem">My Bets</a></li>
+                <li><a class="nav-item nav-row" href="favorites.html" role="menuitem">Favorites</a></li>
+                <li><a class="nav-item nav-row" href="wallet.html" role="menuitem">Wallet</a></li>
+                <li><a class="nav-item nav-row" href="how-it-works.html" role="menuitem">How It Works</a></li>
+                <li><a class="nav-item nav-row" href="event-feed-logged-out.html" role="menuitem">Logout</a></li>
+              </ul>
+            </div>
+          </details>
         </div>
       </div>
-    <nav class="cat-condensed" aria-label="Categories (sticky header)">
+      <!-- Condensed category strip: hidden until you scroll past the full category
+           bar, then it slides into the sticky header so the tabs stay reachable.
+           Small, icon-less chips (the full bar below keeps its icons). -->
+      <nav class="cat-condensed" aria-label="Categories (sticky header)">
         <ul>
-          <li aria-current="page"><a class="chip chip-quiet" href="event-feed.html">Trending</a></li>
-          <li><a class="chip chip-quiet" href="event-feed-politics.html">Politics</a></li>
+          <li><a class="chip chip-quiet" href="event-feed.html">Trending</a></li>
+          <li aria-current="location"><a class="chip chip-quiet" href="event-feed-politics.html">Politics</a></li>
           <li><a class="chip chip-quiet" href="event-feed-crypto.html">Crypto</a></li>
           <li><a class="chip chip-quiet" href="event-feed-culture.html">Culture</a></li>
           <li><a class="chip chip-quiet" href="event-feed-general.html">General</a></li>
         </ul>
       </nav>
     </header>
-
-    <!-- Second-level navigation: categories -->
+    <!-- Second-level navigation: categories route to their own pages (links) -->
     
-
-    <!-- Feed -->
     <main class="feed" id="main-content" tabindex="-1">
       
         <nav class="cat-nav" aria-label="Categories (second level)">
           <ul>
-            <li aria-current="page"><a class="chip chip-nav" href="event-feed.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.832 21.801c3.126-.626 7.168-2.875 7.168-8.69c0-5.291-3.873-8.815-6.658-10.434c-.619-.36-1.342.113-1.342.828v1.828c0 1.442-.606 4.074-2.29 5.169c-.86.559-1.79-.278-1.894-1.298l-.086-.838c-.1-.974-1.092-1.565-1.87-.971C4.461 8.46 3 10.33 3 13.11C3 20.221 8.289 22 10.933 22q.232 0 .484-.015C10.111 21.874 8 21.064 8 18.444c0-2.05 1.495-3.435 2.631-4.11c.306-.18.663.055.663.41v.59c0 .45.175 1.155.59 1.637c.47.546 1.159-.026 1.214-.744c.018-.226.246-.37.442-.256c.641.375 1.46 1.175 1.46 2.473c0 2.048-1.129 2.99-2.168 3.357"/></svg><span>Trending</span></a></li>
-            <li><a class="chip chip-nav" href="event-feed-politics.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21.25 8.5c0-1.404 0-2.107-.337-2.611a2 2 0 0 0-.552-.552c-.441-.295-1.034-.332-2.115-.336q.005.438.004.91V7.25h1a.75.75 0 0 1 0 1.5h-1v1.5h1a.75.75 0 0 1 0 1.5h-1v1.5h1a.75.75 0 0 1 0 1.5h-1v6.5h-1.5V6c0-1.886 0-2.828-.586-3.414S14.636 2 12.75 2h-2c-1.886 0-2.828 0-3.414.586S6.75 4.114 6.75 6v15.25h-1.5v-6.5h-1a.75.75 0 0 1 0-1.5h1v-1.5h-1a.75.75 0 0 1 0-1.5h1v-1.5h-1a.75.75 0 0 1 0-1.5h1V5.91q-.001-.47.004-.91c-1.081.005-1.674.042-2.115.337a2 2 0 0 0-.552.552C2.25 6.393 2.25 7.096 2.25 8.5v12.75h-.5a.75.75 0 0 0 0 1.5h20a.75.75 0 0 0 0-1.5h-.5zM9 11.75a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m0 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m2.75 3.5a.75.75 0 0 1 .75.75v2.25H11V19a.75.75 0 0 1 .75-.75M9 6.25a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9 6.25m0 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9 9.25" clip-rule="evenodd"/></svg><span>Politics</span></a></li>
+            <li><a class="chip chip-nav" href="event-feed.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.832 21.801c3.126-.626 7.168-2.875 7.168-8.69c0-5.291-3.873-8.815-6.658-10.434c-.619-.36-1.342.113-1.342.828v1.828c0 1.442-.606 4.074-2.29 5.169c-.86.559-1.79-.278-1.894-1.298l-.086-.838c-.1-.974-1.092-1.565-1.87-.971C4.461 8.46 3 10.33 3 13.11C3 20.221 8.289 22 10.933 22q.232 0 .484-.015C10.111 21.874 8 21.064 8 18.444c0-2.05 1.495-3.435 2.631-4.11c.306-.18.663.055.663.41v.59c0 .45.175 1.155.59 1.637c.47.546 1.159-.026 1.214-.744c.018-.226.246-.37.442-.256c.641.375 1.46 1.175 1.46 2.473c0 2.048-1.129 2.99-2.168 3.357"/></svg><span>Trending</span></a></li>
+            <li aria-current="location"><a class="chip chip-nav" href="event-feed-politics.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21.25 8.5c0-1.404 0-2.107-.337-2.611a2 2 0 0 0-.552-.552c-.441-.295-1.034-.332-2.115-.336q.005.438.004.91V7.25h1a.75.75 0 0 1 0 1.5h-1v1.5h1a.75.75 0 0 1 0 1.5h-1v1.5h1a.75.75 0 0 1 0 1.5h-1v6.5h-1.5V6c0-1.886 0-2.828-.586-3.414S14.636 2 12.75 2h-2c-1.886 0-2.828 0-3.414.586S6.75 4.114 6.75 6v15.25h-1.5v-6.5h-1a.75.75 0 0 1 0-1.5h1v-1.5h-1a.75.75 0 0 1 0-1.5h1v-1.5h-1a.75.75 0 0 1 0-1.5h1V5.91q-.001-.47.004-.91c-1.081.005-1.674.042-2.115.337a2 2 0 0 0-.552.552C2.25 6.393 2.25 7.096 2.25 8.5v12.75h-.5a.75.75 0 0 0 0 1.5h20a.75.75 0 0 0 0-1.5h-.5zM9 11.75a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m0 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m2.75 3.5a.75.75 0 0 1 .75.75v2.25H11V19a.75.75 0 0 1 .75-.75M9 6.25a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9 6.25m0 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4A.75.75 0 0 1 9 9.25" clip-rule="evenodd"/></svg><span>Politics</span></a></li>
             <li><a class="chip chip-nav" href="event-feed-crypto.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10m.75-16a.75.75 0 0 0-1.5 0v.317c-1.63.292-3 1.517-3 3.183c0 1.917 1.813 3.25 3.75 3.25c1.377 0 2.25.906 2.25 1.75s-.873 1.75-2.25 1.75c-1.376 0-2.25-.906-2.25-1.75a.75.75 0 0 0-1.5 0c0 1.666 1.37 2.891 3 3.183V18a.75.75 0 0 0 1.5 0v-.317c1.63-.292 3-1.517 3-3.183c0-1.917-1.813-3.25-3.75-3.25c-1.376 0-2.25-.906-2.25-1.75s.874-1.75 2.25-1.75c1.377 0 2.25.906 2.25 1.75a.75.75 0 0 0 1.5 0c0-1.666-1.37-2.891-3-3.183z" clip-rule="evenodd"/></svg><span>Crypto</span></a></li>
             <li><a class="chip chip-nav" href="event-feed-culture.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m21.537 9.136l-.846 3.297c-.43 1.676-1.306 2.855-2.336 3.685c.219-1.144.214-2.418-.144-3.814l-.864-3.37l-.15-.584a.9.9 0 0 1 .599-.044c.378.101.608.406.637.702a.75.75 0 1 0 1.493-.145c-.091-.942-.783-1.749-1.742-2.006a2.4 2.4 0 0 0-1.418.05l-.017-.044c-.224-.596-.552-1.229-1.171-1.693a3.5 3.5 0 0 0-1.13-.562c-.759-.215-1.463-.076-2.064.124c-.558.185-1.21.49-1.924.825l-.072.034c-1.185.555-1.659.773-2.144.928q-.22.07-.446.127l.327-1.267c.44-1.719.661-2.578 1.236-3.01c.193-.145.41-.252.638-.317c.684-.194 1.461.17 3.015.897c1.15.54 1.726.809 2.326 1q.314.099.632.176c.612.149 1.239.216 2.493.351c1.694.182 2.54.273 3.04.798c.167.177.303.383.4.609c.292.675.072 1.534-.368 3.253"/><path fill="currentColor" fill-rule="evenodd" d="m16.758 12.677l-.845-3.298c-.44-1.719-.66-2.578-1.236-3.01a2 2 0 0 0-.638-.317c-.684-.194-1.46.17-3.015.897c-1.15.54-1.726.809-2.326 1a10 10 0 0 1-.632.176c-.611.149-1.238.216-2.493.351c-1.694.182-2.54.273-3.04.798a2.1 2.1 0 0 0-.4.609c-.292.675-.072 1.534.369 3.253l.845 3.297c.993 3.876 4.296 5.096 6.516 5.473c.677.115 1.016.172 2.044-.116s1.294-.514 1.825-.968c1.742-1.487 4.02-4.27 3.026-8.145m-10.753.691c.029-.296.26-.6.638-.702c.379-.102.73.047.903.29a.75.75 0 0 0 1.22-.873c-.55-.77-1.552-1.123-2.511-.866s-1.651 1.064-1.743 2.006a.75.75 0 0 0 1.493.145m5.796-1.553c.029-.296.26-.6.638-.702c.379-.102.73.047.903.289a.75.75 0 1 0 1.22-.872c-.55-.77-1.552-1.123-2.511-.866s-1.651 1.063-1.743 2.006a.75.75 0 0 0 1.493.145m1.846 3.814a.75.75 0 0 1-.885 1.211l-.01-.006a2 2 0 0 0-.485-.2c-.36-.098-.929-.163-1.685.04c-.756.202-1.216.543-1.48.808a2 2 0 0 0-.32.416l-.005.01a.75.75 0 0 1-1.372-.607l.688.298c-.688-.298-.687-.3-.687-.3v-.001l.002-.004l.004-.009l.01-.022l.033-.064q.04-.078.115-.196c.1-.156.252-.36.468-.578c.437-.44 1.125-.924 2.156-1.2c1.031-.277 1.87-.2 2.467-.038c.296.08.53.18.694.266a3 3 0 0 1 .258.151l.02.015l.008.005l.003.003h.002z" clip-rule="evenodd"/></svg><span>Culture</span></a></li>
             <li><a class="chip chip-nav" href="event-feed-general.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M2 6.634a4.634 4.634 0 1 1 9.268 0a4.634 4.634 0 0 1-9.268 0m10.732 10.732a4.634 4.634 0 1 1 9.268 0a4.634 4.634 0 0 1-9.268 0" clip-rule="evenodd"/><path fill="currentColor" d="M2 17.5c0-2.121 0-3.182.659-3.841S4.379 13 6.5 13s3.182 0 3.841.659S11 15.379 11 17.5s0 3.182-.659 3.841S8.621 22 6.5 22s-3.182 0-3.841-.659S2 19.621 2 17.5m11-11c0-2.121 0-3.182.659-3.841S15.379 2 17.5 2s3.182 0 3.841.659S22 4.379 22 6.5s0 3.182-.659 3.841S19.621 11 17.5 11s-3.182 0-3.841-.659S13 8.621 13 6.5"/></svg><span>General</span></a></li>
           </ul>
         </nav>
-        
-        
-        <div class="cat-layout">
-        <div class="cat-main">
-        <div class="feed-head">
-          <!-- Heading echoes the active category (here: Trending), not a generic "Live events". -->
-          <h1 id="feedHeading">Trending</h1>
-          <!-- The filter row: Sort, How often, Category. Each label shows the current value. -->
-          <!-- Below the DESK rung this is the whole filter row: one button, a scrim, and
-               the same two menus, moved into a sheet. No second copy of the radios: a
-               radio group is keyed by name. -->
-          <input type="checkbox" id="filtersOpen" class="filters-toggle" aria-label="Show filters">
-          <label class="icon-btn filters-btn" for="filtersOpen"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12M4 12h8M4 17h4"/></svg></label>
-          <label class="filters-scrim" for="filtersOpen" aria-hidden="true"></label>
-
-          <div class="feed-controls">
-            <!-- The sheet's own head. Hidden above DESK 640. -->
-            <div class="filters-head">
-              <h2>Filters</h2>
-              <button type="button" class="icon-btn filters-close" aria-label="Close filters"><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div class="ed-layout">
+        <div class="ed-main">
+          <article class="card">
+            <div class="ed-head"><div class="ed-actions"><button type="button" class="icon-btn icon-btn-tile" data-comments aria-label="Jump to comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12c0 1.6.376 3.112 1.043 4.453c.178.356.237.763.134 1.148l-.595 2.226a1.3 1.3 0 0 0 1.591 1.592l2.226-.596a1.63 1.63 0 0 1 1.149.133A9.96 9.96 0 0 0 12 22"/></svg></button><button type="button" class="icon-btn icon-btn-tile" aria-label="Share this event"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.803 5.333c0-1.84 1.507-3.333 3.365-3.333c1.86 0 3.366 1.492 3.366 3.333c0 1.841-1.507 3.334-3.366 3.334a3.38 3.38 0 0 1-2.037-.678l-4.67 3.204a3.3 3.3 0 0 1 0 1.62l4.67 3.204a3.38 3.38 0 0 1 2.037-.677c1.86 0 3.366 1.492 3.366 3.333S19.028 22 17.168 22c-1.858 0-3.365-1.492-3.365-3.333q0-.413.098-.804l-4.67-3.204a3.38 3.38 0 0 1-2.037.677C5.507 15.336 4 13.843 4 12.002s1.507-3.333 3.365-3.333c.762 0 1.474.252 2.037.677l4.67-3.204a3.3 3.3 0 0 1-.099-.809"/></svg></button><button type="button" class="icon-btn icon-btn-tile" data-fav aria-pressed="false" aria-label="Save into Favorites"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></svg></button></div>
+              <span class="ed-thumb">thumbnail placeholder</span>
+              <div class="ed-head-txt">
+                <span class="ed-cat">Crypto &middot; One-time event &middot; 3 outcomes &middot; Trading closed</span>
+                <h1 class="ed-q">Which chain held the largest stablecoin supply at the end of H1 2026?</h1>
+                <p class="ed-result">Resolved <b class="ed-result-yes">Ethereum</b> on Jul 1, 2026</p>
+                <p class="ed-prob-big">At close: Ethereum <span class="prob">62%</span></p>
+                <div class="ed-oddsbar" aria-hidden="true"><span class="track"><span class="fill" style="width:62%"></span></span></div>
+              </div>
             </div>
-            <details class="filter-menu" id="sortMenu">
-              <summary aria-label="Sort by">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12M4 12h8M4 17h4"/></svg>
-                <span>Sort: <span id="sortCurrent">Trending</span></span>
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </summary>
-              <div class="filter-panel">
-                <ul role="radiogroup" aria-label="Sort by">
-                  <li><label><input type="radio" name="sort" value="Trending" data-default checked> Trending</label></li>
-                  <li><label><input type="radio" name="sort" value="New"> New</label></li>
-                  <li><label><input type="radio" name="sort" value="Closing soon"> Closing soon</label></li>
-                  <li><label><input type="radio" name="sort" value="Volume"> Volume</label></li>
-                  <li><label><input type="radio" name="sort" value="50-50"> 50-50 (most contested)</label></li>
-                </ul>
-              </div>
-            </details>
-            <details class="filter-menu" id="freqMenu">
-              <summary aria-label="Filter by how often an event repeats">
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-                <span>How often: <span id="freqCurrent">Any</span></span>
-                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </summary>
-              <div class="filter-panel">
-                <!-- THE MENU OFFERS THE CADENCES THE CATALOG OPENS, 2026-08-20, on 45 of 116
-                     documents in this tree. Hourly and Daily are Event vocabulary (ia/docs/sitemap.md,
-                     Frequency) and release 1 opens no market at either (docs/launch-catalog.md: two
-                     Weekly and two Monthly), so they were two values that could never match. This list
-                     is the no-script floor; the script narrows it further to the cadences standing on
-                     THIS page, the way the sub-category rail is built from the cards. docs/backlog.md 224. -->
-                <ul role="radiogroup" aria-label="How often">
-                  <li><label><input type="radio" name="freq" value="Any" data-default checked> Any</label></li>
-                  <li><label><input type="radio" name="freq" value="One-time"> One-time</label></li>
-                  <li><label><input type="radio" name="freq" value="Weekly"> Weekly</label></li>
-                  <li><label><input type="radio" name="freq" value="Monthly"> Monthly</label></li>
-                </ul>
-              </div>
-            </details>
+          </article>
+          <section class="ed-section ed-chart ed-chart-multi">
+            <div class="ed-chart-head"><h2>Price chart</h2><span class="ed-chart-now">Ethereum 62% at close, resolved Ethereum</span></div>
+            <div class="ed-chart-area">
+              <div class="ed-yaxis"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div>
+              <div class="ed-plot"><svg class="chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><line class="ed-even" x1="0" y1="50" x2="300" y2="50"/><polyline class="ml-line" points="0.0,45.0 25.0,43.0 50.0,44.0 75.0,42.0 100.0,43.0 125.0,41.0 150.0,42.0 175.0,40.0 200.0,41.0 225.0,39.0 250.0,40.0 275.0,37.0 300.0,38.0"/><polyline class="ml-line" points="0.0,64.0 25.0,65.0 50.0,64.0 75.0,66.0 100.0,65.0 125.0,67.0 150.0,66.0 175.0,68.0 200.0,67.0 225.0,69.0 250.0,68.0 275.0,71.0 300.0,70.0"/><polyline class="ml-line" points="0.0,91.0 25.0,92.0 50.0,92.0 75.0,92.0 100.0,92.0 125.0,92.0 150.0,92.0 175.0,92.0 200.0,92.0 225.0,92.0 250.0,92.0 275.0,92.0 300.0,92.0"/></svg></div>
+            </div>
+            <div class="ed-xaxis" aria-hidden="true"><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>close</span></div>
+            <div class="ed-legend" aria-hidden="true"></div><div class="ed-chart-foot"><div class="ed-range" role="group" aria-label="Time range"><button class="chip chip-rail" type="button">1d</button><button class="chip chip-rail" type="button">1w</button><button class="chip chip-rail" type="button">1m</button><button type="button" class="chip chip-rail sel">all</button></div></div>
+          </section>
+          <section class="ed-section" id="edOutcomes">
+            <h3>Outcomes</h3>
+            <div class="options opt-list">
+              <div class="opt-row sel" aria-current="true"><span class="opt-name" id="opt-ethereum-won">Ethereum <span class="opt-sel-tag">paid $1.00 a share</span></span><span class="opt-prob">62%</span></div>
+              <div class="opt-row"><span class="opt-name" id="opt-tron-2">Tron</span><span class="opt-prob">30%</span></div>
+              <div class="opt-row"><span class="opt-name" id="opt-solana-3">Solana</span><span class="opt-prob">8%</span></div>
+            </div>
+            <p class="fine">Trading is closed. Ethereum paid one dollar a share and the other two paid nothing, against the source named in the rules.</p>
+          </section>
           
-            <!-- The way out. The scrim and Escape both close the sheet and neither is
-                 visible, and the cross in the head is 44px in a corner. The sheet says it
-                 once more at the bottom, where a thumb already is. `Show results` and not
-                 `Apply`: every radio here is live, so there is no step to apply. -->
-            <div class="filters-foot">
-              <button type="button" class="btn btn-ghost btn-md filters-reset">Reset</button>
-              <button type="button" class="btn btn-primary btn-md filters-done">Show results</button>
+          <div class="ed-facts">
+            <span>Volume<b>$96,400</b></span>
+            <span>Result<b>Ethereum</b></span>
+            <span>Resolved<b>Jul 1, 2026</b></span>
+            <span>How often<b>One-time</b></span>
+          </div>
+          <section class="ed-section">
+            <details class="market-box" open>
+              <summary class="market-head"><span class="market-title">How the odds were set <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></span><svg class="market-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+              <div class="market-body">
+                <div class="market-stats"><div><span class="ms-label">Ethereum at close</span><span class="ms-val ms-yes">62%</span></div><div><span class="ms-label">Tron at close</span><span class="ms-val">30%</span></div><div><span class="ms-label">Solana at close</span><span class="ms-val">8%</span></div><div><span class="ms-label">Final volume</span><span class="ms-val">$96,400</span></div><div><span class="ms-label">Settled</span><span class="ms-val">Jul 1, 2026</span></div></div>
+                <div class="market-depth"><span class="md-title">How it settled</span><span class="md-sub">Trading closed on Jul 1, 2026. Everyone holding YES on Ethereum was paid one dollar a share and every other position was not, against the source named in the rules. There is no price now and nothing to bet.</span></div>
+              </div>
+            </details>
+          </section>
+          <section class="ed-section ed-rules">
+            <div class="rules-tabs" role="tablist"><button type="button" class="rules-tab sel" role="tab" aria-selected="true">Rules</button><button type="button" class="rules-tab" role="tab" aria-selected="false">Background</button></div>
+            <div class="rules-panel" role="tabpanel"><p class="resolution"><strong>Resolved Ethereum</strong> on Jul 1, 2026: it held the largest stablecoin supply when the reading was taken at the end of the window. Every other outcome resolved NO.<br>
+            <strong>Source:</strong> DefiLlama, stablecoin supply by chain. Read automatically.</p>
+            <div class="reading">
+            <p class="reading-line">Resolved Ethereum on Jul 1, 2026 at 00:05 ET. Ethereum held $73.4B in stablecoins against Tron at $61.2B and Solana at $12.8B.</p>
+            <p class="reading-src">Source: <a href="#">DefiLlama stablecoin supply by chain</a>. Read automatically at 00:05 ET.</p>
+            </div><p class="resolution" hidden></p></div>
+            <div class="rules-panel" role="tabpanel" hidden><p class="resolution">Ethereum closed at 62% and led the field for the whole window. What was moving it:</p>
+            <div class="args">
+              <div class="arg-col">
+                <h3>For the leader (Ethereum)</h3>
+                <ul>
+                  <li>It had held the largest supply in every prior reading.</li>
+                  <li>The largest issuers still minted there first.</li>
+                </ul>
+              </div>
+              <div class="arg-col">
+                <h3>Against / for the field</h3>
+                <ul>
+                  <li>Tron closed the gap twice inside the window on transfer volume.</li>
+                  <li>A single issuer moving chains would have decided it in a week.</li>
+                </ul>
+              </div>
+            </div><p class="rules-note">Background from the Yonder team to explain the odds. It plays no role in how this market resolves.</p></div>
+          </section>
+          <section class="ed-section ed-tabs">
+            <div class="ed-tabwrap">
+              <input type="radio" name="edtab" id="edtab-comments" class="ed-tabradio" checked>
+              <input type="radio" name="edtab" id="edtab-holders" class="ed-tabradio">
+              <input type="radio" name="edtab" id="edtab-positions" class="ed-tabradio">
+              <input type="radio" name="edtab" id="edtab-activity" class="ed-tabradio">
+              <div class="ed-tabbar">
+                <label class="ed-tablabel" for="edtab-comments">Comments <span class="ed-tab-count">128</span></label>
+                <label class="ed-tablabel" for="edtab-holders">Biggest bets</label>
+                <label class="ed-tablabel" for="edtab-positions">Bets</label>
+                <label class="ed-tablabel" for="edtab-activity">Activity</label>
+              </div>
+            <div class="ed-tabpanel ed-panel-comments" role="group" aria-label="Comments">
+              <div class="cmt-controls">
+                <span>128 comments</span>
+                <span class="seg"><button type="button" class="chip chip-rail sel">Newest</button><button class="chip chip-rail" type="button">Top</button><button class="chip chip-rail" type="button">Bettors</button></span>
+              </div>
+              <div class="cmt-compose">
+                <span class="cmt-av">you</span>
+                <span class="cmt-input">Add a comment...</span>
+                <button type="button" class="btn btn-primary btn-sm">Post</button>
+              </div>
+              <div class="cmt-list">
+                <div class="cmt">
+                  <span class="cmt-av">mm</span>
+                  <div class="cmt-body">
+                    <div class="cmt-meta"><span class="cmt-user">marketmaven</span><span class="cmt-badge">Holds 320 Ethereum</span><span>2h ago</span></div>
+                    <p class="cmt-text">These always go to the wire. I am holding my position and adding if it dips.</p>
+                    <div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 9.137C2 14 6.02 16.591 8.962 18.911C10 19.729 11 20.5 12 20.5s2-.77 3.038-1.59C17.981 16.592 22 14 22 9.138s-5.5-8.406-10-3.985C7.5.735 2 4.275 2 9.137"/></svg>24</button><button class="btn btn-bare" type="button">Reply</button></div>
+                  </div>
+                </div>
+                <div class="cmt reply">
+                  <span class="cmt-av">dd</span>
+                  <div class="cmt-body">
+                    <div class="cmt-meta"><span class="cmt-user">deadline_dan</span><span>1h ago</span></div>
+                    <p class="cmt-text">The committee bloc looks firmer this time though.</p>
+                    <div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 9.137C2 14 6.02 16.591 8.962 18.911C10 19.729 11 20.5 12 20.5s2-.77 3.038-1.59C17.981 16.592 22 14 22 9.138s-5.5-8.406-10-3.985C7.5.735 2 4.275 2 9.137"/></svg>6</button><button class="btn btn-bare" type="button">Reply</button></div>
+                  </div>
+                </div>
+                <div class="cmt">
+                  <span class="cmt-av">pp</span>
+                  <div class="cmt-body">
+                    <div class="cmt-meta"><span class="cmt-user">polly_predicts</span><span class="cmt-badge">Holds 150 Tron</span><span>5h ago</span></div>
+                    <p class="cmt-text">Volume jumped right after the headline. Watching how it settles.</p>
+                    <div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 9.137C2 14 6.02 16.591 8.962 18.911C10 19.729 11 20.5 12 20.5s2-.77 3.038-1.59C17.981 16.592 22 14 22 9.138s-5.5-8.406-10-3.985C7.5.735 2 4.275 2 9.137"/></svg>11</button><button class="btn btn-bare" type="button">Reply</button></div>
+                  </div>
+                </div>
+                <div class="cmt">
+                  <span class="cmt-av">nh</span>
+                  <div class="cmt-body">
+                    <div class="cmt-meta"><span class="cmt-user">newhere</span><span>1d ago</span></div>
+                    <p class="cmt-text">First bet here. The resolution source being official notices makes this easy to trust.</p>
+                    <div class="cmt-actions"><button class="btn btn-bare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 9.137C2 14 6.02 16.591 8.962 18.911C10 19.729 11 20.5 12 20.5s2-.77 3.038-1.59C17.981 16.592 22 14 22 9.138s-5.5-8.406-10-3.985C7.5.735 2 4.275 2 9.137"/></svg>8</button><button class="btn btn-bare" type="button">Reply</button></div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+            <div class="ed-tabpanel ed-panel-holders" role="group" aria-label="Biggest bets">
+              <div class="hold-cols">
+                <div class="hold-col">
+                  <h3>Biggest bets by outcome</h3>
+                <div class="hold-row"><span class="hold-rank">1</span><span class="cmt-av">wh</span><span class="hold-name">whale_07 <span class="hold-out">Ethereum</span></span><span class="hold-amt">$1,240</span></div>
+                <div class="hold-row"><span class="hold-rank">2</span><span class="cmt-av">he</span><span class="hold-name">hedge_hannah <span class="hold-out">Tron</span></span><span class="hold-amt">$980</span></div>
+                <div class="hold-row"><span class="hold-rank">3</span><span class="cmt-av">ma</span><span class="hold-name">marketmaven <span class="hold-out">Ethereum</span></span><span class="hold-amt">$620</span></div>
+                <div class="hold-row"><span class="hold-rank">4</span><span class="cmt-av">al</span><span class="hold-name">alpha_ape <span class="hold-out">Solana</span></span><span class="hold-amt">$410</span></div>
+                <div class="hold-row"><span class="hold-rank">5</span><span class="cmt-av">sa</span><span class="hold-name">satoshi_jr <span class="hold-out">Solana</span></span><span class="hold-amt">$250</span></div>
+                <div class="hold-row"><span class="hold-rank">6</span><span class="cmt-av">ri</span><span class="hold-name">riskoff <span class="hold-out">Solana</span></span><span class="hold-amt">$180</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="ed-tabpanel ed-panel-positions" role="group" aria-label="Bets">
+              <table class="ptable">
+                <thead><tr><th>Bettor</th><th>Outcome</th><th>Amount</th></tr></thead>
+                <tbody>
+                <tr class="you"><td>You</td><td><span class="pos-side">Ethereum</span></td><td>$5.33</td></tr>
+                <tr><td>whale_07</td><td><span class="pos-side">Ethereum</span></td><td>$434</td></tr>
+                <tr><td>hedge_hannah</td><td><span class="pos-side">Tron</span></td><td>$196</td></tr>
+                <tr><td>marketmaven</td><td><span class="pos-side">Ethereum</span></td><td>$254</td></tr>
+                <tr><td>polly_predicts</td><td><span class="pos-side">Solana</span></td><td>$21</td></tr>
+                </tbody>
+              </table>
+              <p class="pos-note">Your bet is highlighted. Bets update as the odds move.</p>
+            </div>
+            <div class="ed-tabpanel ed-panel-activity" role="group" aria-label="Activity">
+              <p class="pos-note">Recent bets, largest first. Filter: over $5.</p>
+              <div class="act-list">
+              <div class="act-row"><span class="cmt-av">wh</span><span class="act-txt"><b>whale_07</b> bet <b>$205</b> on Ethereum</span><span class="act-time">2m ago</span></div>
+              <div class="act-row"><span class="cmt-av">hh</span><span class="act-txt"><b>hedge_hannah</b> bet <b>$66</b> on Tron</span><span class="act-time">14m ago</span></div>
+              <div class="act-row"><span class="cmt-av">mm</span><span class="act-txt"><b>marketmaven</b> cashed out <b>$33</b> on Ethereum</span><span class="act-time">1h ago</span></div>
+              <div class="act-row"><span class="cmt-av">po</span><span class="act-txt"><b>polly_predicts</b> bet <b>$21</b> on Solana</span><span class="act-time">3h ago</span></div>
+              <div class="act-row"><span class="cmt-av">nh</span><span class="act-txt"><b>newhere</b> bet <b>$1.60</b> on Solana</span><span class="act-time">5h ago</span></div>
+              </div>
+            </div>
+            </div>
+          </section>
         </div>
-        <div class="state-block state-problem" role="alert">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg>
-          <p class="state-title">Couldn't load events</p>
-          <p class="state-msg">We couldn't reach the network. Check your connection and try again.</p>
+          <aside class="bet-panel resolved-panel"><div class="rp-inner"><div class="state-block">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check-circle-b"/></svg>
+          <h2 class="state-title">This event has resolved</h2>
+          <p class="state-msg">Ethereum held the largest stablecoin supply when the window closed. Betting is no longer available.</p>
           <div class="state-actions">
-            <a href="event-feed-logged-out.html" class="btn btn-primary btn-sm">Try again</a>
+            <a href="active-bets-history.html" class="btn btn-primary btn-sm btn-block">See your bet</a>
+            <a href="event-feed.html" class="btn btn-secondary btn-sm btn-block">Browse events</a>
           </div>
-        </div>
-      <!-- /cat-main --><!-- /cat-layout -->
-      
+        </div></div></aside>
+      </div>
+      <!-- Related events (crawlable internal-linking block, WF reconcile) -->
+      <section class="related-events" aria-label="Related events">
+        <h2>Related events</h2>
+        <ul class="related-list">
+          <li><a href="event-detail.html"><span class="rel-thumb"></span><span class="rel-q">Will Bitcoin close above $150,000 before October 1, 2026?</span><span class="rel-odds">YES 61%</span></a></li>
+          <li><a href="event-detail.html"><span class="rel-thumb"></span><span class="rel-q">Will Ethereum complete its next major network upgrade before November 1, 2026?</span><span class="rel-odds">YES 72%</span></a></li>
+          <li><a href="event-detail-multi.html"><span class="rel-thumb"></span><span class="rel-q">Which party will win the most seats in the next UK general election?</span><span class="rel-odds">4 outcomes</span></a></li>
+        </ul>
+        <a href="event-feed.html" class="related-more">Browse more events</a>
+      </section>
+    <!-- /feed-inner -->
     </main>
+      <!-- Mobile sticky bet dock (above the bottom nav; taps expand to a confirm sheet) -->
+      <div class="bet-dock" aria-label="Place your bet">
+        <button type="button" class="yesno-pick yesno-pick-bar bp-side yes" data-open-sheet="yes" aria-pressed="false">Ethereum YES <span class="bp-pct">41%</span></button>
+        <button type="button" class="yesno-pick yesno-pick-bar bp-side no" data-open-sheet="no" aria-pressed="false">NO <span class="bp-pct">59%</span></button>
+      </div>
 
+      <!-- Mobile bet sheet: the dock raises it, and its body is the desktop panel.
+           ia/docs/sitemap.md and _conventions.md have specified it since the tree
+           was built; the comment above the dock said so over a dock that confirmed. -->
+      <dialog class="app-dialog bet-sheet" id="betSheet" aria-label="Place your bet">
+        <button type="button" class="sheet-grab" data-close-sheet aria-label="Close"></button>
+        <div class="bp-inner">
+          <div class="bp-head"><h3>Place your bet</h3><span class="bp-hint">Pick a side</span></div>
+          <span class="field-label">Your outcome</span>
+          <div class="bp-selected">
+            <span class="bp-sel-name">Ethereum <span class="opt-prob">41%</span></span>
+            <a href="#edOutcomes" class="bp-change" data-close-sheet>Change</a>
+          </div>
+          <div class="bp-dir">
+            <button type="button" class="yesno-pick bp-side yes" aria-pressed="false">YES <span class="bp-pct">41%</span></button>
+            <button type="button" class="yesno-pick bp-side no" aria-pressed="false">NO <span class="bp-pct">59%</span></button>
+          </div>
+          <div>
+            <div class="bp-amount-row"><div class="bp-amount-lbl"><span class="field-label">Amount</span><span class="bp-cash">$92.00 cash</span></div><span class="amount-cur">$</span><input class="amount-input amount-bet" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="1" value="5.00" aria-label="Bet amount"></div>
+            <div class="quick"><button type="button" class="chip chip-amount">$1</button><button class="chip chip-amount sel" type="button">$5</button><button class="chip chip-amount" type="button">$10</button><button class="chip chip-amount" type="button">$25</button></div>
+          </div>
+          <div>
+            <p class="bp-pick" id="bp-pick-sheet">Pick a side to see what each outcome pays.</p>
+                <div class="line"><span>Fee (1.5% of your bet)</span><span>$0.08</span></div><div class="line due"><span>Total to pay</span><span>$5.08</span></div>
+          </div>
+          <button type="button" class="btn btn-primary btn-lg btn-block" aria-disabled="true" aria-describedby="bp-pick-sheet">Confirm bet</button>
+          <p class="fine">$1 minimum, no maximum. The price you see is the price you get.</p>
+        </div>
+      </dialog>
     <!-- Bottom navigation (mobile only) -->
     <nav class="bottom-nav" aria-label="Primary (mobile)">
       <ul>
-        <li aria-current="page"><a class="nav-item nav-slot" href="event-feed-logged-out.html">
+        <li aria-current="location"><a class="nav-item nav-slot" href="event-feed.html">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
           <span>Events</span>
         </a></li>
-        <li><button class="nav-item nav-slot" type="button" data-open="signin">
+        <li><a class="nav-item nav-slot" href="active-bets.html">
           <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
           <span>My Bets</span>
-        </button></li>
-        <li><button class="nav-item nav-slot" type="button" data-open="signin">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+        </a></li>
+        <li><a class="nav-item nav-slot" href="favorites.html">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.2 2.2 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.24 2.24 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333S7.758 2 12 2s6.364 0 7.682 1.332S21 6.81 21 11.098M8.25 6A.75.75 0 0 1 9 5.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 6" clip-rule="evenodd"/></svg>
           <span>Favorites</span>
-        </button></li>
-        <li><button class="nav-item nav-slot" type="button" data-open="signin" aria-label="Sign in">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 12h10M16 8l4 4-4 4M14 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8"/></svg>
-          <span>Sign in</span>
-        </button></li>
+        </a></li>
+        <li><a class="nav-item nav-slot" href="my-profile.html" aria-label="Portfolio, balance $142">
+          <span class="bn-bal">$142</span>
+          <span>Portfolio</span>
+        </a></li>
       </ul>
     </nav>
-
     <!-- Footer (global element) -->
     <footer class="app-footer">
       <div class="footer-inner">
@@ -1159,7 +1631,6 @@
 
   </div>
 
-  <!-- Minimal interaction: desktop balance swap Portfolio <-> Cash (wireframe behavior, no styling) -->
   <script>
     (function () {
       var states = [
@@ -1395,6 +1866,7 @@
       if (dep) dep.addEventListener('close', function () { if (target && signedIn) window.location.href = target; });
     })();
   </script>
+
   <script id="wf-catstrip">
     // Reveals the condensed category strip in the sticky header once the full
     // category bar has scrolled up under it. Ported from the painted twin; the
@@ -1407,6 +1879,119 @@
         header.classList.toggle('scrolled', !e[0].isIntersecting);
       }, { rootMargin: '-60px 0px 0px 0px', threshold: 0 }).observe(fullNav);
     })();
+  </script>
+
+  <script id="wf-bet-sheet">
+    /* The dock CHOOSES and the sheet CONFIRMS. Built rather than decided: the
+       structure and the copy are the wireframe's, this only opens the sheet and
+       carries the chosen side into it. See wireframes/_conventions.md, "hybrid". */
+    (function () {
+      var sheet = document.getElementById('betSheet');
+      if (!sheet) return;
+      function open(side) {
+        var d = sheet.querySelector('.bp-dir');
+        if (d) {
+          d.querySelectorAll('.bp-side').forEach(function (x) { x.classList.remove('sel'); });
+          var pick = side === 'no' ? d.querySelector('.bp-side:last-child') : d.querySelector('.bp-side:first-child');
+          if (pick) pick.classList.add('sel');
+        }
+        var h = sheet.querySelector('.bp-hint');
+        if (h) h.textContent = (side === 'no' ? 'NO' : 'YES') + ' selected';
+        if (sheet.showModal) sheet.showModal(); else sheet.setAttribute('open', '');
+      }
+      function shut() { if (sheet.close) sheet.close(); else sheet.removeAttribute('open'); }
+      document.querySelectorAll('[data-open-sheet]').forEach(function (b) {
+        b.addEventListener('click', function () { open(b.getAttribute('data-open-sheet')); });
+      });
+      sheet.addEventListener('click', function (e) { if (e.target === sheet) shut(); });
+      sheet.querySelectorAll('[data-close-sheet]').forEach(function (c) {
+        c.addEventListener('click', function (e) { e.preventDefault(); shut(); });
+      });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') shut(); });
+    })();
+  </script>
+
+
+  <script id="uv-side">
+/* THE SIDE COMES FROM THE READER, AND 212 LINKS IN THIS TREE HAD BEEN SAYING SO INTO NOTHING.
+   Every feed card's `Back YES` and `Back NO` is `event-detail.html?side=yes` or `?side=no`, 212 of
+   them across the painted tree, and until 2026-08-16 **0 documents read `location.search`**: the
+   parameter was a promise the product made on every card and kept nowhere, which is the same shape
+   as the `pattern="[0-9.$]*"` that validated nothing on 113 amount fields.
+   What shipped instead was `sel yes` typed into the markup, so the app picked a side on a two-sided
+   money decision and then had to apologise for it in the hint slot ("YES pre-selected"). Nothing is
+   chosen at load now. Arrive from a card and you arrive on the side you pressed; arrive by the
+   title and you choose, with Confirm carrying `aria-disabled` until you do.
+   `aria-disabled` AND NOT `disabled`, which is the reason button.css already writes for the deposit
+   dialog: a natively disabled control is not focusable, so the person who most needs to know why it
+   is dead is the one who cannot reach it. */
+(function(){
+  var q = (new URLSearchParams(location.search).get('side') || '').toLowerCase();
+  var want = (q === 'yes' || q === 'no') ? q : '';
+  var live = function(e){ return e && !e.closest('.hiw-step'); };
+  function apply(){
+    document.querySelectorAll('.bp-dir .bp-side, .bet-dock .bp-side').forEach(function(b){
+      if (!live(b)) return;
+      var on = !!want && b.classList.contains(want);
+      b.classList.toggle('sel', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    document.querySelectorAll('.bp-hint').forEach(function(h){
+      if (!live(h)) return;
+      h.textContent = want ? want.toUpperCase() + ' selected' : 'Pick a side';
+    });
+    document.querySelectorAll('[data-sheet-confirm], .bet-panel .btn-primary.btn-block, .bet-sheet .btn-primary.btn-block').forEach(function(c){
+      if (!live(c)) return;
+      if (want) c.removeAttribute('aria-disabled'); else c.setAttribute('aria-disabled', 'true');
+    });
+    /* AND THE FIGURES, WHICH THE PARAMETER COULD NOT PRODUCE UNTIL 2026-08-17, docs/backlog.md 186.
+       The panel prints both outcomes or neither, and the pair stands in the markup only on the
+       screens where a side is picked in the FILE. So a reader arriving from a card landed on a lit
+       side with `Pick a side to see what each outcome pays` still under it and no payout anywhere:
+       the script could make the state and could not furnish it. It builds the pair now, in the
+       block the instruction was standing in, and the instruction goes with it along with the
+       `aria-describedby` that pointed at it. The painted tree recomputes on every keystroke after
+       this; the grey tree has no such script, so these six lines of arithmetic are the only ones it
+       does, which is why they are here and not in the recompute the paint carries. */
+    if (!want) return;
+    document.querySelectorAll('.bet-panel, .bet-sheet').forEach(function(scope){
+      if (!live(scope)) return;
+      var box = scope.querySelector('.bp-outcomes'), pick = scope.querySelector('.bp-pick');
+      if (!box) {
+        if (!pick) return;
+        box = document.createElement('div');
+        box.className = 'bp-outcomes';
+        box.innerHTML = '<div class="bp-outcome"><span></span><b></b></div><div class="bp-outcome"><span></span><b></b></div>';
+        pick.parentNode.appendChild(box);
+        var pid = pick.id;
+        pick.parentNode.removeChild(pick);
+        if (pid) document.querySelectorAll('[aria-describedby="' + pid + '"]').forEach(function(c){ c.removeAttribute('aria-describedby'); });
+      }
+      var rows = box.querySelectorAll('.bp-outcome');
+      if (rows.length < 2) return;
+      var btn = scope.querySelector('.bp-dir .bp-side.sel');
+      var input = scope.querySelector('.amount-input');
+      var A = input ? (parseFloat(String(input.value).replace(/[^0-9.]/g, '')) || 0) : 0;
+      var pctEl = btn && btn.querySelector('.bp-pct');
+      var p = pctEl ? (parseFloat(pctEl.textContent) || 0) / 100 : 0;
+      var win = p > 0 ? A / p : 0;
+      ['YES', 'NO'].forEach(function(which, i){
+        var mine = which.toLowerCase() === want;
+        rows[i].querySelector('span').textContent = 'If ' + which + ' wins' + (mine ? ', your side' : '');
+        rows[i].querySelector('b').textContent = '$' + (mine ? win : 0).toFixed(2);
+      });
+    });
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target;
+    if (!t || !t.closest) return;
+    var dead = t.closest('[aria-disabled="true"]');
+    if (dead) { e.preventDefault(); e.stopPropagation(); return; }
+    var b = t.closest('.bp-dir .bp-side, .bet-dock .bp-side');
+    if (live(b)) { want = b.classList.contains('no') ? 'no' : 'yes'; apply(); }
+  }, true);
+  apply();
+})();
   </script>
 </body>
 </html>

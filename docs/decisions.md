@@ -12,6 +12,79 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-20 - The row was right about the document and wrong about the finding beside it, because it was written from one comment in a file that carried two
+
+**`docs/backlog.md` 229 carried two things and only one of them was a defect.**
+
+### The document, which was owed
+
+**`event-detail-resolved-multi.html` stands in both trees.** Event Detail is **five documents per
+tree** now: binary, multi, recurring, recurring multi, resolved and resolved multi, which is the two
+axes crossed plus the state that ends both. It closes the half of `docs/backlog.md` 222 nobody took:
+that row gave the OUTCOME family its multi half, `win-multi` and `loss-multi`, on the ground that a
+multi result is an OPTION and a binary screen cannot say it. The DETAIL half was the same argument
+and was never made.
+
+**The fixture is the one market three surfaces already had to agree about.** `active-bets-history`
+prints the row, `loss-multi` prints the outcome screen, and the detail is where a reader arrives
+later from either. All three now carry *Which chain held the largest stablecoin supply at the end of
+H1 2026?*, Ethereum on Jul 1 2026 at 00:05 ET, **$73.4B against Tron $61.2B and Solana $12.8B**, and
+a reader who held YES on Solana at an average of 24 per cent and was not paid. The Reading on the
+detail is quoted from `loss-multi`, not rewritten.
+
+**And `Earlier in this series` on the recurring multi is a list again**, which is the whole reason
+this was worth building. It was prose for exactly one commit, because every row would have been a
+multi row landing on a binary specimen. **A record that cannot be a list says so and names the
+document it is waiting for; then somebody builds it.**
+
+### The finding beside it, which was mine and was wrong
+
+The row said `ui-kit/card.html` describes a `+N more outcomes` row that 0 of 21 multi cards render,
+that the class does not exist in `components/options.css`, and that `data-full` is read by nothing:
+a stale claim about a face nobody built.
+
+**The face was built, and then deleted on purpose.** `docs/backlog.md` 188 took the whole field back
+off the desk and **189 removed the link**, both decided by the product owner on a screenshot, **68
+links across 33 documents in all three trees**, with the rules out of the component and `.opt-more`
+off its class list. The reason is in the file and it is a good one: the link was `--text-muted` at
+12px, the same ink as the `Volume` line beneath it, on a card being deliberately made smaller, and
+**a card is where a person decides whether to LOOK**.
+
+**The row was written from the 2026-08-10 comment in `components/options.css` without reading the
+2026-08-17 comment a hundred lines below it in the same file.** That is the defect this repository
+keeps paying for, produced fresh by the person holding the file, and it is the fourth time in this
+week that a filed row was half wrong.
+
+**So nothing is built and the PROSE is corrected.** Three paragraphs in `ui-kit/card.html` and a
+whole section of `ui-kit/options.html` described a card that grows to its full field at DESK, a
+count rule, an override and a table reading *4 rows at 640 and up*. Measured from the rendered DOM at
+1280: **30 multi cards per tree and every one shows exactly two rows.** The older comment in the
+component now points forward to the one that overturned it, rather than sitting above it arguing for
+a rule that is gone. **`data-full` is kept** with its zero named: the count is true, it is the number
+the detail head prints, and its reader was removed by a decision rather than never written.
+
+### Two things the same read found
+
+**The multi chart claimed `now` about a market that had closed.** It is the one element that script
+writes over its own markup, so a resolved page loaded with `Ethereum 62% at close, resolved Ethereum`
+in the file and `Ethereum 62% now` on the screen. The single-line chart never had it because it never
+writes that element. The guard reads the page's own `.ed-result` and **travels with the script, on
+all 16 documents that carry it**, rather than standing in the one document that needed it.
+
+**And a count turn in the previous commit had silently done nothing.** The script guarded its
+replacement with `assert A in s or B in s`, neither branch could fail, and `CLAUDE.md` went on saying
+*118 documents, 117 of them screens* beside *the grey tree is 118*, contradicting itself and the
+bullet fifty lines above it. **An assert that cannot come back red is the guard measured rather than
+the thing**, which is this file's own oldest rule applied to the tool holding it. Both counts are
+computed from the disk now and the file says what happened.
+
+**Measured after: 300 documents, 0 page errors, 0 duplicate ids, 0 broken links, 0 documents marking
+a row that is not themselves. `docs/backlog.md` has 0 open rows, which is a statement about the
+backlog and not about the product.**
+
+---
+
+
 ## 2026-08-20 - Writing four documents that had only described themselves found two places where the product contradicted its own map, and neither was in the documents
 
 **`docs/backlog.md` 228 was filed by the pass that wrote About, naming what it did not write**, and

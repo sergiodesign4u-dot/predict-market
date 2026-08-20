@@ -303,7 +303,7 @@ _9 state page(s): event-feed-empty.html, event-feed-error.html, event-feed-loadi
 
 ### Event Detail
 
-_15 state page(s), re-counted 2026-08-20 when the two recurring specimens landed: event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-error.html, event-detail-loading.html, event-detail-logged-out-error.html, event-detail-logged-out-loading.html, event-detail-logged-out-multi.html, event-detail-logged-out.html, event-detail-multi.html, event-detail-recurring.html, event-detail-recurring-multi.html, event-detail-resolved.html, event-detail.html_
+_16 state page(s), re-counted 2026-08-20 when the two recurring specimens and the resolved multi landed: event-detail-bet-error.html, event-detail-bet-insufficient.html, event-detail-bet-processing.html, event-detail-bet-reconcile.html, event-detail-error.html, event-detail-loading.html, event-detail-logged-out-error.html, event-detail-logged-out-loading.html, event-detail-logged-out-multi.html, event-detail-logged-out.html, event-detail-multi.html, event-detail-recurring.html, event-detail-recurring-multi.html, event-detail-resolved.html, event-detail-resolved-multi.html, event-detail.html_
 
 | Zone | Type | Line | Flag |
 |---|---|---|---|
@@ -450,6 +450,12 @@ _15 state page(s), re-counted 2026-08-20 when the two recurring specimens landed
 | Main | Text | Resolves to the chain holding the largest stablecoin supply when the reading is taken at 00:00 UTC on October 1, 2026. All other outcomes resolve NO. | **New 2026-08-20.** A multi rule resolves to an OPTION and every other option resolves NO, which is the sentence a binary rule cannot say |
 | Main | Text | This is one month of a monthly series. It settles on its own, and when it closes the next month opens as a separate market with its own reading. A bet here does not carry over. | **New 2026-08-20.** The monthly twin of the weekly sentence |
 | Main | Text | The series has run twice, for July and for August 2026, and Ethereum held the largest supply on both. | **New 2026-08-20, and it is prose because it cannot be a list.** The binary recurring detail carries its record as `Earlier in this series`, a list of resolved events. A resolved MULTI event has no page of its own, so linking these months would put a multi row on the binary resolved specimen, which is what `docs/backlog.md` 222 closed for the win and loss screens. `docs/backlog.md` 229 |
+| Main | Text | ~~The series has run twice, for July and for August 2026, and Ethereum held the largest supply on both.~~ | **Struck 2026-08-20, the same day it was written.** It was prose because a resolved multi event had no page to link to; `event-detail-resolved-multi.html` exists now, so the record is `Earlier in this series`, the same block the binary twin carries. `docs/backlog.md` 229 |
+| Main | Label | Crypto · One-time event · 3 outcomes · Trading closed | **New 2026-08-20.** The `.ed-cat` of the resolved multi. Four facts in one line, and `Trading closed` is the one the binary resolved twin also carries |
+| Main | Label | Resolved **Ethereum** on Jul 1, 2026 | **New 2026-08-20.** The binary twin says `Resolved YES`; a multi resolution names an OPTION, which is the sentence `ia/docs/sitemap.md` says a binary screen cannot reach |
+| Main | Label | paid $1.00 a share | **New 2026-08-20.** In the `.opt-sel-tag` slot, where a live page says `selected`. On a closed market the row that matters is the one that paid, and this is what it paid |
+| Main | Text | Trading is closed. Ethereum paid one dollar a share and the other two paid nothing, against the source named in the rules. | **New 2026-08-20**, replacing `Tap YES or NO on an outcome to load it into the bet panel` on the resolved page, where there is no panel |
+| Main | Text | Resolved Ethereum on Jul 1, 2026 at 00:05 ET. Ethereum held $73.4B in stablecoins against Tron at $61.2B and Solana at $12.8B. | **The Reading, and it is quoted rather than written.** `loss-multi.html` has printed this sentence since the outcome family took its multi half; the detail is the third surface it stands on and it had to equal the other two |
 | Main | Label | Repeats: Monthly | The card that leads here, converted the same day from `at the end of 2026` to `at the end of September 2026` |
 
 ### Category Page
