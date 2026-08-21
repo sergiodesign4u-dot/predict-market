@@ -117,7 +117,19 @@
    --container-doc is deleted: the column was 600px with --measure on the prose
    inside it, which is the same question answered twice. See the reading-size
    block at the foot of this file. */
-.read-col{display:flex;flex-direction:column;gap:var(--space-16);max-width:var(--measure);margin-inline:auto;
+/* A MEASURE IS AN UPPER BOUND ON A LINE, SO IT MUST NEVER BE WIDER THAN THE BOX IT STANDS IN,
+   2026-08-21, docs/backlog.md 230. `--measure` is `46ch` and a `ch` scales with the face, which
+   is the whole reason it is in `ch`: it caps an 11px legal line and a 16px paragraph at the same
+   character count. It has no upper bound in pixels, and the document pages are `--text-16`, so at
+   a 24px browser default the cap computes to **755.14px** against the **258px** a 320px phone can
+   give: the cap stopped being a cap and became a floor. `.cat-main` is `flex:1;min-width:0` and
+   `.cat-layout` is a COLUMN flex container, where `min-width:0` governs nothing, so the whole
+   plate went to 312.2 inside 292 and `responsible-betting.html` scrolled 23px sideways. This was
+   the LAST render of 2,880 still scrolling after the header fix, on one document at one width at
+   one root. `min()` costs nothing at every other setting: at 16px the cap is 409px and 100% is
+   larger, so the measure still decides. THE RULE IS THE SHAPE, NOT THE NUMBER: a limit written
+   in a unit that tracks the reader needs a second limit written in the container. */
+.read-col{display:flex;flex-direction:column;gap:var(--space-16);max-width:min(var(--measure),100%);margin-inline:auto;
   font-size:var(--text-16);line-height:var(--leading-loose)}
 .read-col>*{margin-block:0}
 /* A prose block is a stack too, one level down, and it is the same argument:

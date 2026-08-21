@@ -12,6 +12,88 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-21 - The row already carried its own answer, and a cap that scales with the reader had no upper bound; then a notification that could not be made true turned out to be a catalog two months behind itself
+
+**Backlog 230, and the fix added no declaration.** `Sign in` and `Sign up` in the logged-out header
+are `data-open="signin"` **both**, they open one dialog, and that dialog's heading is *Sign in or
+create account*. A logged-out phone reader had **five controls onto one dialog**: these two and all
+three thumb-bar slots, whose fourth is labelled `Sign in`. So the quiet half takes `.desk-only`, the
+class its two siblings in the same row already wear and which `base.css` supplies - the same move,
+for the same reason, as the logged-out bell, whose argument is written six inches up the same file.
+**76 buttons in 74 documents.** The row asks **239.81 against the 292 it can give** at a 24px browser
+default where it asked 307.78, so it has 52.19px of slack instead of a 15.78px deficit, and `Sign up`
+stands at its natural 90.77 rather than being shrunk to pay for the pair. **The point is the slack**:
+the sentence this fix replaces proved itself with *the utility landing on 306 exactly*, and a row
+with no slack is a row the next unmeasured setting breaks again.
+
+**And the header fix left ONE render of 2,880 still scrolling, which was a different defect
+entirely.** `responsible-betting.html`, 320px, 24px root, 23px over. The culprit is `--measure`.
+`.read-col` is capped at `max-width:var(--measure)`, `46ch`, and a `ch` scales with the face - which
+is the whole reason the token is in `ch`, so one number caps an 11px legal line and a 16px paragraph
+at the same character count. **It had no upper bound in pixels.** The five document pages are
+`--text-16`, so at a 24px default the cap computes to **755.14px against the 258px a 320px phone can
+give**, and `.cat-layout` is a COLUMN flex container where `.cat-main`'s `min-width:0` governs
+nothing at all. **A cap wider than its box is not a cap, it is a floor.** The fix is
+`max-width:min(var(--measure),100%)`, one declaration, and it costs nothing anywhere the cap already
+fitted: measured at 1440, **503.4px at 62 characters at a 16px root and 755.1px at 63 characters at a
+24px root** - the same count at both, which is exactly what `ch` was bought for. **0 of 960 renders
+scroll sideways at all three roots on both engines**, against 36 documents before.
+**The general shape: a limit written in a unit that tracks the reader needs a second limit written in
+the container.**
+
+**Backlog 231, and the notification was the symptom.** The string could not be edited into truth and
+was not edited: **the catalog's recurring instances had never been moved to the period the product is
+in.** A WEEKLY market whose open period ended **58 days out** is not weekly; a MONTHLY one ending
+**91 days out** is not monthly. Worse, `event-detail-recurring-multi.html` listed July and August 2026
+as *already resolved* in its `Earlier in this series` block while the account cluster dates the
+reader's today to early July - **two todays in one product, three months apart, and the same monthly
+series carrying four instances with two incompatible histories.**
+
+**The account cluster wins on weight**: wallet, active bets, history, both profiles, win, loss and
+every notification timestamp, against one block on one document. So today is pinned at **Fri, Jul 3,
+2026** - a Friday, which is what the weekly market's own `why` line already assumed when it said
+*Friday's close decides it*. Every instance moved to its current period: the weekly Bitcoin and
+Ethereum markets read `in the week to Jul 3` and **close today**, the monthly stablecoin and
+temperature markets read `July 2026` and close Jul 31, and the series' earlier periods slid back to
+June and May. **The reader's own resolved bet read `at the end of H1 2026`, which is not a period a
+monthly series HAS**: it is the June instance now, resolving Jul 1 exactly as its row already said,
+which makes the reader's loss the period immediately before the open one and puts it in the series
+list where a reader can find it. 31 files, both trees, the search index, the kit and the IA.
+
+**The notification now names the weekly market that closes today and routes to it**, and its sibling
+was fixed the day before: `Will ETH flip BTC by 2027?` existed in 0 documents outside the two
+notification screens. **And the firing horizon is written down for the first time.** Three of the
+four notification types are triggered by an EVENT - the odds moved, the market resolved, a category
+gained a listing - so their trigger is the thing itself. `event deadline approaching` is the only one
+triggered by the CLOCK, which means it needs a number, and for as long as it had none its one
+specimen said *closes in 6 hours* about an event 13 documents dated a year out. It fires **once per
+instance, 24 hours before close**, and 24 rather than longer because **the horizon must be shorter
+than the shortest period the catalog opens**, or a weekly market spends a seventh of its life
+announcing that it is about to close.
+
+Verified after both: **600 documents at five widths on Chromium and WebKit with the coarse pointer -
+0 page errors, 0 duplicate ids, 0 sideways scroll** - 51,605 hrefs with 0 unresolvable, and the
+recurring set read across all three trees showing one cadence, one period and one close date per
+series.
+
+**And one thing was found, repaired and then UNREPAIRED in the same hour, which is the more useful
+half of the day.** The verification pass counted table cells across all 61 markdown files and
+reported **12 rows carrying more cells than their header**, against `docs/backlog.md`'s own claim of
+*0 disagreeing with their headers in both directions*. The synthetic control agreed with the premise:
+a two-column header with a four-cell row renders **two `<td>` and the third and fourth cells vanish**.
+So the twelve were folded into their last legal column - and then the actual rows were put through
+GitHub's renderer before the fix was believed. **HEAD and repaired both render three `<td>`, both
+3,623 characters in the second one, and every word of the surplus is present in BOTH.** Those rows do
+not split where a pipe count says they do; the excess delimiters render as literal `|` inside the
+Item cell and the Note column comes out empty. **Nothing was being lost, and the repair had turned a
+rendered `|` into a rendered `\`.** All twelve are reverted. The claim in `docs/backlog.md` stands
+and the detector was the thing that was wrong: **a pipe count is a reading of the source, and this
+file's own rule is that the record has a renderer too.** The control proved the MECHANISM exists and
+said nothing about whether these rows were in it, which is the difference between a positive control
+and a finding.
+
+---
+
 ## 2026-08-21 - Reading every page as a reader, which is the one instrument this repository had never built, and the first thing it found was the last line of every page
 
 Every check here renders a page and asks whether it is CORRECT. None of them reads it. So: **120

@@ -85,8 +85,10 @@ from **25.6 per cent below spot to 22.9 per cent above**. `docs/decisions.md` 20
 - **`b` per market.** `PRODUCT.md`, Liquidity and risk: it is free while the currency is points, and
   it should start small enough that a $5 bet visibly moves the number and rise with flow.
 - ~~**What a recurring series looks like in the feed.**~~ **ANSWERED 2026-08-20**, `docs/decisions.md`
-  same date. Three of the four series are drawn: rows 1 and 2 as `in the week to Aug 28` on the Crypto
-  and Trending feeds, and row 3 converted from the one-time phrasing the trees were still carrying.
+  same date. Three of the four series are drawn: rows 1 and 2 as `in the week to Jul 3` on the Crypto
+  and Trending feeds (they read `in the week to Aug 28` until 2026-08-21, when **every instance was
+  moved to the period the product is actually in**: a WEEKLY market whose open period ended 58 days
+  out is not weekly, and the account cluster dates the reader's today to early July 2026), and row 3 converted from the one-time phrasing the trees were still carrying.
   **An instance carries its window in its title** so the title never changes when the market resolves,
   the card prints `Repeats: Weekly` in its meta row, the detail is **`event-detail-recurring.html`**
   in both trees, and the series itself gets no surface: `Earlier in this series` is a second placement

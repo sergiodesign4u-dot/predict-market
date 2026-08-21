@@ -504,7 +504,7 @@ a short list of events is what the related component already is.
 $119,500 this week?`, which is unambiguous on a card that also prints `Closes` and meaningless in a
 list of four past weeks. A title that changes when the market resolves is the same defect as one
 market wearing three names, which is what made a market unfindable by search on 2026-08-20, so the
-title is fixed for the life of the instance: **`in the week to Aug 28`**, `in September 2026`.
+title is fixed for the life of the instance: **`in the week to Jul 3`**, `in July 2026`.
 
 **The cadence WORD is on recurring cards only; the cadence ATTRIBUTE is on every card.** `data-freq`
 is what the filter reads and it stands on **425 cards in the two trees**, One-time by default,
@@ -534,7 +534,9 @@ binary twin carries, and its outcome slot holds an OPTION rather than a side.
 **The resolved multi is the one document where three surfaces have to agree about one market.**
 `active-bets-history` prints the row, `loss-multi` prints the outcome screen, and the detail is where
 a reader arrives later from either. All three carry `Which chain held the largest stablecoin supply
-at the end of H1 2026?`, Ethereum on Jul 1 2026 at 00:05 ET, Ethereum $73.4B against Tron $61.2B and
+at the end of June 2026?` (it read `at the end of H1 2026` until 2026-08-21, and **H1 is not a period
+a MONTHLY series has**: the live instance lists June and May as its earlier periods, so the reader's
+own resolved bet is the one immediately before the open one), Ethereum on Jul 1 2026 at 00:05 ET, Ethereum $73.4B against Tron $61.2B and
 Solana $12.8B, and a reader who held YES on Solana at an average of 24 per cent and was not paid.
 
 **221 IS STRUCK ON 2026-08-20 AND THE ANSWER WAS IN THE ROUTING, NOT IN THE SLOT.** A card or a row
@@ -576,7 +578,18 @@ Discovered in tracing: FJ1, FJ5, EJ3 depend on delivery via notification - entit
 Notifications                                (FJ1 · FJ5)    ⭐ PRIMARY + 🥈 SECONDARY
 ```
 
-**Notifications** - list of unread and recent alerts: odds moved significantly · event deadline approaching · position resolved · new event in followed category. Tapping any item navigates to the relevant screen (Event Detail or Active Bets). Notification types map directly to the hot/warm return signals in aarrr.md retention model (D1–D3).
+**Notifications** - list of unread and recent alerts: odds moved significantly · event deadline approaching · position resolved · new event in followed category.
+
+**THE DEADLINE ALERT HAS A HORIZON AND IT HAD NEVER BEEN WRITTEN DOWN, decided 2026-08-21,
+`docs/backlog.md` 231.** Four types are named above and three of them are triggered by an EVENT -
+the odds moved, the market resolved, a category gained a listing - so their trigger is the thing
+itself. `event deadline approaching` is the only one triggered by the CLOCK, which means it needs a
+number, and for as long as it had none the one specimen of it in the trees said `closes in 6 hours`
+about an event **13 documents dated a year out**. It fires **once per instance, 24 hours before the
+close**, and the reason for 24 rather than a longer window is the cadence: **the horizon must be
+shorter than the shortest period the catalog opens**, or a weekly market spends a seventh of its
+life announcing that it is about to close. A recurring series alerts per INSTANCE, not per series,
+which follows from the rule above that an instance carries its own window in its title. Tapping any item navigates to the relevant screen (Event Detail or Active Bets). Notification types map directly to the hot/warm return signals in aarrr.md retention model (D1–D3).
 States: loading (fetching list) - empty (no notifications yet - new user or no events followed) - error (notifications failed to load - retry CTA) - push-permission-missing (OS push denied: show in-app banner "Enable notifications to get live updates" with system settings deep-link).
 
 Note: Settings / Notification Preferences remains `[ORPHAN]` - configuring which notifications you receive is not a confirmed job. The list screen (above) is sufficient for MVP. [?] Q-notif-prefs open question: does the user need per-event mute controls, or is category-level preference sufficient? Cannot be derived from current research - defer to user testing.

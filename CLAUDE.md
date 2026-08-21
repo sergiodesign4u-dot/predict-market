@@ -568,6 +568,17 @@ because it is a stance rather than a principle, and it is written once, here.
   before believing a claim about how it reads**, and give it a control: the five repaired rows show
   their recovered text and the same five from HEAD show that text absent. 342 tables and 2,708 body
   rows now agree with their headers in both directions.
+  **AND THE SAME RULE STOPPED A REPAIR ON 2026-08-21, WHICH IS THE HARDER HALF.** A pipe count over
+  all 61 markdown files reported **12 rows with more cells than their header**, and the synthetic
+  control agreed the mechanism is real: a two-column header with a four-cell row renders two `<td>`
+  and loses the rest. Twelve rows were folded into their last legal column - and then put through the
+  renderer before the fix was believed. **HEAD and repaired both give three `<td>`, both 3,623
+  characters in the second, and every word of the surplus present in BOTH**: those rows do not split
+  where a pipe count says, the excess delimiters render as literal `|` inside the Item cell, and the
+  repair had turned a rendered `|` into a rendered `\`. All twelve reverted. **A positive control
+  proves the MECHANISM exists and says nothing about whether the rows in front of you are in it**,
+  and a pipe count is a reading of the source by a file whose whole rule is that the record has a
+  renderer.
 - **A STRING IS SHIPPED IN THREE TREES AND EVERY VOICE PASS HERE HAS BEEN RUN OVER TWO.** The rule
   above says markup goes to two places, the component's page in `ui-kit/` and the screens in
   `ui-visual/`, which means the STAND carries the product's strings and not a paraphrase.
@@ -639,6 +650,37 @@ because it is a stance rather than a principle, and it is written once, here.
   walk reported an empty search template on 119 documents, and `checkVisibility()` says it is
   `hidden` on every one. **A pass that reads more than the reader sees invents defects at the rate it
   finds them.**
+- **A LIMIT WRITTEN IN A UNIT THAT TRACKS THE READER NEEDS A SECOND LIMIT WRITTEN IN THE CONTAINER,
+  AND A ROW MEASURED TO LAND EXACTLY ON ITS BOX HAS NOWHERE TO PUT A SETTING NOBODY MEASURED.**
+  Two fixes on 2026-08-21 and they are the same sentence twice. `--measure` is `46ch` and a `ch`
+  scales with the face, which is why it is in `ch`: one number caps an 11px legal line and a 16px
+  paragraph at the same character count. **It had no upper bound in pixels**, so on the five document
+  pages, which are `--text-16`, a 24px browser default made the cap **755.14px against the 258px a
+  320px phone can give** - and `.cat-layout` is a COLUMN flex container, where the `min-width:0` on
+  `.cat-main` governs nothing. **A cap wider than its box is not a cap, it is a floor.**
+  `max-width:min(var(--measure),100%)` costs nothing where the cap already fitted: 62 characters at a
+  16px root and 63 at a 24px root, the same count, which is what `ch` was bought for. The header half
+  is the twin: `header.css` closed its longest comment with *the utility landing on 306 exactly* as
+  the proof a fix worked, and it is exact at 16px and at 20px and 329.72 at 24px, because one thing
+  in that row is a word and grows while the two icon marks sit on a 44px touch floor that is px.
+  **The answer was already in the row and needed no declaration**: `Sign in` and `Sign up` are
+  `data-open="signin"` both, onto a dialog headed *Sign in or create account*, so the quiet half took
+  `.desk-only`, the class its siblings already wear. **0 of 960 renders scroll sideways at three
+  roots on both engines, against 36 documents before.**
+- **A CADENCE IS A PROMISE ABOUT A PERIOD, AND AN INSTANCE THAT WAS NEVER MOVED BREAKS IT SILENTLY.**
+  A notification read `closes in 6 hours` against 13 documents printing `Closes: Jul 1, 2027`, and no
+  edit to that string could make it true: **the catalog's soonest close was 58 days out**. The real
+  defect was one layer down - a WEEKLY market whose open period ended in 58 days and a MONTHLY one
+  ending in 91 - and one layer down again, because `event-detail-recurring-multi.html` listed two
+  months as already resolved that the account cluster has not reached. **Two todays in one product,
+  three months apart, and one monthly series carrying four instances with two incompatible
+  histories**, one of them `at the end of H1 2026`, which is not a period a monthly series has. Today
+  is pinned at **Fri, Jul 3, 2026** by weight of documents, every instance sits in its current
+  period, and the reader's own resolved bet became the instance immediately before the open one.
+  **And the firing horizon is written down for the first time**: three of the four notification types
+  are triggered by an EVENT, this is the only one triggered by the CLOCK, so it needs a number, and
+  the number is bounded by the catalog - **the horizon must be shorter than the shortest period the
+  catalog opens**. `ia/docs/sitemap.md`, notifications.
 - **No em dash**, anywhere, and **"anywhere" is the repository rather than the folders somebody
   remembered.** It was measured over six on 2026-08-16, read 0, and was published as "the only file
   that carries any" while `concept/brand-toolkit/` carried 35 across four files. Those are gone;
