@@ -95,7 +95,7 @@ fact written twice drifts and the copy here is the one to delete.
 | Design System | Done | The vitrine rebuilt by hand: a shelf per level, a page per component, zero generators and zero gates. [`ui-kit/`](./ui-kit/) |
 | Responsive | Done | Three rungs in `rem`, named by what arrives at them, kept as a registry because a media query cannot read a variable. [`ui-kit/responsive.html`](./ui-kit/responsive.html) |
 | Animation | Done | Two durations and a period, every movement naming its job first, and a reduced-motion check that can fail. [`ui-kit/motion.html`](./ui-kit/motion.html) |
-| Handoff | In progress, 2026-08-23 | Behaviour, the map, accessibility, and the page that replaces the explanation. [`handoff/handoff.html`](./handoff/handoff.html) |
+| Handoff | Done | Behaviour, the map, accessibility, the prompt for adding a screen, and the page that replaces the explanation. Audited twice by readers with no context, who built a feature each from the documentation alone. [`handoff/handoff.html`](./handoff/handoff.html) |
 
 ---
 

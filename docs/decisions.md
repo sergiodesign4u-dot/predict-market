@@ -12,6 +12,86 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-23 - Handoff: the package was audited by three readers who had never seen it, two of them built a feature out of it, and the one thing that could not be got right was the test itself
+
+**The stage's premise is that whoever builds a thing cannot read it, only recall it**, so "imagine
+you are a new developer" produces an audit by somebody who already knows every answer. The reader
+here is a subagent with a clean context, and it stands at both ends: one at the entry, asked to
+UNDERSTAND the package, and two at the exit, asked to USE it by building a real feature from the
+documentation alone. Every run carried the same three isolation rules - read from disk because a
+file already in context is somebody else's snapshot, forbidden paths named ONE BY ONE rather than as
+a folder because the critique logs sit inside the folders the reader was just handed, and a reading
+journal as the proof. **No forbidden path was opened in any of the three, and two readers disclosed
+a near miss unprompted**, which is the behaviour the journal exists to produce rather than the
+absence of one.
+
+**What the package is.** Four questions have no answer anywhere else in the repository, because a
+page renders a state and cannot say what reaches it, what it is made of, or what it promises a
+reader who cannot use it the ordinary way: `behaviour.md`, `map.md`, `a11y.md`, and `one-shot.md`
+for how to add to it. `handoff.html` is the one link that replaces an explanation and `index.html`
+is the front door. **Nothing in the package repeats a fact the code carries** - no colour, no
+length, no shipped string, no rule - and that is checked mechanically and reads zero, because a copy
+of a fact is a second edition of it and the copy nobody re-reads is the one that goes on rendering
+yesterday's truth with a confident face.
+
+**The route was dead where it mattered most and no instrument here could have seen it.** Asked
+rather than remembered, the published product answered, the vitrine answered, every deep link
+answered, and **the one address a person is actually handed answered 404**. `.nojekyll` is required
+because Jekyll drops every path beginning with an underscore and would take the roadmap panel off
+the course documents and the whole route off the stand; with Jekyll off nothing makes a page from
+the README, and there was no `index.html`. Every instrument in this repository opens a file and not
+one reads a response code. The front door holds no fact of its own.
+
+**The examinations, and the fork about their screens.** The first built account limits, five states
+in both trees, 261 files. The second built the cancelled event and its refund, four states in both
+trees, 262 files. Both are correct, both were verified independently before anything was decided,
+and **both are reverted and kept on branches**: `exam/account-limits` and `exam/cancelled-event`.
+The reason is the stage's own and it was put to the user rather than assumed: **a product edit after
+the tree was measured cancels every comparison the acceptance stood on**, and a handoff that
+extends the product is no longer a handoff of the product that was accepted. The work is good and
+that is why it is addressable rather than deleted.
+
+**What the readers found that nothing here had.** Twelve documents whose screen-tree panel names a
+smaller set than the rest of their tree, with the two trees disagreeing about which - found twice,
+independently, by two readers who never met. Four documents with no level-one heading at all. The
+copy inventory still carrying a word the lexicon bans by name, on eleven rows, while the trees carry
+it on none. All four hand-written renderings in `ia/` behind their markdown. The layer boundary
+counted two ways in five files, one of them the file every session loads whole, **which said six in
+one bullet and seven in another**. A shipped sentence telling a reader how long their money takes
+with no duration in any product document. Thirteen open rows, and every one of them filed rather
+than fixed.
+
+**And one row of the accessibility checklist was the stage's own defect.** It said confirmed by an
+earlier stage, named the instrument and did not run it, on the sound argument that headings are
+structural and this stage does not read the structure tree. The argument was sound and the status
+was still unearned: the four missing headings had been there the whole time. **A status inherited
+from an earlier tree is a status about that tree**, and the rule this file already had - a point
+whose check cannot be named never gets a status - needed its twin, which is that a point whose check
+was not RUN does not get one either.
+
+**The one repair, and where the line was drawn.** The package published an accessibility checklist
+on a page that failed the text contrast criterion: the course chrome's muted role measured 3.36
+against the page ground, under the ink threshold, carrying the table headers and the small print of
+both pages this stage wrote. It is one value in a palette fourteen documents copy, so fixing two
+would have been drift by this repository's own definition; all fourteen were swept and seven are
+clean now. **The remaining 301 elements are greys written as literals inside individual documents,
+past their own token**, and they are filed rather than swept because that is a judgement per
+document. The line is by KIND of file: the course chrome is not `ui-visual/`, `wireframes/`,
+`components/` or the stand, links neither the system nor its base, and no product rule reaches it.
+
+**The rule the stage set itself and did not meet.** The second examination's list of things it could
+not work out had to be shorter than the first's. **It was ten and ten.** Split by who owns the gap
+it went from five to two, and none of the five the first run closed came back, which is the direct
+evidence the repairs held - but the rule as written was not met and the log says so rather than
+explaining it away. **The reason it cannot converge is written down too**: six of the second run's
+ten are product decisions nobody has ever taken, and a third run on any unbuilt feature would
+surface a seventh such set. The package documents a design, and a design is not a decided product.
+So the measure a later run should be held to is the split by owner, not the length of the list.
+
+**Rejected: cutting the version tag at step 6, where the stage's own flow puts it.** The handoff
+page linked a file step 7 had not yet written, so a tag there would have named a package failing its
+own route check. It is cut on the closing commit instead.
+
 ## 2026-08-21 - The row already carried its own answer, and a cap that scales with the reader had no upper bound; then a notification that could not be made true turned out to be a catalog two months behind itself
 
 **Backlog 230, and the fix added no declaration.** `Sign in` and `Sign up` in the logged-out header
