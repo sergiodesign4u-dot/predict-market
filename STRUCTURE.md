@@ -17,15 +17,15 @@ nowhere else** - a second copy of a status is a copy that goes stale, **which is
 | 02+ | CJM (As-Is + To-Be) - inside User Research, not a stage of its own | `user-research/` | `cjm-as-is.html`, `cjm-to-be.html` |
 | 03a | Information Architecture, Basic layer | `ia/` | `flows.html`, `concept-map.html` |
 | 03b | Information Architecture, Detailed layer | `ia/` | `ia.html`, `sitemap.html`, `seo.html`, `system.html` |
-| 04 | Wireframes | `wireframes/` | 116 grey pages |
+| 04 | Wireframes | `wireframes/` | 119 grey pages, counted 2026-08-23 |
 | 05 | Voice | `voice/` | `voice/voice.html` |
 | 06 | Concept | `concept/` | `concept.html` (+ `directions.html`) |
-| 07 | UI + Visual | `ui-visual/` | 116 painted screens in 117 documents, every family and every state |
+| 07 | UI + Visual | `ui-visual/` | 119 painted screens in 120 documents, counted 2026-08-23, every family and every state |
 | 08 | Tokens + Components | `components/` (the system) | `ui-kit/overview.html` |
 | 09 | Design System | `components/patterns/` (6 files) + `ui-kit/` (61 of 61 pages, rebuilt by hand 2026-08-07 to 2026-08-08: a shelf per level plus one page per component, every component in the system) | `ui-kit/overview.html` |
-| 10 | Responsive | | - |
-| 11 | Animation | | - |
-| 12 | Handoff | | - |
+| 10 | Responsive | `components/tokens.css` (the three rungs, in `rem`) | `ui-kit/responsive.html` |
+| 11 | Animation | `components/` (two durations, two curves, one period) | `ui-kit/motion.html` |
+| 12 | Handoff | `handoff/` + the repository index | `handoff/handoff.html`, `index.html` |
 
 The CJM keeps its own row in the README status table, because it is a deliverable that can be
 done or not done; it does not keep a number, because it is built inside User Research. The two
@@ -52,7 +52,7 @@ The shared left sidebar is markup inside each page: the root viz pages, the anno
 roadmap. Three scripts used to keep those copies in step. **There is no longer anything that does**,
 so the roadmap is one list in prose here and in `README.md`, and a change to it is a search and a
 sweep by hand. The panel's LOOK is not per-page and never was: it is one component,
-`components/course-chrome.css`, linked with `fonts.css` and `tokens.css` by 29 documents, counted 2026-08-23: the 28 course pages and the repository index `index.html`.
+`components/course-chrome.css`, linked with `fonts.css` and `tokens.css` by 30 documents, counted 2026-08-23: the 29 course pages and the repository index `index.html`. **It read 29 for one day**, because the turn that added the index forgot that the Handoff stage had made the course documents 29 rather than 28 the week before, which is a count corrected by hand landing one short of the disk.
 
 Structure flows one way between the two screen trees: `wireframes/` decides it and `ui-visual/`
 follows. A check used to fail the build when the trees disagreed inside `<main>`, `<header>`, the

@@ -25,8 +25,9 @@
       `README.md`, `CLAUDE.md` and `STRUCTURE.md` each said in so many words that a status lives in
       the README table AND NOWHERE ELSE. It lives here too, and here is the copy a reader SEES.
    3. NO CSS OF ITS OWN. Every class written below is `components/course-chrome.css`, which every
-      page carrying this panel already links. That was the 28 course documents until 2026-08-23,
-      when the repository index joined them and made it 29: the published site had no root
+      page carrying this panel already links. That was 28 course documents until the Handoff stage
+      wrote the 29th, and 30 since the repository index joined them on 2026-08-23, counted from the
+      script tags rather than from memory: the published site had no root
       document at all, because `.nojekyll` is required to keep THIS FILE from being dropped by
       Jekyll and with Jekyll off nothing turns `README.md` into one.
 
