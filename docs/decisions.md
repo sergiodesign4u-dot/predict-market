@@ -12,6 +12,72 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-23 - The backlog is empty, and the last row closed by disproving its own premise
+
+Six rows were left after the first fix pass and every one of them was said to need a decision rather
+than a sweep. All six are shut. **The one that mattered most was closed by measuring what it claimed
+rather than by doing what it asked.**
+
+**A repository is not made of the files somebody remembers being large.** `docs/backlog.md` 237 said
+a person cloning this project downloads 278 MB of history for a 60 MB package and that **every
+megabyte of the difference is images that were deliberately deleted**. Measured over every blob in
+every commit: **1,774 MB of blob bytes, 80.3 per cent of it HTML and 11.5 per cent markdown; images
+and fonts together are 5.6.** `wireframes/` alone is 43.4 per cent, because every one of its
+documents carries a copy of the shared stylesheet and every sweep rewrites all 119 of them, and the
+single heaviest path in the entire history is **`docs/decisions.md` at 110 MB** - the append-only
+record this project least wants to lose. The two screenshots the row named are 17 MB of 1,774.
+
+**And the 278 MB was an unrepacked `.git`.** `git gc` took it to **115 MB with every hash, tag and
+branch untouched** and `fsck` clean, and a clone from the published remote had been costing **129 MB
+all along**, because GitHub packs its own. **So the history rewrite is refused, and the refusal is
+the decision**: it would change every commit hash and invalidate a tag that is already published, to
+remove 5.6 per cent of the bytes, and the largest thing it could remove is the record. The row had
+been filed on the author's local disk state and read as a property of the package, which is the same
+shape as every count in this repository that was typed rather than measured.
+
+**The grey tree's shared-region markers had a definition all along and it was in the legend.** Every
+inline stylesheet opens with *these R rules stand in N of the M documents*, which is exactly what a
+measurement finds; nothing ever recomputed it. **2,349 markers over 30 regions in 119 documents
+recounted in one pass**, against a set written for a tree of 114 with three regions stranded on 116
+and 117 by later passes that turned one marker and not the set. The legend's own denominator was one
+of the stale ones. **A stale numerator makes every document contradict its header equally, which is
+the same as none of them doing it**, and the marker exists precisely so that a document which has
+lost a block stands out. Two readers with no context stumbled on this in one week and the second
+recomputed it, got a different answer from the header, and reverted rather than guess.
+
+**One of the four hand-written renderings in `ia/` was missing a whole flow.** `ia/flows.html` said
+four key flows and drew four while `ia/docs/flows.md` had drawn five since FJ1 was added on
+2026-08-18: the job the entire browse layer exists for had no diagram on the page a person opens.
+Everything else those four pages diverge on is thinner than the source, which that folder's rule
+tolerates by design, and a scan for numbers a rendering claims and its source no longer carries
+returned nothing on any of them. **Each page states what it is now** - a reading of a named file,
+dated, markdown wins, with both failure classes named - so the next reader knows which divergences
+are a defect.
+
+**A payout confirms in under a minute**, bounded by the rail rather than by an average: Base is an L2
+with a block time of about two seconds and a payout is one transfer the resolver signs. It is a
+ceiling so the sentence stays true on a bad day, which is the same shape as the notification horizon
+bounded by the shortest period the catalog opens. **And release one has no rail at all** - points, no
+chain, a payout is a balance write - so the pending state is the real-money behaviour and does not
+ship first. The string names the confirmation instead of a chain, so it is true in both.
+
+**The orphan image was read rather than deleted, and it turned out to be the source of the product's
+look.** 2.4 MB, named by the tool that exported it, referenced by nothing: it is the **B, grounded
+vault** brand plate, graphite ground with one brass accent and green and red on the outcome pair
+only. It is where `DESIGN.md` came from. Renamed to the convention its own README had written three
+lines above and never used, and described there, read as an exploration: it carries the project's
+old name and the trader words the voice contract later banned. **0 tracked paths outside ASCII.**
+
+**And `ui-kit/overview.html` stopped arguing with itself**: two typed page counts deleted in favour
+of the panel that already computes them, two dated readings kept and marked as readings.
+
+**Thirteen rows closed in one day across three passes, and five of the thirteen needed no edit at
+all.** The filter toggle's target was its label, the modal screens were already inert with focus
+inside and Escape live, two thirds of a contrast count was not text, the numerator nobody could
+define was defined in a legend, and the history was not made of what the row said it was. **That is
+the ratio worth keeping**: a backlog written from readings is a backlog whose rows sometimes close by
+being read again.
+
 ## 2026-08-23 - Seven open rows closed, and three of the seven were the instrument rather than the product
 
 The Handoff stage filed thirteen rows and repaired none, because a product edit inside that stage
