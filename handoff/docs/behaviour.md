@@ -215,7 +215,7 @@ Each of these is a case where the obvious build is wrong, and each is drawn.
 
 ## NOT DECIDED
 
-Rows that had no source. **They are not in the spec above**, because a behaviour with no source is a
+**Ten rows**, two of them added on 2026-08-23 by a reader with no context who hit them while building. Rows that had no source. **They are not in the spec above**, because a behaviour with no source is a
 plausible guess wearing a specification's format. Each is addressed to the person who owns it.
 
 | # | The question | Why it is not answerable from the repository | Where the answer belongs when it is taken |
@@ -228,6 +228,8 @@ plausible guess wearing a specification's format. Each is addressed to the perso
 | N6 | How is a string referenced without quoting it? | The copy inventory has Zone / Type / Line / Flag and **no key column**, so nothing can address a string except by repeating it - which is the duplication this package forbids. Every copy reference above is a coordinate, and a coordinate breaks when a section is re-ordered. | `voice/docs/microcopy.md`, as a key column; filed in `docs/backlog.md` |
 | N7 | Withdrawal has a drawn surface and no flow. | The withdrawal dialog stands on the wallet screen. `ia/docs/flows.md` lists a minimal withdrawal flow under deferred polish, so the surface shipped ahead of the map. | `ia/docs/flows.md` |
 | N8 | Is a support surface buildable now? | Its node row registers it and describes its shape; a paragraph seventeen lines further down decides it does NOT ship at this release. A reader who takes the row and not the paragraph builds a deferred screen. | the node row itself, which should carry the decision it is governed by |
+| N9 | How long is the waiting period on loosening an account limit? | `responsible-betting.html` ships the promise in both trees: a tighter limit applies at once and a looser one takes a waiting period. **The direction is specified and the number is nowhere** - not in `PRODUCT.md`, not in `ia/docs/sitemap.md`, not in the launch catalog. The asymmetry is the whole mechanism, so the number is not a detail; it is the difference between a limit and a suggestion. **A shipped page already promises it**, which is what makes this a row rather than a note. | `PRODUCT.md`, beside the compliance paragraph, and then the node row in `ia/docs/sitemap.md`. Two precedents exist for a clock-bounded number: the notification horizon, which was bounded by the shortest period the catalog opens, and the deposit minimum |
+| N10 | Where is a private, account-level screen reached from? | Decided once and never generalised. `ia/docs/sitemap.md` gives Wallet its two routes by name, the avatar dropdown on desktop and the Portfolio hub on the phone, and the same file refuses additions to the global chrome until it asks for them. So the next account screen has one decided precedent and one written refusal, and the rule between them does not exist. **The cost is not a screen: adding one row to the avatar dropdown is an edit to the global chrome of every document in both trees.** | `ia/docs/sitemap.md`, as a rule about the account cluster rather than a route on one node. Found by a reader with no context who needed the answer to finish, and could only copy Wallet's |
 
 ---
 

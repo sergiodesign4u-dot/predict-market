@@ -144,3 +144,79 @@ closure is a gap that reads as handled and is not. Steps 2 to 7 fill them; step 
 examination's own findings to this file. Nothing here is repaired by editing the product: a product
 edit after stage 12 was accepted cancels every pixel comparison the acceptance stood on, so a
 finding that needs one goes to `docs/backlog.md` and is named here with its row.
+
+---
+
+## THE EXAMINATION, RUN 1, 2026-08-23
+
+The audit at step 1 asked a reader with no context to UNDERSTAND the package. This asks one to USE
+it: a different subagent, a written prompt and nothing else, and a real feature to build. **The two
+find different things, and this one is closer to what actually happens next**, because a person
+taking a package over does not read it, they need something from it.
+
+**The brief.** `handoff/docs/one-shot.md` as the entry point and the only briefing. The feature was
+the responsible-play slot, a node `ia/docs/sitemap.md` had held reserved since the map was written,
+with the volume named in numbers before the run so the result could be measured against it: one
+screen family, four states at minimum, both trees, so eight documents at minimum. The same three
+isolation rules as step 1 - read from disk, forbidden paths named one by one including this file,
+and a reading journal as the proof.
+
+**Isolation held.** The journal names 28 reads in order and no forbidden path is among them. **One
+disclosure the reader made unprompted**: a repository-wide grep will have scanned four forbidden
+files, and no line from any of them appeared in its output. A disclosed accident is recoverable and
+this is the behaviour the journal exists to produce.
+
+**What it built.** Five states in both trees, registered in both hand-copied panels across 244
+documents, with the deferral overturned in the map, a second page type banked, a copy section
+written and eight backlog rows filed. Verified independently before anything was decided: 130
+renders per engine, 0 page errors, 0 sideways, exactly one level-one heading per document, no
+dialog contributing height, the grey inline stylesheets byte-identical to the file they were copied
+from, and in the paint no media query, no transition, no keyframes and two element styles both
+inside the permitted set.
+
+**The screen is reverted and kept addressable on a branch**, on the user's decision and for the
+stage's own reason. It is not on this branch and the trees are the size they were.
+
+### What it could not work out: 10
+
+This is the number run 2 has to beat. Only the rows that produced a change are listed; the full
+list is in the run's report.
+
+| # | The gap | Closed by |
+|---|---|---|
+| A1 | **The stop condition in `one-shot.md` named two node states and the map has three.** Built and `[ORPHAN]` were covered; **reserved / deferred / post-MVP** was not, and it is the state the feature was actually in. An orphan has no job and a deferral has a job and a date, and in a hurry they look identical | `one-shot.md` section 1 now carries the three states as a table, with the one test that separates the middle from the bottom: whether the map's reason is about the READER or about the RELEASE |
+| A2 | **Which state is the base page, when the screen is a CONTROL rather than a view.** The convention says the base is "the success or representative state" and does not say which wins when they part. On any settings surface they always part | `one-shot.md` section 4: the base is the representative state, and the choice is written into the block bank entry for the type |
+| A3 | **The waiting period on loosening a limit is promised in shipped copy and its number exists nowhere.** The direction is specified in both trees; the figure is in no file. The asymmetry IS the mechanism, so the number is the difference between a limit and a suggestion | `behaviour.md` **N9**, addressed to a person, with the two precedents for a clock-bounded number named |
+| A7 | **What counts as "the words", when a screen's strings stand on no component specimen.** The rule says a string goes into three trees; nothing says what to do when the third has no place for it | `one-shot.md` section 5: the stand carries COMPONENT strings, so such a screen touches two trees, and check rather than assume. The inventory is named as a tree in its own right, which row 241 then proved it had to be |
+| A8 | **Where a private, account-level screen is reached from.** Decided once for Wallet by name and never generalised, beside a written refusal to add to the global chrome. The next account screen has a precedent and a refusal and no rule | `behaviour.md` **N10**, with the cost stated: one row in the avatar dropdown is an edit to every document in both trees |
+
+Four more were repository questions the package already carries as open rows and needed no new
+writing: whether the banking method is mandatory for a new page type (**N4**), whether
+`ia/annotations/` is still live (**N2**), the grey tree's stale shared-region denominators (backlog
+236), and `map.md` being a dated reading that its own method forbids editing by hand.
+
+### What it worked out and stated flatly: 26
+
+The expensive list at step 1 was the one where a confident reader was WRONG. **This one is the
+opposite result and it is the finding**: the conclusions are right, including the one that had been
+wrong before.
+
+**B72 at step 1 concluded that both trees carry one panel under one class and that a screen costs
+239 identical edits.** They share no class name at all, and a sweep written from that conclusion
+edits one tree and silently misses the other. This reader, given one paragraph in `one-shot.md`,
+concluded the mechanism correctly, named both class families, and put a number on it: **261 files
+for one screen family with five states, of which 244 are the panel and there is no registry to edit
+instead.** One paragraph closed a gap that would have cost 119 silently skipped documents.
+
+**And it found four defects nobody here had seen**, all pre-existing, all re-measured against the
+reverted tree, all filed: twelve documents whose panel names a smaller set than their tree does and
+the two trees disagreeing about which (**239**); four documents with no level-one heading at all
+(**240**); the copy inventory still carrying a word the lexicon bans by name, on 11 rows, while the
+trees carry it on none (**241**); and all four hand-written renderings in `ia/` standing behind
+their markdown (**242**).
+
+**240 landed on this package rather than on the product.** `a11y.md` row 13 carried a status
+inherited from an earlier stage with the instrument named and not run, on a sound argument. The
+argument was sound and the status was still unearned: the four headings were missing the whole time
+and every instrument here passed them. **A status inherited from an earlier tree is a status about
+that tree**, and the row is a debt now with its measurement beside it.

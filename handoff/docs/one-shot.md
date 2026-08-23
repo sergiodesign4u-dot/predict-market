@@ -35,9 +35,21 @@ order that keeps them from being made at all.
 ### 1. The map decides before the screen does
 
 A screen exists because a person is trying to do something. `ia/docs/sitemap.md` holds every place a
-reader can go and marks the ones deliberately not built. **If the thing you are adding is not a node
-there, it is not a screen yet; it is a proposal**, and a node that is marked `[ORPHAN]` is marked
-that way on purpose and is not an oversight.
+reader can go. **If the thing you are adding is not a node there, it is not a screen yet; it is a
+proposal.**
+
+**A node that IS there is in one of three states, and they are not two.** This sentence used to name
+two and a reader building from it met the third on their first move:
+
+| The node says | What it means | What you do |
+|---|---|---|
+| built | it has a screen | you are extending, not adding. Read the screen first |
+| `[ORPHAN]` | **no confirmed job maps here** | do not build it. This is a decision, not an oversight, and the reason is written beside the node |
+| reserved, deferred, post-MVP | **a job exists and the release does not carry it yet** | you MAY build it, and the deferral's own reason is the thing you have to answer. It was written on a premise; find the premise and say whether it still holds. If it does, stop. If it does not, say so in `docs/decisions.md` and turn the node in the same commit |
+
+**The middle row and the bottom row look identical in a hurry and are opposites.** An orphan has no
+job; a deferral has a job and a date. The one test that separates them is whether the map gives a
+reason that is about the READER or about the RELEASE.
 
 Then `ia/docs/flows.md` for how a reader arrives and where they can end up, and `ia/docs/blocks.md`
 for whether the composition you need has already been banked. Metadata for a new indexed page is
@@ -84,6 +96,12 @@ a movement.
 parameter. The base file is the success state; every other real state is its own file beside it,
 named `<screen>-<state>.html` in lower kebab-case, with the same state name in both trees.
 
+**On a screen that is a CONTROL rather than a view, the success state and the representative state
+are different pages, and the base file is the representative one** - the state every reader meets on
+their first visit, which is usually the one with nothing set yet. The convention says "success or
+representative" and does not say which wins when they part. They part on every settings surface.
+Write down which you chose and why, in the block bank entry for the type.
+
 The screen exists **twice**, and the two are not copies of each other:
 
 | | `wireframes/` | `ui-visual/` |
@@ -125,6 +143,15 @@ component's own page in `ui-kit/` where that component is shown carrying it. A s
 holds either a QUOTATION, which must equal the screen, or a DEMONSTRATION, which may say anything
 because it is showing a property rather than a placement. **A wrong word renders perfectly**, so no
 instrument in this repository will ever tell you about it.
+
+**The stand carries COMPONENT strings, not SCREEN strings**, so a screen whose words stand on no
+specimen touches two trees and not three. Do not assume that; check it, by searching the stand for
+the strings you changed. The third tree is a place a string may live, not a place every string
+lives.
+
+**And the inventory is a tree too, not a note about the other two.** It is the file a person is told
+to read before writing a word, so a string that has drifted in the inventory and not in the screens
+is the version the next writer will copy.
 
 ### 6. Then measure, and measure the instrument first
 
