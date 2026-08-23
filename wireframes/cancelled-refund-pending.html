@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wireframe - Cancelled event (state: refund-pending (stake settling on-chain))</title>
+<style>
+    /* ================================================================================
+       ONE OF 114 COPIES. This tree links no stylesheet, so every rule below stands in
+       this file alone, and 113 other documents carry their own copy of the shared part.
+       Each region marker says which kind it is, and each kind is a claim with numbers:
+
+         SHARED (N of 114, R rules)       these R rules stand in N of the 114 documents,
+                                          and in this region they stand alone. Edit one
+                                          here and you have edited one copy of N.
+         SHARED BASE (N of 114, R rules)  the same R rules stand in N documents, and this
+                                          page's own rules are mixed in among them.
+         THIS PAGE                        promises nothing to any other file.
+
+       A copy that holds fewer than R contradicts its own header, and that is the only
+       check this tree can carry: it links nothing, so nothing can compute for it. How
+       the numbers were taken is written up in wireframes/_conventions.md, under the
+       chrome copied into every document. docs/backlog.md 179.
+       ================================================================================ */
+
+    /* a link takes the ink around it, never the browser's blue. */
+    a { color: inherit; }
+    /* Grey-box wireframe, responsive mobile-first. Neutral greys only, no color.
+       Simple monochrome outline icons (stroke grey) so element footprint is real.
+       Base = mobile (1 column, bottom nav). Min-width expansions:
+       640px -> bottom nav hidden, desk header
+       the feed grid takes no query at all: auto-fit counts the columns from a 300px
+       floor, which is what the painted tree does through --grid-col-min. 960 and 1280
+       were a column count written by hand and are gone (docs/backlog.md 116).
+       Header is the same lean component at all widths (logo + icon cluster);
+       the second-level category nav sits directly under it. */
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #e9e9e9; color: #222; line-height: 1.4; padding-top: 44px; }
+
+    .page-label { border: 1px dashed #888; background: #dcdcdc; padding: 6px 10px 6px 104px; font-size: 12px; }
+
+    /* ---- SHARED (114 of 114, 24 rules): wireframe screen-tree nav, the meta-nav ---- */
+    .wf-toggle { position: fixed; top: 8px; left: 8px; z-index: 60; display: inline-flex; align-items: center; gap: 6px;
+      border: 1px solid #888; background: #d6d6d6; padding: 6px 9px; font-size: 11px; cursor: pointer; }
+    .wf-toggle .ic { width: 16px; height: 16px; }
+    .wf-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.35); z-index: 49; display: none; }
+    .wf-overlay.open { display: block; }
+    .wf-nav { position: fixed; top: 0; left: 0; width: 250px; height: 100vh; overflow-y: auto; margin: 0;
+      background: #dedede; border: none; border-right: 1px solid #999; z-index: 50;
+      transform: translateX(-100%); transition: transform .2s ease; font-size: 12px; }
+    .wf-nav.open { transform: translateX(0); }
+    .wf-nav-head { background: #cdcdcd; border-bottom: 1px solid #999; padding: 10px 12px; font-size: 11px;
+      text-transform: uppercase; letter-spacing: .05em; font-weight: bold; position: sticky; top: 0; }
+    .wf-nav-close { float: right; border: 1px solid #888; background: #d6d6d6; font-size: 11px; cursor: pointer; padding: 0 7px; line-height: 1.5; }
+    .wf-tree { list-style: none; margin: 0; padding: 4px 0 28px; }
+    .wf-sec { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: #555; padding: 13px 12px 3px; font-weight: bold; }
+    .wf-screen > a { display: block; padding: 5px 12px; color: #222; text-decoration: none; border-left: 3px solid transparent; }
+    .wf-screen > a:hover { background: #d2d2d2; }
+    .wf-screen > a.active { background: #c5c5c5; border-left-color: #555; font-weight: bold; }
+    .wf-screen > a.planned { color: #777; }
+    .wf-screen > a.planned::after { content: "planned"; font-size: 8px; text-transform: uppercase; letter-spacing: .05em;
+      border: 1px solid #aaa; background: #e8e8e8; color: #666; padding: 0 4px; margin-left: 6px; }
+    .wf-states { list-style: none; margin: 0; padding: 0 0 4px; }
+    .wf-states li { padding: 3px 12px 3px 30px; color: #555; position: relative; }
+    .wf-states li::before { content: ""; position: absolute; left: 19px; top: 11px; width: 6px; height: 1px; background: #9a9a9a; }
+    .wf-states li.cur { color: #111; font-weight: bold; }
+    .wf-states li.cur::before { background: #555; width: 9px; height: 2px; }
+    .wf-states a { color: inherit; text-decoration: none; }
+    .wf-states a:hover { text-decoration: underline; }
+    .wf-note { padding: 2px 12px 4px 30px; color: #777; font-style: italic; }
+
+    @media (min-width: 1170px) {
+      .wf-nav { transform: none; }
+      .wf-toggle, .wf-overlay { display: none !important; }
+      body { padding-left: 250px; padding-top: 0; }
+      .page-label { padding-left: 10px; }
+    }
+
+    /* ---- SHARED (95 of 114, 37 rules): state pages (empty / error / loading / push-permission-missing) ---- */
+    .state-switch { border: 1px dashed #888; background: #e3e3e3; padding: 7px 10px; font-size: 11px;
+      display: flex; flex-direction: column; gap: 5px; }
+    .state-switch .ss-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+    .state-switch .ss-label { text-transform: uppercase; letter-spacing: .05em; color: #555; font-size: 10px; width: 44px; flex: 0 0 44px; }
+    .state-switch a { color: #222; text-decoration: none; border: 1px solid #999; background: #d6d6d6; padding: 2px 8px; }
+    .state-switch a:hover { background: #cccccc; }
+    .state-switch a[aria-current="page"] { background: #bdbdbd; font-weight: bold; }
+    .auth-btns { display: flex; gap: 6px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; box-sizing: border-box; border: 1px solid #888; cursor: pointer; text-align: center; text-decoration: none; }
+    .btn.btn-secondary { background: #d6d6d6; }
+    .btn.btn-primary { background: #c4c4c4; font-weight: bold; }
+    .btn.btn-sm { padding: 8px 12px; font-size: 12px; }
+    .btn.btn-md { padding: 12px; font-size: 14px; }
+    .btn.btn-lg { padding: 16px; font-size: 14px; }
+    .btn.btn-block { display: flex; width: 100%; }
+    .btn .ic { width: 18px; height: 18px; }
+    .wf-states .wf-substate { padding: 7px 12px 2px 20px; color: #555; font-size: 10px; text-transform: uppercase; letter-spacing: .05em; font-weight: bold; }
+    .wf-states .wf-substate::before { display: none; }
+
+    .state-block { border: 1px dashed #999; background: #ededed; padding: 30px 18px; margin: 4px 0;
+      display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+    .state-block .ic { width: 30px; height: 30px; }
+    .state-title { font-size: 14px; font-weight: bold; margin: 0; }
+    .state-msg { font-size: 12px; color: #444; margin: 0; max-width: 380px; line-height: 1.5; }
+    .state-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 4px; }
+
+    /* loading skeletons */
+    .card.skeleton .sk-thumb { width: 56px; height: 56px; flex: 0 0 56px; background: #d2d2d2; border: 1px solid #cccccc; }
+    .card.skeleton .sk-head { flex: 1; }
+    .card.skeleton .sk-line { height: 10px; background: #d8d8d8; margin: 7px 0; }
+    .card.skeleton .sk-line.w80 { width: 80%; }
+    .card.skeleton .sk-line.w60 { width: 60%; }
+    .card.skeleton .sk-line.w40 { width: 40%; }
+    .card.skeleton .sk-row { display: flex; gap: 6px; margin-top: 10px; }
+    .card.skeleton .sk-btn { height: 32px; background: #d8d8d8; flex: 1; }
+
+    /* push-permission-missing banner */
+    .push-banner { border: 1px solid #999; background: #e0e0e0; padding: 10px 12px; margin: 0 0 10px;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+    .push-banner .push-msg { font-size: 12px; display: flex; align-items: center; gap: 8px; }
+    .push-banner .push-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .device {
+      width: 100%; max-width: 1400px; margin: 0 auto; background: #f4f4f4;
+      border-left: 1px solid #999; border-right: 1px solid #999;
+      min-height: 100vh; display: flex; flex-direction: column;
+    }
+
+    header, nav, main, section, article, footer, aside { border: 1px solid #999; }
+    .zone-tag {
+      display: block; font-size: 10px; letter-spacing: 0.04em; text-transform: uppercase;
+      background: #d2d2d2; border-bottom: 1px solid #aaa; padding: 2px 6px;
+    }
+    button, select, summary { font: inherit; }
+
+    /* ---- SHARED (114 of 114, 3 rules): icons (simple monochrome outline) ---- */
+    .ic { width: 22px; height: 22px; stroke: #444; fill: none; stroke-width: 1.6;
+      stroke-linecap: round; stroke-linejoin: round; vertical-align: middle; display: block; }
+    .ic-sm { width: 13px; height: 13px; stroke: #444; fill: none; stroke-width: 1.8;
+      stroke-linecap: round; stroke-linejoin: round; }
+
+    .icon-btn {
+      border: 1px solid #999; background: #d9d9d9; padding: 5px; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; line-height: 0;
+    }
+
+    /* ---- SHARED (114 of 114, 22 rules): header (lean, same at all widths) ---- */
+    .app-header { background: #e2e2e2; margin: 0; position: sticky; top: 0; z-index: 5; }
+    .app-header .row {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 8px; padding: 6px 8px;
+    }
+    .app-header .left { display: flex; align-items: center; gap: 8px; }
+    .logo-btn { border: 1px solid #888; background: #cfcfcf; padding: 6px 10px; font-size: 13px; font-weight: bold; cursor: pointer; }
+    .utility { display: flex; align-items: center; gap: 6px; }
+    /* balance toggle (desktop only): one figure + swap icon Balance <-> Cash */
+    .bal-toggle { display: inline-flex; align-items: center; gap: 4px; border: 1px solid #888; background: #d9d9d9; padding: 3px 4px 3px 8px; white-space: nowrap; }
+    .bal-figure { font-size: 11px; }
+    .bal-figure .bal-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.03em; }
+    .bal-figure .bal-amt { font-weight: bold; }
+    .bal-swap { padding: 3px; }
+    .desk-only { display: none; }
+
+    .bell-wrap { position: relative; display: inline-flex; }
+    .badge-dot {
+      position: absolute; top: -5px; right: -5px; border: 1px solid #777; background: #cccccc;
+      border-radius: 8px; font-size: 9px; line-height: 1; padding: 1px 4px;
+    }
+
+    /* avatar dropdown via native <details> (collapsed by default, no JS) */
+    .avatar-menu { position: relative; }
+    .avatar-menu summary {
+      list-style: none; border: 1px solid #999; background: #d9d9d9; padding: 5px 6px;
+      cursor: pointer; display: inline-flex; align-items: center; gap: 3px;
+    }
+    .avatar-menu summary::-webkit-details-marker { display: none; }
+    .avatar-menu .dropdown {
+      position: absolute; right: 0; top: calc(100% + 4px); min-width: 170px;
+      border: 1px solid #888; background: #e6e6e6; z-index: 10;
+    }
+    .avatar-menu .dropdown .zone-tag { background: #cdcdcd; }
+    .avatar-menu ul { list-style: none; margin: 0; padding: 0; }
+    .avatar-menu li { border-top: 1px solid #ccc; }
+    .avatar-menu li:first-child { border-top: none; }
+    .avatar-menu .dropdown a { display: block; width: 100%; text-align: left; border: none; background: transparent; padding: 8px 10px; font-size: 11px; cursor: pointer; }
+    /* `a` rather than `button`, and `display:block` rather than the element's own
+       inline-block: defect 78, 2026-08-07. Five rows that go to five pages are links
+       now, so a selector on the tag stopped reaching them, and `width:100%` does
+       nothing to an inline box. No button is left inside this dropdown. */
+
+    /* ---- SHARED (114 of 114, 4 rules): second-level navigation, categories ---- */
+    .cat-nav { background: #ededed; margin: 0; }
+    .cat-nav ul {
+      list-style: none; margin: 0; padding: 6px 8px; display: flex; gap: 6px;
+      overflow-x: auto; flex-wrap: nowrap;
+    }
+    .cat-nav a { border: 1px solid #888; background: #d6d6d6; padding: 5px 10px; font-size: 11px; cursor: pointer; white-space: nowrap; }
+    .cat-nav li[aria-current="page"] a, .cat-nav li[aria-current="location"] a, .cat-condensed li[aria-current="page"] a, .cat-condensed li[aria-current="location"] a { background: #b8b8b8; border-width: 2px; font-weight: bold; }
+
+    /* ---- SHARED (56 of 114, 40 rules): feed ---- */
+    .feed { background: #f4f4f4; margin: 0; flex: 1; }
+    .feed-inner { padding: 8px; }
+    .feed-head {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px;
+      justify-content: space-between; border-bottom: 1px solid #bbb; padding-bottom: 8px; margin-bottom: 10px;
+    }
+    .feed-head h2 { font-size: 13px; margin: 0; }
+    /* Feed filters: dropdowns (Sort, How often, Category) */
+    .feed-controls { display: flex; flex-wrap: wrap; gap: 6px; }
+    .filter-menu { position: relative; }
+    .filter-menu summary { list-style: none; border: 1px solid #888; background: #d6d6d6; padding: 5px 8px; font-size: 11px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; }
+    .filter-menu summary::-webkit-details-marker { display: none; }
+    .filter-panel { position: absolute; right: 0; top: calc(100% + 4px); min-width: 190px; border: 1px solid #888; background: #e6e6e6; z-index: 10; }
+    .filter-panel .zone-tag { background: #cdcdcd; }
+    .filter-panel ul { list-style: none; margin: 0; padding: 4px 0; }
+    .filter-panel li label { display: flex; align-items: center; gap: 8px; padding: 6px 10px; font-size: 11px; cursor: pointer; }
+    .reverse-row { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #ccc; padding: 7px 10px; font-size: 11px; }
+    .toggle { border: 1px solid #888; background: #cfcfcf; font-size: 10px; padding: 2px 8px; cursor: pointer; }
+    .toggle[aria-checked="true"] { background: #b8b8b8; font-weight: bold; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 10px; }
+    .card { background: #ededed; display: flex; flex-direction: column; }
+    .card .card-body { padding: 8px 10px; flex: 1; }
+    .card .top { display: flex; gap: 8px; align-items: flex-start; }
+    .thumb {
+      width: 56px; height: 56px; flex: 0 0 56px; border: 1px solid #999; background: #d2d2d2;
+      display: flex; align-items: center; justify-content: center; font-size: 8px; text-align: center; padding: 2px;
+    }
+    .card .q { font-size: 13px; font-weight: bold; margin: 0; }
+    .card a.q { color: #222; text-decoration: none; }
+    .card a.q:hover { text-decoration: underline; }
+    .card .prob-line { font-size: 11px; margin: 8px 0 6px; }
+    .card .prob { font-weight: bold; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; }
+    .yesno { display: flex; gap: 6px; margin: 0 0 8px; }
+    .yesno > a { flex: 1; display: flex; align-items: center; justify-content: center; }
+    .yesno :is(a,button) { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 9px; font-size: 12px; font-weight: bold; cursor: pointer; text-decoration: none; text-align: center; }
+    .yesno.compact > a { flex: 0 0 auto; }
+    .yesno.compact :is(a,button) { padding: 4px 8px; font-size: 11px; flex: 0 0 auto; }
+
+    .options { margin: 6px 0 8px; }
+    .opt-row { display: flex; align-items: center; gap: 6px; border-top: 1px solid #ccc; padding: 6px 0; font-size: 12px; }
+    .opt-row:first-child { border-top: none; }
+    .opt-row .opt-name { flex: 1; }
+    .opt-row .opt-prob { border: 1px solid #999; background: #dcdcdc; padding: 1px 5px; font-size: 11px; font-weight: bold; }
+
+    .card .meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 10px; border-top: 1px solid #ccc; padding-top: 6px; margin-top: 4px; }
+    .card .meta .meta-txt { display: flex; flex-wrap: wrap; gap: 10px; }
+    .card .bookmark-btn { flex: 0 0 auto; border: 1px solid #bbb; background: #e0e0e0; padding: 3px 5px; cursor: pointer; display: inline-flex; align-items: center; line-height: 0; }
+    .card .bookmark-btn .ic { width: 14px; height: 14px; }
+    .card .bookmark-btn[aria-pressed="true"] .ic { fill: #888; }
+
+    /* ---- SHARED (114 of 114, 9 rules): bottom nav (mobile only) ---- */
+    .bottom-nav { background: #e2e2e2; margin: 0; position: sticky; bottom: 0; }
+    .bottom-nav ul { list-style: none; display: flex; margin: 0; padding: 0; }
+    .bottom-nav li { flex: 1; text-align: center; border-right: 1px solid #bbb; }
+    .bottom-nav li:last-child { border-right: none; }
+    .bottom-nav a, .bottom-nav button { width: 100%; border: none; background: transparent; padding: 8px 4px; font-size: 10px; cursor: pointer;
+      display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .bottom-nav .ic { width: 20px; height: 20px; }
+    .bottom-nav li[aria-current="page"] a, .bottom-nav li[aria-current="location"] a, .bottom-nav li[aria-current="page"] button, .bottom-nav li[aria-current="location"] button { background: #c4c4c4; font-weight: bold; }
+    .bottom-nav .badge-dot { position: static; margin-left: 2px; }
+    .bn-bal { font-weight: bold; font-size: 12px; border: 1px solid #999; background: #dcdcdc; padding: 0 5px; line-height: 1.4; }
+
+    /* ---- SHARED (114 of 114, 26 rules): footer (global element, product footer) ---- */
+    .app-footer { background: #e2e2e2; margin: 0; font-size: 11px; }
+    .app-footer .footer-inner { padding: 16px 12px; display: flex; flex-direction: column; gap: 18px; }
+    .app-footer nav { border: none; }
+    .app-footer a { color: #222; text-decoration: none; }
+    .app-footer a:hover { text-decoration: underline; }
+
+    .footer-top { display: flex; flex-direction: column; gap: 20px; }
+    .footer-brand { display: flex; flex-direction: column; gap: 12px; }
+    .footer-logo { width: 130px; height: 30px; border: 1px solid #999; background: #d2d2d2; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; }
+    .footer-tagline { margin: 0; color: #555; max-width: 280px; }
+    .social-row { display: flex; gap: 6px; }
+    .social-row a { width: 30px; height: 30px; border: 1px solid #999; background: #d6d6d6; display: inline-flex; align-items: center; justify-content: center; }
+    .social-row .ic { width: 17px; height: 17px; }
+    .lang-menu { width: max-content; }
+    .lang-menu summary .ic { width: 15px; height: 15px; }
+    .lang-menu summary .ic-sm { width: 12px; height: 12px; }
+    .lang-menu .filter-panel { top: auto; bottom: calc(100% + 4px); right: auto; left: 0; min-width: 150px; }
+
+    .footer-cols { display: flex; flex-direction: column; gap: 16px; }
+    .footer-col h2 { font-size: 11px; margin: 0 0 7px; text-transform: uppercase; letter-spacing: .04em; }
+    .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+    .footer-col .sub-label { font-size: 9px; color: #777; margin: 9px 0 4px; text-transform: uppercase; letter-spacing: .03em; }
+    .tbd { display: inline-block; font-size: 9px; border: 1px dashed #999; padding: 0 4px; margin-left: 4px; color: #555; background: #ededed; vertical-align: middle; }
+
+    .footer-legal { border-top: 1px solid #ccc; padding-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .footer-legal .legal-links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+    .footer-legal p { margin: 0; }
+    .placeholder-line { border: 1px dashed #999; background: #ededed; padding: 4px 6px; font-size: 10px; }
+
+    @media (min-width: 640px) {
+      .footer-top { flex-direction: row; justify-content: space-between; gap: 28px; }
+      .footer-brand { flex: 0 0 240px; }
+      .footer-cols { flex-direction: row; gap: 28px; flex: 1; flex-wrap: wrap; }
+      .footer-col { min-width: 120px; }
+    }
+
+    /* ---- SHARED (114 of 114, 13 rules): annotations + nav tree (out of layout flow) ---- */
+    .side { width: 100%; max-width: 1400px; margin: 16px auto; padding: 0 8px; }
+    .side aside, .side section { background: #f4f4f4; margin: 0 0 12px; }
+    .side .zone-tag { background: #cdcdcd; }
+    .annotations, .navtree { padding: 8px 12px; font-size: 12px; }
+    .annotations ol { margin: 6px 0 0; padding-left: 18px; }
+    .annotations li { margin-bottom: 6px; }
+    .navtree pre { margin: 6px 0 0; font-size: 12px; background: #e8e8e8; border: 1px solid #bbb; padding: 8px; white-space: pre-wrap; }
+    .ref { font-size: 11px; }
+
+    .delta { width: 100%; max-width: 1400px; margin: 0 auto 16px; }
+    .delta .mini-header { background: #e2e2e2; border: 1px solid #999; }
+    .delta .row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; padding: 8px; }
+    .delta .brand { font-size: 13px; font-weight: bold; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (min-width: 640px) {
+      .bottom-nav { display: none; }
+      .desk-only { display: inline-flex; }
+      .side { display: flex; gap: 16px; align-items: flex-start; }
+      .side aside, .side section { margin: 0; }
+      .side > aside { flex: 2; }
+      .side > .nav-col { flex: 1; }
+    }
+
+    /* ---- SHARED BASE (98 of 114, 17 rules): event detail ---- */
+    .ed-head { display: flex; gap: 10px; padding: 10px; align-items: flex-start; }
+    .ed-thumb { width: 72px; height: 72px; flex: 0 0 72px; border: 1px solid #999; background: #d2d2d2;
+      display: flex; align-items: center; justify-content: center; font-size: 8px; text-align: center; padding: 2px; }
+    .ed-cat { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: #555; }
+    .ed-q { font-size: 16px; font-weight: bold; margin: 4px 0 6px; }
+    .ed-prob-big { font-size: 13px; margin: 0; }
+    .ed-prob-big .prob { font-weight: bold; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; font-size: 14px; }
+    .ed-section { padding: 10px; border-top: 1px solid #ccc; }
+    .ed-section h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; margin: 0 0 6px; }
+    .chart-box { border: 1px dashed #999; background: #ededed; height: 120px; display: flex; align-items: center;
+      justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 6px; }
+    .args { display: flex; flex-direction: column; gap: 12px; }
+    .arg-col h4 { margin: 0 0 4px; font-size: 11px; }
+    .arg-col ul { margin: 0; padding-left: 16px; font-size: 12px; }
+    .arg-col li { margin-bottom: 4px; }
+    .resolution { font-size: 12px; line-height: 1.5; }
+    .opt-list { display: flex; flex-direction: column; }
+    .preselect-note { border: 1px solid #999; background: #e0e0e0; padding: 6px 8px; font-size: 11px; margin: 0 10px 0; }
+    .cta-bar { background: #e2e2e2; border: 1px solid #999; padding: 8px 0 0; display: flex; gap: 8px; }
+    .cta-bar :is(a,button) { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 12px; font-size: 13px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-align: center; text-decoration: none; }
+    @media (min-width: 640px) { .args { flex-direction: row; } .arg-col { flex: 1; } }
+
+    /* ---- SHARED (98 of 114, 28 rules): invoked overlays (Bet / Sign In / Deposit), modal on desktop and bottom sheet on mobile ---- */
+    .backdrop { background: #cfcfcf; flex: 1; position: relative; min-height: 70vh; display: flex;
+      align-items: flex-end; justify-content: center; }
+    .dim-note { position: absolute; top: 8px; left: 8px; font-size: 10px; color: #555; background: #dcdcdc; border: 1px solid #aaa; padding: 2px 6px; }
+    .sheet { width: 100%; background: #f0f0f0; border: 1px solid #999; border-bottom: none; }
+    .grab { width: 36px; height: 4px; background: #bbb; border-radius: 2px; margin: 6px auto 0; }
+    .sheet-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #ccc; }
+    .sheet-head :is(h1,h2) { font-size: 14px; margin: 0; }
+    .sheet-close { border: 1px solid #888; background: #d6d6d6; font-size: 12px; cursor: pointer; padding: 2px 8px; text-decoration: none; }
+    .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+    @media (min-width: 640px) { .backdrop { align-items: center; padding: 24px; } .sheet { max-width: 420px; border-bottom: 1px solid #999; } }
+
+    .dir-pill { border: 1px solid #888; background: #dcdcdc; padding: 4px 10px; font-weight: bold; font-size: 12px; display: inline-block; }
+    .field-label { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
+    .amount-row { display: flex; align-items: center; gap: 8px; }
+    .amount-input { flex: 1; border: 1px solid #888; background: #fff; padding: 10px; font-size: 18px; }
+    .quick { display: flex; gap: 6px; flex-wrap: wrap; }
+    .quick button { border: 1px solid #888; background: #d6d6d6; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+    .quick button.sel { background: #b8b8b8; font-weight: bold; }
+    .line { display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0; border-top: 1px solid #ddd; }
+    /* the payout was one bold line and it is a PAIR now: both outcomes, same weight, one of
+       them zero. docs/backlog.md 180, components/betpanel.css carries the argument. */
+    .bp-outcomes { display: flex; flex-direction: column; }
+    .bp-outcome { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; padding: 4px 0; border-top: 1px solid #ddd; }
+    .bp-outcome b { font-weight: 600; }
+    .bp-pick { margin: 0; font-size: 13px; line-height: 1.5; }
+    .inline-error { display: flex; align-items: flex-start; gap: 8px; border: 1px solid #666; background: #e0e0e0; padding: 8px; font-size: 12px; font-weight: 600; }
+    .inline-error .ic { width: 22px; height: 22px; flex: 0 0 22px; }
+    .reconcile-box { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 12px; display: flex; flex-direction: column; gap: 4px; }
+    .quiet-box { border: 1px dashed #999; background: #ededed; padding: 24px; text-align: center; font-size: 12px; color: #555; }
+    .fine { font-size: 11px; color: #555; line-height: 1.5; }
+    .widget-box { border: 1px dashed #999; background: #ededed; min-height: 160px; display: flex; align-items: center;
+      justify-content: center; font-size: 11px; color: #555; text-align: center; padding: 8px; }
+    .protect { border: 1px solid #999; background: #e6e6e6; padding: 8px; font-size: 11px; }
+
+    /* ---- SHARED (3 of 114, 3 rules): the resolution reading ----
+       A record and not a promise, so it is the neutral box rather than the trust box;
+       the colour half of that argument is in components/notice.css and this tree has no
+       colour. ia/docs/sitemap.md, Resolution entity, Reading. */
+    .reading { border: 1px solid #999; background: #f2f2f2; padding: 8px; display: flex; flex-direction: column; gap: 4px; }
+    .reading .reading-line { margin: 0; font-size: 12px; line-height: 1.5; }
+    .reading .reading-src { margin: 0; font-family: monospace; font-size: 11px; line-height: 1.5; color: #555; }
+
+    /* ---- SHARED (98 of 114, 14 rules): active bets ---- */
+    .tabs { display: flex; gap: 0; margin: 0 0 10px; }
+    .tabs :is(a,button) { border: 1px solid #888; border-bottom: 1px solid #bbb; background: #dcdcdc; padding: 8px 14px; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-align: center; text-decoration: none; }
+    .tabs [aria-current="page"] { background: #f4f4f4; font-weight: bold; border-bottom-color: #f4f4f4; }
+    .pos-list { display: flex; flex-direction: column; gap: 8px; }
+    .pos { border: 1px solid #bbb; background: #ededed; padding: 8px 10px; display: flex; flex-direction: column; gap: 6px; }
+    .pos-top { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+    .pos-q { font-size: 13px; font-weight: bold; }
+    .pos-side { font-size: 11px; border: 1px solid #999; background: #dcdcdc; padding: 1px 6px; height: max-content; white-space: nowrap; }
+    .pos-figures { display: flex; gap: 16px; font-size: 10px; flex-wrap: wrap; color: #555; }
+    .pos-fig b { display: block; font-size: 12px; color: #222; }
+    .pos.skeleton .sk-line { height: 10px; background: #d8d8d8; margin: 6px 0; }
+    .pos.skeleton .w70 { width: 70%; } .pos.skeleton .w40 { width: 40%; }
+    .pos-status { font-size: 10px; text-transform: uppercase; letter-spacing: .03em; color: #555; }
+
+    /* ---- SHARED (98 of 114, 34 rules): event detail two-column, scrolling content + sticky bet panel ---- */
+    .ed-layout { display: flex; flex-direction: column; }
+    .ed-main { flex: 1; min-width: 0; }
+    /* schematic probability chart (raised fidelity per design call: a drawn grey line, still no color) */
+    .chart-wrap { padding: 0; }
+    .chart-svg { width: 100%; height: 160px; display: block; border: 1px solid #bbb; background: #ededed; }
+    /* rung: DETAIL 760. The paint steps this chart 160 -> 280 there: components/chart.css. */
+    @media (min-width: 760px) { .chart-svg { height: 280px; } }
+    .chart-svg polyline { fill: none; stroke: #777; stroke-width: 1.5; }
+    .chart-svg .ed-area { fill: #cfcfcf; stroke: none; }
+    .chart-svg .ed-even { stroke: #888; stroke-width: 1; stroke-dasharray: 2 4; }
+    .ed-now-dot { position: absolute; right: 1px; bottom: calc(1px + (100% - 2px) * var(--v) / 100); width: 8px; height: 8px; margin: 0; transform: translate(50%, 50%); border-radius: 50%; background: #444; box-shadow: 0 0 0 2px #e6e6e6; }
+    .chart-svg .grid-l { stroke: #d2d2d2; stroke-width: 1; }
+    .chart-svg .nowline { stroke: #999; stroke-width: 1; stroke-dasharray: 3 3; }
+    .chart-svg text { fill: #777; font-size: 7px; }
+    .chart-cap { font-size: 10px; color: #555; margin: 4px 0 0; display: flex; justify-content: space-between; }
+    .ed-facts { display: flex; flex-wrap: wrap; gap: 16px; font-size: 10px; color: #555; padding: 8px 10px; border-top: 1px solid #ccc; }
+    .ed-facts b { display: block; font-size: 12px; color: #222; }
+
+    /* bet panel (desktop sticky sidebar) */
+    .bet-panel { display: none; }
+    .bet-panel .bp-inner { padding: 10px; display: flex; flex-direction: column; gap: 9px; }
+    .bp-head { display: flex; align-items: center; justify-content: space-between; }
+    .bp-head h3 { font-size: 13px; margin: 0; }
+    .bp-hint { font-size: 10px; color: #555; }
+    .bp-dir { display: flex; gap: 6px; }
+    .bp-side { flex: 1; border: 1px solid #888; background: #d6d6d6; padding: 10px 6px; font-size: 12px; font-weight: bold; cursor: pointer; }
+    .bp-side.sel { background: #b8b8b8; border-width: 2px; }
+    .bp-side .bp-pct { display: block; font-size: 11px; font-weight: normal; }
+    .bp-opts { display: flex; flex-direction: column; gap: 0; border: 1px solid #ccc; max-height: 168px; overflow: auto; }
+    .bp-opt { display: flex; align-items: center; gap: 8px; padding: 7px 8px; border-top: 1px solid #ddd; font-size: 12px; cursor: pointer; }
+    .bp-opt:first-child { border-top: none; }
+    .bp-opt.sel { background: #dcdcdc; font-weight: bold; }
+    .bp-opt .bp-opt-pct { margin-left: auto; border: 1px solid #999; background: #e0e0e0; padding: 0 5px; font-size: 11px; }
+
+    /* mobile sticky bet dock (collapsed bar above the bottom nav; taps expand to a sheet) */
+    .bet-dock { position: sticky; bottom: 52px; z-index: 4; background: #e2e2e2; border: 1px solid #999; border-bottom: none;
+      display: flex; align-items: center; gap: 6px; padding: 8px; }
+    .bet-dock .bp-side { padding: 11px 6px; }
+    .bet-dock .dock-meta { font-size: 9px; color: #555; flex: 0 0 auto; text-align: center; }
+    .bet-dock .dock-meta b { display: block; font-size: 12px; color: #222; }
+
+    /* rung: DETAIL 760, the detail's second column, and it was 640 here until
+       2026-08-11 while the paint has always said 760. Backlog 107: for 120px of
+       width this tree drew a second column the product does not have, and halved
+       its own content column to do it, 635 to 322.73 in one pixel of viewport.
+       The WHOLE block moves and not just the dock, because moving the dock alone
+       is what would create the hole the row was filed about. DESIGN.md decides
+       the number by name. */
+    @media (min-width: 760px) {
+      .ed-layout { flex-direction: row; align-items: flex-start; }
+      .ed-main { border-right: 1px solid #999; }
+      .bet-panel { display: block; flex: 0 0 300px; position: sticky; top: 8px; align-self: flex-start; }
+      .bet-dock { display: none; }
+    }
+
+    /* ---- SHARED (98 of 114, 12 rules): category page, side sub-category panel + filtered feed ---- */
+    .cat-main { flex: 1; min-width: 0; }
+    .subcat { background: #ededed; }
+    .subcat .zone-tag { background: #d2d2d2; }
+    .subcat-head { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: #555; padding: 8px 10px 0; }
+    .subcat ul { list-style: none; margin: 0; padding: 8px; display: flex; gap: 6px; overflow-x: auto; flex-wrap: nowrap; }
+    .subcat li { flex: 0 0 auto; }
+    .subcat button { border: 1px solid #888; background: #d6d6d6; padding: 5px 9px; font-size: 11px; cursor: pointer;
+      white-space: nowrap; display: inline-flex; gap: 6px; align-items: center; }
+    .subcat li[aria-current="page"] button { background: #b8b8b8; border-width: 2px; font-weight: bold; }
+    .subcat .cnt { font-size: 9px; color: #555; border: 1px solid #bbb; background: #e8e8e8; padding: 0 4px; }
+    /* THE WRAPPER CAME BACK ON 2026-08-13, docs/backlog.md 113, AND THIS BLOCK IS THE PROOF THAT
+       THE GREY TREE LOST IT RATHER THAN THE PAINT INVENTING IT. `.cat-main { flex: 1 }` and
+       `.subcat { flex: 0 0 210px }` are written here and BOTH NEED A FLEX PARENT, and the parent
+       was `.cat-layout`, which 76 files still carried the closing comment for and 0 carried the
+       opening tag for. So the rail has never once stood beside the content in this tree at any
+       width: two flex children of a block box. A closing comment with no opening tag is evidence;
+       a stylesheet written against the missing element is the proof.
+       rung: RAIL 900, a rail beside the content. The paint pins it there: components/catnav.css
+       and components/patterns/browse-shell.css. This block said 640 in 92 files and 900 in one. */
+    .cat-layout { display: flex; flex-direction: column; gap: 12px; }
+    @media (min-width: 900px) {
+      .cat-layout { flex-direction: row; align-items: flex-start; gap: 16px; }
+      .subcat { flex: 0 0 210px; position: sticky; top: 8px; border: 1px solid #999; }
+      .subcat ul { flex-direction: column; overflow: visible; flex-wrap: nowrap; }
+      .subcat button { width: 100%; justify-content: space-between; }
+    }
+    /* Category grid adapts to the width left by the sub-category rail (no fixed 4-col overflow). */
+    .cat-main .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+
+    /* ---- SHARED (98 of 114, 2 rules): in-page dialogs (native <dialog>, opened over the current page) ---- */
+    dialog.app-dialog { width: 92%; max-width: 420px; border: 1px solid #999; background: #f0f0f0; color: #222; padding: 0; }
+    dialog.app-dialog::backdrop { background: rgba(0,0,0,.4); }
+
+    /* ---- THIS PAGE ---- */
+    dialog.app-dialog .sheet-body { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+    .dlg-note { font-size: 10px; color: #555; padding: 6px 10px; border-top: 1px dashed #bbb; margin: 0; }
+
+    /* ---- THIS PAGE: what the chrome port brought with the markup, and nothing here is promised to another file ---- */
+    /* Layout taken from components/, every colour replaced by the
+       wireframe palette. See wireframes/_generators/port_chrome.py. */
+    dialog.app-dialog.signin-dialog { max-width: 410px; }
+
+    </style>
+</head>
+<body>
+  <!-- ===== Wireframe screen-tree nav (meta navigation, identical on every wireframe page) ===== -->
+  <button type="button" class="wf-toggle" id="wfToggle" aria-label="Open screen tree" aria-expanded="false">
+    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    Screens
+  </button>
+  <div class="wf-overlay" id="wfOverlay"></div>
+  <nav class="wf-nav" id="wfNav" aria-label="Wireframe screens">
+    <div class="wf-nav-head">
+      Wireframes - screen tree
+      <button type="button" class="wf-nav-close" id="wfClose" aria-label="Close screen tree">x</button>
+    </div>
+    <ul class="wf-tree">
+      <li class="wf-sec">Events</li>
+      <li class="wf-screen">
+        <a href="event-feed.html">Event Feed</a>
+        <ul class="wf-states">
+          <li class="wf-substate">Logged in</li>
+          <li><a href="event-feed.html">success</a></li>
+          <li><a href="event-feed-empty.html">empty</a></li>
+          <li><a href="event-feed-error.html">error</a></li>
+          <li><a href="event-feed-loading.html">loading</a></li>
+          <li><a href="event-feed-search.html">search</a></li>
+          <li><a href="event-feed-search-results.html">search-results</a></li>
+          <li><a href="event-feed-search-empty.html">search-empty</a></li>
+          <li><a href="event-feed-push-permission-missing.html">push-permission-missing</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="event-feed-logged-out.html">success</a></li>
+          <li><a href="event-feed-logged-out-empty.html">empty</a></li>
+          <li><a href="event-feed-logged-out-error.html">error</a></li>
+          <li><a href="event-feed-logged-out-loading.html">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="event-detail.html">Event Detail</a>
+        <ul class="wf-states">
+          <li class="wf-substate">Logged in</li>
+          <li><a href="event-detail.html">success / binary</a></li>
+          <li><a href="event-detail-multi.html">success / multi-outcome</a></li>
+          <li><a href="event-detail-recurring.html">success / recurring</a></li>
+          <li><a href="event-detail-recurring-multi.html">success / recurring, multi-outcome</a></li>
+          <li><a href="event-detail-error.html">error</a></li>
+          <li><a href="event-detail-loading.html">loading</a></li>
+          <li><a href="event-detail-resolved.html">resolved-while-reading</a></li>
+          <li><a href="event-detail-resolved-multi.html">resolved / multi-outcome</a></li>
+          <li><a href="event-detail-bet-ready.html">bet panel: ready to confirm</a></li>
+            <li><a href="event-detail-bet-insufficient.html">bet panel: insufficient-balance</a></li>
+          <li><a href="event-detail-bet-reconcile.html">bet panel: S5 reconcile</a></li>
+          <li><a href="event-detail-bet-processing.html">bet panel: processing</a></li>
+          <li><a href="event-detail-bet-error.html">bet panel: on-chain error</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="event-detail-logged-out.html">success / binary</a></li>
+          <li><a href="event-detail-logged-out-multi.html">success / multi-outcome</a></li>
+          <li><a href="event-detail-logged-out-error.html">error</a></li>
+          <li><a href="event-detail-logged-out-loading.html">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-note">Bet intent + its five states (intent, insufficient-balance, S5 reconcile, processing, on-chain error) live in the Event Detail bet panel, and all five are BUILT: the standalone Bet modal was removed and the last of the five landed 2026-08-17. This row said "states to come" until 2026-08-18. It also listed event-closed as a sixth: that is the PAGE-level state, ia/docs/sitemap.md names it "resolved-while-reading / event-closed", and it ships as event-detail-resolved.html.</li>
+      <li class="wf-screen">
+        <a href="favorites.html">Favorites</a>
+        <ul class="wf-states">
+          <li><a href="favorites.html">success</a></li>
+          <li><a href="favorites-empty.html">empty</a></li>
+          <li><a href="favorites-loading.html">loading</a></li>
+          <li><a href="favorites-error.html">error</a></li>
+        </ul>
+      </li>
+      <li class="wf-note">Favorites - a filter over the feed (logged-in only); the Favorites control opens it.</li>
+      <li class="wf-sec">Category pages (second-level nav -> own page)</li>
+      <li class="wf-screen">
+        <a href="event-feed-politics.html">Politics</a>
+        <ul class="wf-states">
+          <li class="wf-substate">Logged in</li>
+          <li><a href="event-feed-politics.html">success</a></li>
+          <li><a href="event-feed-politics-empty.html">empty</a></li>
+          <li><a href="event-feed-politics-error.html">error</a></li>
+          <li><a href="event-feed-politics-loading.html">loading</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="event-feed-politics-logged-out.html">success</a></li>
+          <li><a href="event-feed-politics-logged-out-empty.html">empty</a></li>
+          <li><a href="event-feed-politics-logged-out-error.html">error</a></li>
+          <li><a href="event-feed-politics-logged-out-loading.html">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="event-feed-crypto.html">Crypto</a>
+        <ul class="wf-states">
+          <li class="wf-substate">Logged in</li>
+          <li><a href="event-feed-crypto.html">success</a></li>
+          <li><a href="event-feed-crypto-empty.html">empty</a></li>
+          <li><a href="event-feed-crypto-error.html">error</a></li>
+          <li><a href="event-feed-crypto-loading.html">loading</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="event-feed-crypto-logged-out.html">success</a></li>
+          <li><a href="event-feed-crypto-logged-out-empty.html">empty</a></li>
+          <li><a href="event-feed-crypto-logged-out-error.html">error</a></li>
+          <li><a href="event-feed-crypto-logged-out-loading.html">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="event-feed-culture.html">Culture</a>
+        <ul class="wf-states">
+          <li class="wf-substate">Logged in</li>
+          <li><a href="event-feed-culture.html">success</a></li>
+          <li><a href="event-feed-culture-empty.html">empty</a></li>
+          <li><a href="event-feed-culture-error.html">error</a></li>
+          <li><a href="event-feed-culture-loading.html">loading</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="event-feed-culture-logged-out.html">success</a></li>
+          <li><a href="event-feed-culture-logged-out-empty.html">empty</a></li>
+          <li><a href="event-feed-culture-logged-out-error.html">error</a></li>
+          <li><a href="event-feed-culture-logged-out-loading.html">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="event-feed-general.html">General</a>
+        <ul class="wf-states">
+          <li class="wf-substate">Logged in</li>
+          <li><a href="event-feed-general.html">success</a></li>
+          <li><a href="event-feed-general-empty.html">empty</a></li>
+          <li><a href="event-feed-general-error.html">error</a></li>
+          <li><a href="event-feed-general-loading.html">loading</a></li>
+          <li class="wf-substate">Logged out</li>
+          <li><a href="event-feed-general-logged-out.html">success</a></li>
+          <li><a href="event-feed-general-logged-out-empty.html">empty</a></li>
+          <li><a href="event-feed-general-logged-out-error.html">error</a></li>
+          <li><a href="event-feed-general-logged-out-loading.html">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-sec">Activation gate</li>
+      <li class="wf-screen">
+        <a href="sign-in.html">Sign In / Register</a>
+        <ul class="wf-states">
+          <li><a href="sign-in.html">success / form</a></li>
+          <li><a href="sign-in-error.html">error (auth failed)</a></li>
+          <li><a href="sign-in-loading.html">loading (OAuth in-progress)</a></li>
+          <li><a href="sign-in-provider-conflict.html">provider-conflict</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="deposit.html">Deposit</a>
+        <ul class="wf-states">
+          <li><a href="deposit.html">success / form</a></li>
+          <li><a href="deposit-error-card.html">error-card (declined)</a></li>
+          <li><a href="deposit-error-kyc.html">error-KYC (rejected)</a></li>
+          <li><a href="deposit-widget-load-failure.html">widget-load-failure</a></li>
+          <li><a href="deposit-loading.html">loading (widget in-progress)</a></li>
+          <li><a href="deposit-pending.html">pending (under review)</a></li>
+          <li><a href="deposit-minimum-not-met.html">minimum-not-met</a></li>
+        </ul>
+      </li>
+      <li class="wf-sec">Resolution</li>
+      <li class="wf-screen">
+        <a href="win.html">Win Screen</a>
+        <ul class="wf-states">
+          <li><a href="win.html">success / binary</a></li>
+          <li><a href="win-multi.html">success / multi-outcome</a></li>
+          <li><a href="win-loading.html">loading (share card)</a></li>
+          <li><a href="win-error.html">error (card not generated, T11)</a></li>
+          <li><a href="win-payout-pending.html">payout-pending</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="loss.html">Loss Screen</a>
+        <ul class="wf-states">
+          <li><a href="loss.html">success / binary</a></li>
+          <li><a href="loss-multi.html">success / multi-outcome</a></li>
+          <li><a href="loss-loading.html">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="cancelled.html" class="active" aria-current="page">Cancelled event</a>
+        <ul class="wf-states">
+          <li><a href="cancelled.html">success / binary (stake returned)</a></li>
+          <li><a href="cancelled-multi.html">success / multi-outcome</a></li>
+          <li class="cur"><a href="cancelled-refund-pending.html">refund-pending (this page)</a></li>
+          <li><a href="cancelled-loading.html">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-note">A cancelled event is neither a win nor a loss: it has no outcome, so every stake and its fee are returned. Reached the same two ways the other two outcomes are, from a notification or from a settled row in My Bets.</li>
+      <li class="wf-sec">My Bets</li>
+      <li class="wf-screen">
+        <a href="active-bets.html">Active Bets</a>
+        <ul class="wf-states">
+          <li><a href="active-bets.html">success (open positions)</a></li>
+          <li><a href="active-bets-empty-new.html">empty-new</a></li>
+          <li><a href="active-bets-empty-resolved.html">empty-resolved</a></li>
+          <li><a href="active-bets-error.html">error</a></li>
+          <li><a href="active-bets-loading.html">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="active-bets-history.html">Bet History (History tab)</a>
+        <ul class="wf-states">
+          <li><a href="active-bets-history.html">success</a></li>
+          <li><a href="active-bets-history-empty.html">empty</a></li>
+          <li><a href="active-bets-history-error.html">error</a></li>
+          <li><a href="active-bets-history-loading.html">loading</a></li>
+        </ul>
+      </li>
+      <li class="wf-sec">Notifications</li>
+      <li class="wf-screen">
+        <a href="notifications.html">Notifications</a>
+        <ul class="wf-states">
+          <li><a href="notifications.html">success</a></li>
+          <li><a href="notifications-empty.html">empty</a></li>
+          <li><a href="notifications-error.html">error</a></li>
+          <li><a href="notifications-loading.html">loading</a></li>
+          <li><a href="notifications-push.html">push-permission-missing</a></li>
+        </ul>
+      </li>
+      <li class="wf-sec">Wallet</li>
+      <li class="wf-screen">
+        <a href="wallet.html">Wallet</a>
+        <ul class="wf-states">
+          <li><a href="wallet.html">success</a></li>
+          <li><a href="wallet-loading.html">loading</a></li>
+          <li><a href="wallet-error.html">error</a></li>
+        </ul>
+      </li>
+      <li class="wf-note">Withdrawal is a flow inside Wallet (amount -&gt; USDC address -&gt; confirm; pending / confirmed / failed), not a separate screen.</li>
+      <li class="wf-sec">Profile</li>
+      <li class="wf-screen">
+        <a href="my-profile.html">My Profile</a>
+        <ul class="wf-states">
+          <li><a href="my-profile.html">success</a></li>
+          <li><a href="my-profile-loading.html">loading</a></li>
+          <li><a href="my-profile-error.html">error</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="public-profile.html">Public Profile</a>
+        <ul class="wf-states">
+          <li><a href="public-profile.html">success</a></li>
+          <li><a href="public-profile-loading.html">loading</a></li>
+          <li><a href="public-profile-error.html">error</a></li>
+          <li><a href="public-profile-not-found.html">not-found / link-expired</a></li>
+        </ul>
+      </li>
+      <li class="wf-sec">How It Works</li>
+      <li class="wf-screen">
+        <a href="how-it-works.html">How It Works</a>
+        <ul class="wf-states">
+          <li><a href="how-it-works.html">success (static trust page)</a></li>
+        </ul>
+      </li>
+      <li class="wf-sec">Legal</li>
+      <li class="wf-screen">
+        <a href="terms.html">Terms of Service</a>
+        <ul class="wf-states">
+          <li><a href="terms.html">success (static legal page)</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="privacy.html">Privacy Policy</a>
+        <ul class="wf-states">
+          <li><a href="privacy.html">success (static legal page)</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="cookies.html">Cookie Policy</a>
+        <ul class="wf-states">
+          <li><a href="cookies.html">success (static legal page)</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="responsible-betting.html">Responsible betting</a>
+        <ul class="wf-states">
+          <li><a href="responsible-betting.html">success (static legal page)</a></li>
+        </ul>
+      </li>
+      <li class="wf-sec">Company</li>
+      <li class="wf-screen">
+        <a href="about.html">About Yonder</a>
+        <ul class="wf-states">
+          <li><a href="about.html">success (static statement page)</a></li>
+        </ul>
+      </li>
+      <li class="wf-sec">System and global</li>
+      <li class="wf-screen">
+        <a href="404.html">404 Not Found</a>
+        <ul class="wf-states">
+          <li><a href="404.html">full page (HTTP 404)</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="500.html">500 Server Error</a>
+        <ul class="wf-states">
+          <li><a href="500.html">full page (HTTP 500)</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="maintenance.html">Maintenance</a>
+        <ul class="wf-states">
+          <li><a href="maintenance.html">maintenance (HTTP 503)</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="cookie-consent.html">Cookie consent</a>
+        <ul class="wf-states">
+          <li><a href="cookie-consent.html">consent banner</a></li>
+        </ul>
+      </li>
+      <li class="wf-screen">
+        <a href="toasts.html">Toasts</a>
+        <ul class="wf-states">
+          <li><a href="toasts.html">toast component</a></li>
+        </ul>
+      </li>
+      <li class="wf-sec">Orphans [SIROTA] - not built (no confirmed job)</li>
+      <li class="wf-note">Settings / Notification Preferences, Leaderboard, Help / FAQ.</li>
+    </ul>
+  </nav>
+
+  <div class="device">
+    <div class="backdrop">
+      <section class="sheet" aria-label="This event was cancelled">
+        <div class="grab"></div>
+        <div class="sheet-head">
+          <h1>This event was cancelled</h1>
+          <a href="active-bets.html" class="icon-btn icon-btn-photo sheet-close" aria-label="Back to My Bets"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+        </div>
+        <div class="sheet-body">
+          <p class="fine">Will the OPEC+ meeting on June 30, 2026 raise output quotas?</p>
+          <div class="reconcile-box rec-returned">
+            <span class="field-label">Returned</span>
+            <strong>$8.12</strong>
+            <span class="fine">Your $8.00 stake on YES and the $0.12 fee. Settling on-chain.</span>
+          </div>
+          <div class="quiet-box">Your stake is on the way<br><span class="fine">It will arrive in your balance in a few minutes (on-chain settlement delay). Nothing was won and nothing was lost.</span></div>
+          <div>
+            <span class="field-label">What happened</span>
+            <p class="protect">The June 30 OPEC+ meeting was called off and no replacement was set before this event closed, so nothing can say whether quotas were raised. The event was cancelled and every stake on it was returned.</p>
+          </div>
+          <a href="active-bets.html" class="btn btn-primary btn-md btn-block">Back to your bets</a>
+          <a href="event-feed.html" class="btn btn-secondary btn-md btn-block">Browse events</a>
+        </div>
+      </section>
+    </div>
+
+  </div>
+
+  <script>
+    (function () {
+      var states = [
+        { label: 'Balance', amount: '$132.00' },
+        { label: 'Cash', amount: '$42.00' }
+      ];
+      var i = 0;
+      var lbl = document.getElementById('balLabel');
+      var amt = document.getElementById('balAmt');
+      var btn = document.getElementById('balSwap');
+      if (btn) {
+        btn.addEventListener('click', function () {
+          i = (i + 1) % states.length;
+          lbl.textContent = states[i].label;
+          amt.textContent = states[i].amount;
+          btn.setAttribute('aria-label', 'Swap balance (showing ' + states[i].label + ')');
+        });
+      }
+    })();
+
+    // Feed filters: each dropdown updates its own label and closes on choose.
+    function wireFilter(menuId, currentId, name, onChange) {
+      var menu = document.getElementById(menuId);
+      if (!menu) return;
+      var cur = document.getElementById(currentId);
+      menu.querySelectorAll('input[name="' + name + '"]').forEach(function (r) {
+        r.addEventListener('change', function () {
+          if (cur) cur.textContent = r.value;
+          menu.open = false;
+          if (onChange) onChange(r.value);
+        });
+      });
+    }
+
+    // Sort + its reverse toggle.
+    wireFilter('sortMenu', 'sortCurrent', 'sort');
+    (function () {
+      var rev = document.querySelector('#sortMenu .toggle');
+      if (!rev) return;
+      rev.addEventListener('click', function () {
+        var on = rev.getAttribute('aria-checked') === 'true';
+        rev.setAttribute('aria-checked', on ? 'false' : 'true');
+        rev.textContent = on ? 'off' : 'on';
+      });
+    })();
+
+    // How often (the Frequency attribute; the label is the reader's word, the field is the model's).
+    wireFilter('freqMenu', 'freqCurrent', 'freq');
+
+    // Footer language selector (placeholder: updates label, English-only at MVP).
+    wireFilter('langMenu', 'langCurrent', 'lang');
+
+    // Category: the dropdown and the chip nav stay in sync, and the heading echoes the choice.
+    (function () {
+      var heading = document.getElementById('feedHeading');
+      var nav = document.querySelector('.cat-nav');
+      var catCur = document.getElementById('catCurrent');
+      function activate(name) {
+        if (heading) heading.textContent = name;
+        if (catCur) catCur.textContent = name;
+        if (nav) {
+          nav.querySelectorAll('li').forEach(function (li) {
+            var on = li.querySelector('a,button').textContent.trim() === name;
+            if (on) li.setAttribute('aria-current', 'page'); else li.removeAttribute('aria-current');
+          });
+        }
+        var radio = document.querySelector('#catMenu input[value="' + name + '"]');
+        if (radio) radio.checked = true;
+      }
+      wireFilter('catMenu', 'catCurrent', 'catf', activate);
+      if (nav) {
+        nav.querySelectorAll('button').forEach(function (b) {
+          b.addEventListener('click', function () { activate(b.textContent.trim()); });
+        });
+      }
+    })();
+
+    // Wireframe screen-tree drawer (toggle on small screens; a fixed rail at >= 1170px).
+    (function () {
+      var nav = document.getElementById('wfNav');
+      var ov = document.getElementById('wfOverlay');
+      var tg = document.getElementById('wfToggle');
+      var cl = document.getElementById('wfClose');
+      if (!nav || !tg) return;
+      function set(open) {
+        nav.classList.toggle('open', open);
+        ov.classList.toggle('open', open);
+        tg.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      tg.addEventListener('click', function () { set(!nav.classList.contains('open')); });
+      cl.addEventListener('click', function () { set(false); });
+      ov.addEventListener('click', function () { set(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+      // Choosing a screen on a narrow viewport closes the drawer.
+      nav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { if (window.innerWidth < 1170) set(false); });
+      });
+    })();
+  </script>
+
+  <dialog id="signinDialog" class="app-dialog signin-dialog" aria-label="Sign in or create account">
+    <div class="sheet-head">
+      <h2>Sign in or create account</h2>
+      <p class="sheet-sub">You are about to place a bet. No crypto wallet required.</p>
+      <button type="button" class="icon-btn icon-btn-photo sheet-close" data-close-dialog aria-label="Close">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="sheet-body">
+      <button type="button" class="btn btn-secondary btn-md btn-block btn-provider" data-flow="signin-to-deposit">
+        <svg class="ic prov-google" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.52 12.27c0-.82-.07-1.6-.21-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.58-5.17 3.58-8.74z"/><path d="M12 24c3.24 0 5.96-1.08 7.94-2.91l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.96H1.26v3.11A12 12 0 0 0 12 24z"/><path d="M5.27 14.27a7.2 7.2 0 0 1 0-4.54V6.62H1.26a12 12 0 0 0 0 10.76l4.01-3.11z"/><path d="M12 4.77c1.77 0 3.35.61 4.6 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.26 6.62l4.01 3.11C6.22 6.88 8.87 4.77 12 4.77z"/></svg>
+        Continue with Google
+      </button>
+      <button type="button" class="btn btn-secondary btn-md btn-block btn-provider" data-flow="signin-to-deposit">
+        <svg class="ic prov-x" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9 1.15h3.68l-8.05 9.2L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.84L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg>
+        Continue with X
+      </button>
+      <button type="button" class="btn btn-secondary btn-md btn-block btn-provider" data-flow="signin-to-deposit">
+        <svg class="ic prov-apple" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.05 12.54c-.03-2.7 2.2-3.99 2.3-4.06-1.26-1.84-3.21-2.09-3.9-2.12-1.66-.17-3.24.98-4.09.98-.84 0-2.13-.96-3.51-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.27-.48 8.1 1.35 10.76.9 1.3 1.96 2.76 3.37 2.71 1.35-.05 1.86-.87 3.5-.87 1.63 0 2.09.87 3.52.85 1.45-.03 2.37-1.33 3.26-2.63 1.03-1.51 1.45-2.97 1.47-3.05-.03-.01-2.82-1.08-2.85-4.29zM14.4 4.6c.74-.9 1.24-2.16 1.11-3.41-1.07.04-2.38.72-3.15 1.62-.68.8-1.28 2.07-1.12 3.29 1.19.09 2.41-.61 3.16-1.5z"/></svg>
+        Continue with Apple
+      </button>
+      <p class="fine">By continuing you agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>. Adding funds by card requires KYC; if you fund only with crypto you can connect a wallet instead.</p>
+    </div>
+  </dialog>
+
+  <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
+    <div class="sheet-head">
+      <h2>Add funds</h2>
+      <p class="sheet-sub">Card or crypto. Your USDC is held 1:1.</p>
+      <button type="button" class="icon-btn icon-btn-photo sheet-close" data-close-dialog aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="sheet-body">
+      <div>
+        <span class="field-label">Amount to add</span>
+        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="10" value="20.00" aria-label="Amount to add"></div>
+        <div class="quick"><button class="chip chip-amount" type="button">$10</button><button type="button" class="chip chip-amount sel">$20</button><button class="chip chip-amount" type="button">$50</button><button class="chip chip-amount" type="button">$100</button></div>
+      </div>
+      <div><span class="field-label">Pay with</span>
+      <div class="widget-box">The payment widget loads here (card to USDC)</div></div>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
+      <p class="fine">Minimum $10. Card payments are converted to USDC via Transak. KYC is required to add funds by card; if you fund only with crypto you can connect a USDC wallet instead.</p>
+      <button type="button" class="btn btn-secondary btn-md btn-block" data-open="howitworks">How it works</button>
+      <button type="button" class="btn btn-primary btn-md btn-block" data-close-dialog>Add funds</button>
+    </div>
+  </dialog>
+
+  <script>
+    // Shared dialogs: open over the current page. On logged-out pages, completing
+    // sign-in then closing / funding the deposit lands on the logged-in counterpart
+    // (body[data-loggedin-target]); closing sign-in before signing in stays put.
+    (function () {
+      function dlg(id) { return document.getElementById(id); }
+      function open(id) { var d = dlg(id); if (!d) return; if (d.showModal) d.showModal(); else d.setAttribute('open', ''); }
+      function close(d) { if (!d) return; if (d.close) d.close(); else d.removeAttribute('open'); }
+      var target = document.body.getAttribute('data-loggedin-target');
+      var signedIn = false;
+      document.addEventListener('click', function (e) {
+        var o = e.target.closest('[data-open]');
+        if (o) { e.preventDefault(); open(o.getAttribute('data-open') === 'deposit' ? 'depositDialog' : 'signinDialog'); return; }
+        var f = e.target.closest('[data-flow="signin-to-deposit"]');
+        if (f) { e.preventDefault(); signedIn = true; close(dlg('signinDialog')); open('depositDialog'); return; }
+        var c = e.target.closest('[data-close-dialog]');
+        if (c) { close(c.closest('dialog')); return; }
+      });
+      ['signinDialog', 'depositDialog'].forEach(function (id) {
+        var d = dlg(id); if (!d) return;
+        d.addEventListener('click', function (e) { if (e.target === d) close(d); });
+      });
+      var dep = dlg('depositDialog');
+      if (dep) dep.addEventListener('close', function () { if (target && signedIn) window.location.href = target; });
+    })();
+  </script></body>
+</html>

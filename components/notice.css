@@ -1,5 +1,5 @@
 /* components/notice.css
-   Component: notice. Classes: .inline-error, .protect, .protect-page, .push-actions, .push-banner, .push-msg, .reading, .reading-line, .reading-src, .rec-lost, .rec-won, .qb-working, .quiet-box, .reconcile-box, .widget-box.
+   Component: notice. Classes: .inline-error, .protect, .protect-page, .push-actions, .push-banner, .push-msg, .reading, .reading-line, .reading-src, .rec-lost, .rec-returned, .rec-won, .qb-working, .quiet-box, .reconcile-box, .widget-box.
 
    Reads: --bg-control, --bg-surface, --border-hairline, --border-notice, --color-trust,
           --font-mono, --hairline, --leading-base, --radius-10, --text-11, --text-12,
@@ -181,12 +181,26 @@
    Compound selectors, .reconcile-box.rec-won rather than a bare .rec-won,
    because a single-word modifier in the global namespace is what .flat was,
    and .flat is the other thing this day deleted. Backlog 66. */
-.reconcile-box.rec-won,.reconcile-box.rec-lost{align-items:center;text-align:center;gap:var(--space-4);padding:var(--space-12)}
-.reconcile-box.rec-won strong,.reconcile-box.rec-lost strong{font-family:var(--font-display);font-weight:var(--weight-bold);letter-spacing:var(--track-head);line-height:var(--leading-flat)}
+.reconcile-box.rec-won,.reconcile-box.rec-lost,.reconcile-box.rec-returned{align-items:center;text-align:center;gap:var(--space-4);padding:var(--space-12)}
+.reconcile-box.rec-won strong,.reconcile-box.rec-lost strong,.reconcile-box.rec-returned strong{font-family:var(--font-display);font-weight:var(--weight-bold);letter-spacing:var(--track-head);line-height:var(--leading-flat)}
 .reconcile-box.rec-won{border-color:color-mix(in oklab,var(--result-won) 45%,var(--border-hairline));background:color-mix(in oklab,var(--result-won) 12%,var(--bg-surface))}
 .reconcile-box.rec-won strong{color:var(--outcome-yes-text);font-size:var(--text-24)}
 .reconcile-box.rec-lost{border-color:var(--border-hairline);background:var(--bg-control)}
 .reconcile-box.rec-lost strong{color:var(--outcome-no-text);font-size:var(--text-20)}
+/* THE THIRD OUTCOME IS THE ONE WITH NO OUTCOME, 2026-08-23. A cancelled event returns
+   every stake, so the figure it prints is neither a win nor a loss and `DESIGN.md`
+   decides what that means before this file gets a vote: green and red are outcome
+   semantics, YES and NO, and brass is the brand. Painting a returned stake green
+   would say the reader was right and red would say they were wrong, and they were
+   neither. So `.rec-returned` adds NO colour of its own: it takes the base box's
+   brass edge, brass tint and `--text-brass` figure, and the only thing the modifier
+   carries is the arrangement its two siblings carry, centred with the figure at the
+   display rank. It is the base face wearing the outcome geometry, which is the
+   shortest way to say `this is money moving and nobody won`.
+   Placed on 4 painted screens the day it was written - cancelled, -multi,
+   -refund-pending and the specimen on ui-kit/notice.html - because a face the
+   product never places is covered by no instrument here. */
+.reconcile-box.rec-returned strong{font-size:var(--text-20)}
 /* ============================================================================
    THIS BOX IS WORN BY THREE JOBS AND ITS NAME USED TO NAME ONE OF THEM, 2026-08-16,
    docs/backlog.md 169 and 170. It was `.quiet-box` until row 170 was closed the

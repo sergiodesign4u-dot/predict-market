@@ -1039,6 +1039,45 @@ _3 state page(s): loss-loading.html, loss-multi.html, loss.html_
 | Main | Text | Resolved Ethereum on Jul 1, 2026 at 00:05 ET. Ethereum held $73.4B in stablecoins against Tron at $61.2B and Solana at $12.8B, so YES for Solana did not pay. | **NEW 2026-08-20**, `.reading-line`, **and this is the Reading's third sentence shape**, the one `docs/backlog.md` 221 filed as an unmade placement before the routing measurement showed it was data rather than a face. A multi machine read compares figures ACROSS options, which a binary read has no way to do |
 | Main | Text | Source: DefiLlama stablecoin supply by chain. Read automatically at 00:05 ET. | **NEW 2026-08-20**, `.reading-src`, the automatic face on a multi market. Stablecoin supply by chain is one of the 6 machine-resolvable questions in the catalog census of 2026-08-19 |
 
+### Cancelled event
+
+_4 state page(s): cancelled-loading.html, cancelled-multi.html, cancelled-refund-pending.html, cancelled.html_
+
+**NEW 2026-08-23.** The third outcome. Every line here is written against the two that already
+exist, because a reader who has met the Win and the Loss screens must not have to learn a third
+shape to check a third thing: same heading rank, same `.fine` question first, same What happened,
+same Reading block under a label, same figure box, same two exits.
+
+| Zone | Type | Line | Flag |
+|---|---|---|---|
+| Main | Heading | This event was cancelled | The other two headings say what the reader's judgement turned out to be, `You were right` and `Here's what happened`. This one cannot: the reader's judgement was never tested. So it states the fact about the EVENT, which is design principle 3 in `CLAUDE.md` - engagement is about events, not money - and the money is the next line down |
+| Main | Text | Will the OPEC+ meeting on June 30, 2026 raise output quotas? | user-written content, the event question |
+| Main | Field label | What happened | the same label the Win and Loss screens carry |
+| Main | Text | The June 30 OPEC+ meeting was called off and no replacement was set before this event closed, so nothing can say whether quotas were raised. The event was cancelled and every stake on it was returned. | Principle 1: explain the number, and here the number is the absence of one. It says WHY nobody could settle it before it says what happened to the money, because a reader who is told their money is back and not told why will assume the platform changed its mind |
+| Main | Field label | Why this was cancelled | **The Reading block's third label.** Win and Loss carry `How this was decided` over the same component; nothing was decided here, so the label says what the block actually holds. It is deliberately not `Reason` or `Explanation`: it names the block by the reader's own question, the way `How this was decided` does |
+| Main | Text | Cancelled on Jun 30, 2026 at 12:40 ET. The meeting this event named did not take place, so the source has nothing to report for June and no reading can be taken either way. | `.reading-line`. Same shape as the two resolution wordings: the instant, then the condition in the words the rules used. **The clause that matters is `either way`**, because the one thing a reader fears here is that the market was settled quietly against them |
+| Main | Text | Source: OPEC press releases. Read automatically at 12:40 ET. | `.reading-src`, the machine-read face, and the source is a LINK, exactly as on the other two. A cancellation with no checkable source is the borrowed authority principle 2 forbids |
+| Main | Field label | Returned | the figure box label. Not `Result`, which is the Loss screen's and implies one, and not `Refund` - see the lexicon entry of the same date |
+| Main | Label | $8.12 | the stake AND the fee. `PRODUCT.md` charges 1.5% of the stake at Confirm and the panel prints it as `Total to pay`, so `Total to pay` is what left the balance and it is what comes back. A product that keeps the fee on an event it could not settle has charged for nothing |
+| Main | Label | Your $8.00 stake on YES and the $0.12 fee are back in your balance. Nothing was won and nothing was lost. | The last sentence is the whole screen. Without it a reader has to work out from a figure whether they came out ahead |
+| Main | Button | Back to your bets | same label as the Loss screen's primary |
+| Main | Button | Browse events | the lexicon's one label for going to the feed |
+| Main | Text | Which OPEC+ member will announce the largest quota increase on June 30, 2026? | `cancelled-multi.html`, user-written content |
+| Main | Text | The June 30 OPEC+ meeting was called off, so no member announced anything and none of the four options can be read as the answer. The event was cancelled and every stake on it, on every option, was returned. | **NEW 2026-08-23.** `on every option` is the sentence a binary screen never needs and a multi reader immediately asks |
+| Main | Text | Cancelled on Jun 30, 2026 at 12:40 ET. The meeting this event named did not take place, so no member made an announcement and the four options cannot be compared against each other at all. | `.reading-line` on a multi cancellation. The multi RESOLUTION reading compares figures across options; this one says the comparison could not be made, which is the same sentence with its verb taken out |
+| Main | Label | Your $6.00 stake on YES for UAE and the $0.09 fee are back in your balance. Nothing was won and nothing was lost. | `YES for UAE`, the phrasing settled on 2026-08-20, so the option reads as the thing backed and not as a venue |
+| Main | Text | Loading the cancellation note... | `cancelled-loading.html`, against the Loss screen's `Loading the resolution...`. Names exactly what is loading, which is the Loading rule |
+| Main | Label | Fetching why this event was cancelled and what came back. |  |
+| Main | Label | Your $8.00 stake on YES and the $0.12 fee. Settling on-chain. | `cancelled-refund-pending.html`, the figure box while the money is still in flight |
+| Main | Text | Your stake is on the way | against the Win screen's `Your payout is on the way`. One word differs and it is the only word that can |
+| Main | Label | It will arrive in your balance in a few minutes (on-chain settlement delay). Nothing was won and nothing was lost. |  |
+| Main | Label | RETURNED | `active-bets-history.html`, the settled row's chip, beside WON and LOST. The bare `.pos-side` face, no outcome colour |
+| Main | Label | Cancelled Jun 30, 2026 - tap to see why | the row's status line, against `Resolved Jun 27, 2026 - tap to see your win` |
+| Main | Label | Returned | the row's figure column, where a resolved row says `Paid out`. Two labels because they are two different figures: a payout depends on the side you took and a return does not |
+| Main | Label | Cancelled | the row's `Result` column, where a resolved row names the outcome |
+| Main | Text | Cancelled: "OPEC+ meeting on June 30, 2026" was called off, so nothing can settle it. Your stake is back. | `notifications.html`, the fifth notification type. **The last four words are the reason this is not the `Bet resolved` type wearing different text**: the only alert in the product that reports money coming back |
+| Main | Label | Event cancelled, stake returned | the notification's own type label, beside `Bet resolved`, `Odds moved significantly`, `Event deadline approaching` and `New event in a followed category` |
+
 ## User-written content (do NOT rewrite)
 
 These lines are authored per event or by other users - event questions, outcome names, the per-event editorial (why-this-price, arguments, resolution notes), share cards, comments, usernames and holdings. Our voice work does not touch them; they get a separate content guideline for whoever creates markets.

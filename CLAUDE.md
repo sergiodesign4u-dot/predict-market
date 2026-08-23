@@ -65,8 +65,9 @@ because it is a stance rather than a principle, and it is written once, here.
   `wireframes/_conventions.md`.
 - **One system.** `components/` holds `tokens.css` plus one file per component, reached through
   `components/index.css`. **Every PAINTED screen links that one file and nothing else, and the grey
-  tree links no stylesheet at all**: 120 of 120 in `ui-visual/` and 61 of 61 in `ui-kit/` link it,
-  **0 of the 119 in `wireframes/` do**, and those 119 carry an inline `<style>` block each. Counted 2026-08-20 and before that
+  tree links no stylesheet at all**: 124 of 124 in `ui-visual/` and 61 of 61 in `ui-kit/` link it,
+  **0 of the 123 in `wireframes/` do**, and those 123 carry an inline `<style>` block each. Counted 2026-08-23 with the four
+  cancelled-event states, before that 2026-08-20 at 120 / 119 and before that
   2026-08-12 at 104 and re-counted 2026-08-15, when `terms.html` was written and the grey tree
   stopped being one screen short of the tree it decides. The sentence here said "every screen" until then, and the folder file it contradicted
   is the one that had it right. The visual language is
@@ -176,14 +177,14 @@ because it is a stance rather than a principle, and it is written once, here.
   not moving and is measuring nothing; only the browser's own default setting, CDP
   `Page.setFontSizes`, changes both the type and the rung. The 1140 harness stays in px, because a
   docked panel is 220 physical pixels whatever the reader's font is. **106 and 105 both name a
-  true thing and every number in this repository has to say which**: `ui-visual/` holds 120
-  documents, 119 of them screens, and `overview.html` is the index of the tree rather than a screen
+  true thing and every number in this repository has to say which**: `ui-visual/` holds 124
+  documents, 123 of them screens, counted 2026-08-23, and `overview.html` is the index of the tree rather than a screen
   in it. **Re-counted four times on 2026-08-20**, first when `win-multi` and `loss-multi` landed
   in both trees and the outcome family stopped being binary-only, then when
   `event-detail-recurring.html` did and the Frequency attribute stopped being a filter with nothing
   to filter, then when `event-detail-recurring-multi.html` closed the fourth corner of Event
   Detail, binary and multi against one-time and recurring, and last when `event-detail-resolved-multi.html`
-  gave a multi resolution a page of its own: the grey tree is 119, so the two still differ by exactly the
+  gave a multi resolution a page of its own: the grey tree is 123 since the cancelled-event family landed on 2026-08-23, so the two still differ by exactly the
   index. It was 117 and 116, then 118 and 117, then 119 and 118, between the four. **AND THE THIRD OF
   THOSE FOUR TURNS SILENTLY DID NOTHING TO THIS SENTENCE**, because the script that made it guarded
   the replacement with `assert A in s or B in s` and neither branch could fail: the file went on

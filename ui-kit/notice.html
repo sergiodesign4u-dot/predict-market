@@ -85,6 +85,7 @@
           <tr><td><code>.reconcile-box</code></td><td>7</td><td>the figure to check, in three faces</td><td>a stronger brass edge when it is plain</td></tr>
           <tr><td><code>.reconcile-box.rec-won</code></td><td>4</td><td>the payout on a win</td><td>a WON tint inside a won edge, centred, the figure at 24</td></tr>
           <tr><td><code>.reconcile-box.rec-lost</code></td><td>1</td><td>the figure on a loss</td><td>the control ground inside a hairline, centred, the figure at 20</td></tr>
+          <tr><td><code>.reconcile-box.rec-returned</code></td><td>3</td><td>the figure on a cancelled event, where nobody won</td><td>the BASE face wearing the outcome geometry: the brass edge and brass figure the plain box already has, centred, the figure at 20. It carries no colour of its own on purpose, because green and red are YES and NO and a returned stake is neither. Written 2026-08-23</td></tr>
           <tr><td><code>.reading</code></td><td><b>10</b> on 10</td><td>how a market was decided: the outcome, the instant, the condition in the rules' own words, and the source as a link</td><td>the NEUTRAL box, a hairline on the control ground at a 10 corner, and the record line in mono. It is not tinted, and that is the argument: <code>.protect</code> makes a promise and this reports a reading, so tinting it with trust would borrow the authority the sentence exists to avoid needing</td></tr>
           <tr><td><code>.quiet-box</code></td><td>7</td><td>a wait</td><td>dashed, 100 tall, loose leading</td></tr>
           <tr><td><code>.push-banner</code></td><td>2</td><td>the one that ASKS: turn on notifications</td><td>a trust tint, and the only face with controls in it</td></tr>
@@ -161,6 +162,7 @@
         <div class="reconcile-box"><span class="field-label">You get back</span><strong>$248.00</strong></div>
         <div class="reconcile-box rec-won"><span class="field-label">You were right - you won</span><strong>+$13.16</strong><span>$5.00 stake returned + $8.16 winnings. You held YES, avg price 38%.</span></div>
         <div class="reconcile-box rec-lost"><span class="field-label">Result</span><strong>-$5.00</strong><span>Your $5.00 stake on NO did not return. Avg price 62%.</span></div>
+        <div class="reconcile-box rec-returned"><span class="field-label">Returned</span><strong>$8.12</strong><span>Your $8.00 stake on YES and the $0.12 fee are back in your balance. Nothing was won and nothing was lost.</span></div>
         <div class="quiet-box qb-working" role="status">Checking with the settlement source</div>
             <div class="quiet-box">Payment under review<br><span class="fine">This usually takes under 5 minutes. We will notify you when your funds are ready.</span></div>
         <div class="push-banner"><span class="push-msg">Get told when a market you bet on resolves</span><span class="push-actions"><button type="button" class="btn btn-sm">Turn on</button><button type="button" class="btn btn-ghost btn-sm">Not now</button></span></div>
@@ -169,6 +171,7 @@
         <div class="reconcile-box"><span class="field-label">You get back</span><strong>$248.00</strong></div>
         <div class="reconcile-box rec-won"><span class="field-label">You were right - you won</span><strong>+$13.16</strong><span>$5.00 stake returned + $8.16 winnings. You held YES, avg price 38%.</span></div>
         <div class="reconcile-box rec-lost"><span class="field-label">Result</span><strong>-$5.00</strong><span>Your $5.00 stake on NO did not return. Avg price 62%.</span></div>
+        <div class="reconcile-box rec-returned"><span class="field-label">Returned</span><strong>$8.12</strong><span>Your $8.00 stake on YES and the $0.12 fee are back in your balance. Nothing was won and nothing was lost.</span></div>
         <div class="quiet-box qb-working" role="status">Checking with the settlement source</div>
             <div class="quiet-box">Payment under review<br><span class="fine">This usually takes under 5 minutes. We will notify you when your funds are ready.</span></div>
         <div class="push-banner"><span class="push-msg">Get told when a market you bet on resolves</span><span class="push-actions"><button type="button" class="btn btn-sm">Turn on</button><button type="button" class="btn btn-ghost btn-sm">Not now</button></span></div>

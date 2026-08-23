@@ -1,5 +1,5 @@
 /* components/dialog.css
-   Component: dialog. Classes: .app-dialog, .fine, .hiw-dialog, .loss-dialog, .outcome-dialog, .problem-dialog, .sheet-body, .sheet-close, .sheet-head, .sheet-sub, .signin-dialog, .win-dialog.
+   Component: dialog. Classes: .app-dialog, .cancelled-dialog, .fine, .hiw-dialog, .loss-dialog, .outcome-dialog, .problem-dialog, .sheet-body, .sheet-close, .sheet-head, .sheet-sub, .signin-dialog, .win-dialog.
    (`.hiw-arrow`, `.hiw-body` and `.hiw-full` came off on 2026-08-15 with the eight rules that drew
    them: the sheet was rebuilt on 2026-08-14 and none of the three has stood on a screen since.)
 
@@ -144,8 +144,8 @@ dialog.app-dialog.win-dialog .plate-head::after{background:radial-gradient(circl
    minimum-not-met sheet is the Add funds sheet with a guard in it, `win-error` is a WIN whose
    share card failed and its head is the green one, and the two bet sheets have no head at all.
    **The head answers for the moment the dialog names, not for the worst line inside it.** */
-dialog.app-dialog:is(.loss-dialog,.problem-dialog) .plate-head{background:linear-gradient(158deg,var(--bg-dialog-head-from),var(--bg-plate-to))}
-dialog.app-dialog:is(.loss-dialog,.problem-dialog) .plate-head::after{content:none}
+dialog.app-dialog:is(.loss-dialog,.problem-dialog,.cancelled-dialog) .plate-head{background:linear-gradient(158deg,var(--bg-dialog-head-from),var(--bg-plate-to))}
+dialog.app-dialog:is(.loss-dialog,.problem-dialog,.cancelled-dialog) .plate-head::after{content:none}
 dialog.app-dialog.outcome-dialog .sheet-head :is(h1,h2){position:relative;z-index:var(--z-content);font-size:var(--display-sheet);max-width:16ch}
 /* THE ANCHOR RULE THAT USED TO STAND HERE IS GONE, 2026-08-11, backlog 89. It read
    `.sheet-head a{position:absolute;top:0;right:0;z-index:var(--z-close);line-height:0;

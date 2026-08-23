@@ -831,6 +831,22 @@ the product on the day somebody measured it and not the product today.
   different zero**: it runs no closing fade at all, so `checkVisibility()` is false on all 14 and the
   first instrument called an absent panel a covered one.
 
+- **A THIRD MEMBER OF A TWO-COLOUR FAMILY TAKES NO COLOUR, AND THE FAMILY'S OWN RULE IS WHAT SAYS
+  SO.** `.reconcile-box` had two faces, `.rec-won` in the outcome green and `.rec-lost` in the
+  outcome red, and on 2026-08-23 it needed a third for the figure a cancelled event returns. The
+  obvious move is a third hue, and it is forbidden by the one rule `DESIGN.md` decides twice: green
+  and red are outcome semantics, YES and NO, and brass is the brand. **A returned stake is neither
+  outcome**, so green would tell the reader they were right and red would tell them they were wrong.
+  `.rec-returned` adds one declaration, a font size, and takes everything else from the BASE face
+  the plain box already has: brass edge, brass tint, `--text-brass` figure. Measured in both engines
+  from disk, with a theme control that came back different on both grounds: the figure computes
+  `rgb(215,172,83)` in the Vault and `rgb(104,79,24)` in Daylight, which is `--text-brass` in each
+  and neither outcome ink. **When a set of faces is keyed to a meaning the new member does not
+  have, the new member is the base wearing the family's geometry**, not a fourth value in the
+  palette. The same question one component up answered the same way: `.cancelled-dialog` joined
+  `dialog.css`'s `:is(.loss-dialog,.problem-dialog)` rather than getting a head of its own, because
+  a head answers for the moment its dialog names and this one names neither a win nor a defeat.
+
 ## Where the record is
 
 `../DESIGN.md` for the visual language, `../docs/decisions.md` for why a thing was decided, and

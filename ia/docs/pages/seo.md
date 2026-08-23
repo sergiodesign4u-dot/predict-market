@@ -81,7 +81,7 @@ kept out of the index but its links are still followed; private and transactiona
 | Deposit / Add funds | `/deposit` | `noindex` | Transactional, auth-gated, no schema |
 | Wallet | `/wallet` | `noindex` | Private balance and transactions |
 | Bet panel | inline on Event Detail | n/a | No own URL (inline panel), inherits Event Detail |
-| Win / Loss | invoked overlay | `noindex` | Personal outcome, reached from a notification, no own indexable URL |
+| Win / Loss / Cancelled | invoked overlay | `noindex` | Personal outcome, reached from a notification, no own indexable URL. **Cancelled joined 2026-08-23**: same family, same reason, and a cancelled event is out of the open set besides, so there is nothing for a crawler or for search to reach |
 | Active Bets / History | `/my-bets` | `noindex` | Private positions |
 | Notifications | `/notifications` | `noindex` | Private |
 | My Profile (self) | `/profile` | `noindex` | Private; the Public Profile (§5) is the indexed twin |

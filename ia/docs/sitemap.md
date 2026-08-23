@@ -117,7 +117,7 @@ This is the MJ itself - the "real stake with real consequences."
 | Fee amount | Shown before confirmation ("platform earns $X if you win") - H6 |
 | Potential payout | Calculated at entry, shown pre-confirmation |
 | Current value | Mark-to-market as odds move |
-| Status | Active · Won · Lost · Cancelled |
+| Status | Active · Won · Lost · Cancelled. **All four are drawn since 2026-08-23**: Active on `active-bets`, Won on `win`, Lost on `loss` and Cancelled on `cancelled`, each with its multi twin. The fourth had a status here and no surface anywhere for as long as this map has existed |
 | Placed at | Timestamp |
 | Resolution payout | Actual amount received after event resolves |
 
@@ -249,7 +249,7 @@ Not in jtbd.md as a direct job, but directly enables FJ1 (find the event while i
 
 | Field | Notes |
 |---|---|
-| Type | Odds moved significantly · Deadline approaching · Event resolved · New event in followed category |
+| Type | Odds moved significantly · Deadline approaching · Event resolved · **Event cancelled, stake returned** · New event in followed category. **The fifth was added 2026-08-23 with the cancelled-event refund.** Four types were named here and three of them are triggered by an EVENT; this is a fourth of that kind, and it is the only notification in the product that reports money moving BACK. It is not a variant of `Event resolved`: a resolution has an outcome and a payout that depends on which side you took, and a cancellation has neither, so a reader who read the two as one would open a resolution screen expecting to learn whether they were right. It routes to the cancelled screen of the event's TYPE. |
 | User reference | - |
 | Event reference | - |
 | Position reference | (if about the user's active bet) |
@@ -431,7 +431,15 @@ Triggered by a notification or by the user opening an Active Bet that has resolv
 ```
 Win Screen                                   (EJ1 · SJ1)    ⭐ PRIMARY + 🥈 SECONDARY
 Loss Screen                                  (FJ5 · EJ3)    ⭐ PRIMARY + 🥈 SECONDARY
+Cancelled event                              (FJ4 · EJ2)    ⭐ PRIMARY + 🥈 SECONDARY   NEW 2026-08-23
 ```
+
+**The third one closes a different job from the other two, and that is why it is a node rather than
+a state of the Loss Screen.** Win closes SJ1 and Loss closes FJ5 + EJ3, both of which are about what
+a reader does after being right or wrong. A cancellation asks neither question: the job it closes is
+**FJ4 / EJ2, feel confident the money is safe**, because the only thing a reader wants from it is to
+see the stake come back and to be told, in one checkable sentence, why nobody could settle the
+question. It is the funds-safety promise of `How It Works` meeting the one case that tests it.
 
 **EACH OF THE TWO HAS A BINARY AND A MULTI SPECIMEN SINCE 2026-08-20, AND THE MULTI HALF HAD BEEN
 DECLARED HERE SINCE THE RESOLUTION ENTITY WAS WRITTEN.** The Outcome field above says `YES · NO (or
@@ -455,7 +463,50 @@ States: loading (Share Card generation in progress) - error (Share Card not gene
 **Loss Screen** - "Here's what happened." Plain-language resolution note (what resolved and why), amount lost, one clear next step (not "bet again" promo). This screen is undesigned by every competitor - it is our primary retention intervention against loss-chasing (FJ5 + EJ3 confirmed gap).
 Design rationale: the resolution note is the default beat before any re-bet (intervention against loss-chasing, per product strategy O1 trust over O4 volume). Friction is calm, non-punitive, and non-blocking - the user can always proceed. The escalation branch in ia/docs/flows.md FJ5 routes through an explicit pause node before reaching Bet Screen. Reserved: session-aware chasing check (C-logic), post-MVP, not built in this pass.
 States: loading (resolution note fetching).
-Note: Cancelled-event refund flow is deferred to post-MVP, so no refund/payout state exists on this screen at MVP.
+
+**THE CANCELLED-EVENT REFUND IS BUILT, 2026-08-23, AND THE DEFERRAL IS TURNED RATHER THAN DELETED.**
+This note read *Cancelled-event refund flow is deferred to post-MVP, so no refund/payout state
+exists on this screen at MVP* from the day the Loss Screen was written. **The premise was about the
+RELEASE and not about the reader**, which is the one test that separates a deferral from an
+`[ORPHAN]`, so the premise is what had to be answered: it was that a cancellation is rare enough to
+leave undrawn until after MVP. **It does not hold, because `Cancelled` is not a post-MVP field.** The
+Event entity above has carried `Cancelled` in its Status since this map was written and the Bet
+entity has carried `Cancelled` in its own, so the FIRST market that turns out to be unresolvable puts
+a reader in a state the product cannot draw, on the one surface where their money is. This
+repository's own rule says a rule that cannot be rendered cannot be checked and will be wrong the day
+it first draws; a STATUS that cannot be rendered is the same defect with money attached.
+`docs/decisions.md` 2026-08-23.
+
+**And the refund is NOT a state of this screen, which is why the old note could not have been
+followed literally.** A cancelled event has no outcome, so the Loss Screen's own sentence -
+*Here's what happened ... you held NO* - cannot be written about it, and neither can the Win
+Screen's. It is the THIRD member of the outcome family, by the same rule that gave the family its
+multi half: the test is not *is this a new type* but *can the existing specimen say what this row
+says*. See **Cancelled event** below.
+
+**Cancelled event** - the third outcome. A market can be cancelled when the question turns out to be
+unresolvable, the source disappears, or the event does not happen; **every stake on it is returned,
+with the fee that was charged on it**, and nobody is paid. The screen states which event was
+cancelled, why, what was returned and where it went, in the shape the other two outcomes already
+use, so a reader does not learn a third layout to check a third thing. Reached exactly as Win and
+Loss are: one tap from a cancellation notification, or from the settled row in My Bets (History).
+Account-bound, invoked overlay, **no auth axis**, and no Share Card - there is nothing to call.
+States: success / binary (`cancelled`) - success / multi-outcome (`cancelled-multi`) -
+refund-pending (`cancelled-refund-pending`, the on-chain settlement delay, the same state the Win
+Screen carries as `payout-pending` and for the same reason: settlement can lag the decision and it
+is a state, not an error) - loading (`cancelled-loading`, fetching the cancellation note).
+**No error state**, for the Loss Screen's reason: the outcome family's only error is a Share Card
+that would not generate, and this screen has none.
+
+**The multi specimen is owed by the rule of 2026-08-20 and not by symmetry.** A multi position is an
+option AND a side, so `Your side` reads `YES for UAE` and the binary sentence cannot carry it; a
+cancelled multi row routing to the binary specimen is the manufactured fixture contradiction this map
+has now paid for three times.
+
+**What the reader is NOT told, and it is a decision:** there is no `-error` and no route back to the
+event. A cancelled market is not in the open set, so it is not on the feed and search cannot find it
+(`ia/docs/flows.md`, FJ1: search indexes the OPEN set only). The record of it is the settled row in
+My Bets and this screen, which is the same treatment a resolved market gets.
 
 **THE READING RENDERS IN THREE PLACES AND IT IS THE SAME SENTENCE IN ALL THREE, 2026-08-19.** The
 Resolution entity's new Reading field is what a person checks when they want to know whether they
@@ -767,6 +818,7 @@ These screens are reached only inside a flow, triggered by a user action. They a
 - **Bet panel (Event Detail)** - not a screen: the inline sticky panel on Event Detail where the bet is built (replaces the old standalone Bet Screen, wireframe build pass #3).
 - **Win Screen** - invoked when a bet resolves with a win (via notification or resolved item in Active Bets).
 - **Loss Screen** - invoked when a bet resolves with a loss (G1 direct: 1 tap from resolution notification; or via resolved item in Active Bets).
+- **Cancelled event** - invoked when an event a reader holds a position on is cancelled and the stake is returned (1 tap from the cancellation notification, or from the settled row in My Bets). Never a nav slot, exactly as Win and Loss are not.
 - **Sign In / Register** - shared in-page dialog, opened at the activation gate (Confirm in the Event Detail bet panel), never before the user has bet intent.
 - **Deposit** - shared in-page dialog, opened at the activation gate (News Junkie path, chained after Sign In) and from Wallet (standalone top-up).
 

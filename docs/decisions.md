@@ -12,6 +12,110 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-23 - The status the data model had carried since the first day and no screen could draw, and the two places where a returned stake is neither green nor red
+
+**The deferral was turned rather than obeyed, and the test that decided it is in `one-shot.md`.**
+`ia/docs/sitemap.md` carried, on the Loss Screen node, *Cancelled-event refund flow is deferred to
+post-MVP, so no refund/payout state exists on this screen at MVP*. A node in that condition is a
+deferral and not an `[ORPHAN]`, and the two are separated by one question: is the reason about the
+READER or about the RELEASE. This one is about the release, so the premise is the thing that had to
+be answered, and the premise does not survive being read next to the entity table three hundred
+lines above it: **`Cancelled` is a value of `Event.Status` and of `Bet.Status` and always has been.**
+It is not a post-MVP field waiting for a post-MVP screen; it is a state the first unresolvable
+market puts a reader into, on the one surface where their money is. `CLAUDE.md` already says a rule
+that cannot be RENDERED cannot be checked and will be wrong the day it first draws. **A status that
+cannot be rendered is that defect with money attached**, and the day it first draws is not a day
+anybody chooses.
+
+**It is the third member of the outcome family, not a state of the Loss Screen, and the old note
+could not have been followed literally.** The Loss Screen's own sentence is *Here's what happened -
+the market resolved YES, you held NO*; a cancelled event has no outcome, so neither that sentence
+nor the Win Screen's can be written about it. The rule that decides when a document is owed was
+written on 2026-08-20 for the recurring specimen and it is not *is this a new type*, it is **can the
+existing specimen say what this row says**. It cannot. Four states, both trees, eight documents:
+`cancelled` (binary), `cancelled-multi`, `cancelled-refund-pending`, `cancelled-loading`.
+
+**Each of the four is derived and none is symmetric-by-habit.** The multi is owed by the same rule
+the outcome family's multi half was owed by: a multi position is an option AND a side, `YES for
+UAE`, and a cancelled multi row landing on a binary specimen is the manufactured fixture
+contradiction this repository has paid for three times. `refund-pending` is the Win Screen's
+`payout-pending` at the same joint - settlement lags the decision, it is a state and not an error.
+`loading` is the Loss Screen's. **There is no `-error`**, for the Loss Screen's own reason: the
+outcome family's only error is a Share Card that would not generate, and there is nothing here to
+call.
+
+**GREEN AND RED WERE THE WHOLE DESIGN QUESTION AND THE ANSWER WAS ALREADY WRITTEN.** The figure on
+this screen is money moving, so the box that holds it is `.reconcile-box`, whose two existing faces
+are `.rec-won` in the outcome green and `.rec-lost` in the outcome red. **Neither can be worn here**:
+`DESIGN.md` decides twice that green and red are outcome semantics, YES and NO, and brass is the
+brand, so painting a returned stake green would tell the reader they were right and red would tell
+them they were wrong, and they were neither. `.rec-returned` therefore adds **no colour at all**. It
+takes the base box's brass edge, brass tint and `--text-brass` figure, and the only thing the
+modifier carries is the centred arrangement and the display rank its two siblings carry. Measured in
+both engines and both themes from `file://`: the figure computes `rgb(215,172,83)` in the Vault and
+`rgb(104,79,24)` in Daylight, exactly `--text-brass` in each, against `--outcome-yes-text` and
+`--outcome-no-text` which it matches in neither. The theme control passed: the page ground differs
+between the two runs.
+
+**The head is the same question one component up.** `dialog.css` gives the win head a radial
+won-stone plate and a glow and takes both off the loss head, on the argument written in
+`platehead.css` that a head answers for the moment its dialog names. A cancellation is not a
+celebration, so `.cancelled-dialog` joins `:is(.loss-dialog,.problem-dialog)` and takes the neutral
+linear head. **Read scoped and confirmed both ways**: `#outcomeDialog .plate-head` on `win` returns
+the radial plate with the glow, on `loss` and on all four cancelled pages the linear one with
+`::after` gone. The first reading of this was wrong and said all three were identical, because
+`document.querySelector('.plate-head')` finds the shared sign-in sheet first: **read what the
+container excludes before believing what the probe counted**, on the day the file that says so is
+being followed.
+
+**THE FEE COMES BACK, AND IT IS DERIVED RATHER THAN GENEROUS.** `PRODUCT.md` charges 1.5% of the
+stake and the bet panel prints `Fee (1.5% of your bet)` and then `Total to pay`, so the fee leaves
+the balance at Confirm and `Total to pay` is what left. A product that keeps the fee on an event it
+could not settle has charged for nothing, and the sentence `voice/docs/voice.md` principle 2 asks
+for would have to explain that. The figure on the screen is the total: `$8.12` for an `$8.00` stake.
+
+**The words needed a lexicon entry before they could go on a screen, and it is two words.** The
+EVENT is **cancelled**, which is the noun the map has used since it was written; the MONEY is
+**returned**, which the product already says - `$5.00 stake returned` has stood on the Win screen
+since it was drawn - so `returned` is not a new word, it is an existing one reaching the place where
+it is the whole story. Rejected: `void` and `annulled`, the sportsbook's and the lawyer's; `refund`,
+which is a shop's word for a purchase somebody changed their mind about, and nobody changed their
+mind; and `reversed`, because the Wallet already tells a reader that on-chain transfers are final.
+
+**A fifth notification type, and it is not the fourth wearing new text.** The entity named four and
+three of them are triggered by an EVENT. This is a fourth of that kind and the only alert in the
+product that reports money coming BACK. Folding it into `Event resolved` would open a resolution
+screen for a reader who is expecting to learn whether they were right.
+
+**What was NOT built, deliberately.** No flow chart: `ia/docs/flows.md` draws the main job and key
+related jobs and says in its own coverage note that surfaces covered inside existing screens are by
+design and not a gap; a cancellation closes no confirmed job on its own. No search entry: search
+indexes the OPEN set only and a cancelled market is not open. No `event-detail-cancelled`, which is
+owed by the routing convention and is `docs/backlog.md` 237 rather than a fifth state, because it
+belongs to the Event Detail family and is a second decision. No Wallet ledger row, because the
+Transaction entity has no type that fits and inventing one is a behaviour with no source:
+`docs/backlog.md` 241.
+
+**The registration is the half that would have been forgotten and it is 247 documents.** The two
+screen panels are hand-copied markup in every document of their tree and share no class name, so
+the family went into `.wf-tree` in 123 grey documents and into `#rmSidebar` in 124 painted ones by
+one throwaway sweep each, with the current-page marker moved onto the four new pages in both trees
+afterwards: **the row a document marks current has to be the document**, and these four were built
+from `loss.html`, which is exactly how ten documents came to mark the wrong row on 2026-08-18.
+`ui-kit/_nav.js` is untouched because no component was added; `assets/_roadmap.js` because no stage
+was.
+
+**Measured before it was believed.** Both engines, from disk over `file://`, at 320 / 360 / 390 and
+at each of the three rungs and one pixel either side and at 1280, both trees, transitions and
+animations frozen and two frames of settle after every resize: **0 documents scrolling sideways, 0
+duplicate ids, 0 page errors, exactly one `h1` each, document height 845 painted and 844 grey**,
+which is the viewport, the same as every other screen that opens with a modal. **The positive
+control came back red in both engines** - a 3,000px box injected into the same page reads 3,000
+against a 390 client width and a non-zero `scrollLeft` - so the zero is a reading of the tree and
+not of a blind probe.
+
+---
+
 ## 2026-08-21 - The row already carried its own answer, and a cap that scales with the reader had no upper bound; then a notification that could not be made true turned out to be a catalog two months behind itself
 
 **Backlog 230, and the fix added no declaration.** `Sign in` and `Sign up` in the logged-out header
