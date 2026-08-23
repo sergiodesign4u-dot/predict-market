@@ -92,6 +92,7 @@
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-sub" data-roadmap-sub hidden>
       <a href="#mj" class="sidebar-sub-link">MJ - Main Job</a>
+      <a href="#fj1" class="sidebar-sub-link">FJ1 - Find the event</a>
       <a href="#fj2" class="sidebar-sub-link">FJ2 - Understand odds</a>
       <a href="#fj5" class="sidebar-sub-link">FJ5+EJ3 - Conscious exit</a>
       <a href="#sj1" class="sidebar-sub-link">SJ1 - Share the win</a>
@@ -113,7 +114,8 @@
     <span class="tag grey">MVP · 2026</span>
   </div>
   <h1>User Flows</h1>
-  <p class="lead">Four key flows rendered as Mermaid diagrams. Built from: IA/sitemap.md - jtbd.md. Each flow covers one or more confirmed jobs.</p>
+  <p class="lead">Five key flows rendered as Mermaid diagrams. Built from: IA/sitemap.md - jtbd.md. Each flow covers one or more confirmed jobs. It said four, and rendered four, from the day FJ1 was drawn on 2026-08-18 until 2026-08-23: this page is a reading of `ia/docs/flows.md` and the markdown wins, so a rendering that is THINNER than its source is tolerated and one that CONTRADICTS it is not.</p>
+  <p style="font-size:12px;color:#808080;margin:12px 0 0"><b>This page is a READING of <code>ia/docs/flows.md</code>, taken 2026-08-23.</b> The markdown is the source and it wins. A rendering that is THINNER than its source is tolerated by design; one that CONTRADICTS it is a defect. Checked on 2026-08-23 and the only contradiction found in the four renderings was on the flows page, which said four flows and drew four while the source had drawn five since 2026-08-18.</p>
   <p style="font-size:12px;color: #808080;margin-bottom:16px"><a href="ia.html" style="color:var(--muted);text-decoration:underline">Overview</a> &middot; <a href="sitemap.html" style="color:var(--muted);text-decoration:underline">Full Sitemap</a></p>
 
   <div class="legend-box">
@@ -259,6 +261,61 @@ flowchart TD
     <strong style="color:#aaa">Loading states:</strong> three inline neutral loading nodes mark the async waits - feedLoad (fetching the live feed), depProcessing (processing the card payment), and betProcessing (confirming the bet on-chain).<br>
     <strong style="color:#aaa">Traces to CJM To-Be steps 1-7:</strong> story-led feed (1) -&gt; explain the number (2) -&gt; bet intent before the wallet, gate at Confirm (3) -&gt; sign in + fund (4) -&gt; confirm + S5 reconcile (5) -&gt; follow in Active Bets (6) -&gt; resolution both ways (7).
   </p>
+</section>
+
+<!-- FJ1 FLOW -->
+<section id="fj1">
+  <div class="flow-job">FJ1 - Functional Job 1</div>
+  <div class="flow-title">When something important happens and I have an opinion on the outcome, I want to find that event among the open markets before the topic goes cold</div>
+  <div class="flow-desc">The job the whole browse layer exists for, and it had no chart until 2026-08-18: the feed, the category pages, Favorites and search are four surfaces serving one job, and the surface added on 2026-08-16 had nowhere to be drawn. Every node here is reachable logged out and none of them asks for an account. T17 is a CHURN terminal rather than an error, because a query with no match is the open set answering rather than a failure.</div>
+
+  <div class="mermaid-wrap">
+    <div class="mermaid">
+flowchart TD
+    trigger(["trigger: read the news, heard it in a chat, or followed a shared link"])
+    trigger --> EF["Event Feed"]
+
+    EF --> onScreen{"is the event on the first screen?"}
+    onScreen -->|"yes"| ED["Event Detail"]
+    onScreen -->|"no"| wayIn{"which way in?"}
+
+    wayIn -->|"by topic"| CAT["Category page - Politics / Crypto / Culture / General"]
+    wayIn -->|"saved it earlier"| FAV["Favorites"]
+    wayIn -->|"knows what it is called"| SRF{"viewport at the RAIL rung?"}
+
+    CAT --> catHit{"in this category?"}
+    catHit -->|"yes"| ED
+    catHit -->|"no"| SRF
+    FAV --> favHit{"still saved and open?"}
+    favHit -->|"yes"| ED
+    favHit -->|"no"| SRF
+
+    SRF -->|"below 56.25rem: the mark opens a sheet"| SH["Search sheet, over the current page"]
+    SRF -->|"at and above: the field is in the header"| FLD["Search field, header row"]
+    SH --> SR
+    FLD --> SR["Search - results"]
+
+    linkIn(["cold entry: a shared link, a bookmark, or the 404 escape"]) --> SP["Search - the page"]
+    SP --> SR
+
+    SR --> hits{"anything open matches?"}
+    hits -->|"yes"| ED
+    hits -->|"no"| SE["Search - no matches"]
+    SE --> T17(["T17 - the open set holds nothing for this query"])
+    T17 -->|"shorter word"| SR
+    T17 -->|"browse all events"| EF
+    T17 -->|"how events are chosen"| HIW["How It Works"]
+    HIW --> EF
+
+    ED --> fj1Done(["FJ1 closed - the event is open on screen, in time"])
+
+    classDef success fill:#12351f,stroke:#3fb56b,color:#eafff9;
+    classDef dead fill:#3a1618,stroke:#e5484d,color:#ffd7d7;
+    classDef neutral fill:#1b1b1b,stroke:#5a5a5a,color:#dddddd;
+    class trigger,linkIn,fj1Done success;
+    class EF,ED,CAT,FAV,SH,FLD,SP,SR,SE,HIW,onScreen,wayIn,catHit,favHit,SRF,hits,T17 neutral;
+    </div>
+  </div>
 </section>
 
 <!-- FJ2 FLOW -->

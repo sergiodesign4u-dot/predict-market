@@ -70,3 +70,23 @@ block back, reconciling the chrome, wiring a flow, resyncing a sidebar.
 
 `../docs/decisions.md`, and `../ia/docs/` for what a screen is supposed to contain: `sitemap.md`,
 `flows.md`, `blocks.md` banked by page type, and `pages/` for the detailed layer.
+
+## What `SHARED (N of M, R rules)` counts, and when it was last counted
+
+**N is the number of documents in this tree that carry this region. M is the size of the tree. R is
+the number of css rules in it.** The legend at the head of every inline stylesheet has always said
+so, and the numbers still went stale, because nothing recomputes them when a screen is added and
+nothing reads them when one is not.
+
+**Recounted 2026-08-23 against a tree of 119: 2,349 markers over 27 regions in 119 documents, and
+every N now equals the number of documents carrying its region.** They had been written for a tree
+of 114, with three regions stranded on 116 and 117 from later passes that turned one marker and not
+the set. **A denominator that names a tree size nobody has re-measured is the same live claim as a
+count in prose**, and this one is worse, because the whole purpose of the marker is that a document
+which has LOST a shared block contradicts its own header. A stale numerator makes every document
+contradict its header equally, which is the same as none of them doing it.
+
+**So: recount the set whenever the tree changes size, in one pass over every document, and never
+turn a single marker by hand.** Two readers with no context stumbled on this in one week, and the
+second one recomputed it, got a different answer from the header, and reverted rather than guess.
+That was the right call and the reason it was needed is now gone.

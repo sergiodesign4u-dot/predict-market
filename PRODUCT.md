@@ -294,6 +294,28 @@ not automatically a product with no rules: some places regulate a free-entry con
 public ranking, and this one keeps a public track record by design. That is a narrower question than
 the one above, it has the same decider, and it is the one that arrives first.
 
+## Payout timing
+
+**A payout confirms in under a minute, and the number is here because a shipped sentence was
+promising one without it.** `win-payout-pending.html` tells a reader their money is on its way and
+said *a few minutes (on-chain settlement delay)* until 2026-08-23; **no file in this repository
+stated a duration**, so the screen was making a promise about the clock with nothing behind it. That
+is the same shape as the deadline notification that could not be made true, and it is the second
+time a clock claim has shipped ahead of its number.
+
+**What bounds it is the rail, exactly as the notification horizon is bounded by the shortest period
+the catalog opens.** The chain is Base, an L2 with a block time of about two seconds, and a payout
+is one transfer the resolver signs after it writes the resolution. Under a minute is the honest
+ceiling for that, and it is a ceiling rather than an average so the sentence stays true on a bad day.
+
+**And at the first launch there is no rail at all**, because `Liquidity and risk` puts release one on
+points with no chain: a payout is a balance write and it is immediate. **So the pending state is the
+real-money behaviour and does not ship in release one**, which is what makes the screen's own
+existence a claim about a later release rather than about the first. The string names the
+confirmation rather than a chain, so it stays true in both.
+
+---
+
 ## Financials and compliance
 - **All transactions in crypto** - stablecoins (USDC, USDT) as primary
 - Fiat on-ramp supported (user converts fiat -> crypto on platform)

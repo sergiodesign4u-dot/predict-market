@@ -995,7 +995,7 @@ _5 state page(s): win-error.html, win-loading.html, win-multi.html, win-payout-p
 | Main | Label | Your win and payout are confirmed. The shareable card is being created. |  |
 | Main | Label | You held YES, avg price 38%. Payout is settling on-chain. |  |
 | Main | Text | Your payout is on the way |  |
-| Main | Label | It will arrive in your balance in a few minutes (on-chain settlement delay). You can still share now. |  |
+| Main | Label | It will arrive in your balance when the payout confirms, usually under a minute. You can still share now. |  |
 | Main | Field label | Share Card (auto-generated) |  |
 | Main | Text | Share Card: "Called it - US shutdown, YES from 38%. Paid out $13.16 on Yonder." (image placeholder) |  |
 | Main | Button | Share |  |

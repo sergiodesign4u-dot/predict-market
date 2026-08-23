@@ -52,3 +52,20 @@ Note: any text-to-image model garbles fine text / hex labels, the plate conveys
   (mission-control / NASA-almanac), deliberately not neon-casino synthwave.
 
 Note: B and C are dense multi-zone boards, generate at **16:9**.
+
+## What is in `images/`
+
+`B-vault-01.png` - the **B, grounded vault** plate, generated 2026-07-17 and the only output kept
+from this exploration. Graphite ground, one brass accent, green and red on the outcome pair only:
+**this is the board the shipped visual language came from**, and `DESIGN.md` is where it ended up.
+
+**It was named `ChatGPT Image 17 <a month and a year in Cyrillic>, 00_57_52.png` until 2026-08-23**,
+which is the tool's export name rather than a name, and it made the file the only non-ASCII path in
+the repository, the third-heaviest object in the history and a file no document referenced. The
+naming convention three lines above had been written and never used. Renamed to it.
+
+**Read it as an exploration and not as a specification.** It carries the project's old name and the
+trader language the voice contract later banned by name - *Trade opinions*, *Trade now*, *Traders*,
+*Portfolio*, *Vol.* - and a five-slot bottom nav the information architecture did not keep. What
+survived is the material: the ground, the brass, and the rule that green and red are outcome
+semantics rather than decoration.
