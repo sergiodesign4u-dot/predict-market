@@ -52,7 +52,7 @@ The shared left sidebar is markup inside each page: the root viz pages, the anno
 roadmap. Three scripts used to keep those copies in step. **There is no longer anything that does**,
 so the roadmap is one list in prose here and in `README.md`, and a change to it is a search and a
 sweep by hand. The panel's LOOK is not per-page and never was: it is one component,
-`components/course-chrome.css`, linked by the 28 course pages with `fonts.css` and `tokens.css`.
+`components/course-chrome.css`, linked with `fonts.css` and `tokens.css` by 29 documents, counted 2026-08-23: the 28 course pages and the repository index `index.html`.
 
 Structure flows one way between the two screen trees: `wireframes/` decides it and `ui-visual/`
 follows. A check used to fail the build when the trees disagreed inside `<main>`, `<header>`, the

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Handoff - Prediction Market Platform</title>
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --border: #242424;
+    --text: #e8e8e8;
+    --muted: #666;
+    --accent: #c8ff00;
+    --accent-dim: rgba(200,255,0,.08);
+    --red: #ff5f5f;
+    --green: #5fdb8f;
+    --blue: #5fa8ff;
+    --font: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --r: 8px;
+    --gap: 48px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  /* LAYOUT */
+  main { padding: 60px 20px 80px; }
+  @media (min-width: 860px) { main { margin-left: 220px; padding: 48px 48px 120px; } }
+  section { padding-top: var(--gap); margin-top: var(--gap); border-top: 1px solid var(--border); }
+  section:first-child { border-top: none; }
+
+  /* TYPOGRAPHY */
+  .section-label { font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; letter-spacing: -.02em; line-height: 1.1; margin-bottom: 16px; }
+  h2 { font-size: 22px; font-weight: 600; letter-spacing: -.01em; margin-bottom: 20px; }
+  h2.sub-h { margin-top: 40px; }
+  h3 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 12px; margin-top: 32px; }
+  h3:first-child { margin-top: 0; }
+  p { color: #aaa; margin-bottom: 12px; max-width: 680px; }
+  li { color: #aaa; max-width: 680px; }
+  strong { color: var(--text); font-weight: 600; }
+  code { font-family: var(--mono); font-size: 12px; color: var(--blue); background: rgba(95,168,255,.07); padding: 1px 5px; border-radius: 3px; }
+  .lead { font-size: 16px; color: #bbb; max-width: 640px; margin-bottom: 32px; line-height: 1.7; }
+  .hero { padding-top: 0; border-top: none; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(200,255,0,.2); }
+  .tag.grey { background: rgba(255,255,255,.04); color: var(--muted); border-color: var(--border); }
+  .tag.warn { background: rgba(255,95,95,.08); color: var(--red); border-color: rgba(255,95,95,.25); }
+  .hero-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+
+  /* THE THREE DOORS */
+  .doors { display: grid; gap: 14px; grid-template-columns: 1fr; margin: 24px 0 8px; }
+  @media (min-width: 720px) { .doors { grid-template-columns: repeat(3, 1fr); } }
+  .door { display: block; text-decoration: none; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 20px; transition: border-color .16s ease, background .16s ease; }
+  .door:hover, .door:focus-visible { border-color: var(--accent); background: rgba(200,255,0,.03); }
+  .door .k { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  .door .t { display: block; font-size: 17px; font-weight: 600; color: var(--text); margin: 8px 0 6px; }
+  .door .d { font-size: 12.5px; color: #999; line-height: 1.5; }
+
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; margin: 18px 0 8px; font-size: 13px; }
+  th { text-align: left; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 8px 12px 8px 0; border-bottom: 1px solid var(--border); }
+  td { padding: 10px 12px 10px 0; border-bottom: 1px solid #1c1c1c; color: #aaa; vertical-align: top; }
+  td strong { color: var(--text); }
+  td a { color: var(--blue); text-decoration: none; }
+  td a:hover, td a:focus-visible { text-decoration: underline; }
+  .num { font-family: var(--mono); color: var(--text); white-space: nowrap; }
+
+  /* NOTE BLOCK */
+  .note { background: var(--surface); border: 1px solid var(--border); border-left: 2px solid var(--accent); border-radius: var(--r); padding: 16px 18px; margin: 18px 0; max-width: 720px; }
+  .note.warn { border-left-color: var(--red); }
+  .note p:last-child { margin-bottom: 0; }
+  .note h4 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--text); margin-bottom: 8px; }
+  a.inline { color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(95,168,255,.3); }
+  a.inline:hover, a.inline:focus-visible { border-bottom-color: var(--blue); }
+  ul { margin: 0 0 12px 18px; }
+  li { margin-bottom: 6px; }
+</style>
+<link rel="stylesheet" href="../components/fonts.css">
+<link rel="stylesheet" href="../components/tokens.css">
+<link rel="stylesheet" href="../components/course-chrome.css">
+</head>
+<body>
+
+<button class="rm-toggle" id="menuToggle" aria-label="Open navigation">
+  <span></span><span></span><span></span>
+</button>
+<div class="rm-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-sub" data-roadmap-sub hidden>
+      <a href="#start" class="sidebar-sub-link">Start here</a>
+      <a href="#boundary" class="sidebar-sub-link">What this package is</a>
+      <a href="#route" class="sidebar-sub-link">Route through the repo</a>
+      <a href="#theme" class="sidebar-sub-link">Which theme is primary</a>
+      <a href="#three" class="sidebar-sub-link">Behaviour, map, accessibility</a>
+      <a href="#feature" class="sidebar-sub-link">How to add a feature</a>
+      <a href="#decides" class="sidebar-sub-link">Who decides now</a>
+      <a href="#notdone" class="sidebar-sub-link">Deliberately not done</a>
+      <a href="#unclear" class="sidebar-sub-link">Unclear became</a>
+  </div>
+</aside>
+
+<main>
+
+<section class="hero" id="top">
+  <div class="hero-meta">
+    <span class="tag">Stage 12</span>
+    <span class="tag grey">Handoff</span>
+    <span class="tag grey">2026-08-23</span>
+  </div>
+  <h1>Handoff</h1>
+  <p class="lead">
+    Everything in this repository is finished and none of it explains itself to somebody who was not
+    here. This page is the one link that replaces the explanation: where to start, what you are
+    holding, how it behaves, what it is made of, and how to add to it without breaking the rules that
+    are keeping it whole.
+  </p>
+</section>
+
+<section id="start">
+  <div class="section-label">Start here</div>
+  <h2>Three doors, and the middle one is the product</h2>
+  <p>
+    Open the product first. Everything else on this page makes sense once you have seen a screen.
+  </p>
+
+  <div class="doors">
+    <a class="door" href="../ui-visual/event-feed.html">
+      <span class="k">The product</span>
+      <span class="t">Event Feed</span>
+      <span class="d">The painted product, from its entry screen. Clickable end to end: feed, event, sign in, funding, your bets.</span>
+    </a>
+    <a class="door" href="../ui-kit/why.html">
+      <span class="k">The system</span>
+      <span class="t">Why it is like this</span>
+      <span class="d">The five-minute path through the design system, what will bite you, and where everything lives. The page to read second.</span>
+    </a>
+    <a class="door" href="../README.md">
+      <span class="k">The repository</span>
+      <span class="t">README</span>
+      <span class="d">The index of every stage and every source document, with the one status table.</span>
+    </a>
+  </div>
+
+  <div class="note">
+    <h4>If you only have five minutes</h4>
+    <p>
+      Open the product, then <a class="inline" href="../ui-kit/why.html">why.html</a>. That is the
+      whole orientation. The rest of this page is for the day you have to change something.
+    </p>
+  </div>
+
+  <h2 class="sub-h">The same three doors, published</h2>
+  <p>
+    Nothing here needs a clone, a build or a server. Every address below was requested on the day
+    this section was written rather than remembered, because a link nobody has opened is a claim and
+    not a route.
+  </p>
+  <table>
+    <tr><th>What</th><th>Address</th></tr>
+    <tr><td><strong>The repository</strong></td><td><a href="https://github.com/sergiodesign4u-dot/predict-market">github.com/sergiodesign4u-dot/predict-market</a></td></tr>
+    <tr><td><strong>The product</strong></td><td><a href="https://sergiodesign4u-dot.github.io/predict-market/ui-visual/event-feed.html">the Event Feed, published</a></td></tr>
+    <tr><td><strong>The system</strong></td><td><a href="https://sergiodesign4u-dot.github.io/predict-market/ui-kit/why.html">why.html, published</a></td></tr>
+    <tr><td><strong>The front door</strong></td><td><a href="https://sergiodesign4u-dot.github.io/predict-market/">the repository index, published</a>, which is where a stranger should be sent</td></tr>
+  </table>
+
+  <div class="note warn">
+    <h4>The published root answered 404 and every deep link answered 200</h4>
+    <p>
+      Worth knowing, because it is the one class of defect this package cannot see. A file at the
+      root keeps the roadmap panel and the whole vitrine route alive on the published site, and its
+      cost is that no page is generated from the README. So each of the three doors above worked and
+      the address a person would actually be handed did not, while every instrument here passed:
+      they all open files, and not one of them reads a response code. <strong>A route is only a
+      route where somebody has walked it.</strong>
+    </p>
+  </div>
+</section>
+
+<section id="boundary">
+  <div class="section-label">The boundary</div>
+  <h2>What this package is, and what it is not</h2>
+  <p>
+    <strong>It is not a running application.</strong> There is no build step, no server, no API, no
+    router and no product code. What you open in a browser is what ships. That is deliberate, and the
+    reason is written where the rules are: a repository that once carried dozens of generators and
+    build gates deleted all of them in one commit and the product did not move a pixel.
+  </p>
+
+  <table>
+    <tr><th>In the package</th><th>Inside the folder, outside the package</th></tr>
+    <tr>
+      <td>The painted product, the grey structure tree, the design system, the vitrine, the shared
+          assets, and every source document under research, user research, IA, voice and concept.
+          It is what version control tracks.</td>
+      <td>Two Python virtual environments, a nested tool repository, the critique logs and the editor
+          configuration. All excluded from version control. They are tooling that happens to sit in
+          the same directory.</td>
+    </tr>
+  </table>
+
+  <p>
+    <strong>A state is a page.</strong> Loading, empty, error, signed in, signed out, chosen: each is
+    its own file, in both trees. That is not a convenience, it is the only reason a state can be
+    measured at all. A rule that cannot be rendered cannot be checked, and it will be wrong the day
+    it first draws.
+  </p>
+
+  <div class="note">
+    <h4>What it becomes</h4>
+    <p>
+      The software plan is decided and not started: the stack, the hosting, the routes and the cost
+      are in <a class="inline" href="../docs/build-plan.md">docs/build-plan.md</a>. This package is
+      what that plan is built FROM, not a first version of it.
+    </p>
+  </div>
+</section>
+
+<section id="route">
+  <div class="section-label">The route</div>
+  <h2>Where everything is</h2>
+  <p>
+    One row per question. Every destination here is one click from this page, and this page is one
+    click from the README, so nothing in the package is more than two clicks from the root.
+  </p>
+
+  <table>
+    <tr><th>If you want</th><th>Open</th></tr>
+    <tr><td><strong>To see the product</strong></td><td><a href="../ui-visual/event-feed.html">ui-visual/event-feed.html</a>, and <a href="../ui-visual/overview.html">overview.html</a> for the index of all of it</td></tr>
+    <tr><td><strong>To see the system</strong></td><td><a href="../ui-kit/why.html">ui-kit/why.html</a>, then <a href="../ui-kit/overview.html">ui-kit/overview.html</a> for a page per component</td></tr>
+    <tr><td><strong>The rules you must not break</strong></td><td><a href="../CLAUDE.md">CLAUDE.md</a> at the root, then the one in the folder you are working in</td></tr>
+    <tr><td><strong>How the system is built</strong></td><td><a href="../ui-kit/docs/architecture.md">ui-kit/docs/architecture.md</a>, and <a href="../components/tokens.css">components/tokens.css</a>, which is a document as much as a stylesheet</td></tr>
+    <tr><td><strong>What every component is and where it stands</strong></td><td><a href="../ui-kit/docs/inventory.md">ui-kit/docs/inventory.md</a></td></tr>
+    <tr><td><strong>What the product IS</strong></td><td><a href="../PRODUCT.md">PRODUCT.md</a>: the job, the audience, the market types, the money, the open legal question</td></tr>
+    <tr><td><strong>Where a reader can go</strong></td><td><a href="../ia/docs/sitemap.md">ia/docs/sitemap.md</a> and <a href="../ia/docs/flows.md">ia/docs/flows.md</a></td></tr>
+    <tr><td><strong>Every word the product says</strong></td><td><a href="../voice/docs/microcopy.md">voice/docs/microcopy.md</a>, and <a href="../voice/docs/voice.md">voice/docs/voice.md</a> for which words are allowed</td></tr>
+    <tr><td><strong>Why anything is the way it is</strong></td><td><a href="../docs/decisions.md">docs/decisions.md</a>, dated, newest first, never edited</td></tr>
+    <tr><td><strong>What is still open</strong></td><td><a href="../docs/backlog.md">docs/backlog.md</a></td></tr>
+    <tr><td><strong>Why every screen exists twice</strong></td><td>The grey tree in <code>wireframes/</code> owns structure and copy and the painted tree owns the visual layer only. It is frozen and it is history of the process, not a source you edit: read <a href="../wireframes/_conventions.md">its conventions</a> once and then work in the painted tree</td></tr>
+  </table>
+
+  <div class="note">
+    <h4>When two documents disagree, the repository is right</h4>
+    <p>
+      Prose goes stale and code does not. Measure the thing, then believe the file that owns it, then
+      believe the prose. Every fact here has exactly one owner, and the ownership table is in the
+      root <a class="inline" href="../CLAUDE.md">CLAUDE.md</a>.
+    </p>
+  </div>
+</section>
+
+<section id="theme">
+  <div class="section-label">Theme</div>
+  <h2>Which theme is primary</h2>
+  <p>
+    <strong>The dark theme is the product.</strong> The light one exists to prove that the semantic
+    token layer is real: a second theme can only be written by re-declaring roles, so if the roles
+    were fake the light theme could not exist. It is a proof, not a preference.
+  </p>
+  <p>
+    <strong>The shipped product has no theme switch.</strong> The toggle you can see lives in the
+    reviewer's panel down the left of every screen, which is review chrome and not the product. In the
+    source it looks like an ordinary button; in the rendered page its only ancestor is that panel.
+    Anyone reading the markup alone will ship a theme switch into the product by mistake.
+  </p>
+  <div class="note warn">
+    <h4>If you write a probe that reads the theme</h4>
+    <p>
+      The theme boots from browser storage before the first paint, and the boot script <em>removes</em>
+      the attribute when there is no stored value. Setting the attribute is therefore not setting the
+      theme. Every theme-aware reading needs a control: the page ground has to differ between the two
+      runs, or you have measured one theme twice.
+    </p>
+  </div>
+</section>
+
+<section id="three">
+  <div class="section-label">The three documents this stage wrote</div>
+  <h2>Behaviour, the map, and accessibility</h2>
+  <p>
+    Nothing else in the repository answers these three questions, because a page renders a state and
+    cannot tell you what reaches it, what it is made of, or what it promises a reader who cannot use
+    it the ordinary way.
+  </p>
+
+  <table>
+    <tr><th>Document</th><th>The question it answers</th></tr>
+    <tr>
+      <td><a href="docs/behaviour.md"><strong>behaviour.md</strong></a></td>
+      <td>What the product DOES: five flows step by step, every terminal and its recovery edge, the
+          states each surface has, what each field enforces, and the edge cases where the obvious
+          build is wrong. Every row cites the source that already said it, and a row with no source is
+          not in the spec at all: it is in the NOT DECIDED list at the foot, addressed to a person.</td>
+    </tr>
+    <tr>
+      <td><a href="docs/map.md"><strong>map.md</strong></a></td>
+      <td>Which screen is made of which components, which tokens those read, where each zone gets its
+          words. Then the same data inverted, which is what the file is for: <strong>if I change this
+          token, what moves.</strong> It opens in two knees, component to role to primitive, because a
+          component never names a raw value and a one-knee list reports the whole primitive level as
+          dead.</td>
+    </tr>
+    <tr>
+      <td><a href="docs/a11y.md"><strong>a11y.md</strong></a></td>
+      <td>Every accessibility ruling the system already carries, each with the instrument that checks
+          it and a status of two values. Confirmed means a run on the day, not a memory that an
+          earlier stage did it. Three rows are debts and each names its backlog row.</td>
+    </tr>
+    <tr>
+      <td><a href="docs/onboarding-gaps.md"><strong>onboarding-gaps.md</strong></a></td>
+      <td>The critique log of this stage: what a reader with no context could not work out, and what
+          they worked out wrongly. The second list is the expensive one.</td>
+    </tr>
+  </table>
+</section>
+
+<section id="feature">
+  <div class="section-label">Growth</div>
+  <h2>How to add a feature</h2>
+  <p>
+    There is a documented procedure for adding a component and for adding a pattern, in
+    <a class="inline" href="../ui-kit/docs/architecture.md">architecture.md</a>. There was none for
+    adding a SCREEN, which is the first thing a new person needs and the thing they will assemble
+    wrongly out of six files. <a class="inline" href="docs/one-shot.md">one-shot.md</a> is that
+    procedure, written as a prompt you can hand to somebody or to a model and get a finished screen
+    back.
+  </p>
+  <div class="note">
+    <h4>The rule underneath all of it</h4>
+    <p>
+      <strong>New goes into the system first and onto a screen second.</strong> A screen that grows a
+      part every time it meets a new page has not been tested by that page, it has been edited by it.
+      If your screen needs something with no component, no token and no pattern behind it, that is not
+      an exception for the screen, it is an order for the system.
+    </p>
+  </div>
+</section>
+
+<section id="decides">
+  <div class="section-label">Governance</div>
+  <h2>Who decides now</h2>
+  <p>
+    Two open lists in this package are addressed to a person rather than to a process: the NOT DECIDED
+    rows at the foot of <a class="inline" href="docs/behaviour.md">behaviour.md</a>, and
+    <a class="inline" href="../docs/backlog.md">docs/backlog.md</a>. Without an addressee the first
+    such row stops the work, so the addressee is named here.
+  </p>
+  <table>
+    <tr><th>Question</th><th>Decided by</th></tr>
+    <tr><td>Everything about the product, the design and this repository</td><td>The one person who wrote all of it. There is no second contributor, no owners file and no maintainer list, and that is a fact about the project rather than an omission</td></tr>
+    <tr><td>Jurisdiction, and therefore what the four legal documents actually have to say</td><td><strong>Counsel</strong>, on retainer before the first real money moves. It is the one decision in this package whose owner is not in the repository, and it is written that way in <a href="../PRODUCT.md">PRODUCT.md</a></td></tr>
+    <tr><td>An open row's answer, once taken</td><td>Goes into <a href="../docs/decisions.md">docs/decisions.md</a> with its date, and the backlog row is struck rather than deleted</td></tr>
+  </table>
+</section>
+
+<section id="notdone">
+  <div class="section-label">Scope</div>
+  <h2>What was deliberately not done</h2>
+  <p>
+    So that a decision is not read as a hole. Each of these is a ruling with a reason, not something
+    that ran out of time.
+  </p>
+  <ul>
+    <li><strong>No product code.</strong> The plan for it is decided and dated; this package is its input.</li>
+    <li><strong>No build gates and no generators.</strong> They were deleted on purpose. Every rule is kept by being read, and each one carries the measurement that produced it.</li>
+    <li><strong>No production domain.</strong> Open by decision, with the cost written beside it: no canonical address and no share address can be written until it is chosen. The trigger and the decider are both named.</li>
+    <li><strong>No support screen.</strong> Registered as a node, decided post-release, because it carries a form and a form is a different page type with its own vocabulary and its own states.</li>
+    <li><strong>No registry for the two screen trees.</strong> The vitrine and the course roadmap each have one; the screen trees carry their panel as copied markup in every file. It is a known debt, it is written in the vitrine's own registry, and closing it is an edit to every document in both trees.</li>
+  </ul>
+  <p>
+    The full list, with a row per item and the stage that owns each, is
+    <a class="inline" href="../docs/backlog.md">docs/backlog.md</a>.
+  </p>
+</section>
+
+<section id="unclear">
+  <div class="section-label">The record</div>
+  <h2>What was unclear, and what it became</h2>
+  <p>
+    This stage was not an audit of the product. It was an audit of whether the product can be picked
+    up, and the reader was a subagent with a clean context rather than an imagined newcomer: whoever
+    builds a thing cannot read it, only recall it. Its two lists, verified line by line, are in
+    <a class="inline" href="docs/onboarding-gaps.md">onboarding-gaps.md</a>.
+  </p>
+  <table>
+    <tr><th>Was unclear</th><th>Became</th></tr>
+    <tr><td>How do I add a screen? There is a procedure for a component and for a pattern and none for this</td><td><a href="docs/one-shot.md">one-shot.md</a>, a prompt rather than a checklist</td></tr>
+    <tr><td>What does the product actually do between screens?</td><td><a href="docs/behaviour.md">behaviour.md</a>, five flows and seventeen terminals with a source on every row</td></tr>
+    <tr><td>If I change this token, what moves?</td><td><a href="docs/map.md">map.md</a>, the inverted list, in two knees</td></tr>
+    <tr><td>What is already promised about accessibility, and is it still true?</td><td><a href="docs/a11y.md">a11y.md</a>, thirteen points, each re-run rather than remembered</td></tr>
+    <tr><td>Is this an app? Where is the start command?</td><td>The boundary section above</td></tr>
+    <tr><td>Which theme is real, and why is there a switch?</td><td>The theme section above</td></tr>
+    <tr><td>Who do I ask?</td><td>The governance section above</td></tr>
+  </table>
+  <div class="note">
+    <h4>The habit worth taking with the repository</h4>
+    <p>
+      Numbers here move and prose lags behind them. Treat every figure without a date beside it as a
+      claim rather than a fact, and re-measure before citing one. That rule caught nine stale claims
+      during this stage alone, in the files whose own job is to state the rule.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<script src="../assets/_roadmap.js"></script>
+<script>
+const toggle = document.getElementById('menuToggle')
+const overlay = document.getElementById('sidebarOverlay')
+const sidebar = document.getElementById('sidebar')
+toggle.addEventListener('click', () => { sidebar.classList.toggle('open'); overlay.classList.toggle('open') })
+overlay.addEventListener('click', () => { sidebar.classList.remove('open'); overlay.classList.remove('open') })
+
+const subLinks = document.querySelectorAll('.sidebar-sub-link')
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      subLinks.forEach(l => l.classList.remove('active'))
+      const link = document.querySelector(`.sidebar-sub-link[href="#${e.target.id}"]`)
+      if (link) link.classList.add('active')
+    }
+  })
+}, { rootMargin: '-15% 0px -75% 0px' })
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s))
+</script>
+
+</body>
+</html>

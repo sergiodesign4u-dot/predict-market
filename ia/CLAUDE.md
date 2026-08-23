@@ -1,7 +1,7 @@
 # ia/ - where the user can go, and what is on each page
 
 `docs/sitemap.md` (entities, screens, navigation, desktop layer, depth map) and `docs/flows.md` (the
-four user flows: MJ, FJ2, FJ5+EJ3, SJ1) are the source of truth. `docs/pages/seo.md` and
+five user flows: MJ, FJ1, FJ2, FJ5+EJ3, SJ1) are the source of truth. `docs/pages/seo.md` and
 `docs/pages/system.md` carry the detailed layer, and `docs/blocks.md` banks what a page of a given
 TYPE is made of, before one is drawn.
 

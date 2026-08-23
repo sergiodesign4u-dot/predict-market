@@ -5,7 +5,7 @@
 thing gets built and in what order. Written 2026-08-20, closing `docs/backlog.md` 218.
 
 **It is a build plan and not more design.** Every screen, every string and every component this needs
-already exists: 116 painted screens, 116 grey, 49 components in one stylesheet, every string in
+already exists: 119 painted screens and 119 grey, re-counted 2026-08-23, 49 components in one stylesheet, every string in
 `voice/docs/microcopy.md`, every entity in `ia/docs/sitemap.md`. **Nothing here asks for a new
 drawing.** If a question turns out to need one, it stops and goes through the pipeline in order,
 `ia/` then `wireframes/` then `ui-visual/`, the way `docs/decisions.md` records for the multi
@@ -41,7 +41,7 @@ towards CSS-in-JS, which this system refuses. A component framework of any kind:
 already CSS classes, and wrapping them in React would create a second component system whose
 boundaries disagree with `components/`. A headless CMS: seven markets and one operator.
 
-## 2. 116 documents are 6 routes, and that is the point
+## 2. The painted documents are 6 routes, and that is the point
 
 A static tree needs a document per combination of category, auth state and load state. A running app
 gets all three from data. **This is where the apparent size of the build collapses.**
@@ -57,7 +57,7 @@ gets all three from data. **This is where the apparent size of the build collaps
 | sign-in | 4 | a dialog over whatever route you were on, not a route |
 | win / loss | 7 | an overlay reached from `/bets` or a notification, not a route |
 
-**91 of the 116 painted documents live inside those routes.** The remaining 25 are the static
+**Most of the painted documents live inside those routes.** The remainder are the static
 content pages, the system pages and families v1 does not open: deposit (7, no money), notifications
 (5), favorites (4), public profile (4), and the five documents plus 404 / 500 / maintenance /
 cookie / toasts.

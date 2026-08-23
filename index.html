@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yonder - a prediction market platform</title>
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --border: #242424;
+    --text: #e8e8e8;
+    --muted: #666;
+    --accent: #c8ff00;
+    --red: #ff5f5f;
+    --blue: #5fa8ff;
+    --font: 'Inter', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --r: 8px;
+    --gap: 48px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  main { padding: 60px 20px 80px; }
+  @media (min-width: 860px) { main { margin-left: 220px; padding: 64px 48px 120px; } }
+  .wrap { max-width: 980px; }
+  section { padding-top: var(--gap); margin-top: var(--gap); border-top: 1px solid var(--border); }
+  section:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+
+  .section-label { font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; letter-spacing: -.02em; line-height: 1.1; margin-bottom: 16px; }
+  h2 { font-size: 22px; font-weight: 600; letter-spacing: -.01em; margin-bottom: 20px; }
+  p { margin-bottom: 14px; max-width: 720px; color: #b8b8b8; }
+  p.lede { font-size: 16px; color: #cfcfcf; }
+  strong { color: var(--text); font-weight: 600; }
+
+  .doors { display: grid; gap: 14px; grid-template-columns: 1fr; margin: 28px 0 8px; }
+  @media (min-width: 720px) { .doors { grid-template-columns: repeat(3, 1fr); } }
+  .door { display: block; text-decoration: none; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 20px; transition: border-color .16s ease, background .16s ease; }
+  .door:hover, .door:focus-visible { border-color: var(--accent); background: rgba(200,255,0,.03); }
+  .door .k { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  .door .t { display: block; font-size: 17px; font-weight: 600; color: var(--text); margin: 8px 0 6px; }
+  .door .d { font-size: 12.5px; color: #999; line-height: 1.5; }
+
+  table { width: 100%; border-collapse: collapse; margin: 18px 0 8px; font-size: 13px; }
+  th { text-align: left; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 8px 12px 8px 0; border-bottom: 1px solid var(--border); }
+  td { padding: 10px 12px 10px 0; border-bottom: 1px solid #1c1c1c; color: #aaa; vertical-align: top; }
+  td strong { color: var(--text); }
+  td a { color: var(--blue); text-decoration: none; }
+  td a:hover, td a:focus-visible { text-decoration: underline; }
+
+  .note { background: var(--surface); border: 1px solid var(--border); border-left: 2px solid var(--accent); border-radius: var(--r); padding: 16px 18px; margin: 22px 0; max-width: 720px; }
+  .note h4 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--text); margin-bottom: 8px; }
+  .note p:last-child { margin-bottom: 0; }
+  a.inline { color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(95,168,255,.3); }
+  a.inline:hover, a.inline:focus-visible { border-bottom-color: var(--blue); }
+  code { font-family: var(--mono); font-size: 12px; color: var(--accent); }
+  .foot { margin-top: var(--gap); padding-top: 20px; border-top: 1px solid var(--border); font-size: 12px; color: var(--muted); }
+</style>
+<link rel="stylesheet" href="components/fonts.css">
+<link rel="stylesheet" href="components/tokens.css">
+<link rel="stylesheet" href="components/course-chrome.css">
+</head>
+<body>
+
+<button class="rm-toggle" id="menuToggle" aria-label="Open navigation">
+  <span></span><span></span><span></span>
+</button>
+<div class="rm-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar"></aside>
+<script src="assets/_roadmap.js"></script>
+
+<main>
+<div class="wrap">
+
+<section id="top">
+  <div class="section-label">Yonder</div>
+  <h1>A prediction market platform</h1>
+  <p class="lede">
+    A mobile-first web product where a person bets YES or NO on real-world events using stablecoins.
+    Outcomes resolve against reality, not against opinion. The bet this project makes is <strong>better
+    clarity and onboarding than the existing markets</strong>, for people who follow the news and are
+    not traders.
+  </p>
+  <p>
+    <strong>What you are holding is a finished design deliverable and its documentation.</strong>
+    There is no application code, no server, no database and no build step, and that is deliberate:
+    every screen below is a static file you can open. The panel on the left is the twelve stages that
+    produced it, in order.
+  </p>
+
+  <div class="doors">
+    <a class="door" href="ui-visual/event-feed.html">
+      <span class="k">The product</span>
+      <span class="t">Event Feed</span>
+      <span class="d">The painted product, from its entry screen. Clickable end to end: feed, event, sign in, funding, your bets. Open this first.</span>
+    </a>
+    <a class="door" href="handoff/handoff.html">
+      <span class="k">The handoff</span>
+      <span class="t">One page instead of an explanation</span>
+      <span class="d">What this package is and is not, which theme is primary, how it behaves, how to add to it, and who decides now. Open this second.</span>
+    </a>
+    <a class="door" href="ui-kit/why.html">
+      <span class="k">The system</span>
+      <span class="t">Why it is like this</span>
+      <span class="d">The design system in five minutes, the traps it has already paid for, and the vitrine that shows every component on its own page.</span>
+    </a>
+  </div>
+
+  <div class="note">
+    <h4>No build, no server, no install</h4>
+    <p>
+      Clone the repository and open any file straight from disk, or read it published at the same
+      addresses. Every painted screen links exactly one stylesheet and every page you can reach is a
+      file that already exists.
+    </p>
+  </div>
+</section>
+
+<section id="handoff">
+  <div class="section-label">If you are taking this over</div>
+  <h2>Four documents answer what no rendered page can</h2>
+  <p>
+    A screen shows a state and cannot tell you what reaches it, what it is made of, or what it
+    promises a reader who cannot use it the ordinary way. Start at
+    <a class="inline" href="handoff/handoff.html">the handoff page</a>, which leads to all four.
+  </p>
+  <table>
+    <tr><th>Document</th><th>The question it answers</th></tr>
+    <tr>
+      <td><a href="handoff/docs/behaviour.md"><strong>behaviour.md</strong></a></td>
+      <td>What the product does: five flows step by step, every terminal and its recovery, the states each surface has, what each field enforces. Every row cites the source that already said it</td>
+    </tr>
+    <tr>
+      <td><a href="handoff/docs/map.md"><strong>map.md</strong></a></td>
+      <td>Screen to zone to component to token to copy, taken from the code. Then the same data inverted, which is what it is for: <strong>if I change this token, what moves</strong></td>
+    </tr>
+    <tr>
+      <td><a href="handoff/docs/a11y.md"><strong>a11y.md</strong></a></td>
+      <td>Every accessibility ruling the system carries, each with the instrument that checks it and a status of two values, confirmed or debt</td>
+    </tr>
+    <tr>
+      <td><a href="handoff/docs/onboarding-gaps.md"><strong>onboarding-gaps.md</strong></a></td>
+      <td>What a reader with no context could not work out, and what they worked out wrongly. The second list is the expensive one</td>
+    </tr>
+  </table>
+</section>
+
+<section id="index">
+  <div class="section-label">Everything else</div>
+  <h2>The index is the README</h2>
+  <p>
+    <a class="inline" href="README.md">README.md</a> is the route to every folder and every source
+    document, with the one status table. Three rules decide the rest of them, and they are in
+    <a class="inline" href="CLAUDE.md">CLAUDE.md</a> with the measurement that produced each one.
+  </p>
+  <table>
+    <tr><th>If you want</th><th>Open</th></tr>
+    <tr><td>the product, painted and clickable</td><td><a href="ui-visual/event-feed.html">ui-visual/event-feed.html</a></td></tr>
+    <tr><td>every component on its own page</td><td><a href="ui-kit/overview.html">ui-kit/overview.html</a></td></tr>
+    <tr><td>what the product is, as a product</td><td><a href="PRODUCT.md">PRODUCT.md</a></td></tr>
+    <tr><td>what was decided and why, dated</td><td><a href="docs/decisions.md">docs/decisions.md</a></td></tr>
+    <tr><td>what is still open</td><td><a href="docs/backlog.md">docs/backlog.md</a></td></tr>
+    <tr><td>where a file lives</td><td><a href="STRUCTURE.md">STRUCTURE.md</a></td></tr>
+  </table>
+  <p class="foot">
+    This page is the front door and nothing else: it holds no fact of its own, so there is nothing
+    here to go stale. The stage list on the left is rendered from <code>assets/_roadmap.js</code>,
+    which is the one registry of it.
+  </p>
+</section>
+
+</div>
+</main>
+
+<script>
+const toggle = document.getElementById('menuToggle')
+const overlay = document.getElementById('sidebarOverlay')
+const sidebar = document.getElementById('sidebar')
+toggle.addEventListener('click', () => { sidebar.classList.toggle('open'); overlay.classList.toggle('open') })
+overlay.addEventListener('click', () => { sidebar.classList.remove('open'); overlay.classList.remove('open') })
+</script>
+
+</body>
+</html>

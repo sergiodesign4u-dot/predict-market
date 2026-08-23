@@ -20,14 +20,14 @@ There is no build step and no gate anywhere in this repository. **What you write
 
 | folder | what it is | links |
 |---|---|---|
-| `wireframes/` | 116 grey documents. Owns STRUCTURE and COPY. A block is decided here first | no stylesheet at all, an inline `<style>` each |
-| `ui-visual/` | 117 documents, 116 of them screens and `overview.html` the index of the tree | exactly `components/index.css` |
+| `wireframes/` | 119 grey documents, counted 2026-08-23. Owns STRUCTURE and COPY. A block is decided here first | no stylesheet at all, an inline `<style>` each |
+| `ui-visual/` | 120 documents, 119 of them screens and `overview.html` the index of the tree, counted 2026-08-23 | exactly `components/index.css` |
 | `ui-kit/` | 61 pages. The vitrine: two entry pages, six foundations, a shelf per level, a page per component | `components/index.css` plus its own `_page.css` |
 | `components/` | the system. 56 stylesheets, 11,652 lines: 50 here and 6 in `patterns/` | is the thing being linked |
 
 **A painted screen carries no styles of its own.** Measured by reading every `<link rel=stylesheet>`
-in the tree: **116 of the 117 documents in `ui-visual/` link `../components/index.css` and nothing
-else**, and the one that links a second file is `overview.html`, which is the index of the tree
+in the tree: **119 of the 120 documents in `ui-visual/` link `../components/index.css` and nothing
+else**, re-counted 2026-08-23, and the one that links a second file is `overview.html`, which is the index of the tree
 rather than a screen in it and borrows the stand's `_page.css` for its own furniture.
 
 **A state is a page**, in both trees. The six differences that ARE the layer boundary between grey
@@ -193,7 +193,7 @@ setting exists. **There is no blanket `*` net and there will not be one**: under
 net makes the check unable to fail.
 
 **Motion lives in a token, a component or a pattern.** Measured over the trees:
-`transition`, `animation` and `@keyframes` stand **0 times in the 116 painted screens** and 0 times
+`transition`, `animation` and `@keyframes` stand **0 times in the painted screens** and 0 times
 on the 60 kit pages, all 6 `@keyframes` are in `components/`, `transition: all` is **0**, and there
 is **one** bare easing keyword, a deliberate `linear` on a longhand in `catnav.css`.
 

@@ -26,6 +26,13 @@ BACKLOG and not about the product: `PRODUCT.md` still carries `Jurisdiction: [?]
 pages are a draft nobody with counsel has read, and there are 0 lines of product code. **An empty
 backlog means nothing measured today is open, which is a reason to go and measure something else.**
 
+**AND IT WAS 0 UNTIL 2026-08-23, WHEN THE HANDOFF RUN FILED THREE.** 232, 233 and 234 are below
+under *Accessibility, found by the Handoff run*. **The same run produced three more findings and
+filed none of them**, because all three were the instrument rather than the page, and a finding that
+was never true is not an open item: they are written up in `handoff/docs/a11y.md` with the control
+that caught each one. Open is **5**, counted from the rows on 2026-08-23: 232 to 234 from the accessibility run and 235 to 236 from the route pass.
+
+
 **The week of 2026-08-19 and 2026-08-20 filed eleven rows and struck five of them within a day, and
 the pattern is worth keeping**: 217 was filed as "delete a word" and was really claim against
 mechanism; 219 was filed as a classification problem and was really a HORIZON problem; 221 was filed
@@ -114,7 +121,41 @@ Stage 09 owns it.
 
 Carried since the project brief; none of it has been answered.
 
-### Closed by Stage 11's own follow-up, 2026-08-15
+### Accessibility, found by the Handoff run
+
+Three rows from Handoff step 4, 2026-08-23. **Each was produced by a probe that had first passed its
+own control**, and the same run threw away three findings that were the instrument: a gradient ground
+that computes to transparent, an off-canvas skip link drawn in the browser's own blue, and a probe
+that opened every header disclosure at once and was closed again by the page's own script. Those
+three are written up in `handoff/docs/a11y.md` rather than filed, because a finding that was never
+true is not an open item.
+
+None of the three below is fixed in the Handoff stage: a product edit after the tree was accepted
+cancels every comparison the acceptance stood on. Each carries the instrument that finds it again.
+
+| # | Item | Source | Note |
+|---|---|---|---|
+| 232 | **Primary navigation has no landmark label at and above the desk rung.** Below it the bottom bar carries a `nav` with a primary label. Above it the bar goes, the header takes over, and the header is not a labelled navigation landmark: a reader moving by landmark finds categories, the footer columns and legal, and no primary. **Every destination is reachable** - the run confirmed that, once it stopped fighting the page's own disclosure script - so this is a missing label and not a missing route. **How to check:** list every `nav` and its accessible name at each rung and one pixel either side, and assert one is primary. The fix is a label on every painted screen, which is why it is a row and not an edit | Handoff step 4, 2026-08-23 | `handoff/docs/a11y.md` row 7. Measured over 17 widths at three browser default sizes, both engines |
+| 233 | **Four controls measure under the touch floor with the coarse-pointer branch asserted on**: the filter toggle on the feed, and three icon controls on the event detail. The floor itself applies correctly - the branch was asserted in the page before the measurement, which is the reading that a headless browser silently turns off. The four hidden tab inputs on the event detail are NOT in this list: they are not the target, their labels are, and the clipped skip link is not a target either. **How to check:** emulate touch, assert `(pointer:coarse)` matches inside the page, then measure every interactive box; the floor is one rule in `base.css` and a `max()`, so the fix is naming these four rather than adding a rule | Handoff step 4, 2026-08-23 | `handoff/docs/a11y.md` row 9 |
+| 234 | **Focus placement and escape were never measured on the 19 screens that open with a modal dialog.** Those screens are the feed with an overlay over it, and the document behind a modal is inert - which the run confirmed by finding the skip link correctly unreachable on exactly those 19 and correct on the other 100. What was not measured is the half a keyboard user meets FIRST: whether focus lands inside the dialog on load, and whether Escape returns it. **How to check:** TAB once from load and assert the first stop is inside the dialog; press Escape and assert focus returns to the page. **This row is a gap in the measurement, not a known defect**, and it is filed because a point that cannot be verified looks like finished work and is not | Handoff step 4, 2026-08-23 | `handoff/docs/a11y.md` row 11 |
+
+---
+
+## Counts inside pages, found by the Handoff route pass
+
+Two rows from Handoff step 5, 2026-08-23. Both are the same defect as the six prose files repaired
+that day, in the two places the Handoff stage may not touch: a stand page and the product tree.
+**The stage repairs documentation and never a page**, because a product edit after the tree was
+accepted cancels every comparison the acceptance stood on.
+
+| # | Item | Source | Note |
+|---|---|---|---|
+| 235 | **`ui-kit/overview.html` argues against itself in one screenful.** Its panel COMPUTES the kit's tally from the registry and prints it live; three inches below, its own body prose still types a smaller page count and a pair of tree sizes that are several documents behind the disk. Read as source the two look like statements of the same rank; rendered, one is a computation and one is a fossil, and a reader with no context said so before any instrument here did. **How to check:** open the page and read the panel against the paragraph. The fix is to delete the typed figures or make them read from the same registry the panel already reads | Handoff step 5, 2026-08-23 | The page is a stand page and out of scope for the Handoff stage. `handoff/docs/onboarding-gaps.md`, LIST B row on stale counts |
+| 236 | **The grey tree's only self-check is switched off, on every document.** That tree links no stylesheet, so each file carries its rules inline and each region states its own numbers, `SHARED (N of M, R rules)`. The point of the denominator is that a file which has LOST a shared block contradicts its own header. Measured 2026-08-23: every grey document declares itself one of a tree several documents smaller than the tree on disk, and the shared-region markers carry three different denominators between them, none of which is the count. **A denominator that is behind the tree cannot catch a reduced copy**, which is the whole and only job it has. **How to check:** count the documents, then read the denominators; they must agree. The fix is a sweep over every grey document, which is a product edit | Handoff step 5, 2026-08-23 | `handoff/docs/onboarding-gaps.md`, LIST B. The mechanism is described in `wireframes/_conventions.md` |
+
+---
+
+## Closed by Stage 11's own follow-up, 2026-08-15
 
 | # | Item | Verdict |
 |---|---|---|

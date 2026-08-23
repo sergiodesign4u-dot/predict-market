@@ -255,7 +255,7 @@ the product on the day somebody measured it and not the product today.
   is the User Agent's. A missing value is a value. Measure the computed result in a browser, at both
   widths and in both themes.
 - **An attribute can be a guard that never fires.** 113 of the 121 amount fields carried
-  `pattern="[0-9.$]*"` and the product contains **0 `<form>` elements**, measured across all 106
+  `pattern="[0-9.$]*"` and the product contained **0 `<form>` elements** when this was measured across 106
   documents in `ui-visual/`: a pattern is only consulted at form validation, so it validated nothing at any
   moment and read as a constraint to everyone who opened the markup. The other 8 did not carry it
   and the two trees disagreed about which. **Absent and inert are the same amount of nothing**, which

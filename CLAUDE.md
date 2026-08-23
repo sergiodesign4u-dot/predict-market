@@ -33,12 +33,13 @@ appears twice the copy here is the one to delete.
 | What is still open | `docs/backlog.md` |
 | Which markets the first release actually opens, and the resolver for each | `docs/launch-catalog.md` |
 | How the thing gets BUILT: stack, schema, routes, order of work | `docs/build-plan.md` |
-| Which stage is done | the status table in `README.md`. Two REGISTRIES render it as well, `assets/_roadmap.js` on the 28 course documents and `ui-kit/_nav.js` on the 60 stand pages, and this row said "and nowhere else" while `_roadmap.js` printed SOON on a stage that had shipped three days before. **A rendered status is the one a reader sees, so it is the one to turn first** |
+| Which stage is done | the status table in `README.md`. Two REGISTRIES render it as well, `assets/_roadmap.js` on 29 documents, the 28 course documents plus the repository index, and `ui-kit/_nav.js` on the 60 stand pages, and this row said "and nowhere else" while `_roadmap.js` printed SOON on a stage that had shipped three days before. **A rendered status is the one a reader sees, so it is the one to turn first** |
 | Where a file lives | `STRUCTURE.md` |
 | The shipped visual system (Vault) | `DESIGN.md` |
 | Screens, navigation, flows, SEO | `ia/docs/` |
 | Every UI string | `voice/docs/microcopy.md` |
 | What the deleted kit had already worked out | `docs/kit-archive/` |
+| What the product DOES, what each screen is made of, and what it promises a reader who cannot use it the ordinary way | `handoff/`, the section at the foot of this file |
 
 ---
 
@@ -687,3 +688,54 @@ because it is a stance rather than a principle, and it is written once, here.
   `concept/old/pre-vault-3d/` keeps 3 and is frozen, the way `docs/kit-archive/` is. **A rule stated
   over a set is measured over the set**, which is the same sentence as the convention nineteen auth
   pairs of twenty obeyed.
+
+---
+
+## Handoff
+
+**The front door is `index.html` at the root, and it holds no fact of its own.** It carries the three
+doors, the four handoff documents and the stage list rendered from `assets/_roadmap.js`, and nothing
+that can go stale. It exists because the published site has no other one: `.nojekyll` is what keeps
+`assets/_roadmap.js` and `ui-kit/_nav.js` alive on GitHub Pages, since Jekyll drops every path
+beginning with an underscore and would take the roadmap panel off all 28 course documents and the
+route off all 61 stand pages. **With Jekyll off, nothing turns `README.md` into an index**, so
+without this file the one address a person is handed is a 404. Checked on 2026-08-23 against the
+live site, and it is the shape of finding that only a request can produce.
+
+**Four questions are answered nowhere else in this repository**, because a page renders a state and
+cannot say what reaches it, what it is made of, or what it promises a reader who cannot use it the
+ordinary way.
+
+| Question | File |
+|---|---|
+| What the product DOES: flows, terminals, states, validation, edge cases | `handoff/docs/behaviour.md` |
+| If I change this token, what moves | `handoff/docs/map.md` |
+| What is promised about accessibility, and the instrument for each promise | `handoff/docs/a11y.md` |
+| How to add a screen without taking the system apart | `handoff/docs/one-shot.md` |
+| What a reader with no context could not work out, and what they worked out wrongly | `handoff/docs/onboarding-gaps.md` |
+
+- **A HANDOFF DOCUMENT REFERENCES AND NEVER COPIES, AND THE TEST IS MECHANICAL.** A hex value, a
+  length in pixels, a shipped interface string or a block of css inside `handoff/` is a DEFECT and
+  not a shortcut: it names the component, the variant and the state, or the token, or the row in
+  `voice/docs/microcopy.md`. A copy is a second edition of one fact, and this file's own longest
+  rule is what happens to those - **the copy nobody re-reads is the one that keeps rendering
+  yesterday's truth with a confident face.** The check is a grep, it is part of the stage, and it
+  reads zero.
+- **EVERY ROW OF THE BEHAVIOUR SPEC CITES ONE OF EXACTLY THREE SOURCES**, and a row with no source
+  is not in the spec at all: it goes to the NOT DECIDED list at the foot of the file, addressed to a
+  person. The three are the screen file in `ui-visual/` (the state EXISTS as a drawn surface),
+  `ia/docs/flows.md` (the transition EXISTS in a flow, with its terminal) and the node's own page in
+  `ia/docs/` (the node REQUIRES it). **Behaviour is the exact place where a plausible median is
+  indistinguishable from a decision by reading it**, which is why the citation is the rule rather
+  than a courtesy.
+- **THE HANDOFF DOCUMENTS WHAT IS; IT DOES NOT REPAIR THE PRODUCT.** A hole found while writing it
+  becomes a row in `docs/backlog.md` and a status of **debt** in the file that found it, with the
+  instrument written down. One writer, two visible places. A product edit made after the tree was
+  measured cancels every comparison the measurement stood on, which is the same reason a sweep is a
+  throwaway script. **The line is drawn by KIND of file**: `ui-visual/**`, `wireframes/**`,
+  `components/**` and `ui-kit/*.html` are closed; the prose beside them is written as usual, and
+  adding a backlog row IS the way to not touch the product.
+- **A POINT WITH NO INSTRUMENT NEVER GETS A STATUS.** In `a11y.md` "confirmed" means a run on the
+  day it says, by the named instrument, not a memory that an earlier stage did it once; anything
+  else is **debt** with the backlog row beside it. A point that cannot be verified is neither a
+  confirmation nor a plan, and it is worse than an absence because it looks like finished work.
