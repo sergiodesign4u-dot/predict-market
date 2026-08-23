@@ -1,6 +1,6 @@
 # ui-visual/ - the painted tree
 
-120 documents, 119 of them screens, counted 2026-08-23, the colour copies of the grey tree. **This line said 115 and 114 for five documents and was found by a reader with no context, not by any instrument here**: a typed count is a live claim and nothing re-reads it. It was 110 and 109 until 2026-08-18, when the four Type 1 static documents arrived in both trees, and 109 and 108 until
+125 documents, 124 of them screens, counted 2026-08-23 after the Account limits family added five, and 120 and 119 earlier the same day, the colour copies of the grey tree. **This line said 115 and 114 for five documents and was found by a reader with no context, not by any instrument here**: a typed count is a live claim and nothing re-reads it. It was 110 and 109 until 2026-08-18, when the four Type 1 static documents arrived in both trees, and 109 and 108 until
 2026-08-17, when the state a bet is actually in got a page of its own, `docs/backlog.md` 185. This tree owns **the visual
 layer**: colour, type, radius, photography, texture. It does not own what is on the page.
 
@@ -59,7 +59,7 @@ carries no schema at all. `docs/backlog.md` 171.
 
 ## What is here
 
-- 15 families with their full state sets: loading, empty, error, success, plus logged-in and
+- 16 families with their full state sets: loading, empty, error, success, plus logged-in and
   logged-out on the browse screens. **A state is a page**, not a class.
 - `overview.html` is the index and is the one page in this folder that is a stand rather than a
   screen. It links `../ui-kit/_page.css` for its own furniture, which is why that file exists.

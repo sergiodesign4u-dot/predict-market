@@ -273,3 +273,78 @@ A static page has fewer than a product screen, and saying which are absent is pa
   (Careers, Press, Brand, Geo restrictions) would be this type if they became nodes.
 - The legal text itself. The bank decides the blocks; the copy is legal review plus
   `voice/docs/microcopy.md`, in that order.
+
+---
+
+## Type 2: the account control page
+
+### Which nodes it covers
+
+One node, **Account limits**, registered in `ia/docs/sitemap.md` under ACCOUNT LIMITS and built in
+both trees on 2026-08-23. **Contact / Support is the second candidate for this type and is not banked
+here**: the Type 1 section above ruled it out of that type for carrying a form, and it is ruled out of
+this one for the other half of the same sentence. A support form COLLECTS something and sends it
+somewhere; this page SETS something that then acts against the reader's own next tap. The states are
+not the same states and the trace is not the same trace, so a second section is owed when that screen
+comes up rather than a row added here.
+
+**THE BANKING METHOD IS RUN SHORT AND THIS PARAGRAPH SAYS WHICH HALF IS MISSING**, because
+`handoff/docs/behaviour.md` NOT DECIDED row N4 asks exactly this question and it is still open: for a
+type that has never been banked, which steps are mandatory. The four rules below are kept in full: no
+block without a trace, the better-than column filled on every row, a reference is an input, and every
+block carries a phase. **What is NOT run is the two-source research pass** of the Type 1 section, the
+live competitor read and the Refero craft read, because this build had no browser on the open web and
+a substituted guess wearing a citation is worse than a stated absence. The consequence is written into
+the rows: every `Reference input` cell below reads `not read` and the `Where we are better` cell argues
+from this product's own decisions instead. `docs/backlog.md` carries the row that re-opens it.
+
+### The bank
+
+| # | Block | Phase | Traces to | Reference input | Where we are better |
+|---|---|---|---|---|---|
+| C1 | **App header**, logged-in variant, unchanged | MVP | R6; the page is auth-gated and has no logged-out face | not read | Same header component as every other screen. A control page that changes its chrome tells a reader they have left the product |
+| C2 | **H1 naming the place in the lexicon's own words** | MVP | `voice/docs/voice.md`, Screen heading rule | not read | The lexicon settles it: **Account limits**, not Settings, not Responsible gaming, not Safer play. One concept, one word |
+| C3 | **The asymmetry sentence, above every control** | MVP | FJ5, EJ3; `ia/docs/sitemap.md`, ACCOUNT LIMITS; `ui-visual/responsible-betting.html` section 4, which committed to it in writing before the screen existed | not read | This is the differentiator on this page type and it is one sentence: tightening lands at once, loosening waits 24 hours. It stands ABOVE the fields because a person who reads only the first line has read the only thing that makes the page work |
+| C4 | **Current state, as figures**, one per limit, before any field | MVP | P1, explain the number never just show it | not read | The obvious build opens with an empty form and makes a person derive their own state from the values in the boxes. Three figures and one sentence answer it before a finger moves |
+| C5 | **One field per limit**, each with its label, its period and the sentence that says what happens when it bites | MVP | `handoff/docs/behaviour.md` Validation, form field rule in `voice/docs/voice.md` | not read | The hint says what the limit DOES when it is reached, not what the field accepts. A ceiling nobody can picture hitting is a number, not a limit |
+| C6 | **A change waiting out its delay**, shown as its own row with the instant it lands and a way to cancel it | MVP | C3; GZ5 betrayal fear | not read | The asymmetry is invisible until something is actually waiting. A build that only DELAYS the change and never draws the wait has shipped a control that appears not to work |
+| C7 | **The period picker for the cooldown**, as a short set of named periods rather than a free field | MVP | P3, spectator language; the option rule in `CLAUDE.md`, a control offers what the product opens | not read | Three periods, not a date box. A free field makes a person invent a number at the moment they are least able to |
+| C8 | **What a limit does NOT touch** | MVP | `ui-visual/responsible-betting.html` section 5; P2, one plain sentence of trust before the ask | not read | Bets already held resolve and pay out, and withdrawal stays open. Stopping a person reaching their own money is a punishment rather than a protection, and this is the block that says so where the decision is being taken rather than in a legal page they may never open |
+| C9 | **The irreversible action, held apart**, with its own heading, its own control and a confirm step | MVP | `voice/docs/voice.md`, Dangerous or irreversible action | not read | Self-exclusion is not a fourth field in the form. It is below the save, it has its own sentence, and it is one dialog away, so it can never be reached by a mis-tap on Save |
+| C10 | **Footer + bottom nav**, unchanged | MVP | R9; a screen is never a dead end | not read | Same as every other screen |
+| C11 | **A route back to the prose** | MVP | `ia/docs/blocks.md` Type 1 B9, the set rule; the Bet365 read in Type 1, where the tools are the answer and the prose is the doorway | not read | The doorway runs both ways: Responsible betting links to this screen and this screen links back, so a person who arrives at the controls and wants the reasoning is one tap from it |
+| C12 | **A validation state for a rejected value** | **LATER** | `handoff/docs/behaviour.md` Validation, which draws every field rule as its own state page | not read | Named now and not built. The four other screens of this family are drawn and this one is not, which is a gap rather than a decision: `docs/backlog.md` carries it |
+| C13 | **A history of limit changes** | **NOT BANKED** | nothing | not read | It traces to no job in `jtbd.md` and the Wallet transaction list already records the money side. Recorded here so the next person who notices its absence finds the decision instead of the gap |
+
+### Block order, mobile first (base 360px)
+
+C1 header, C2 H1, C3 asymmetry sentence, C4 current state, C6 change waiting (only when one is),
+C5 deposit limit, C5 loss limit, C7 cooldown, save, C11 route back to the prose, C9 self-exclusion,
+C10 footer + bottom nav.
+
+**C3 stands above C4 and both stand above the first field.** The order is the argument: what the rule
+is, then what your state is, then the controls. A build that opens with the fields makes the rule
+something a person discovers by using it.
+
+**C8 has no fixed slot and that is deliberate.** It goes wherever the constraint it qualifies is: on
+the cooldown state it is a page-level note because the whole screen is held, and inside the
+self-exclusion dialog it is the paragraph above the button.
+
+### States
+
+- **success / no limits set** - the default a reader first meets, and the base page.
+- **limits-active** - at least one limit in force. Carries C6 when a loosening is waiting.
+- **cooldown** - a cooldown running; the form is held and says why, through `aria-describedby`
+  rather than through a dimmed button alone.
+- **loading** - the limits are fetched, so this state exists, unlike Type 1's.
+- **error** - the fetch failed. **The copy is the part that matters**: it says the limits already set
+  are still in force, because a limits screen that fails silently reads as a limit that lapsed.
+- **empty** - does not exist. "No limits set" is the default state and it is full of controls.
+
+### What this bank does NOT decide, and who does
+
+- The waiting period on a loosening. `ia/docs/sitemap.md` decides it, at 24 hours.
+- Whether a limit is enforced at sign-up, at deposit or at bet. That is `docs/build-plan.md`.
+- The legal minimum set of controls per jurisdiction. `PRODUCT.md`, when the compliance decision
+  its own Jurisdiction `[?]` is waiting on is taken.
+

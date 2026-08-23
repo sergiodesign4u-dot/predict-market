@@ -883,6 +883,75 @@ _3 state page(s): wallet-error.html, wallet-loading.html, wallet.html_
 | Main | Label | +$20.00 |  |
 | Main | Label | Jun 26 · completed |  |
 
+### Account limits
+
+_5 state page(s): account-limits.html, account-limits-active.html, account-limits-cooldown.html, account-limits-error.html, account-limits-loading.html_
+
+Written 2026-08-23 with the screen, so every line below was in this table before it was in a tree.
+The dangerous-action rule in `voice/docs/voice.md` decides the self-exclusion block: what will
+happen, and what cannot be undone, before the press.
+
+| Zone | Type | Line | Flag |
+|---|---|---|---|
+| Main | Heading | Account limits |  |
+| Main | Text | Tightening a limit takes effect at once. Loosening one, or lifting it, takes 24 hours. That is the whole of what makes a limit a limit rather than a setting. |  |
+| Main | Label | Deposit limit |  |
+| Main | Label | Loss limit |  |
+| Main | Label | Cooldown |  |
+| Main | Label | Not set |  |
+| Main | Label | Not running |  |
+| Main | Text | Nothing on this account is limited today. You can bet and add funds as normal. |  |
+| Main | Field label | Most you can add in 7 days |  |
+| Main | Placeholder | No limit |  |
+| Main | Text | The 7 days run from the moment you save, not from a calendar week. Once the total is reached, Add funds is refused until the window rolls. The balance you already hold is untouched. |  |
+| Main | Field label | Most you can lose in 7 days |  |
+| Main | Text | A loss is a stake on an event that resolved against you. A bet you still hold counts for nothing until it resolves. Once the total is reached, new bets are refused; the bets you already hold run to their own resolution. |  |
+| Main | Field label | Stop new bets for |  |
+| Main | Button | 24 hours |  |
+| Main | Button | 7 days |  |
+| Main | Button | 30 days |  |
+| Main | Text | A cooldown stops new bets and new funds for the period you pick. Bets you already hold resolve and pay out as normal, and you can withdraw at any time. It ends on its own and cannot be ended early. |  |
+| Main | Button | Save limits |  |
+| Main | Button | Responsible betting |  |
+| Main | Label | Self-exclusion |  |
+| Main | Text | Self-exclusion is longer than a cooldown and it is a different decision, so it is not part of the form above. For the period you name you cannot bet or add funds, and we will not lift it early even if you ask. |  |
+| Main | Button | Self-exclude |  |
+| Main | Label | Set Jun 29. This window rolls on Jul 6: the whole $200 of the deposit limit is still there, and $42 of the $50 loss limit, after the $8 stake that resolved against you on Jul 1. | Read against the fixture set rather than written: the only deposit in the Wallet ledger is Jun 26, outside this window, and the only loss inside it is the $8 stake `my-profile.html` dates to Jul 1. |
+| Main | Label | Raise the deposit limit to $300 |  |
+| Main | Label | Takes effect Jul 3, 18:40 |  |
+| Main | Text | You asked for this on Jul 2 at 18:40. Until it lands the limit is still $200. Cancel it and the limit stays where it is. |  |
+| Main | Button | Cancel this change |  |
+| Main | Text | Lower it and it applies at once. Raise it and the new number takes 24 hours, and the old one holds until then. |  |
+| Main | Text | A cooldown is running until Jul 6 at 09:12. New bets and new funds are refused until then, and it cannot be ended early. |  |
+| Main | Label | Ends Jul 6, 09:12 |  |
+| Main | Text | Started Jun 29 at 09:12, for 7 days. The two limits under it are unchanged and start counting again when the cooldown ends. |  |
+| Main | Text | Three bets you already hold are untouched. They resolve on their own dates and pay out to your Cash as normal, and you can withdraw at any time. |  |
+| Main | Text | Held while the cooldown runs. You can still tighten a limit from Jul 6. |  |
+| Main | Text | You cannot change a limit while a cooldown is running. That is the point of it. |  |
+| Main | Text | Self-exclusion is longer than a cooldown and it is a different decision. It can be started while a cooldown runs, because it only ever tightens. |  |
+| Main | Status | Loading your limits |  |
+| Main | Heading | Couldn't load your limits |  |
+| Main | Text | We couldn't fetch the limits on this account. Any limit you have already set is still in force; this is a display issue. Try again. |  |
+| Main | Button | Try again |  |
+| Overlay | Heading | Self-exclude |  |
+| Overlay | Text | This one cannot be lifted early. |  |
+| Overlay | Field label | Exclude me for |  |
+| Overlay | Button | 6 months |  |
+| Overlay | Button | 1 year |  |
+| Overlay | Button | Permanently |  |
+| Overlay | Text | For that period you cannot bet or add funds, and we will not lift it early even if you ask. Bets you already hold resolve and pay out to your Cash, and you can withdraw at any time. |  |
+| Overlay | Button | Self-exclude for 6 months |  |
+| Overlay | Text | Sections 6 and 7 of Responsible betting say what else is open to you, including help that does not go through us. |  |
+
+**Three strings on other screens moved with it**, and they are listed here rather than in their own
+sections because they are this screen's consequence:
+
+| Where | Line | Note |
+|---|---|---|
+| My Profile, main | Deposit limit, loss limit, cooldown / Not set / A limit holds against your own next tap: tightening one takes effect at once, loosening one takes 24 hours. / **Set account limits** | the route into the screen from the account hub |
+| Responsible betting, section 4 | the whole section, rewritten from *what to do while there are none* to *how they work*, and its heading turned in the `h2`, the section `aria-label` and the contents row | the three places a heading stands on a Type 1 page |
+| Responsible betting, sections 1, 5 and 6 | the three sentences that said the tools were reserved | a page that says a control does not exist while it does is the fixture contradiction this repository has a rule about |
+
 ### Notifications
 
 _5 state page(s): notifications-empty.html, notifications-error.html, notifications-loading.html, notifications-push.html, notifications.html_

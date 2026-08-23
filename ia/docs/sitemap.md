@@ -612,6 +612,45 @@ Withdrawal flow (not a separate screen - a flow inside Wallet): enter amount, en
 
 ---
 
+### ACCOUNT LIMITS - the reader's own brake
+
+Account-level controls a person sets on themselves. **Moved out of Deferred and built 2026-08-23**;
+the row at the foot of this file carries the argument and `docs/decisions.md` carries the account.
+
+```
+Account limits                               (FJ5 - EJ3)    required by Law 14.790 in one named market
+```
+
+**Account limits** - a deposit ceiling per 7 days, a loss ceiling per 7 days, a cooldown, and
+self-exclusion. Reached from My Profile, which is the account hub and the mobile slot 4 destination,
+and from section 4 of Responsible betting, which is the page a person looking for a brake actually
+lands on. **Not a bottom slot and not a header utility**: this file's own rule is that a slot is spent
+on a destination a person navigates to often, and a limit is set once and then works while nobody
+looks at it.
+
+**THE ASYMMETRY IS THE WHOLE FEATURE AND IT IS A BEHAVIOUR, NOT A SETTING.** Tightening a limit takes
+effect at once; loosening one, or lifting it, takes **24 hours**. A control that can be undone in the
+moment a person most wants to undo it is not a limit, and `responsible-betting.html` had already
+committed this product to that sentence in writing before the screen existed. 24 hours is the number
+because it is the same horizon this file already gives the one clock-triggered notification, and
+because it has to outlast an impulse rather than a mood.
+
+**What a limit does NOT touch.** Bets already held resolve and pay out on their own dates, and
+withdrawal is open throughout. Stopping a person reaching their own money is a punishment rather than
+a protection, which is section 5 of Responsible betting and is quoted here because it is the line the
+build could most easily have got wrong.
+
+States: success / no limits set (the default a reader first meets) - limits-active (limits in force,
+with a loosening change waiting out its 24 hours) - cooldown (a cooldown running, the form held) -
+loading (fetching the limits) - error (limits failed to load; the copy says the limits already set
+are still in force, because a limits screen that fails silently reads as a limit that lapsed).
+
+**Self-exclusion is a confirm dialog on this screen and not a page**, for the same reason withdrawal
+is a dialog on Wallet: it is one decision with one control, and a page per period would be three
+pages of the same sentence. It ships closed, which is a state and not a missing surface.
+
+---
+
 ### PROFILE - public reputation
 
 The "I called it" identity surface. Accessible to others, not just the account owner.
@@ -777,7 +816,7 @@ These screens are reached only inside a flow, triggered by a user action. They a
 | **Public Profile** | Deferred to post-MVP (G3) | Reachable only via external shared-card link for MVP. No in-app discovery at 10-20 curated markets: users do not browse others' track records unprompted. In-app path added when leaderboard or social discovery is confirmed. |
 | ~~**Search**~~ | ~~Deferred until catalog scale~~ **BUILT 2026-08-16** | The deferral read: "At 10-20 curated markets, users scan the Event Feed; they do not search. Search does not close a confirmed job at this scale. When added, it attaches to the Events tab under FJ1 - not a bottom slot." **Its premise was re-measured before it was overturned and it had NOT been overturned by scale**: the product draws **25 distinct events**, counted from every `.q` and `.ed-q` in the painted tree, so 10-20 became 25 and nothing else moved. The 1,284 in the footer strip is the resolved-on-chain trust figure and counts a different thing. **What did move is the reachability finding, and the 404 had been drawing the evidence for it**: `pages/system.md` names that page's two escapes as "search or quick links", it ships the quick links and a magnifier over "This page does not exist", and there was no route to an event except scrolling a category. **The IA's own placement is honoured**: three pages on the Events destination (`event-feed-search`, `-results`, `-empty`), no bottom slot, and the way in from every other screen is a header utility beside the bell. `docs/decisions.md` 2026-08-16.  **REBUILT AS A CONTROL 2026-08-17.** The three pages were right and the way in was not: the mark led to a page where the field stood at y=221 on a phone, unfocused, and the header kept a magnifier linking to the page it stood on. Search is now a SURFACE - a full-bleed sheet below the RAIL rung and a field in the header at 56.25rem and above, the rung chosen by measuring the free middle of the header row at 69px / 137px / 277px on 640 / 760 / 900. The IA's placement is unchanged: no bottom slot, the Events destination, and the same three pages, which now hold the full grid, the deep link and the state a reader arrives at cold. `docs/decisions.md` 2026-08-17.  **AND THE SCALE ARGUMENT IS SETTLED 2026-08-17, NOT LEFT STANDING**: `PRODUCT.md` names the catalog size, **about 25 events open at once, curated**, so the deferral's own premise is now a written target rather than a count of what happened to be drawn. Search stays, it is a convenience rather than the only way in, and **it indexes the OPEN set only** - a settled market is reached from your own history. If that number is ever raised past roughly 100, this row is the one to reopen, because the navigation model above it was drawn for a feed a person can scan.  **AND IT HAD NO ROUTE ON ANY CHART UNTIL 2026-08-18.** `ia/docs/flows.md` drew MJ, FJ2, FJ5 + EJ3 and SJ1 and named what it leaves undrawn on purpose; **FJ1 was in neither list**, so the job this row belongs to - find the event while the topic is live - had no diagram at all, and the word "search" appeared in that file five times, every one of them the substring inside `user-research/`. FJ1 is drawn now, above FJ2, with both search faces, the cold-entry page and T17. |
 | **Leaderboard** | [ORPHAN] | No confirmed job. SJ2 is served by My Profile and Public Profile. Leaderboard is a view over profiles, not a job-closing destination. |
-| **Responsible-play slot (D-logic)** | Reserved, post-MVP, not built, **and the page says so since 2026-08-20** | Account-level deposit and loss limits, cooldown period, self-exclusion. `responsible-betting.html` described all four as if a reader could reach them until `docs/backlog.md` 228 was written; section 4 now opens with *Account limits are not built yet* and gives what a person can do instead. Mandatory for Brazil Phase 2 (Law 14.790 / Ordinance 1,231 self-exclusion and responsible-gambling requirements). Do not discover this late. |
+| ~~**Responsible-play slot (D-logic)**~~ | **BUILT 2026-08-23, both trees.** Moved out of Deferred to its own screen, ACCOUNT LIMITS, above | Account-level deposit and loss limits, cooldown period, self-exclusion. It was reserved and post-MVP from the day this row was written, and `responsible-betting.html` said so in its own section 4 from 2026-08-20. **The deferral is overturned rather than ignored, and the argument is this row's own last sentence**: the requirement is not a product preference but a jurisdiction's, Brazil Phase 2 under Law 14.790 / Ordinance 1,231, and this row already said *do not discover this late*. A control that a compliance regime makes mandatory is cheaper to design before the regime arrives than after, because the asymmetry it needs (tightening at once, loosening after a wait) is a decision about the product's own behaviour and not a setting that can be bolted on. **What the deferral bought is kept**: no new component, no new token, no new pattern, and no change to the navigation model. The page that promised the tools now points at them, in both trees, and its heading moved in all three of the places a heading on that page stands. `docs/decisions.md` 2026-08-23. |
 
 ---
 

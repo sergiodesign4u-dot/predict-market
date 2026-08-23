@@ -12,6 +12,88 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-23 - Account limits, and a deferral overturned by reading the sentence that deferred it
+
+**The Responsible-play slot is built, in both trees, and it was marked reserved and post-MVP.** That
+row in `ia/docs/sitemap.md` sat under Deferred beside Leaderboard, which is an `[ORPHAN]` with no
+confirmed job, and the two are not the same shape at all. **The argument for building it is the
+deferral's own last two sentences**: *Mandatory for Brazil Phase 2 (Law 14.790 / Ordinance 1,231
+self-exclusion and responsible-gambling requirements). Do not discover this late.* A deferral that
+names a statute and then tells the next reader not to discover it late is a deferral asking to be
+re-read, and `PRODUCT.md` quotes the same row as *the one place a jurisdiction has already reached
+back into the build and asked for a screen*. **A control a regime makes mandatory is cheaper before
+the regime arrives**, because the thing it needs is not a form, it is an asymmetry in how the product
+behaves, and an asymmetry is a decision rather than a setting.
+
+**THE FEATURE IS ONE SENTENCE AND EVERYTHING ELSE FOLLOWS FROM IT: tightening a limit takes effect at
+once and loosening one takes 24 hours.** That sentence was not invented here. `ui-visual/responsible-betting.html`
+section 4 has carried it since 2026-08-20, in the future tense, beside *Account limits are not built
+yet*, and the same section already committed to what a break does not touch: bets already held resolve
+and pay out, and withdrawal stays open, because *stopping you reaching your own money would be a
+punishment rather than a protection*. **So the screen was specified by a page that said the screen
+did not exist**, which is the most useful thing this build found: the copy layer had banked a
+behaviour the map had filed as reserved.
+
+**24 hours is chosen and not defaulted.** The one other number of this shape in the repository is the
+deadline notification's firing horizon, decided 2026-08-21 at 24 hours because *the horizon must be
+shorter than the shortest period the catalog opens*. A loosening delay is bounded from the other end:
+it has to outlast an impulse rather than a mood, and it has to be short enough that a person who
+genuinely wants a higher ceiling is not punished for having set a limit at all. **Longer would be
+safer and would make the limit a thing people avoid setting**, which is the failure mode of a
+responsible-play control that nobody turns on.
+
+**Nothing entered the system, and that is the result the stage was checking.** No new component, no
+new token, no new pattern, no media query, no `style=` attribute and no motion declaration. The whole
+screen is `browse-shell`, `feed`, `list-head`, `position`, `input`, `chip`, `quick`, `notice`,
+`button`, `action-bar`, `state-block`, `skeleton` and `dialog`, which is the same set the Wallet
+already stands on plus the field group the Add funds sheet already stands on. **The one place it was
+tempting to invent something was the period picker**, and the deposit sheet's quick-select row was
+already the answer.
+
+**Self-exclusion is a confirm dialog and not a page**, on the precedent of the withdrawal dialog on
+Wallet: one decision, one control, and a page per period would be three pages of the same sentence.
+It ships closed, which is a state and not a missing surface.
+
+**Five states, ten documents, in both trees**: no limits set (the base), limits-active, cooldown,
+loading, error. The base is the state with nothing set, against the usual rule that the base is the
+success state, because on a control page the state a reader first meets IS the representative one and
+a form with nothing in it is not empty of content. **The error copy is the row that matters**: it says
+the limits already set are still in force, because a limits screen that fails silently reads to a
+person as a limit that lapsed.
+
+**Registered in four places and only two of them are registries.** The grey `.wf-tree` panel in 124
+documents and the painted `.sidebar-nav` in 125 are hand-written markup with no class in common, so
+one sweep wrote both and asserted each anchor exactly once per file before touching it. `ui-kit/_nav.js`
+and `assets/_roadmap.js` are untouched, because this work added no component and no stage. **The
+sweep also read the two panels back as SETS**: every document's panel names the same 124 grey and 125
+painted documents, and the row each document marks as current is the document. That read found
+twelve documents whose panels were already short of a row before this build, which is `docs/backlog.md` 239.
+
+**Measured, both engines, from disk.** 260 renders: Chromium 151 and WebKit 26.5, both trees, five
+states, thirteen widths, which are the three rungs and one pixel either side of each plus 320, 360,
+390 and 1280. **0 documents scrolling sideways, 0 page errors, exactly one `h1` per document.** The
+overflow probe was given a positive control built out of the page itself, a 900px box in a 390px
+window: Chromium reports `scrollLeft` back as 0 under `isMobile` and `scrollWidth` as 900, WebKit
+reports 510 and 900, so the reading is taken on `scrollWidth` and the control proves both engines can
+see it. Document height was taken in both trees and at 390 runs 1,550 to 2,256 grey against 2,146 to
+3,176 painted, with no state carrying a sheet after the footer. The theme control passed on both
+engines: the page ground is `rgb(15,16,19)` and `rgb(252,250,244)` between the two runs, so the two
+runs are two themes.
+
+**A new page TYPE was banked, and its research half was NOT run.** `ia/docs/blocks.md` gains Type 2,
+the account control page, thirteen blocks, each tracing to a job, a barrier or a written decision.
+The competitor read and the craft read that Type 1 ran are absent and every `Reference input` cell
+says `not read` rather than carrying a plausible reference. `handoff/docs/behaviour.md` NOT DECIDED
+N4 asks whether that pass is mandatory for a new type and the question is unanswered, so the bank
+states the absence. `docs/backlog.md` 241.
+
+**And the page that had promised the tools was turned with them.** `responsible-betting.html`,
+sections 1, 4, 5 and 6, in both trees, and section 4's heading moved in all three of the places a
+heading stands on a Type 1 page: the `h2`, the section's `aria-label` and the contents row. That
+third one is the one a previous pass on this same page missed, which is why it is counted here.
+
+---
+
 ## 2026-08-21 - The row already carried its own answer, and a cap that scales with the reader had no upper bound; then a notification that could not be made true turned out to be a catalog two months behind itself
 
 **Backlog 230, and the fix added no declaration.** `Sign in` and `Sign up` in the logged-out header

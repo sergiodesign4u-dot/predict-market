@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<script id="uvTheme">/* theme boot: applied before the first paint, so daylight never flashes graphite.
+   A frame is a document of its own, so it does not inherit the attribute: this
+   block runs in the frames too and they are told by postMessage, the same
+   handshake _frames.js already uses, because from file:// every document has
+   its own opaque origin and reading into a frame is refused.
+   Built by ui-visual/_theme_switch.py. Remove with --strip. */
+(function(){var K='pm-theme',r=document.documentElement;
+try{if(localStorage.getItem(K)==='light')r.setAttribute('data-theme','light')}catch(e){}
+function lit(){return r.getAttribute('data-theme')==='light'}
+function set(on){if(on){r.setAttribute('data-theme','light')}else{r.removeAttribute('data-theme')}}
+function push(){var f=document.getElementsByTagName('iframe');
+for(var i=0;i<f.length;i++){try{f[i].contentWindow.postMessage({pmTheme:lit()?'light':'dark'},'*')}catch(e){}}}
+function paint(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){all[i].setAttribute('aria-pressed',lit()?'true':'false');
+var l=all[i].querySelector('.ts-label');if(l)l.textContent=lit()?'Daylight':'Vault';}
+push();}
+function wire(){var all=document.querySelectorAll('.theme-switch');
+for(var i=0;i<all.length;i++){if(all[i].dataset.wired)continue;all[i].dataset.wired='1';
+all[i].addEventListener('click',function(){var on=lit();set(!on);
+try{localStorage.setItem(K,on?'dark':'light')}catch(e){}paint();});}
+paint();}
+window.addEventListener('message',function(e){var d=e.data;
+if(!d||(d.pmTheme!=='light'&&d.pmTheme!=='dark'))return;
+set(d.pmTheme==='light');paint();});
+document.addEventListener('DOMContentLoaded',function(){wire();
+/* Wired once more on the next tick, for a .theme-switch that is not in the
+   markup when this fires. All 106 painted screens carry one in static
+   markup, and the panel that used to arrive late was the kit's, which now
+   builds itself in ui-kit/_nav.js and never loads beside this script. So
+   this line is a guard today and not a fix, and wire() is idempotent. */
+setTimeout(wire,0);
+/* a frame that arrives late is told as soon as it is ready */
+var f=document.getElementsByTagName('iframe');
+for(var i=0;i<f.length;i++){f[i].addEventListener('load',push);}
+push();});})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Visual - Account limits</title>
+  <link rel="stylesheet" href="../components/index.css">
+  <script src="../assets/icons.js"></script>
+  <script src="../assets/search.js"></script>
+</head>
+<body>
+
+  <!-- Icons: ONE sprite, ../assets/icons.js, reached as <use href="#i-name">.
+       No copy lives in this file. It is a SCRIPT and not an .svg for one measured reason:
+       an external <use> is a cross-document reference and file:// gives every file its own
+       origin, so a page opened from disk drew 0 of 34 glyphs and logged 39 errors. A script
+       loads from disk and from a server alike, injects the sprite, and every <use> is
+       same-document again. Solar by 480 Design, CC BY 4.0. Attribution: ../NOTICE.md. -->
+<!-- ===== Roadmap sidebar (course chrome) + color-copy bar ===== -->
+  <button type="button" class="rm-toggle" id="rmToggle" aria-label="Open roadmap"><span></span><span></span><span></span></button>
+  <div class="rm-overlay" id="rmOverlay"></div>
+  <aside class="sidebar" id="rmSidebar">
+    <a href="../research/research.html" class="sidebar-back"><span class="bk-arrow" aria-hidden="true">&larr;</span> Course roadmap</a>
+    <div class="sidebar-brand"><div class="sidebar-project-name">UI + Visual - screens</div></div>
+    <button type="button" class="theme-switch" aria-pressed="false"><span class="ts-swatches" aria-hidden="true"><span class="ts-sw ts-dark"></span><span class="ts-sw ts-light"></span></span><span class="ts-label">Vault</span></button>
+    <nav class="sidebar-nav" aria-label="Painted screens">
+      <a href="overview.html" class="sidebar-page-link">Overview</a>
+      <div class="sidebar-divider">Event Feed</div>
+      <div class="sidebar-sub">
+        <div class="sidebar-divider sub">Logged in</div>
+        <a href="event-feed.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-loading.html" class="sidebar-sub-link">loading</a>
+          <a href="event-feed-search.html" class="sidebar-sub-link">search</a>
+          <a href="event-feed-search-results.html" class="sidebar-sub-link">search-results</a>
+          <a href="event-feed-search-empty.html" class="sidebar-sub-link">search-empty</a>
+        <a href="event-feed-push-permission-missing.html" class="sidebar-sub-link">push-permission-missing</a>
+        <div class="sidebar-divider sub">Logged out</div>
+        <a href="event-feed-logged-out.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-logged-out-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-logged-out-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+      </div>
+      <div class="sidebar-divider">Category pages</div>
+      <div class="sidebar-sub">
+        <div class="sidebar-divider sub">Politics</div>
+        <a href="event-feed-politics.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-politics-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-politics-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-politics-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-divider sub">Politics, logged out</div>
+        <a href="event-feed-politics-logged-out.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-politics-logged-out-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-politics-logged-out-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-politics-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-divider sub">Crypto</div>
+        <a href="event-feed-crypto.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-crypto-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-crypto-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-crypto-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-divider sub">Crypto, logged out</div>
+        <a href="event-feed-crypto-logged-out.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-crypto-logged-out-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-crypto-logged-out-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-crypto-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-divider sub">Culture</div>
+        <a href="event-feed-culture.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-culture-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-culture-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-culture-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-divider sub">Culture, logged out</div>
+        <a href="event-feed-culture-logged-out.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-culture-logged-out-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-culture-logged-out-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-culture-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-divider sub">General</div>
+        <a href="event-feed-general.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-general-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-general-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-general-loading.html" class="sidebar-sub-link">loading</a>
+        <div class="sidebar-divider sub">General, logged out</div>
+        <a href="event-feed-general-logged-out.html" class="sidebar-sub-link">success</a>
+        <a href="event-feed-general-logged-out-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="event-feed-general-logged-out-error.html" class="sidebar-sub-link">error</a>
+        <a href="event-feed-general-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+      </div>
+      <div class="sidebar-divider">Event Detail</div>
+      <div class="sidebar-sub">
+        <div class="sidebar-divider sub">Logged in</div>
+        <a href="event-detail.html" class="sidebar-sub-link">binary</a>
+        <a href="event-detail-multi.html" class="sidebar-sub-link">multi</a>
+        <a href="event-detail-recurring.html" class="sidebar-sub-link">recurring</a>
+        <a href="event-detail-recurring-multi.html" class="sidebar-sub-link">recurring multi</a>
+        <a href="event-detail-resolved.html" class="sidebar-sub-link">resolved</a>
+        <a href="event-detail-resolved-multi.html" class="sidebar-sub-link">resolved multi</a>
+        <a href="event-detail-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="event-detail-error.html" class="sidebar-sub-link">error</a>
+        <div class="sidebar-divider sub">Placing a bet</div>
+        <a href="event-detail-bet-ready.html" class="sidebar-sub-link">ready</a>
+        <a href="event-detail-bet-reconcile.html" class="sidebar-sub-link">price moved</a>
+        <a href="event-detail-bet-insufficient.html" class="sidebar-sub-link">low balance</a>
+        <a href="event-detail-bet-processing.html" class="sidebar-sub-link">processing</a>
+        <a href="event-detail-bet-error.html" class="sidebar-sub-link">on-chain error</a>
+        <div class="sidebar-divider sub">Logged out</div>
+        <a href="event-detail-logged-out.html" class="sidebar-sub-link">binary</a>
+        <a href="event-detail-logged-out-multi.html" class="sidebar-sub-link">multi</a>
+        <a href="event-detail-logged-out-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="event-detail-logged-out-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <div class="sidebar-divider">My Bets</div>
+      <div class="sidebar-sub">
+        <div class="sidebar-divider sub">Active</div>
+        <a href="active-bets.html" class="sidebar-sub-link">success</a>
+        <a href="active-bets-empty-new.html" class="sidebar-sub-link">empty (new)</a>
+        <a href="active-bets-empty-resolved.html" class="sidebar-sub-link">empty (resolved)</a>
+        <a href="active-bets-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="active-bets-error.html" class="sidebar-sub-link">error</a>
+        <div class="sidebar-divider sub">History</div>
+        <a href="active-bets-history.html" class="sidebar-sub-link">success</a>
+        <a href="active-bets-history-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="active-bets-history-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="active-bets-history-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <div class="sidebar-divider">Win / Loss</div>
+      <div class="sidebar-sub">
+        <div class="sidebar-divider sub">Win</div>
+        <a href="win.html" class="sidebar-sub-link">binary</a>
+        <a href="win-multi.html" class="sidebar-sub-link">multi</a>
+        <a href="win-payout-pending.html" class="sidebar-sub-link">payout pending</a>
+        <a href="win-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="win-error.html" class="sidebar-sub-link">error</a>
+        <div class="sidebar-divider sub">Loss</div>
+        <a href="loss.html" class="sidebar-sub-link">binary</a>
+        <a href="loss-multi.html" class="sidebar-sub-link">multi</a>
+        <a href="loss-loading.html" class="sidebar-sub-link">loading</a>
+      </div>
+      <div class="sidebar-divider">Favorites</div>
+      <div class="sidebar-sub">
+        <a href="favorites.html" class="sidebar-sub-link">success</a>
+        <a href="favorites-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="favorites-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="favorites-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <div class="sidebar-divider">Notifications</div>
+      <div class="sidebar-sub">
+        <a href="notifications.html" class="sidebar-sub-link">success</a>
+        <a href="notifications-empty.html" class="sidebar-sub-link">empty</a>
+        <a href="notifications-error.html" class="sidebar-sub-link">error</a>
+        <a href="notifications-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="notifications-push.html" class="sidebar-sub-link">push permission</a>
+      </div>
+      <div class="sidebar-divider">Wallet</div>
+      <div class="sidebar-sub">
+        <a href="wallet.html" class="sidebar-sub-link">success</a>
+        <a href="wallet-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="wallet-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <div class="sidebar-divider active">Account limits</div>
+      <div class="sidebar-sub">
+        <a href="account-limits.html" class="sidebar-sub-link active">no limits set</a>
+        <a href="account-limits-active.html" class="sidebar-sub-link">limits active</a>
+        <a href="account-limits-cooldown.html" class="sidebar-sub-link">cooldown</a>
+        <a href="account-limits-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="account-limits-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <div class="sidebar-divider">My Profile</div>
+      <div class="sidebar-sub">
+        <a href="my-profile.html" class="sidebar-sub-link">success</a>
+        <a href="my-profile-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="my-profile-error.html" class="sidebar-sub-link">error</a>
+      </div>
+      <div class="sidebar-divider">Public Profile</div>
+      <div class="sidebar-sub">
+        <a href="public-profile.html" class="sidebar-sub-link">success</a>
+        <a href="public-profile-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="public-profile-error.html" class="sidebar-sub-link">error</a>
+        <a href="public-profile-not-found.html" class="sidebar-sub-link">not found</a>
+      </div>
+      <div class="sidebar-divider">How It Works</div>
+      <div class="sidebar-sub">
+        <a href="how-it-works.html" class="sidebar-sub-link">success</a>
+      </div>
+      <div class="sidebar-divider">Legal</div>
+      <div class="sidebar-sub">
+        <a href="terms.html" class="sidebar-sub-link">Terms of Service</a>
+        <a href="privacy.html" class="sidebar-sub-link">Privacy Policy</a>
+        <a href="cookies.html" class="sidebar-sub-link">Cookie Policy</a>
+        <a href="responsible-betting.html" class="sidebar-sub-link">Responsible betting</a>
+      </div>
+      <div class="sidebar-divider">Company</div>
+      <div class="sidebar-sub">
+        <a href="about.html" class="sidebar-sub-link">About Yonder</a>
+      </div>
+      <div class="sidebar-divider">Sign In</div>
+      <div class="sidebar-sub">
+        <a href="sign-in.html" class="sidebar-sub-link">success</a>
+        <a href="sign-in-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="sign-in-error.html" class="sidebar-sub-link">error</a>
+        <a href="sign-in-provider-conflict.html" class="sidebar-sub-link">provider conflict</a>
+      </div>
+      <div class="sidebar-divider">Add funds</div>
+      <div class="sidebar-sub">
+        <a href="deposit.html" class="sidebar-sub-link">success</a>
+        <a href="deposit-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="deposit-pending.html" class="sidebar-sub-link">payment pending</a>
+        <a href="deposit-error-card.html" class="sidebar-sub-link">card declined</a>
+        <a href="deposit-error-kyc.html" class="sidebar-sub-link">KYC rejected</a>
+        <a href="deposit-minimum-not-met.html" class="sidebar-sub-link">minimum not met</a>
+        <a href="deposit-widget-load-failure.html" class="sidebar-sub-link">widget failed</a>
+      </div>
+      <div class="sidebar-divider">System</div>
+      <div class="sidebar-sub">
+        <a href="404.html" class="sidebar-sub-link">404 not found</a>
+        <a href="500.html" class="sidebar-sub-link">500 server error</a>
+        <a href="maintenance.html" class="sidebar-sub-link">maintenance</a>
+        <a href="cookie-consent.html" class="sidebar-sub-link">cookie consent</a>
+        <a href="toasts.html" class="sidebar-sub-link">toasts</a>
+      </div>
+      <div class="sidebar-note">All 16 families are colored. Overview lists them as chips; the system they are painted with is in <a href="../ui-kit/overview.html">ui-kit</a>.</div>
+    </nav>
+    <script id="uvPanelReveal">
+/* The panel opens showing where you are. One source for both trees:
+   ui-visual/_panel_reveal.py. No em dash. */
+function pmRevealPanelRow() {
+  var panel = document.querySelector('.sidebar');
+  if (!panel) return;
+  var row = panel.querySelector('.sidebar-page-link.active, .sidebar-sub-link.active') ||
+            panel.querySelector('.sidebar-divider.active');
+  if (!row) return;
+  var r = row.getBoundingClientRect(), p = panel.getBoundingClientRect();
+  if (r.top >= p.top && r.bottom <= p.bottom) return;   /* already shown: do not jump */
+  panel.scrollTop += (r.top - p.top) - p.height / 3;
+}
+pmRevealPanelRow();
+/* the drawer starts closed under 860px, so the first reveal happens off screen
+   and the panel is scrolled back to nothing by the time it slides in */
+document.addEventListener('click', function (e) {
+  if (e.target.closest && e.target.closest('#rmToggle')) setTimeout(pmRevealPanelRow, 0);
+});
+</script>
+  </aside>
+<!-- ============ THE RESPONSIVE PRODUCT SCREEN ============ -->
+  <div class="device">
+
+    <!-- Bypass block, WCAG 2.4.1: the first focusable thing in the document, clipped to 1x1
+         until it takes focus. The rule and the reason are components/base.css, .skip-link. -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Header (lean: logo = Events/home, right icon cluster) -->
+    <div class="app-case">
+    <header class="app-header">
+      <div class="row">
+        <div class="left">
+          <a class="logo logo-btn" href="event-feed.html">Yonder</a>
+          <button type="button" class="btn btn-ghost btn-xs hiw-btn" data-open="howitworks" aria-label="How it works">How it works</button>
+        </div>
+        <!-- Search, the inline face: the field itself, from the RAIL rung up. Below it this
+             element is display:none and the magnifier in the utility cluster opens the sheet.
+             The free middle of this row measures 69px at 640 and 277 at 900, which is what
+             decided the rung; components/search.css carries the ladder. -->
+        <form class="search-inline" role="search" action="event-feed-search-results.html" data-search>
+          <div class="search">
+              <div class="search-field">
+                <svg class="ic search-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg>
+                <input class="search-input" type="search" name="q" value="" placeholder="Search events"
+                       aria-label="Search events" autocomplete="off" enterkeyhint="search">
+                <button type="button" class="icon-btn icon-btn-bare search-clear" aria-label="Clear the search"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg></button>
+              </div>
+            </div>
+          <div class="search-panel" hidden></div>
+        </form>
+
+
+        <div class="utility">
+          <!-- Balance: one figure + swap icon (Balance <-> Cash). Desktop only. -->
+          <div class="bal-toggle desk-only">
+            <span class="bal-figure"><span class="bal-label" id="balLabel">Balance</span> <span class="bal-amt" id="balAmt">$132.00</span></span>
+            <button type="button" class="icon-btn bal-swap" id="balSwap" aria-label="Swap balance (showing Balance)">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-transfer-horizontal-b"/></svg>
+            </button>
+            <button type="button" class="icon-btn bal-add" data-open="deposit" aria-label="Add funds">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plus-b"/></svg>
+            </button>
+          </div>
+
+          <!-- Favorites: desktop header only (on mobile it is the bottom-bar slot). -->
+          <a class="icon-btn desk-only" href="favorites.html" aria-label="Favorites, see saved events">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+          </a>
+
+          <!-- Search: a utility on every screen, not a navigation slot. The IA defers search
+           "until catalog scale" and names where it goes when it arrives: the Events
+           destination, never a bottom slot. This is the way in from anywhere else. -->
+          <a class="icon-btn search-open" href="event-feed-search.html" aria-label="Search events">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg>
+          </a>
+          <!-- Notifications bell: header on both breakpoints (badge = retention anchor). -->
+          <details class="notif-menu">
+            <summary aria-label="Notifications, 3 unread">
+              <span class="bell-wrap">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bell-b"/></svg>
+                <span class="badge-dot">3</span>
+              </span>
+            </summary>
+            <div class="dropdown notif-drop" role="menu">
+              <ul>
+                <li><a class="nav-item nav-row nav-row-stack" href="win.html"><strong>Bet resolved</strong><span>US government shutdown before Jul 1, 2026 - YES won</span></a></li>
+                <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Odds moved</strong><span>Bitcoin above $150k - now 61%</span></a></li>
+                <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Deadline approaching</strong><span>Eurovision 2027 final closes in 24h</span></a></li>
+              </ul>
+              <a class="notif-all" href="notifications.html">See all notifications</a>
+            </div>
+          </details>
+
+          <details class="avatar-menu">
+            <summary aria-label="Account menu">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-user-b"/></svg>
+              <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-chevron-down"/></svg>
+            </summary>
+            <div class="dropdown" role="menu">
+              <ul>
+                <li><a class="nav-item nav-row" href="my-profile.html" role="menuitem">My Profile</a></li>
+                <li><a class="nav-item nav-row" href="active-bets.html" role="menuitem">My Bets</a></li>
+                <li><a class="nav-item nav-row" href="favorites.html" role="menuitem">Favorites</a></li>
+                <li><a class="nav-item nav-row" href="wallet.html" role="menuitem">Wallet</a></li>
+                <li><a class="nav-item nav-row" href="how-it-works.html" role="menuitem">How It Works</a></li>
+                <li><a class="nav-item nav-row" href="event-feed-logged-out.html" role="menuitem">Logout</a></li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </div>
+      <!-- Condensed category strip: hidden until you scroll past the full category
+           bar, then it slides into the sticky header so the tabs stay reachable.
+           Small, icon-less chips (the full bar below keeps its icons). -->
+    </header>
+
+    <!-- Second-level navigation moved onto the content plate (below) -->
+
+
+    <!-- Feed -->
+    <main class="feed" id="main-content" tabindex="-1">
+      <div class="feed-inner">
+        <div class="cat-layout">
+        <div class="cat-main">
+<div class="feed-head"><h1>Account limits</h1></div>
+<p class="protect protect-page">Tightening a limit takes effect at once. Loosening one, or lifting it, takes 24 hours. That is the whole of what makes a limit a limit rather than a setting.</p>
+<article class="pos" aria-label="Your limits">
+  <div class="pos-figures">
+    <span class="pos-fig">Deposit limit<b>Not set</b></span>
+    <span class="pos-fig">Loss limit<b>Not set</b></span>
+    <span class="pos-fig">Cooldown<b>Not running</b></span>
+  </div>
+  <span class="pos-status">Nothing on this account is limited today. You can bet and add funds as normal.</span>
+</article>
+<p class="pos-status">Deposit limit</p>
+<div>
+  <span class="field-label">Most you can add in 7 days</span>
+  <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="1" value="" placeholder="No limit" aria-label="Deposit limit for 7 days"></div>
+  <span class="fine">The 7 days run from the moment you save, not from a calendar week. Once the total is reached, Add funds is refused until the window rolls. The balance you already hold is untouched.</span>
+</div>
+<p class="pos-status">Loss limit</p>
+<div>
+  <span class="field-label">Most you can lose in 7 days</span>
+  <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="1" value="" placeholder="No limit" aria-label="Loss limit for 7 days"></div>
+  <span class="fine">A loss is a stake on an event that resolved against you. A bet you still hold counts for nothing until it resolves. Once the total is reached, new bets are refused; the bets you already hold run to their own resolution.</span>
+</div>
+<p class="pos-status">Cooldown</p>
+<div>
+  <span class="field-label">Stop new bets for</span>
+  <div class="quick"><button type="button" class="chip">24 hours</button><button type="button" class="chip">7 days</button><button type="button" class="chip">30 days</button></div>
+  <span class="fine">A cooldown stops new bets and new funds for the period you pick. Bets you already hold resolve and pay out as normal, and you can withdraw at any time. It ends on its own and cannot be ended early.</span>
+</div>
+<div class="cta-bar">
+  <button class="btn btn-primary btn-md" type="button">Save limits</button>
+  <a class="btn btn-secondary btn-md" href="responsible-betting.html">Responsible betting</a>
+</div>
+<p class="pos-status">Self-exclusion</p>
+<p class="fine">Self-exclusion is longer than a cooldown and it is a different decision, so it is not part of the form above. For the period you name you cannot bet or add funds, and we will not lift it early even if you ask.</p>
+<div class="cta-bar"><button class="btn btn-secondary btn-md" type="button" data-open="exclude">Self-exclude</button></div>
+        </div><!-- /cat-main --></div><!-- /cat-layout --></div><!-- /feed-inner -->
+    </main>
+    </div><!-- /app-case -->
+
+    <!-- Bottom navigation (mobile only) -->
+    <nav class="bottom-nav" aria-label="Primary (mobile)">
+      <ul>
+        <li><a class="nav-item nav-slot" href="event-feed.html">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-widget-b"/></svg>
+          <span>Events</span>
+        </a></li>
+        <li><a class="nav-item nav-slot" href="active-bets.html">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-list-b"/></svg>
+          <span>My Bets</span>
+        </a></li>
+        <li><a class="nav-item nav-slot" href="favorites.html">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bookmark-b"/></svg>
+          <span>Favorites</span>
+        </a></li>
+        <li aria-current="page"><a class="nav-item nav-slot" href="my-profile.html" aria-label="Profile, balance $132">
+          <span class="bn-bal">$132</span>
+          <span>Profile</span>
+        </a></li>
+      </ul>
+    </nav>
+
+    <!-- Footer (global element) -->
+    <footer class="app-footer">
+      <div class="footer-inner">
+
+        <!-- Trust strip (persistent funds-safety + resolution signal, WF reconcile) -->
+        <div class="footer-trust">
+          <h2 class="trust-head">Built on trust, not on your balance</h2>
+          <div class="trust-items">
+            <span class="trust-item">
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield-b"/></svg>
+              <span class="tr-txt"><b>Your USDC is held 1:1</b><i>We never lend it.</i></span>
+            </span>
+            <span class="trust-item">
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-global-b"/></svg>
+              <span class="tr-txt"><b>Every event resolves against a public source</b><i>You can check it.</i></span>
+            </span>
+            <span class="trust-item">
+              <svg class="ic tr-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check-circle-b"/></svg>
+              <span class="tr-txt"><b>1,284 events resolved</b><i>Every reading is published.</i></span>
+            </span>
+          </div>
+        </div>
+
+        <div class="footer-top">
+
+          <!-- Brand block: logo, tagline, social, language -->
+          <div class="footer-brand">
+            <a class="logo footer-logo" href="event-feed.html">Yonder</a>
+            <p class="footer-tagline">Back the events you follow.</p>
+            <details class="filter-menu lang-menu" id="langMenu">
+              <summary aria-label="Language">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-global-b"/></svg>
+                <span id="langCurrent">English</span>
+                <svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-chevron-down"/></svg>
+              </summary>
+              <div class="filter-panel">
+                <ul>
+                  <li><label><input type="radio" name="lang" value="English" checked> English</label></li>
+                  <li><label><input type="radio" name="lang" value="Spanish"> Spanish</label></li>
+                  <li><label><input type="radio" name="lang" value="Portuguese"> Portuguese</label></li>
+                  <li><label><input type="radio" name="lang" value="German"> German</label></li>
+                  <li><label><input type="radio" name="lang" value="French"> French</label></li>
+                </ul>
+              </div>
+            </details>
+          </div>
+
+          <!-- Link columns -->
+          <div class="footer-cols">
+
+            <nav class="footer-col" aria-label="Events">
+              <h2>Events</h2>
+              <p class="sub-label">By category</p>
+              <ul>
+                <li><a href="event-feed-politics.html">Politics</a></li>
+                <li><a href="event-feed-crypto.html">Crypto</a></li>
+                <li><a href="event-feed-culture.html">Culture</a></li>
+                <li><a href="event-feed-general.html">General</a></li>
+                <li><a href="event-feed.html">View all events</a></li>
+              </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Product">
+              <h2>Product</h2>
+              <ul>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><span class="footer-soon">Leaderboard</span></li>
+                <li><a href="wallet.html">Wallet</a></li>
+                <li><a href="active-bets.html">My Bets</a></li>
+              </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Support">
+              <h2>Support</h2>
+              <ul>
+                <li><span class="footer-soon">Help Center</span></li>
+                <li><span class="footer-soon">FAQ</span></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="about.html">About</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </div>
+
+        <!-- SEO popular-links block (second internal-linking plane, WF reconcile) -->
+        <div class="footer-popular">
+          <h2>Popular right now</h2>
+          <ul class="popular-links">
+            <li><a href="event-feed-politics.html">Politics events</a></li>
+            <li><a href="event-feed-crypto.html">Crypto events</a></li>
+            <li><a href="event-feed-culture.html">Culture events</a></li>
+            <li><a href="event-feed-general.html">General events</a></li>
+            <li><a href="event-feed.html">Trending events</a></li>
+            <li><a href="event-feed.html">Ending soon</a></li>
+            <li><a href="how-it-works.html">How it works</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal strip -->
+        <div class="footer-legal">
+          <nav aria-label="Legal">
+            <ul class="legal-links">
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="privacy.html">Privacy</a></li>
+              <li><a href="responsible-betting.html">Responsible play</a></li>
+              <li><a href="cookies.html">Cookie Policy</a></li>
+              <li><a href="cookie-consent.html">Cookie preferences</a></li>
+            </ul>
+          </nav>
+          <p>Prediction markets involve risk of loss. Not available in restricted regions.</p>
+          <p>Copyright (c) Yonder.</p>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Minimal interaction: desktop balance swap Balance <-> Cash (wireframe behavior, no styling) -->
+  <script>
+    (function () {
+      var states = [
+        { label: 'Balance', amount: '$132.00' },
+        { label: 'Cash', amount: '$42.00' }
+      ];
+      var i = 0;
+      var lbl = document.getElementById('balLabel');
+      var amt = document.getElementById('balAmt');
+      var btn = document.getElementById('balSwap');
+      if (btn) {
+        btn.addEventListener('click', function () {
+          i = (i + 1) % states.length;
+          lbl.textContent = states[i].label;
+          amt.textContent = states[i].amount;
+          btn.setAttribute('aria-label', 'Swap balance (showing ' + states[i].label + ')');
+        });
+      }
+    })();
+
+    // Feed filters: each dropdown updates its own label and closes on choose.
+    function wireFilter(menuId, currentId, name, onChange) {
+      var menu = document.getElementById(menuId);
+      if (!menu) return;
+      var cur = document.getElementById(currentId);
+      menu.querySelectorAll('input[name="' + name + '"]').forEach(function (r) {
+        r.addEventListener('change', function () {
+          if (cur) cur.textContent = r.value;
+          menu.open = false;
+          if (onChange) onChange(r.value);
+        });
+      });
+    }
+
+    // Sort + its reverse toggle.
+    wireFilter('sortMenu', 'sortCurrent', 'sort');
+    (function () {
+      var rev = document.querySelector('#sortMenu .toggle');
+      if (!rev) return;
+      rev.addEventListener('click', function () {
+        var on = rev.getAttribute('aria-checked') === 'true';
+        rev.setAttribute('aria-checked', on ? 'false' : 'true');
+        rev.textContent = on ? 'off' : 'on';
+      });
+    })();
+
+    /* THE GRID HAS TWO NARROWERS AND ONE ANSWER, 2026-08-20. The sub-category rail and the
+       cadence menu both hide cards, and two independent hiders FIGHT: whichever ran last
+       clears the other's decision, so a reader who picks Bitcoin and then Weekly gets every
+       weekly market in the category back. One state, one pass. A card with no data-subcat is
+       a skeleton and is not a result, which is the predicate the rail already used, and a card
+       with no data-freq is read as One-time, which is what every market in the tree was until
+       today. docs/backlog.md 224. */
+    var feedFilter = { subcat: 'all', freq: 'Any' };
+    function applyFeedFilter() {
+      var cards = document.querySelectorAll('.cat-main .grid .card');
+      for (var i = 0; i < cards.length; i++) {
+        var sc = cards[i].getAttribute('data-subcat');
+        if (!sc) continue;
+        var fq = cards[i].getAttribute('data-freq') || 'One-time';
+        cards[i].toggleAttribute('hidden',
+          (feedFilter.subcat !== 'all' && sc !== feedFilter.subcat) ||
+          (feedFilter.freq !== 'Any' && fq !== feedFilter.freq));
+      }
+    }
+
+    /* The menu is narrowed to the cadences that stand on THIS page, the same rule that builds
+       the sub-category rail from the cards (docs/backlog.md 173): a category legitimately has
+       no weekly market, and an option that returns an empty grid is a control that lies about
+       the catalog. The panel is inside a closed <details>, so nothing flashes. */
+    (function () {
+      var menu = document.getElementById('freqMenu');
+      if (!menu) return;
+      var cards = document.querySelectorAll('.cat-main .grid .card'), have = {}, i;
+      for (i = 0; i < cards.length; i++) {
+        if (!cards[i].getAttribute('data-subcat')) continue;
+        have[cards[i].getAttribute('data-freq') || 'One-time'] = 1;
+      }
+      menu.querySelectorAll('input[name="freq"]').forEach(function (r) {
+        if (r.value === 'Any' || have[r.value]) return;
+        var li = r.closest('li'); if (li) li.remove();
+      });
+    })();
+
+    // How often (the Frequency attribute; the label is the reader's word, the field is the model's).
+    wireFilter('freqMenu', 'freqCurrent', 'freq', function (v) { feedFilter.freq = v; applyFeedFilter(); });
+
+    // Footer language selector (placeholder: updates label, English-only at MVP).
+    wireFilter('langMenu', 'langCurrent', 'lang');
+
+    // Category: the dropdown and the chip nav stay in sync, the heading echoes the
+    // choice, and picking a category reveals its sub-category rail (like the WF category pages).
+    (function () {
+      var heading = document.getElementById('feedHeading');
+      var nav = document.querySelector('.cat-nav');
+      var catCur = document.getElementById('catCurrent');
+      var rail = document.getElementById('subcatRail');
+      // Sub-categories per category (counts mirror the wireframe category pages). Trending has none.
+      var SUBCATS = {
+        Politics: [['All', '2K'], ['Trump', '297'], ['Trump Daily', '3'], ['Midterm Elections', '537'], ['Global Elections', '122'], ['Primaries', '106'], ['Congress', '42'], ['Trump Cabinet', '16'], ['Courts', '30'], ['Epstein', '22'], ['Government Shutdown', '3'], ['LA Mayor', '5']],
+        Crypto: [['All', '2K'], ['Bitcoin', '312'], ['Ethereum', '168'], ['Solana', '74'], ['Price Predictions', '220'], ['ETFs', '33'], ['Stablecoins', '19'], ['Memecoins', '58'], ['Layer 2s', '27'], ['Fed & Macro', '41']],
+        Culture: [['All', '1.4K'], ['Movies', '180'], ['Music', '120'], ['Awards', '64'], ['TV & Streaming', '90'], ['Celebrities', '145'], ['Internet & Memes', '38'], ['Books', '22'], ['Gaming', '51']],
+        General: [['All', '1.1K'], ['Science & Tech', '160'], ['Climate', '88'], ['Space', '54'], ['AI', '132'], ['Health', '70'], ['Business', '96'], ['World', '140']]
+      };
+      function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+      function renderRail(name) {
+      /* THE RAIL IS BUILT FROM WHAT IS ON THE PAGE, 2026-08-16, docs/backlog.md 173.
+         It used to render SUBCATS whole, so a category page showed up to eleven chips
+         with Polymarket-scale counts against six events, and the handler below only
+         moved aria-current: 546 chips over 56 documents and none of them filtered.
+         The taxonomy stays the controlled vocabulary and decides the ORDER; the chips
+         and the counts come from the cards, so a chip exists only where an event does
+         and its number is the number of cards it reveals. */
+      if (!rail) return;
+      var rows = SUBCATS[name];
+      if (!rows) { rail.hidden = true; rail.innerHTML = ''; return; }
+      var cards = document.querySelectorAll('.cat-main .grid .card[data-subcat]');
+      if (!cards.length) { rail.hidden = true; rail.innerHTML = ''; return; }
+      var order = [], i;
+      for (i = 0; i < rows.length; i++) order.push(rows[i][0]);
+      var count = {}, seen = [];
+      for (i = 0; i < cards.length; i++) {
+        var sc = cards[i].getAttribute('data-subcat');
+        if (!count[sc]) { count[sc] = 0; seen.push(sc); }
+        count[sc]++;
+      }
+      seen.sort(function (a, b) {
+        var ia = order.indexOf(a), ib = order.indexOf(b);
+        return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+      });
+      var html = '<p class="subcat-head">' + esc(name) + ' sub-categories</p><ul>';
+      html += '<li aria-current="page"><button type="button" class="chip chip-lane" data-subcat="all">All <span class="chip-cnt">' + cards.length + '</span></button></li>';
+      for (i = 0; i < seen.length; i++)
+        html += '<li><button type="button" class="chip chip-lane" data-subcat="' + esc(seen[i]) + '">' + esc(seen[i]) + ' <span class="chip-cnt">' + count[seen[i]] + '</span></button></li>';
+      rail.innerHTML = html + '</ul>';
+      rail.hidden = false;
+      }
+      function activate(name) {
+        if (heading) heading.textContent = name;
+        if (catCur) catCur.textContent = name;
+        if (nav) {
+          nav.querySelectorAll('li').forEach(function (li) {
+            var on = li.querySelector('a,button').textContent.trim() === name;
+            if (on) li.setAttribute('aria-current', 'page'); else li.removeAttribute('aria-current');
+          });
+        }
+        var radio = document.querySelector('#catMenu input[value="' + name + '"]');
+        if (radio) radio.checked = true;
+        renderRail(name);
+      }
+      // Picking a sub-category filters the grid. `ia/docs/sitemap.md` decided this when the
+      // attribute was invented ("the category page's left rail filters by sub-category, each
+      // with a count"); the comment that used to stand here said the filter was product scope,
+      // and the screen file won over the IA for as long as nobody clicked a chip.
+      if (rail) {
+        rail.addEventListener('click', function (e) {
+          var b = e.target.closest('button'); if (!b) return;
+          var li = b.closest('li'); if (!li) return;
+          rail.querySelectorAll('li[aria-current]').forEach(function (x) { x.removeAttribute('aria-current'); });
+          li.setAttribute('aria-current', 'page');
+          feedFilter.subcat = b.getAttribute('data-subcat');
+          applyFeedFilter();
+        });
+      }
+      wireFilter('catMenu', 'catCurrent', 'catf', activate);
+      // The top category nav navigates to per-category pages (event-feed-*.html),
+      // one page per category; it no longer switches the feed client-side, so the
+      // links are left to navigate natively (no preventDefault, no rail).
+    })();
+  </script>
+
+  <!-- Search, the sheet face: the whole screen, below the RAIL rung. It is the ONLY copy of
+       the body in this file - the desktop panel above clones it on first open, so the five
+       categories and the four popular events are written once and cannot drift apart. -->
+  <dialog id="searchSheet" class="app-dialog search-sheet" aria-label="Search events">
+    <form class="search-bar" role="search" action="event-feed-search-results.html" data-search>
+      <div class="search">
+        <div class="search-field">
+          <svg class="ic search-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-magnifer-o"/></svg>
+          <input class="search-input" type="search" name="q" value="" placeholder="Search events"
+           aria-label="Search events" autocomplete="off" enterkeyhint="search">
+          <button type="button" class="icon-btn icon-btn-bare search-clear" aria-label="Clear the search"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg></button>
+        </div>
+      </div>
+      <button type="button" class="btn btn-ghost btn-sm search-cancel" data-close-search>Cancel</button>
+    </form>
+    <div class="search-body">
+      <section class="search-group" data-idle>
+        <p class="search-group-label">Categories</p>
+        <ul class="search-tiles">
+          <li><a class="chip chip-nav" href="event-feed.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-fire"/></svg><span>Trending</span></a></li>
+          <li><a class="chip chip-nav" href="event-feed-politics.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-politics"/></svg><span>Politics</span></a></li>
+          <li><a class="chip chip-nav" href="event-feed-crypto.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-crypto"/></svg><span>Crypto</span></a></li>
+          <li><a class="chip chip-nav" href="event-feed-culture.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-culture"/></svg><span>Culture</span></a></li>
+          <li><a class="chip chip-nav" href="event-feed-general.html"><svg class="chip-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat-general"/></svg><span>General</span></a></li>
+        </ul>
+      </section>
+      <section class="search-group" data-idle>
+        <p class="search-group-label">Popular right now</p>
+        <ul class="search-rows">
+          <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Will Bitcoin close above $150,000 before October 1, 2026?</strong><span>Crypto &middot; 61% YES</span></a></li>
+          <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Will Ethereum complete its next major network upgrade before November 1, 2026?</strong><span>Crypto &middot; 72% YES</span></a></li>
+          <li><a class="nav-item nav-row nav-row-stack" href="event-detail-multi.html"><strong>Which party will control the US Senate after the next election?</strong><span>Politics &middot; Republicans 52%</span></a></li>
+          <li><a class="nav-item nav-row nav-row-stack" href="event-detail.html"><strong>Will the US government shut down before March 1, 2027?</strong><span>Politics &middot; 38% YES</span></a></li>
+        </ul>
+      </section>
+      <section class="search-group" data-query hidden>
+        <p class="search-group-label">Results</p>
+        <ul class="search-rows" data-results></ul>
+      </section>
+      <p class="search-none" data-none hidden>No events match <b></b>. Yonder runs a curated list, so the event you want may not be open yet. Try a shorter word, or browse a category.</p>
+      <a class="search-seeall" href="event-feed-search-results.html" data-seeall hidden><span data-seeall-label>See all results</span><svg class="ic-sm" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-arrow-right"/></svg></a>
+    </div>
+  </dialog>
+
+  <dialog id="signinDialog" class="app-dialog signin-dialog" aria-label="Sign in or create account">
+    <div class="plate-head sheet-head">
+      <h2>Sign in or create account</h2>
+      <p class="sheet-sub">You are about to place a bet. No crypto wallet required.</p>
+      <button type="button" class="icon-btn icon-btn-photo sheet-close" data-close-dialog aria-label="Close">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg>
+      </button>
+    </div>
+    <div class="sheet-body">
+      <button type="button" class="btn btn-secondary btn-md btn-block btn-provider" data-flow="signin-to-deposit">
+        <svg class="ic prov-google" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.21-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.58-5.17 3.58-8.74z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.94-2.91l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.96H1.26v3.11A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.27 14.27a7.2 7.2 0 0 1 0-4.54V6.62H1.26a12 12 0 0 0 0 10.76l4.01-3.11z"/><path fill="#EA4335" d="M12 4.77c1.77 0 3.35.61 4.6 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.26 6.62l4.01 3.11C6.22 6.88 8.87 4.77 12 4.77z"/></svg>
+        Continue with Google
+      </button>
+      <button type="button" class="btn btn-secondary btn-md btn-block btn-provider" data-flow="signin-to-deposit">
+        <svg class="ic prov-x" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9 1.15h3.68l-8.05 9.2L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.84L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg>
+        Continue with X
+      </button>
+      <button type="button" class="btn btn-secondary btn-md btn-block btn-provider" data-flow="signin-to-deposit">
+        <svg class="ic prov-apple" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.05 12.54c-.03-2.7 2.2-3.99 2.3-4.06-1.26-1.84-3.21-2.09-3.9-2.12-1.66-.17-3.24.98-4.09.98-.84 0-2.13-.96-3.51-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.27-.48 8.1 1.35 10.76.9 1.3 1.96 2.76 3.37 2.71 1.35-.05 1.86-.87 3.5-.87 1.63 0 2.09.87 3.52.85 1.45-.03 2.37-1.33 3.26-2.63 1.03-1.51 1.45-2.97 1.47-3.05-.03-.01-2.82-1.08-2.85-4.29zM14.4 4.6c.74-.9 1.24-2.16 1.11-3.41-1.07.04-2.38.72-3.15 1.62-.68.8-1.28 2.07-1.12 3.29 1.19.09 2.41-.61 3.16-1.5z"/></svg>
+        Continue with Apple
+      </button>
+      <p class="fine">By continuing you agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>. Adding funds by card requires KYC; if you fund only with crypto you can connect a wallet instead.</p>
+    </div>
+  </dialog>
+
+
+  <dialog id="excludeDialog" class="app-dialog" aria-label="Self-exclude">
+    <div class="plate-head sheet-head">
+      <h2>Self-exclude</h2>
+      <p class="sheet-sub">This one cannot be lifted early.</p>
+      <button type="button" class="icon-btn icon-btn-photo sheet-close" data-close-dialog aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg></button>
+    </div>
+    <div class="sheet-body">
+      <div>
+        <span class="field-label">Exclude me for</span>
+        <div class="quick"><button type="button" class="chip sel">6 months</button><button type="button" class="chip">1 year</button><button type="button" class="chip">Permanently</button></div>
+      </div>
+      <p class="protect">For that period you cannot bet or add funds, and we will not lift it early even if you ask. Bets you already hold resolve and pay out to your Cash, and you can withdraw at any time.</p>
+      <button type="button" class="btn btn-primary btn-md btn-block" data-close-dialog>Self-exclude for 6 months</button>
+      <p class="fine">Sections 6 and 7 of Responsible betting say what else is open to you, including help that does not go through us.</p>
+    </div>
+  </dialog>
+  <dialog id="depositDialog" class="app-dialog" aria-label="Add funds">
+    <div class="plate-head sheet-head">
+      <h2>Add funds</h2>
+      <p class="sheet-sub">Card or crypto. Your USDC is held 1:1.</p>
+      <button type="button" class="icon-btn icon-btn-photo sheet-close" data-close-dialog aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg></button>
+    </div>
+    <div class="sheet-body">
+      <div>
+        <span class="field-label">Amount to add</span>
+        <div class="amount-row"><span class="amount-cur">$</span><input class="amount-input" type="text" inputmode="decimal" pattern="[0-9]*(\.[0-9]{1,2})?" data-min="10" value="20.00" aria-label="Amount to add"></div>
+        <div class="quick"><button class="chip chip-amount" type="button">$10</button><button type="button" class="chip chip-amount sel">$20</button><button class="chip chip-amount" type="button">$50</button><button class="chip chip-amount" type="button">$100</button></div>
+      </div>
+      <div><span class="field-label">Pay with</span>
+      <div class="widget-box">The payment widget loads here (card to USDC)</div></div>
+      <p class="protect">Your USDC is held 1:1 - we do not lend or invest your funds.</p>
+      <p class="fine">Minimum $10. Card payments are converted to USDC via Transak. KYC is required to add funds by card; if you fund only with crypto you can connect a USDC wallet instead.</p>
+      <button type="button" class="btn btn-secondary btn-md btn-block" data-open="howitworks">How it works</button>
+      <button type="button" class="btn btn-primary btn-md btn-block" data-close-dialog>Add funds</button>
+    </div>
+  </dialog>
+
+  <dialog id="howitworksDialog" class="app-dialog hiw-dialog" aria-label="How it works">
+    <button type="button" class="icon-btn icon-btn-photo sheet-close" data-close-dialog aria-label="Close">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#l-close"/></svg>
+    </button>
+    <div class="hiw-steps">
+      <input class="hiw-radio" type="radio" name="hiwstep" id="hiwstep-1" checked aria-label="Step 1 of 3, pick an event">
+      <input class="hiw-radio" type="radio" name="hiwstep" id="hiwstep-2" aria-label="Step 2 of 3, back YES or NO">
+      <input class="hiw-radio" type="radio" name="hiwstep" id="hiwstep-3" aria-label="Step 3 of 3, get paid when it resolves">
+
+      <div class="hiw-step">
+        <div class="hiw-stage" aria-hidden="true">
+          <div class="hiw-still">
+            <article class="card" data-subcat="Government Shutdown" data-freq="One-time">
+              <div class="card-body">
+                <div class="top">
+                  <span class="thumb" style="background-image:url(../assets/ev-gov-shutdown-sm.webp)"></span>
+                  <div class="top-txt"><a class="q">Will the US government shut down before March 1, 2027?</a><p class="why">Funding talks have stalled twice this quarter.</p></div>
+                </div>
+                <div class="yesno"><a class="yes">YES</a><a class="no">NO</a></div>
+                <p class="meta"><span class="meta-txt"><span>Volume: $84,200</span><span>Closes: Mar 1, 2027</span></span></p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="hiw-step-txt">
+          <p class="hiw-step-n">Step 1 of 3</p>
+          <h2 class="hiw-step-t">Pick an event you follow</h2>
+          <p class="hiw-step-b">Every event asks one question, with a date and a named source. You see the odds, the one-line why and how it resolves before you put in a cent.</p>
+        </div>
+        <div class="hiw-nav">
+          <label class="btn btn-primary btn-md btn-block hiw-next" for="hiwstep-2">Next</label>
+          <div class="hiw-dots">
+            <label class="hiw-dot" for="hiwstep-1" aria-label="Step 1"></label>
+            <label class="hiw-dot" for="hiwstep-2" aria-label="Step 2"></label>
+            <label class="hiw-dot" for="hiwstep-3" aria-label="Step 3"></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="hiw-step">
+        <div class="hiw-stage" aria-hidden="true">
+          <div class="hiw-still">
+            <aside class="bet-panel">
+              <div class="bp-inner">
+                <div class="bp-dir">
+                  <span class="yesno-pick bp-side sel yes">YES <span class="bp-pct">38%</span></span>
+                  <span class="yesno-pick bp-side no">NO <span class="bp-pct">62%</span></span>
+                </div>
+                <div>
+                  <div class="line"><span>Your bet</span><span>$5.00</span></div>
+                  <div class="bp-outcomes"><div class="bp-outcome"><span>If YES wins, your side</span><b>$13.16</b></div><div class="bp-outcome"><span>If NO wins</span><b>$0.00</b></div></div>
+                </div>
+                <span class="btn btn-primary btn-md btn-block">Confirm bet</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+        <div class="hiw-step-txt">
+          <p class="hiw-step-n">Step 2 of 3</p>
+          <h2 class="hiw-step-t">Back YES or NO</h2>
+          <p class="hiw-step-b">The odds are a live price set by what people bet. Your payout is fixed at the price you took, so being early and right is worth more. One dollar minimum.</p>
+        </div>
+        <div class="hiw-nav">
+          <label class="btn btn-primary btn-md btn-block hiw-next" for="hiwstep-3">Next</label>
+          <div class="hiw-dots">
+            <label class="hiw-dot" for="hiwstep-1" aria-label="Step 1"></label>
+            <label class="hiw-dot" for="hiwstep-2" aria-label="Step 2"></label>
+            <label class="hiw-dot" for="hiwstep-3" aria-label="Step 3"></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="hiw-step">
+        <div class="hiw-stage" aria-hidden="true">
+          <div class="hiw-still">
+            <article class="pos">
+              <div class="pos-top">
+                <span class="pos-q">Did the US government shut down before July 1, 2026?</span>
+                <span class="pos-side pos-won">WON</span>
+              </div>
+              <div class="pos-figures">
+                <span class="pos-fig">Stake<b>$5.00</b></span>
+                <span class="pos-fig">Paid out<b>$13.16</b></span>
+              </div>
+              <span class="pos-status">Resolved against the source it named</span>
+            </article>
+          </div>
+        </div>
+        <div class="hiw-step-txt">
+          <p class="hiw-step-n">Step 3 of 3</p>
+          <h2 class="hiw-step-t">Get paid when it resolves</h2>
+          <p class="hiw-step-b">It resolves against the source it named, and what was read is published with the result. Until then your money is held 1:1, never lent and never moved.</p>
+        </div>
+        <div class="hiw-nav">
+          <a class="btn btn-primary btn-md btn-block" href="sign-in.html">Create account</a>
+          <a class="hiw-skip" href="event-feed.html">Browse events first</a>
+          <div class="hiw-dots">
+            <label class="hiw-dot" for="hiwstep-1" aria-label="Step 1"></label>
+            <label class="hiw-dot" for="hiwstep-2" aria-label="Step 2"></label>
+            <label class="hiw-dot" for="hiwstep-3" aria-label="Step 3"></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    // Shared dialogs: open over the current page. On logged-out pages, completing
+    // sign-in then closing / funding the deposit lands on the logged-in counterpart
+    // (body[data-loggedin-target]); closing sign-in before signing in stays put.
+    (function () {
+      function dlg(id) { return document.getElementById(id); }
+      function open(id) { var d = dlg(id); if (!d) return; if (d.showModal) d.showModal(); else d.setAttribute('open', ''); }
+      function close(d) { if (!d) return; if (d.close) d.close(); else d.removeAttribute('open'); }
+      var target = document.body.getAttribute('data-loggedin-target');
+      var signedIn = false;
+      document.addEventListener('click', function (e) {
+        var o = e.target.closest('[data-open]');
+        if (o) { e.preventDefault(); var dv = o.getAttribute('data-open'); open(dv === 'deposit' ? 'depositDialog' : dv === 'exclude' ? 'excludeDialog' : dv === 'howitworks' ? 'howitworksDialog' : 'signinDialog'); return; }
+        var f = e.target.closest('[data-flow="signin-to-deposit"]');
+        if (f) { e.preventDefault(); signedIn = true; close(dlg('signinDialog')); open('depositDialog'); return; }
+        var c = e.target.closest('[data-close-dialog]');
+        if (c) { close(c.closest('dialog')); return; }
+      });
+      ['signinDialog', 'depositDialog', 'excludeDialog', 'howitworksDialog'].forEach(function (id) {
+        var d = dlg(id); if (!d) return;
+        d.addEventListener('click', function (e) { if (e.target === d) close(d); });
+      });
+      var dep = dlg('depositDialog');
+      if (dep) dep.addEventListener('close', function () { if (target && signedIn) window.location.href = target; });
+    })();
+  </script>
+  <script>
+    (function () {
+      var sb = document.getElementById('rmSidebar'), ov = document.getElementById('rmOverlay'), tg = document.getElementById('rmToggle');
+      if (!sb || !ov || !tg) return;
+      var open = function () { sb.classList.add('open'); ov.classList.add('open'); };
+      var close = function () { sb.classList.remove('open'); ov.classList.remove('open'); };
+      tg.addEventListener('click', open);
+      ov.addEventListener('click', close);
+    })();
+  </script>
+  <script>
+    (function () {
+      // Odds bar on binary cards: a visual render of the existing prob (treatment B).
+      document.querySelectorAll('.grid > .card').forEach(function (card) {
+        if (card.querySelector('.options')) return;               // skip multi
+        var pl = card.querySelector('.prob-line'), yn = card.querySelector('.yesno');
+        var probEl = pl && pl.querySelector('.prob');
+        if (!pl || !yn || !probEl) return;
+        var yes = parseInt(probEl.textContent, 10);
+        if (isNaN(yes)) return;
+        var bar = document.createElement('div');
+        bar.className = 'oddsbar';
+        bar.innerHTML = '<div class="track"><span class="fill" style="width:' + yes + '%"></span></div>'
+          + '<div class="lbls"><span class="l-yes">YES ' + yes + '%</span><span class="l-no">NO ' + (100 - yes) + '%</span></div>';
+        pl.style.display = 'none';
+        yn.parentNode.insertBefore(bar, yn);
+      });
+      // Reverse-sort switch: flip aria-checked on click.
+      document.querySelectorAll('.toggle[role="switch"]').forEach(function (t) {
+        t.addEventListener('click', function () {
+          t.setAttribute('aria-checked', t.getAttribute('aria-checked') === 'true' ? 'false' : 'true');
+        });
+      });
+      // Dropdowns: opening one closes the others; a click anywhere else closes all.
+      var menus = document.querySelectorAll('details.notif-menu, details.avatar-menu, details.filter-menu');
+      menus.forEach(function (d) {
+        d.addEventListener('toggle', function () {
+          if (d.open) menus.forEach(function (o) { if (o !== d) o.open = false; });
+        });
+      });
+      document.addEventListener('click', function (e) {
+        menus.forEach(function (d) { if (d.open && !d.contains(e.target)) d.open = false; });
+      });
+      // Meta values: dim the label, brighten the number/date so figures stand out.
+      document.querySelectorAll('.card .meta-txt > span').forEach(function (sp) {
+        var t = sp.textContent, i = t.indexOf(': ');
+        if (i < 0) return;
+        var label = document.createElement('span'); label.className = 'm-label'; label.textContent = t.slice(0, i + 2);
+        var val = document.createElement('span'); val.className = 'm-val'; val.textContent = t.slice(i + 2);
+        sp.textContent = ''; sp.append(label, val);
+      });
+      // Reveal the condensed category strip in the sticky header once the full
+      // (icon) category bar scrolls up under it.
+      (function () {
+        var header = document.querySelector('.app-header');
+        var fullNav = document.querySelector('.feed-inner > .cat-nav');
+        if (!header || !fullNav || !('IntersectionObserver' in window)) return;
+        var io = new IntersectionObserver(function (entries) {
+          header.classList.toggle('scrolled', !entries[0].isIntersecting);
+        }, { rootMargin: '-60px 0px 0px 0px', threshold: 0 });
+        io.observe(fullNav);
+      })();
+    })();
+  </script>  <script id="uv-deposit">
+(function(){
+  // Non-bet amount fields (the deposit dialog + the wallet withdraw form). Bet
+  // panels/sheets keep their own richer handlers, so skip .bp-inner contexts.
+  function betCtx(el){return el.closest('.bet-panel,.bet-sheet,.bp-inner');}
+  // amount stays numeric ($ + digits + a single dot; no letters); typing your own
+  // number clears any preset chip in the same group
+  document.querySelectorAll('input.amount-input').forEach(function(inp){
+    if(betCtx(inp))return;
+    inp.addEventListener('input',function(){
+      var dollar=inp.value.trim().charAt(0)==='$';
+      var v=inp.value.replace(/[^0-9.]/g,''); var p=v.split('.'); if(p.length>2)v=p[0]+'.'+p.slice(1).join('');
+      inp.value=(dollar?'$':'')+v;
+      var box=inp.closest('.sheet-body,.app-dialog,form');
+      if(box)box.querySelectorAll('.quick button').forEach(function(b){b.classList.remove('sel');});
+    });
+  });
+  // quick chip: select it and fill the nearest amount input
+  document.querySelectorAll('.quick').forEach(function(q){
+    if(betCtx(q))return;
+    q.addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b||!q.contains(b))return;
+      q.querySelectorAll('button').forEach(function(x){x.classList.remove('sel');}); b.classList.add('sel');
+      var box=q.closest('.sheet-body,.app-dialog,form,section')||document;
+      var inp=box.querySelector('input.amount-input');
+      if(inp){var v=b.textContent.replace(/[^0-9.]/g,'');var dollar=inp.value.trim().charAt(0)==='$';inp.value=(dollar?'$':'')+v+(dollar?'.00':'');}
+    });
+  });
+})();
+  </script>
+</body>
+</html>

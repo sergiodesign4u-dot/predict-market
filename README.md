@@ -33,8 +33,8 @@ often and in the files that state it.
 
 | Folder | What it is |
 |---|---|
-| [`ui-visual/`](./ui-visual/) | **the painted product.** 120 documents, 119 of them screens plus the index of the tree. Every one links exactly one stylesheet |
-| [`wireframes/`](./wireframes/) | **the grey tree.** 119 screens. Owns structure and copy, links no stylesheet, frozen since the voice pass. Read it once to understand why every screen exists twice, then work in the paint |
+| [`ui-visual/`](./ui-visual/) | **the painted product.** 125 documents, 124 of them screens plus the index of the tree, counted 2026-08-23. Every one links exactly one stylesheet |
+| [`wireframes/`](./wireframes/) | **the grey tree.** 124 screens, counted 2026-08-23. Owns structure and copy, links no stylesheet, frozen since the voice pass. Read it once to understand why every screen exists twice, then work in the paint |
 | [`components/`](./components/) | **the system.** 49 components reached through one entry file, plus the substrate they stand on. Two token levels and two themes |
 | [`ui-kit/`](./ui-kit/) | **the vitrine.** 61 hand-written pages: a shelf per level, a page per component, six foundations. No generators |
 | [`handoff/`](./handoff/) | **the handoff.** Behaviour, the map, accessibility, the onboarding gaps, and the prompt for adding a screen |

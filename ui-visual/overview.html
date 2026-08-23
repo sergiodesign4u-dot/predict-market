@@ -183,6 +183,14 @@ push();});})();</script>
         <a href="wallet-loading.html" class="sidebar-sub-link">loading</a>
         <a href="wallet-error.html" class="sidebar-sub-link">error</a>
       </div>
+      <div class="sidebar-divider">Account limits</div>
+      <div class="sidebar-sub">
+        <a href="account-limits.html" class="sidebar-sub-link">no limits set</a>
+        <a href="account-limits-active.html" class="sidebar-sub-link">limits active</a>
+        <a href="account-limits-cooldown.html" class="sidebar-sub-link">cooldown</a>
+        <a href="account-limits-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="account-limits-error.html" class="sidebar-sub-link">error</a>
+      </div>
       <div class="sidebar-divider">My Profile</div>
       <div class="sidebar-sub">
         <a href="my-profile.html" class="sidebar-sub-link">success</a>
@@ -236,7 +244,7 @@ push();});})();</script>
         <a href="cookie-consent.html" class="sidebar-sub-link">cookie consent</a>
         <a href="toasts.html" class="sidebar-sub-link">toasts</a>
       </div>
-      <div class="sidebar-note">All 15 families are colored. Overview lists them as chips; the system they are painted with is in <a href="../ui-kit/overview.html">ui-kit</a>.</div>
+      <div class="sidebar-note">All 16 families are colored. Overview lists them as chips; the system they are painted with is in <a href="../ui-kit/overview.html">ui-kit</a>.</div>
     </nav>
     <script id="uvPanelReveal">
 /* The panel opens showing where you are. One source for both trees:
@@ -263,13 +271,13 @@ document.addEventListener('click', function (e) {
 <main class="tk-wrap">
   <header class="tk-hero">
     <h1>The painted screens</h1>
-    <p>Every screen of the product in the Vault visual system: 15 families, 119 pages, counted 2026-08-20,
+    <p>Every screen of the product in the Vault visual system: 16 families, 124 pages, counted 2026-08-23,
     one page per state. Structure, copy and the state set are owned by the grey wireframes in
     <code>wireframes/</code>; this layer owns colour, type and surface only, which is why a screen
     here reads the same as the grey one beside it.</p>
     <div class="tk-badges">
-      <span class="tk-badge">119 screens, 2026-08-20</span>
-      <span class="tk-badge">15 families</span>
+      <span class="tk-badge">124 screens, 2026-08-23</span>
+      <span class="tk-badge">16 families</span>
       <span class="tk-badge">one page per state</span>
       <span class="tk-badge">mobile first</span>
     </div>
@@ -449,8 +457,19 @@ document.addEventListener('click', function (e) {
       <a href="wallet-error.html" title="wallet-error.html">error</a>
     </div>
   </section>
+  <section class="tk-sec" id="account-limits">
+    <h2 data-n="09">Account limits</h2>
+    <p class="tk-note">5 pages, one per state. Self-exclusion is a confirm dialog on the screen, not a page.</p>
+    <div class="tk-jump">
+      <a href="account-limits.html" title="account-limits.html">no limits set</a>
+      <a href="account-limits-active.html" title="account-limits-active.html">limits active</a>
+      <a href="account-limits-cooldown.html" title="account-limits-cooldown.html">cooldown</a>
+      <a href="account-limits-loading.html" title="account-limits-loading.html">loading</a>
+      <a href="account-limits-error.html" title="account-limits-error.html">error</a>
+    </div>
+  </section>
   <section class="tk-sec" id="my-profile">
-    <h2 data-n="09">My Profile</h2>
+    <h2 data-n="10">My Profile</h2>
     <p class="tk-note">3 pages, one per state.</p>
     <div class="tk-jump">
       <a href="my-profile.html" title="my-profile.html">success</a>
@@ -459,7 +478,7 @@ document.addEventListener('click', function (e) {
     </div>
   </section>
   <section class="tk-sec" id="public-profile">
-    <h2 data-n="10">Public Profile</h2>
+    <h2 data-n="11">Public Profile</h2>
     <p class="tk-note">4 pages, one per state.</p>
     <div class="tk-jump">
       <a href="public-profile.html" title="public-profile.html">success</a>
@@ -469,21 +488,21 @@ document.addEventListener('click', function (e) {
     </div>
   </section>
   <section class="tk-sec" id="how-it-works">
-    <h2 data-n="11">How It Works</h2>
+    <h2 data-n="12">How It Works</h2>
     <p class="tk-note">1 page.</p>
     <div class="tk-jump">
       <a href="how-it-works.html" title="how-it-works.html">success</a>
     </div>
   </section>
   <section class="tk-sec" id="legal">
-    <h2 data-n="12">Legal</h2>
+    <h2 data-n="13">Legal</h2>
     <p class="tk-note">1 page.</p>
     <div class="tk-jump">
       <a href="terms.html" title="terms.html">Terms of Service</a>
     </div>
   </section>
   <section class="tk-sec" id="sign-in">
-    <h2 data-n="13">Sign In</h2>
+    <h2 data-n="14">Sign In</h2>
     <p class="tk-note">4 pages, one per state.</p>
     <div class="tk-jump">
       <a href="sign-in.html" title="sign-in.html">success</a>
@@ -493,7 +512,7 @@ document.addEventListener('click', function (e) {
     </div>
   </section>
   <section class="tk-sec" id="deposit">
-    <h2 data-n="14">Add funds</h2>
+    <h2 data-n="15">Add funds</h2>
     <p class="tk-note">7 pages, one per state.</p>
     <div class="tk-jump">
       <a href="deposit.html" title="deposit.html">success</a>
@@ -506,7 +525,7 @@ document.addEventListener('click', function (e) {
     </div>
   </section>
   <section class="tk-sec" id="system">
-    <h2 data-n="15">System</h2>
+    <h2 data-n="16">System</h2>
     <p class="tk-note">5 pages, one per state.</p>
     <div class="tk-jump">
       <a href="404.html" title="404.html">404 not found</a>

@@ -191,6 +191,14 @@ push();});})();</script>
         <a href="wallet-loading.html" class="sidebar-sub-link">loading</a>
         <a href="wallet-error.html" class="sidebar-sub-link">error</a>
       </div>
+      <div class="sidebar-divider">Account limits</div>
+      <div class="sidebar-sub">
+        <a href="account-limits.html" class="sidebar-sub-link">no limits set</a>
+        <a href="account-limits-active.html" class="sidebar-sub-link">limits active</a>
+        <a href="account-limits-cooldown.html" class="sidebar-sub-link">cooldown</a>
+        <a href="account-limits-loading.html" class="sidebar-sub-link">loading</a>
+        <a href="account-limits-error.html" class="sidebar-sub-link">error</a>
+      </div>
       <div class="sidebar-divider active">My Profile</div>
       <div class="sidebar-sub">
         <a href="my-profile.html" class="sidebar-sub-link active">success</a>
@@ -244,7 +252,7 @@ push();});})();</script>
         <a href="cookie-consent.html" class="sidebar-sub-link">cookie consent</a>
         <a href="toasts.html" class="sidebar-sub-link">toasts</a>
       </div>
-      <div class="sidebar-note">All 15 families are colored. Overview lists them as chips; the system they are painted with is in <a href="../ui-kit/overview.html">ui-kit</a>.</div>
+      <div class="sidebar-note">All 16 families are colored. Overview lists them as chips; the system they are painted with is in <a href="../ui-kit/overview.html">ui-kit</a>.</div>
     </nav>
     <script id="uvPanelReveal">
 /* The panel opens showing where you are. One source for both trees:
@@ -388,6 +396,15 @@ document.addEventListener('click', function (e) {
             <button class="btn btn-primary btn-md" type="button" data-open="deposit">Add funds</button>
             <a href="wallet.html" class="btn btn-secondary btn-md">Open Wallet</a>
           </div>
+        </article>
+        <p class="pos-status">Account limits</p>
+        <article class="pos" aria-label="Account limits">
+          <div class="pos-top">
+            <span class="pos-q">Deposit limit, loss limit, cooldown</span>
+            <span class="pos-status">Not set</span>
+          </div>
+          <span class="pos-status">A limit holds against your own next tap: tightening one takes effect at once, loosening one takes 24 hours.</span>
+          <div class="cta-bar"><a href="account-limits.html" class="btn btn-secondary btn-sm">Set account limits</a></div>
         </article>
         <!-- Track record / Past wins / Resolved as CSS-only radio tabs -->
         <div class="ptabs">

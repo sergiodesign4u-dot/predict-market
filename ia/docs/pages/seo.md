@@ -85,6 +85,7 @@ kept out of the index but its links are still followed; private and transactiona
 | Active Bets / History | `/my-bets` | `noindex` | Private positions |
 | Notifications | `/notifications` | `noindex` | Private |
 | My Profile (self) | `/profile` | `noindex` | Private; the Public Profile (§5) is the indexed twin |
+| Account limits | `/account/limits` | `noindex` | Private and auth-gated: a person's own deposit ceiling, loss ceiling, cooldown and self-exclusion. Built 2026-08-23. **No A-E block, by this file's own rule** that only the `index` rows get one, and no `og:` pair either, because there is nothing here to share. The public half of this subject is Responsible betting, which is `index,follow` in the Static content row above and is the page that links here |
 | Search results | `/search` | `noindex,follow` | Deferred until catalog scale; when live, results are `noindex,follow` |
 | System (404 / 500 / 503) | n/a | `noindex` | Error and maintenance pages, never indexed. See `system.md` |
 | Cookie consent | banner component | n/a | Not a page. See `system.md` |
