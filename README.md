@@ -110,17 +110,22 @@ written from memory**, because a link nobody has opened is a claim and not a rou
 | The repository | <https://github.com/sergiodesign4u-dot/predict-market> | **200** |
 | The product | <https://sergiodesign4u-dot.github.io/predict-market/ui-visual/event-feed.html> | **200** |
 | The system | <https://sergiodesign4u-dot.github.io/predict-market/ui-kit/why.html> | **200** |
-| The front door | <https://sergiodesign4u-dot.github.io/predict-market/> | **404 until the next push**, and it was 404 with no fix pending until this stage: see below |
-| The handoff | <https://sergiodesign4u-dot.github.io/predict-market/handoff/handoff.html> | **404 until the next push** |
+| The front door | <https://sergiodesign4u-dot.github.io/predict-market/> | **200**, and it was a 404 with no fix pending until this stage: see below |
+| The handoff | <https://sergiodesign4u-dot.github.io/predict-market/handoff/handoff.html> | **200** |
 
-**The published root was dead, and the cause is worth keeping.** `.nojekyll` sits at the root because
+**The two rows above read 404 until 2026-08-23 and this file said so**, because a link nobody has
+opened is a claim: they went to 200 on the push that closed the Handoff stage, and both were
+re-requested and re-rendered afterwards rather than assumed. **The published root was dead before
+that, and the cause is worth keeping.** `.nojekyll` sits at the root because
 without it Jekyll drops every path beginning with an underscore, which would take `assets/_roadmap.js`
 off the course documents and `ui-kit/_nav.js` off the stand: the roadmap panel and the whole kit route
 would vanish from the published site while both work perfectly from disk. With Jekyll off, nothing
 turns `README.md` into an index either, and there was no `index.html`. So the one address a person is
 handed answered 404 while every deep link answered 200. **A route is only a route where somebody has
 walked it**, and no instrument in this repository reads an HTTP status, because all of them open files.
-`index.html` is the front door now, and it holds no fact of its own.
+`index.html` is the front door now, and it holds no fact of its own. Read over `http://` on both
+engines after the push: the stage panel renders from its registry, the typeface resolves, one
+heading, nothing scrolls sideways, **0 page errors and 0 subresources returning an error code**.
 
 ---
 
