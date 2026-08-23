@@ -30,8 +30,10 @@ in the tree: **119 of the 120 documents in `ui-visual/` link `../components/inde
 else**, re-counted 2026-08-23, and the one that links a second file is `overview.html`, which is the index of the tree
 rather than a screen in it and borrows the stand's `_page.css` for its own furniture.
 
-**A state is a page**, in both trees. The six differences that ARE the layer boundary between grey
-and painted are declared in `wireframes/_conventions.md`, and motion is the seventh.
+**A state is a page**, in both trees. The **seven** differences that ARE the layer boundary between
+grey and painted are declared in `wireframes/_conventions.md`, motion being the seventh since
+2026-08-15. **This line read as six plus one until 2026-08-23**, which is arithmetically the same
+and is read as six by anybody skimming.
 
 ---
 

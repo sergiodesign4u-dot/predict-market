@@ -61,8 +61,13 @@ because it is a stance rather than a principle, and it is written once, here.
 
 - **Two screen trees.** `wireframes/` is grey and owns structure and copy; `ui-visual/` is painted
   and owns the visual layer only. A block is decided in grey and the colour copy follows. **A state
-  is a page**, in both trees. The six differences that ARE the layer boundary are declared in
-  `wireframes/_conventions.md`.
+  is a page**, in both trees. The **seven** differences that ARE the layer boundary are declared in
+  `wireframes/_conventions.md`. **It was six until 2026-08-15**, when the Animation stage found that
+  the paint takes its durations from tokens and a grey file links no stylesheet and therefore cannot
+  hold one, so the two trees had begun disagreeing about something nobody had declared. **This
+  sentence said six until 2026-08-23 and the bullet further down this same file already said seven**,
+  which is a count written twice inside the one file that is loaded whole. Found by a reader with no
+  context building a feature and having to choose between them.
 - **One system.** `components/` holds `tokens.css` plus one file per component, reached through
   `components/index.css`. **Every PAINTED screen links that one file and nothing else, and the grey
   tree links no stylesheet at all**: 120 of 120 in `ui-visual/` and 61 of 61 in `ui-kit/` link it,

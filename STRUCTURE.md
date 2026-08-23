@@ -56,9 +56,10 @@ sweep by hand. The panel's LOOK is not per-page and never was: it is one compone
 
 Structure flows one way between the two screen trees: `wireframes/` decides it and `ui-visual/`
 follows. A check used to fail the build when the trees disagreed inside `<main>`, `<header>`, the
-bottom nav, `<footer>` or the sheet body of an invoked overlay. It is gone, and the six differences
+bottom nav, `<footer>` or the sheet body of an invoked overlay. It is gone, and the **seven** differences
 that ARE the layer boundary are still declared in `wireframes/_conventions.md`, which is now read
-before the edit rather than enforced after it.
+before the edit rather than enforced after it. **Six here until 2026-08-23**: motion became the
+seventh on 2026-08-15 and this line was one of the copies that was never turned.
 
 **The two trees name every screen the same way since 2026-08-15**, backlog 156: the 32 grey
 category screens were `politics.html` and are `event-feed-politics.html`, which is what the paint

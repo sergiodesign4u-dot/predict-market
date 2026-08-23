@@ -220,3 +220,74 @@ inherited from an earlier stage with the instrument named and not run, on a soun
 argument was sound and the status was still unearned: the four headings were missing the whole time
 and every instrument here passed them. **A status inherited from an earlier tree is a status about
 that tree**, and the row is a debt now with its measurement beside it.
+
+---
+
+## THE EXAMINATION, RUN 2, 2026-08-23
+
+A different subagent, a different feature, the same three isolation rules and the same three-part
+report. Run 1 repairs the documentation and run 2 says whether the repair held. **The feature was
+the cancelled event and its refund**, chosen because the entity model already carries `Cancelled` as
+a value of two Status fields while no screen in either tree draws it, so the reader had to derive the
+affected screen set rather than be handed it. Volume named before the run: at least four states,
+both trees, eight documents.
+
+**Isolation held.** 36 reads in order, no forbidden path opened, and the reader noted unprompted
+that two backlog rows it read cite this file by name in their Note column and that it did not follow
+the citation.
+
+**It built the full volume**: four states in both trees, one face added to two component stylesheets
+with their contract lines and a stand specimen, reachability wired from the history tab and the
+notifications list, the deferral turned in the map with its premise answered, a fifth notification
+type, a 27-row copy section and seven backlog rows. **Reverted by this stage's default for a second
+run** and kept on a branch: the second screen exists for the NUMBER of gaps it exposes, not for the
+screen.
+
+### The count, said plainly
+
+**Run 1 could not work out 10 things. Run 2 could not work out 10 things. The second list is not
+shorter, and by the rule this stage set itself that means the handoff is not proven ready.** That is
+the number and it is not explained away.
+
+**What the number is made of is a different reading, and both belong here.** Sorted by who owns the
+gap:
+
+| | run 1 | run 2 |
+|---|---|---|
+| the PACKAGE could not answer it | **5** | **2** |
+| a PRODUCT decision nobody has ever taken | 2 | 6 |
+| already an open row before the run started | 3 | 2 |
+
+**None of the five that run 1 closed came back.** The three-state node table, the base page of a
+control screen, the third tree, the waiting period and the account-screen route were all used
+correctly and none of them appears in run 2's list. That is the direct evidence the repairs held.
+
+**The two the package still could not answer, and both are closed now:**
+
+| # | The gap | Closed by |
+|---|---|---|
+| A5 | **`one-shot.md` sends you to the block bank to ask whether your composition is banked, and the bank holds exactly one page type and no product screen at all.** So the question has one possible yes and the reader is left standing | `one-shot.md` section 1: expect the answer to be no, and use the bank's METHOD instead, whose own best line is that a built precedent carrying every block beats a specification of them. The open half is named as **N4** rather than answered |
+| A6 | **The layer boundary is counted two ways in five files, and one of the two counts is in the file that is loaded whole.** `wireframes/_conventions.md` and its folder file say SEVEN; the root `CLAUDE.md`, `STRUCTURE.md`, `ui-visual/CLAUDE.md` and `ui-kit/docs/architecture.md` said six or six-plus-one. **The root file said six in one bullet and seven in another**, which is this repository's own rule about a count written twice arriving inside the one document every session loads entire. Motion became the seventh on 2026-08-15 and five copies were never turned | all four live claims turned, dated, with the reason. `ui-kit/docs/motion.md` and `docs/decisions.md` keep theirs: they are narrating the day the ruling was taken, and a record is true as of its date |
+
+**And it corroborated a finding from run 1 without being able to see it.** Running the panel set read
+for its own build, it reported the same twelve documents whose panel names a smaller set than their
+tree does. Two readers who never met each other reaching one number is the strongest evidence backlog
+239 can carry.
+
+**It sharpened 236 too, by making the mistake.** It recomputed the grey tree's shared-region
+denominators on the only obvious reading, the number of documents carrying that region, and got 123
+for a region whose header says 56. So that is not the definition and **no file holds one**. It
+reverted all 123 documents to their exact prior bytes before doing anything else, and disclosed it.
+**A count nobody can recompute is a count that can only ever be copied**, which is the opposite of
+what a self-check written into every inline stylesheet was for.
+
+### What a third run would have to be
+
+The six product decisions run 2 could not take are not documentation failures and no writing here
+closes them: how long a returned stake takes, whether the fee comes back, which transaction type a
+return is, whether a cancellation gets its own notification, whether it needs a flow chart, and which
+market can be cancelled without disturbing the open set. **Every one is a question for the person who
+owns the product**, and a third examination run would surface a seventh set of them from whatever
+feature it was given, because the package documents a design and a design is not a decided product.
+**So the test as stated cannot converge on a feature that is genuinely unbuilt**, and the row above
+splitting the count by owner is what a third run should be measured on instead.

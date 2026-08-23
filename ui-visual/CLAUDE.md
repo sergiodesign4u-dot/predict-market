@@ -30,8 +30,9 @@ carries no schema at all. `docs/backlog.md` 171.
   `style="background-image:..."`, and a value the page script writes at run time.
 - **Never invent a block here.** A new block, control or section is decided in grey and the colour
   copy follows. The two trees must say the same thing inside `<main>`, `<header>`, the bottom nav,
-  `<footer>` and the sheet body of an invoked overlay. The six differences that ARE the layer
-  boundary are declared in `../wireframes/_conventions.md`.
+  `<footer>` and the sheet body of an invoked overlay. The **seven** differences that ARE the layer
+  boundary are declared in `../wireframes/_conventions.md`, motion being the seventh since
+  2026-08-15. **Six here until 2026-08-23.**
 - **A state is the grey tree's; a shape is the paint's.** Inside the chrome the paint owns what the
   header IS and the wireframe owns which state it is IN (auth variant, active bottom-nav slot, empty
   notifications). Reconcile in that order or the wrong answer travels into 104 files at once.

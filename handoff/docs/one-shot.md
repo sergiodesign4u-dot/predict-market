@@ -52,7 +52,14 @@ job; a deferral has a job and a date. The one test that separates them is whethe
 reason that is about the READER or about the RELEASE.
 
 Then `ia/docs/flows.md` for how a reader arrives and where they can end up, and `ia/docs/blocks.md`
-for whether the composition you need has already been banked. Metadata for a new indexed page is
+for whether the composition you need has already been banked. **Expect the answer to be no.** That
+file banks exactly one page TYPE, the static content page, and no product screen is banked at all,
+so "has this been banked" is a question with one possible yes. **What it gives you instead is its
+method, and the method's own most useful line is that a BUILT PRECEDENT carrying every block beats a
+specification of them.** So when the composition is not banked, find the nearest built screen that
+already answers the same shape of question, read it, and extend from it. Whether the full banking
+method is mandatory for a type that has never been banked is an open question addressed to a person,
+and it is `behaviour.md` **N4**. Metadata for a new indexed page is
 written in `ia/docs/pages/seo.md` and stays there: **a document head is never computed from the
 page, so a copy of it beside the page is a second edition of one fact.**
 
