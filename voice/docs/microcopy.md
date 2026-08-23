@@ -125,8 +125,8 @@ version of it costs them the recognition without buying anything.
 |---|---|---|---|
 | Header | Icon button | Menu (reserved for future scaling) |  |
 | Header | Button | Yonder |  |
-| Header | Label | Portfolio |  |
-| Header | Icon button | Swap balance (showing Portfolio) |  |
+| Header | Label | Balance |  |
+| Header | Icon button | Swap balance (showing Balance) |  |
 | Header | Icon button | Add funds | **same-thing / Deposit vs Add funds** |
 | Header | Icon button | Favorites | **same-thing / Bookmark vs save vs Favorites** |
 | Header | Label | Position resolved |  |
@@ -159,7 +159,7 @@ version of it costs them the recognition without buying anything.
 | Bottom nav | Label | Events |  |
 | Bottom nav | Label | My Bets | **same-thing / bet vs position** |
 | Bottom nav | Label | Favorites | **same-thing / Bookmark vs save vs Favorites** |
-| Bottom nav | Label | Portfolio |  |
+| Bottom nav | Label | Profile |  |
 
 ### Footer
 
@@ -770,11 +770,11 @@ _3 state page(s): my-profile-error.html, my-profile-loading.html, my-profile.htm
 | Main | Heading | Couldn't load your profile |  |
 | Main | Text | Something went wrong while loading your track record. Try again. |  |
 | Main | Button | Try again |  |
-| Main | Text | Portfolio |  |
-| Main | Label | Portfolio total |  |
+| Main | Text | Balance |  |
+| Main | Label | Balance |  |
 | Main | Label | Cash (available) |  |
 | Main | Label | In-play |  |
-| Main | Button | Deposit | **same-thing / Deposit vs Add funds** |
+| Main | Button | Add funds |  |
 | Main | Button | Open Wallet |  |
 | Main | Label | avatar |  |
 | Main | Label | alex_predicts |  |
@@ -852,11 +852,11 @@ _3 state page(s): wallet-error.html, wallet-loading.html, wallet.html_
 | Main | Heading | Couldn't load your wallet |  |
 | Main | Text | We couldn't fetch your balance and transactions. Your funds are safe; this is a display issue. Try again. |  |
 | Main | Button | Try again |  |
-| Main | Label | Portfolio total |  |
+| Main | Label | Balance |  |
 | Main | Label | Cash (available) |  |
 | Main | Label | In-play (open bets) |  |
-| Main | Label | Portfolio = Cash + In-play. In-play is locked in open positions until they resolve. |  |
-| Main | Button | Deposit | **same-thing / Deposit vs Add funds** |
+| Main | Label | Balance = Cash + In-play. In-play is locked in open bets until they resolve. |  |
+| Main | Button | Add funds |  |
 | Main | Button | Withdraw |  |
 | Main | summary | Withdraw funds (USDC) |  |
 | Main | Field label | Amount to withdraw |  |

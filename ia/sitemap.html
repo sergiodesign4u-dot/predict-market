@@ -85,9 +85,9 @@
   .state-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 6px; }
   .state-list { list-style: none; display: flex; flex-direction: column; gap: 3px; }
   .state-list li { font-size: 12px; color: #888; padding-left: 12px; position: relative; }
-  .state-list li::before { content: '-'; position: absolute; left: 0; color: #555; }
+  .state-list li::before { content: '-'; position: absolute; left: 0; color: #808080; }
   .screen-desc { font-size: 13px; color: #999; margin-top: 6px; }
-  .screen-note { font-size: 12px; color: #666; font-style: italic; margin-top: 6px; }
+  .screen-note { font-size: 12px; color: #808080; font-style: italic; margin-top: 6px; }
 
   /* NAV TABLE */
   .nav-slot { font-size: 13px; font-weight: 700; color: var(--text); }
@@ -196,7 +196,7 @@
   </div>
   <h1>Sitemap</h1>
   <p class="lead">Full inventory of entities, screens, navigation design, depth map, and job coverage tracing. Source of truth before wireframes.</p>
-  <p style="font-size:12px;color:#555;margin-bottom:0">Built from: personas.md · jtbd.md · master-research.md. <a href="ia.html" style="color:var(--muted);text-decoration:underline">Overview</a> &middot; <a href="flows.html" style="color:var(--muted);text-decoration:underline">All Flows</a></p>
+  <p style="font-size:12px;color: #808080;margin-bottom:0">Built from: personas.md · jtbd.md · master-research.md. <a href="ia.html" style="color:var(--muted);text-decoration:underline">Overview</a> &middot; <a href="flows.html" style="color:var(--muted);text-decoration:underline">All Flows</a></p>
 </section>
 
 <!-- ENTITIES -->
@@ -462,7 +462,7 @@
     <div class="screen-group-label">Activation Gate - bet-first, gate at confirm (Variant B)</div>
     <p style="font-size:13px;color:#888;margin-bottom:12px">User browses and builds a bet logged out. Gate fires only when they tap "Confirm" in the Event Detail bet panel. Sign In and Deposit open as in-page dialogs over the current page (Sign In chains to Deposit). Two branches: News Junkie (social login then fiat deposit) and Crypto Native (connect existing USDC wallet). After the gate, S5 AMM price reconcile checks whether the price moved during auth/deposit before executing.</p>
     <div class="screen-item">
-      <div class="screen-name">Sign In / Register <span style="font-weight:400;color:#777;font-size:12px">(in-page dialog)</span></div>
+      <div class="screen-name">Sign In / Register <span style="font-weight:400;color: #888888;font-size:12px">(in-page dialog)</span></div>
       <div class="screen-jobs"><span class="job-badge">FJ3</span><span class="persona-badge">&#11088; PRIMARY &middot; &#129352; SECONDARY (wallet connect path)</span></div>
       <div class="screen-desc">Social login (Google, X) for the News Junkie path. Crypto Native connects an existing USDC wallet here instead of using fiat. One screen, two branches. Triggered only at gate, never before bet intent.</div>
       <div class="screen-states">
@@ -475,7 +475,7 @@
       </div>
     </div>
     <div class="screen-item">
-      <div class="screen-name">Deposit <span style="font-weight:400;color:#777;font-size:12px">(in-page dialog)</span></div>
+      <div class="screen-name">Deposit <span style="font-weight:400;color: #888888;font-size:12px">(in-page dialog)</span></div>
       <div class="screen-jobs"><span class="job-badge">FJ3</span><span class="job-badge">FJ4</span><span class="job-badge">EJ2</span><span class="persona-badge">&#11088; PRIMARY</span></div>
       <div class="screen-desc">Fiat card to USDC via Transak (primary), MoonPay (fallback). KYC runs inside the Transak widget. Risk block displayed inline before submit. Fee shown before submit. Also reachable standalone from Wallet for top-ups.</div>
       <div class="screen-states">
@@ -497,7 +497,7 @@
     <div class="screen-group-label">Bet - the inline panel on Event Detail (was a standalone Bet Screen)</div>
     <p style="font-size:13px;color:#888;margin-bottom:12px">REVISED (wireframe build pass): the standalone Bet Screen is dissolved. Betting is the inline sticky panel on Event Detail; the states below are its bet-panel states (also listed under Event Detail). Kept here for continuity.</p>
     <div class="screen-item">
-      <div class="screen-name">Bet panel <span style="font-weight:400;color:#777;font-size:12px">(inline on Event Detail)</span></div>
+      <div class="screen-name">Bet panel <span style="font-weight:400;color: #888888;font-size:12px">(inline on Event Detail)</span></div>
       <div class="screen-jobs"><span class="job-badge">MJ</span><span class="job-badge">FJ3</span><span class="persona-badge">&#11088; PRIMARY + &#129352; SECONDARY</span></div>
       <div class="screen-desc">Direction (YES/NO, pre-set from the card/Event Detail tap), amount input with $5 default pre-fill, quick-select ($5/$10/$25/$50), fee displayed before confirm, potential payout shown. Confirm fires the activation gate (Sign In then Deposit dialogs). Lives in the Event Detail right rail (desktop) / bottom dock (mobile); for multi-outcome it first picks an outcome.</div>
       <div class="screen-states">
@@ -661,15 +661,15 @@
     <p style="font-size:13px;color:#888;margin-bottom:12px">Do not build until a job is confirmed.</p>
     <div class="screen-item sirota">
       <div class="screen-name">Settings / Notification Preferences <span class="job-badge sirota-badge">SIROTA</span></div>
-      <div class="screen-desc" style="color:#777">Notification prefs are adjacent to FJ1 return path but no job in jtbd.md requires a settings screen.</div>
+      <div class="screen-desc" style="color: #888888">Notification prefs are adjacent to FJ1 return path but no job in jtbd.md requires a settings screen.</div>
     </div>
     <div class="screen-item sirota">
       <div class="screen-name">Leaderboard <span class="job-badge sirota-badge">SIROTA</span></div>
-      <div class="screen-desc" style="color:#777">No confirmed job. SJ2 is served by Profile. Leaderboard is a view, not a job-closing screen.</div>
+      <div class="screen-desc" style="color: #888888">No confirmed job. SJ2 is served by Profile. Leaderboard is a view, not a job-closing screen.</div>
     </div>
     <div class="screen-item sirota">
       <div class="screen-name">Help / FAQ <span class="job-badge sirota-badge">SIROTA</span></div>
-      <div class="screen-desc" style="color:#777">EJ2 is served by Deposit + How It Works. A generic FAQ adds friction without closing a job.</div>
+      <div class="screen-desc" style="color: #888888">EJ2 is served by Deposit + How It Works. A generic FAQ adds friction without closing a job.</div>
     </div>
   </div>
 </section>
@@ -838,47 +838,47 @@
       <tbody>
         <tr>
           <td><span class="matrix-job">MJ</span><br><span class="matrix-sub">real stake on an event</span></td>
-          <td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td>
+          <td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td>
         </tr>
         <tr>
           <td><span class="matrix-job">FJ1</span><br><span class="matrix-sub">find event while still relevant</span></td>
-          <td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td>
+          <td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-check check">&#10003;</td>
         </tr>
         <tr>
           <td><span class="matrix-job">FJ2</span><br><span class="matrix-sub">understand why market prices it that way</span></td>
-          <td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td>
+          <td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td>
         </tr>
         <tr>
           <td><span class="matrix-job">FJ3</span><br><span class="matrix-sub">bet without crypto barrier</span></td>
-          <td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td>
+          <td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td>
         </tr>
         <tr>
           <td><span class="matrix-job">FJ4</span><br><span class="matrix-sub">feel confident money is safe</span></td>
-          <td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td>
+          <td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty" aria-hidden="true">-</td>
         </tr>
         <tr>
           <td><span class="matrix-job">FJ5</span><br><span class="matrix-sub">survive loss without chasing</span></td>
-          <td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td>
+          <td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-check check">&#10003;</td>
         </tr>
         <tr>
           <td><span class="matrix-job">EJ1</span><br><span class="matrix-sub">feel I understand better than most</span></td>
-          <td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td>
+          <td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td>
         </tr>
         <tr>
           <td><span class="matrix-job">EJ2</span><br><span class="matrix-sub">feel safe before first deposit</span></td>
-          <td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td>
+          <td class="matrix-check check">&#10003;</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty" aria-hidden="true">-</td>
         </tr>
         <tr>
           <td><span class="matrix-job">EJ3</span><br><span class="matrix-sub">exit loss consciously</span></td>
-          <td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td>
+          <td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td>
         </tr>
         <tr>
           <td><span class="matrix-job">SJ1</span><br><span class="matrix-sub">show that I was right</span></td>
-          <td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td>
+          <td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td>
         </tr>
         <tr>
           <td><span class="matrix-job">SJ2</span><br><span class="matrix-sub">build a public track record</span></td>
-          <td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty">-</td><td class="matrix-empty">-</td>
+          <td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-check check">&#10003;</td><td class="matrix-check check">&#10003;</td><td class="matrix-empty" aria-hidden="true">-</td><td class="matrix-empty" aria-hidden="true">-</td>
         </tr>
         <tr class="cov-row">
           <td><strong>Coverage (jobs)</strong></td>

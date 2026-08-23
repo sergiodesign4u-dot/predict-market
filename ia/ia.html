@@ -162,7 +162,7 @@
     <div class="loop-step"><div class="step-num">4</div>Resolve</div>
     <div class="loop-step"><div class="step-num">5</div>Reputation</div>
   </div>
-  <p style="font-size:13px;color:#777">Each bottom-nav slot maps to one phase of this loop. Sources: IA/sitemap.md and IA/flows.md.</p>
+  <p style="font-size:13px;color: #888888">Each bottom-nav slot maps to one phase of this loop. Sources: IA/sitemap.md and IA/flows.md.</p>
 </section>
 
 <!-- SCREEN TREE -->
@@ -208,7 +208,7 @@ graph TD
     </div>
   </div>
 
-  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#556688;margin:24px 0 8px">Header / Second-level</div>
+  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#93a6cc;margin:24px 0 8px">Header / Second-level</div>
   <div class="mermaid-wrap" style="opacity:.72">
     <div class="mermaid">
 graph LR
@@ -221,12 +221,12 @@ graph LR
     </div>
   </div>
 
-  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#664433;margin:24px 0 8px">Invoked by action - not navigation</div>
-  <p style="font-size:12px;color:#777;margin:0 0 8px">The bet is no longer an invoked screen: it is the inline panel on Event Detail. Sign In and Deposit are in-page dialogs (over the current page); Win / Loss remain invoked overlays.</p>
+  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#c89a6a;margin:24px 0 8px">Invoked by action - not navigation</div>
+  <p style="font-size:12px;color: #888888;margin:0 0 8px">The bet is no longer an invoked screen: it is the inline panel on Event Detail. Sign In and Deposit are in-page dialogs (over the current page); Win / Loss remain invoked overlays.</p>
   <div class="mermaid-wrap" style="opacity:.62">
     <div class="mermaid">
 graph LR
-  classDef inv fill:#1a1212,stroke:#443322,stroke-dasharray:5 3,color:#997766
+  classDef inv fill:#1a1212,stroke:#443322,stroke-dasharray:5 3,color:#a2816f
   SI["Sign In / Register (dialog, MJ)"]:::inv
   DEP["Deposit (dialog, MJ)"]:::inv
   WS["Win Screen (SJ1)"]:::inv
@@ -234,11 +234,11 @@ graph LR
     </div>
   </div>
 
-  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#444;margin:24px 0 8px">Deferred / post-MVP</div>
+  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color: #808080;margin:24px 0 8px">Deferred / post-MVP</div>
   <div class="mermaid-wrap" style="opacity:.45">
     <div class="mermaid">
 graph LR
-  classDef def fill:#111111,stroke:#2a2a2a,stroke-dasharray:6 3,color:#555555
+  classDef def fill:#111111,stroke:#2a2a2a,stroke-dasharray:6 3,color:#808080
   PP["Public Profile (G3, external link only)"]:::def
   SRCH["Search (deferred until catalog scale)"]:::def
     </div>
@@ -289,7 +289,7 @@ graph LR
     </div>
     <div class="tree-l0" style="opacity:.65;border-top:1px solid var(--border);margin-top:8px;padding-top:8px">
       <span class="tree-slot" style="color:var(--muted)">Flow only</span>
-      <div style="font-size:12px;color:#777;line-height:1.8">
+      <div style="font-size:12px;color: #888888;line-height:1.8">
         Bet panel (inline on Event Detail, YES/NO tap) &middot; Sign In / Register (dialog at Confirm) &middot; Deposit (dialog; chained after Sign In, or Wallet top-up) &middot; Win Screen (win notification or Active Bets resolved item) &middot; Loss Screen (G1: resolution notification 1 tap; or Active Bets resolved item) &middot; Public Profile (external link only - G3)
       </div>
     </div>
@@ -456,17 +456,17 @@ flowchart TD
         </tr>
       </thead>
       <tbody>
-        <tr><td class="job-name">MJ</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="cov cov-hi">8</td></tr>
-        <tr><td class="job-name">FJ1</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="cov">3</td></tr>
-        <tr><td class="job-name">FJ2</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="cov">2</td></tr>
-        <tr><td class="job-name">FJ3</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="cov">4</td></tr>
-        <tr><td class="job-name">FJ4</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="cov">3</td></tr>
-        <tr><td class="job-name">FJ5</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="cov">3</td></tr>
-        <tr><td class="job-name">EJ1</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="cov cov-hi">5</td></tr>
-        <tr><td class="job-name">EJ2</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="cov">3</td></tr>
-        <tr><td class="job-name">EJ3</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="cov">2</td></tr>
-        <tr><td class="job-name">SJ1</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="cov">2</td></tr>
-        <tr><td class="job-name">SJ2</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="empty">-</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty">-</td><td class="empty">-</td><td class="cov">2</td></tr>
+        <tr><td class="job-name">MJ</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="cov cov-hi">8</td></tr>
+        <tr><td class="job-name">FJ1</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="check">&#10003;</td><td class="cov">3</td></tr>
+        <tr><td class="job-name">FJ2</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="cov">2</td></tr>
+        <tr><td class="job-name">FJ3</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="check">&#10003;</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="cov">4</td></tr>
+        <tr><td class="job-name">FJ4</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="check">&#10003;</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="check">&#10003;</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="check">&#10003;</td><td class="empty" aria-hidden="true">-</td><td class="cov">3</td></tr>
+        <tr><td class="job-name">FJ5</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="check">&#10003;</td><td class="cov">3</td></tr>
+        <tr><td class="job-name">EJ1</td><td class="empty" aria-hidden="true">-</td><td class="check">&#10003;</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="check">&#10003;</td><td class="empty" aria-hidden="true">-</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty" aria-hidden="true">-</td><td class="check">&#10003;</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="cov cov-hi">5</td></tr>
+        <tr><td class="job-name">EJ2</td><td class="check">&#10003;</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="check">&#10003;</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="check">&#10003;</td><td class="empty" aria-hidden="true">-</td><td class="cov">3</td></tr>
+        <tr><td class="job-name">EJ3</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="cov">2</td></tr>
+        <tr><td class="job-name">SJ1</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="check">&#10003;</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="check">&#10003;</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="cov">2</td></tr>
+        <tr><td class="job-name">SJ2</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="empty" aria-hidden="true">-</td><td class="empty" aria-hidden="true">-</td><td class="cov">2</td></tr>
         <tr style="background:rgba(255,255,255,.02)">
           <td style="font-size:11px;color:var(--muted);font-family:var(--mono)">Jobs/screen</td>
           <td class="cov">4</td><td class="cov">4</td><td class="cov">2</td><td class="cov cov-hi">4</td><td class="cov">2</td><td class="cov">3</td><td class="cov">3</td><td class="cov cov-hi">4</td><td class="cov cov-lo">1</td><td class="cov">2</td><td class="cov">3</td><td class="cov cov-lo">1</td><td class="cov">2</td><td class="cov">2</td>
@@ -498,6 +498,14 @@ mermaid.initialize({
     tertiaryColor: '#222',
     edgeLabelBackground: '#0e0e0e',
     nodeTextColor: '#e8e8e8',
+    /* THE THEME NAMED THE NODE'S TEXT AND NOT THE DIAGRAM'S, 2026-08-23. Seven labels took
+       the deferred node class's own #555555, which is 2.43 on its own fill and under the 4.5
+       the criterion asks. These variables name what the theme had left to the renderer. */
+    textColor: '#e8e8e8',
+    secondaryTextColor: '#e8e8e8',
+    tertiaryTextColor: '#e8e8e8',
+    clusterTextColor: '#e8e8e8',
+    labelTextColor: '#e8e8e8',
     mainBkg: '#1a1a1a',
     nodeBorder: '#333',
     clusterBkg: '#161616',

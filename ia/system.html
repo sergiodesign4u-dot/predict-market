@@ -132,6 +132,13 @@
   ul.prose li:last-child, ol.prose li:last-child { margin-bottom: 0; }
   .delta { font-size: 12px; color: #7d7d7d; max-width: 700px; margin: 4px 0 12px; }
   .delta strong { color: #9a9a9a; }
+
+  /* THE REFERENCE LIST WAS THE ONE PLACE THIS DOCUMENT NEVER STYLED A LINK, and six external
+     sources therefore rendered in the browser's own blue on a dark ground at 2.05 against the
+     4.5 the criterion asks. Measured 2026-08-23 on two engines. A link with no rule is not an
+     unstyled link, it is a link wearing the user agent's stylesheet, which is a value like any
+     other. */
+  main a[href^="http"] { color: var(--blue); }
 </style>
   <!-- course chrome: the panel is a component, so the page loads it. Built by _course_chrome.py. -->
   <link rel="stylesheet" href="../components/fonts.css">
@@ -262,11 +269,11 @@
       <div style="height:7px;background:#242424;border-radius:2px;width:54%;margin:0 auto 18px;"></div>
       <div style="display:inline-block;padding:8px 18px;border:1px solid #4d4d4d;border-radius:6px;color:#b0b0b0;font-family:var(--mono);font-size:11px;">Browse events</div>
       <div style="display:flex;gap:6px;justify-content:center;margin-top:14px;flex-wrap:wrap;">
-        <span style="padding:3px 9px;border:1px solid var(--border);border-radius:4px;color:#6a6a6a;font-family:var(--mono);font-size:10px;">Politics</span>
-        <span style="padding:3px 9px;border:1px solid var(--border);border-radius:4px;color:#6a6a6a;font-family:var(--mono);font-size:10px;">Crypto</span>
-        <span style="padding:3px 9px;border:1px solid var(--border);border-radius:4px;color:#6a6a6a;font-family:var(--mono);font-size:10px;">Culture</span>
-        <span style="padding:3px 9px;border:1px solid var(--border);border-radius:4px;color:#6a6a6a;font-family:var(--mono);font-size:10px;">General</span>
-        <span style="padding:3px 9px;border:1px solid var(--border);border-radius:4px;color:#6a6a6a;font-family:var(--mono);font-size:10px;">How it works</span>
+        <span style="padding:3px 9px;border:1px solid var(--border);border-radius:4px;color: #808080;font-family:var(--mono);font-size:10px;">Politics</span>
+        <span style="padding:3px 9px;border:1px solid var(--border);border-radius:4px;color: #808080;font-family:var(--mono);font-size:10px;">Crypto</span>
+        <span style="padding:3px 9px;border:1px solid var(--border);border-radius:4px;color: #808080;font-family:var(--mono);font-size:10px;">Culture</span>
+        <span style="padding:3px 9px;border:1px solid var(--border);border-radius:4px;color: #808080;font-family:var(--mono);font-size:10px;">General</span>
+        <span style="padding:3px 9px;border:1px solid var(--border);border-radius:4px;color: #808080;font-family:var(--mono);font-size:10px;">How it works</span>
       </div>
     </div>
     <div style="height:26px;background:#141414;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;padding:0 12px;">
@@ -323,9 +330,9 @@
       <div style="height:7px;background:#242424;border-radius:2px;width:56%;margin:0 auto 18px;"></div>
       <div style="display:flex;gap:8px;justify-content:center;">
         <span style="display:inline-block;padding:8px 18px;border:1px solid #4d4d4d;border-radius:6px;color:#b0b0b0;font-family:var(--mono);font-size:11px;">Try again</span>
-        <span style="display:inline-block;padding:8px 18px;border:1px solid var(--border);border-radius:6px;color:#7a7a7a;font-family:var(--mono);font-size:11px;">Home</span>
+        <span style="display:inline-block;padding:8px 18px;border:1px solid var(--border);border-radius:6px;color:#808080;font-family:var(--mono);font-size:11px;">Home</span>
       </div>
-      <div style="display:inline-block;margin-top:14px;padding:5px 12px;border:1px dashed var(--border);border-radius:5px;color:#6a6a6a;font-family:var(--mono);font-size:10px;">Your money is safe</div>
+      <div style="display:inline-block;margin-top:14px;padding:5px 12px;border:1px dashed var(--border);border-radius:5px;color: #808080;font-family:var(--mono);font-size:10px;">Your money is safe</div>
     </div>
     <div style="height:26px;background:#141414;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;padding:0 12px;">
       <span style="width:26px;height:5px;background:#2a2a2a;border-radius:2px;"></span>
@@ -370,13 +377,13 @@
   <div style="max-width:360px;border:1px solid var(--border);border-radius:var(--r);background:#0f0f0f;overflow:hidden;margin:10px 0 4px;">
     <div style="height:28px;background:#181818;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;padding:0 12px;">
       <span style="width:44px;height:7px;background:#3a3a3a;border-radius:2px;"></span>
-      <span style="margin-left:auto;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:#5a5a5a;font-family:var(--mono);font-size:9px;">Retry-After</span>
+      <span style="margin-left:auto;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color: #808080;font-family:var(--mono);font-size:9px;">Retry-After</span>
     </div>
     <div style="padding:24px 16px;text-align:center;">
       <div style="font-family:var(--mono);font-size:30px;font-weight:700;color:#6f6f6f;letter-spacing:.06em;">503</div>
       <div style="height:9px;background:#2c2c2c;border-radius:2px;width:80%;margin:14px auto 7px;"></div>
       <div style="height:7px;background:#242424;border-radius:2px;width:60%;margin:0 auto 12px;"></div>
-      <div style="display:inline-block;margin-bottom:16px;padding:5px 12px;border:1px dashed var(--border);border-radius:5px;color:#6a6a6a;font-family:var(--mono);font-size:10px;">Back shortly</div>
+      <div style="display:inline-block;margin-bottom:16px;padding:5px 12px;border:1px dashed var(--border);border-radius:5px;color: #808080;font-family:var(--mono);font-size:10px;">Back shortly</div>
       <div style="display:block;">
         <span style="display:inline-block;padding:8px 18px;border:1px solid #4d4d4d;border-radius:6px;color:#b0b0b0;font-family:var(--mono);font-size:11px;">Try again</span>
       </div>
@@ -432,7 +439,7 @@
   <div style="max-width:420px;border:1px solid var(--border);border-radius:var(--r);background:#0f0f0f;padding:14px;margin:10px 0 4px;">
     <div style="height:8px;background:#2c2c2c;border-radius:2px;width:92%;margin-bottom:6px;"></div>
     <div style="height:8px;background:#242424;border-radius:2px;width:70%;margin-bottom:6px;"></div>
-    <div style="font-family:var(--mono);font-size:10px;color:#6a6a6a;margin-bottom:12px;">Privacy policy &middot; Cookie policy</div>
+    <div style="font-family:var(--mono);font-size:10px;color: #808080;margin-bottom:12px;">Privacy policy &middot; Cookie policy</div>
     <div style="display:flex;gap:8px;margin-bottom:14px;">
       <span style="flex:1;text-align:center;padding:8px 0;border:1px solid #4d4d4d;border-radius:6px;color:#b0b0b0;font-family:var(--mono);font-size:11px;">Accept all</span>
       <span style="flex:1;text-align:center;padding:8px 0;border:1px solid #4d4d4d;border-radius:6px;color:#b0b0b0;font-family:var(--mono);font-size:11px;">Reject all</span>
@@ -483,12 +490,12 @@
     <div style="display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:8px;background:#161616;padding:10px 12px;">
       <span style="width:8px;height:8px;border-radius:50%;background:#7a7a7a;flex-shrink:0;"></span>
       <span style="font-family:var(--mono);font-size:11px;color:#b0b0b0;">Bet placed</span>
-      <span style="margin-left:auto;color:#6a6a6a;font-family:var(--mono);font-size:12px;">x</span>
+      <span style="margin-left:auto;color: #808080;font-family:var(--mono);font-size:12px;">x</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;border:1px solid #3a3a3a;border-radius:8px;background:#161616;padding:10px 12px;">
       <span style="width:8px;height:8px;border-radius:50%;background:#9a9a9a;flex-shrink:0;"></span>
       <span style="font-family:var(--mono);font-size:11px;color:#b0b0b0;">We could not place your bet. Try again.</span>
-      <span style="margin-left:auto;color:#6a6a6a;font-family:var(--mono);font-size:12px;">x</span>
+      <span style="margin-left:auto;color: #808080;font-family:var(--mono);font-size:12px;">x</span>
     </div>
   </div>
   <p class="delta">Two variants shown: a success confirmation and an error. Both carry a manual close and auto-dismiss; grayscale, layout only.</p>

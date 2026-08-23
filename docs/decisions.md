@@ -12,6 +12,81 @@ Open items are not here either. They are in [`backlog.md`](./backlog.md).
 
 ---
 
+## 2026-08-23 - Seven open rows closed, and three of the seven were the instrument rather than the product
+
+The Handoff stage filed thirteen rows and repaired none, because a product edit inside that stage
+cancels the comparisons its acceptance stood on. The stage is closed and tagged, so the rows were
+worked. Seven are shut. **Three of the seven needed no edit at all**, and that is the entry worth
+keeping, because each of the three would otherwise have shipped as a repair to something that was
+not broken.
+
+**The three that were the instrument.**
+
+A checkbox is not the target its label is. `docs/backlog.md` 233 and the audit that agreed with it
+both measured `<input type="checkbox" class="filters-toggle">`, which is one pixel square by design
+and invisible; **the thing a finger hits is its label, and the label is 44 by 44.** The three icon
+tiles beside it are genuinely 28 square, and they are one of four exclusions `base.css` declares by
+name with the reason written next to them. **28 clears the criterion at AA, which asks 24.** 44 is
+the AAA figure, and whether those four should take it is the question that file already points at.
+Nothing was resized.
+
+Tab reaching `body` is the browser's own chrome, not the page behind the dialog. Row 234 said focus
+and Escape had never been measured on 19 modal screens. There are **24**, all opened with
+`showModal()`, and the first probe reported a focus leak on every one of them. The test that decides
+it is not whether Tab ever reaches `body`; it is whether an element BEHIND the dialog can take
+focus. **None can, on either engine.** Focus lands inside on 24 of 24, wraps back after 40 tabs on 24
+in Chromium and 23 in WebKit, and Escape closes on 24 of 24. The row was right that nobody had
+measured it and wrong about what it would find.
+
+And two thirds of a contrast count was not text. Row 244 read 301 elements under the threshold across
+the course documents. **238 of them are a hyphen in an empty matrix cell and a funnel arrow**, drawn
+in the border colour on purpose, saying what an empty cell already says; they are marked decorative
+rather than repainted, because raising them would add visual noise to 234 cells the design
+deliberately quiets. Of the rest, 38 were declarations raised past the threshold, **six were external
+reference links rendering in the browser's own blue** because that document had never styled a link,
+and four were mermaid class definitions naming their own colour. **From 301 to 0** over 4,867 text
+elements on both engines, with a planted low-contrast paragraph proving the probe fired on every
+document.
+
+**An override written for the mermaid labels was inert and was deleted rather than kept.** Mermaid
+scopes its injected rules by id, so a class selector never wins, and the measurement did not move
+when the rule went in. The real cause was one `classDef` in the diagram source naming its own grey.
+**A rule that looks like it does something is worse than no rule**, and an unchanged measurement is
+how you tell the difference.
+
+**The four that were edits.**
+
+The account destinations lived in a `role="menu"` dropdown and were therefore in no landmark at all,
+so a reader navigating by landmark above the desk rung found categories, the footer columns and legal
+and no primary. They are `<nav aria-label="Primary (account menu)">` on **149 documents** now, and the
+six links lost a `role="menuitem"` they never earned: that role promises arrow-key semantics this
+product does not implement, which is a claim made to assistive technology rather than a description
+of what is there.
+
+Four documents had no level-one heading: the event detail's loading state, signed in and signed out,
+in both trees, where the heading went out with the question a skeleton replaced. Those pages already
+carried a screen-reader line saying the event is loading, so it is the heading now, wrapped in the
+live region rather than carrying the role itself. **One string, both roles, no new class and no new
+rule.**
+
+Twelve documents carried a screen-tree panel one row short of their tree, and the two trees disagreed
+about which. The missing rows are in. Read as a set afterwards: **one panel in all 119 grey documents
+and one in all 120 painted**, 0 differing in either tree.
+
+Nine rows of the copy inventory still said `Portfolio`, a word the lexicon bans by name, while the
+trees said `Balance` on every screen. The sweep of 2026-08-20 swept the trees; the file that is
+supposed to be the source of truth for every string was not in it. It is turned, from the render
+rather than from memory.
+
+**Measured after: 1,434 renders over both trees on both engines at three widths - 0 sideways, 0
+duplicate ids, 0 page errors, and 239 of 239 documents carrying exactly one level-one heading.**
+
+**Six rows stay open and every one of them needs a decision rather than a sweep**: the stand page that
+argues with its own computed panel, the grey tree's shared-region numerator that no file defines, the
+278 MB of history around a 60 MB package, the tracked file named in another language that nothing
+references, the four hand-written renderings in `ia/` that are behind their markdown, and the shipped
+sentence that tells a reader how long their money takes when no document states a duration.
+
 ## 2026-08-23 - Handoff: the package was audited by three readers who had never seen it, two of them built a feature out of it, and the one thing that could not be got right was the test itself
 
 **The stage's premise is that whoever builds a thing cannot read it, only recall it**, so "imagine
